@@ -24,8 +24,12 @@ address {
 body {
   color: black;
   font-family: cambria, helvetica, arial, sans-serif;
-  font-size: 11pt;
-  margin-right: 2em;
+  font-size: 12pt;
+  margin: 2em auto;
+  max-width: 1000px;
+}
+samp, tt, code, pre {
+  font-family: consolas, monospace;
 }
 cite {
   font-style: normal;
@@ -90,6 +94,7 @@ p {
   margin-left: 2em;
 }
 pre {
+  font-size: 11pt;
   margin-left: 3em;
   background-color: lightyellow;
   padding: .25em;
@@ -99,7 +104,6 @@ pre.text2 {
   border-style: dotted;
   border-width: 1px;
   background-color: #f0f0f0;
-  width: 69em;
 }
 pre.inline {
   background-color: white;
@@ -109,7 +113,6 @@ pre.text {
   border-style: dotted;
   border-width: 1px;
   background-color: #f8f8f8;
-  width: 69em;
 }
 pre.drawing {
   border-style: solid;
@@ -158,7 +161,7 @@ ul.toc li {
 ul.toc li li {
   line-height: normal;
   font-weight: normal;
-  font-size: 10pt;
+  font-size: 11pt;
   margin-left: 0em;
 }
 li.excluded {
@@ -219,6 +222,11 @@ samp, tt, code, pre {
   background-color: yellow;
 }
 
+@media screen {
+  pre.text, pre.text2 {
+    width: 69em;
+  }
+}
 
 @media print {
   .noprint {
@@ -250,6 +258,10 @@ samp, tt, code, pre {
     content: target-counter(attr(href), page);
   }
 
+  pre {
+    font-size: 10pt;
+  }
+
   .print2col {
     column-count: 2;
     -moz-column-count: 2;
@@ -262,7 +274,7 @@ samp, tt, code, pre {
        content: "Internet-Draft";
   }
   @top-right {
-       content: "June 2014";
+       content: "July 2014";
   }
   @top-center {
        content: "Opportunistic HTTP Security";
@@ -271,7 +283,7 @@ samp, tt, code, pre {
        content: "Nottingham & Thomson";
   }
   @bottom-center {
-       content: "Expires January 1, 2015";
+       content: "Expires January 24, 2015";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -290,7 +302,7 @@ samp, tt, code, pre {
     }
 }
 </style><link rel="Author" href="#rfc.authors">
-<style type="text/css">
+  <style type="text/css">
 @viewport {
   zoom: 1.0;
   width: extend-to-zoom;
@@ -368,7 +380,7 @@ ul.toc, ul.toc ul {
 ul.toc a:first-child { 
   display: inline-block; 
   min-width: 1.2em;
-}</style>
+}  </style>
       <link rel="Copyright" href="#rfc.copyrightnotice">
       <link rel="Chapter" title="1 Introduction" href="#rfc.section.1">
       <link rel="Chapter" title="2 Using HTTP URIs over TLS" href="#rfc.section.2">
@@ -378,18 +390,18 @@ ul.toc a:first-child {
       <link rel="Chapter" title="6 Security Considerations" href="#rfc.section.6">
       <link rel="Chapter" href="#rfc.section.7" title="7 References">
       <link rel="Appendix" title="A Acknowledgements" href="#rfc.section.A">
-      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.638, 2014/05/31 12:29:37, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
+      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.662, 2014/07/19 09:19:17, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
       <meta name="keywords" content="Internet-Draft">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Nottingham, M.">
       <meta name="dct.creator" content="Thomson, M.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-http2-encryption-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2014-06-30">
+      <meta name="dct.issued" scheme="ISO8601" content="2014-07-23">
       <meta name="dct.abstract" content="This describes how “http” URIs can be accessed using Transport Layer Security (TLS) to mitigate pervasive monitoring attacks.">
       <meta name="description" content="This describes how “http” URIs can be accessed using Transport Layer Security (TLS) to mitigate pervasive monitoring attacks.">
    </head>
    <body>
-      <table class="header">
+      <table class="header" id="rfc.headerblock">
          <tbody>
             <tr>
                <td class="left">HTTPbis Working Group</td>
@@ -404,12 +416,12 @@ ul.toc a:first-child {
                <td class="right">Mozilla</td>
             </tr>
             <tr>
-               <td class="left">Expires: January 1, 2015</td>
-               <td class="right">June 30, 2014</td>
+               <td class="left">Expires: January 24, 2015</td>
+               <td class="right">July 23, 2014</td>
             </tr>
          </tbody>
       </table>
-      <p class="title">Opportunistic Security for HTTP<br><span class="filename">draft-ietf-httpbis-http2-encryption-latest</span></p>
+      <p class="title" id="rfc.title">Opportunistic Security for HTTP<br><span class="filename">draft-ietf-httpbis-http2-encryption-latest</span></p>
       <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
       <p>This describes how “http” URIs can be accessed using Transport Layer Security (TLS) to mitigate pervasive monitoring attacks.</p>
       <div id="rfc.status">
@@ -422,7 +434,7 @@ ul.toc a:first-child {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on January 1, 2015.</p>
+         <p>This Internet-Draft will expire on January 24, 2015.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
@@ -545,31 +557,34 @@ ul.toc a:first-child {
             <h2 id="rfc.section.5.1"><a href="#rfc.section.5.1">5.1</a>&nbsp;<a href="#the-http-tls-header-field">The HTTP-TLS Header Field</a></h2>
             <p id="rfc.section.5.1.p.1">A alternative service can make this commitment by sending a <samp>HTTP-TLS</samp> header field:
             </p>
-            <div id="rfc.figure.u.1"></div><pre>
+            <div id="rfc.figure.u.1"><pre>
 HTTP-TLS     = 1#parameter
-</pre><p id="rfc.section.5.1.p.3">When it appears in a HTTP response from a strongly authenticated alternative service, this header field indicates that the
+</pre></div>
+            <p id="rfc.section.5.1.p.2">When it appears in a HTTP response from a strongly authenticated alternative service, this header field indicates that the
                availability of the origin through TLS-protected alternative services is “sticky”, and that the client MUST NOT fall back
                to cleartext protocols while this information is considered fresh.
             </p>
-            <p id="rfc.section.5.1.p.4">For example:</p>
-            <div id="rfc.figure.u.2"></div><pre>
+            <p id="rfc.section.5.1.p.3">For example:</p>
+            <div id="rfc.figure.u.2"><pre>
 HTTP/1.1 200 OK
 Content-Type: text/html
 Cache-Control: 600
 Age: 30
 Date: Thu, 1 May 2014 16:20:09 GMT
 HTTP-TLS: ma=3600
-</pre><p id="rfc.section.5.1.p.6">Note that the commitment is not bound to a particular alternative service; clients SHOULD use other alternative services that
+</pre></div>
+            <p id="rfc.section.5.1.p.4">Note that the commitment is not bound to a particular alternative service; clients SHOULD use other alternative services that
                they become aware of, as long as the requirements regarding authentication and avoidance of cleartext protocols are met.
             </p>
-            <p id="rfc.section.5.1.p.7">When this header field appears in a response, clients MUST strongly authenticate the alternative service, as described in
+            <p id="rfc.section.5.1.p.5">When this header field appears in a response, clients MUST strongly authenticate the alternative service, as described in
                Section 3.1 of <a href="#RFC2818"><cite title="HTTP Over TLS">[RFC2818]</cite></a>, noting the additional requirements in <a href="#I-D.ietf-httpbis-alt-svc"><cite title="HTTP Alternative Services">[I-D.ietf-httpbis-alt-svc]</cite></a>. The header field MUST be ignored if strong authentication fails.
             </p>
-            <p id="rfc.section.5.1.p.8">Persisted information expires after a period determined by the value of the “ma” parameter. See Section 4.2.3 of <a href="#RFC7234"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Caching">[RFC7234]</cite></a> for details of determining response age.
+            <p id="rfc.section.5.1.p.6">Persisted information expires after a period determined by the value of the “ma” parameter. See Section 4.2.3 of <a href="#RFC7234"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Caching">[RFC7234]</cite></a> for details of determining response age.
             </p>
-            <div id="rfc.figure.u.3"></div><pre>
+            <div id="rfc.figure.u.3"><pre>
 ma-parameter     = delta-seconds
-</pre><p id="rfc.section.5.1.p.10">Requests for an origin that has a persisted, unexpired value for <samp>HTTP-TLS</samp> MUST fail if they cannot be made over an authenticated TLS connection.
+</pre></div>
+            <p id="rfc.section.5.1.p.7">Requests for an origin that has a persisted, unexpired value for <samp>HTTP-TLS</samp> MUST fail if they cannot be made over an authenticated TLS connection.
             </p>
          </div>
          <div id="operational-considerations">
@@ -620,7 +635,7 @@ ma-parameter     = delta-seconds
       <table>
          <tr>
             <td class="reference"><b id="RFC2119">[RFC2119]</b></td>
-            <td class="top"><a href="mailto:sob@harvard.edu" title="Harvard University">Bradner, S.</a>, “<a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>”, BCP&nbsp;14, RFC&nbsp;2119, March&nbsp;1997.
+            <td class="top"><a href="mailto:sob@harvard.edu">Bradner, S.</a>, “<a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>”, BCP&nbsp;14, RFC&nbsp;2119, March&nbsp;1997.
             </td>
          </tr>
          <tr>
@@ -645,12 +660,12 @@ ma-parameter     = delta-seconds
          </tr>
          <tr>
             <td class="reference"><b id="I-D.ietf-httpbis-alt-svc">[I-D.ietf-httpbis-alt-svc]</b></td>
-            <td class="top">Nottingham, M., McManus, P., and J. Reschke, “<a href="https://tools.ietf.org/html/draft-ietf-httpbis-alt-svc-01">HTTP Alternative Services</a>”, Internet-Draft&nbsp;draft-ietf-httpbis-alt-svc-01 (work in progress), April&nbsp;2014.
+            <td class="top">Nottingham, M., McManus, P., and J. Reschke, “<a href="https://tools.ietf.org/html/draft-ietf-httpbis-alt-svc-02">HTTP Alternative Services</a>”, Internet-Draft&nbsp;draft-ietf-httpbis-alt-svc-02 (work in progress), July&nbsp;2014.
             </td>
          </tr>
          <tr>
             <td class="reference"><b id="I-D.ietf-websec-key-pinning">[I-D.ietf-websec-key-pinning]</b></td>
-            <td class="top">Evans, C., Palmer, C., and R. Sleevi, “<a href="https://tools.ietf.org/html/draft-ietf-websec-key-pinning-17">Public Key Pinning Extension for HTTP</a>”, Internet-Draft&nbsp;draft-ietf-websec-key-pinning-17 (work in progress), June&nbsp;2014.
+            <td class="top">Evans, C., Palmer, C., and R. Sleevi, “<a href="https://tools.ietf.org/html/draft-ietf-websec-key-pinning-19">Public Key Pinning Extension for HTTP</a>”, Internet-Draft&nbsp;draft-ietf-websec-key-pinning-19 (work in progress), July&nbsp;2014.
             </td>
          </tr>
       </table>

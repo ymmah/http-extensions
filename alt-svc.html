@@ -12,8 +12,7 @@ function initFeedback() {
   fb.setAttribute("onclick", "feedback();");
   fb.appendChild(document.createTextNode("feedback"));
 
-  var bodyl = document.getElementsByTagName("body");
-  bodyl.item(0).appendChild(fb);
+  document.body.appendChild(fb);
 }
 
 function feedback() {
@@ -106,8 +105,12 @@ address {
 body {
   color: black;
   font-family: cambria, helvetica, arial, sans-serif;
-  font-size: 11pt;
-  margin-right: 2em;
+  font-size: 12pt;
+  margin: 2em auto;
+  max-width: 1000px;
+}
+samp, tt, code, pre {
+  font-family: consolas, monospace;
 }
 cite {
   font-style: normal;
@@ -172,6 +175,7 @@ p {
   margin-left: 2em;
 }
 pre {
+  font-size: 11pt;
   margin-left: 3em;
   background-color: lightyellow;
   padding: .25em;
@@ -181,7 +185,6 @@ pre.text2 {
   border-style: dotted;
   border-width: 1px;
   background-color: #f0f0f0;
-  width: 69em;
 }
 pre.inline {
   background-color: white;
@@ -191,7 +194,6 @@ pre.text {
   border-style: dotted;
   border-width: 1px;
   background-color: #f8f8f8;
-  width: 69em;
 }
 pre.drawing {
   border-style: solid;
@@ -301,7 +303,7 @@ ul.toc li {
 ul.toc li li {
   line-height: normal;
   font-weight: normal;
-  font-size: 10pt;
+  font-size: 11pt;
   margin-left: 0em;
 }
 li.excluded {
@@ -364,8 +366,7 @@ samp, tt, code, pre {
 .warning {
   font-size: 130%;
   background-color: yellow;
-}
-.feedback {
+}.feedback {
   position: fixed;
   bottom: 1%;
   right: 1%;
@@ -384,6 +385,12 @@ samp, tt, code, pre {
   padding: 1px 4px;
   border: 1px solid silver;
   border-radius: 5px;
+}
+
+@media screen {
+  pre.text, pre.text2 {
+    width: 69em;
+  }
 }
 
 @media print {
@@ -416,6 +423,10 @@ samp, tt, code, pre {
     content: target-counter(attr(href), page);
   }
 
+  pre {
+    font-size: 10pt;
+  }
+
   .print2col {
     column-count: 2;
     -moz-column-count: 2;
@@ -428,7 +439,7 @@ samp, tt, code, pre {
        content: "Internet-Draft";
   }
   @top-right {
-       content: "June 2014";
+       content: "July 2014";
   }
   @top-center {
        content: "Alternative Services";
@@ -437,7 +448,7 @@ samp, tt, code, pre {
        content: "Nottingham, et al.";
   }
   @bottom-center {
-       content: "Expires January 1, 2015";
+       content: "Expires January 24, 2015";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -456,7 +467,7 @@ samp, tt, code, pre {
     }
 }
 </style><link rel="Contents" href="#rfc.toc">
-<style type="text/css">
+  <style type="text/css">
 @viewport {
   zoom: 1.0;
   width: extend-to-zoom;
@@ -534,7 +545,7 @@ ul.toc, ul.toc ul {
 ul.toc a:first-child { 
   display: inline-block; 
   min-width: 1.2em;
-}</style>
+}  </style>
       <link rel="Author" href="#rfc.authors">
       <link rel="Copyright" href="#rfc.copyrightnotice">
       <link rel="Chapter" title="1 Introduction" href="#rfc.section.1">
@@ -549,19 +560,19 @@ ul.toc a:first-child {
       <link rel="Chapter" title="10 Acknowledgements" href="#rfc.section.10">
       <link rel="Chapter" href="#rfc.section.11" title="11 References">
       <link rel="Appendix" title="A Change Log (to be removed by RFC Editor before publication)" href="#rfc.section.A">
-      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.638, 2014/05/31 12:29:37, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
-      <meta name="keywords" content="HTTP">
+      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.662, 2014/07/19 09:19:17, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
+      <meta name="keywords" content="HTTP, ALPN, Alternate Services">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Nottingham, M.">
       <meta name="dct.creator" content="McManus, P.">
       <meta name="dct.creator" content="Reschke, J. F.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-alt-svc-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2014-06-30">
+      <meta name="dct.issued" scheme="ISO8601" content="2014-07-23">
       <meta name="dct.abstract" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
       <meta name="description" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
    </head>
    <body onload="initFeedback();">
-      <table class="header">
+      <table class="header" id="rfc.headerblock">
          <tbody>
             <tr>
                <td class="left">HTTPbis Working Group</td>
@@ -576,7 +587,7 @@ ul.toc a:first-child {
                <td class="right">P. McManus</td>
             </tr>
             <tr>
-               <td class="left">Expires: January 1, 2015</td>
+               <td class="left">Expires: January 24, 2015</td>
                <td class="right">Mozilla</td>
             </tr>
             <tr>
@@ -589,11 +600,11 @@ ul.toc a:first-child {
             </tr>
             <tr>
                <td class="left"></td>
-               <td class="right">June 30, 2014</td>
+               <td class="right">July 23, 2014</td>
             </tr>
          </tbody>
       </table>
-      <p class="title">HTTP Alternative Services<br><span class="filename">draft-ietf-httpbis-alt-svc-latest</span></p>
+      <p class="title" id="rfc.title">HTTP Alternative Services<br><span class="filename">draft-ietf-httpbis-alt-svc-latest</span></p>
       <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
       <p>This document specifies "alternative services" for HTTP, which allow an origin's resources to be authoritatively available
          at a separate network location, possibly accessed with a different protocol configuration.
@@ -601,7 +612,7 @@ ul.toc a:first-child {
       <h1 id="rfc.note.1"><a href="#rfc.note.1">Editorial Note (To be removed by RFC Editor)</a></h1>
       <p>Discussion of this draft takes place on the HTTPBIS working group mailing list (ietf-http-wg@w3.org), which is archived at &lt;<a href="https://lists.w3.org/Archives/Public/ietf-http-wg/">https://lists.w3.org/Archives/Public/ietf-http-wg/</a>&gt;.
       </p>
-      <p>Working Group information can be found at &lt;<a href="https://tools.ietf.org/wg/httpbis/">https://tools.ietf.org/wg/httpbis/</a>&gt;; that specific to HTTP/2 are at &lt;<a href="https://http2.github.io/">https://http2.github.io/</a>&gt;.
+      <p>Working Group information can be found at &lt;<a href="https://tools.ietf.org/wg/httpbis/">https://tools.ietf.org/wg/httpbis/</a>&gt; and &lt;<a href="http://httpwg.github.io/">http://httpwg.github.io/</a>&gt;; source code and issues list for this draft can be found at &lt;<a href="https://github.com/httpwg/http-extensions">https://github.com/httpwg/http-extensions</a>&gt;.
       </p>
       <p>The changes in this draft are summarized in <a href="#change.log" title="Change Log (to be removed by RFC Editor before publication)">Appendix&nbsp;A</a>.
       </p>
@@ -615,7 +626,7 @@ ul.toc a:first-child {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on January 1, 2015.</p>
+         <p>This Internet-Draft will expire on January 24, 2015.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
@@ -627,53 +638,56 @@ ul.toc a:first-child {
          </p>
       </div>
       <hr class="noprint">
-      <h1 class="np" id="rfc.toc"><a href="#rfc.toc">Table of Contents</a></h1>
-      <ul class="toc">
-         <li><a href="#rfc.section.1">1.</a>&nbsp;&nbsp;&nbsp;<a href="#introduction">Introduction</a><ul>
-               <li><a href="#rfc.section.1.1">1.1</a>&nbsp;&nbsp;&nbsp;<a href="#notational-conventions">Notational Conventions</a></li>
-            </ul>
-         </li>
-         <li><a href="#rfc.section.2">2.</a>&nbsp;&nbsp;&nbsp;<a href="#alternative">Alternative Services Concepts</a><ul>
-               <li><a href="#rfc.section.2.1">2.1</a>&nbsp;&nbsp;&nbsp;<a href="#host_auth">Host Authentication</a></li>
-               <li><a href="#rfc.section.2.2">2.2</a>&nbsp;&nbsp;&nbsp;<a href="#caching">Alternative Service Caching</a></li>
-               <li><a href="#rfc.section.2.3">2.3</a>&nbsp;&nbsp;&nbsp;<a href="#requiring-server-name-indication">Requiring Server Name Indication</a></li>
-               <li><a href="#rfc.section.2.4">2.4</a>&nbsp;&nbsp;&nbsp;<a href="#switching">Using Alternative Services</a></li>
-            </ul>
-         </li>
-         <li><a href="#rfc.section.3">3.</a>&nbsp;&nbsp;&nbsp;<a href="#alt-svc">The Alt-Svc HTTP Header Field</a><ul>
-               <li><a href="#rfc.section.3.1">3.1</a>&nbsp;&nbsp;&nbsp;<a href="#caching-alt-svc-header-field-values">Caching Alt-Svc Header Field Values</a></li>
-            </ul>
-         </li>
-         <li><a href="#rfc.section.4">4.</a>&nbsp;&nbsp;&nbsp;<a href="#frame">The ALTSVC HTTP/2 Frame</a></li>
-         <li><a href="#rfc.section.5">5.</a>&nbsp;&nbsp;&nbsp;<a href="#indicator">The Alt-Svc-Used HTTP Header Field</a></li>
-         <li><a href="#rfc.section.6">6.</a>&nbsp;&nbsp;&nbsp;<a href="#status">The 421 Not Authoritative HTTP Status Code</a></li>
-         <li><a href="#rfc.section.7">7.</a>&nbsp;&nbsp;&nbsp;<a href="#iana-considerations">IANA Considerations</a><ul>
-               <li><a href="#rfc.section.7.1">7.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.7.1">Header Field Registrations</a></li>
-               <li><a href="#rfc.section.7.2">7.2</a>&nbsp;&nbsp;&nbsp;<a href="#alt-svc-frame-registration">The ALTSVC HTTP/2 Frame Type</a></li>
-            </ul>
-         </li>
-         <li><a href="#rfc.section.8">8.</a>&nbsp;&nbsp;&nbsp;<a href="#tnternationalization-considerations">Internationalization Considerations</a></li>
-         <li><a href="#rfc.section.9">9.</a>&nbsp;&nbsp;&nbsp;<a href="#security-considerations">Security Considerations</a><ul>
-               <li><a href="#rfc.section.9.1">9.1</a>&nbsp;&nbsp;&nbsp;<a href="#changing-ports">Changing Ports</a></li>
-               <li><a href="#rfc.section.9.2">9.2</a>&nbsp;&nbsp;&nbsp;<a href="#host_security">Changing Hosts</a></li>
-               <li><a href="#rfc.section.9.3">9.3</a>&nbsp;&nbsp;&nbsp;<a href="#changing-protocols">Changing Protocols</a></li>
-               <li><a href="#rfc.section.9.4">9.4</a>&nbsp;&nbsp;&nbsp;<a href="#tracking">Tracking Clients Using Alternative Services</a></li>
-            </ul>
-         </li>
-         <li><a href="#rfc.section.10">10.</a>&nbsp;&nbsp;&nbsp;<a href="#acknowledgements">Acknowledgements</a></li>
-         <li><a href="#rfc.section.11">11.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references">References</a><ul>
-               <li><a href="#rfc.section.11.1">11.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.1">Normative References</a></li>
-               <li><a href="#rfc.section.11.2">11.2</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.2">Informative References</a></li>
-            </ul>
-         </li>
-         <li><a href="#rfc.section.A">A.</a>&nbsp;&nbsp;&nbsp;<a href="#change.log">Change Log (to be removed by RFC Editor before publication)</a><ul>
-               <li><a href="#rfc.section.A.1">A.1</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-nottingham-httpbis-alt-svc-05">Since draft-nottingham-httpbis-alt-svc-05</a></li>
-               <li><a href="#rfc.section.A.2">A.2</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-00">Since draft-ietf-httpbis-alt-svc-00</a></li>
-               <li><a href="#rfc.section.A.3">A.3</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-01">Since draft-ietf-httpbis-alt-svc-01</a></li>
-            </ul>
-         </li>
-         <li><a href="#rfc.authors">Authors' Addresses</a></li>
-      </ul>
+      <div id="rfc.toc">
+         <h1 class="np"><a href="#rfc.toc">Table of Contents</a></h1>
+         <ul class="toc">
+            <li><a href="#rfc.section.1">1.</a>&nbsp;&nbsp;&nbsp;<a href="#introduction">Introduction</a><ul>
+                  <li><a href="#rfc.section.1.1">1.1</a>&nbsp;&nbsp;&nbsp;<a href="#notational-conventions">Notational Conventions</a></li>
+               </ul>
+            </li>
+            <li><a href="#rfc.section.2">2.</a>&nbsp;&nbsp;&nbsp;<a href="#alternative">Alternative Services Concepts</a><ul>
+                  <li><a href="#rfc.section.2.1">2.1</a>&nbsp;&nbsp;&nbsp;<a href="#host_auth">Host Authentication</a></li>
+                  <li><a href="#rfc.section.2.2">2.2</a>&nbsp;&nbsp;&nbsp;<a href="#caching">Alternative Service Caching</a></li>
+                  <li><a href="#rfc.section.2.3">2.3</a>&nbsp;&nbsp;&nbsp;<a href="#requiring-server-name-indication">Requiring Server Name Indication</a></li>
+                  <li><a href="#rfc.section.2.4">2.4</a>&nbsp;&nbsp;&nbsp;<a href="#switching">Using Alternative Services</a></li>
+               </ul>
+            </li>
+            <li><a href="#rfc.section.3">3.</a>&nbsp;&nbsp;&nbsp;<a href="#alt-svc">The Alt-Svc HTTP Header Field</a><ul>
+                  <li><a href="#rfc.section.3.1">3.1</a>&nbsp;&nbsp;&nbsp;<a href="#caching-alt-svc-header-field-values">Caching Alt-Svc Header Field Values</a></li>
+               </ul>
+            </li>
+            <li><a href="#rfc.section.4">4.</a>&nbsp;&nbsp;&nbsp;<a href="#frame">The ALTSVC HTTP/2 Frame</a></li>
+            <li><a href="#rfc.section.5">5.</a>&nbsp;&nbsp;&nbsp;<a href="#indicator">The Alt-Svc-Used HTTP Header Field</a></li>
+            <li><a href="#rfc.section.6">6.</a>&nbsp;&nbsp;&nbsp;<a href="#status">The 421 Not Authoritative HTTP Status Code</a></li>
+            <li><a href="#rfc.section.7">7.</a>&nbsp;&nbsp;&nbsp;<a href="#iana-considerations">IANA Considerations</a><ul>
+                  <li><a href="#rfc.section.7.1">7.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.7.1">Header Field Registrations</a></li>
+                  <li><a href="#rfc.section.7.2">7.2</a>&nbsp;&nbsp;&nbsp;<a href="#alt-svc-frame-registration">The ALTSVC HTTP/2 Frame Type</a></li>
+               </ul>
+            </li>
+            <li><a href="#rfc.section.8">8.</a>&nbsp;&nbsp;&nbsp;<a href="#tnternationalization-considerations">Internationalization Considerations</a></li>
+            <li><a href="#rfc.section.9">9.</a>&nbsp;&nbsp;&nbsp;<a href="#security-considerations">Security Considerations</a><ul>
+                  <li><a href="#rfc.section.9.1">9.1</a>&nbsp;&nbsp;&nbsp;<a href="#changing-ports">Changing Ports</a></li>
+                  <li><a href="#rfc.section.9.2">9.2</a>&nbsp;&nbsp;&nbsp;<a href="#host_security">Changing Hosts</a></li>
+                  <li><a href="#rfc.section.9.3">9.3</a>&nbsp;&nbsp;&nbsp;<a href="#changing-protocols">Changing Protocols</a></li>
+                  <li><a href="#rfc.section.9.4">9.4</a>&nbsp;&nbsp;&nbsp;<a href="#tracking">Tracking Clients Using Alternative Services</a></li>
+               </ul>
+            </li>
+            <li><a href="#rfc.section.10">10.</a>&nbsp;&nbsp;&nbsp;<a href="#acknowledgements">Acknowledgements</a></li>
+            <li><a href="#rfc.section.11">11.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references">References</a><ul>
+                  <li><a href="#rfc.section.11.1">11.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.1">Normative References</a></li>
+                  <li><a href="#rfc.section.11.2">11.2</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.2">Informative References</a></li>
+               </ul>
+            </li>
+            <li><a href="#rfc.section.A">A.</a>&nbsp;&nbsp;&nbsp;<a href="#change.log">Change Log (to be removed by RFC Editor before publication)</a><ul>
+                  <li><a href="#rfc.section.A.1">A.1</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-nottingham-httpbis-alt-svc-05">Since draft-nottingham-httpbis-alt-svc-05</a></li>
+                  <li><a href="#rfc.section.A.2">A.2</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-00">Since draft-ietf-httpbis-alt-svc-00</a></li>
+                  <li><a href="#rfc.section.A.3">A.3</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-01">Since draft-ietf-httpbis-alt-svc-01</a></li>
+                  <li><a href="#rfc.section.A.4">A.4</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-02">Since draft-ietf-httpbis-alt-svc-02</a></li>
+               </ul>
+            </li>
+            <li><a href="#rfc.authors">Authors' Addresses</a></li>
+         </ul>
+      </div>
       <ul class="toc">
          <li>Figures
             
@@ -725,44 +739,46 @@ ul.toc a:first-child {
             possibly using a different protocol configuration. Alternative services are considered authoritative for an origin's resources,
             in the sense of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#establishing.authority" title="Establishing Authority">Section 9.1</a>.
          </p>
-         <div id="rfc.figure.u.1"></div>
-         <p>For example, an origin:</p><pre class="text">("http", "www.example.com", "80")
-</pre><div id="rfc.figure.u.2"></div>
-         <p>might declare that its resources are also accessible at the alternative service:</p><pre class="text">("h2", "new.example.com", "81")
-</pre><p id="rfc.section.2.p.5">By their nature, alternative services are explicitly at the granularity of an origin; i.e., they cannot be selectively applied
+         <div id="rfc.figure.u.1">
+            <p>For example, an origin:</p><pre class="text">("http", "www.example.com", "80")
+</pre></div>
+         <div id="rfc.figure.u.2">
+            <p>might declare that its resources are also accessible at the alternative service:</p><pre class="text">("h2", "new.example.com", "81")
+</pre></div>
+         <p id="rfc.section.2.p.3">By their nature, alternative services are explicitly at the granularity of an origin; i.e., they cannot be selectively applied
             to resources within an origin.
          </p>
-         <p id="rfc.section.2.p.6">Alternative services do not replace or change the origin for any given resource; in general, they are not visible to the software
+         <p id="rfc.section.2.p.4">Alternative services do not replace or change the origin for any given resource; in general, they are not visible to the software
             "above" the access mechanism. The alternative service is essentially alternative routing information that can also be used
             to reach the origin in the same way that DNS CNAME or SRV records define routing information at the name resolution level.
             Each origin maps to a set of these routes — the default route is derived from origin itself and the other routes are introduced
             based on alternative-protocol information.
          </p>
-         <p id="rfc.section.2.p.7">Furthermore, it is important to note that the first member of an alternative service tuple is different from the "scheme"
+         <p id="rfc.section.2.p.5">Furthermore, it is important to note that the first member of an alternative service tuple is different from the "scheme"
             component of an origin; it is more specific, identifying not only the major version of the protocol being used, but potentially
             communication options for that protocol.
          </p>
-         <p id="rfc.section.2.p.8">This means that clients using an alternative service will change the host, port and protocol that they are using to fetch
+         <p id="rfc.section.2.p.6">This means that clients using an alternative service will change the host, port and protocol that they are using to fetch
             resources, but these changes <em class="bcp14">MUST NOT</em> be propagated to the application that is using HTTP; from that standpoint, the URI being accessed and all information derived
             from it (scheme, host, port) are the same as before.
          </p>
-         <p id="rfc.section.2.p.9">Importantly, this includes its security context; in particular, when TLS <a href="#RFC5246"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite></a> is in use, the alternative server will need to present a certificate for the origin's host name, not that of the alternative.
+         <p id="rfc.section.2.p.7">Importantly, this includes its security context; in particular, when TLS <a href="#RFC5246"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite></a> is in use, the alternative server will need to present a certificate for the origin's host name, not that of the alternative.
             Likewise, the Host header field (<a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#header.host" title="Host">Section 5.4</a>) is still derived from the origin, not the alternative service (just as it would if a CNAME were being used).
          </p>
-         <p id="rfc.section.2.p.10">The changes <em class="bcp14">MAY</em>, however, be made visible in debugging tools, consoles, etc.
+         <p id="rfc.section.2.p.8">The changes <em class="bcp14">MAY</em>, however, be made visible in debugging tools, consoles, etc.
          </p>
-         <p id="rfc.section.2.p.11">Formally, an alternative service is identified by the combination of: </p>
+         <p id="rfc.section.2.p.9">Formally, an alternative service is identified by the combination of: </p>
          <ul>
-            <li>An Application Layer Protocol Negotiation (ALPN) protocol, as per <a href="#ALPN"><cite title="Transport Layer Security (TLS) Application Layer Protocol Negotiation Extension">[ALPN]</cite></a></li>
+            <li>An Application Layer Protocol Negotiation (ALPN) protocol, as per <a href="#RFC7301"><cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[RFC7301]</cite></a></li>
             <li>A host, as per <a href="#RFC3986"><cite title="Uniform Resource Identifier (URI): Generic Syntax">[RFC3986]</cite></a>, <a href="https://tools.ietf.org/html/rfc3986#section-3.2.2">Section 3.2.2</a></li>
             <li>A port, as per <a href="#RFC3986"><cite title="Uniform Resource Identifier (URI): Generic Syntax">[RFC3986]</cite></a>, <a href="https://tools.ietf.org/html/rfc3986#section-3.2.3">Section 3.2.3</a></li>
          </ul>
-         <p id="rfc.section.2.p.12">Additionally, each alternative service <em class="bcp14">MUST</em> have: 
+         <p id="rfc.section.2.p.10">Additionally, each alternative service <em class="bcp14">MUST</em> have: 
          </p>
          <ul>
             <li>A freshness lifetime, expressed in seconds; see <a href="#caching" title="Alternative Service Caching">Section&nbsp;2.2</a></li>
          </ul>
-         <p id="rfc.section.2.p.13">There are many ways that a client could discover the alternative service(s) associated with an origin. This document describes
+         <p id="rfc.section.2.p.11">There are many ways that a client could discover the alternative service(s) associated with an origin. This document describes
             two such mechanisms: an HTTP header field (<a href="#alt-svc" title="The Alt-Svc HTTP Header Field">Section&nbsp;3</a>) and an HTTP/2 frame type (<a href="#frame" title="The ALTSVC HTTP/2 Frame">Section&nbsp;4</a>).
          </p>
          <div id="host_auth">
@@ -790,9 +806,8 @@ ul.toc a:first-child {
                ends; i.e., the caching mechanism is intended for limiting how long an alternative service can be used for establishing new
                requests, not limiting the use of existing ones.
             </p>
-            <p id="rfc.section.2.2.p.4">To mitigate risks associated with caching compromised values (see <a href="#host_security" title="Changing Hosts">Section&nbsp;9.2</a> for details), user agents <em class="bcp14">SHOULD</em> examine cached alternative services when they detect a change in network configuration, and remove any that could be compromised
-               (for example, those whose association with the trust root is questionable). UAs that do not have a means of detecting network
-               changes <em class="bcp14">SHOULD</em> place an upper bound on their lifetime.
+            <p id="rfc.section.2.2.p.4">Clients ought to consider that changes in network configurations can result in suboptimal or compromised cached alternative
+               services.
             </p>
          </div>
          <div id="requiring-server-name-indication">
@@ -825,31 +840,34 @@ ul.toc a:first-child {
          <p id="rfc.section.3.p.1">An HTTP(S) origin server can advertise the availability of alternative services to clients by adding an Alt-Svc header field
             to responses.
          </p>
-         <div id="rfc.figure.u.3"></div><pre class="inline">Alt-Svc       = 1#( alternative *( OWS ";" OWS parameter ) )
+         <div id="rfc.figure.u.3"><pre class="inline">Alt-Svc       = 1#( alternative *( OWS ";" OWS parameter ) )
 alternative   = protocol-id "=" alt-authority
 protocol-id   = token ; percent-encoded ALPN protocol identifier
 alt-authority = token / quoted-string
                 ; containing [ uri-host ] ":" port
-</pre><p id="rfc.section.3.p.3">ALPN protocol names are octet sequences with no additional constraints on format. Octets not allowed in tokens (<a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#field.components" title="Field Value Components">Section 3.2.6</a>) <em class="bcp14">MUST</em> be percent-encoded as per <a href="https://tools.ietf.org/html/rfc3986#section-2.1">Section 2.1</a> of <a href="#RFC3986"><cite title="Uniform Resource Identifier (URI): Generic Syntax">[RFC3986]</cite></a>. Consequently, the octet representing the percent character "%" (hex 25) <em class="bcp14">MUST</em> be percent-encoded as well.
+</pre></div>
+         <p id="rfc.section.3.p.2">ALPN protocol names are octet sequences with no additional constraints on format. Octets not allowed in tokens (<a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#field.components" title="Field Value Components">Section 3.2.6</a>) <em class="bcp14">MUST</em> be percent-encoded as per <a href="https://tools.ietf.org/html/rfc3986#section-2.1">Section 2.1</a> of <a href="#RFC3986"><cite title="Uniform Resource Identifier (URI): Generic Syntax">[RFC3986]</cite></a>. Consequently, the octet representing the percent character "%" (hex 25) <em class="bcp14">MUST</em> be percent-encoded as well.
          </p>
-         <p id="rfc.section.3.p.4">In order to have precisely one way to represent any ALPN protocol name, the following additional constraints apply: </p>
+         <p id="rfc.section.3.p.3">In order to have precisely one way to represent any ALPN protocol name, the following additional constraints apply: </p>
          <ol>
             <li>Octets in the ALPN protocol <em class="bcp14">MUST NOT</em> be percent-encoded if they are valid token characters except "%", and
             </li>
             <li>When using percent-encoding, uppercase hex digits <em class="bcp14">MUST</em> be used.
             </li>
          </ol>
-         <p id="rfc.section.3.p.5">With these constraints, recipients can apply simple string comparison to match protocol identifiers.</p>
-         <p id="rfc.section.3.p.6">The "alt-authority" component consists of an <em class="bcp14">OPTIONAL</em> uri-host ("host" in <a href="https://tools.ietf.org/html/rfc3986#section-3.2.2">Section 3.2.2</a> of <a href="#RFC3986"><cite title="Uniform Resource Identifier (URI): Generic Syntax">[RFC3986]</cite></a>), a colon (":"), and a port number.
+         <p id="rfc.section.3.p.4">With these constraints, recipients can apply simple string comparison to match protocol identifiers.</p>
+         <p id="rfc.section.3.p.5">The "alt-authority" component consists of an <em class="bcp14">OPTIONAL</em> uri-host ("host" in <a href="https://tools.ietf.org/html/rfc3986#section-3.2.2">Section 3.2.2</a> of <a href="#RFC3986"><cite title="Uniform Resource Identifier (URI): Generic Syntax">[RFC3986]</cite></a>), a colon (":"), and a port number.
          </p>
-         <div id="rfc.figure.u.4"></div>
-         <p>For example:</p><pre class="text">Alt-Svc: http2=":8000"
+         <div id="rfc.figure.u.4">
+            <p>For example:</p><pre class="text">Alt-Svc: http2=":8000"
 </pre><p>This indicates the "http2" protocol on the same host using the indicated port 8000.</p>
-         <div id="rfc.figure.u.5"></div>
-         <p>An example involving a change of host:</p><pre class="text">Alt-Svc: http2="new.example.org:80"
+         </div>
+         <div id="rfc.figure.u.5">
+            <p>An example involving a change of host:</p><pre class="text">Alt-Svc: http2="new.example.org:80"
 </pre><p>This indicates the "http2" protocol on the host "new.example.org", running on port 80. Note that the "quoted-string" syntax
-            needs to be used when a host is specified in addition to a port (":" is not an allowed character in "token").
-         </p>
+               needs to be used when a host is specified in addition to a port (":" is not an allowed character in "token").
+            </p>
+         </div>
          <div id="rfc.table.u.1">
             <p>Examples for protocol name escaping:</p>
             <table class="tt all left" cellpadding="3" cellspacing="0">
@@ -879,46 +897,49 @@ alt-authority = token / quoted-string
                </tbody>
             </table>
          </div>
-         <p id="rfc.section.3.p.9">Alt-Svc <em class="bcp14">MAY</em> occur in any HTTP response message, regardless of the status code.
+         <p id="rfc.section.3.p.6">Alt-Svc <em class="bcp14">MAY</em> occur in any HTTP response message, regardless of the status code.
          </p>
-         <p id="rfc.section.3.p.10">Alt-Svc does not allow advertisement of alternative services on other hosts, to protect against various header-based attacks.</p>
-         <div id="rfc.figure.u.6"></div>
-         <p>It can, however, have multiple values:</p><pre class="text">Alt-Svc: h2c=":8000", h2=":443"
-</pre><p id="rfc.section.3.p.12">The value(s) advertised by Alt-Svc can be used by clients to open a new connection to one or more alternative services immediately,
+         <div id="rfc.figure.u.6">
+            <p>It can, however, have multiple values:</p><pre class="text">Alt-Svc: h2c=":8000", h2=":443"
+</pre></div>
+         <p id="rfc.section.3.p.7">The value(s) advertised by Alt-Svc can be used by clients to open a new connection to one or more alternative services immediately,
             or simultaneously with subsequent requests on the same connection.
          </p>
-         <p id="rfc.section.3.p.13">To reduce the ability of servers to track individual clients over time (see <a href="#tracking" title="Tracking Clients Using Alternative Services">Section&nbsp;9.4</a>), an alternative service indication sent by a client <em class="bcp14">SHOULD NOT</em> include any alternative service information other than the protocol, host and port.
+         <p id="rfc.section.3.p.8">To reduce the ability of servers to track individual clients over time (see <a href="#tracking" title="Tracking Clients Using Alternative Services">Section&nbsp;9.4</a>), an alternative service indication sent by a client <em class="bcp14">SHOULD NOT</em> include any alternative service information other than the protocol, host and port.
          </p>
-         <p id="rfc.section.3.p.14">When using HTTP/2 (<a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>), clients <em class="bcp14">SHOULD</em> instead send an ALTSVC frame. A single ALTSVC frame can be sent for a connection; a new frame is not needed for every request.
+         <p id="rfc.section.3.p.9">When using HTTP/2 (<a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>), clients <em class="bcp14">SHOULD</em> instead send an ALTSVC frame. A single ALTSVC frame can be sent for a connection; a new frame is not needed for every request.
          </p>
-         <p id="rfc.section.3.p.15">Note that all field elements that allow "quoted-string" syntax <em class="bcp14">MUST</em> be processed as per <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#field.components" title="Field Value Components">Section 3.2.6</a> of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>.
+         <p id="rfc.section.3.p.10">Note that all field elements that allow "quoted-string" syntax <em class="bcp14">MUST</em> be processed as per <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#field.components" title="Field Value Components">Section 3.2.6</a> of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>.
          </p>
          <div id="caching-alt-svc-header-field-values">
             <h2 id="rfc.section.3.1"><a href="#rfc.section.3.1">3.1</a>&nbsp;<a href="#caching-alt-svc-header-field-values">Caching Alt-Svc Header Field Values</a></h2>
             <p id="rfc.section.3.1.p.1">When an alternative service is advertised using Alt-Svc, it is considered fresh for 24 hours from generation of the message.
                This can be modified with the 'ma' (max-age) parameter;
             </p>
-            <div id="rfc.figure.u.7"></div><pre class="text">Alt-Svc: h2=":443"; ma=3600
-</pre><p id="rfc.section.3.1.p.3">which indicates the number of seconds since the response was generated the alternative service is considered fresh for.</p>
-            <div id="rfc.figure.u.8"></div><pre class="inline">ma = delta-seconds
-</pre><p id="rfc.section.3.1.p.5">See <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7234.html#age.calculations" title="Calculating Age">Section 4.2.3</a> of <a href="#RFC7234"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Caching">[RFC7234]</cite></a> for details of determining response age.
+            <div id="rfc.figure.u.7"><pre class="text">Alt-Svc: h2=":443"; ma=3600
+</pre></div>
+            <p id="rfc.section.3.1.p.2">which indicates the number of seconds since the response was generated the alternative service is considered fresh for.</p>
+            <div id="rfc.figure.u.8"><pre class="inline">ma = delta-seconds
+</pre></div>
+            <p id="rfc.section.3.1.p.3">See <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7234.html#age.calculations" title="Calculating Age">Section 4.2.3</a> of <a href="#RFC7234"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Caching">[RFC7234]</cite></a> for details of determining response age.
             </p>
-            <div id="rfc.figure.u.9"></div>
-            <p>For example, a response:</p><pre class="text">HTTP/1.1 200 OK
+            <div id="rfc.figure.u.9">
+               <p>For example, a response:</p><pre class="text">HTTP/1.1 200 OK
 Content-Type: text/html
 Cache-Control: 600
 Age: 30
 Alt-Svc: h2c=":8000"; ma=60
 </pre><p>indicates that an alternative service is available and usable for the next 60 seconds. However, the response has already been
-               cached for 30 seconds (as per the Age header field value), so therefore the alternative service is only fresh for the 30 seconds
-               from when this response was received, minus estimated transit time.
-            </p>
-            <p id="rfc.section.3.1.p.7">When an Alt-Svc response header field is received from an origin, its value invalidates and replaces all cached alternative
+                  cached for 30 seconds (as per the Age header field value), so therefore the alternative service is only fresh for the 30 seconds
+                  from when this response was received, minus estimated transit time.
+               </p>
+            </div>
+            <p id="rfc.section.3.1.p.4">When an Alt-Svc response header field is received from an origin, its value invalidates and replaces all cached alternative
                services for that origin.
             </p>
-            <p id="rfc.section.3.1.p.8">See <a href="#caching" title="Alternative Service Caching">Section&nbsp;2.2</a> for general requirements on caching alternative services.
+            <p id="rfc.section.3.1.p.5">See <a href="#caching" title="Alternative Service Caching">Section&nbsp;2.2</a> for general requirements on caching alternative services.
             </p>
-            <p id="rfc.section.3.1.p.9">Note that the freshness lifetime for HTTP caching (here, 600 seconds) does not affect caching of Alt-Svc values.</p>
+            <p id="rfc.section.3.1.p.6">Note that the freshness lifetime for HTTP caching (here, 600 seconds) does not affect caching of Alt-Svc values.</p>
          </div>
       </div>
       <div id="frame">
@@ -933,7 +954,7 @@ Alt-Svc: h2c=":8000"; ma=60
             Origin field of the frame. An association with an origin that the client does not consider authoritative for the current connection <em class="bcp14">MUST</em> be ignored.
          </p>
          <p id="rfc.section.4.p.5">The ALTSVC frame type is 0xa (decimal 10).</p>
-         <div id="rfc.figure.u.10"></div><pre class="drawing">  0                   1                   2                   3
+         <div id="rfc.figure.u.10"><pre class="drawing">  0                   1                   2                   3
   0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
  |                          Max-Age (32)                         |
@@ -946,8 +967,9 @@ Alt-Svc: h2c=":8000"; ma=60
  +---------------+-----------------------------------------------+
  |                          Origin? (*)                        ...
  +---------------------------------------------------------------+
-</pre><p class="figure">ALTSVC Frame Payload</p>
-         <p id="rfc.section.4.p.7">The ALTSVC frame contains the following fields: </p>
+</pre></div>
+         <p class="figure">ALTSVC Frame Payload</p>
+         <p id="rfc.section.4.p.6">The ALTSVC frame contains the following fields: </p>
          <dl>
             <dt>Max-Age:</dt>
             <dd>An unsigned, 32-bit integer indicating the freshness lifetime of the alternative service association, as per <a href="#caching" title="Alternative Service Caching">Section&nbsp;2.2</a>.
@@ -966,31 +988,35 @@ Alt-Svc: h2c=":8000"; ma=60
             </dd>
             <dt>Origin:</dt>
             <dd>An <em class="bcp14">OPTIONAL</em> sequence of characters (length determined by subtracting the length of all preceding fields from the frame length) containing
-               the ASCII serialisation of an origin (<a href="#RFC6454"><cite title="The Web Origin Concept">[RFC6454]</cite></a>, <a href="https://tools.ietf.org/html/rfc6454#section-6.2">Section 6.2</a>) that the alternate service is applicable to.
+               the ASCII serialization of an origin (<a href="#RFC6454"><cite title="The Web Origin Concept">[RFC6454]</cite></a>, <a href="https://tools.ietf.org/html/rfc6454#section-6.2">Section 6.2</a>) that the alternate service is applicable to.
             </dd>
          </dl>
-         <p id="rfc.section.4.p.8">The ALTSVC frame does not define any flags.</p>
-         <p id="rfc.section.4.p.9">The ALTSVC frame is intended for receipt by clients; a server that receives an ALTSVC frame <em class="bcp14">MUST</em> treat it as a connection error of type PROTOCOL_ERROR.
+         <p id="rfc.section.4.p.7">The ALTSVC frame does not define any flags.</p>
+         <p id="rfc.section.4.p.8">The ALTSVC frame is intended for receipt by clients; a server that receives an ALTSVC frame <em class="bcp14">MUST</em> treat it as a connection error of type PROTOCOL_ERROR.
          </p>
-         <p id="rfc.section.4.p.10">The ALTSVC frame is processed hop-by-hop. An intermediary <em class="bcp14">MUST NOT</em> forward ALTSVC frames, though it can use the information contained in ALTSVC frames in forming new ALTSVC frames to send to
+         <p id="rfc.section.4.p.9">The ALTSVC frame is processed hop-by-hop. An intermediary <em class="bcp14">MUST NOT</em> forward ALTSVC frames, though it can use the information contained in ALTSVC frames in forming new ALTSVC frames to send to
             its own clients.
          </p>
       </div>
       <div id="indicator">
          <h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a>&nbsp;<a href="#indicator">The Alt-Svc-Used HTTP Header Field</a></h1>
          <p id="rfc.section.5.p.1">The Alt-Svc-Used HTTP header field is used in requests to indicate that an alternate service is in use.</p>
-         <div id="rfc.figure.u.11"></div><pre class="inline">Alt-Svc-Used     = ("1" / "0") *( OWS ";" OWS Alt-Svc-Used-Ext )
+         <div id="rfc.figure.u.11"><pre class="inline">Alt-Svc-Used     = Alt-Svc-Flag *( OWS ";" OWS Alt-Svc-Used-Ext )
+Alt-Svc-Flag     = "1" / "0"
 Alt-Svc-Used-Ext = token "=" ( token / quoted-string )
-</pre><p id="rfc.section.5.p.3">Alt-Svc-Used is intended to allow alternate services to avoid sending alternative service indications where there is a risk
+</pre></div>
+         <p id="rfc.section.5.p.2">Alt-Svc-Used is intended to allow alternate services to avoid sending alternative service indications where there is a risk
             of generating a loops. It also allows a service to identify requests for accounting and load balancing purposes.
          </p>
-         <p id="rfc.section.5.p.4">When using an alternative service, clients <em class="bcp14">MUST</em> include a Alt-Svc-Used header field in all requests.
+         <p id="rfc.section.5.p.3">When using an alternative service, clients <em class="bcp14">MUST</em> include a Alt-Svc-Used header field in all requests.
          </p>
-         <div id="rfc.figure.u.12"></div>
-         <p>For example:</p><pre class="text2">GET /thing HTTP/1.1
+         <p id="rfc.section.5.p.4">An Alt-Svc-Flag value of "1" indicates that an alternate service was used, while "0" means it was not.</p>
+         <div id="rfc.figure.u.12">
+            <p>For example:</p><pre class="text2">GET /thing HTTP/1.1
 Host: origin.example.com
 Alt-Svc-Used: 1
-</pre><p id="rfc.section.5.p.6">The extension parameters (Alt-Svc-Used-Ext) are reserved for future use; specifications that want to define an extension will
+</pre></div>
+         <p id="rfc.section.5.p.5">The extension parameters (Alt-Svc-Used-Ext) are reserved for future use; specifications that want to define an extension will
             need to update this document (and ought to introduce an extension registry).
          </p>
       </div>
@@ -1095,8 +1121,6 @@ Alt-Svc-Used: 1
                communication to a target, and then direct all traffic to an alternative service with a large freshness lifetime, so that
                the user agent still directs traffic to the attacker even when not using the intermediary.
             </p>
-            <p id="rfc.section.9.2.p.6">As a result, there is a requirement in <a href="#caching" title="Alternative Service Caching">Section&nbsp;2.2</a> to examine cached alternative services when a network change is detected.
-            </p>
          </div>
          <div id="changing-protocols">
             <h2 id="rfc.section.9.3"><a href="#rfc.section.9.3">9.3</a>&nbsp;<a href="#changing-protocols">Changing Protocols</a></h2>
@@ -1124,8 +1148,8 @@ Alt-Svc-Used: 1
       </div>
       <div id="acknowledgements">
          <h1 id="rfc.section.10"><a href="#rfc.section.10">10.</a>&nbsp;<a href="#acknowledgements">Acknowledgements</a></h1>
-         <p id="rfc.section.10.p.1">Thanks to Eliot Lear, Stephen Farrell, Guy Podjarny, Stephen Ludin, Erik Nygren, Paul Hoffman, Adam Langley, Will Chan and
-            Richard Barnes for their feedback and suggestions.
+         <p id="rfc.section.10.p.1">Thanks to Adam Langley, Eliot Lear, Erik Nygren, Guy Podjarny, Paul Hoffman, Richard Barnes, Stephen Farrell, Stephen Ludin,
+            and Will Chan for their feedback and suggestions.
          </p>
          <p id="rfc.section.10.p.2">The Alt-Svc header field was influenced by the design of the Alternate-Protocol header field in SPDY.</p>
       </div>
@@ -1134,11 +1158,6 @@ Alt-Svc-Used: 1
       <h2 id="rfc.references.1"><a href="#rfc.section.11.1" id="rfc.section.11.1">11.1</a> Normative References
       </h2>
       <table>
-         <tr>
-            <td class="reference"><b id="ALPN">[ALPN]</b></td>
-            <td class="top">Friedl, S., Popov, A., Langley, A., and S. Emile, “<a href="https://tools.ietf.org/html/draft-ietf-tls-applayerprotoneg-05">Transport Layer Security (TLS) Application Layer Protocol Negotiation Extension</a>”, Internet-Draft&nbsp;draft-ietf-tls-applayerprotoneg-05 (work in progress), March&nbsp;2014.
-            </td>
-         </tr>
          <tr>
             <td class="reference"><b id="HTTP2">[HTTP2]</b></td>
             <td class="top">Belshe, M., Peon, R., and M. Thomson, Ed., “<a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-13">Hypertext Transfer Protocol version 2</a>”, Internet-Draft&nbsp;draft-ietf-httpbis-http2-13 (work in progress), June&nbsp;2014.
@@ -1176,12 +1195,17 @@ Alt-Svc-Used: 1
          </tr>
          <tr>
             <td class="reference"><b id="RFC7230">[RFC7230]</b></td>
-            <td class="top"><a href="mailto:fielding@gbiv.com" title="Adobe Systems Incorporated">Fielding, R., Ed.</a> and <a href="mailto:julian.reschke@greenbytes.de" title="greenbytes GmbH">J. Reschke, Ed.</a>, “<a href="https://tools.ietf.org/html/rfc7230">Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</a>”, RFC&nbsp;7230, June&nbsp;2014.
+            <td class="top">Fielding, R., Ed. and J. Reschke, Ed., “<a href="https://tools.ietf.org/html/rfc7230">Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</a>”, RFC&nbsp;7230, June&nbsp;2014.
             </td>
          </tr>
          <tr>
             <td class="reference"><b id="RFC7234">[RFC7234]</b></td>
-            <td class="top"><a href="mailto:fielding@gbiv.com" title="Adobe Systems Incorporated">Fielding, R., Ed.</a>, <a href="mailto:mnot@mnot.net" title="Akamai">Nottingham, M., Ed.</a>, and <a href="mailto:julian.reschke@greenbytes.de" title="greenbytes GmbH">J. Reschke, Ed.</a>, “<a href="https://tools.ietf.org/html/rfc7234">Hypertext Transfer Protocol (HTTP/1.1): Caching</a>”, RFC&nbsp;7234, June&nbsp;2014.
+            <td class="top">Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke, Ed., “<a href="https://tools.ietf.org/html/rfc7234">Hypertext Transfer Protocol (HTTP/1.1): Caching</a>”, RFC&nbsp;7234, June&nbsp;2014.
+            </td>
+         </tr>
+         <tr>
+            <td class="reference"><b id="RFC7301">[RFC7301]</b></td>
+            <td class="top">Friedl, S., Popov, A., Langley, A., and S. Emile, “<a href="https://tools.ietf.org/html/rfc7301">Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension</a>”, RFC&nbsp;7301, July&nbsp;2014.
             </td>
          </tr>
       </table>
@@ -1223,13 +1247,21 @@ Alt-Svc-Used: 1
             <p id="rfc.section.A.3.p.4">Incorporate ALTSRV frame (&lt;<a href="https://github.com/http2/http2-spec/pull/507">https://github.com/http2/http2-spec/pull/507</a>&gt;).
             </p>
             <p id="rfc.section.A.3.p.5">Moved definition of status code 421 to HTTP/2.</p>
+            <p id="rfc.section.A.3.p.6">Partly resolved &lt;<a href="https://github.com/httpwg/http-extensions/issues/5">https://github.com/httpwg/http-extensions/issues/5</a>&gt;.
+            </p>
+         </div>
+         <div id="changes.since.draft-ietf-httpbis-alt-svc-02">
+            <h2 id="rfc.section.A.4"><a href="#rfc.section.A.4">A.4</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-02">Since draft-ietf-httpbis-alt-svc-02</a></h2>
+            <p id="rfc.section.A.4.p.1">Updated ALPN reference.</p>
+            <p id="rfc.section.A.4.p.2">Resolved &lt;<a href="https://github.com/httpwg/http-extensions/issues/2">https://github.com/httpwg/http-extensions/issues/2</a>&gt;.
+            </p>
          </div>
       </div>
       <div class="avoidbreak">
          <h1 id="rfc.authors"><a href="#rfc.authors">Authors' Addresses</a></h1>
-         <p><b>Mark Nottingham</b><br>Akamai<br>Email: <a href="mailto:mnot@mnot.net">mnot@mnot.net</a><br>URI: <a href="https://www.mnot.net/">https://www.mnot.net/</a></p>
-         <p><b>Patrick McManus</b><br>Mozilla<br>Email: <a href="mailto:mcmanus@ducksong.com">mcmanus@ducksong.com</a><br>URI: <a href="https://mozillians.org/u/pmcmanus/">https://mozillians.org/u/pmcmanus/</a></p>
-         <p><b>Julian F. Reschke</b><br>greenbytes GmbH<br>Email: <a href="mailto:julian.reschke@greenbytes.de">julian.reschke@greenbytes.de</a><br>URI: <a href="https://greenbytes.de/tech/webdav/">https://greenbytes.de/tech/webdav/</a></p>
+         <p><b>Mark Nottingham</b><br>Akamai<br>Email: mnot@mnot.net<br>URI: <a href="https://www.mnot.net/">https://www.mnot.net/</a></p>
+         <p><b>Patrick McManus</b><br>Mozilla<br>Email: mcmanus@ducksong.com<br>URI: <a href="https://mozillians.org/u/pmcmanus/">https://mozillians.org/u/pmcmanus/</a></p>
+         <p><b>Julian F. Reschke</b><br>greenbytes GmbH<br>Email: julian.reschke@greenbytes.de<br>URI: <a href="https://greenbytes.de/tech/webdav/">https://greenbytes.de/tech/webdav/</a></p>
       </div>
    </body>
 </html>
