@@ -5,10 +5,10 @@
 HTTPbis Working Group                                      M. Nottingham
 Internet-Draft                                                    Akamai
 Intended status: Standards Track                              P. McManus
-Expires: January 24, 2015                                        Mozilla
+Expires: January 25, 2015                                        Mozilla
                                                               J. Reschke
                                                               greenbytes
-                                                           July 23, 2014
+                                                           July 24, 2014
 
 
                        HTTP Alternative Services
@@ -46,16 +46,16 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 24, 2015.
+   This Internet-Draft will expire on January 25, 2015.
 
 
 
 
 
 
-Nottingham, et al.      Expires January 24, 2015                [Page 1]
+Nottingham, et al.      Expires January 25, 2015                [Page 1]
 
-Internet-Draft            Alternative Services                 July 2014
+Internet-Draft          HTTP Alternative Services              July 2014
 
 
 Copyright Notice
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Nottingham, et al.      Expires January 24, 2015                [Page 2]
+Nottingham, et al.      Expires January 25, 2015                [Page 2]
 
-Internet-Draft            Alternative Services                 July 2014
+Internet-Draft          HTTP Alternative Services              July 2014
 
 
      A.4.  Since draft-ietf-httpbis-alt-svc-02 . . . . . . . . . . .  17
@@ -165,9 +165,9 @@ Internet-Draft            Alternative Services                 July 2014
 
 
 
-Nottingham, et al.      Expires January 24, 2015                [Page 3]
+Nottingham, et al.      Expires January 25, 2015                [Page 3]
 
-Internet-Draft            Alternative Services                 July 2014
+Internet-Draft          HTTP Alternative Services              July 2014
 
 
    "token", and "uri-host" rules from [RFC7230], and uses the "#rule"
@@ -221,9 +221,9 @@ Internet-Draft            Alternative Services                 July 2014
 
 
 
-Nottingham, et al.      Expires January 24, 2015                [Page 4]
+Nottingham, et al.      Expires January 25, 2015                [Page 4]
 
-Internet-Draft            Alternative Services                 July 2014
+Internet-Draft          HTTP Alternative Services              July 2014
 
 
    HTTP; from that standpoint, the URI being accessed and all
@@ -277,9 +277,9 @@ Internet-Draft            Alternative Services                 July 2014
 
 
 
-Nottingham, et al.      Expires January 24, 2015                [Page 5]
+Nottingham, et al.      Expires January 25, 2015                [Page 5]
 
-Internet-Draft            Alternative Services                 July 2014
+Internet-Draft          HTTP Alternative Services              July 2014
 
 
    Furthermore, this means that the HTTP Host header field and the SNI
@@ -333,9 +333,9 @@ Internet-Draft            Alternative Services                 July 2014
 
 
 
-Nottingham, et al.      Expires January 24, 2015                [Page 6]
+Nottingham, et al.      Expires January 25, 2015                [Page 6]
 
-Internet-Draft            Alternative Services                 July 2014
+Internet-Draft          HTTP Alternative Services              July 2014
 
 
    However, if the security properties of the existing connection are
@@ -389,9 +389,9 @@ Internet-Draft            Alternative Services                 July 2014
 
 
 
-Nottingham, et al.      Expires January 24, 2015                [Page 7]
+Nottingham, et al.      Expires January 25, 2015                [Page 7]
 
-Internet-Draft            Alternative Services                 July 2014
+Internet-Draft          HTTP Alternative Services              July 2014
 
 
    For example:
@@ -445,9 +445,9 @@ Internet-Draft            Alternative Services                 July 2014
 
 
 
-Nottingham, et al.      Expires January 24, 2015                [Page 8]
+Nottingham, et al.      Expires January 25, 2015                [Page 8]
 
-Internet-Draft            Alternative Services                 July 2014
+Internet-Draft          HTTP Alternative Services              July 2014
 
 
    Note that all field elements that allow "quoted-string" syntax MUST
@@ -501,9 +501,9 @@ Internet-Draft            Alternative Services                 July 2014
 
 
 
-Nottingham, et al.      Expires January 24, 2015                [Page 9]
+Nottingham, et al.      Expires January 25, 2015                [Page 9]
 
-Internet-Draft            Alternative Services                 July 2014
+Internet-Draft          HTTP Alternative Services              July 2014
 
 
    The ALTSVC frame is a non-critical extension to HTTP/2.  Endpoints
@@ -557,9 +557,9 @@ Internet-Draft            Alternative Services                 July 2014
 
 
 
-Nottingham, et al.      Expires January 24, 2015               [Page 10]
+Nottingham, et al.      Expires January 25, 2015               [Page 10]
 
-Internet-Draft            Alternative Services                 July 2014
+Internet-Draft          HTTP Alternative Services              July 2014
 
 
    Host:  A sequence of characters (length determined by "Host-Len")
@@ -588,9 +588,9 @@ Internet-Draft            Alternative Services                 July 2014
    The Alt-Svc-Used HTTP header field is used in requests to indicate
    that an alternate service is in use.
 
-   Alt-Svc-Used     = Alt-Svc-Flag *( OWS ";" OWS Alt-Svc-Used-Ext )
-   Alt-Svc-Flag     = "1" / "0"
-   Alt-Svc-Used-Ext = token "=" ( token / quoted-string )
+   Alt-Svc-Used     = use-flag *( OWS ";" OWS ext-param )
+   use-flag         = "1" / "0"
+   ext-param        = token "=" ( token / quoted-string )
 
    Alt-Svc-Used is intended to allow alternate services to avoid sending
    alternative service indications where there is a risk of generating a
@@ -600,8 +600,8 @@ Internet-Draft            Alternative Services                 July 2014
    When using an alternative service, clients MUST include a Alt-Svc-
    Used header field in all requests.
 
-   An Alt-Svc-Flag value of "1" indicates that an alternate service was
-   used, while "0" means it was not.
+   A flag value of "1" indicates that an alternate service was used,
+   while "0" means it was not.
 
    For example:
 
@@ -613,14 +613,14 @@ Internet-Draft            Alternative Services                 July 2014
 
 
 
-Nottingham, et al.      Expires January 24, 2015               [Page 11]
+Nottingham, et al.      Expires January 25, 2015               [Page 11]
 
-Internet-Draft            Alternative Services                 July 2014
+Internet-Draft          HTTP Alternative Services              July 2014
 
 
-   The extension parameters (Alt-Svc-Used-Ext) are reserved for future
-   use; specifications that want to define an extension will need to
-   update this document (and ought to introduce an extension registry).
+   The extension parameters (ext-param) are reserved for future use;
+   specifications that want to define an extension will need to update
+   this document (and ought to introduce an extension registry).
 
 6.  The 421 Not Authoritative HTTP Status Code
 
@@ -669,9 +669,9 @@ Internet-Draft            Alternative Services                 July 2014
 
 
 
-Nottingham, et al.      Expires January 24, 2015               [Page 12]
+Nottingham, et al.      Expires January 25, 2015               [Page 12]
 
-Internet-Draft            Alternative Services                 July 2014
+Internet-Draft          HTTP Alternative Services              July 2014
 
 
       Code: 0xa
@@ -725,9 +725,9 @@ Internet-Draft            Alternative Services                 July 2014
 
 
 
-Nottingham, et al.      Expires January 24, 2015               [Page 13]
+Nottingham, et al.      Expires January 25, 2015               [Page 13]
 
-Internet-Draft            Alternative Services                 July 2014
+Internet-Draft          HTTP Alternative Services              July 2014
 
 
    However, this authorization is only as strong as the method used to
@@ -781,9 +781,9 @@ Internet-Draft            Alternative Services                 July 2014
 
 
 
-Nottingham, et al.      Expires January 24, 2015               [Page 14]
+Nottingham, et al.      Expires January 25, 2015               [Page 14]
 
-Internet-Draft            Alternative Services                 July 2014
+Internet-Draft          HTTP Alternative Services              July 2014
 
 
    The Alt-Svc header field was influenced by the design of the
@@ -837,9 +837,9 @@ Internet-Draft            Alternative Services                 July 2014
 
 
 
-Nottingham, et al.      Expires January 24, 2015               [Page 15]
+Nottingham, et al.      Expires January 25, 2015               [Page 15]
 
-Internet-Draft            Alternative Services                 July 2014
+Internet-Draft          HTTP Alternative Services              July 2014
 
 
    [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
@@ -893,9 +893,9 @@ Internet-Draft            Alternative Services                 July 2014
 
 
 
-Nottingham, et al.      Expires January 24, 2015               [Page 16]
+Nottingham, et al.      Expires January 25, 2015               [Page 16]
 
-Internet-Draft            Alternative Services                 July 2014
+Internet-Draft          HTTP Alternative Services              July 2014
 
 
 Appendix A.  Change Log (to be removed by RFC Editor before publication)
@@ -949,9 +949,9 @@ Authors' Addresses
 
 
 
-Nottingham, et al.      Expires January 24, 2015               [Page 17]
+Nottingham, et al.      Expires January 25, 2015               [Page 17]
 
-Internet-Draft            Alternative Services                 July 2014
+Internet-Draft          HTTP Alternative Services              July 2014
 
 
    Patrick McManus
@@ -1005,4 +1005,4 @@ Internet-Draft            Alternative Services                 July 2014
 
 
 
-Nottingham, et al.      Expires January 24, 2015               [Page 18]
+Nottingham, et al.      Expires January 25, 2015               [Page 18]

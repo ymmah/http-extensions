@@ -442,13 +442,13 @@ samp, tt, code, pre {
        content: "July 2014";
   }
   @top-center {
-       content: "Alternative Services";
+       content: "HTTP Alternative Services";
   }
   @bottom-left {
        content: "Nottingham, et al.";
   }
   @bottom-center {
-       content: "Expires January 24, 2015";
+       content: "Expires January 25, 2015";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -567,7 +567,7 @@ ul.toc a:first-child {
       <meta name="dct.creator" content="McManus, P.">
       <meta name="dct.creator" content="Reschke, J. F.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-alt-svc-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2014-07-23">
+      <meta name="dct.issued" scheme="ISO8601" content="2014-07-24">
       <meta name="dct.abstract" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
       <meta name="description" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
    </head>
@@ -587,7 +587,7 @@ ul.toc a:first-child {
                <td class="right">P. McManus</td>
             </tr>
             <tr>
-               <td class="left">Expires: January 24, 2015</td>
+               <td class="left">Expires: January 25, 2015</td>
                <td class="right">Mozilla</td>
             </tr>
             <tr>
@@ -600,7 +600,7 @@ ul.toc a:first-child {
             </tr>
             <tr>
                <td class="left"></td>
-               <td class="right">July 23, 2014</td>
+               <td class="right">July 24, 2014</td>
             </tr>
          </tbody>
       </table>
@@ -626,7 +626,7 @@ ul.toc a:first-child {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on January 24, 2015.</p>
+         <p>This Internet-Draft will expire on January 25, 2015.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
@@ -1001,23 +1001,23 @@ Alt-Svc: h2c=":8000"; ma=60
       <div id="indicator">
          <h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a>&nbsp;<a href="#indicator">The Alt-Svc-Used HTTP Header Field</a></h1>
          <p id="rfc.section.5.p.1">The Alt-Svc-Used HTTP header field is used in requests to indicate that an alternate service is in use.</p>
-         <div id="rfc.figure.u.11"><pre class="inline">Alt-Svc-Used     = Alt-Svc-Flag *( OWS ";" OWS Alt-Svc-Used-Ext )
-Alt-Svc-Flag     = "1" / "0"
-Alt-Svc-Used-Ext = token "=" ( token / quoted-string )
+         <div id="rfc.figure.u.11"><pre class="inline">Alt-Svc-Used     = use-flag *( OWS ";" OWS ext-param )
+use-flag         = "1" / "0"
+ext-param        = token "=" ( token / quoted-string )
 </pre></div>
          <p id="rfc.section.5.p.2">Alt-Svc-Used is intended to allow alternate services to avoid sending alternative service indications where there is a risk
             of generating a loops. It also allows a service to identify requests for accounting and load balancing purposes.
          </p>
          <p id="rfc.section.5.p.3">When using an alternative service, clients <em class="bcp14">MUST</em> include a Alt-Svc-Used header field in all requests.
          </p>
-         <p id="rfc.section.5.p.4">An Alt-Svc-Flag value of "1" indicates that an alternate service was used, while "0" means it was not.</p>
+         <p id="rfc.section.5.p.4">A flag value of "1" indicates that an alternate service was used, while "0" means it was not.</p>
          <div id="rfc.figure.u.12">
             <p>For example:</p><pre class="text2">GET /thing HTTP/1.1
 Host: origin.example.com
 Alt-Svc-Used: 1
 </pre></div>
-         <p id="rfc.section.5.p.5">The extension parameters (Alt-Svc-Used-Ext) are reserved for future use; specifications that want to define an extension will
-            need to update this document (and ought to introduce an extension registry).
+         <p id="rfc.section.5.p.5">The extension parameters (ext-param) are reserved for future use; specifications that want to define an extension will need
+            to update this document (and ought to introduce an extension registry).
          </p>
       </div>
       <div id="status">
