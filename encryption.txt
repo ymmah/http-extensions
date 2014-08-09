@@ -5,8 +5,8 @@
 HTTPbis Working Group                                      M. Nottingham
 Internet-Draft
 Intended status: Experimental                                 M. Thomson
-Expires: January 25, 2015                                        Mozilla
-                                                           July 24, 2014
+Expires: February 10, 2015                                       Mozilla
+                                                          August 9, 2014
 
 
                     Opportunistic Security for HTTP
@@ -32,7 +32,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 25, 2015.
+   This Internet-Draft will expire on February 10, 2015.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Nottingham & Thomson    Expires January 25, 2015                [Page 1]
+Nottingham & Thomson    Expires February 10, 2015               [Page 1]
 
-Internet-Draft         Opportunistic HTTP Security             July 2014
+Internet-Draft         Opportunistic HTTP Security           August 2014
 
 
 Table of Contents
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Nottingham & Thomson    Expires January 25, 2015                [Page 2]
+Nottingham & Thomson    Expires February 10, 2015               [Page 2]
 
-Internet-Draft         Opportunistic HTTP Security             July 2014
+Internet-Draft         Opportunistic HTTP Security           August 2014
 
 
    "https" URIs, but instead to increase the likelihood that an active
@@ -165,9 +165,9 @@ Internet-Draft         Opportunistic HTTP Security             July 2014
 
 
 
-Nottingham & Thomson    Expires January 25, 2015                [Page 3]
+Nottingham & Thomson    Expires February 10, 2015               [Page 3]
 
-Internet-Draft         Opportunistic HTTP Security             July 2014
+Internet-Draft         Opportunistic HTTP Security           August 2014
 
 
    When connecting to an alternative service for an "http" URI, clients
@@ -221,9 +221,9 @@ Internet-Draft         Opportunistic HTTP Security             July 2014
 
 
 
-Nottingham & Thomson    Expires January 25, 2015                [Page 4]
+Nottingham & Thomson    Expires February 10, 2015               [Page 4]
 
-Internet-Draft         Opportunistic HTTP Security             July 2014
+Internet-Draft         Opportunistic HTTP Security           August 2014
 
 
    The mechanism described in this specification is trival to mount an
@@ -277,9 +277,9 @@ Internet-Draft         Opportunistic HTTP Security             July 2014
 
 
 
-Nottingham & Thomson    Expires January 25, 2015                [Page 5]
+Nottingham & Thomson    Expires February 10, 2015               [Page 5]
 
-Internet-Draft         Opportunistic HTTP Security             July 2014
+Internet-Draft         Opportunistic HTTP Security           August 2014
 
 
    HTTP/1.1 200 OK
@@ -333,9 +333,9 @@ Internet-Draft         Opportunistic HTTP Security             July 2014
 
 
 
-Nottingham & Thomson    Expires January 25, 2015                [Page 6]
+Nottingham & Thomson    Expires February 10, 2015               [Page 6]
 
-Internet-Draft         Opportunistic HTTP Security             July 2014
+Internet-Draft         Opportunistic HTTP Security           August 2014
 
 
 6.  Security Considerations
@@ -389,9 +389,9 @@ Internet-Draft         Opportunistic HTTP Security             July 2014
 
 
 
-Nottingham & Thomson    Expires January 25, 2015                [Page 7]
+Nottingham & Thomson    Expires February 10, 2015               [Page 7]
 
-Internet-Draft         Opportunistic HTTP Security             July 2014
+Internet-Draft         Opportunistic HTTP Security           August 2014
 
 
    [I-D.ietf-httpbis-alt-svc]
@@ -401,13 +401,13 @@ Internet-Draft         Opportunistic HTTP Security             July 2014
 
    [I-D.ietf-httpbis-http2]
               Belshe, M., Peon, R., and M. Thomson, "Hypertext Transfer
-              Protocol version 2", draft-ietf-httpbis-http2-13 (work in
-              progress), June 2014.
+              Protocol version 2", draft-ietf-httpbis-http2-14 (work in
+              progress), July 2014.
 
    [I-D.ietf-websec-key-pinning]
               Evans, C., Palmer, C., and R. Sleevi, "Public Key Pinning
-              Extension for HTTP", draft-ietf-websec-key-pinning-19
-              (work in progress), July 2014.
+              Extension for HTTP", draft-ietf-websec-key-pinning-20
+              (work in progress), August 2014.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119, March 1997.
@@ -445,9 +445,9 @@ Authors' Addresses
 
 
 
-Nottingham & Thomson    Expires January 25, 2015                [Page 8]
+Nottingham & Thomson    Expires February 10, 2015               [Page 8]
 
-Internet-Draft         Opportunistic HTTP Security             July 2014
+Internet-Draft         Opportunistic HTTP Security           August 2014
 
 
    Martin Thomson
@@ -501,4 +501,4 @@ Internet-Draft         Opportunistic HTTP Security             July 2014
 
 
 
-Nottingham & Thomson    Expires January 25, 2015                [Page 9]
+Nottingham & Thomson    Expires February 10, 2015               [Page 9]
