@@ -3,7 +3,7 @@
 <html lang="en">
    <head profile="http://dublincore.org/documents/2008/08/04/dc-html/">
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <title>HTTP Connect - Tunnel Protocol For WebRTC</title><style type="text/css" title="Xml2Rfc (sans serif)">
+      <title>The Tunnel-Protocol HTTP Request Header Field</title><style type="text/css" title="Xml2Rfc (sans serif)">
 a {
   text-decoration: none;
 }
@@ -277,13 +277,13 @@ samp, tt, code, pre {
        content: "August 2014";
   }
   @top-center {
-       content: "HTTP Connect - Tunnel Protocol";
+       content: "Tunnel-Protocol";
   }
   @bottom-left {
        content: "Hutton, et al.";
   }
   @bottom-center {
-       content: "Expires February 10, 2015";
+       content: "Expires February 14, 2015";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -384,21 +384,20 @@ ul.toc a:first-child {
       <link rel="Author" href="#rfc.authors">
       <link rel="Copyright" href="#rfc.copyrightnotice">
       <link rel="Chapter" title="1 Introduction" href="#rfc.section.1">
-      <link rel="Chapter" title="2 Use Cases" href="#rfc.section.2">
-      <link rel="Chapter" title="3 The Tunnel-Protocol HTTP Request Header Field" href="#rfc.section.3">
-      <link rel="Chapter" title="4 IANA Considerations" href="#rfc.section.4">
-      <link rel="Chapter" title="5 Security Considerations" href="#rfc.section.5">
-      <link rel="Chapter" href="#rfc.section.6" title="6 References">
+      <link rel="Chapter" title="2 The Tunnel-Protocol HTTP Request Header Field" href="#rfc.section.2">
+      <link rel="Chapter" title="3 IANA Considerations" href="#rfc.section.3">
+      <link rel="Chapter" title="4 Security Considerations" href="#rfc.section.4">
+      <link rel="Chapter" href="#rfc.section.5" title="5 References">
       <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.662, 2014/07/19 09:19:17, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
-      <meta name="keywords" content="WebRTC, HTTP Connect, Firewall, HTTP proxy">
+      <meta name="keywords" content="HTTP CONNECT, Firewall, HTTP proxy">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Hutton, A.">
       <meta name="dct.creator" content="Uberti, J.">
       <meta name="dct.creator" content="Thomson, M.">
-      <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-tunnel-protocol">
-      <meta name="dct.issued" scheme="ISO8601" content="2014-08-09">
-      <meta name="dct.abstract" content="This document describes a mechanism to enable HTTP Clients to provide an indication within a HTTP Connect request as to which protocol will be used within the tunnel established to the Server identified by the target resource. The tunneled protocol is declared using the Tunnel-Protocol HTTP Request header field. Label usage relating to the use of HTTP Connect by WebRTC clients (e.g. turn, webrtc) are described in this document.">
-      <meta name="description" content="This document describes a mechanism to enable HTTP Clients to provide an indication within a HTTP Connect request as to which protocol will be used within the tunnel established to the Server identified by the target resource. The tunneled protocol is declared using the Tunnel-Protocol HTTP Request header field. Label usage relating to the use of HTTP Connect by WebRTC clients (e.g. turn, webrtc) are described in this document.">
+      <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-tunnel-protocol-latest">
+      <meta name="dct.issued" scheme="ISO8601" content="2014-08-13">
+      <meta name="dct.abstract" content="This specification allows HTTP CONNECT requests to indicate what protocol will be used within the tunnel once established, using the Tunnel-Protocol request header field.">
+      <meta name="description" content="This specification allows HTTP CONNECT requests to indicate what protocol will be used within the tunnel once established, using the Tunnel-Protocol request header field.">
    </head>
    <body>
       <table class="header" id="rfc.headerblock">
@@ -416,7 +415,7 @@ ul.toc a:first-child {
                <td class="right">J. Uberti</td>
             </tr>
             <tr>
-               <td class="left">Expires: February 10, 2015</td>
+               <td class="left">Expires: February 14, 2015</td>
                <td class="right">Google</td>
             </tr>
             <tr>
@@ -429,16 +428,14 @@ ul.toc a:first-child {
             </tr>
             <tr>
                <td class="left"></td>
-               <td class="right">August 9, 2014</td>
+               <td class="right">August 13, 2014</td>
             </tr>
          </tbody>
       </table>
-      <p class="title" id="rfc.title">HTTP Connect - Tunnel Protocol For WebRTC<br><span class="filename">draft-ietf-httpbis-tunnel-protocol</span></p>
+      <p class="title" id="rfc.title">The Tunnel-Protocol HTTP Request Header Field<br><span class="filename">draft-ietf-httpbis-tunnel-protocol-latest</span></p>
       <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
-      <p>This document describes a mechanism to enable HTTP Clients to provide an indication within a HTTP Connect request as to which
-         protocol will be used within the tunnel established to the Server identified by the target resource. The tunneled protocol
-         is declared using the Tunnel-Protocol HTTP Request header field. Label usage relating to the use of HTTP Connect by WebRTC
-         clients (e.g. turn, webrtc) are described in this document.
+      <p>This specification allows HTTP CONNECT requests to indicate what protocol will be used within the tunnel once established,
+         using the Tunnel-Protocol request header field.
       </p>
       <div id="rfc.status">
          <h1><a href="#rfc.status">Status of this Memo</a></h1>
@@ -450,7 +447,7 @@ ul.toc a:first-child {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on February 10, 2015.</p>
+         <p>This Internet-Draft will expire on February 14, 2015.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
@@ -469,19 +466,16 @@ ul.toc a:first-child {
                   <li><a href="#rfc.section.1.1">1.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.1.1">Requirements Language</a></li>
                </ul>
             </li>
-            <li><a href="#rfc.section.2">2.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.2">Use Cases</a></li>
-            <li><a href="#rfc.section.3">3.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.3">The Tunnel-Protocol HTTP Request Header Field</a><ul>
-                  <li><a href="#rfc.section.3.1">3.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.3.1">Header Field Values</a></li>
-                  <li><a href="#rfc.section.3.2">3.2</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.3.2">Syntax</a></li>
-                  <li><a href="#rfc.section.3.3">3.3</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.3.3">TURN as the Tunnel Protocol</a></li>
-                  <li><a href="#rfc.section.3.4">3.4</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.3.4">ICE-TCP / WebRTC as the Tunnel Protocol</a></li>
+            <li><a href="#rfc.section.2">2.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.2">The Tunnel-Protocol HTTP Request Header Field</a><ul>
+                  <li><a href="#rfc.section.2.1">2.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.2.1">Header Field Values</a></li>
+                  <li><a href="#rfc.section.2.2">2.2</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.2.2">Syntax</a></li>
                </ul>
             </li>
-            <li><a href="#rfc.section.4">4.</a>&nbsp;&nbsp;&nbsp;<a href="#IANA">IANA Considerations</a></li>
-            <li><a href="#rfc.section.5">5.</a>&nbsp;&nbsp;&nbsp;<a href="#Security">Security Considerations</a></li>
-            <li><a href="#rfc.section.6">6.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references">References</a><ul>
-                  <li><a href="#rfc.section.6.1">6.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.1">Normative References</a></li>
-                  <li><a href="#rfc.section.6.2">6.2</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.2">Informative References</a></li>
+            <li><a href="#rfc.section.3">3.</a>&nbsp;&nbsp;&nbsp;<a href="#IANA">IANA Considerations</a></li>
+            <li><a href="#rfc.section.4">4.</a>&nbsp;&nbsp;&nbsp;<a href="#Security">Security Considerations</a></li>
+            <li><a href="#rfc.section.5">5.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references">References</a><ul>
+                  <li><a href="#rfc.section.5.1">5.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.1">Normative References</a></li>
+                  <li><a href="#rfc.section.5.2">5.2</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.2">Informative References</a></li>
                </ul>
             </li>
             <li><a href="#rfc.authors">Authors' Addresses</a></li>
@@ -490,22 +484,16 @@ ul.toc a:first-child {
       <div>
          <h1 id="rfc.section.1" class="np"><a href="#rfc.section.1">1.</a>&nbsp;Introduction
          </h1>
-         <p id="rfc.section.1.p.1">The HTTP Connect method (Section 4.3.6 of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>) requests that the recipient establish a tunnel to the destination origin server identified by the request-target and thereafter
-            forward packets, in both directions, until the tunnel is closed. Such tunnels are commonly used to create end-to-end virtual
-            connections, through one or more proxies, which may then be secured using TLS (Transport Layer Security, <a href="#RFC5246"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite></a>).
+         <p id="rfc.section.1.p.1">The HTTP CONNECT method (Section 4.3.6 of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>) requests that the recipient establish a tunnel to the identified origin server and thereafter forward packets, in both directions,
+            until the tunnel is closed. Such tunnels are commonly used to create end-to-end virtual connections, through one or more proxies,
+            which may then be secured using TLS (Transport Layer Security, <a href="#RFC5246"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite></a>).
          </p>
-         <p id="rfc.section.1.p.2">The RTCWEB use cases and requirements document <span class="error">ERROR: Undefined target: I-D.ietf-rtcweb-use-cases-and-requirements (at line 124)</span> includes a requirement that a WebRTC Client must be able to send streams and data to a peer in the presence of Firewalls that
-            only allow traffic via a HTTP Proxy, when Firewall policy allows WebRTC traffic. To facilitate this and to allow such a HTTP
-            Proxy to be provided with an indication that WebRTC related real-time media is to be included in the tunnel this specification
-            defines the Tunnel-Protocol Request header field and associated labels. This allows the proxy to identify the protocol being
-            used in the tunnel as early as possible therefore enabling the proxy to make informed policy decisions. The type of policy
-            decisions the proxy may make is not specified here but may include rejecting the request with a HTTP status code responses
-            or prioritizing connections. As described in Section 4.3.6 of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a> and 2xx response indicates consent for the client to switch to tunnel mode.
+         <p id="rfc.section.1.p.2">The HTTP Tunnel-Protocol header field identifies the protocol that will be spoken within the tunnel, using the application
+            layer next protocol identifier <a href="#RFC7301"><cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[RFC7301]</cite></a> specified for TLS <a href="#RFC5246"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite></a>".
          </p>
-         <p id="rfc.section.1.p.3">The HTTP Tunnel-Protocol header field may be used in conjunction with and complements the application layer next protocol
-            extension <span class="error">ERROR: Undefined target: I-D.ietf-tls-applayerprotoneg (at line 127)</span> specified for TLS <a href="#RFC5246"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite></a>". In the scenario where the HTTP Connect is used to establish a TLS tunnel then the HTTP Tunnel-Protocol may be used to carry
-            the same next protocol label as carried within the TLS handshake. However, the HTTP-Protocol is an indication rather a negotiation
-            since the HTTP Proxy does not implement the tunneled protocol. ALPN Labels are already defined for TURN in <span class="error">ERROR: Undefined target: I-D.patil-tram-alpn (at line 127)</span> and WebRTC <span class="error">ERROR: Undefined target: I-D.thomson-rtcweb-alpn (at line 127)</span> and are re-used here.
+         <p id="rfc.section.1.p.3">When CONNECT is used to establish a TLS tunnel, the Tunnel-Protocol header field may be used to carry the same next protocol
+            label as was carried within the TLS handshake. However, the HTTP-Protocol is an indication rather a negotiation since HTTP
+            proxies do not implement the tunneled protocol.
          </p>
          <div>
             <h2 id="rfc.section.1.1"><a href="#rfc.section.1.1">1.1</a>&nbsp;Requirements Language
@@ -516,91 +504,70 @@ ul.toc a:first-child {
          </div>
       </div>
       <div>
-         <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a>&nbsp;Use Cases
+         <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a>&nbsp;The Tunnel-Protocol HTTP Request Header Field
          </h1>
-         <p id="rfc.section.2.p.1">The following two use cases are considered: </p>
-         <ul>
-            <li>The WebRTC Client issues a HTTP CONNECT request to the HTTP proxy with the TURN server address in the Request URI.</li>
-            <li>The WebRTC Client issues a HTTP CONNECT request to the HTTP proxy with the TCP address of a WebRTC peer in the Request URI.
-               This is used in the case of establishing ICE-TCP <a href="#RFC6544"><cite title="TCP Candidates with Interactive Connectivity Establishment (ICE)">[RFC6544]</cite></a> with a WebRTC Peer.
-            </li>
-         </ul>
-      </div>
-      <div>
-         <h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a>&nbsp;The Tunnel-Protocol HTTP Request Header Field
-         </h1>
-         <p id="rfc.section.3.p.1">The client MAY include the Tunnel-Protocol Request Header field in a HTTP Connect request to indicate the application layer
-            protocol within the tunnel.
+         <p id="rfc.section.2.p.1">Clients include the Tunnel-Protocol Request Header field in a HTTP Connect request to indicate the application layer protocol
+            used within the tunnel.
          </p>
          <div>
-            <h2 id="rfc.section.3.1"><a href="#rfc.section.3.1">3.1</a>&nbsp;Header Field Values
+            <h2 id="rfc.section.2.1"><a href="#rfc.section.2.1">2.1</a>&nbsp;Header Field Values
             </h2>
-            <p id="rfc.section.3.1.p.1">Valid values for the protocol field are taken from the registry established in <span class="error">ERROR: Undefined target: I-D.ietf-tls-applayerprotoneg (at line 156)</span>. For the purposes of WebRTC, the values "webrtc" <span class="error">ERROR: Undefined target: I-D.thomson-rtcweb-alpn (at line 156)</span> and "turn" <span class="error">ERROR: Undefined target: I-D.patil-tram-alpn (at line 156)</span> are applicable.
+            <p id="rfc.section.2.1.p.1">Valid values for the protocol field are taken from the registry established in <a href="#RFC7301"><cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[RFC7301]</cite></a>.
             </p>
          </div>
          <div>
-            <h2 id="rfc.section.3.2"><a href="#rfc.section.3.2">3.2</a>&nbsp;Syntax
+            <h2 id="rfc.section.2.2"><a href="#rfc.section.2.2">2.2</a>&nbsp;Syntax
             </h2>
-            <p id="rfc.section.3.2.p.1">The ABNF (Augmented Backus-Naur Form) syntax for the Tunnel-Protocol header field is given below. It is based on the Generic
+            <p id="rfc.section.2.2.p.1">The ABNF (Augmented Backus-Naur Form) syntax for the Tunnel-Protocol header field is given below. It is based on the Generic
                Grammar defined in Section 2 of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>.
             </p>
-            <p id="rfc.section.3.2.p.2">Tunnel-Protocol = "Tunnel-Protocol":" protocol | protocol-extension</p>
-            <p id="rfc.section.3.2.p.3">protocol = "webrtc" | "turn"</p>
-            <p id="rfc.section.3.2.p.4">protocol-extension = token</p>
-         </div>
-         <div>
-            <h2 id="rfc.section.3.3"><a href="#rfc.section.3.3">3.3</a>&nbsp;TURN as the Tunnel Protocol
-            </h2>
-            <p id="rfc.section.3.3.p.1">The RTCWEB transports specification <span class="error">ERROR: Undefined target: I-D.ietf-rtcweb-transports (at line 174)</span> requires that a WebRTC client support the modes of TURN that uses TCP and TLS between the client and the TURN server in order
-               to deal with firewalls blocking UDP traffic. In the case where HTTP Connect is used to establish a tunnel to the TURN server
-               the client SHOULD include the "Tunnel-Protocol" header field with the value "turn" <span class="error">ERROR: Undefined target: I-D.patil-tram-alpn (at line 174)</span> as shown in the example below.
+            <p id="rfc.section.2.2.p.2">Tunnel-Protocol = "Tunnel-Protocol":" protocol-id</p>
+            <p id="rfc.section.2.2.p.3">protocol-id = token ; percent-encoded ALPN protocol identifier</p>
+            <p id="rfc.section.2.2.p.4">ALPN protocol names are octet sequences with no additional constraints on format. Octets not allowed in tokens (<a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, Section 3.2.6) must be percent-encoded as per Section 2.1 of <a href="#RFC3986"><cite title="Uniform Resource Identifier (URI): Generic Syntax">[RFC3986]</cite></a>. Consequently, the octet representing the percent character "%" (hex 25) must be percent-encoded as well.
             </p>
+            <p id="rfc.section.2.2.p.5">In order to have precisely one way to represent any ALPN protocol name, the following additional constraints apply: </p>
+            <ul>
+               <li>Octets in the ALPN protocol must not be percent-encoded if they are valid token characters except "%", and</li>
+               <li>When using percent-encoding, uppercase hex digits must be used.</li>
+            </ul>
+            <p id="rfc.section.2.2.p.6">With these constraints, recipients can apply simple string comparison to match protocol identifiers.</p>
+            <p id="rfc.section.2.2.p.7">For example:</p>
             <div id="rfc.figure.u.1"><pre>
 		 CONNECT turn_server.example.com:5349 HTTP/1.1
 		 Host: turn_server.example.com:5349
 		 Tunnel-Protocol: turn
 		</pre></div>
          </div>
-         <div>
-            <h2 id="rfc.section.3.4"><a href="#rfc.section.3.4">3.4</a>&nbsp;ICE-TCP / WebRTC as the Tunnel Protocol
-            </h2>
-            <p id="rfc.section.3.4.p.1"><span class="error">ERROR: Undefined target: I-D.ietf-rtcweb-transports (at line 186)</span> also requires that a WebRTC client support ICE-TCP <a href="#RFC6544"><cite title="TCP Candidates with Interactive Connectivity Establishment (ICE)">[RFC6544]</cite></a> as a mechanism to allow webrtc applications to communicate to peers with public IP addresses across UDP-blocking firewalls
-               without using a TURN server. In this case the client SHOULD include the "Tunnel-Protocol" header field with the value "webrtc" <span class="error">ERROR: Undefined target: I-D.thomson-rtcweb-alpn (at line 186)</span> as shown in the example below.
-            </p>
-            <div id="rfc.figure.u.2"><pre>
-	     CONNECT 198.51.100.0:8999 HTTP/1.1
-	     Host: 198.51.100.0:8999
-	     Tunnel-Protocol: webrtc
-		</pre></div>
-            <p id="rfc.section.3.4.p.2">Note: The protocol "c_webrtc" described in <span class="error">ERROR: Undefined target: I-D.thomson-rtcweb-alpn (at line 194)</span> is not relevent in this context and when used at the TLS layer the client SHOULD use "webrtc" in the Tunnel-Protocol header.
-               OPEN ISSUE - Is this correct?
-            </p>
-         </div>
       </div>
       <div id="IANA">
-         <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a>&nbsp;<a href="#IANA">IANA Considerations</a></h1>
-         <p id="rfc.section.4.p.1">To Be Added</p>
+         <h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a>&nbsp;<a href="#IANA">IANA Considerations</a></h1>
+         <p id="rfc.section.3.p.1">To Be Added</p>
       </div>
       <div id="Security">
-         <h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a>&nbsp;<a href="#Security">Security Considerations</a></h1>
-         <p id="rfc.section.5.p.1">In case of using HTTP CONNECT to a TURN server the security consideration of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, Section-4.3.6] apply. It states that there "are significant risks in establishing a tunnel to arbitrary servers, particularly
+         <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a>&nbsp;<a href="#Security">Security Considerations</a></h1>
+         <p id="rfc.section.4.p.1">In case of using HTTP CONNECT to a TURN server the security consideration of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, Section-4.3.6] apply. It states that there "are significant risks in establishing a tunnel to arbitrary servers, particularly
             when the destination is a well-known or reserved TCP port that is not intended for Web traffic. Proxies that support CONNECT
             SHOULD restrict its use to a limited set of known ports or a configurable whitelist of safe request targets."
          </p>
-         <p id="rfc.section.5.p.2">The Tunnel-Protocol request header field described in this document is an optional header and HTTP Proxies may of course not
+         <p id="rfc.section.4.p.2">The Tunnel-Protocol request header field described in this document is an optional header and HTTP Proxies may of course not
             support the header and therefore ignore it. If the header is not present or ignored then the proxy has no explicit indication
             as to the purpose of the tunnel on which to provide consent, this is the generic case that exists without the Tunnel-Protocol
             header.
          </p>
       </div>
-      <h1 id="rfc.references"><a id="rfc.section.6" href="#rfc.section.6">6.</a> References
+      <h1 id="rfc.references"><a id="rfc.section.5" href="#rfc.section.5">5.</a> References
       </h1>
-      <h2 id="rfc.references.1"><a href="#rfc.section.6.1" id="rfc.section.6.1">6.1</a> Normative References
+      <h2 id="rfc.references.1"><a href="#rfc.section.5.1" id="rfc.section.5.1">5.1</a> Normative References
       </h2>
       <table>
          <tr>
             <td class="reference"><b id="RFC2119">[RFC2119]</b></td>
             <td class="top"><a href="mailto:sob@harvard.edu">Bradner, S.</a>, “<a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>”, BCP&nbsp;14, RFC&nbsp;2119, March&nbsp;1997.
+            </td>
+         </tr>
+         <tr>
+            <td class="reference"><b id="RFC3986">[RFC3986]</b></td>
+            <td class="top"><a href="mailto:timbl@w3.org">Berners-Lee, T.</a>, <a href="mailto:fielding@gbiv.com">Fielding, R.</a>, and <a href="mailto:LMM@acm.org">L. Masinter</a>, “<a href="https://tools.ietf.org/html/rfc3986">Uniform Resource Identifier (URI): Generic Syntax</a>”, STD&nbsp;66, RFC&nbsp;3986, January&nbsp;2005.
             </td>
          </tr>
          <tr>
@@ -613,18 +580,18 @@ ul.toc a:first-child {
             <td class="top">Fielding, R. and J. Reschke, “<a href="https://tools.ietf.org/html/rfc7231">Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content</a>”, RFC&nbsp;7231, June&nbsp;2014.
             </td>
          </tr>
+         <tr>
+            <td class="reference"><b id="RFC7301">[RFC7301]</b></td>
+            <td class="top">Friedl, S., Popov, A., Langley, A., and E. Stephan, “<a href="https://tools.ietf.org/html/rfc7301">Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension</a>”, RFC&nbsp;7301, July&nbsp;2014.
+            </td>
+         </tr>
       </table>
-      <h2 id="rfc.references.2"><a href="#rfc.section.6.2" id="rfc.section.6.2">6.2</a> Informative References
+      <h2 id="rfc.references.2"><a href="#rfc.section.5.2" id="rfc.section.5.2">5.2</a> Informative References
       </h2>
       <table>
          <tr>
             <td class="reference"><b id="RFC5246">[RFC5246]</b></td>
             <td class="top">Dierks, T. and E. Rescorla, “<a href="https://tools.ietf.org/html/rfc5246">The Transport Layer Security (TLS) Protocol Version 1.2</a>”, RFC&nbsp;5246, August&nbsp;2008.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC6544">[RFC6544]</b></td>
-            <td class="top">Rosenberg, J., Keranen, A., Lowekamp, B., and A. Roach, “<a href="https://tools.ietf.org/html/rfc6544">TCP Candidates with Interactive Connectivity Establishment (ICE)</a>”, RFC&nbsp;6544, March&nbsp;2012.
             </td>
          </tr>
       </table>
