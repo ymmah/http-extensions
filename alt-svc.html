@@ -863,13 +863,14 @@ alt-authority = token / quoted-string
          <p id="rfc.section.3.p.5">The "alt-authority" component consists of an <em class="bcp14">OPTIONAL</em> uri-host ("host" in <a href="https://tools.ietf.org/html/rfc3986#section-3.2.2">Section 3.2.2</a> of <a href="#RFC3986"><cite title="Uniform Resource Identifier (URI): Generic Syntax">[RFC3986]</cite></a>), a colon (":"), and a port number.
          </p>
          <div id="rfc.figure.u.4">
-            <p>For example:</p><pre class="text">Alt-Svc: http2=":8000"
-</pre><p>This indicates the "http2" protocol on the same host using the indicated port 8000.</p>
+            <p>For example:</p><pre class="text">Alt-Svc: h2=":8000"
+</pre><p>This indicates the "h2" protocol (<a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>) on the same host using the indicated port 8000.
+            </p>
          </div>
          <div id="rfc.figure.u.5">
-            <p>An example involving a change of host:</p><pre class="text">Alt-Svc: http2="new.example.org:80"
-</pre><p>This indicates the "http2" protocol on the host "new.example.org", running on port 80. Note that the "quoted-string" syntax
-               needs to be used when a host is specified in addition to a port (":" is not an allowed character in "token").
+            <p>An example involving a change of host:</p><pre class="text">Alt-Svc: h2="new.example.org:80"
+</pre><p>This indicates the "h2" protocol on the host "new.example.org", running on port 80. Note that the "quoted-string" syntax needs
+               to be used when a host is specified in addition to a port (":" is not an allowed character in "token").
             </p>
          </div>
          <div id="rfc.table.u.1">
@@ -884,8 +885,8 @@ alt-authority = token / quoted-string
                </thead>
                <tbody>
                   <tr>
-                     <td class="left">http2</td>
-                     <td class="left">http2</td>
+                     <td class="left">h2</td>
+                     <td class="left">h2</td>
                      <td class="left">No escaping needed</td>
                   </tr>
                   <tr>

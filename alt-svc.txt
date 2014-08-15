@@ -396,16 +396,16 @@ Internet-Draft          HTTP Alternative Services            August 2014
 
    For example:
 
-   Alt-Svc: http2=":8000"
+   Alt-Svc: h2=":8000"
 
-   This indicates the "http2" protocol on the same host using the
+   This indicates the "h2" protocol ([HTTP2]) on the same host using the
    indicated port 8000.
 
    An example involving a change of host:
 
-   Alt-Svc: http2="new.example.org:80"
+   Alt-Svc: h2="new.example.org:80"
 
-   This indicates the "http2" protocol on the host "new.example.org",
+   This indicates the "h2" protocol on the host "new.example.org",
    running on port 80.  Note that the "quoted-string" syntax needs to be
    used when a host is specified in addition to a port (":" is not an
    allowed character in "token").
@@ -415,7 +415,7 @@ Internet-Draft          HTTP Alternative Services            August 2014
    +--------------------+-------------+---------------------+
    | ALPN protocol name | protocol-id | Note                |
    +--------------------+-------------+---------------------+
-   | http2              | http2       | No escaping needed  |
+   | h2                 | h2          | No escaping needed  |
    +--------------------+-------------+---------------------+
    | w=x:y#z            | w%3Dx%3Ay#z | "=" and ":" escaped |
    +--------------------+-------------+---------------------+
