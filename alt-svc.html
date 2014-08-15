@@ -448,7 +448,7 @@ samp, tt, code, pre {
        content: "Nottingham, et al.";
   }
   @bottom-center {
-       content: "Expires February 14, 2015";
+       content: "Expires February 16, 2015";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -567,7 +567,7 @@ ul.toc a:first-child {
       <meta name="dct.creator" content="McManus, P.">
       <meta name="dct.creator" content="Reschke, J. F.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-alt-svc-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2014-08-13">
+      <meta name="dct.issued" scheme="ISO8601" content="2014-08-15">
       <meta name="dct.abstract" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
       <meta name="description" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
    </head>
@@ -587,7 +587,7 @@ ul.toc a:first-child {
                <td class="right">P. McManus</td>
             </tr>
             <tr>
-               <td class="left">Expires: February 14, 2015</td>
+               <td class="left">Expires: February 16, 2015</td>
                <td class="right">Mozilla</td>
             </tr>
             <tr>
@@ -600,7 +600,7 @@ ul.toc a:first-child {
             </tr>
             <tr>
                <td class="left"></td>
-               <td class="right">August 13, 2014</td>
+               <td class="right">August 15, 2014</td>
             </tr>
          </tbody>
       </table>
@@ -626,7 +626,7 @@ ul.toc a:first-child {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on February 14, 2015.</p>
+         <p>This Internet-Draft will expire on February 16, 2015.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
@@ -824,13 +824,17 @@ ul.toc a:first-child {
             <p id="rfc.section.2.4.p.2">Therefore, if a client becomes aware of an alternative service, the client <em class="bcp14">SHOULD</em> use that alternative service for all requests to the associated origin as soon as it is available, provided that the security
                properties of the alternative service protocol are desirable, as compared to the existing connection.
             </p>
-            <p id="rfc.section.2.4.p.3">When a client uses an alternate service, it <em class="bcp14">MUST</em> emit the Alt-Svc-Used header field (<a href="#indicator" title="The Alt-Svc-Used HTTP Header Field">Section&nbsp;5</a>) on every request using that alternate service.
+            <p id="rfc.section.2.4.p.3">If a client becomes aware of multiple alternative services, it <em class="bcp14">MAY</em> choose the most suitable according to its own criteria (again, keeping security properties in mind). For example, an origin
+               might advertise multiple alternative services to notify clients of support for multiple versions of HTTP; or, an alternative
+               service might itself advertise an alternative.
             </p>
-            <p id="rfc.section.2.4.p.4">The client does not need to block requests; the origin's connection can be used until the alternative connection is established.
+            <p id="rfc.section.2.4.p.4">When a client uses an alternate service, it <em class="bcp14">MUST</em> emit the Alt-Svc-Used header field (<a href="#indicator" title="The Alt-Svc-Used HTTP Header Field">Section&nbsp;5</a>) on every request using that alternate service.
+            </p>
+            <p id="rfc.section.2.4.p.5">The client does not need to block requests; the origin's connection can be used until the alternative connection is established.
                However, if the security properties of the existing connection are weak (e.g. cleartext HTTP/1.1) then it might make sense
                to block until the new connection is fully available in order to avoid information leakage.
             </p>
-            <p id="rfc.section.2.4.p.5">Furthermore, if the connection to the alternative service fails or is unresponsive, the client <em class="bcp14">MAY</em> fall back to using the origin. Note, however, that this could be the basis of a downgrade attack, thus losing any enhanced
+            <p id="rfc.section.2.4.p.6">Furthermore, if the connection to the alternative service fails or is unresponsive, the client <em class="bcp14">MAY</em> fall back to using the origin. Note, however, that this could be the basis of a downgrade attack, thus losing any enhanced
                security properties of the alternative service.
             </p>
          </div>
