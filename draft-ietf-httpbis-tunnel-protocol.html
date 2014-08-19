@@ -485,19 +485,15 @@ ul.toc a:first-child {
          <h1 id="rfc.section.1" class="np"><a href="#rfc.section.1">1.</a>&nbsp;Introduction
          </h1>
          <p id="rfc.section.1.p.1">The HTTP CONNECT method (Section 4.3.6 of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>) requests that the recipient establish a tunnel to the identified origin server and thereafter forward packets, in both directions,
-            until the tunnel is closed. Such tunnels are commonly used to create end-to-end virtual connections, through one or more proxies.
-            These are then commonly secured using TLS (Transport Layer Security, <a href="#RFC5246"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite></a>).
+            until the tunnel is closed. Such tunnels are commonly used to create end-to-end virtual connections, through one or more proxies,
+            which may then be secured using TLS (Transport Layer Security, <a href="#RFC5246"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite></a>).
          </p>
          <p id="rfc.section.1.p.2">The HTTP Tunnel-Protocol header field identifies the protocol that will be spoken within the tunnel, using the application
             layer next protocol identifier <a href="#RFC7301"><cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[RFC7301]</cite></a> specified for TLS <a href="#RFC5246"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite></a>.
          </p>
-         <p id="rfc.section.1.p.3">When CONNECT is used to establish a TLS tunnel, the Tunnel-Protocol header field may be used to carry the same application
-            protocol label as will be carried within the TLS handshake. If there are multiple possible application protocols, all of those
-            application protocols are indicated.
-         </p>
-         <p id="rfc.section.1.p.4">The Tunnel-Protocol header field carries an indication only. In TLS, the final choice of application protocol is made by the
-            server. Proxies do not implement the tunneled protocol, though they might choose to make policy decisions based on the value
-            of the header field.
+         <p id="rfc.section.1.p.3">When CONNECT is used to establish a TLS tunnel, the Tunnel-Protocol header field may be used to carry the same next protocol
+            label as was carried within the TLS handshake. However, the HTTP-Protocol is an indication rather than a negotiation since
+            HTTP proxies do not implement the tunneled protocol.
          </p>
          <div>
             <h2 id="rfc.section.1.1"><a href="#rfc.section.1.1">1.1</a>&nbsp;Requirements Language
@@ -511,7 +507,7 @@ ul.toc a:first-child {
          <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a>&nbsp;The Tunnel-Protocol HTTP Request Header Field
          </h1>
          <p id="rfc.section.2.p.1">Clients include the Tunnel-Protocol Request Header field in a HTTP Connect request to indicate the application layer protocol
-            or protocols that will be used within the tunnel.
+            used within the tunnel.
          </p>
          <div>
             <h2 id="rfc.section.2.1"><a href="#rfc.section.2.1">2.1</a>&nbsp;Header Field Values
@@ -522,11 +518,12 @@ ul.toc a:first-child {
          <div>
             <h2 id="rfc.section.2.2"><a href="#rfc.section.2.2">2.2</a>&nbsp;Syntax
             </h2>
-            <p id="rfc.section.2.2.p.1">The ABNF (Augmented Backus-Naur Form) syntax <a href="#RFC5234"><cite title="Augmented BNF for Syntax Specifications: ABNF">[RFC5234]</cite></a> for the Tunnel-Protocol header field is given below. It is based on the Generic Grammar defined in Section 2 of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>.
+            <p id="rfc.section.2.2.p.1">The ABNF (Augmented Backus-Naur Form) syntax for the Tunnel-Protocol header field is given below. It is based on the Generic
+               Grammar defined in Section 2 of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>.
             </p>
             <div id="rfc.figure.u.1"><pre class="inline">
-Tunnel-Protocol = "Tunnel-Protocol":" 1#protocol-id
-protocol-id     = token ; percent-encoded ALPN protocol identifier
+     Tunnel-Protocol = "Tunnel-Protocol":" protocol-id
+     protocol-id     = token ; percent-encoded ALPN protocol identifier
 </pre></div>
             <p id="rfc.section.2.2.p.2">ALPN protocol names are octet sequences with no additional constraints on format. Octets not allowed in tokens (<a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, Section 3.2.6) must be percent-encoded as per Section 2.1 of <a href="#RFC3986"><cite title="Uniform Resource Identifier (URI): Generic Syntax">[RFC3986]</cite></a>. Consequently, the octet representing the percent character "%" (hex 25) must be percent-encoded as well.
             </p>
@@ -573,11 +570,6 @@ Tunnel-Protocol: turn
          <tr>
             <td class="reference"><b id="RFC3986">[RFC3986]</b></td>
             <td class="top"><a href="mailto:timbl@w3.org">Berners-Lee, T.</a>, <a href="mailto:fielding@gbiv.com">Fielding, R.</a>, and <a href="mailto:LMM@acm.org">L. Masinter</a>, “<a href="https://tools.ietf.org/html/rfc3986">Uniform Resource Identifier (URI): Generic Syntax</a>”, STD&nbsp;66, RFC&nbsp;3986, January&nbsp;2005.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC5234">[RFC5234]</b></td>
-            <td class="top">Crocker, D. and P. Overell, “<a href="https://tools.ietf.org/html/rfc5234">Augmented BNF for Syntax Specifications: ABNF</a>”, STD&nbsp;68, RFC&nbsp;5234, January&nbsp;2008.
             </td>
          </tr>
          <tr>
