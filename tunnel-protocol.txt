@@ -65,15 +65,15 @@ Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
      1.1.  Requirements Language . . . . . . . . . . . . . . . . . .   2
-   2.  The Tunnel-Protocol HTTP Request Header Field . . . . . . . .   2
+   2.  The Tunnel-Protocol HTTP Request Header Field . . . . . . . .   3
      2.1.  Header Field Values . . . . . . . . . . . . . . . . . . .   3
      2.2.  Syntax  . . . . . . . . . . . . . . . . . . . . . . . . .   3
-   3.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   3
-   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   3
+   3.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
+   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
    5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   4
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   4
-     5.2.  Informative References  . . . . . . . . . . . . . . . . .   4
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   4
+     5.2.  Informative References  . . . . . . . . . . . . . . . . .   5
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   5
 
 1.  Introduction
 
@@ -81,30 +81,30 @@ Table of Contents
    the recipient establish a tunnel to the identified origin server and
    thereafter forward packets, in both directions, until the tunnel is
    closed.  Such tunnels are commonly used to create end-to-end virtual
-   connections, through one or more proxies, which may then be secured
-   using TLS (Transport Layer Security, [RFC5246]).
+   connections, through one or more proxies.  These are then commonly
+   secured using TLS (Transport Layer Security, [RFC5246]).
 
    The HTTP Tunnel-Protocol header field identifies the protocol that
    will be spoken within the tunnel, using the application layer next
    protocol identifier [RFC7301] specified for TLS [RFC5246].
 
    When CONNECT is used to establish a TLS tunnel, the Tunnel-Protocol
-   header field may be used to carry the same next protocol label as was
-   carried within the TLS handshake.  However, the HTTP-Protocol is an
-   indication rather than a negotiation since HTTP proxies do not
-   implement the tunneled protocol.
+   header field may be used to carry the same application protocol label
+   as will be carried within the TLS handshake.  If there are multiple
+   possible application protocols, all of those application protocols
+   are indicated.
+
+   The Tunnel-Protocol header field carries an indication only.  In TLS,
+   the final choice of application protocol is made by the server.
+   Proxies do not implement the tunneled protocol, though they might
+   choose to make policy decisions based on the value of the header
+   field.
 
 1.1.  Requirements Language
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
    document are to be interpreted as described in RFC 2119 [RFC2119].
-
-2.  The Tunnel-Protocol HTTP Request Header Field
-
-   Clients include the Tunnel-Protocol Request Header field in a HTTP
-   Connect request to indicate the application layer protocol used
-   within the tunnel.
 
 
 
@@ -114,6 +114,12 @@ Hutton, et al.          Expires February 20, 2015               [Page 2]
 Internet-Draft               Tunnel-Protocol                 August 2014
 
 
+2.  The Tunnel-Protocol HTTP Request Header Field
+
+   Clients include the Tunnel-Protocol Request Header field in a HTTP
+   Connect request to indicate the application layer protocol or
+   protocols that will be used within the tunnel.
+
 2.1.  Header Field Values
 
    Valid values for the protocol field are taken from the registry
@@ -121,13 +127,13 @@ Internet-Draft               Tunnel-Protocol                 August 2014
 
 2.2.  Syntax
 
-   The ABNF (Augmented Backus-Naur Form) syntax for the Tunnel-Protocol
-   header field is given below.  It is based on the Generic Grammar
-   defined in Section 2 of [RFC7230].
+   The ABNF (Augmented Backus-Naur Form) syntax [RFC5234] for the
+   Tunnel-Protocol header field is given below.  It is based on the
+   Generic Grammar defined in Section 2 of [RFC7230].
 
 
-      Tunnel-Protocol = "Tunnel-Protocol":" protocol-id
-      protocol-id     = token ; percent-encoded ALPN protocol identifier
+   Tunnel-Protocol = "Tunnel-Protocol":" 1#protocol-id
+   protocol-id     = token ; percent-encoded ALPN protocol identifier
 
    ALPN protocol names are octet sequences with no additional
    constraints on format.  Octets not allowed in tokens ([RFC7230],
@@ -153,6 +159,17 @@ Internet-Draft               Tunnel-Protocol                 August 2014
    Host: turn_server.example.com:5349
    Tunnel-Protocol: turn
 
+
+
+
+
+
+
+Hutton, et al.          Expires February 20, 2015               [Page 3]
+
+Internet-Draft               Tunnel-Protocol                 August 2014
+
+
 3.  IANA Considerations
 
    To Be Added
@@ -162,14 +179,6 @@ Internet-Draft               Tunnel-Protocol                 August 2014
    In case of using HTTP CONNECT to a TURN server the security
    consideration of [RFC7231], Section-4.3.6] apply.  It states that
    there "are significant risks in establishing a tunnel to arbitrary
-
-
-
-Hutton, et al.          Expires February 20, 2015               [Page 3]
-
-Internet-Draft               Tunnel-Protocol                 August 2014
-
-
    servers, particularly when the destination is a well-known or
    reserved TCP port that is not intended for Web traffic.  Proxies that
    support CONNECT SHOULD restrict its use to a limited set of known
@@ -193,6 +202,9 @@ Internet-Draft               Tunnel-Protocol                 August 2014
               Resource Identifier (URI): Generic Syntax", STD 66, RFC
               3986, January 2005.
 
+   [RFC5234]  Crocker, D. and P. Overell, "Augmented BNF for Syntax
+              Specifications: ABNF", STD 68, RFC 5234, January 2008.
+
    [RFC7230]  Fielding, R. and J. Reschke, "Hypertext Transfer Protocol
               (HTTP/1.1): Message Syntax and Routing", RFC 7230, June
               2014.
@@ -203,6 +215,16 @@ Internet-Draft               Tunnel-Protocol                 August 2014
    [RFC7301]  Friedl, S., Popov, A., Langley, A., and E. Stephan,
               "Transport Layer Security (TLS) Application-Layer Protocol
               Negotiation Extension", RFC 7301, July 2014.
+
+
+
+
+
+
+Hutton, et al.          Expires February 20, 2015               [Page 4]
+
+Internet-Draft               Tunnel-Protocol                 August 2014
+
 
 5.2.  Informative References
 
@@ -218,12 +240,6 @@ Authors' Addresses
    UK
 
    Email: andrew.hutton@unify.com
-
-
-
-Hutton, et al.          Expires February 20, 2015               [Page 4]
-
-Internet-Draft               Tunnel-Protocol                 August 2014
 
 
    Justin Uberti
@@ -242,22 +258,6 @@ Internet-Draft               Tunnel-Protocol                 August 2014
    US
 
    Email: martin.thomson@gmail.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
