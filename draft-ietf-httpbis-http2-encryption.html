@@ -502,8 +502,8 @@ ul.toc a:first-child {
             URIs. Furthermore, doing so (as per <a href="#RFC2818"><cite title="HTTP Over TLS">[RFC2818]</cite></a>) creates a number of operational challenges. For these reasons, server authentication is not mandatory for “http” URIs when
             using the mechanism described in this specification.
          </p>
-         <p id="rfc.section.3.p.2">When connecting to an alternative service for an “http” URI, clients are required to perform the server authentication procedure
-            described in Section 3.1 of <a href="#RFC2818"><cite title="HTTP Over TLS">[RFC2818]</cite></a>. The server certificate, if one is proffered by the alternative service, is not necessarily checked for validity, expiration,
+         <p id="rfc.section.3.p.2">When connecting to an alternative service for an “http” URI, clients are not required to perform the server authentication
+            procedure described in Section 3.1 of <a href="#RFC2818"><cite title="HTTP Over TLS">[RFC2818]</cite></a>. The server certificate, if one is proffered by the alternative service, is not necessarily checked for validity, expiration,
             issuance by a trusted certificate authority or matched against the name in the URI. Therefore, the alternative service MAY
             provide any certificate, or even select TLS cipher suites that do not include authentication.
          </p>
