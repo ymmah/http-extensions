@@ -2,13 +2,13 @@
 
 
 
-Internet Engineering Task Force                                A. Hutton
+HTTPbis Working Group                                          A. Hutton
 Internet-Draft                                                     Unify
 Intended status: Standards Track                               J. Uberti
-Expires: February 22, 2015                                        Google
+Expires: February 23, 2015                                        Google
                                                               M. Thomson
                                                                  Mozilla
-                                                         August 21, 2014
+                                                         August 22, 2014
 
 
              The Tunnel-Protocol HTTP Request Header Field
@@ -19,6 +19,14 @@ Abstract
    This specification allows HTTP CONNECT requests to indicate what
    protocol will be used within the tunnel once established, using the
    Tunnel-Protocol request header field.
+
+Editorial Note (To be removed by RFC Editor)
+
+   Discussion of this draft takes place on the HTTPBIS working group
+   mailing list (ietf-http-wg@w3.org), which is archived at [1].
+
+   Working Group information can be found at [2] and [3]; source code
+   and issues list for this draft can be found at [4].
 
 Status of This Memo
 
@@ -35,12 +43,20 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on February 22, 2015.
+   This Internet-Draft will expire on February 23, 2015.
 
 Copyright Notice
 
    Copyright (c) 2014 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
+
+
+
+
+Hutton, et al.          Expires February 23, 2015               [Page 1]
+
+Internet-Draft               Tunnel-Protocol                 August 2014
+
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
@@ -49,15 +65,6 @@ Copyright Notice
    carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
    include Simplified BSD License text as described in Section 4.e of
-
-
-
-
-Hutton, et al.          Expires February 22, 2015               [Page 1]
-
-Internet-Draft               Tunnel-Protocol                 August 2014
-
-
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
@@ -65,15 +72,14 @@ Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
      1.1.  Requirements Language . . . . . . . . . . . . . . . . . .   2
-   2.  The Tunnel-Protocol HTTP Request Header Field . . . . . . . .   2
+   2.  The Tunnel-Protocol HTTP Request Header Field . . . . . . . .   3
      2.1.  Header Field Values . . . . . . . . . . . . . . . . . . .   3
      2.2.  Syntax  . . . . . . . . . . . . . . . . . . . . . . . . .   3
-   3.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   3
-   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   3
+   3.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
+   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
    5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   4
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   4
      5.2.  Informative References  . . . . . . . . . . . . . . . . .   4
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   4
 
 1.  Introduction
 
@@ -100,19 +106,19 @@ Table of Contents
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
    document are to be interpreted as described in RFC 2119 [RFC2119].
 
+
+
+
+Hutton, et al.          Expires February 23, 2015               [Page 2]
+
+Internet-Draft               Tunnel-Protocol                 August 2014
+
+
 2.  The Tunnel-Protocol HTTP Request Header Field
 
    Clients include the Tunnel-Protocol Request Header field in a HTTP
    Connect request to indicate the application layer protocol used
    within the tunnel.
-
-
-
-
-Hutton, et al.          Expires February 22, 2015               [Page 2]
-
-Internet-Draft               Tunnel-Protocol                 August 2014
-
 
 2.1.  Header Field Values
 
@@ -149,27 +155,30 @@ Internet-Draft               Tunnel-Protocol                 August 2014
    For example:
 
 
-   CONNECT turn_server.example.com:5349 HTTP/1.1
-   Host: turn_server.example.com:5349
-   Tunnel-Protocol: turn
-
-3.  IANA Considerations
-
-   To Be Added
-
-4.  Security Considerations
-
-   In case of using HTTP CONNECT to a TURN server the security
-   consideration of [RFC7231], Section-4.3.6] apply.  It states that
-   there "are significant risks in establishing a tunnel to arbitrary
+     CONNECT turn_server.example.com:5349 HTTP/1.1
+     Host: turn_server.example.com:5349
+     Tunnel-Protocol: turn
 
 
 
-Hutton, et al.          Expires February 22, 2015               [Page 3]
+
+
+
+
+Hutton, et al.          Expires February 23, 2015               [Page 3]
 
 Internet-Draft               Tunnel-Protocol                 August 2014
 
 
+3.  IANA Considerations
+
+   [[CREF1: To Be Added]]
+
+4.  Security Considerations
+
+   In case of using HTTP CONNECT to a TURN server the security
+   consideration of Section 4.3.6 of [RFC7231] apply.  It states that
+   there "are significant risks in establishing a tunnel to arbitrary
    servers, particularly when the destination is a well-known or
    reserved TCP port that is not intended for Web traffic.  Proxies that
    support CONNECT SHOULD restrict its use to a limited set of known
@@ -209,6 +218,14 @@ Internet-Draft               Tunnel-Protocol                 August 2014
    [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
               (TLS) Protocol Version 1.2", RFC 5246, August 2008.
 
+
+
+
+Hutton, et al.          Expires February 23, 2015               [Page 4]
+
+Internet-Draft               Tunnel-Protocol                 August 2014
+
+
 Authors' Addresses
 
    Andrew Hutton
@@ -217,13 +234,7 @@ Authors' Addresses
    Nottingham  NG9 1LA
    UK
 
-   Email: andrew.hutton@unify.com
-
-
-
-Hutton, et al.          Expires February 22, 2015               [Page 4]
-
-Internet-Draft               Tunnel-Protocol                 August 2014
+   EMail: andrew.hutton@unify.com
 
 
    Justin Uberti
@@ -232,7 +243,7 @@ Internet-Draft               Tunnel-Protocol                 August 2014
    Kirkland, WA  98033
    US
 
-   Email: justin@uberti.name
+   EMail: justin@uberti.name
 
 
    Martin Thomson
@@ -241,7 +252,7 @@ Internet-Draft               Tunnel-Protocol                 August 2014
    Mountain View, CA  94041
    US
 
-   Email: martin.thomson@gmail.com
+   EMail: martin.thomson@gmail.com
 
 
 
@@ -266,15 +277,4 @@ Internet-Draft               Tunnel-Protocol                 August 2014
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-Hutton, et al.          Expires February 22, 2015               [Page 5]
+Hutton, et al.          Expires February 23, 2015               [Page 5]

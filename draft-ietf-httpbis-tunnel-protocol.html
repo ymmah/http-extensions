@@ -3,7 +3,88 @@
 <html lang="en">
    <head profile="http://dublincore.org/documents/2008/08/04/dc-html/">
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <title>The Tunnel-Protocol HTTP Request Header Field</title><style type="text/css" title="Xml2Rfc (sans serif)">
+      <title>The Tunnel-Protocol HTTP Request Header Field</title><script>
+var buttonsAdded = false;
+
+function initFeedback() {
+  var fb = document.createElement("div");
+  fb.className = "feedback noprint";
+  fb.setAttribute("onclick", "feedback();");
+  fb.appendChild(document.createTextNode("feedback"));
+
+  document.body.appendChild(fb);
+}
+
+function feedback() {
+  toggleButtonsToElementsByName("h1");
+  toggleButtonsToElementsByName("h2");
+  toggleButtonsToElementsByName("h3");
+  toggleButtonsToElementsByName("h4");
+
+  buttonsAdded = !buttonsAdded;
+}
+
+function toggleButtonsToElementsByName(name) {
+  var list = document.getElementsByTagName(name);
+  for (var i = 0; i < list.length; i++) {
+    toggleButton(list.item(i));
+  }
+}
+
+function toggleButton(node) {
+  if (! buttonsAdded) {
+
+    // docname
+    var template = "mailto:ietf-http-wg@w3.org?subject={docname},%20%22{section}%22&body=<{ref}>:";
+
+    var id = node.getAttribute("id");
+    // better id available?
+    var titlelinks = node.getElementsByTagName("a");
+    for (var i = 0; i < titlelinks.length; i++) {
+      var tl = titlelinks.item(i);
+      if (tl.getAttribute("id")) {
+        id = tl.getAttribute("id");
+      }
+    }
+
+    // ref
+    var ref = window.location.toString();
+    var hash = ref.indexOf("#");
+    if (hash != -1) {
+      ref = ref.substring(0, hash);
+    }
+    if (id != "") {
+      ref += "#" + id;
+    }
+
+    // docname
+    var docname = "draft-ietf-httpbis-tunnel-protocol-latest";
+
+    // section
+    var section = node.textContent;
+    section = section.replace("\u00a0", " ");
+
+    // build URI from template
+    var uri = template.replace("{docname}", encodeURIComponent(docname));
+    uri = uri.replace("{section}", encodeURIComponent(section));
+    uri = uri.replace("{ref}", encodeURIComponent(ref));
+
+    var button = document.createElement("a");
+    button.className = "fbbutton noprint";
+    button.setAttribute("href", uri);
+    button.appendChild(document.createTextNode("send feedback"));
+    node.appendChild(button);
+  }
+  else {
+    var buttons = node.getElementsByTagName("a");
+    for (var i = 0; i < buttons.length; i++) {
+      var b = buttons.item(i);
+      if (b.className == "fbbutton noprint") {
+        node.removeChild(b);
+      }
+    }
+  }
+}</script><style type="text/css" title="Xml2Rfc (sans serif)">
 a {
   text-decoration: none;
 }
@@ -221,6 +302,25 @@ samp, tt, code, pre {
 .warning {
   font-size: 130%;
   background-color: yellow;
+}.feedback {
+  position: fixed;
+  bottom: 1%;
+  right: 1%;
+  padding: 3px 5px;
+  color: white;
+  border-radius: 5px;
+  background: #a00000;
+  border: 1px solid silver;
+}
+.fbbutton {
+  margin-left: 1em;
+  color: #303030;
+  font-size: small;
+  font-weight: normal;
+  background: #d0d000;
+  padding: 1px 4px;
+  border: 1px solid silver;
+  border-radius: 5px;
 }
 
 @media screen {
@@ -284,7 +384,7 @@ samp, tt, code, pre {
        content: "Hutton, et al.";
   }
   @bottom-center {
-       content: "Expires February 22, 2015";
+       content: "Expires February 23, 2015";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -396,15 +496,15 @@ ul.toc a:first-child {
       <meta name="dct.creator" content="Uberti, J.">
       <meta name="dct.creator" content="Thomson, M.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-tunnel-protocol-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2014-08-21">
+      <meta name="dct.issued" scheme="ISO8601" content="2014-08-22">
       <meta name="dct.abstract" content="This specification allows HTTP CONNECT requests to indicate what protocol will be used within the tunnel once established, using the Tunnel-Protocol request header field.">
       <meta name="description" content="This specification allows HTTP CONNECT requests to indicate what protocol will be used within the tunnel once established, using the Tunnel-Protocol request header field.">
    </head>
-   <body>
+   <body onload="initFeedback();">
       <table class="header" id="rfc.headerblock">
          <tbody>
             <tr>
-               <td class="left">Internet Engineering Task Force</td>
+               <td class="left">HTTPbis Working Group</td>
                <td class="right">A. Hutton</td>
             </tr>
             <tr>
@@ -416,7 +516,7 @@ ul.toc a:first-child {
                <td class="right">J. Uberti</td>
             </tr>
             <tr>
-               <td class="left">Expires: February 22, 2015</td>
+               <td class="left">Expires: February 23, 2015</td>
                <td class="right">Google</td>
             </tr>
             <tr>
@@ -429,7 +529,7 @@ ul.toc a:first-child {
             </tr>
             <tr>
                <td class="left"></td>
-               <td class="right">August 21, 2014</td>
+               <td class="right">August 22, 2014</td>
             </tr>
          </tbody>
       </table>
@@ -438,8 +538,13 @@ ul.toc a:first-child {
       <p>This specification allows HTTP CONNECT requests to indicate what protocol will be used within the tunnel once established,
          using the Tunnel-Protocol request header field.
       </p>
+      <h1 id="rfc.note.1"><a href="#rfc.note.1">Editorial Note (To be removed by RFC Editor)</a></h1>
+      <p>Discussion of this draft takes place on the HTTPBIS working group mailing list (ietf-http-wg@w3.org), which is archived at &lt;<a href="https://lists.w3.org/Archives/Public/ietf-http-wg/">https://lists.w3.org/Archives/Public/ietf-http-wg/</a>&gt;.
+      </p>
+      <p>Working Group information can be found at &lt;<a href="https://tools.ietf.org/wg/httpbis/">https://tools.ietf.org/wg/httpbis/</a>&gt; and &lt;<a href="http://httpwg.github.io/">http://httpwg.github.io/</a>&gt;; source code and issues list for this draft can be found at &lt;<a href="https://github.com/httpwg/http-extensions">https://github.com/httpwg/http-extensions</a>&gt;.
+      </p>
       <div id="rfc.status">
-         <h1><a href="#rfc.status">Status of this Memo</a></h1>
+         <h1><a href="#rfc.status">Status of This Memo</a></h1>
          <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
          <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF). Note that other groups may also distribute
             working documents as Internet-Drafts. The list of current Internet-Drafts is at <a href="http://datatracker.ietf.org/drafts/current/">http://datatracker.ietf.org/drafts/current/</a>.
@@ -448,7 +553,7 @@ ul.toc a:first-child {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on February 22, 2015.</p>
+         <p>This Internet-Draft will expire on February 23, 2015.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
@@ -486,7 +591,7 @@ ul.toc a:first-child {
          <h1 id="rfc.section.1" class="np"><a href="#rfc.section.1">1.</a>&nbsp;Introduction
          </h1>
          <div id="rfc.section.1.p.1">
-            <p>The HTTP CONNECT method (Section 4.3.6 of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>) requests that the recipient establish a tunnel to the identified origin server and thereafter forward packets, in both directions,
+            <p>The HTTP CONNECT method (<a href="https://tools.ietf.org/html/rfc7231#section-4.3.6">Section 4.3.6</a> of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>) requests that the recipient establish a tunnel to the identified origin server and thereafter forward packets, in both directions,
                until the tunnel is closed. Such tunnels are commonly used to create end-to-end virtual connections, through one or more proxies,
                which may then be secured using TLS (Transport Layer Security, <a href="#RFC5246"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite></a>).
             </p>
@@ -533,7 +638,7 @@ ul.toc a:first-child {
             </h2>
             <div id="rfc.section.2.2.p.1">
                <p>The ABNF (Augmented Backus-Naur Form) syntax for the Tunnel-Protocol header field is given below. It is based on the Generic
-                  Grammar defined in Section 2 of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>.
+                  Grammar defined in <a href="https://tools.ietf.org/html/rfc7230#section-2">Section 2</a> of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>.
                </p>
             </div>
             <div id="rfc.figure.u.1"><pre class="inline">
@@ -541,7 +646,7 @@ ul.toc a:first-child {
      protocol-id     = token ; percent-encoded ALPN protocol identifier
 </pre></div>
             <div id="rfc.section.2.2.p.2">
-               <p>ALPN protocol names are octet sequences with no additional constraints on format. Octets not allowed in tokens (<a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, Section 3.2.6) must be percent-encoded as per Section 2.1 of <a href="#RFC3986"><cite title="Uniform Resource Identifier (URI): Generic Syntax">[RFC3986]</cite></a>. Consequently, the octet representing the percent character "%" (hex 25) must be percent-encoded as well.
+               <p>ALPN protocol names are octet sequences with no additional constraints on format. Octets not allowed in tokens (<a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://tools.ietf.org/html/rfc7230#section-3.2.6">Section 3.2.6</a>) must be percent-encoded as per <a href="https://tools.ietf.org/html/rfc3986#section-2.1">Section 2.1</a> of <a href="#RFC3986"><cite title="Uniform Resource Identifier (URI): Generic Syntax">[RFC3986]</cite></a>. Consequently, the octet representing the percent character "%" (hex 25) must be percent-encoded as well.
                </p>
             </div>
             <div id="rfc.section.2.2.p.3">
@@ -555,7 +660,7 @@ ul.toc a:first-child {
                <p>With these constraints, recipients can apply simple string comparison to match protocol identifiers.</p>
             </div>
             <div id="rfc.figure.u.2">
-               <p>For example:</p><pre>
+               <p>For example:</p><pre class="text2">
 CONNECT turn_server.example.com:5349 HTTP/1.1
 Host: turn_server.example.com:5349
 Tunnel-Protocol: turn
@@ -565,15 +670,15 @@ Tunnel-Protocol: turn
       <div id="IANA">
          <h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a>&nbsp;<a href="#IANA">IANA Considerations</a></h1>
          <div id="rfc.section.3.p.1">
-            <p>To Be Added</p>
+            <p><span class="comment" id="rfc.comment.1">[<a href="#rfc.comment.1" class="smpl">rfc.comment.1</a>: To Be Added]</span></p>
          </div>
       </div>
       <div id="Security">
          <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a>&nbsp;<a href="#Security">Security Considerations</a></h1>
          <div id="rfc.section.4.p.1">
-            <p>In case of using HTTP CONNECT to a TURN server the security consideration of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, Section-4.3.6] apply. It states that there "are significant risks in establishing a tunnel to arbitrary servers, particularly
-               when the destination is a well-known or reserved TCP port that is not intended for Web traffic. Proxies that support CONNECT
-               SHOULD restrict its use to a limited set of known ports or a configurable whitelist of safe request targets."
+            <p>In case of using HTTP CONNECT to a TURN server the security consideration of <a href="https://tools.ietf.org/html/rfc7231#section-4.3.6">Section 4.3.6</a> of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a> apply. It states that there "are significant risks in establishing a tunnel to arbitrary servers, particularly when the destination
+               is a well-known or reserved TCP port that is not intended for Web traffic. Proxies that support CONNECT SHOULD restrict its
+               use to a limited set of known ports or a configurable whitelist of safe request targets."
             </p>
          </div>
          <div id="rfc.section.4.p.2">
@@ -626,9 +731,9 @@ Tunnel-Protocol: turn
       </table>
       <div class="avoidbreak">
          <h1 id="rfc.authors"><a href="#rfc.authors">Authors' Addresses</a></h1>
-         <p><b>Andrew Hutton</b><br>Unify<br>Technology Drive<br>Nottingham, NG9 1LA<br>UK<br>EMail: <a href="mailto:andrew.hutton@unify.com">andrew.hutton@unify.com</a></p>
-         <p><b>Justin Uberti</b><br>Google<br>747 6th Ave S<br>Kirkland, WA&nbsp;98033<br>US<br>EMail: <a href="mailto:justin@uberti.name">justin@uberti.name</a></p>
-         <p><b>Martin Thomson</b><br>Mozilla<br>331 E Evelyn Street<br>Mountain View, CA&nbsp;94041<br>US<br>EMail: <a href="mailto:martin.thomson@gmail.com">martin.thomson@gmail.com</a></p>
+         <p><b>Andrew Hutton</b><br>Unify<br>Technology Drive<br>Nottingham, NG9 1LA<br>UK<br>Email: <a href="mailto:andrew.hutton@unify.com">andrew.hutton@unify.com</a></p>
+         <p><b>Justin Uberti</b><br>Google<br>747 6th Ave S<br>Kirkland, WA&nbsp;98033<br>US<br>Email: <a href="mailto:justin@uberti.name">justin@uberti.name</a></p>
+         <p><b>Martin Thomson</b><br>Mozilla<br>331 E Evelyn Street<br>Mountain View, CA&nbsp;94041<br>US<br>Email: <a href="mailto:martin.thomson@gmail.com">martin.thomson@gmail.com</a></p>
       </div>
    </body>
 </html>
