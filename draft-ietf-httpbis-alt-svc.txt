@@ -363,8 +363,7 @@ Internet-Draft          HTTP Alternative Services         September 2014
    Alt-Svc       = 1#( alternative *( OWS ";" OWS parameter ) )
    alternative   = protocol-id "=" alt-authority
    protocol-id   = token ; percent-encoded ALPN protocol identifier
-   alt-authority = token / quoted-string
-                   ; containing [ uri-host ] ":" port
+   alt-authority = quoted-string ; containing [ uri-host ] ":" port
 
    ALPN protocol names are octet sequences with no additional
    constraints on format.  Octets not allowed in tokens ([RFC7230],
@@ -389,6 +388,7 @@ Internet-Draft          HTTP Alternative Services         September 2014
 
 
 
+
 Nottingham, et al.        Expires March 9, 2015                 [Page 7]
 
 Internet-Draft          HTTP Alternative Services         September 2014
@@ -407,8 +407,7 @@ Internet-Draft          HTTP Alternative Services         September 2014
 
    This indicates the "h2" protocol on the host "new.example.org",
    running on port 80.  Note that the "quoted-string" syntax needs to be
-   used when a host is specified in addition to a port (":" is not an
-   allowed character in "token").
+   used because ":" is not an allowed character in "token".
 
    Examples for protocol name escaping:
 
@@ -441,6 +440,7 @@ Internet-Draft          HTTP Alternative Services         September 2014
    When using HTTP/2 ([HTTP2]), servers SHOULD instead send an ALTSVC
    frame (Section 4).  A single ALTSVC frame can be sent for a
    connection; a new frame is not needed for every request.
+
 
 
 

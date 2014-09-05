@@ -911,8 +911,7 @@ ul.toc a:first-child {
          <div id="rfc.figure.u.3"><pre class="inline">Alt-Svc       = 1#( alternative *( OWS ";" OWS parameter ) )
 alternative   = protocol-id "=" alt-authority
 protocol-id   = token ; percent-encoded ALPN protocol identifier
-alt-authority = token / quoted-string
-                ; containing [ uri-host ] ":" port
+alt-authority = quoted-string ; containing [ uri-host ] ":" port
 </pre></div>
          <div id="rfc.section.3.p.2">
             <p>ALPN protocol names are octet sequences with no additional constraints on format. Octets not allowed in tokens (<a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#field.components" title="Field Value Components">Section 3.2.6</a>) <em class="bcp14">MUST</em> be percent-encoded as per <a href="https://tools.ietf.org/html/rfc3986#section-2.1">Section 2.1</a> of <a href="#RFC3986"><cite title="Uniform Resource Identifier (URI): Generic Syntax">[RFC3986]</cite></a>. Consequently, the octet representing the percent character "%" (hex 25) <em class="bcp14">MUST</em> be percent-encoded as well.
@@ -942,7 +941,7 @@ alt-authority = token / quoted-string
          <div id="rfc.figure.u.5">
             <p>An example involving a change of host:</p><pre class="text">Alt-Svc: h2="new.example.org:80"
 </pre><p>This indicates the "h2" protocol on the host "new.example.org", running on port 80. Note that the "quoted-string" syntax needs
-               to be used when a host is specified in addition to a port (":" is not an allowed character in "token").
+               to be used because ":" is not an allowed character in "token".
             </p>
          </div>
          <div id="rfc.table.u.1">
