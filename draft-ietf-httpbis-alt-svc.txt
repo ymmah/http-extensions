@@ -115,6 +115,7 @@ Internet-Draft          HTTP Alternative Services         September 2014
 
 
      A.4.  Since draft-ietf-httpbis-alt-svc-02 . . . . . . . . . . .  17
+     A.5.  Since draft-ietf-httpbis-alt-svc-03 . . . . . . . . . . .  17
 
 1.  Introduction
 
@@ -161,7 +162,6 @@ Internet-Draft          HTTP Alternative Services         September 2014
 
    This document uses the Augmented BNF defined in [RFC5234] along with
    the "OWS", "delta-seconds", "parameter", "port", "quoted-string",
-
 
 
 
@@ -934,6 +934,10 @@ A.4.  Since draft-ietf-httpbis-alt-svc-02
 
    Resolved [11].
 
+A.5.  Since draft-ietf-httpbis-alt-svc-03
+
+   None yet.
+
 Authors' Addresses
 
    Mark Nottingham
@@ -941,10 +945,6 @@ Authors' Addresses
 
    EMail: mnot@mnot.net
    URI:   https://www.mnot.net/
-
-
-
-
 
 
 
