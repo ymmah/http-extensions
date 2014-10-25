@@ -578,6 +578,11 @@ Internet-Draft          HTTP Alternative Services           October 2014
    receives an ALTSVC frame MUST treat it as a connection error of type
    PROTOCOL_ERROR.
 
+   An ALTSVC frame on a client-initiated stream containing non-empty
+   "Origin" information is invalid and MUST be ignored.  Likewise, an
+   ALTSVC frame on stream 0 with empty (length 0) "Origin" information
+   is invalid and MUST be ignored.
+
    The ALTSVC frame is processed hop-by-hop.  An intermediary MUST NOT
    forward ALTSVC frames, though it can use the information contained in
    ALTSVC frames in forming new ALTSVC frames to send to its own
@@ -603,11 +608,6 @@ Internet-Draft          HTTP Alternative Services           October 2014
    A flag value of "1" indicates that an alternate service was used,
    while "0" means it was not.
 
-   For example:
-
-     GET /thing HTTP/1.1
-     Host: origin.example.com
-     Alt-Used: 1
 
 
 
@@ -617,6 +617,12 @@ Nottingham, et al.       Expires April 28, 2015                [Page 11]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
+
+   For example:
+
+     GET /thing HTTP/1.1
+     Host: origin.example.com
+     Alt-Used: 1
 
    The extension parameters (ext-param) are reserved for future use;
    specifications that want to define an extension will need to update
@@ -661,18 +667,15 @@ Internet-Draft          HTTP Alternative Services           October 2014
    | Alt-Used          | http     | standard | Section 5  |
    +-------------------+----------+----------+------------+
 
-   The change controller is: "IETF (iesg@ietf.org) - Internet
-   Engineering Task Force".
-
-
-
-
 
 
 Nottingham, et al.       Expires April 28, 2015                [Page 12]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
+
+   The change controller is: "IETF (iesg@ietf.org) - Internet
+   Engineering Task Force".
 
 7.2.  The ALTSVC HTTP/2 Frame Type
 
@@ -719,9 +722,6 @@ Internet-Draft          HTTP Alternative Services           October 2014
    traffic for "innocent.example.org" to "evil.example.com" by
    successfully associating it as an alternative service, they can
    masquerade as that origin.  This can be done locally (see mitigations
-   in Section 9.1) or remotely (e.g., by an intermediary as a man-in-
-   the-middle attack).
-
 
 
 
@@ -729,6 +729,9 @@ Nottingham, et al.       Expires April 28, 2015                [Page 13]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
+
+   in Section 9.1) or remotely (e.g., by an intermediary as a man-in-
+   the-middle attack).
 
    This is the reason for the requirement in Section 2.1 that any
    alternative service with a host different to the origin's be strongly
@@ -775,9 +778,6 @@ Internet-Draft          HTTP Alternative Services           October 2014
    Clients that do not wish to be tracked MAY choose to ignore
    alternative service advertisements.
 
-   In a browser, any alternative service information MUST be removed
-   when origin-specific data is cleared (for instance, when cookies are
-   cleared).
 
 
 
@@ -785,6 +785,10 @@ Nottingham, et al.       Expires April 28, 2015                [Page 14]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
+
+   In a browser, any alternative service information MUST be removed
+   when origin-specific data is cleared (for instance, when cookies are
+   cleared).
 
 10.  Acknowledgements
 
@@ -831,16 +835,16 @@ Internet-Draft          HTTP Alternative Services           October 2014
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
               RFC 7234, June 2014.
 
-   [RFC7301]  Friedl, S., Popov, A., Langley, A., and S. Emile,
-              "Transport Layer Security (TLS) Application-Layer Protocol
-              Negotiation Extension", RFC 7301, July 2014.
-
 
 
 Nottingham, et al.       Expires April 28, 2015                [Page 15]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
+
+   [RFC7301]  Friedl, S., Popov, A., Langley, A., and S. Emile,
+              "Transport Layer Security (TLS) Application-Layer Protocol
+              Negotiation Extension", RFC 7301, July 2014.
 
 11.2.  Informative References
 
@@ -869,11 +873,7 @@ Internet-Draft          HTTP Alternative Services           October 2014
 
    [8] https://github.com/httpwg/http-extensions/issues/17
 
-
-
-
-
-
+   [9] https://github.com/httpwg/http-extensions/issues/19
 
 
 
@@ -938,13 +938,13 @@ A.5.  Since draft-ietf-httpbis-alt-svc-03
 
    Renamed "Alt-Svc-Used" to "Alt-Used" ([12]).
 
+   Clarify ALTSVC Origin information requirements ([13]).
+
 Authors' Addresses
 
-   Mark Nottingham
-   Akamai
 
-   EMail: mnot@mnot.net
-   URI:   https://www.mnot.net/
+
+
 
 
 
@@ -952,6 +952,13 @@ Authors' Addresses
 Nottingham, et al.       Expires April 28, 2015                [Page 17]
 
 Internet-Draft          HTTP Alternative Services           October 2014
+
+
+   Mark Nottingham
+   Akamai
+
+   EMail: mnot@mnot.net
+   URI:   https://www.mnot.net/
 
 
    Patrick McManus
@@ -966,13 +973,6 @@ Internet-Draft          HTTP Alternative Services           October 2014
 
    EMail: julian.reschke@greenbytes.de
    URI:   https://greenbytes.de/tech/webdav/
-
-
-
-
-
-
-
 
 
 

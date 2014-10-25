@@ -1110,6 +1110,10 @@ Alt-Svc: h2c=":8000"; ma=60
             </p>
          </div>
          <div id="rfc.section.4.p.9">
+            <p>An ALTSVC frame on a client-initiated stream containing non-empty "Origin" information is invalid and <em class="bcp14">MUST</em> be ignored. Likewise, an ALTSVC frame on stream 0 with empty (length 0) "Origin" information is invalid and <em class="bcp14">MUST</em> be ignored.
+            </p>
+         </div>
+         <div id="rfc.section.4.p.10">
             <p>The ALTSVC frame is processed hop-by-hop. An intermediary <em class="bcp14">MUST NOT</em> forward ALTSVC frames, though it can use the information contained in ALTSVC frames in forming new ALTSVC frames to send to
                its own clients.
             </p>
@@ -1461,6 +1465,10 @@ Alt-Used: 1
             <h2 id="rfc.section.A.5"><a href="#rfc.section.A.5">A.5</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-03">Since draft-ietf-httpbis-alt-svc-03</a></h2>
             <div id="rfc.section.A.5.p.1">
                <p>Renamed "Alt-Svc-Used" to "Alt-Used" (&lt;<a href="https://github.com/httpwg/http-extensions/issues/17">https://github.com/httpwg/http-extensions/issues/17</a>&gt;).
+               </p>
+            </div>
+            <div id="rfc.section.A.5.p.2">
+               <p>Clarify ALTSVC Origin information requirements (&lt;<a href="https://github.com/httpwg/http-extensions/issues/19">https://github.com/httpwg/http-extensions/issues/19</a>&gt;).
                </p>
             </div>
          </div>
