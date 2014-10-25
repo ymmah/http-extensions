@@ -628,11 +628,6 @@ Internet-Draft          HTTP Alternative Services           October 2014
    specifications that want to define an extension will need to update
    this document (and ought to introduce an extension registry).
 
-   To reduce the ability of servers to track individual clients over
-   time (see Section 9.4), an alternative service indication sent by a
-   client SHOULD NOT include any alternative service information other
-   than the protocol, host and port.
-
 6.  The 421 Not Authoritative HTTP Status Code
 
    The 421 (Not Authoritative) status code is defined in [HTTP2],
@@ -667,15 +662,17 @@ Internet-Draft          HTTP Alternative Services           October 2014
    | Alt-Used          | http     | standard | Section 5  |
    +-------------------+----------+----------+------------+
 
+   The change controller is: "IETF (iesg@ietf.org) - Internet
+   Engineering Task Force".
+
+
+
 
 
 Nottingham, et al.       Expires April 28, 2015                [Page 12]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
-
-   The change controller is: "IETF (iesg@ietf.org) - Internet
-   Engineering Task Force".
 
 7.2.  The ALTSVC HTTP/2 Frame Type
 
@@ -722,6 +719,9 @@ Internet-Draft          HTTP Alternative Services           October 2014
    traffic for "innocent.example.org" to "evil.example.com" by
    successfully associating it as an alternative service, they can
    masquerade as that origin.  This can be done locally (see mitigations
+   in Section 9.1) or remotely (e.g., by an intermediary as a man-in-
+   the-middle attack).
+
 
 
 
@@ -729,9 +729,6 @@ Nottingham, et al.       Expires April 28, 2015                [Page 13]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
-
-   in Section 9.1) or remotely (e.g., by an intermediary as a man-in-
-   the-middle attack).
 
    This is the reason for the requirement in Section 2.1 that any
    alternative service with a host different to the origin's be strongly
@@ -769,14 +766,17 @@ Internet-Draft          HTTP Alternative Services           October 2014
 
 9.4.  Tracking Clients Using Alternative Services
 
-   The alternative service indicator (Section 5) provided by clients
-   provides a server the means of correlating requests.  If the
-   alternative service indicator includes a sufficiently unique
-   identifier, requests made to an alternative service can be correlated
-   with the original alternative service advertisement.
+   The Alt-Used header field (Section 5) provides a server with one
+   additional bit of information that can be used to correlate requests.
 
-   Clients that do not wish to be tracked MAY choose to ignore
-   alternative service advertisements.
+   Clients concerned by the additional fingerprinting can choose to
+   ignore alternative service advertisements.
+
+   In a browser, any alternative service information MUST be removed
+   when origin-specific data is cleared (for instance, when cookies are
+   cleared).
+
+
 
 
 
@@ -785,10 +785,6 @@ Nottingham, et al.       Expires April 28, 2015                [Page 14]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
-
-   In a browser, any alternative service information MUST be removed
-   when origin-specific data is cleared (for instance, when cookies are
-   cleared).
 
 10.  Acknowledgements
 
@@ -835,16 +831,16 @@ Internet-Draft          HTTP Alternative Services           October 2014
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
               RFC 7234, June 2014.
 
+   [RFC7301]  Friedl, S., Popov, A., Langley, A., and S. Emile,
+              "Transport Layer Security (TLS) Application-Layer Protocol
+              Negotiation Extension", RFC 7301, July 2014.
+
 
 
 Nottingham, et al.       Expires April 28, 2015                [Page 15]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
-
-   [RFC7301]  Friedl, S., Popov, A., Langley, A., and S. Emile,
-              "Transport Layer Security (TLS) Application-Layer Protocol
-              Negotiation Extension", RFC 7301, July 2014.
 
 11.2.  Informative References
 
@@ -874,6 +870,10 @@ Internet-Draft          HTTP Alternative Services           October 2014
    [8] https://github.com/httpwg/http-extensions/issues/17
 
    [9] https://github.com/httpwg/http-extensions/issues/19
+
+   [10] https://github.com/httpwg/http-extensions/issues/34
+
+
 
 
 
@@ -940,7 +940,7 @@ A.5.  Since draft-ietf-httpbis-alt-svc-03
 
    Clarify ALTSVC Origin information requirements ([13]).
 
-Authors' Addresses
+   Remove/tune language with respect to tracking risks (see [14]).
 
 
 
@@ -953,6 +953,8 @@ Nottingham, et al.       Expires April 28, 2015                [Page 17]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
+
+Authors' Addresses
 
    Mark Nottingham
    Akamai
@@ -973,8 +975,6 @@ Internet-Draft          HTTP Alternative Services           October 2014
 
    EMail: julian.reschke@greenbytes.de
    URI:   https://greenbytes.de/tech/webdav/
-
-
 
 
 

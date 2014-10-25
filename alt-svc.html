@@ -1150,10 +1150,6 @@ Alt-Used: 1
                to update this document (and ought to introduce an extension registry).
             </p>
          </div>
-         <div id="rfc.section.5.p.6">
-            <p>To reduce the ability of servers to track individual clients over time (see <a href="#tracking" title="Tracking Clients Using Alternative Services">Section&nbsp;9.4</a>), an alternative service indication sent by a client <em class="bcp14">SHOULD NOT</em> include any alternative service information other than the protocol, host and port.
-            </p>
-         </div>
       </div>
       <div id="status">
          <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a>&nbsp;<a href="#status">The 421 Not Authoritative HTTP Status Code</a></h1>
@@ -1311,13 +1307,11 @@ Alt-Used: 1
          <div id="tracking">
             <h2 id="rfc.section.9.4"><a href="#rfc.section.9.4">9.4</a>&nbsp;<a href="#tracking">Tracking Clients Using Alternative Services</a></h2>
             <div id="rfc.section.9.4.p.1">
-               <p>The alternative service indicator (<a href="#indicator" title="The Alt-Used HTTP Header Field">Section&nbsp;5</a>) provided by clients provides a server the means of correlating requests. If the alternative service indicator includes a sufficiently
-                  unique identifier, requests made to an alternative service can be correlated with the original alternative service advertisement.
+               <p>The Alt-Used header field (<a href="#indicator" title="The Alt-Used HTTP Header Field">Section&nbsp;5</a>) provides a server with one additional bit of information that can be used to correlate requests.
                </p>
             </div>
             <div id="rfc.section.9.4.p.2">
-               <p>Clients that do not wish to be tracked <em class="bcp14">MAY</em> choose to ignore alternative service advertisements.
-               </p>
+               <p>Clients concerned by the additional fingerprinting can choose to ignore alternative service advertisements.</p>
             </div>
             <div id="rfc.section.9.4.p.3">
                <p>In a browser, any alternative service information <em class="bcp14">MUST</em> be removed when origin-specific data is cleared (for instance, when cookies are cleared).
@@ -1469,6 +1463,10 @@ Alt-Used: 1
             </div>
             <div id="rfc.section.A.5.p.2">
                <p>Clarify ALTSVC Origin information requirements (&lt;<a href="https://github.com/httpwg/http-extensions/issues/19">https://github.com/httpwg/http-extensions/issues/19</a>&gt;).
+               </p>
+            </div>
+            <div id="rfc.section.A.5.p.3">
+               <p>Remove/tune language with respect to tracking risks (see &lt;<a href="https://github.com/httpwg/http-extensions/issues/34">https://github.com/httpwg/http-extensions/issues/34</a>&gt;).
                </p>
             </div>
          </div>
