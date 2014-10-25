@@ -446,7 +446,7 @@ ul p {
        content: "Nottingham, et al.";
   }
   @bottom-center {
-       content: "Expires April 16, 2015";
+       content: "Expires April 28, 2015";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -565,7 +565,7 @@ ul.toc a:first-child {
       <meta name="dct.creator" content="McManus, P.">
       <meta name="dct.creator" content="Reschke, J. F.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-alt-svc-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2014-10-13">
+      <meta name="dct.issued" scheme="ISO8601" content="2014-10-25">
       <meta name="dct.abstract" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
       <meta name="description" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
    </head>
@@ -585,7 +585,7 @@ ul.toc a:first-child {
                <td class="right">P. McManus</td>
             </tr>
             <tr>
-               <td class="left">Expires: April 16, 2015</td>
+               <td class="left">Expires: April 28, 2015</td>
                <td class="right">Mozilla</td>
             </tr>
             <tr>
@@ -598,7 +598,7 @@ ul.toc a:first-child {
             </tr>
             <tr>
                <td class="left"></td>
-               <td class="right">October 13, 2014</td>
+               <td class="right">October 25, 2014</td>
             </tr>
          </tbody>
       </table>
@@ -624,7 +624,7 @@ ul.toc a:first-child {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on April 16, 2015.</p>
+         <p>This Internet-Draft will expire on April 28, 2015.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
@@ -703,15 +703,15 @@ ul.toc a:first-child {
             </p>
          </div>
          <div id="rfc.section.1.p.2">
-            <p>In some cases, it is desirable to separate these aspects; to be able to keep the same identifier for a resource, but interact
-               with it using a different location on the network.
+            <p>In some cases, it is desirable to separate identification and location in HTTP; keeping the same identifier for a resource,
+               but interacting with it at a different location on the network.
             </p>
          </div>
          <div id="rfc.section.1.p.3">
             <p>For example: </p>
             <ul>
-               <li>An origin server might wish to redirect a client to an alternative when it needs to go down for maintenance, or it has found
-                  an alternative in a location that is more local to the client.
+               <li>An origin server might wish to redirect a client to a different server when it needs to go down for maintenance, or it has
+                  found a server in a location that is more local to the client.
                </li>
                <li>An origin server might wish to offer access to its resources using a new protocol (such as HTTP/2, see <a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>) or one using improved security (such as Transport Layer Security (TLS), see <a href="#RFC5246"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite></a>).
                </li>
@@ -721,8 +721,8 @@ ul.toc a:first-child {
             </ul>
          </div>
          <div id="rfc.section.1.p.4">
-            <p>This specification defines a new concept in HTTP, "Alternative Services", that allows a resource to nominate additional means
-               of interacting with it on the network. It defines a general framework for this in <a href="#alternative" title="Alternative Services Concepts">Section&nbsp;2</a>, along with specific mechanisms for advertising their existence using HTTP header fields (<a href="#alt-svc" title="The Alt-Svc HTTP Header Field">Section&nbsp;3</a>) or an HTTP/2 frame type (<a href="#frame" title="The ALTSVC HTTP/2 Frame">Section&nbsp;4</a>).
+            <p>This specification defines a new concept in HTTP, "Alternative Services", that allows an origin server to nominate additional
+               means of interacting with it on the network. It defines a general framework for this in <a href="#alternative" title="Alternative Services Concepts">Section&nbsp;2</a>, along with specific mechanisms for advertising their existence using HTTP header fields (<a href="#alt-svc" title="The Alt-Svc HTTP Header Field">Section&nbsp;3</a>) or an HTTP/2 frame type (<a href="#frame" title="The ALTSVC HTTP/2 Frame">Section&nbsp;4</a>).
             </p>
          </div>
          <div id="rfc.section.1.p.5">
@@ -747,7 +747,7 @@ ul.toc a:first-child {
          <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a>&nbsp;<a href="#alternative">Alternative Services Concepts</a></h1>
          <div id="rfc.section.2.p.1">
             <p>This specification defines a new concept in HTTP, the "<dfn>alternative service</dfn>". When an origin (see <a href="#RFC6454"><cite title="The Web Origin Concept">[RFC6454]</cite></a>) has resources that are accessible through a different protocol / host / port combination, it is said to have an alternative
-               service.
+               service available.
             </p>
          </div>
          <div id="rfc.section.2.p.2">
@@ -782,13 +782,13 @@ ul.toc a:first-child {
             </p>
          </div>
          <div id="rfc.section.2.p.6">
-            <p>This means that clients using an alternative service will change the host, port and protocol that they are using to fetch
-               resources, but these changes <em class="bcp14">MUST NOT</em> be propagated to the application that is using HTTP; from that standpoint, the URI being accessed and all information derived
+            <p>This means that clients using an alternative service can change the host, port and protocol that they are using to fetch resources,
+               but these changes <em class="bcp14">MUST NOT</em> be propagated to the application that is using HTTP; from that standpoint, the URI being accessed and all information derived
                from it (scheme, host, port) are the same as before.
             </p>
          </div>
          <div id="rfc.section.2.p.7">
-            <p>Importantly, this includes its security context; in particular, when TLS <a href="#RFC5246"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite></a> is in use, the alternative server will need to present a certificate for the origin's host name, not that of the alternative.
+            <p>Importantly, this includes its security context; in particular, when TLS <a href="#RFC5246"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite></a> is in use, the alternative service will need to present a certificate for the origin's host name, not that of the alternative.
                Likewise, the Host header field (<a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#header.host" title="Host">Section 5.4</a>) is still derived from the origin, not the alternative service (just as it would if a CNAME were being used).
             </p>
          </div>
@@ -816,11 +816,14 @@ ul.toc a:first-child {
                two such mechanisms: an HTTP header field (<a href="#alt-svc" title="The Alt-Svc HTTP Header Field">Section&nbsp;3</a>) and an HTTP/2 frame type (<a href="#frame" title="The ALTSVC HTTP/2 Frame">Section&nbsp;4</a>).
             </p>
          </div>
+         <div id="rfc.section.2.p.12">
+            <p>The remainder of this section describes requirements that are common to alternative services, regardless of how they are discovered.</p>
+         </div>
          <div id="host_auth">
             <h2 id="rfc.section.2.1"><a href="#rfc.section.2.1">2.1</a>&nbsp;<a href="#host_auth">Host Authentication</a></h2>
             <div id="rfc.section.2.1.p.1">
-               <p>Clients <em class="bcp14">MUST NOT</em> use alternative services with a host other than the origin's without strong server authentication; this mitigates the attack
-                  described in <a href="#host_security" title="Changing Hosts">Section&nbsp;9.2</a>. One way to achieve this is for the alternative to use TLS with a certificate that is valid for that origin.
+               <p>Clients <em class="bcp14">MUST NOT</em> use alternative services with a host that is different than the origin's without strong server authentication; this mitigates
+                  the attack described in <a href="#host_security" title="Changing Hosts">Section&nbsp;9.2</a>. One way to achieve this is for the alternative to use TLS with a certificate that is valid for that origin.
                </p>
             </div>
             <div id="rfc.section.2.1.p.2">
@@ -830,16 +833,11 @@ ul.toc a:first-child {
                   strong server authentication.
                </p>
             </div>
-            <div id="rfc.section.2.1.p.3">
-               <p>Furthermore, this means that the HTTP Host header field and the SNI information provided in TLS by the client will be that
-                  of the origin, not the alternative.
-               </p>
-            </div>
          </div>
          <div id="caching">
             <h2 id="rfc.section.2.2"><a href="#rfc.section.2.2">2.2</a>&nbsp;<a href="#caching">Alternative Service Caching</a></h2>
             <div id="rfc.section.2.2.p.1">
-               <p>Mechanisms for discovering alternative services can associate a freshness lifetime with them; for example, the Alt-Svc header
+               <p>Mechanisms for discovering alternative services also associate a freshness lifetime with them; for example, the Alt-Svc header
                   field uses the "ma" parameter.
                </p>
             </div>
@@ -848,7 +846,7 @@ ul.toc a:first-child {
                </p>
             </div>
             <div id="rfc.section.2.2.p.3">
-               <p>Clients with existing connections to alternative services are not needed to fall back to the origin when its freshness lifetime
+               <p>Clients with existing connections to an alternative service are not required to stop using it when its freshness lifetime
                   ends; i.e., the caching mechanism is intended for limiting how long an alternative service can be used for establishing new
                   requests, not limiting the use of existing ones.
                </p>
@@ -864,6 +862,11 @@ ul.toc a:first-child {
             <div id="rfc.section.2.3.p.1">
                <p>A client <em class="bcp14">MUST</em> only use a TLS-based alternative service if the client also supports TLS Server Name Indication (SNI). This supports the conservation
                   of IP addresses on the alternative service host.
+               </p>
+            </div>
+            <div id="rfc.section.2.3.p.2">
+               <p>Note that the SNI information provided in TLS by the client will be that of the origin, not the alternative (as will the Host
+                  HTTP header field-value).
                </p>
             </div>
          </div>
@@ -890,14 +893,14 @@ ul.toc a:first-child {
                </p>
             </div>
             <div id="rfc.section.2.4.p.5">
-               <p>The client does not need to block requests; the origin's connection can be used until the alternative connection is established.
-                  However, if the security properties of the existing connection are weak (e.g. cleartext HTTP/1.1) then it might make sense
-                  to block until the new connection is fully available in order to avoid information leakage.
+               <p>The client does not need to block requests on any existing connection; it can be used until the alternative connection is
+                  established. However, if the security properties of the existing connection are weak (e.g. cleartext HTTP/1.1) then it might
+                  make sense to block until the new connection is fully available in order to avoid information leakage.
                </p>
             </div>
             <div id="rfc.section.2.4.p.6">
-               <p>Furthermore, if the connection to the alternative service fails or is unresponsive, the client <em class="bcp14">MAY</em> fall back to using the origin. Note, however, that this could be the basis of a downgrade attack, thus losing any enhanced
-                  security properties of the alternative service.
+               <p>Furthermore, if the connection to the alternative service fails or is unresponsive, the client <em class="bcp14">MAY</em> fall back to using the origin or another alternative service. Note, however, that this could be the basis of a downgrade attack,
+                  thus losing any enhanced security properties of the alternative service.
                </p>
             </div>
          </div>
@@ -979,7 +982,7 @@ alt-authority = quoted-string ; containing [ uri-host ] ":" port
             </p>
          </div>
          <div id="rfc.figure.u.6">
-            <p>It can, however, have multiple values:</p><pre class="text">Alt-Svc: h2c=":8000", h2=":443"
+            <p>The Alt-Svc field value can have multiple values:</p><pre class="text">Alt-Svc: h2c=":8000", h2=":443"
 </pre></div>
          <div id="rfc.section.3.p.7">
             <p>The value(s) advertised by Alt-Svc can be used by clients to open a new connection to one or more alternative services immediately,
@@ -987,14 +990,10 @@ alt-authority = quoted-string ; containing [ uri-host ] ":" port
             </p>
          </div>
          <div id="rfc.section.3.p.8">
-            <p>To reduce the ability of servers to track individual clients over time (see <a href="#tracking" title="Tracking Clients Using Alternative Services">Section&nbsp;9.4</a>), an alternative service indication sent by a client <em class="bcp14">SHOULD NOT</em> include any alternative service information other than the protocol, host and port.
-            </p>
-         </div>
-         <div id="rfc.section.3.p.9">
             <p>When using HTTP/2 (<a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>), servers <em class="bcp14">SHOULD</em> instead send an ALTSVC frame (<a href="#frame" title="The ALTSVC HTTP/2 Frame">Section&nbsp;4</a>). A single ALTSVC frame can be sent for a connection; a new frame is not needed for every request.
             </p>
          </div>
-         <div id="rfc.section.3.p.10">
+         <div id="rfc.section.3.p.9">
             <p>Note that all field elements that allow "quoted-string" syntax <em class="bcp14">MUST</em> be processed as per <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#field.components" title="Field Value Components">Section 3.2.6</a> of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>.
             </p>
          </div>
@@ -1028,16 +1027,16 @@ Alt-Svc: h2c=":8000"; ma=60
                </p>
             </div>
             <div id="rfc.section.3.1.p.4">
+               <p>Note that the freshness lifetime for HTTP caching (here, 600 seconds) does not affect caching of Alt-Svc values.</p>
+            </div>
+            <div id="rfc.section.3.1.p.5">
                <p>When an Alt-Svc response header field is received from an origin, its value invalidates and replaces all cached alternative
                   services for that origin.
                </p>
             </div>
-            <div id="rfc.section.3.1.p.5">
+            <div id="rfc.section.3.1.p.6">
                <p>See <a href="#caching" title="Alternative Service Caching">Section&nbsp;2.2</a> for general requirements on caching alternative services.
                </p>
-            </div>
-            <div id="rfc.section.3.1.p.6">
-               <p>Note that the freshness lifetime for HTTP caching (here, 600 seconds) does not affect caching of Alt-Svc values.</p>
             </div>
          </div>
       </div>
@@ -1051,13 +1050,14 @@ Alt-Svc: h2c=":8000"; ma=60
             <p>The ALTSVC frame is a non-critical extension to HTTP/2. Endpoints that do not support this frame can safely ignore it.</p>
          </div>
          <div id="rfc.section.4.p.3">
-            <p>An ALTSVC frame on a client-initiated stream indicates that the conveyed alternative service is associated with the origin
-               of that stream.
+            <p>An ALTSVC frame on from a server to a client on a client-initiated stream indicates that the conveyed alternative service
+               is associated with the origin of that stream.
             </p>
          </div>
          <div id="rfc.section.4.p.4">
-            <p>An ALTSVC frame on stream 0 indicates that the conveyed alternative service is associated with the origin contained in the
-               Origin field of the frame. An association with an origin that the client does not consider authoritative for the current connection <em class="bcp14">MUST</em> be ignored.
+            <p>An ALTSVC frame from a server to a client on stream 0 indicates that the conveyed alternative service is associated with the
+               origin contained in the Origin field of the frame. An association with an origin that the client does not consider authoritative
+               for the current connection <em class="bcp14">MUST</em> be ignored.
             </p>
          </div>
          <div id="rfc.section.4.p.5">
@@ -1144,6 +1144,10 @@ Alt-Svc-Used: 1
          <div id="rfc.section.5.p.5">
             <p>The extension parameters (ext-param) are reserved for future use; specifications that want to define an extension will need
                to update this document (and ought to introduce an extension registry).
+            </p>
+         </div>
+         <div id="rfc.section.5.p.6">
+            <p>To reduce the ability of servers to track individual clients over time (see <a href="#tracking" title="Tracking Clients Using Alternative Services">Section&nbsp;9.4</a>), an alternative service indication sent by a client <em class="bcp14">SHOULD NOT</em> include any alternative service information other than the protocol, host and port.
             </p>
          </div>
       </div>
@@ -1261,7 +1265,7 @@ Alt-Svc-Used: 1
             <div id="rfc.section.9.2.p.2">
                <p>For example, if an attacker can convince a user agent to send all traffic for "innocent.example.org" to "evil.example.com"
                   by successfully associating it as an alternative service, they can masquerade as that origin. This can be done locally (see
-                  mitigations above) or remotely (e.g., by an intermediary as a man-in-the-middle attack).
+                  mitigations in <a href="#changing-ports" title="Changing Ports">Section&nbsp;9.1</a>) or remotely (e.g., by an intermediary as a man-in-the-middle attack).
                </p>
             </div>
             <div id="rfc.section.9.2.p.3">
