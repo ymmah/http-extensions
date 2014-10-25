@@ -85,7 +85,7 @@ Table of Contents
    3.  The Alt-Svc HTTP Header Field . . . . . . . . . . . . . . . .   7
      3.1.  Caching Alt-Svc Header Field Values . . . . . . . . . . .   9
    4.  The ALTSVC HTTP/2 Frame . . . . . . . . . . . . . . . . . . .   9
-   5.  The Alt-Svc-Used HTTP Header Field  . . . . . . . . . . . . .  11
+   5.  The Alt-Used HTTP Header Field  . . . . . . . . . . . . . . .  11
    6.  The 421 Not Authoritative HTTP Status Code  . . . . . . . . .  12
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  12
      7.1.  Header Field Registrations  . . . . . . . . . . . . . . .  12
@@ -342,8 +342,8 @@ Internet-Draft          HTTP Alternative Services           October 2014
    for multiple versions of HTTP; or, an alternative service might
    itself advertise an alternative.
 
-   When a client uses an alternate service, it MUST emit the Alt-Svc-
-   Used header field (Section 5) on every request using that alternate
+   When a client uses an alternate service, it MUST emit the Alt-Used
+   header field (Section 5) on every request using that alternate
    service.
 
    The client does not need to block requests on any existing
@@ -583,22 +583,22 @@ Internet-Draft          HTTP Alternative Services           October 2014
    ALTSVC frames in forming new ALTSVC frames to send to its own
    clients.
 
-5.  The Alt-Svc-Used HTTP Header Field
+5.  The Alt-Used HTTP Header Field
 
-   The Alt-Svc-Used HTTP header field is used in requests to indicate
-   that an alternate service is in use.
+   The Alt-Used header field is used in requests to indicate that an
+   alternate service is in use.
 
-   Alt-Svc-Used     = use-flag *( OWS ";" OWS ext-param )
-   use-flag         = "1" / "0"
-   ext-param        = token "=" ( token / quoted-string )
+   Alt-Used     = use-flag *( OWS ";" OWS ext-param )
+   use-flag     = "1" / "0"
+   ext-param    = token "=" ( token / quoted-string )
 
-   Alt-Svc-Used is intended to allow alternate services to avoid sending
+   Alt-Used is intended to allow alternate services to avoid sending
    alternative service indications where there is a risk of generating a
    loops.  It also allows a service to identify requests for accounting
    and load balancing purposes.
 
-   When using an alternative service, clients MUST include a Alt-Svc-
-   Used header field in all requests.
+   When using an alternative service, clients MUST include a Alt-Used
+   header field in all requests.
 
    A flag value of "1" indicates that an alternate service was used,
    while "0" means it was not.
@@ -607,7 +607,7 @@ Internet-Draft          HTTP Alternative Services           October 2014
 
      GET /thing HTTP/1.1
      Host: origin.example.com
-     Alt-Svc-Used: 1
+     Alt-Used: 1
 
 
 
@@ -658,7 +658,7 @@ Internet-Draft          HTTP Alternative Services           October 2014
    | Header Field Name | Protocol | Status   | Reference  |
    +-------------------+----------+----------+------------+
    | Alt-Svc           | http     | standard | Section 3  |
-   | Alt-Svc-Used      | http     | standard | Section 5  |
+   | Alt-Used          | http     | standard | Section 5  |
    +-------------------+----------+----------+------------+
 
    The change controller is: "IETF (iesg@ietf.org) - Internet
@@ -867,7 +867,7 @@ Internet-Draft          HTTP Alternative Services           October 2014
 
    [7] https://github.com/httpwg/http-extensions/issues/2
 
-
+   [8] https://github.com/httpwg/http-extensions/issues/17
 
 
 
@@ -936,7 +936,7 @@ A.4.  Since draft-ietf-httpbis-alt-svc-02
 
 A.5.  Since draft-ietf-httpbis-alt-svc-03
 
-   None yet.
+   Renamed "Alt-Svc-Used" to "Alt-Used" ([12]).
 
 Authors' Addresses
 

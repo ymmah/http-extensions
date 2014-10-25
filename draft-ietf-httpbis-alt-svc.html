@@ -550,7 +550,7 @@ ul.toc a:first-child {
       <link rel="Chapter" title="2 Alternative Services Concepts" href="#rfc.section.2">
       <link rel="Chapter" title="3 The Alt-Svc HTTP Header Field" href="#rfc.section.3">
       <link rel="Chapter" title="4 The ALTSVC HTTP/2 Frame" href="#rfc.section.4">
-      <link rel="Chapter" title="5 The Alt-Svc-Used HTTP Header Field" href="#rfc.section.5">
+      <link rel="Chapter" title="5 The Alt-Used HTTP Header Field" href="#rfc.section.5">
       <link rel="Chapter" title="6 The 421 Not Authoritative HTTP Status Code" href="#rfc.section.6">
       <link rel="Chapter" title="7 IANA Considerations" href="#rfc.section.7">
       <link rel="Chapter" title="8 Internationalization Considerations" href="#rfc.section.8">
@@ -655,7 +655,7 @@ ul.toc a:first-child {
                </ul>
             </li>
             <li><a href="#rfc.section.4">4.</a>&nbsp;&nbsp;&nbsp;<a href="#frame">The ALTSVC HTTP/2 Frame</a></li>
-            <li><a href="#rfc.section.5">5.</a>&nbsp;&nbsp;&nbsp;<a href="#indicator">The Alt-Svc-Used HTTP Header Field</a></li>
+            <li><a href="#rfc.section.5">5.</a>&nbsp;&nbsp;&nbsp;<a href="#indicator">The Alt-Used HTTP Header Field</a></li>
             <li><a href="#rfc.section.6">6.</a>&nbsp;&nbsp;&nbsp;<a href="#status">The 421 Not Authoritative HTTP Status Code</a></li>
             <li><a href="#rfc.section.7">7.</a>&nbsp;&nbsp;&nbsp;<a href="#iana-considerations">IANA Considerations</a><ul>
                   <li><a href="#rfc.section.7.1">7.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.7.1">Header Field Registrations</a></li>
@@ -889,7 +889,7 @@ ul.toc a:first-child {
                </p>
             </div>
             <div id="rfc.section.2.4.p.4">
-               <p>When a client uses an alternate service, it <em class="bcp14">MUST</em> emit the Alt-Svc-Used header field (<a href="#indicator" title="The Alt-Svc-Used HTTP Header Field">Section&nbsp;5</a>) on every request using that alternate service.
+               <p>When a client uses an alternate service, it <em class="bcp14">MUST</em> emit the Alt-Used header field (<a href="#indicator" title="The Alt-Used HTTP Header Field">Section&nbsp;5</a>) on every request using that alternate service.
                </p>
             </div>
             <div id="rfc.section.2.4.p.5">
@@ -1116,21 +1116,21 @@ Alt-Svc: h2c=":8000"; ma=60
          </div>
       </div>
       <div id="indicator">
-         <h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a>&nbsp;<a href="#indicator">The Alt-Svc-Used HTTP Header Field</a></h1>
+         <h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a>&nbsp;<a href="#indicator">The Alt-Used HTTP Header Field</a></h1>
          <div id="rfc.section.5.p.1">
-            <p>The Alt-Svc-Used HTTP header field is used in requests to indicate that an alternate service is in use.</p>
+            <p>The Alt-Used header field is used in requests to indicate that an alternate service is in use.</p>
          </div>
-         <div id="rfc.figure.u.11"><pre class="inline">Alt-Svc-Used     = use-flag *( OWS ";" OWS ext-param )
-use-flag         = "1" / "0"
-ext-param        = token "=" ( token / quoted-string )
+         <div id="rfc.figure.u.11"><pre class="inline">Alt-Used     = use-flag *( OWS ";" OWS ext-param )
+use-flag     = "1" / "0"
+ext-param    = token "=" ( token / quoted-string )
 </pre></div>
          <div id="rfc.section.5.p.2">
-            <p>Alt-Svc-Used is intended to allow alternate services to avoid sending alternative service indications where there is a risk
-               of generating a loops. It also allows a service to identify requests for accounting and load balancing purposes.
+            <p>Alt-Used is intended to allow alternate services to avoid sending alternative service indications where there is a risk of
+               generating a loops. It also allows a service to identify requests for accounting and load balancing purposes.
             </p>
          </div>
          <div id="rfc.section.5.p.3">
-            <p>When using an alternative service, clients <em class="bcp14">MUST</em> include a Alt-Svc-Used header field in all requests.
+            <p>When using an alternative service, clients <em class="bcp14">MUST</em> include a Alt-Used header field in all requests.
             </p>
          </div>
          <div id="rfc.section.5.p.4">
@@ -1139,7 +1139,7 @@ ext-param        = token "=" ( token / quoted-string )
          <div id="rfc.figure.u.12">
             <p>For example:</p><pre class="text2">GET /thing HTTP/1.1
 Host: origin.example.com
-Alt-Svc-Used: 1
+Alt-Used: 1
 </pre></div>
          <div id="rfc.section.5.p.5">
             <p>The extension parameters (ext-param) are reserved for future use; specifications that want to define an extension will need
@@ -1201,10 +1201,10 @@ Alt-Svc-Used: 1
                         </td>
                      </tr>
                      <tr>
-                        <td class="left">Alt-Svc-Used</td>
+                        <td class="left">Alt-Used</td>
                         <td class="left">http</td>
                         <td class="left">standard</td>
-                        <td class="left"><a href="#indicator" title="The Alt-Svc-Used HTTP Header Field">Section&nbsp;5</a> 
+                        <td class="left"><a href="#indicator" title="The Alt-Used HTTP Header Field">Section&nbsp;5</a> 
                         </td>
                      </tr>
                   </tbody>
@@ -1307,7 +1307,7 @@ Alt-Svc-Used: 1
          <div id="tracking">
             <h2 id="rfc.section.9.4"><a href="#rfc.section.9.4">9.4</a>&nbsp;<a href="#tracking">Tracking Clients Using Alternative Services</a></h2>
             <div id="rfc.section.9.4.p.1">
-               <p>The alternative service indicator (<a href="#indicator" title="The Alt-Svc-Used HTTP Header Field">Section&nbsp;5</a>) provided by clients provides a server the means of correlating requests. If the alternative service indicator includes a sufficiently
+               <p>The alternative service indicator (<a href="#indicator" title="The Alt-Used HTTP Header Field">Section&nbsp;5</a>) provided by clients provides a server the means of correlating requests. If the alternative service indicator includes a sufficiently
                   unique identifier, requests made to an alternative service can be correlated with the original alternative service advertisement.
                </p>
             </div>
@@ -1460,7 +1460,8 @@ Alt-Svc-Used: 1
          <div id="changes.since.draft-ietf-httpbis-alt-svc-03">
             <h2 id="rfc.section.A.5"><a href="#rfc.section.A.5">A.5</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-03">Since draft-ietf-httpbis-alt-svc-03</a></h2>
             <div id="rfc.section.A.5.p.1">
-               <p>None yet.</p>
+               <p>Renamed "Alt-Svc-Used" to "Alt-Used" (&lt;<a href="https://github.com/httpwg/http-extensions/issues/17">https://github.com/httpwg/http-extensions/issues/17</a>&gt;).
+               </p>
             </div>
          </div>
       </div>
