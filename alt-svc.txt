@@ -5,10 +5,10 @@
 HTTPbis Working Group                                      M. Nottingham
 Internet-Draft                                                    Akamai
 Intended status: Standards Track                              P. McManus
-Expires: April 30, 2015                                          Mozilla
+Expires: May 1, 2015                                             Mozilla
                                                               J. Reschke
                                                               greenbytes
-                                                        October 27, 2014
+                                                        October 28, 2014
 
 
                        HTTP Alternative Services
@@ -46,14 +46,14 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 30, 2015.
+   This Internet-Draft will expire on May 1, 2015.
 
 
 
 
 
 
-Nottingham, et al.       Expires April 30, 2015                 [Page 1]
+Nottingham, et al.         Expires May 1, 2015                  [Page 1]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Nottingham, et al.       Expires April 30, 2015                 [Page 2]
+Nottingham, et al.         Expires May 1, 2015                  [Page 2]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
@@ -165,7 +165,7 @@ Internet-Draft          HTTP Alternative Services           October 2014
 
 
 
-Nottingham, et al.       Expires April 30, 2015                 [Page 3]
+Nottingham, et al.         Expires May 1, 2015                  [Page 3]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
@@ -221,7 +221,7 @@ Internet-Draft          HTTP Alternative Services           October 2014
 
 
 
-Nottingham, et al.       Expires April 30, 2015                 [Page 4]
+Nottingham, et al.         Expires May 1, 2015                  [Page 4]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
@@ -277,7 +277,7 @@ Internet-Draft          HTTP Alternative Services           October 2014
 
 
 
-Nottingham, et al.       Expires April 30, 2015                 [Page 5]
+Nottingham, et al.         Expires May 1, 2015                  [Page 5]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
@@ -333,7 +333,7 @@ Internet-Draft          HTTP Alternative Services           October 2014
 
 
 
-Nottingham, et al.       Expires April 30, 2015                 [Page 6]
+Nottingham, et al.         Expires May 1, 2015                  [Page 6]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
@@ -389,7 +389,7 @@ Internet-Draft          HTTP Alternative Services           October 2014
 
 
 
-Nottingham, et al.       Expires April 30, 2015                 [Page 7]
+Nottingham, et al.         Expires May 1, 2015                  [Page 7]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
@@ -445,7 +445,7 @@ Internet-Draft          HTTP Alternative Services           October 2014
 
 
 
-Nottingham, et al.       Expires April 30, 2015                 [Page 8]
+Nottingham, et al.         Expires May 1, 2015                  [Page 8]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
@@ -501,7 +501,7 @@ Internet-Draft          HTTP Alternative Services           October 2014
 
 
 
-Nottingham, et al.       Expires April 30, 2015                 [Page 9]
+Nottingham, et al.         Expires May 1, 2015                  [Page 9]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
@@ -557,7 +557,7 @@ Internet-Draft          HTTP Alternative Services           October 2014
 
 
 
-Nottingham, et al.       Expires April 30, 2015                [Page 10]
+Nottingham, et al.         Expires May 1, 2015                 [Page 10]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
@@ -613,7 +613,7 @@ Internet-Draft          HTTP Alternative Services           October 2014
 
 
 
-Nottingham, et al.       Expires April 30, 2015                [Page 11]
+Nottingham, et al.         Expires May 1, 2015                 [Page 11]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
@@ -631,7 +631,7 @@ Internet-Draft          HTTP Alternative Services           October 2014
 6.  The 421 Not Authoritative HTTP Status Code
 
    The 421 (Not Authoritative) status code is defined in [HTTP2],
-   Section 9.1.2 to indicate that the current server instance is not
+   Appendix to indicate that the current server instance is not
    authoritative for the requested resource.  This can be used to
    indicate that an alternative service is not authoritative; see
    Section 2).
@@ -669,7 +669,7 @@ Internet-Draft          HTTP Alternative Services           October 2014
 
 
 
-Nottingham, et al.       Expires April 30, 2015                [Page 12]
+Nottingham, et al.         Expires May 1, 2015                 [Page 12]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
@@ -725,7 +725,7 @@ Internet-Draft          HTTP Alternative Services           October 2014
 
 
 
-Nottingham, et al.       Expires April 30, 2015                [Page 13]
+Nottingham, et al.         Expires May 1, 2015                 [Page 13]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
@@ -781,7 +781,7 @@ Internet-Draft          HTTP Alternative Services           October 2014
 
 
 
-Nottingham, et al.       Expires April 30, 2015                [Page 14]
+Nottingham, et al.         Expires May 1, 2015                 [Page 14]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
@@ -800,8 +800,8 @@ Internet-Draft          HTTP Alternative Services           October 2014
 11.1.  Normative References
 
    [HTTP2]    Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
-              Transfer Protocol version 2", draft-ietf-httpbis-http2-14
-              (work in progress), July 2014.
+              Transfer Protocol version 2", draft-ietf-httpbis-http2-15
+              (work in progress), October 2014.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119, March 1997.
@@ -837,7 +837,7 @@ Internet-Draft          HTTP Alternative Services           October 2014
 
 
 
-Nottingham, et al.       Expires April 30, 2015                [Page 15]
+Nottingham, et al.         Expires May 1, 2015                 [Page 15]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
@@ -893,7 +893,7 @@ Internet-Draft          HTTP Alternative Services           October 2014
 
 
 
-Nottingham, et al.       Expires April 30, 2015                [Page 16]
+Nottingham, et al.         Expires May 1, 2015                 [Page 16]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
@@ -949,7 +949,7 @@ A.5.  Since draft-ietf-httpbis-alt-svc-03
 
 
 
-Nottingham, et al.       Expires April 30, 2015                [Page 17]
+Nottingham, et al.         Expires May 1, 2015                 [Page 17]
 
 Internet-Draft          HTTP Alternative Services           October 2014
 
@@ -1005,4 +1005,4 @@ Authors' Addresses
 
 
 
-Nottingham, et al.       Expires April 30, 2015                [Page 18]
+Nottingham, et al.         Expires May 1, 2015                 [Page 18]

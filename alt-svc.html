@@ -446,7 +446,7 @@ ul p {
        content: "Nottingham, et al.";
   }
   @bottom-center {
-       content: "Expires April 30, 2015";
+       content: "Expires May 1, 2015";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -565,7 +565,7 @@ ul.toc a:first-child {
       <meta name="dct.creator" content="McManus, P.">
       <meta name="dct.creator" content="Reschke, J. F.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-alt-svc-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2014-10-27">
+      <meta name="dct.issued" scheme="ISO8601" content="2014-10-28">
       <meta name="dct.abstract" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
       <meta name="description" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
    </head>
@@ -585,7 +585,7 @@ ul.toc a:first-child {
                <td class="right">P. McManus</td>
             </tr>
             <tr>
-               <td class="left">Expires: April 30, 2015</td>
+               <td class="left">Expires: May 1, 2015</td>
                <td class="right">Mozilla</td>
             </tr>
             <tr>
@@ -598,7 +598,7 @@ ul.toc a:first-child {
             </tr>
             <tr>
                <td class="left"></td>
-               <td class="right">October 27, 2014</td>
+               <td class="right">October 28, 2014</td>
             </tr>
          </tbody>
       </table>
@@ -624,7 +624,7 @@ ul.toc a:first-child {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on April 30, 2015.</p>
+         <p>This Internet-Draft will expire on May 1, 2015.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
@@ -1043,7 +1043,7 @@ Alt-Svc: h2c=":8000"; ma=60
       <div id="frame">
          <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a>&nbsp;<a href="#frame">The ALTSVC HTTP/2 Frame</a></h1>
          <div id="rfc.section.4.p.1">
-            <p>The ALTSVC HTTP/2 frame (<a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>, <a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-14#section-4" title="HTTP Frames">Section 4</a>) advertises the availability of an alternative service to an HTTP/2 client.
+            <p>The ALTSVC HTTP/2 frame (<a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>, <a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-15#section-4" title="HTTP Frames">Section 4</a>) advertises the availability of an alternative service to an HTTP/2 client.
             </p>
          </div>
          <div id="rfc.section.4.p.2">
@@ -1154,7 +1154,7 @@ Alt-Used: 1
       <div id="status">
          <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a>&nbsp;<a href="#status">The 421 Not Authoritative HTTP Status Code</a></h1>
          <div id="rfc.section.6.p.1">
-            <p>The 421 (Not Authoritative) status code is defined in <a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>, <a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-14#section-9.1.2" title="The 421 (Not Authoritative) Status Code">Section 9.1.2</a> to indicate that the current server instance is not authoritative for the requested resource. This can be used to indicate
+            <p>The 421 (Not Authoritative) status code is defined in <a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>, <a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-15#section-ERROR: Anchor 'NotAuthoritative' in HTTP2 not found in source file 'refs/draft-ietf-httpbis-http2-15.xml'." title="ERROR: Anchor 'NotAuthoritative' not found in refs/draft-ietf-httpbis-http2-15.xml.">Appendix ERROR: Anchor 'NotAuthoritative' in HTTP2 not found in source file 'refs/draft-ietf-httpbis-http2-15.xml'.</a> to indicate that the current server instance is not authoritative for the requested resource. This can be used to indicate
                that an alternative service is not authoritative; see <a href="#alternative" title="Alternative Services Concepts">Section&nbsp;2</a>).
             </p>
          </div>
@@ -1217,7 +1217,7 @@ Alt-Used: 1
          <div id="alt-svc-frame-registration">
             <h2 id="rfc.section.7.2"><a href="#rfc.section.7.2">7.2</a>&nbsp;<a href="#alt-svc-frame-registration">The ALTSVC HTTP/2 Frame Type</a></h2>
             <div id="rfc.section.7.2.p.1">
-               <p>This document registers the ALTSVC frame type in the HTTP/2 Frame Types registry (<a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>, <a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-14#section-11.2" title="Frame Type Registry">Section 11.2</a>). 
+               <p>This document registers the ALTSVC frame type in the HTTP/2 Frame Types registry (<a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>, <a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-15#section-11.2" title="Frame Type Registry">Section 11.2</a>). 
                </p>
                <ul class="empty">
                   <li>Frame Type: ALTSVC</li>
@@ -1337,7 +1337,7 @@ Alt-Used: 1
       <table>
          <tr>
             <td class="reference"><b id="HTTP2">[HTTP2]</b></td>
-            <td class="top">Belshe, M., Peon, R., and M. Thomson, Ed., “<a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-14">Hypertext Transfer Protocol version 2</a>”, Internet-Draft&nbsp;draft-ietf-httpbis-http2-14 (work in progress), July&nbsp;2014.
+            <td class="top">Belshe, M., Peon, R., and M. Thomson, Ed., “<a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-15">Hypertext Transfer Protocol version 2</a>”, Internet-Draft&nbsp;draft-ietf-httpbis-http2-15 (work in progress), October&nbsp;2014.
             </td>
          </tr>
          <tr>
