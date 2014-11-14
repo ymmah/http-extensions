@@ -551,7 +551,7 @@ ul.toc a:first-child {
       <link rel="Chapter" title="3 The Alt-Svc HTTP Header Field" href="#rfc.section.3">
       <link rel="Chapter" title="4 The ALTSVC HTTP/2 Frame" href="#rfc.section.4">
       <link rel="Chapter" title="5 The Alt-Used HTTP Header Field" href="#rfc.section.5">
-      <link rel="Chapter" title="6 The 421 Not Authoritative HTTP Status Code" href="#rfc.section.6">
+      <link rel="Chapter" title="6 The 421 Misdirected Request HTTP Status Code" href="#rfc.section.6">
       <link rel="Chapter" title="7 IANA Considerations" href="#rfc.section.7">
       <link rel="Chapter" title="8 Internationalization Considerations" href="#rfc.section.8">
       <link rel="Chapter" title="9 Security Considerations" href="#rfc.section.9">
@@ -656,7 +656,7 @@ ul.toc a:first-child {
             </li>
             <li><a href="#rfc.section.4">4.</a>&nbsp;&nbsp;&nbsp;<a href="#frame">The ALTSVC HTTP/2 Frame</a></li>
             <li><a href="#rfc.section.5">5.</a>&nbsp;&nbsp;&nbsp;<a href="#indicator">The Alt-Used HTTP Header Field</a></li>
-            <li><a href="#rfc.section.6">6.</a>&nbsp;&nbsp;&nbsp;<a href="#status">The 421 Not Authoritative HTTP Status Code</a></li>
+            <li><a href="#rfc.section.6">6.</a>&nbsp;&nbsp;&nbsp;<a href="#status">The 421 Misdirected Request HTTP Status Code</a></li>
             <li><a href="#rfc.section.7">7.</a>&nbsp;&nbsp;&nbsp;<a href="#iana-considerations">IANA Considerations</a><ul>
                   <li><a href="#rfc.section.7.1">7.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.7.1">Header Field Registrations</a></li>
                   <li><a href="#rfc.section.7.2">7.2</a>&nbsp;&nbsp;&nbsp;<a href="#alt-svc-frame-registration">The ALTSVC HTTP/2 Frame Type</a></li>
@@ -727,7 +727,7 @@ ul.toc a:first-child {
             </p>
          </div>
          <div id="rfc.section.1.p.5">
-            <p>It also introduces a new status code in <a href="#status" title="The 421 Not Authoritative HTTP Status Code">Section&nbsp;6</a>, so that origin servers (or their nominated alternatives) can indicate that they are not authoritative for a given origin,
+            <p>It also introduces a new status code in <a href="#status" title="The 421 Misdirected Request HTTP Status Code">Section&nbsp;6</a>, so that origin servers (or their nominated alternatives) can indicate that they are not authoritative for a given origin,
                in cases where the wrong location is used.
             </p>
          </div>
@@ -1153,18 +1153,18 @@ Alt-Used: 1
          </div>
       </div>
       <div id="status">
-         <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a>&nbsp;<a href="#status">The 421 Not Authoritative HTTP Status Code</a></h1>
+         <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a>&nbsp;<a href="#status">The 421 Misdirected Request HTTP Status Code</a></h1>
          <div id="rfc.section.6.p.1">
-            <p>The 421 (Not Authoritative) status code is defined in <a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>, <a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-15#section-ERROR: Anchor 'NotAuthoritative' in HTTP2 not found in source file 'refs/draft-ietf-httpbis-http2-15.xml'." title="ERROR: Anchor 'NotAuthoritative' not found in refs/draft-ietf-httpbis-http2-15.xml.">Appendix ERROR: Anchor 'NotAuthoritative' in HTTP2 not found in source file 'refs/draft-ietf-httpbis-http2-15.xml'.</a> to indicate that the current server instance is not authoritative for the requested resource. This can be used to indicate
+            <p>The 421 (Misdirected Request) status code is defined in <a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-15#section-9.1.2" title="The 421 (Misdirected Request) Status Code">Section 9.1.2</a> of <a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a> to indicate that the current server instance is not authoritative for the requested resource. This can be used to indicate
                that an alternative service is not authoritative; see <a href="#alternative" title="Alternative Services Concepts">Section&nbsp;2</a>).
             </p>
          </div>
          <div id="rfc.section.6.p.2">
-            <p>Clients receiving 421 (Not Authoritative) from an alternative service <em class="bcp14">MUST</em> remove the corresponding entry from its alternative service cache (see <a href="#caching" title="Alternative Service Caching">Section&nbsp;2.2</a>) for that origin. Regardless of the idempotency of the request method, they <em class="bcp14">MAY</em> retry the request, either at another alternative server, or at the origin.
+            <p>Clients receiving 421 (Misdirected Request) from an alternative service <em class="bcp14">MUST</em> remove the corresponding entry from its alternative service cache (see <a href="#caching" title="Alternative Service Caching">Section&nbsp;2.2</a>) for that origin. Regardless of the idempotency of the request method, they <em class="bcp14">MAY</em> retry the request, either at another alternative server, or at the origin.
             </p>
          </div>
          <div id="rfc.section.6.p.3">
-            <p>A 421 (Not Authoritative) response <em class="bcp14">MAY</em> carry an Alt-Svc header field.
+            <p>A 421 (Misdirected Request) response <em class="bcp14">MAY</em> carry an Alt-Svc header field.
             </p>
          </div>
       </div>
@@ -1477,6 +1477,9 @@ Alt-Used: 1
             <div id="rfc.section.A.6.p.1">
                <p>Mention tracking by alt-svc host name in Security Considerations (&lt;<a href="https://github.com/httpwg/http-extensions/issues/36">https://github.com/httpwg/http-extensions/issues/36</a>&gt;).
                </p>
+            </div>
+            <div id="rfc.section.A.6.p.2">
+               <p>"421 (Not Authoritative)" -&gt; "421 (Misdirected Request)".</p>
             </div>
          </div>
       </div>

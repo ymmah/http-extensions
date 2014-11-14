@@ -86,7 +86,7 @@ Table of Contents
      3.1.  Caching Alt-Svc Header Field Values . . . . . . . . . . .   9
    4.  The ALTSVC HTTP/2 Frame . . . . . . . . . . . . . . . . . . .   9
    5.  The Alt-Used HTTP Header Field  . . . . . . . . . . . . . . .  11
-   6.  The 421 Not Authoritative HTTP Status Code  . . . . . . . . .  12
+   6.  The 421 Misdirected Request HTTP Status Code  . . . . . . . .  12
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  12
      7.1.  Header Field Registrations  . . . . . . . . . . . . . . .  12
      7.2.  The ALTSVC HTTP/2 Frame Type  . . . . . . . . . . . . . .  13
@@ -628,21 +628,22 @@ Internet-Draft          HTTP Alternative Services          November 2014
    specifications that want to define an extension will need to update
    this document (and ought to introduce an extension registry).
 
-6.  The 421 Not Authoritative HTTP Status Code
+6.  The 421 Misdirected Request HTTP Status Code
 
-   The 421 (Not Authoritative) status code is defined in [HTTP2],
-   Appendix to indicate that the current server instance is not
+   The 421 (Misdirected Request) status code is defined in Section 9.1.2
+   of [HTTP2] to indicate that the current server instance is not
    authoritative for the requested resource.  This can be used to
    indicate that an alternative service is not authoritative; see
    Section 2).
 
-   Clients receiving 421 (Not Authoritative) from an alternative service
-   MUST remove the corresponding entry from its alternative service
-   cache (see Section 2.2) for that origin.  Regardless of the
+   Clients receiving 421 (Misdirected Request) from an alternative
+   service MUST remove the corresponding entry from its alternative
+   service cache (see Section 2.2) for that origin.  Regardless of the
    idempotency of the request method, they MAY retry the request, either
    at another alternative server, or at the origin.
 
-   A 421 (Not Authoritative) response MAY carry an Alt-Svc header field.
+   A 421 (Misdirected Request) response MAY carry an Alt-Svc header
+   field.
 
 7.  IANA Considerations
 
@@ -664,7 +665,6 @@ Internet-Draft          HTTP Alternative Services          November 2014
 
    The change controller is: "IETF (iesg@ietf.org) - Internet
    Engineering Task Force".
-
 
 
 
@@ -959,6 +959,8 @@ A.6.  Since draft-ietf-httpbis-alt-svc-04
    Mention tracking by alt-svc host name in Security Considerations
    ([15]).
 
+   "421 (Not Authoritative)" -> "421 (Misdirected Request)".
+
 Authors' Addresses
 
    Mark Nottingham
@@ -980,8 +982,6 @@ Authors' Addresses
 
    EMail: julian.reschke@greenbytes.de
    URI:   https://greenbytes.de/tech/webdav/
-
-
 
 
 
