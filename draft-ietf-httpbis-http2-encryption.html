@@ -388,7 +388,7 @@ ul.toc a:first-child {
       <link rel="Chapter" title="6 Security Considerations" href="#rfc.section.6">
       <link rel="Chapter" href="#rfc.section.7" title="7 References">
       <link rel="Appendix" title="A Acknowledgements" href="#rfc.section.A">
-      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.672, 2014/10/24 16:12:41, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
+      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.690, 2014/11/12 21:37:29, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
       <meta name="keywords" content="Internet-Draft">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Nottingham, M.">
@@ -607,7 +607,7 @@ ul.toc a:first-child {
          <div id="the-http-tls-header-field">
             <h2 id="rfc.section.5.1"><a href="#rfc.section.5.1">5.1</a>&nbsp;<a href="#the-http-tls-header-field">The HTTP-TLS Header Field</a></h2>
             <div id="rfc.section.5.1.p.1">
-               <p>A alternative service can make this commitment by sending a <samp>HTTP-TLS</samp> header field:
+               <p>A alternative service can make this commitment by sending a <tt>HTTP-TLS</tt> header field:
                </p>
             </div>
             <div id="rfc.figure.u.1"><pre>
@@ -648,15 +648,15 @@ HTTP-TLS: ma=3600
 ma-parameter     = delta-seconds
 </pre></div>
             <div id="rfc.section.5.1.p.7">
-               <p>Requests for an origin that has a persisted, unexpired value for <samp>HTTP-TLS</samp> MUST fail if they cannot be made over an authenticated TLS connection.
+               <p>Requests for an origin that has a persisted, unexpired value for <tt>HTTP-TLS</tt> MUST fail if they cannot be made over an authenticated TLS connection.
                </p>
             </div>
          </div>
          <div id="operational-considerations">
             <h2 id="rfc.section.5.2"><a href="#rfc.section.5.2">5.2</a>&nbsp;<a href="#operational-considerations">Operational Considerations</a></h2>
             <div id="rfc.section.5.2.p.1">
-               <p>To avoid situations where a persisted value of <samp>HTTP-TLS</samp> causes a client to be unable to contact a site, clients SHOULD limit the time that a value is persisted for a given origin.
-                  A lower limit might be appropriate for initial observations of <samp>HTTP-TLS</samp>; the certainty that a site has set a correct value - and the corresponding limit on persistence - can increase as the value
+               <p>To avoid situations where a persisted value of <tt>HTTP-TLS</tt> causes a client to be unable to contact a site, clients SHOULD limit the time that a value is persisted for a given origin.
+                  A lower limit might be appropriate for initial observations of <tt>HTTP-TLS</tt>; the certainty that a site has set a correct value - and the corresponding limit on persistence - can increase as the value
                   is seen more over time.
                </p>
             </div>
@@ -681,16 +681,16 @@ ma-parameter     = delta-seconds
          <div id="downgrade">
             <h2 id="rfc.section.6.2"><a href="#rfc.section.6.2">6.2</a>&nbsp;<a href="#downgrade">Downgrade Attacks</a></h2>
             <div id="rfc.section.6.2.p.1">
-               <p>A downgrade attack against the negotiation for TLS is possible. With the <samp>HTTP-TLS</samp> header field, this is limited to occasions where clients have no prior information (see <a href="#privacy" title="Privacy Considerations">Section&nbsp;6.3</a>), or when persisted commitments have expired.
+               <p>A downgrade attack against the negotiation for TLS is possible. With the <tt>HTTP-TLS</tt> header field, this is limited to occasions where clients have no prior information (see <a href="#privacy" title="Privacy Considerations">Section&nbsp;6.3</a>), or when persisted commitments have expired.
                </p>
             </div>
             <div id="rfc.section.6.2.p.2">
-               <p>For example, because the <samp>Alt-Svc</samp> header field <a href="#I-D.ietf-httpbis-alt-svc"><cite title="HTTP Alternative Services">[I-D.ietf-httpbis-alt-svc]</cite></a> likely appears in an unauthenticated and unencrypted channel, it is subject to downgrade by network attackers. In its simplest
-                  form, an attacker that wants the connection to remain in the clear need only strip the <samp>Alt-Svc</samp> header field from responses.
+               <p>For example, because the <tt>Alt-Svc</tt> header field <a href="#I-D.ietf-httpbis-alt-svc"><cite title="HTTP Alternative Services">[I-D.ietf-httpbis-alt-svc]</cite></a> likely appears in an unauthenticated and unencrypted channel, it is subject to downgrade by network attackers. In its simplest
+                  form, an attacker that wants the connection to remain in the clear need only strip the <tt>Alt-Svc</tt> header field from responses.
                </p>
             </div>
             <div id="rfc.section.6.2.p.3">
-               <p>Downgrade attacks can be partially mitigated using the <samp>HTTP-TLS</samp> header field, because when it is used, a client can avoid using cleartext to contact a supporting server. However, this only
+               <p>Downgrade attacks can be partially mitigated using the <tt>HTTP-TLS</tt> header field, because when it is used, a client can avoid using cleartext to contact a supporting server. However, this only
                   works when a previous connection has been established without an active attacker present; a continuously present active attacker
                   can either prevent the client from ever using TLS, or offer its own certificate.
                </p>

@@ -373,6 +373,9 @@ ul p {
   border-radius: 5px;
   background: #a00000;
   border: 1px solid silver;
+  -webkit-user-select: none; 
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 .fbbutton {
   margin-left: 1em;
@@ -558,7 +561,7 @@ ul.toc a:first-child {
       <link rel="Chapter" title="10 Acknowledgements" href="#rfc.section.10">
       <link rel="Chapter" href="#rfc.section.11" title="11 References">
       <link rel="Appendix" title="A Change Log (to be removed by RFC Editor before publication)" href="#rfc.section.A">
-      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.672, 2014/10/24 16:12:41, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
+      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.690, 2014/11/12 21:37:29, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
       <meta name="keywords" content="HTTP, ALPN, Alternate Services">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Nottingham, M.">
@@ -1090,12 +1093,12 @@ Alt-Svc: h2c=":8000"; ma=60
                <dt>Proto-Len:</dt>
                <dd>An unsigned, 8-bit integer indicating the length, in octets, of the Protocol-ID field.</dd>
                <dt>Protocol-ID:</dt>
-               <dd>A sequence of bytes (length determined by <samp>Proto-Len</samp>) containing the ALPN protocol identifier of the alternative service.
+               <dd>A sequence of bytes (length determined by <tt>Proto-Len</tt>) containing the ALPN protocol identifier of the alternative service.
                </dd>
                <dt>Host-Len:</dt>
                <dd>An unsigned, 8-bit integer indicating the length, in octets, of the Host header field.</dd>
                <dt>Host:</dt>
-               <dd>A sequence of characters (length determined by <samp>Host-Len</samp>) containing an ASCII string indicating the host that the alternative service is available upon.
+               <dd>A sequence of characters (length determined by <tt>Host-Len</tt>) containing an ASCII string indicating the host that the alternative service is available upon.
                </dd>
                <dt>Origin:</dt>
                <dd>An <em class="bcp14">OPTIONAL</em> sequence of characters (length determined by subtracting the length of all preceding fields from the frame length) containing
