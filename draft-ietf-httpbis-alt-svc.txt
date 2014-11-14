@@ -766,8 +766,9 @@ Internet-Draft          HTTP Alternative Services          November 2014
 
 9.4.  Tracking Clients Using Alternative Services
 
-   The Alt-Used header field (Section 5) provides a server with one
-   additional bit of information that can be used to correlate requests.
+   Choosing an alternative service implies connecting to a new, server-
+   supplied host name.  By using many different (potentially unique)
+   host names, servers could conceivably track client requests.
 
    Clients concerned by the additional fingerprinting can choose to
    ignore alternative service advertisements.
@@ -775,7 +776,6 @@ Internet-Draft          HTTP Alternative Services          November 2014
    In a browser, any alternative service information MUST be removed
    when origin-specific data is cleared (for instance, when cookies are
    cleared).
-
 
 
 
@@ -873,7 +873,7 @@ Internet-Draft          HTTP Alternative Services          November 2014
 
    [10] https://github.com/httpwg/http-extensions/issues/34
 
-
+   [11] https://github.com/httpwg/http-extensions/issues/36
 
 
 
@@ -956,7 +956,8 @@ Internet-Draft          HTTP Alternative Services          November 2014
 
 A.6.  Since draft-ietf-httpbis-alt-svc-04
 
-   None yet.
+   Mention tracking by alt-svc host name in Security Considerations
+   ([15]).
 
 Authors' Addresses
 
@@ -979,7 +980,6 @@ Authors' Addresses
 
    EMail: julian.reschke@greenbytes.de
    URI:   https://greenbytes.de/tech/webdav/
-
 
 
 
