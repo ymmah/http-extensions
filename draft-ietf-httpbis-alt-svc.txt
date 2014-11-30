@@ -495,7 +495,7 @@ Internet-Draft          HTTP Alternative Services          November 2014
 
 4.  The ALTSVC HTTP/2 Frame
 
-   The ALTSVC HTTP/2 frame ([HTTP2], Appendix ) advertises the
+   The ALTSVC HTTP/2 frame ([HTTP2], Section 4) advertises the
    availability of an alternative service to an HTTP/2 client.
 
 
@@ -630,8 +630,8 @@ Internet-Draft          HTTP Alternative Services          November 2014
 
 6.  The 421 Misdirected Request HTTP Status Code
 
-   The 421 (Misdirected Request) status code is defined in Appendix of
-   [HTTP2] to indicate that the current server instance is not
+   The 421 (Misdirected Request) status code is defined in Section 9.1.2
+   of [HTTP2] to indicate that the current server instance is not
    authoritative for the requested resource.  This can be used to
    indicate that an alternative service is not authoritative; see
    Section 2).
@@ -677,7 +677,7 @@ Internet-Draft          HTTP Alternative Services          November 2014
 7.2.  The ALTSVC HTTP/2 Frame Type
 
    This document registers the ALTSVC frame type in the HTTP/2 Frame
-   Types registry ([HTTP2], Appendix ).
+   Types registry ([HTTP2], Section 11.2).
 
       Frame Type: ALTSVC
 
