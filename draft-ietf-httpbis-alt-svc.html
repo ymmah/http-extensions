@@ -440,7 +440,7 @@ ul p {
        content: "Internet-Draft";
   }
   @top-right {
-       content: "November 2014";
+       content: "December 2014";
   }
   @top-center {
        content: "HTTP Alternative Services";
@@ -449,7 +449,7 @@ ul p {
        content: "Nottingham, et al.";
   }
   @bottom-center {
-       content: "Expires June 3, 2015";
+       content: "Expires June 6, 2015";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -568,7 +568,7 @@ ul.toc a:first-child {
       <meta name="dct.creator" content="McManus, P.">
       <meta name="dct.creator" content="Reschke, J. F.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-alt-svc-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2014-11-30">
+      <meta name="dct.issued" scheme="ISO8601" content="2014-12-03">
       <meta name="dct.abstract" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
       <meta name="description" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
    </head>
@@ -588,7 +588,7 @@ ul.toc a:first-child {
                <td class="right">P. McManus</td>
             </tr>
             <tr>
-               <td class="left">Expires: June 3, 2015</td>
+               <td class="left">Expires: June 6, 2015</td>
                <td class="right">Mozilla</td>
             </tr>
             <tr>
@@ -601,7 +601,7 @@ ul.toc a:first-child {
             </tr>
             <tr>
                <td class="left"></td>
-               <td class="right">November 30, 2014</td>
+               <td class="right">December 3, 2014</td>
             </tr>
          </tbody>
       </table>
@@ -627,7 +627,7 @@ ul.toc a:first-child {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on June 3, 2015.</p>
+         <p>This Internet-Draft will expire on June 6, 2015.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
@@ -686,19 +686,12 @@ ul.toc a:first-child {
                   <li><a href="#rfc.section.A.4">A.4</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-02">Since draft-ietf-httpbis-alt-svc-02</a></li>
                   <li><a href="#rfc.section.A.5">A.5</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-03">Since draft-ietf-httpbis-alt-svc-03</a></li>
                   <li><a href="#rfc.section.A.6">A.6</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-04">Since draft-ietf-httpbis-alt-svc-04</a></li>
+                  <li><a href="#rfc.section.A.7">A.7</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-05">Since draft-ietf-httpbis-alt-svc-05</a></li>
                </ul>
             </li>
             <li><a href="#rfc.authors">Authors' Addresses</a></li>
          </ul>
       </div>
-      <ul class="toc">
-         <li>Figures
-            
-            <ul>
-               <li><a href="#rfc.figure.u.10">ALTSVC Frame Payload</a></li>
-            </ul>
-         </li>
-      </ul>
       <div id="introduction">
          <h1 id="rfc.section.1" class="np"><a href="#rfc.section.1">1.</a>&nbsp;<a href="#introduction">Introduction</a></h1>
          <div id="rfc.section.1.p.1">
@@ -1067,44 +1060,9 @@ Alt-Svc: h2c=":8000"; ma=60
          <div id="rfc.section.4.p.5">
             <p>The ALTSVC frame type is 0xa (decimal 10).</p>
          </div>
-         <div id="rfc.figure.u.10"><pre class="drawing">  0                   1                   2                   3
-  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
- +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- |                          Max-Age (32)                         |
- +-------------------------------+---------------+---------------+
- |            Port (16)          | Proto-Len (8) |
- +-------------------------------+---------------+---------------+
- |                        Protocol-ID (*)                        |
- +---------------+-----------------------------------------------+
- | Host-Len (8)  |                   Host (*)                  ...
- +---------------+-----------------------------------------------+
- |                          Origin? (*)                        ...
- +---------------------------------------------------------------+
-</pre></div>
-         <p class="figure">ALTSVC Frame Payload</p>
          <div id="rfc.section.4.p.6">
-            <p>The ALTSVC frame contains the following fields: </p>
-            <dl>
-               <dt>Max-Age:</dt>
-               <dd>An unsigned, 32-bit integer indicating the freshness lifetime of the alternative service association, as per <a href="#caching" title="Alternative Service Caching">Section&nbsp;2.2</a>.
-               </dd>
-               <dt>Port:</dt>
-               <dd>An unsigned, 16-bit integer indicating the port that the alternative service is available upon.</dd>
-               <dt>Proto-Len:</dt>
-               <dd>An unsigned, 8-bit integer indicating the length, in octets, of the Protocol-ID field.</dd>
-               <dt>Protocol-ID:</dt>
-               <dd>A sequence of bytes (length determined by <tt>Proto-Len</tt>) containing the ALPN protocol identifier of the alternative service.
-               </dd>
-               <dt>Host-Len:</dt>
-               <dd>An unsigned, 8-bit integer indicating the length, in octets, of the Host header field.</dd>
-               <dt>Host:</dt>
-               <dd>A sequence of characters (length determined by <tt>Host-Len</tt>) containing an ASCII string indicating the host that the alternative service is available upon.
-               </dd>
-               <dt>Origin:</dt>
-               <dd>An <em class="bcp14">OPTIONAL</em> sequence of characters (length determined by subtracting the length of all preceding fields from the frame length) containing
-                  the ASCII serialization of an origin (<a href="#RFC6454"><cite title="The Web Origin Concept">[RFC6454]</cite></a>, <a href="https://tools.ietf.org/html/rfc6454#section-6.2">Section 6.2</a>) that the alternate service is applicable to.
-               </dd>
-            </dl>
+            <p>The payload of an ALTSVC frame is identical to the payload of the Alt-Svc field value defined in <a href="#alt-svc" title="The Alt-Svc HTTP Header Field">Section&nbsp;3</a> (ABNF production "Alt-Svc").
+            </p>
          </div>
          <div id="rfc.section.4.p.7">
             <p>The ALTSVC frame does not define any flags.</p>
@@ -1128,7 +1086,7 @@ Alt-Svc: h2c=":8000"; ma=60
          <div id="rfc.section.5.p.1">
             <p>The Alt-Used header field is used in requests to indicate that an alternate service is in use.</p>
          </div>
-         <div id="rfc.figure.u.11"><pre class="inline">Alt-Used     = use-flag *( OWS ";" OWS ext-param )
+         <div id="rfc.figure.u.10"><pre class="inline">Alt-Used     = use-flag *( OWS ";" OWS ext-param )
 use-flag     = "1" / "0"
 ext-param    = token "=" ( token / quoted-string )
 </pre></div>
@@ -1144,7 +1102,7 @@ ext-param    = token "=" ( token / quoted-string )
          <div id="rfc.section.5.p.4">
             <p>A flag value of "1" indicates that an alternate service was used, while "0" means it was not.</p>
          </div>
-         <div id="rfc.figure.u.12">
+         <div id="rfc.figure.u.11">
             <p>For example:</p><pre class="text2">GET /thing HTTP/1.1
 Host: origin.example.com
 Alt-Used: 1
@@ -1483,6 +1441,16 @@ Alt-Used: 1
             </div>
             <div id="rfc.section.A.6.p.2">
                <p>"421 (Not Authoritative)" -&gt; "421 (Misdirected Request)".</p>
+            </div>
+            <div id="rfc.section.A.6.p.3">
+               <p>Allow the frame to carry multiple indicator and use the same payload formats for both (&lt;<a href="https://github.com/httpwg/http-extensions/issues/37">https://github.com/httpwg/http-extensions/issues/37</a>&gt;).
+               </p>
+            </div>
+         </div>
+         <div id="changes.since.draft-ietf-httpbis-alt-svc-05">
+            <h2 id="rfc.section.A.7"><a href="#rfc.section.A.7">A.7</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-05">Since draft-ietf-httpbis-alt-svc-05</a></h2>
+            <div id="rfc.section.A.7.p.1">
+               <p>None yet.</p>
             </div>
          </div>
       </div>
