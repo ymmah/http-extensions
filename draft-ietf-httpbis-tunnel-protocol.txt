@@ -78,8 +78,9 @@ Table of Contents
    3.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
    4.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
    5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   4
-     5.1.  Normative References  . . . . . . . . . . . . . . . . . .   4
+     5.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
      5.2.  Informative References  . . . . . . . . . . . . . . . . .   5
+     5.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   5
 
 1.  Introduction
 
@@ -105,7 +106,6 @@ Table of Contents
    Proxies do not implement the tunneled protocol, though they might
    choose to make policy decisions based on the value of the header
    field.
-
 
 
 
@@ -179,7 +179,20 @@ Internet-Draft               Tunnel-Protocol               December 2014
 
 3.  IANA Considerations
 
-   [[CREF1: To Be Added]]
+   HTTP header fields are registered within the "Message Headers"
+   registry maintained at [5].  This document defines and registers the
+   `Tunnel-Protocol` header field, according to [RFC3864] as follows:
+
+   Header Field Name:  Tunnel-Protocol
+
+   Protocol:  http
+
+   Status:  Standard
+
+   Reference:  Section 2
+
+   Change Controller:  IETF (iesg@ietf.org) - Internet Engineering Task
+      Force
 
 4.  Security Considerations
 
@@ -202,10 +215,25 @@ Internet-Draft               Tunnel-Protocol               December 2014
 
 5.  References
 
+
+
+
+
+
+
+Hutton, et al.            Expires June 6, 2015                  [Page 4]
+
+Internet-Draft               Tunnel-Protocol               December 2014
+
+
 5.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119, March 1997.
+
+   [RFC3864]  Klyne, G., Nottingham, M., and J. Mogul, "Registration
+              Procedures for Message Header Fields", BCP 90, RFC 3864,
+              September 2004.
 
    [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
               Resource Identifier (URI): Generic Syntax", STD 66, RFC
@@ -218,14 +246,6 @@ Internet-Draft               Tunnel-Protocol               December 2014
    [RFC7231]  Fielding, R. and J. Reschke, "Hypertext Transfer Protocol
               (HTTP/1.1): Semantics and Content", RFC 7231, June 2014.
 
-
-
-
-Hutton, et al.            Expires June 6, 2015                  [Page 4]
-
-Internet-Draft               Tunnel-Protocol               December 2014
-
-
    [RFC7301]  Friedl, S., Popov, A., Langley, A., and E. Stephan,
               "Transport Layer Security (TLS) Application-Layer Protocol
               Negotiation Extension", RFC 7301, July 2014.
@@ -234,6 +254,10 @@ Internet-Draft               Tunnel-Protocol               December 2014
 
    [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
               (TLS) Protocol Version 1.2", RFC 5246, August 2008.
+
+5.3.  URIs
+
+   [1] https://www.iana.org/assignments/message-headers
 
 Authors' Addresses
 
@@ -244,6 +268,18 @@ Authors' Addresses
    UK
 
    EMail: andrew.hutton@unify.com
+
+
+
+
+
+
+
+
+
+Hutton, et al.            Expires June 6, 2015                  [Page 5]
+
+Internet-Draft               Tunnel-Protocol               December 2014
 
 
    Justin Uberti
@@ -277,4 +313,24 @@ Authors' Addresses
 
 
 
-Hutton, et al.            Expires June 6, 2015                  [Page 5]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hutton, et al.            Expires June 6, 2015                  [Page 6]

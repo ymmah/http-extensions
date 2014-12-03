@@ -572,7 +572,7 @@ ul.toc a:first-child {
                   <li><a href="#rfc.section.1.1">1.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.1.1">Requirements Language</a></li>
                </ul>
             </li>
-            <li><a href="#rfc.section.2">2.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.2">The Tunnel-Protocol HTTP Request Header Field</a><ul>
+            <li><a href="#rfc.section.2">2.</a>&nbsp;&nbsp;&nbsp;<a href="#tp">The Tunnel-Protocol HTTP Request Header Field</a><ul>
                   <li><a href="#rfc.section.2.1">2.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.2.1">Header Field Values</a></li>
                   <li><a href="#rfc.section.2.2">2.2</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.2.2">Syntax</a></li>
                </ul>
@@ -623,9 +623,8 @@ ul.toc a:first-child {
             </div>
          </div>
       </div>
-      <div>
-         <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a>&nbsp;The Tunnel-Protocol HTTP Request Header Field
-         </h1>
+      <div id="tp">
+         <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a>&nbsp;<a href="#tp">The Tunnel-Protocol HTTP Request Header Field</a></h1>
          <div id="rfc.section.2.p.1">
             <p>Clients include the `Tunnel-Protocol` Request Header field in an HTTP CONNECT request to indicate the application layer protocol
                will be used within the tunnel, or the set of protocols that might be used within the tunnel.
@@ -676,7 +675,21 @@ Tunnel-Protocol: stun.turn
       <div id="IANA">
          <h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a>&nbsp;<a href="#IANA">IANA Considerations</a></h1>
          <div id="rfc.section.3.p.1">
-            <p><span class="comment" id="rfc.comment.1">[<a href="#rfc.comment.1" class="smpl">rfc.comment.1</a>: To Be Added]</span></p>
+            <p>HTTP header fields are registered within the "Message Headers" registry maintained at &lt;<a href="https://www.iana.org/assignments/message-headers">https://www.iana.org/assignments/message-headers</a>&gt;. This document defines and registers the `Tunnel-Protocol` header field, according to <a href="#RFC3864"><cite title="Registration Procedures for Message Header Fields">[RFC3864]</cite></a> as follows: 
+            </p>
+            <dl>
+               <dt>Header Field Name:</dt>
+               <dd>Tunnel-Protocol</dd>
+               <dt>Protocol:</dt>
+               <dd>http</dd>
+               <dt>Status:</dt>
+               <dd>Standard</dd>
+               <dt>Reference:</dt>
+               <dd><a href="#tp" title="The Tunnel-Protocol HTTP Request Header Field">Section&nbsp;2</a> 
+               </dd>
+               <dt>Change Controller:</dt>
+               <dd>IETF (iesg@ietf.org) - Internet Engineering Task Force</dd>
+            </dl>
          </div>
       </div>
       <div id="Security">
@@ -703,6 +716,11 @@ Tunnel-Protocol: stun.turn
          <tr>
             <td class="reference"><b id="RFC2119">[RFC2119]</b></td>
             <td class="top"><a href="mailto:sob@harvard.edu">Bradner, S.</a>, “<a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>”, BCP&nbsp;14, RFC&nbsp;2119, March&nbsp;1997.
+            </td>
+         </tr>
+         <tr>
+            <td class="reference"><b id="RFC3864">[RFC3864]</b></td>
+            <td class="top">Klyne, G., Nottingham, M., and J. Mogul, “<a href="https://tools.ietf.org/html/rfc3864">Registration Procedures for Message Header Fields</a>”, BCP&nbsp;90, RFC&nbsp;3864, September&nbsp;2004.
             </td>
          </tr>
          <tr>
