@@ -281,7 +281,7 @@ ul p {
        content: "Nottingham & Thomson";
   }
   @bottom-center {
-       content: "Expires June 6, 2015";
+       content: "Expires June 19, 2015";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -395,7 +395,7 @@ ul.toc a:first-child {
       <meta name="dct.creator" content="Nottingham, M.">
       <meta name="dct.creator" content="Thomson, M.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-http2-encryption-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2014-12-03">
+      <meta name="dct.issued" scheme="ISO8601" content="2014-12-16">
       <meta name="dct.abstract" content="This document describes how http URIs can be accessed using Transport Layer Security (TLS) to mitigate pervasive monitoring attacks.">
       <meta name="description" content="This document describes how http URIs can be accessed using Transport Layer Security (TLS) to mitigate pervasive monitoring attacks.">
    </head>
@@ -415,8 +415,8 @@ ul.toc a:first-child {
                <td class="right">Mozilla</td>
             </tr>
             <tr>
-               <td class="left">Expires: June 6, 2015</td>
-               <td class="right">December 3, 2014</td>
+               <td class="left">Expires: June 19, 2015</td>
+               <td class="right">December 16, 2014</td>
             </tr>
          </tbody>
       </table>
@@ -434,7 +434,7 @@ ul.toc a:first-child {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on June 6, 2015.</p>
+         <p>This Internet-Draft will expire on June 19, 2015.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
@@ -459,7 +459,7 @@ ul.toc a:first-child {
             <li><a href="#rfc.section.4">4.</a>&nbsp;&nbsp;&nbsp;<a href="#interaction-with-https-uris">Interaction with “https” URIs</a></li>
             <li><a href="#rfc.section.5">5.</a>&nbsp;&nbsp;&nbsp;<a href="#http-tls">Requiring Use of TLS</a><ul>
                   <li><a href="#rfc.section.5.1">5.1</a>&nbsp;&nbsp;&nbsp;<a href="#the-http-tls-header-field">The HTTP-TLS Header Field</a></li>
-                  <li><a href="#rfc.section.5.2">5.2</a>&nbsp;&nbsp;&nbsp;<a href="#operational-considerations">Operational Considerations</a></li>
+                  <li><a href="#rfc.section.5.2">5.2</a>&nbsp;&nbsp;&nbsp;<a href="#pinrisks">Operational Considerations</a></li>
                </ul>
             </li>
             <li><a href="#rfc.section.6">6.</a>&nbsp;&nbsp;&nbsp;<a href="#security-considerations">Security Considerations</a><ul>
@@ -615,13 +615,8 @@ ul.toc a:first-child {
          </div>
          <div id="rfc.section.5.p.5">
             <p>When an alternative service is able to commit to providing service for a particular origin over TLS for a bounded period of
-               time, clients can choose to rely upon its avilability, failing when it cannot be contacted. Effectively, this makes the alternative
-               service “sticky” in the client.
-            </p>
-         </div>
-         <div id="rfc.section.5.p.6">
-            <p>One drawback with this approach is that clients need to strongly authenticate the alternative service to act upon such a commitment;
-               otherwise, an attacker could create a persistent denial of service.
+               time, clients can choose to rely upon its avilability, failing when it cannot be contacted. Effectively, this makes the choice
+               to use a secured protocol “sticky” in the client.
             </p>
          </div>
          <div id="the-http-tls-header-field">
@@ -643,6 +638,10 @@ HTTP-TLS     = 1#parameter
                <p>For example:</p>
             </div>
             <div id="rfc.figure.u.2"><pre>
+GET /index.html HTTP/1.1
+Host: example.com
+
+
 HTTP/1.1 200 OK
 Content-Type: text/html
 Cache-Control: 600
@@ -651,29 +650,35 @@ Date: Thu, 1 May 2014 16:20:09 GMT
 HTTP-TLS: ma=3600
 </pre></div>
             <div id="rfc.section.5.1.p.4">
-               <p>Note that the commitment is not bound to a particular alternative service; clients SHOULD use other alternative services that
-                  they become aware of, as long as the requirements regarding authentication and avoidance of cleartext protocols are met.
+               <p>This header field creates a commitment from the origin <a href="#RFC6454"><cite title="The Web Origin Concept">[RFC6454]</cite></a> of the associated resource (in the example, <tt>http://example.com</tt>). For the duration of the commitment, clients SHOULD strongly authenticate the server for all subsequent requests made to
+                  that origin, though this creates some risks for clients <a href="#pinrisks" title="Operational Considerations">Section&nbsp;5.2</a>.
                </p>
             </div>
             <div id="rfc.section.5.1.p.5">
-               <p>When this header field appears in a response, clients MUST strongly authenticate the alternative service, as described in
-                  Section 3.1 of <a href="#RFC2818"><cite title="HTTP Over TLS">[RFC2818]</cite></a>, noting the additional requirements in <a href="#I-D.ietf-httpbis-alt-svc"><cite title="HTTP Alternative Services">[I-D.ietf-httpbis-alt-svc]</cite></a>. The header field MUST be ignored if strong authentication fails.
+               <p>Authentication for HTTP over TLS is described in Section 3.1 of <a href="#RFC2818"><cite title="HTTP Over TLS">[RFC2818]</cite></a>, noting the additional requirements in <a href="#I-D.ietf-httpbis-alt-svc"><cite title="HTTP Alternative Services">[I-D.ietf-httpbis-alt-svc]</cite></a>. The header field MUST be ignored if strong authentication fails; otherwise, an attacker could create a persistent denial
+                  of service by falsifying a commitment.
                </p>
             </div>
             <div id="rfc.section.5.1.p.6">
-               <p>Persisted information expires after a period determined by the value of the <tt>ma</tt> parameter. See Section 4.2.3 of <a href="#RFC7234"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Caching">[RFC7234]</cite></a> for details of determining response age.
+               <p>The commitment to use authenticated TLS persists for a period determined by the value of the <tt>ma</tt> parameter. See Section 4.2.3 of <a href="#RFC7234"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Caching">[RFC7234]</cite></a> for details of determining response age.
                </p>
             </div>
             <div id="rfc.figure.u.3"><pre>
 ma-parameter     = delta-seconds
 </pre></div>
             <div id="rfc.section.5.1.p.7">
-               <p>Requests for an origin that has a persisted, unexpired value for <tt>HTTP-TLS</tt> MUST fail if they cannot be made over an authenticated TLS connection.
+               <p>The commitment made by the <tt>HTTP-TLS</tt> header field applies only to the origin of the resource that generates the <tt>HTTP-TLS</tt> header field. Requests for an origin that has a persisted, unexpired value for <tt>HTTP-TLS</tt> MUST fail if they cannot be made over an authenticated TLS connection.
+               </p>
+            </div>
+            <div id="rfc.section.5.1.p.8">
+               <p>Note that the commitment is not bound to a particular alternative service. Clients SHOULD use alternative services that they
+                  become aware of. However, clients MUST NOT use an unauthenticated alternative service for an origin with this commitment.
+                  Where there is an active commitment, clients MAY instead ignore advertisements for unsecured alternatives services.
                </p>
             </div>
          </div>
-         <div id="operational-considerations">
-            <h2 id="rfc.section.5.2"><a href="#rfc.section.5.2">5.2</a>&nbsp;<a href="#operational-considerations">Operational Considerations</a></h2>
+         <div id="pinrisks">
+            <h2 id="rfc.section.5.2"><a href="#rfc.section.5.2">5.2</a>&nbsp;<a href="#pinrisks">Operational Considerations</a></h2>
             <div id="rfc.section.5.2.p.1">
                <p>To avoid situations where a persisted value of <tt>HTTP-TLS</tt> causes a client to be unable to contact a site, clients SHOULD limit the time that a value is persisted for a given origin.
                   A lower limit might be appropriate for initial observations of <tt>HTTP-TLS</tt>; the certainty that a site has set a correct value - and the corresponding limit on persistence - can increase as the value
@@ -778,6 +783,11 @@ ma-parameter     = delta-seconds
             </td>
          </tr>
          <tr>
+            <td class="reference"><b id="RFC6454">[RFC6454]</b></td>
+            <td class="top">Barth, A., “<a href="https://tools.ietf.org/html/rfc6454">The Web Origin Concept</a>”, RFC&nbsp;6454, December&nbsp;2011.
+            </td>
+         </tr>
+         <tr>
             <td class="reference"><b id="RFC7234">[RFC7234]</b></td>
             <td class="top">Fielding, R., Nottingham, M., and J. Reschke, “<a href="https://tools.ietf.org/html/rfc7234">Hypertext Transfer Protocol (HTTP/1.1): Caching</a>”, RFC&nbsp;7234, June&nbsp;2014.
             </td>
@@ -789,11 +799,6 @@ ma-parameter     = delta-seconds
          <tr>
             <td class="reference"><b id="I-D.dukhovni-opportunistic-security">[I-D.dukhovni-opportunistic-security]</b></td>
             <td class="top">Dukhovni, V., “<a href="https://tools.ietf.org/html/draft-dukhovni-opportunistic-security-06">Opportunistic Security: Some Protection Most of the Time</a>”, Internet-Draft&nbsp;draft-dukhovni-opportunistic-security-06 (work in progress), November&nbsp;2014.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC6454">[RFC6454]</b></td>
-            <td class="top">Barth, A., “<a href="https://tools.ietf.org/html/rfc6454">The Web Origin Concept</a>”, RFC&nbsp;6454, December&nbsp;2011.
             </td>
          </tr>
          <tr>

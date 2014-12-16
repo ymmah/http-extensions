@@ -4,9 +4,9 @@
 
 HTTPbis Working Group                                         J. Reschke
 Internet-Draft                                                greenbytes
-Obsoletes: 7238 (if approved)                           December 3, 2014
+Obsoletes: 7238 (if approved)                          December 16, 2014
 Intended status: Standards Track
-Expires: June 6, 2015
+Expires: June 19, 2015
 
 
   The Hypertext Transfer Protocol Status Code 308 (Permanent Redirect)
@@ -32,7 +32,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on June 6, 2015.
+   This Internet-Draft will expire on June 19, 2015.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Reschke                   Expires June 6, 2015                  [Page 1]
+Reschke                   Expires June 19, 2015                 [Page 1]
 
 Internet-Draft            HTTP Status Code 308             December 2014
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Reschke                   Expires June 6, 2015                  [Page 2]
+Reschke                   Expires June 19, 2015                 [Page 2]
 
 Internet-Draft            HTTP Status Code 308             December 2014
 
@@ -165,7 +165,7 @@ Internet-Draft            HTTP Status Code 308             December 2014
 
 
 
-Reschke                   Expires June 6, 2015                  [Page 3]
+Reschke                   Expires June 19, 2015                 [Page 3]
 
 Internet-Draft            HTTP Status Code 308             December 2014
 
@@ -221,7 +221,7 @@ Internet-Draft            HTTP Status Code 308             December 2014
 
 
 
-Reschke                   Expires June 6, 2015                  [Page 4]
+Reschke                   Expires June 19, 2015                 [Page 4]
 
 Internet-Draft            HTTP Status Code 308             December 2014
 
@@ -277,7 +277,7 @@ Internet-Draft            HTTP Status Code 308             December 2014
 
 
 
-Reschke                   Expires June 6, 2015                  [Page 5]
+Reschke                   Expires June 19, 2015                 [Page 5]
 
 Internet-Draft            HTTP Status Code 308             December 2014
 
@@ -333,4 +333,4 @@ Author's Address
 
 
 
-Reschke                   Expires June 6, 2015                  [Page 6]
+Reschke                   Expires June 19, 2015                 [Page 6]
