@@ -736,13 +736,8 @@ ma-parameter     = delta-seconds
                </p>
             </div>
             <div id="rfc.section.6.4.p.2">
-               <p>Opportunistically secured HTTP requests MUST include an explicit scheme identifier. For HTTP/1.1, this means using the authority
-                  form for requests. This introduces the potential for confusion, since a server might erroneously provide a response for the <tt>https</tt> scheme in response to an <tt>http</tt>-schemed response over TLS. This offers
-               </p>
-            </div>
-            <div id="rfc.section.6.4.p.3">
-               <p><span class="comment" id="rfc.comment.1">[<a href="#rfc.comment.1" class="smpl">rfc.comment.1</a>: Open issue: do we want to require an explicit indication from HTTP/1.1 servers so that clients can be assured that this error
-                     did not occur?]</span> 
+               <p>HTTP/1.1 MUST NOT be sent over HTTP/1.1 or earlier versions of the protocol. Opportunistically secured HTTP requests MUST
+                  include an explicit scheme identifier.
                </p>
             </div>
          </div>

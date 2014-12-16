@@ -402,15 +402,9 @@ Internet-Draft         Opportunistic HTTP Security         December 2014
    common form of an HTTP/1.1 request does not carry an explicit
    indication of the URI scheme.
 
-   Opportunistically secured HTTP requests MUST include an explicit
-   scheme identifier.  For HTTP/1.1, this means using the authority form
-   for requests.  This introduces the potential for confusion, since a
-   server might erroneously provide a response for the "https" scheme in
-   response to an "http"-schemed response over TLS.  This offers
-
-   [[CREF1: Open issue: do we want to require an explicit indication
-   from HTTP/1.1 servers so that clients can be assured that this error
-   did not occur?]]
+   HTTP/1.1 MUST NOT be sent over HTTP/1.1 or earlier versions of the
+   protocol.  Opportunistically secured HTTP requests MUST include an
+   explicit scheme identifier.
 
 7.  References
 
@@ -442,6 +436,12 @@ Internet-Draft         Opportunistic HTTP Security         December 2014
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454, December
               2011.
 
+   [RFC7234]  Fielding, R., Nottingham, M., and J. Reschke, "Hypertext
+              Transfer Protocol (HTTP/1.1): Caching", RFC 7234, June
+              2014.
+
+
+
 
 
 
@@ -449,10 +449,6 @@ Nottingham & Thomson      Expires June 19, 2015                 [Page 8]
 
 Internet-Draft         Opportunistic HTTP Security         December 2014
 
-
-   [RFC7234]  Fielding, R., Nottingham, M., and J. Reschke, "Hypertext
-              Transfer Protocol (HTTP/1.1): Caching", RFC 7234, June
-              2014.
 
 7.2.  Informative References
 
@@ -482,6 +478,10 @@ Authors' Addresses
    Mozilla
 
    Email: martin.thomson@gmail.com
+
+
+
+
 
 
 
