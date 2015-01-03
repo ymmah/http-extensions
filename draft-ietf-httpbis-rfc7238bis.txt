@@ -146,16 +146,16 @@ Internet-Draft            HTTP Status Code 308              January 2015
    on automatic redirection happening similar to status codes 301, 302,
    or 307.
 
-   Therefore, initial use of status code 308 will be restricted to cases
-   where the server has sufficient confidence in the client's
-   understanding the new code or when a fallback to the semantics of
-   status code 300 is not problematic.  Server implementers are advised
-   not to vary the status code based on characteristics of the request,
-   such as the User-Agent header field ("User-Agent Sniffing") -- doing
-   so usually results in code that is both hard to maintain and hard to
-   debug and would also require special attention to caching (i.e.,
-   setting a "Vary" response header field, as defined in Section 7.1.4
-   of [RFC7231]).
+   Therefore, the use of status code 308 is restricted to cases where
+   the server has sufficient confidence in the client's understanding
+   the new code or when a fallback to the semantics of status code 300
+   is not problematic.  Server implementers are advised not to vary the
+   status code based on characteristics of the request, such as the
+   User-Agent header field ("User-Agent Sniffing") -- doing so usually
+   results in code that is both hard to maintain and hard to debug and
+   would also require special attention to caching (i.e., setting a
+   "Vary" response header field, as defined in Section 7.1.4 of
+   [RFC7231]).
 
    Note that many existing HTML-based user agents will emulate a refresh
    when encountering an HTML <meta> refresh directive ([HTML],
