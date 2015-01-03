@@ -4,9 +4,9 @@
 
 HTTPbis Working Group                                         J. Reschke
 Internet-Draft                                                greenbytes
-Obsoletes: 7238 (if approved)                          December 16, 2014
+Obsoletes: 7238 (if approved)                            January 3, 2015
 Intended status: Standards Track
-Expires: June 19, 2015
+Expires: July 7, 2015
 
 
   The Hypertext Transfer Protocol Status Code 308 (Permanent Redirect)
@@ -32,11 +32,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on June 19, 2015.
+   This Internet-Draft will expire on July 7, 2015.
 
 Copyright Notice
 
-   Copyright (c) 2014 IETF Trust and the persons identified as the
+   Copyright (c) 2015 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Reschke                   Expires June 19, 2015                 [Page 1]
+Reschke                   Expires July 7, 2015                  [Page 1]
 
-Internet-Draft            HTTP Status Code 308             December 2014
+Internet-Draft            HTTP Status Code 308              January 2015
 
 
 Table of Contents
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Reschke                   Expires June 19, 2015                 [Page 2]
+Reschke                   Expires July 7, 2015                  [Page 2]
 
-Internet-Draft            HTTP Status Code 308             December 2014
+Internet-Draft            HTTP Status Code 308              January 2015
 
 
 3.  308 Permanent Redirect
@@ -158,16 +158,16 @@ Internet-Draft            HTTP Status Code 308             December 2014
    of [RFC7231]).
 
    Note that many existing HTML-based user agents will emulate a refresh
-   when encountering an HTML <meta> refresh directive ([HTML]).  This
-   can be used as another fallback.  For example:
+   when encountering an HTML <meta> refresh directive ([HTML],
+   Section 4.2.5.3).  This can be used as another fallback.  For
+   example:
 
 
 
 
-
-Reschke                   Expires June 19, 2015                 [Page 3]
+Reschke                   Expires July 7, 2015                  [Page 3]
 
-Internet-Draft            HTTP Status Code 308             December 2014
+Internet-Draft            HTTP Status Code 308              January 2015
 
 
    Client request:
@@ -181,10 +181,9 @@ Internet-Draft            HTTP Status Code 308             December 2014
      HTTP/1.1 308 Permanent Redirect
      Content-Type: text/html; charset=UTF-8
      Location: http://example.com/new
-     Content-Length: 454
+     Content-Length: 356
 
-     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                           "http://www.w3.org/TR/html4/strict.dtd">
+     <!DOCTYPE HTML>
      <html>
         <head>
            <title>Permanent Redirect</title>
@@ -221,9 +220,10 @@ Internet-Draft            HTTP Status Code 308             December 2014
 
 
 
-Reschke                   Expires June 19, 2015                 [Page 4]
+
+Reschke                   Expires July 7, 2015                  [Page 4]
 
-Internet-Draft            HTTP Status Code 308             December 2014
+Internet-Draft            HTTP Status Code 308              January 2015
 
 
 7.  Acknowledgements
@@ -260,10 +260,10 @@ Internet-Draft            HTTP Status Code 308             December 2014
 
 8.2.  Informative References
 
-   [HTML]     Raggett, D., Le Hors, A., and I. Jacobs, "HTML 4.01
-              Specification", W3C Recommendation REC-html401-19991224,
-              December 1999,
-              <http://www.w3.org/TR/1999/REC-html401-19991224>.
+   [HTML]     Hickson, I., Berjon, R., Faulkner, S., Leithead, T., Doyle
+              Navara, E., O'Connor, E., and S. Pfeiffer, "HTML5", W3C
+              Recommendation REC-html5-20141028, October 2014,
+              <http://www.w3.org/TR/2014/REC-html5-20141028/>.
 
               Latest version available at [2].
 
@@ -277,9 +277,9 @@ Internet-Draft            HTTP Status Code 308             December 2014
 
 
 
-Reschke                   Expires June 19, 2015                 [Page 5]
+Reschke                   Expires July 7, 2015                  [Page 5]
 
-Internet-Draft            HTTP Status Code 308             December 2014
+Internet-Draft            HTTP Status Code 308              January 2015
 
 
 Author's Address
@@ -333,4 +333,4 @@ Author's Address
 
 
 
-Reschke                   Expires June 19, 2015                 [Page 6]
+Reschke                   Expires July 7, 2015                  [Page 6]

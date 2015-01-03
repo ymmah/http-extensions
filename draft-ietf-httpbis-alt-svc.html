@@ -118,6 +118,22 @@ cite {
 dl {
   margin-left: 2em;
 }
+dl > dt {
+  float: left;
+  margin-right: 1em;
+}
+dl.nohang > dt {
+  float: none;
+}
+dl > dd {
+  margin-bottom: .5em;
+}
+dl.compact > dd {
+  margin-bottom: .0em;
+}
+dl > dd > dl {
+  margin-top: 0.5em;
+}
 ul.empty {
   list-style-type: none;
 }
@@ -126,9 +142,6 @@ ul.empty li {
 }
 dl p {
   margin-left: 0em;
-}
-dt {
-  margin-top: .5em;
 }
 h1 {
   font-size: 130%;
@@ -371,7 +384,7 @@ ul p {
   padding: 3px 5px;
   color: white;
   border-radius: 5px;
-  background: #a00000;
+  background: #006400;
   border: 1px solid silver;
   -webkit-user-select: none; 
   -moz-user-select: none;
@@ -440,7 +453,7 @@ ul p {
        content: "Internet-Draft";
   }
   @top-right {
-       content: "December 2014";
+       content: "January 2015";
   }
   @top-center {
        content: "HTTP Alternative Services";
@@ -449,7 +462,7 @@ ul p {
        content: "Nottingham, et al.";
   }
   @bottom-center {
-       content: "Expires June 19, 2015";
+       content: "Expires July 7, 2015";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -561,14 +574,14 @@ ul.toc a:first-child {
       <link rel="Chapter" title="10 Acknowledgements" href="#rfc.section.10">
       <link rel="Chapter" href="#rfc.section.11" title="11 References">
       <link rel="Appendix" title="A Change Log (to be removed by RFC Editor before publication)" href="#rfc.section.A">
-      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.690, 2014/11/12 21:37:29, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
+      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.711, 2014/12/18 10:09:39, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
       <meta name="keywords" content="HTTP, ALPN, Alternate Services">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Nottingham, M.">
       <meta name="dct.creator" content="McManus, P.">
       <meta name="dct.creator" content="Reschke, J. F.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-alt-svc-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2014-12-16">
+      <meta name="dct.issued" scheme="ISO8601" content="2015-01-03">
       <meta name="dct.abstract" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
       <meta name="description" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
    </head>
@@ -588,7 +601,7 @@ ul.toc a:first-child {
                <td class="right">P. McManus</td>
             </tr>
             <tr>
-               <td class="left">Expires: June 19, 2015</td>
+               <td class="left">Expires: July 7, 2015</td>
                <td class="right">Mozilla</td>
             </tr>
             <tr>
@@ -601,7 +614,7 @@ ul.toc a:first-child {
             </tr>
             <tr>
                <td class="left"></td>
-               <td class="right">December 16, 2014</td>
+               <td class="right">January 3, 2015</td>
             </tr>
          </tbody>
       </table>
@@ -627,11 +640,11 @@ ul.toc a:first-child {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on June 19, 2015.</p>
+         <p>This Internet-Draft will expire on July 7, 2015.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
-         <p>Copyright © 2014 IETF Trust and the persons identified as the document authors. All rights reserved.</p>
+         <p>Copyright © 2015 IETF Trust and the persons identified as the document authors. All rights reserved.</p>
          <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (<a href="http://trustee.ietf.org/license-info">http://trustee.ietf.org/license-info</a>) in effect on the date of publication of this document. Please review these documents carefully, as they describe your rights
             and restrictions with respect to this document. Code Components extracted from this document must include Simplified BSD License
             text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified
@@ -1454,7 +1467,7 @@ Alt-Used: 1
             </div>
          </div>
       </div>
-      <div class="avoidbreak">
+      <div class="avoidbreakinside">
          <h1 id="rfc.authors"><a href="#rfc.authors">Authors' Addresses</a></h1>
          <p><b>Mark Nottingham</b><br>Akamai<br>Email: mnot@mnot.net<br>URI: <a href="https://www.mnot.net/">https://www.mnot.net/</a></p>
          <p><b>Patrick McManus</b><br>Mozilla<br>Email: mcmanus@ducksong.com<br>URI: <a href="https://mozillians.org/u/pmcmanus/">https://mozillians.org/u/pmcmanus/</a></p>

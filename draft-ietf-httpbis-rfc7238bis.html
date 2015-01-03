@@ -121,6 +121,22 @@ div.note {
 dl {
   margin-left: 2em;
 }
+dl > dt {
+  float: left;
+  margin-right: 1em;
+}
+dl.nohang > dt {
+  float: none;
+}
+dl > dd {
+  margin-bottom: .5em;
+}
+dl.compact > dd {
+  margin-bottom: .0em;
+}
+dl > dd > dl {
+  margin-top: 0.5em;
+}
 ul.empty {
   list-style-type: none;
 }
@@ -129,9 +145,6 @@ ul.empty li {
 }
 dl p {
   margin-left: 0em;
-}
-dt {
-  margin-top: .5em;
 }
 h1 {
   font-size: 130%;
@@ -377,7 +390,7 @@ ul p {
   padding: 3px 5px;
   color: white;
   border-radius: 5px;
-  background: #a00000;
+  background: #006400;
   border: 1px solid silver;
   -webkit-user-select: none; 
   -moz-user-select: none;
@@ -446,7 +459,7 @@ ul p {
        content: "Internet-Draft";
   }
   @top-right {
-       content: "December 2014";
+       content: "January 2015";
   }
   @top-center {
        content: "HTTP Status Code 308";
@@ -455,7 +468,7 @@ ul p {
        content: "Reschke";
   }
   @bottom-center {
-       content: "Expires June 19, 2015";
+       content: "Expires July 7, 2015";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -563,12 +576,12 @@ ul.toc a:first-child {
       <link rel="Chapter" title="6 IANA Considerations" href="#rfc.section.6">
       <link rel="Chapter" title="7 Acknowledgements" href="#rfc.section.7">
       <link rel="Chapter" href="#rfc.section.8" title="8 References">
-      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.690, 2014/11/12 21:37:29, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
+      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.711, 2014/12/18 10:09:39, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
       <meta name="keywords" content="HTTP, redirect, status code">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Reschke, J. F.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-rfc7238bis-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2014-12-16">
+      <meta name="dct.issued" scheme="ISO8601" content="2015-01-03">
       <meta name="dct.replaces" content="urn:ietf:rfc:7238">
       <meta name="dct.abstract" content="This document specifies the additional Hypertext Transfer Protocol (HTTP) status code 308 (Permanent Redirect).">
       <meta name="description" content="This document specifies the additional Hypertext Transfer Protocol (HTTP) status code 308 (Permanent Redirect).">
@@ -587,14 +600,14 @@ ul.toc a:first-child {
             <tr>
                <td class="left">Obsoletes: <a href="https://tools.ietf.org/html/rfc7238">7238</a> (if approved)
                </td>
-               <td class="right">December 16, 2014</td>
+               <td class="right">January 3, 2015</td>
             </tr>
             <tr>
                <td class="left">Intended status: Standards Track</td>
                <td class="right"></td>
             </tr>
             <tr>
-               <td class="left">Expires: June 19, 2015</td>
+               <td class="left">Expires: July 7, 2015</td>
                <td class="right"></td>
             </tr>
          </tbody>
@@ -612,11 +625,11 @@ ul.toc a:first-child {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on June 19, 2015.</p>
+         <p>This Internet-Draft will expire on July 7, 2015.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
-         <p>Copyright © 2014 IETF Trust and the persons identified as the document authors. All rights reserved.</p>
+         <p>Copyright © 2015 IETF Trust and the persons identified as the document authors. All rights reserved.</p>
          <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (<a href="http://trustee.ietf.org/license-info">http://trustee.ietf.org/license-info</a>) in effect on the date of publication of this document. Please review these documents carefully, as they describe your rights
             and restrictions with respect to this document. Code Components extracted from this document must include Simplified BSD License
             text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified
@@ -711,9 +724,11 @@ ul.toc a:first-child {
                (see <a href="#RFC7234"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Caching">[RFC7234]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7234.html#heuristic.freshness" title="Calculating Heuristic Freshness">Section 4.2.2</a>).
             </p>
          </div>
-         <div class="note" id="rfc.section.3.p.4">
-            <p><b>Note:</b> This status code is similar to 301 (Moved Permanently) (<a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7231.html#status.301" title="301 Moved Permanently">Section 6.4.2</a>), except that it does not allow changing the request method from POST to GET.
-            </p>
+         <div class="note">
+            <div id="rfc.section.3.p.4">
+               <p><b>Note:</b> This status code is similar to 301 (Moved Permanently) (<a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7231.html#status.301" title="301 Moved Permanently">Section 6.4.2</a>), except that it does not allow changing the request method from POST to GET.
+               </p>
+            </div>
          </div>
       </div>
       <div id="deployment.considerations">
@@ -731,7 +746,7 @@ ul.toc a:first-child {
             </p>
          </div>
          <div id="rfc.section.4.p.3">
-            <p>Note that many existing HTML-based user agents will emulate a refresh when encountering an HTML &lt;meta&gt; refresh directive (<a href="#HTML"><cite title="HTML 4.01 Specification">[HTML]</cite></a>). This can be used as another fallback. For example:
+            <p>Note that many existing HTML-based user agents will emulate a refresh when encountering an HTML &lt;meta&gt; refresh directive (<a href="#HTML"><cite title="HTML5">[HTML]</cite></a>, <a href="http://www.w3.org/TR/2014/REC-html5-20141028/document-metadata.html#pragma-directives">Section 4.2.5.3</a>). This can be used as another fallback. For example:
             </p>
          </div>
          <div id="rfc.figure.u.1">
@@ -743,10 +758,9 @@ Host: example.com
             <p>Server response:</p><pre class="text">HTTP/1.1 308 Permanent Redirect
 Content-Type: text/html; charset=UTF-8
 Location: http://example.com/new
-Content-Length: 454
+Content-Length: 356
 
-<span id="body">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<span id="body">&lt;!DOCTYPE HTML&gt;
 &lt;html&gt;
    &lt;head&gt;
       &lt;title&gt;Permanent Redirect&lt;/title&gt;
@@ -844,11 +858,11 @@ Content-Length: 454
       <table>
          <tr>
             <td class="reference"><b id="HTML">[HTML]</b></td>
-            <td class="top">Raggett, D., Le Hors, A., and I. Jacobs, “<a href="http://www.w3.org/TR/1999/REC-html401-19991224">HTML 4.01 Specification</a>”, W3C Recommendation&nbsp;REC-html401-19991224, December&nbsp;1999, &lt;<a href="http://www.w3.org/TR/1999/REC-html401-19991224">http://www.w3.org/TR/1999/REC-html401-19991224</a>&gt;.<br>Latest version available at &lt;<a href="http://www.w3.org/TR/html401">http://www.w3.org/TR/html401</a>&gt;.
+            <td class="top">Hickson, I., Berjon, R., Faulkner, S., Leithead, T., Doyle Navara, E., O'Connor, E., and S. Pfeiffer, “<a href="http://www.w3.org/TR/2014/REC-html5-20141028/">HTML5</a>”, W3C Recommendation&nbsp;REC-html5-20141028, October&nbsp;2014, &lt;<a href="http://www.w3.org/TR/2014/REC-html5-20141028/">http://www.w3.org/TR/2014/REC-html5-20141028/</a>&gt;.<br>Latest version available at &lt;<a href="http://www.w3.org/TR/html5/">http://www.w3.org/TR/html5/</a>&gt;.
             </td>
          </tr>
       </table>
-      <div class="avoidbreak">
+      <div class="avoidbreakinside">
          <h1 id="rfc.authors"><a href="#rfc.authors">Author's Address</a></h1>
          <p><b>Julian F. Reschke</b><br>greenbytes GmbH<br>Hafenweg 16<br>Muenster, NW&nbsp;48155<br>Germany<br>Email: <a href="mailto:julian.reschke@greenbytes.de">julian.reschke@greenbytes.de</a><br>URI: <a href="http://greenbytes.de/tech/webdav/">http://greenbytes.de/tech/webdav/</a></p>
       </div>

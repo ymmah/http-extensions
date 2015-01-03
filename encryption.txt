@@ -5,8 +5,8 @@
 HTTPbis Working Group                                      M. Nottingham
 Internet-Draft
 Intended status: Experimental                                 M. Thomson
-Expires: June 19, 2015                                           Mozilla
-                                                       December 16, 2014
+Expires: July 7, 2015                                            Mozilla
+                                                         January 3, 2015
 
 
                     Opportunistic Security for HTTP
@@ -33,11 +33,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on June 19, 2015.
+   This Internet-Draft will expire on July 7, 2015.
 
 Copyright Notice
 
-   Copyright (c) 2014 IETF Trust and the persons identified as the
+   Copyright (c) 2015 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Nottingham & Thomson      Expires June 19, 2015                 [Page 1]
+Nottingham & Thomson      Expires July 7, 2015                  [Page 1]
 
-Internet-Draft         Opportunistic HTTP Security         December 2014
+Internet-Draft         Opportunistic HTTP Security          January 2015
 
 
 Table of Contents
@@ -73,10 +73,10 @@ Table of Contents
      6.1.  Security Indicators . . . . . . . . . . . . . . . . . . .   7
      6.2.  Downgrade Attacks . . . . . . . . . . . . . . . . . . . .   7
      6.3.  Privacy Considerations  . . . . . . . . . . . . . . . . .   7
-     6.4.  Confusion Regarding Request Scheme  . . . . . . . . . . .   7
+     6.4.  Confusion Regarding Request Scheme  . . . . . . . . . . .   8
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   8
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .   8
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .   8
+     7.2.  Informative References  . . . . . . . . . . . . . . . . .   9
    Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .   9
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   9
 
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Nottingham & Thomson      Expires June 19, 2015                 [Page 2]
+Nottingham & Thomson      Expires July 7, 2015                  [Page 2]
 
-Internet-Draft         Opportunistic HTTP Security         December 2014
+Internet-Draft         Opportunistic HTTP Security          January 2015
 
 
 1.1.  Goals and Non-Goals
@@ -165,9 +165,9 @@ Internet-Draft         Opportunistic HTTP Security         December 2014
 
 
 
-Nottingham & Thomson      Expires June 19, 2015                 [Page 3]
+Nottingham & Thomson      Expires July 7, 2015                  [Page 3]
 
-Internet-Draft         Opportunistic HTTP Security         December 2014
+Internet-Draft         Opportunistic HTTP Security          January 2015
 
 
 3.  Server Authentication
@@ -221,9 +221,9 @@ Internet-Draft         Opportunistic HTTP Security         December 2014
 
 
 
-Nottingham & Thomson      Expires June 19, 2015                 [Page 4]
+Nottingham & Thomson      Expires July 7, 2015                  [Page 4]
 
-Internet-Draft         Opportunistic HTTP Security         December 2014
+Internet-Draft         Opportunistic HTTP Security          January 2015
 
 
 5.  Requiring Use of TLS
@@ -252,12 +252,8 @@ Internet-Draft         Opportunistic HTTP Security         December 2014
    When an alternative service is able to commit to providing service
    for a particular origin over TLS for a bounded period of time,
    clients can choose to rely upon its avilability, failing when it
-   cannot be contacted.  Effectively, this makes the alternative service
-   "sticky" in the client.
-
-   One drawback with this approach is that clients need to strongly
-   authenticate the alternative service to act upon such a commitment;
-   otherwise, an attacker could create a persistent denial of service.
+   cannot be contacted.  Effectively, this makes the choice to use a
+   secured protocol "sticky" in the client.
 
 5.1.  The HTTP-TLS Header Field
 
@@ -277,9 +273,17 @@ Internet-Draft         Opportunistic HTTP Security         December 2014
 
 
 
-Nottingham & Thomson      Expires June 19, 2015                 [Page 5]
+
+
+
+
+Nottingham & Thomson      Expires July 7, 2015                  [Page 5]
 
-Internet-Draft         Opportunistic HTTP Security         December 2014
+Internet-Draft         Opportunistic HTTP Security          January 2015
+
+
+   GET /index.html HTTP/1.1
+   Host: example.com
 
 
    HTTP/1.1 200 OK
@@ -289,33 +293,51 @@ Internet-Draft         Opportunistic HTTP Security         December 2014
    Date: Thu, 1 May 2014 16:20:09 GMT
    HTTP-TLS: ma=3600
 
-   Note that the commitment is not bound to a particular alternative
-   service; clients SHOULD use other alternative services that they
-   become aware of, as long as the requirements regarding authentication
-   and avoidance of cleartext protocols are met.
+   This header field creates a commitment from the origin [RFC6454] of
+   the associated resource (in the example, "http://example.com").  For
+   the duration of the commitment, clients SHOULD strongly authenticate
+   the server for all subsequent requests made to that origin, though
+   this creates some risks for clients Section 5.2.
 
-   When this header field appears in a response, clients MUST strongly
-   authenticate the alternative service, as described in Section 3.1 of
+   Authentication for HTTP over TLS is described in Section 3.1 of
    [RFC2818], noting the additional requirements in
    [I-D.ietf-httpbis-alt-svc].  The header field MUST be ignored if
-   strong authentication fails.
+   strong authentication fails; otherwise, an attacker could create a
+   persistent denial of service by falsifying a commitment.
 
-   Persisted information expires after a period determined by the value
-   of the "ma" parameter.  See Section 4.2.3 of [RFC7234] for details of
-   determining response age.
+   The commitment to use authenticated TLS persists for a period
+   determined by the value of the "ma" parameter.  See Section 4.2.3 of
+   [RFC7234] for details of determining response age.
 
 
    ma-parameter     = delta-seconds
 
-   Requests for an origin that has a persisted, unexpired value for
-   "HTTP-TLS" MUST fail if they cannot be made over an authenticated TLS
-   connection.
+   The commitment made by the "HTTP-TLS" header field applies only to
+   the origin of the resource that generates the "HTTP-TLS" header
+   field.  Requests for an origin that has a persisted, unexpired value
+   for "HTTP-TLS" MUST fail if they cannot be made over an authenticated
+   TLS connection.
+
+   Note that the commitment is not bound to a particular alternative
+   service.  Clients SHOULD use alternative services that they become
+   aware of.  However, clients MUST NOT use an unauthenticated
+   alternative service for an origin with this commitment.  Where there
+   is an active commitment, clients MAY instead ignore advertisements
+   for unsecured alternatives services.
 
 5.2.  Operational Considerations
 
    To avoid situations where a persisted value of "HTTP-TLS" causes a
    client to be unable to contact a site, clients SHOULD limit the time
    that a value is persisted for a given origin.  A lower limit might be
+
+
+
+Nottingham & Thomson      Expires July 7, 2015                  [Page 6]
+
+Internet-Draft         Opportunistic HTTP Security          January 2015
+
+
    appropriate for initial observations of "HTTP-TLS"; the certainty
    that a site has set a correct value - and the corresponding limit on
    persistence - can increase as the value is seen more over time.
@@ -325,18 +347,6 @@ Internet-Draft         Opportunistic HTTP Security         December 2014
    mechanism that would otherwise be restricted to use with "https"
    URIs, provided that the mechanism can be restricted to a single HTTP
    origin.
-
-
-
-
-
-
-
-
-Nottingham & Thomson      Expires June 19, 2015                 [Page 6]
-
-Internet-Draft         Opportunistic HTTP Security         December 2014
-
 
 6.  Security Considerations
 
@@ -376,6 +386,14 @@ Internet-Draft         Opportunistic HTTP Security         December 2014
    cached alternative service information when clearing other origin-
    based state (i.e., cookies).
 
+
+
+
+Nottingham & Thomson      Expires July 7, 2015                  [Page 7]
+
+Internet-Draft         Opportunistic HTTP Security          January 2015
+
+
 6.4.  Confusion Regarding Request Scheme
 
    Many existing HTTP/1.1 implementations use the presence or absence of
@@ -384,23 +402,9 @@ Internet-Draft         Opportunistic HTTP Security         December 2014
    common form of an HTTP/1.1 request does not carry an explicit
    indication of the URI scheme.
 
-   Opportunistically secured HTTP requests MUST include an explicit
-   scheme identifier.  For HTTP/1.1, this means using the authority form
-
-
-
-Nottingham & Thomson      Expires June 19, 2015                 [Page 7]
-
-Internet-Draft         Opportunistic HTTP Security         December 2014
-
-
-   for requests.  This introduces the potential for confusion, since a
-   server might erroneously provide a response for the "https" scheme in
-   response to an "http"-schemed response over TLS.  This offers
-
-   [[CREF1: Open issue: do we want to require an explicit indication
-   from HTTP/1.1 servers so that clients can be assured that this error
-   did not occur?]]
+   HTTP/1.1 MUST NOT be sent over HTTP/1.1 or earlier versions of the
+   protocol.  Opportunistically secured HTTP requests MUST include an
+   explicit scheme identifier.
 
 7.  References
 
@@ -429,9 +433,22 @@ Internet-Draft         Opportunistic HTTP Security         December 2014
    [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
               (TLS) Protocol Version 1.2", RFC 5246, August 2008.
 
+   [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454, December
+              2011.
+
    [RFC7234]  Fielding, R., Nottingham, M., and J. Reschke, "Hypertext
               Transfer Protocol (HTTP/1.1): Caching", RFC 7234, June
               2014.
+
+
+
+
+
+
+Nottingham & Thomson      Expires July 7, 2015                  [Page 8]
+
+Internet-Draft         Opportunistic HTTP Security          January 2015
+
 
 7.2.  Informative References
 
@@ -439,16 +456,6 @@ Internet-Draft         Opportunistic HTTP Security         December 2014
               Dukhovni, V., "Opportunistic Security: Some Protection
               Most of the Time", draft-dukhovni-opportunistic-
               security-06 (work in progress), November 2014.
-
-   [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454, December
-              2011.
-
-
-
-Nottingham & Thomson      Expires June 19, 2015                 [Page 8]
-
-Internet-Draft         Opportunistic HTTP Security         December 2014
-
 
    [RFC7258]  Farrell, S. and H. Tschofenig, "Pervasive Monitoring Is an
               Attack", BCP 188, RFC 7258, May 2014.
@@ -494,11 +501,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-
-Nottingham & Thomson      Expires June 19, 2015                 [Page 9]
+Nottingham & Thomson      Expires July 7, 2015                  [Page 9]

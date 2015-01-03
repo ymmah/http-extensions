@@ -118,6 +118,22 @@ cite {
 dl {
   margin-left: 2em;
 }
+dl > dt {
+  float: left;
+  margin-right: 1em;
+}
+dl.nohang > dt {
+  float: none;
+}
+dl > dd {
+  margin-bottom: .5em;
+}
+dl.compact > dd {
+  margin-bottom: .0em;
+}
+dl > dd > dl {
+  margin-top: 0.5em;
+}
 ul.empty {
   list-style-type: none;
 }
@@ -126,9 +142,6 @@ ul.empty li {
 }
 dl p {
   margin-left: 0em;
-}
-dt {
-  margin-top: .5em;
 }
 h1 {
   font-size: 130%;
@@ -306,7 +319,7 @@ ul p {
   padding: 3px 5px;
   color: white;
   border-radius: 5px;
-  background: #a00000;
+  background: #006400;
   border: 1px solid silver;
   -webkit-user-select: none; 
   -moz-user-select: none;
@@ -375,7 +388,7 @@ ul p {
        content: "Internet-Draft";
   }
   @top-right {
-       content: "December 2014";
+       content: "January 2015";
   }
   @top-center {
        content: "Tunnel-Protocol";
@@ -384,7 +397,7 @@ ul p {
        content: "Hutton, et al.";
   }
   @bottom-center {
-       content: "Expires June 19, 2015";
+       content: "Expires July 7, 2015";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -489,14 +502,14 @@ ul.toc a:first-child {
       <link rel="Chapter" title="3 IANA Considerations" href="#rfc.section.3">
       <link rel="Chapter" title="4 Security Considerations" href="#rfc.section.4">
       <link rel="Chapter" href="#rfc.section.5" title="5 References">
-      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.690, 2014/11/12 21:37:29, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
+      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.711, 2014/12/18 10:09:39, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
       <meta name="keywords" content="HTTP CONNECT, Firewall, HTTP proxy">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Hutton, A.">
       <meta name="dct.creator" content="Uberti, J.">
       <meta name="dct.creator" content="Thomson, M.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-tunnel-protocol-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2014-12-16">
+      <meta name="dct.issued" scheme="ISO8601" content="2015-01-03">
       <meta name="dct.abstract" content="This specification allows HTTP CONNECT requests to indicate what protocol will be used within the tunnel once established, using the Tunnel-Protocol request header field.">
       <meta name="description" content="This specification allows HTTP CONNECT requests to indicate what protocol will be used within the tunnel once established, using the Tunnel-Protocol request header field.">
    </head>
@@ -516,7 +529,7 @@ ul.toc a:first-child {
                <td class="right">J. Uberti</td>
             </tr>
             <tr>
-               <td class="left">Expires: June 19, 2015</td>
+               <td class="left">Expires: July 7, 2015</td>
                <td class="right">Google</td>
             </tr>
             <tr>
@@ -529,7 +542,7 @@ ul.toc a:first-child {
             </tr>
             <tr>
                <td class="left"></td>
-               <td class="right">December 16, 2014</td>
+               <td class="right">January 3, 2015</td>
             </tr>
          </tbody>
       </table>
@@ -553,11 +566,11 @@ ul.toc a:first-child {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on June 19, 2015.</p>
+         <p>This Internet-Draft will expire on July 7, 2015.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
-         <p>Copyright © 2014 IETF Trust and the persons identified as the document authors. All rights reserved.</p>
+         <p>Copyright © 2015 IETF Trust and the persons identified as the document authors. All rights reserved.</p>
          <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (<a href="http://trustee.ietf.org/license-info">http://trustee.ietf.org/license-info</a>) in effect on the date of publication of this document. Please review these documents carefully, as they describe your rights
             and restrictions with respect to this document. Code Components extracted from this document must include Simplified BSD License
             text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified
@@ -572,7 +585,7 @@ ul.toc a:first-child {
                   <li><a href="#rfc.section.1.1">1.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.1.1">Requirements Language</a></li>
                </ul>
             </li>
-            <li><a href="#rfc.section.2">2.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.2">The Tunnel-Protocol HTTP Request Header Field</a><ul>
+            <li><a href="#rfc.section.2">2.</a>&nbsp;&nbsp;&nbsp;<a href="#tp">The Tunnel-Protocol HTTP Request Header Field</a><ul>
                   <li><a href="#rfc.section.2.1">2.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.2.1">Header Field Values</a></li>
                   <li><a href="#rfc.section.2.2">2.2</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.2.2">Syntax</a></li>
                </ul>
@@ -602,9 +615,15 @@ ul.toc a:first-child {
             </p>
          </div>
          <div id="rfc.section.1.p.3">
-            <p>When CONNECT is used to establish a TLS tunnel, the Tunnel-Protocol header field may be used to carry the same next protocol
-               label as was carried within the TLS handshake. However, the HTTP-Protocol is an indication rather than a negotiation since
-               HTTP proxies do not implement the tunneled protocol.
+            <p>When CONNECT is used to establish a TLS tunnel, the Tunnel-Protocol header field may be used to carry the same application
+               protocol label as will be carried within the TLS handshake. If there are multiple possible application protocols, all of those
+               application protocols are indicated.
+            </p>
+         </div>
+         <div id="rfc.section.1.p.4">
+            <p>The Tunnel-Protocol header field carries an indication only. In TLS, the final choice of application protocol is made by the
+               server. Proxies do not implement the tunneled protocol, though they might choose to make policy decisions based on the value
+               of the header field.
             </p>
          </div>
          <div>
@@ -617,12 +636,11 @@ ul.toc a:first-child {
             </div>
          </div>
       </div>
-      <div>
-         <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a>&nbsp;The Tunnel-Protocol HTTP Request Header Field
-         </h1>
+      <div id="tp">
+         <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a>&nbsp;<a href="#tp">The Tunnel-Protocol HTTP Request Header Field</a></h1>
          <div id="rfc.section.2.p.1">
-            <p>Clients include the Tunnel-Protocol Request Header field in a HTTP Connect request to indicate the application layer protocol
-               used within the tunnel.
+            <p>Clients include the `Tunnel-Protocol` Request Header field in an HTTP CONNECT request to indicate the application layer protocol
+               will be used within the tunnel, or the set of protocols that might be used within the tunnel.
             </p>
          </div>
          <div>
@@ -637,13 +655,13 @@ ul.toc a:first-child {
             <h2 id="rfc.section.2.2"><a href="#rfc.section.2.2">2.2</a>&nbsp;Syntax
             </h2>
             <div id="rfc.section.2.2.p.1">
-               <p>The ABNF (Augmented Backus-Naur Form) syntax for the Tunnel-Protocol header field is given below. It is based on the Generic
+               <p>The ABNF (Augmented Backus-Naur Form) syntax for the `Tunnel-Protocol` header field is given below. It is based on the Generic
                   Grammar defined in <a href="https://tools.ietf.org/html/rfc7230#section-2">Section 2</a> of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>.
                </p>
             </div>
             <div id="rfc.figure.u.1"><pre class="inline">
-     Tunnel-Protocol = "Tunnel-Protocol:" protocol-id
-     protocol-id     = token ; percent-encoded ALPN protocol identifier
+Tunnel-Protocol = "Tunnel-Protocol":" 1#protocol-id
+protocol-id     = token ; percent-encoded ALPN protocol identifier
 </pre></div>
             <div id="rfc.section.2.2.p.2">
                <p>ALPN protocol names are octet sequences with no additional constraints on format. Octets not allowed in tokens (<a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://tools.ietf.org/html/rfc7230#section-3.2.6">Section 3.2.6</a>) must be percent-encoded as per <a href="https://tools.ietf.org/html/rfc3986#section-2.1">Section 2.1</a> of <a href="#RFC3986"><cite title="Uniform Resource Identifier (URI): Generic Syntax">[RFC3986]</cite></a>. Consequently, the octet representing the percent character "%" (hex 25) must be percent-encoded as well.
@@ -663,29 +681,43 @@ ul.toc a:first-child {
                <p>For example:</p><pre class="text2">
 CONNECT turn_server.example.com:5349 HTTP/1.1
 Host: turn_server.example.com:5349
-Tunnel-Protocol: turn
+Tunnel-Protocol: stun.turn
 </pre></div>
          </div>
       </div>
       <div id="IANA">
          <h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a>&nbsp;<a href="#IANA">IANA Considerations</a></h1>
          <div id="rfc.section.3.p.1">
-            <p><span class="comment" id="rfc.comment.1">[<a href="#rfc.comment.1" class="smpl">rfc.comment.1</a>: To Be Added]</span></p>
+            <p>HTTP header fields are registered within the "Message Headers" registry maintained at &lt;<a href="https://www.iana.org/assignments/message-headers">https://www.iana.org/assignments/message-headers</a>&gt;. This document defines and registers the `Tunnel-Protocol` header field, according to <a href="#RFC3864"><cite title="Registration Procedures for Message Header Fields">[RFC3864]</cite></a> as follows: 
+            </p>
+            <dl>
+               <dt>Header Field Name:</dt>
+               <dd>Tunnel-Protocol</dd>
+               <dt>Protocol:</dt>
+               <dd>http</dd>
+               <dt>Status:</dt>
+               <dd>Standard</dd>
+               <dt>Reference:</dt>
+               <dd><a href="#tp" title="The Tunnel-Protocol HTTP Request Header Field">Section&nbsp;2</a> 
+               </dd>
+               <dt>Change Controller:</dt>
+               <dd>IETF (iesg@ietf.org) - Internet Engineering Task Force</dd>
+            </dl>
          </div>
       </div>
       <div id="Security">
          <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a>&nbsp;<a href="#Security">Security Considerations</a></h1>
          <div id="rfc.section.4.p.1">
-            <p>In case of using HTTP CONNECT to a TURN server the security consideration of <a href="https://tools.ietf.org/html/rfc7231#section-4.3.6">Section 4.3.6</a> of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a> apply. It states that there "are significant risks in establishing a tunnel to arbitrary servers, particularly when the destination
+            <p>In case of using HTTP CONNECT to a TURN server the security considerations of <a href="https://tools.ietf.org/html/rfc7231#section-4.3.6">Section 4.3.6</a> of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a> apply. It states that there "are significant risks in establishing a tunnel to arbitrary servers, particularly when the destination
                is a well-known or reserved TCP port that is not intended for Web traffic. Proxies that support CONNECT SHOULD restrict its
                use to a limited set of known ports or a configurable whitelist of safe request targets."
             </p>
          </div>
          <div id="rfc.section.4.p.2">
-            <p>The Tunnel-Protocol request header field described in this document is an optional header and HTTP Proxies may of course not
-               support the header and therefore ignore it. If the header is not present or ignored then the proxy has no explicit indication
-               as to the purpose of the tunnel on which to provide consent, this is the generic case that exists without the Tunnel-Protocol
-               header.
+            <p>The `Tunnel-Protocol` request header field described in this document is an optional header. Clients and HTTP Proxies could
+               choose to not support the header and therefore fail to provide it, or ignore it when present. If the header is not available
+               or ignored, a proxy cannot identify the purpose of the tunnel and use this as input to any authorization decision regarding
+               the tunnel. This is indistinguishable from the case where either client or proxy does not support the `Tunnel-Protocol` header.
             </p>
          </div>
       </div>
@@ -697,6 +729,11 @@ Tunnel-Protocol: turn
          <tr>
             <td class="reference"><b id="RFC2119">[RFC2119]</b></td>
             <td class="top"><a href="mailto:sob@harvard.edu">Bradner, S.</a>, “<a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>”, BCP&nbsp;14, RFC&nbsp;2119, March&nbsp;1997.
+            </td>
+         </tr>
+         <tr>
+            <td class="reference"><b id="RFC3864">[RFC3864]</b></td>
+            <td class="top">Klyne, G., Nottingham, M., and J. Mogul, “<a href="https://tools.ietf.org/html/rfc3864">Registration Procedures for Message Header Fields</a>”, BCP&nbsp;90, RFC&nbsp;3864, September&nbsp;2004.
             </td>
          </tr>
          <tr>
@@ -729,7 +766,7 @@ Tunnel-Protocol: turn
             </td>
          </tr>
       </table>
-      <div class="avoidbreak">
+      <div class="avoidbreakinside">
          <h1 id="rfc.authors"><a href="#rfc.authors">Authors' Addresses</a></h1>
          <p><b>Andrew Hutton</b><br>Unify<br>Technology Drive<br>Nottingham, NG9 1LA<br>UK<br>Email: <a href="mailto:andrew.hutton@unify.com">andrew.hutton@unify.com</a></p>
          <p><b>Justin Uberti</b><br>Google<br>747 6th Ave S<br>Kirkland, WA&nbsp;98033<br>US<br>Email: <a href="mailto:justin@uberti.name">justin@uberti.name</a></p>
