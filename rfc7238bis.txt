@@ -92,9 +92,9 @@ Table of Contents
    | method from POST to GET                   |           |           |
    +-------------------------------------------+-----------+-----------+
 
-   Section 6.4.7 of [RFC7231] states that HTTP does not define a
-   permanent variant of status code 307; this specification adds the
-   status code 308, defining this missing variant (Section 3).
+   Section 6.4.7 of [RFC7231] states that it does not define a permanent
+   variant of status code 307; this specification adds the status code
+   308, defining this missing variant (Section 3).
 
    This specification contains no technical changes from the
    experimental RFC 7238, which it obsoletes.
@@ -231,9 +231,10 @@ Internet-Draft            HTTP Status Code 308              January 2015
    The definition for the new status code 308 reuses text from the
    HTTP/1.1 definitions of status codes 301 and 307.
 
-   Furthermore, thanks to Ben Campbell, Cyrus Daboo, Eran Hammer-Lahav,
-   Bjoern Hoehrmann, Subramanian Moonesamy, Peter Saint-Andre, and
-   Robert Sparks for feedback on this document.
+   Furthermore, thanks to Ben Campbell, Cyrus Daboo, Adrian Farrell,
+   Eran Hammer-Lahav, Bjoern Hoehrmann, Barry Leiba, Subramanian
+   Moonesamy, Peter Saint-Andre, and Robert Sparks for feedback on this
+   document.
 
 8.  References
 
@@ -270,7 +271,6 @@ Internet-Draft            HTTP Status Code 308              January 2015
 8.3.  URIs
 
    [1] http://www.iana.org/assignments/http-status-codes
-
 
 
 
