@@ -3,7 +3,7 @@
 <html lang="en">
    <head profile="http://dublincore.org/documents/2008/08/04/dc-html/">
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <title>The Tunnel-Protocol HTTP Request Header Field</title><script>
+      <title>The Tunnel-Protocol HTTP Header Field</title><script>
 var buttonsAdded = false;
 
 function initFeedback() {
@@ -419,7 +419,7 @@ ul p {
       <link rel="Author" href="#rfc.authors">
       <link rel="Copyright" href="#rfc.copyrightnotice">
       <link rel="Chapter" title="1 Introduction" href="#rfc.section.1">
-      <link rel="Chapter" title="2 The Tunnel-Protocol HTTP Request Header Field" href="#rfc.section.2">
+      <link rel="Chapter" title="2 The Tunnel-Protocol HTTP Header Field" href="#rfc.section.2">
       <link rel="Chapter" title="3 IANA Considerations" href="#rfc.section.3">
       <link rel="Chapter" title="4 Security Considerations" href="#rfc.section.4">
       <link rel="Chapter" href="#rfc.section.5" title="5 References">
@@ -431,8 +431,8 @@ ul p {
       <meta name="dct.creator" content="Thomson, M.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-tunnel-protocol-latest">
       <meta name="dct.issued" scheme="ISO8601" content="2015-01-20">
-      <meta name="dct.abstract" content="This specification allows HTTP CONNECT requests to indicate what protocol will be used within the tunnel once established, using the Tunnel-Protocol request header field.">
-      <meta name="description" content="This specification allows HTTP CONNECT requests to indicate what protocol will be used within the tunnel once established, using the Tunnel-Protocol request header field.">
+      <meta name="dct.abstract" content="This specification allows HTTP CONNECT requests to indicate what protocol will be used within the tunnel once established, using the Tunnel-Protocol header field.">
+      <meta name="description" content="This specification allows HTTP CONNECT requests to indicate what protocol will be used within the tunnel once established, using the Tunnel-Protocol header field.">
    </head>
    <body onload="initFeedback();">
       <table class="header" id="rfc.headerblock">
@@ -467,10 +467,10 @@ ul p {
             </tr>
          </tbody>
       </table>
-      <p class="title" id="rfc.title">The Tunnel-Protocol HTTP Request Header Field<br><span class="filename">draft-ietf-httpbis-tunnel-protocol-latest</span></p>
+      <p class="title" id="rfc.title">The Tunnel-Protocol HTTP Header Field<br><span class="filename">draft-ietf-httpbis-tunnel-protocol-latest</span></p>
       <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
       <p>This specification allows HTTP CONNECT requests to indicate what protocol will be used within the tunnel once established,
-         using the Tunnel-Protocol request header field.
+         using the Tunnel-Protocol header field.
       </p>
       <h1 id="rfc.note.1"><a href="#rfc.note.1">Editorial Note (To be removed by RFC Editor)</a></h1>
       <p>Discussion of this draft takes place on the HTTPBIS working group mailing list (ietf-http-wg@w3.org), which is archived at &lt;<a href="https://lists.w3.org/Archives/Public/ietf-http-wg/">https://lists.w3.org/Archives/Public/ietf-http-wg/</a>&gt;.
@@ -506,7 +506,7 @@ ul p {
                   <li><a href="#rfc.section.1.1">1.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.1.1">Requirements Language</a></li>
                </ul>
             </li>
-            <li><a href="#rfc.section.2">2.</a>&nbsp;&nbsp;&nbsp;<a href="#tp">The Tunnel-Protocol HTTP Request Header Field</a><ul>
+            <li><a href="#rfc.section.2">2.</a>&nbsp;&nbsp;&nbsp;<a href="#tp">The Tunnel-Protocol HTTP Header Field</a><ul>
                   <li><a href="#rfc.section.2.1">2.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.2.1">Header Field Values</a></li>
                   <li><a href="#rfc.section.2.2">2.2</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.2.2">Syntax</a></li>
                </ul>
@@ -558,10 +558,10 @@ ul p {
          </div>
       </div>
       <div id="tp">
-         <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a>&nbsp;<a href="#tp">The Tunnel-Protocol HTTP Request Header Field</a></h1>
+         <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a>&nbsp;<a href="#tp">The Tunnel-Protocol HTTP Header Field</a></h1>
          <div id="rfc.section.2.p.1">
-            <p>Clients include the `Tunnel-Protocol` Request Header field in an HTTP CONNECT request to indicate the application layer protocol
-               will be used within the tunnel, or the set of protocols that might be used within the tunnel.
+            <p>Clients include the Tunnel-Protocol header field in an HTTP CONNECT request to indicate the application layer protocol will
+               be used within the tunnel, or the set of protocols that might be used within the tunnel.
             </p>
          </div>
          <div>
@@ -576,7 +576,7 @@ ul p {
             <h2 id="rfc.section.2.2"><a href="#rfc.section.2.2">2.2</a>&nbsp;Syntax
             </h2>
             <div id="rfc.section.2.2.p.1">
-               <p>The ABNF (Augmented Backus-Naur Form) syntax for the `Tunnel-Protocol` header field is given below. It is based on the Generic
+               <p>The ABNF (Augmented Backus-Naur Form) syntax for the Tunnel-Protocol header field is given below. It is based on the Generic
                   Grammar defined in <a href="https://tools.ietf.org/html/rfc7230#section-2">Section 2</a> of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>.
                </p>
             </div>
@@ -609,7 +609,7 @@ Tunnel-Protocol: h2, http%2F1.1
       <div id="IANA">
          <h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a>&nbsp;<a href="#IANA">IANA Considerations</a></h1>
          <div id="rfc.section.3.p.1">
-            <p>HTTP header fields are registered within the "Message Headers" registry maintained at &lt;<a href="https://www.iana.org/assignments/message-headers">https://www.iana.org/assignments/message-headers</a>&gt;. This document defines and registers the `Tunnel-Protocol` header field, according to <a href="#RFC3864"><cite title="Registration Procedures for Message Header Fields">[RFC3864]</cite></a> as follows: 
+            <p>HTTP header fields are registered within the "Message Headers" registry maintained at &lt;<a href="https://www.iana.org/assignments/message-headers">https://www.iana.org/assignments/message-headers</a>&gt;. This document defines and registers the Tunnel-Protocol header field, according to <a href="#RFC3864"><cite title="Registration Procedures for Message Header Fields">[RFC3864]</cite></a> as follows: 
             </p>
             <dl>
                <dt>Header Field Name:</dt>
@@ -619,7 +619,7 @@ Tunnel-Protocol: h2, http%2F1.1
                <dt>Status:</dt>
                <dd>Standard</dd>
                <dt>Reference:</dt>
-               <dd><a href="#tp" title="The Tunnel-Protocol HTTP Request Header Field">Section&nbsp;2</a> 
+               <dd><a href="#tp" title="The Tunnel-Protocol HTTP Header Field">Section&nbsp;2</a> 
                </dd>
                <dt>Change Controller:</dt>
                <dd>IETF (iesg@ietf.org) - Internet Engineering Task Force</dd>
@@ -635,10 +635,10 @@ Tunnel-Protocol: h2, http%2F1.1
             </p>
          </div>
          <div id="rfc.section.4.p.2">
-            <p>The `Tunnel-Protocol` request header field described in this document is an optional header. Clients and HTTP Proxies could
-               choose to not support the header and therefore fail to provide it, or ignore it when present. If the header is not available
-               or ignored, a proxy cannot identify the purpose of the tunnel and use this as input to any authorization decision regarding
-               the tunnel. This is indistinguishable from the case where either client or proxy does not support the `Tunnel-Protocol` header.
+            <p>The Tunnel-Protocol header field described in this document is an optional header. Clients and HTTP Proxies could choose to
+               not support the header and therefore fail to provide it, or ignore it when present. If the header is not available or ignored,
+               a proxy cannot identify the purpose of the tunnel and use this as input to any authorization decision regarding the tunnel.
+               This is indistinguishable from the case where either client or proxy does not support the Tunnel-Protocol header.
             </p>
          </div>
       </div>
