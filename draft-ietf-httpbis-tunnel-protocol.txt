@@ -88,24 +88,24 @@ Table of Contents
    the recipient establish a tunnel to the identified origin server and
    thereafter forward packets, in both directions, until the tunnel is
    closed.  Such tunnels are commonly used to create end-to-end virtual
-   connections, through one or more proxies, which can then be secured
-   using TLS (Transport Layer Security, [RFC5246]).
+   connections, through one or more proxies.
 
    The HTTP Tunnel-Protocol header field identifies the protocol that
    will be spoken within the tunnel, using the Application Layer
-   Protocol Negotiation identifier (ALPN, [RFC7301]) specified for TLS
-   [RFC5246].
+   Protocol Negotiation identifier (ALPN, [RFC7301]).
 
-   When CONNECT is used to establish a TLS tunnel, the Tunnel-Protocol
-   header field can be used to carry the same application protocol label
-   as will be carried within the TLS handshake.  If there are multiple
-   possible application protocols, all of those application protocols
-   are indicated.
+   When the CONNECT method is used to establish a tunnel, the Tunnel-
+   Protocol header field can be used to identify the protocol that the
+   client intends to use with that tunnel.  For a tunnel that is then
+   secured using TLS [RFC5246], the header field carries the same
+   application protocol label as will be carried within the TLS
+   handshake.  If there are multiple possible application protocols, all
+   of those application protocols are indicated.
 
-   The Tunnel-Protocol header field carries an indication only.  In TLS,
-   the final choice of application protocol is made by the server.
-   Proxies do not implement the tunneled protocol, though they might
-
+   The Tunnel-Protocol header field carries an indication of client
+   intent only.  In TLS, the final choice of application protocol is
+   made by the server from the set of choices presented by the client.
+   Other protocols could negotiate protocols differently.
 
 
 
@@ -114,6 +114,7 @@ Hutton, et al.            Expires July 25, 2015                 [Page 2]
 Internet-Draft               Tunnel-Protocol                January 2015
 
 
+   Proxies do not implement the tunneled protocol, though they might
    choose to make policy decisions based on the value of the header
    field.
 
@@ -160,8 +161,7 @@ Internet-Draft               Tunnel-Protocol                January 2015
 
    o  When using percent-encoding, uppercase hex digits MUST be used.
 
-   With these constraints, recipients can apply simple string comparison
-   to match protocol identifiers.
+
 
 
 
@@ -169,6 +169,9 @@ Hutton, et al.            Expires July 25, 2015                 [Page 3]
 
 Internet-Draft               Tunnel-Protocol                January 2015
 
+
+   With these constraints, recipients can apply simple string comparison
+   to match protocol identifiers.
 
    For example:
 
@@ -213,9 +216,6 @@ Internet-Draft               Tunnel-Protocol                January 2015
    any authorization decision regarding the tunnel.  This is
    indistinguishable from the case where either client or proxy does not
    support the Tunnel-Protocol header field.
-
-
-
 
 
 
