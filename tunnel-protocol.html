@@ -527,16 +527,16 @@ ul p {
          <div id="rfc.section.1.p.1">
             <p>The HTTP CONNECT method (<a href="https://tools.ietf.org/html/rfc7231#section-4.3.6">Section 4.3.6</a> of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>) requests that the recipient establish a tunnel to the identified origin server and thereafter forward packets, in both directions,
                until the tunnel is closed. Such tunnels are commonly used to create end-to-end virtual connections, through one or more proxies,
-               which may then be secured using TLS (Transport Layer Security, <a href="#RFC5246"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite></a>).
+               which can then be secured using TLS (Transport Layer Security, <a href="#RFC5246"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite></a>).
             </p>
          </div>
          <div id="rfc.section.1.p.2">
-            <p>The HTTP Tunnel-Protocol header field identifies the protocol that will be spoken within the tunnel, using the application
-               layer next protocol identifier <a href="#RFC7301"><cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[RFC7301]</cite></a> specified for TLS <a href="#RFC5246"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite></a>.
+            <p>The HTTP Tunnel-Protocol header field identifies the protocol that will be spoken within the tunnel, using the Application
+               Layer Protocol Negotiation identifier (ALPN, <a href="#RFC7301"><cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[RFC7301]</cite></a>) specified for TLS <a href="#RFC5246"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite></a>.
             </p>
          </div>
          <div id="rfc.section.1.p.3">
-            <p>When CONNECT is used to establish a TLS tunnel, the Tunnel-Protocol header field may be used to carry the same application
+            <p>When CONNECT is used to establish a TLS tunnel, the Tunnel-Protocol header field can be used to carry the same application
                protocol label as will be carried within the TLS handshake. If there are multiple possible application protocols, all of those
                application protocols are indicated.
             </p>
@@ -560,15 +560,16 @@ ul p {
       <div id="tp">
          <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a>&nbsp;<a href="#tp">The Tunnel-Protocol HTTP Header Field</a></h1>
          <div id="rfc.section.2.p.1">
-            <p>Clients include the Tunnel-Protocol header field in an HTTP CONNECT request to indicate the application layer protocol will
-               be used within the tunnel, or the set of protocols that might be used within the tunnel.
+            <p>Clients include the Tunnel-Protocol header field in an HTTP CONNECT request to indicate the application layer protocol that
+               will be used within the tunnel, or the set of protocols that might be used within the tunnel.
             </p>
          </div>
          <div>
             <h2 id="rfc.section.2.1"><a href="#rfc.section.2.1">2.1</a>&nbsp;Header Field Values
             </h2>
             <div id="rfc.section.2.1.p.1">
-               <p>Valid values for the protocol field are taken from the registry established in <a href="#RFC7301"><cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[RFC7301]</cite></a>.
+               <p>Valid values for the protocol field are taken from the "Application-Layer Protocol Negotiation (ALPN) Protocol ID" registry
+                  (&lt;<a href="http://www.iana.org/assignments/tls-extensiontype-values/#alpn-protocol-ids">http://www.iana.org/assignments/tls-extensiontype-values/#alpn-protocol-ids</a>&gt;) established by <a href="#RFC7301"><cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[RFC7301]</cite></a>.
                </p>
             </div>
          </div>
@@ -592,7 +593,7 @@ protocol-id     = token ; percent-encoded ALPN protocol identifier
                <p>In order to have precisely one way to represent any ALPN protocol name, the following additional constraints apply: </p>
                <ul>
                   <li>Octets in the ALPN protocol MUST NOT be percent-encoded if they are valid token characters except "%", and</li>
-                  <li>When using percent-encoding, uppercase hex digits must be used.</li>
+                  <li>When using percent-encoding, uppercase hex digits MUST be used.</li>
                </ul>
             </div>
             <div id="rfc.section.2.2.p.4">
@@ -629,16 +630,16 @@ Tunnel-Protocol: h2, http%2F1.1
       <div id="Security">
          <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a>&nbsp;<a href="#Security">Security Considerations</a></h1>
          <div id="rfc.section.4.p.1">
-            <p>In case of using HTTP CONNECT to a TURN server the security considerations of <a href="https://tools.ietf.org/html/rfc7231#section-4.3.6">Section 4.3.6</a> of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a> apply. It states that there "are significant risks in establishing a tunnel to arbitrary servers, particularly when the destination
+            <p>In case of using HTTP CONNECT to a TURN server ("Traversal Using Relays around NAT", <a href="#RFC5766"><cite title="Traversal Using Relays around NAT (TURN): Relay Extensions to Session Traversal Utilities for NAT (STUN)">[RFC5766]</cite></a>) the security considerations of <a href="https://tools.ietf.org/html/rfc7231#section-4.3.6">Section 4.3.6</a> of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a> apply. It states that there "are significant risks in establishing a tunnel to arbitrary servers, particularly when the destination
                is a well-known or reserved TCP port that is not intended for Web traffic. Proxies that support CONNECT SHOULD restrict its
                use to a limited set of known ports or a configurable whitelist of safe request targets."
             </p>
          </div>
          <div id="rfc.section.4.p.2">
-            <p>The Tunnel-Protocol header field described in this document is an optional header. Clients and HTTP Proxies could choose to
-               not support the header and therefore fail to provide it, or ignore it when present. If the header is not available or ignored,
+            <p>The Tunnel-Protocol header field described in this document is an OPTIONAL header field. Clients and HTTP Proxies could choose
+               to not support the header and therefore fail to provide it, or ignore it when present. If the header is not available or ignored,
                a proxy cannot identify the purpose of the tunnel and use this as input to any authorization decision regarding the tunnel.
-               This is indistinguishable from the case where either client or proxy does not support the Tunnel-Protocol header.
+               This is indistinguishable from the case where either client or proxy does not support the Tunnel-Protocol header field.
             </p>
          </div>
       </div>
@@ -684,6 +685,11 @@ Tunnel-Protocol: h2, http%2F1.1
          <tr>
             <td class="reference"><b id="RFC5246">[RFC5246]</b></td>
             <td class="top">Dierks, T. and E. Rescorla, “<a href="https://tools.ietf.org/html/rfc5246">The Transport Layer Security (TLS) Protocol Version 1.2</a>”, RFC&nbsp;5246, August&nbsp;2008.
+            </td>
+         </tr>
+         <tr>
+            <td class="reference"><b id="RFC5766">[RFC5766]</b></td>
+            <td class="top">Mahy, R., Matthews, P., and J. Rosenberg, “<a href="https://tools.ietf.org/html/rfc5766">Traversal Using Relays around NAT (TURN): Relay Extensions to Session Traversal Utilities for NAT (STUN)</a>”, RFC&nbsp;5766, April&nbsp;2010.
             </td>
          </tr>
       </table>
