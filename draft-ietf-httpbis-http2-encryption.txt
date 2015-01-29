@@ -233,10 +233,10 @@ Internet-Draft         Opportunistic HTTP Security          January 2015
    unclear at this point whether the additional effort (and modest
    operational cost) is worthwhile.
 
-   The mechanism described in this specification is trival to mount an
+   The mechanism described in this specification is trivial to mount an
    active attack against, for two reasons:
 
-   o  A client that doesn't perform authentication an easy victim of
+   o  A client that doesn't perform authentication is an easy victim of
       server impersonation, through man-in-the-middle attacks.
 
    o  A client that is willing to use cleartext to resolve the resource
@@ -251,7 +251,7 @@ Internet-Draft         Opportunistic HTTP Security          January 2015
 
    When an alternative service is able to commit to providing service
    for a particular origin over TLS for a bounded period of time,
-   clients can choose to rely upon its avilability, failing when it
+   clients can choose to rely upon its availability, failing when it
    cannot be contacted.  Effectively, this makes the choice to use a
    secured protocol "sticky" in the client.
 
@@ -297,7 +297,7 @@ Internet-Draft         Opportunistic HTTP Security          January 2015
    the associated resource (in the example, "http://example.com").  For
    the duration of the commitment, clients SHOULD strongly authenticate
    the server for all subsequent requests made to that origin, though
-   this creates some risks for clients Section 5.2.
+   this creates some risks for clients (see Section 5.2).
 
    Authentication for HTTP over TLS is described in Section 3.1 of
    [RFC2818], noting the additional requirements in
@@ -402,9 +402,7 @@ Internet-Draft         Opportunistic HTTP Security          January 2015
    common form of an HTTP/1.1 request does not carry an explicit
    indication of the URI scheme.
 
-   HTTP/1.1 MUST NOT be sent over HTTP/1.1 or earlier versions of the
-   protocol.  Opportunistically secured HTTP requests MUST include an
-   explicit scheme identifier.
+   HTTP/1.1 MUST NOT be used for opportunistically secured requests.
 
 7.  References
 
@@ -439,6 +437,8 @@ Internet-Draft         Opportunistic HTTP Security          January 2015
    [RFC7234]  Fielding, R., Nottingham, M., and J. Reschke, "Hypertext
               Transfer Protocol (HTTP/1.1): Caching", RFC 7234, June
               2014.
+
+
 
 
 

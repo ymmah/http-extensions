@@ -531,11 +531,11 @@ ul p {
             </p>
          </div>
          <div id="rfc.section.5.p.2">
-            <p>The mechanism described in this specification is trival to mount an active attack against, for two reasons:</p>
+            <p>The mechanism described in this specification is trivial to mount an active attack against, for two reasons:</p>
          </div>
          <div id="rfc.section.5.p.3">
             <ul>
-               <li>A client that doesn’t perform authentication an easy victim of server impersonation, through man-in-the-middle attacks.</li>
+               <li>A client that doesn’t perform authentication is an easy victim of server impersonation, through man-in-the-middle attacks.</li>
                <li>A client that is willing to use cleartext to resolve the resource will do so if access to any TLS-enabled alternative services
                   is blocked at the network layer.
                </li>
@@ -549,7 +549,7 @@ ul p {
          </div>
          <div id="rfc.section.5.p.5">
             <p>When an alternative service is able to commit to providing service for a particular origin over TLS for a bounded period of
-               time, clients can choose to rely upon its avilability, failing when it cannot be contacted. Effectively, this makes the choice
+               time, clients can choose to rely upon its availability, failing when it cannot be contacted. Effectively, this makes the choice
                to use a secured protocol “sticky” in the client.
             </p>
          </div>
@@ -585,7 +585,7 @@ HTTP-TLS: ma=3600
 </pre></div>
             <div id="rfc.section.5.1.p.4">
                <p>This header field creates a commitment from the origin <a href="#RFC6454"><cite title="The Web Origin Concept">[RFC6454]</cite></a> of the associated resource (in the example, <tt>http://example.com</tt>). For the duration of the commitment, clients SHOULD strongly authenticate the server for all subsequent requests made to
-                  that origin, though this creates some risks for clients <a href="#pinrisks" title="Operational Considerations">Section&nbsp;5.2</a>.
+                  that origin, though this creates some risks for clients (see <a href="#pinrisks" title="Operational Considerations">Section&nbsp;5.2</a>).
                </p>
             </div>
             <div id="rfc.section.5.1.p.5">
@@ -670,9 +670,7 @@ ma-parameter     = delta-seconds
                </p>
             </div>
             <div id="rfc.section.6.4.p.2">
-               <p>HTTP/1.1 MUST NOT be sent over HTTP/1.1 or earlier versions of the protocol. Opportunistically secured HTTP requests MUST
-                  include an explicit scheme identifier.
-               </p>
+               <p>HTTP/1.1 MUST NOT be used for opportunistically secured requests.</p>
             </div>
          </div>
       </div>
