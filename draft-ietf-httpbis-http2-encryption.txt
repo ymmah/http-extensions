@@ -93,11 +93,11 @@ Table of Contents
    sites can serve "http" URIs over TLS without being required to
    support strong server authentication.
 
-   Opportunistic Security [I-D.dukhovni-opportunistic-security] does not
-   provide the same guarantees as using TLS with "https" URIs; it is
-   vulnerable to active attacks, and does not change the security
-   context of the connection.  Normally, users will not be able to tell
-   that it is in use (i.e., there will be no "lock icon").
+   Opportunistic Security [RFC7435] does not provide the same guarantees
+   as using TLS with "https" URIs; it is vulnerable to active attacks,
+   and does not change the security context of the connection.
+   Normally, users will not be able to tell that it is in use (i.e.,
+   there will be no "lock icon").
 
    By its nature, this technique is vulnerable to active attacks.  A
    mechanism for partially mitigating them is described in Section 5.
@@ -452,13 +452,11 @@ Internet-Draft         Opportunistic HTTP Security          January 2015
 
 7.2.  Informative References
 
-   [I-D.dukhovni-opportunistic-security]
-              Dukhovni, V., "Opportunistic Security: Some Protection
-              Most of the Time", draft-dukhovni-opportunistic-
-              security-06 (work in progress), November 2014.
-
    [RFC7258]  Farrell, S. and H. Tschofenig, "Pervasive Monitoring Is an
               Attack", BCP 188, RFC 7258, May 2014.
+
+   [RFC7435]  Dukhovni, V., "Opportunistic Security: Some Protection
+              Most of the Time", RFC 7435, December 2014.
 
 Appendix A.  Acknowledgements
 
@@ -478,6 +476,8 @@ Authors' Addresses
    Mozilla
 
    Email: martin.thomson@gmail.com
+
+
 
 
 
