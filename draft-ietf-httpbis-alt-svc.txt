@@ -572,29 +572,27 @@ Internet-Draft          HTTP Alternative Services           January 2015
 
 5.  The Alt-Used HTTP Header Field
 
-   The Alt-Used header field is used in requests to indicate that an
-   alternate service is in use.
+   The Alt-Used header field is used in requests to indicate the
+   identity of the alternate service in use, just as the Host header
+   field (Section 5.4 of [RFC7230]) identifies the host and port of the
+   origin.
 
-   Alt-Used     = use-flag *( OWS ";" OWS ext-param )
-   use-flag     = "1" / "0"
-   ext-param    = token "=" ( token / quoted-string )
+   Alt-Used     = uri-host [ ":" port ]
 
-   Alt-Used is intended to allow alternate services to avoid sending
-   alternative service indications where there is a risk of generating a
-   loops.  It also allows a service to identify requests for accounting
-   and load balancing purposes.
+   Alt-Used is intended to allow alternate services to detect loops,
+   differentiate traffic for purposes of load balancing, and generally
+   to ensure that it is possible to identify the intended destination of
+   traffic, since introducing this information after a protocol is in
+   use has proven to be problematic.
 
-   When using an alternative service, clients MUST include a Alt-Used
+   When using an alternative service, clients SHOULD include a Alt-Used
    header field in all requests.
-
-   A flag value of "1" indicates that an alternate service was used,
-   while "0" means it was not.
 
    For example:
 
      GET /thing HTTP/1.1
      Host: origin.example.com
-     Alt-Used: 1
+     Alt-Used: alternate.example.net
 
    The extension parameters (ext-param) are reserved for future use;
    specifications that want to define an extension will need to update
@@ -610,6 +608,8 @@ Internet-Draft          HTTP Alternative Services           January 2015
 
    Clients receiving 421 (Misdirected Request) from an alternative
    service MUST remove the corresponding entry from its alternative
+   service cache (see Section 2.2) for that origin.  Regardless of the
+
 
 
 
@@ -618,7 +618,6 @@ Nottingham, et al.       Expires August 3, 2015                [Page 11]
 Internet-Draft          HTTP Alternative Services           January 2015
 
 
-   service cache (see Section 2.2) for that origin.  Regardless of the
    idempotency of the request method, they MAY retry the request, either
    at another alternative server, or at the origin.
 
@@ -662,6 +661,7 @@ Internet-Draft          HTTP Alternative Services           January 2015
    An internationalized domain name that appears in either the header
    field (Section 3) or the HTTP/2 frame (Section 4) MUST be expressed
    using A-labels ([RFC5890], Section 2.3.2.1).
+
 
 
 
@@ -762,9 +762,9 @@ Internet-Draft          HTTP Alternative Services           January 2015
 10.  Acknowledgements
 
    Thanks to Adam Langley, Bence Beky, Eliot Lear, Erik Nygren, Guy
-   Podjarny, Martin Thomson, Paul Hoffman, Richard Barnes, Stephen
-   Farrell, Stephen Ludin, and Will Chan for their feedback and
-   suggestions.
+   Podjarny, Martin Thomson, Matthew Kerwin, Paul Hoffman, Richard
+   Barnes, Stephen Farrell, Stephen Ludin, and Will Chan for their
+   feedback and suggestions.
 
    The Alt-Svc header field was influenced by the design of the
    Alternate-Protocol header field in SPDY.
@@ -860,9 +860,9 @@ Internet-Draft          HTTP Alternative Services           January 2015
 
    [12] https://github.com/httpwg/http-extensions/issues/37
 
-   [13] https://github.com/httpwg/http-extensions/issues/38
+   [13] https://github.com/httpwg/http-extensions/issues/34
 
-
+   [14] https://github.com/httpwg/http-extensions/issues/38
 
 
 
@@ -966,7 +966,10 @@ A.6.  Since draft-ietf-httpbis-alt-svc-04
 
 A.7.  Since draft-ietf-httpbis-alt-svc-05
 
-   Restore Origin field in ALT-SVC frame ([17]).
+   Go back to specifying the origin in Alt-Used, but make it a "SHOULD"
+   ([17]).
+
+   Restore Origin field in ALT-SVC frame ([18]).
 
 Authors' Addresses
 
@@ -989,9 +992,6 @@ Authors' Addresses
 
    EMail: julian.reschke@greenbytes.de
    URI:   https://greenbytes.de/tech/webdav/
-
-
-
 
 
 
