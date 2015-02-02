@@ -27,7 +27,7 @@ Editorial Note (To be removed by RFC Editor)
    Working Group information can be found at [2] and [3]; source code
    and issues list for this draft can be found at [4].
 
-   The changes in this draft are summarized in Appendix A.
+   The changes in this draft are summarized in Appendix A.2.
 
 Status of This Memo
 
@@ -90,6 +90,7 @@ Table of Contents
    Appendix A.  Change Log (to be removed by RFC Editor before
                 publication) . . . . . . . . . . . . . . . . . . . .   6
      A.1.  draft-reschke-httpauth-auth-info-00 . . . . . . . . . . .   6
+     A.2.  draft-ietf-httpbis-auth-info-00 . . . . . . . . . . . . .   6
 
 1.  Introduction
 
@@ -103,7 +104,6 @@ Table of Contents
    description for use not only in "Digest" ([DIGEST]), but also other
    future schemes that might have the same requirements for carrying
    additional information during authentication.
-
 
 
 
@@ -126,8 +126,8 @@ Internet-Draft          HTTP Authentication-Info           February 2015
 3.  The Authentication-Info Response Header Field
 
    HTTP authentication schemes can use the Authentication-Info response
-   header field to return additional information applicable to the
-   authentication currently in use.
+   header field to communicate additional information regarding the
+   successful authentication.
 
    The field value is a list of parameters (name/value pairs), using the
    "auth-param" syntax defined in Section 2.1 of [RFC7235].  This
@@ -294,6 +294,11 @@ A.1.  draft-reschke-httpauth-auth-info-00
 
    Make it clearer that these are really just response header fields.
 
+A.2.  draft-ietf-httpbis-auth-info-00
+
+   Rephrase introduction of header field to be closer to what RFC 2617
+   said ("successful authentication").
+
 Author's Address
 
    Julian F. Reschke
@@ -304,11 +309,6 @@ Author's Address
 
    EMail: julian.reschke@greenbytes.de
    URI:   http://greenbytes.de/tech/webdav/
-
-
-
-
-
 
 
 
