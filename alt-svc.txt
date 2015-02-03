@@ -345,8 +345,8 @@ Internet-Draft          HTTP Alternative Services          February 2015
    for multiple versions of HTTP; or, an alternative service might
    itself advertise an alternative.
 
-   When a client uses an alternative service, it MUST emit the Alt-Used
-   header field (Section 5) on every request using that alternative
+   When a client uses an alternative service, it SHOULD emit the Alt-
+   Used header field (Section 5) on every request using that alternative
    service.
 
    The client does not need to block requests on any existing
