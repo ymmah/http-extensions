@@ -345,9 +345,9 @@ Internet-Draft          HTTP Alternative Services          February 2015
    for multiple versions of HTTP; or, an alternative service might
    itself advertise an alternative.
 
-   When a client uses an alternative service, it SHOULD emit the Alt-
-   Used header field (Section 5) on every request using that alternative
-   service.
+   When a client uses an alternative service for a request, it can
+   indicate this to the server using the Alt-Used header field
+   (Section 5).
 
    The client does not need to block requests on any existing
    connection; it can be used until the alternative connection is
@@ -588,6 +588,10 @@ Internet-Draft          HTTP Alternative Services          February 2015
    When using an alternative service, clients SHOULD include a Alt-Used
    header field in all requests.
 
+   As the Alt-Used header field might be used by the server for tracking
+   the client, a client MAY choose not to include it in its requests for
+   protecting its privacy (see Section 9.4).
+
    For example:
 
      GET /thing HTTP/1.1
@@ -606,10 +610,6 @@ Internet-Draft          HTTP Alternative Services          February 2015
    indicate that an alternative service is not authoritative; see
    Section 2).
 
-   Clients receiving 421 (Misdirected Request) from an alternative
-   service MUST remove the corresponding entry from its alternative
-   service cache (see Section 2.2) for that origin.  Regardless of the
-
 
 
 
@@ -618,6 +618,9 @@ Nottingham, et al.       Expires August 7, 2015                [Page 11]
 Internet-Draft          HTTP Alternative Services          February 2015
 
 
+   Clients receiving 421 (Misdirected Request) from an alternative
+   service MUST remove the corresponding entry from its alternative
+   service cache (see Section 2.2) for that origin.  Regardless of the
    idempotency of the request method, they MAY retry the request, either
    at another alternative server, or at the origin.
 
@@ -661,9 +664,6 @@ Internet-Draft          HTTP Alternative Services          February 2015
    An internationalized domain name that appears in either the header
    field (Section 3) or the HTTP/2 frame (Section 4) MUST be expressed
    using A-labels ([RFC5890], Section 2.3.2.1).
-
-
-
 
 
 

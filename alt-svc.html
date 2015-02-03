@@ -828,7 +828,8 @@ ul p {
                </p>
             </div>
             <div id="rfc.section.2.4.p.4">
-               <p>When a client uses an alternative service, it <em class="bcp14">SHOULD</em> emit the Alt-Used header field (<a href="#indicator" title="The Alt-Used HTTP Header Field">Section&nbsp;5</a>) on every request using that alternative service.
+               <p>When a client uses an alternative service for a request, it can indicate this to the server using the Alt-Used header field
+                  (<a href="#indicator" title="The Alt-Used HTTP Header Field">Section&nbsp;5</a>).
                </p>
             </div>
             <div id="rfc.section.2.4.p.5">
@@ -1061,12 +1062,16 @@ Alt-Svc: h2c=":8000"; ma=60
             <p>When using an alternative service, clients <em class="bcp14">SHOULD</em> include a Alt-Used header field in all requests.
             </p>
          </div>
+         <div id="rfc.section.5.p.4">
+            <p>As the Alt-Used header field might be used by the server for tracking the client, a client <em class="bcp14">MAY</em> choose not to include it in its requests for protecting its privacy (see <a href="#tracking" title="Tracking Clients Using Alternative Services">Section&nbsp;9.4</a>).
+            </p>
+         </div>
          <div id="rfc.figure.u.12">
             <p>For example:</p><pre class="text2">GET /thing HTTP/1.1
 Host: origin.example.com
 Alt-Used: alternate.example.net
 </pre></div>
-         <div id="rfc.section.5.p.4">
+         <div id="rfc.section.5.p.5">
             <p>The extension parameters (ext-param) are reserved for future use; specifications that want to define an extension will need
                to update this document (and ought to introduce an extension registry).
             </p>
