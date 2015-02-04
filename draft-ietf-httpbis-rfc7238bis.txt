@@ -70,7 +70,7 @@ Table of Contents
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   5
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
      8.2.  Informative References  . . . . . . . . . . . . . . . . .   5
-     8.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   5
+     8.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   6
 
 1.  Introduction
 
@@ -204,18 +204,18 @@ Internet-Draft            HTTP Status Code 308             February 2015
    All security considerations that apply to HTTP redirects apply to the
    308 status code as well (see Section 9 of [RFC7231]).
 
+   Furthermore, unsecured HTTP is always subject to redirect attacks, in
+   that a "man in the middle" can replace any HTTP response message with
+   a redirect (such as to a malicious site or one benefiting the
+   attacker).  Such an attack can use "permanent" redirect codes (301 or
+   308) to convince clients or proxies to cache the malicious
+   information.  Secured HTTP is not subject to these sorts of attacks.
+
 6.  IANA Considerations
 
    The "Hypertext Transfer Protocol (HTTP) Status Code Registry"
    (defined in Section 8.2 of [RFC7231] and located at [1]) needs to be
    updated with the registration below:
-
-   +-------+--------------------+----------------------------------+
-   | Value | Description        | Reference                        |
-   +-------+--------------------+----------------------------------+
-   | 308   | Permanent Redirect | Section 3 of this specification  |
-   +-------+--------------------+----------------------------------+
-
 
 
 
@@ -226,6 +226,12 @@ Reschke                  Expires August 8, 2015                 [Page 4]
 Internet-Draft            HTTP Status Code 308             February 2015
 
 
+   +-------+--------------------+----------------------------------+
+   | Value | Description        | Reference                        |
+   +-------+--------------------+----------------------------------+
+   | 308   | Permanent Redirect | Section 3 of this specification  |
+   +-------+--------------------+----------------------------------+
+
 7.  Acknowledgements
 
    The definition for the new status code 308 reuses text from the
@@ -233,8 +239,8 @@ Internet-Draft            HTTP Status Code 308             February 2015
 
    Furthermore, thanks to Ben Campbell, Cyrus Daboo, Adrian Farrell,
    Eran Hammer-Lahav, Bjoern Hoehrmann, Barry Leiba, Subramanian
-   Moonesamy, Peter Saint-Andre, and Robert Sparks for feedback on this
-   document.
+   Moonesamy, Kathleen Moriarty, Peter Saint-Andre, and Robert Sparks
+   for feedback on this document.
 
 8.  References
 
@@ -268,12 +274,6 @@ Internet-Draft            HTTP Status Code 308             February 2015
 
               Latest version available at [2].
 
-8.3.  URIs
-
-   [1] http://www.iana.org/assignments/http-status-codes
-
-
-
 
 
 
@@ -281,6 +281,10 @@ Reschke                  Expires August 8, 2015                 [Page 5]
 
 Internet-Draft            HTTP Status Code 308             February 2015
 
+
+8.3.  URIs
+
+   [1] http://www.iana.org/assignments/http-status-codes
 
 Author's Address
 
@@ -292,10 +296,6 @@ Author's Address
 
    EMail: julian.reschke@greenbytes.de
    URI:   http://greenbytes.de/tech/webdav/
-
-
-
-
 
 
 
