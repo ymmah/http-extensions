@@ -118,6 +118,7 @@ Internet-Draft          HTTP Alternative Services          February 2015
      A.5.  Since draft-ietf-httpbis-alt-svc-03 . . . . . . . . . . .  17
      A.6.  Since draft-ietf-httpbis-alt-svc-04 . . . . . . . . . . .  18
      A.7.  Since draft-ietf-httpbis-alt-svc-05 . . . . . . . . . . .  18
+     A.8.  Since draft-ietf-httpbis-alt-svc-06 . . . . . . . . . . .  18
 
 1.  Introduction
 
@@ -161,7 +162,6 @@ Internet-Draft          HTTP Alternative Services          February 2015
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
    document are to be interpreted as described in [RFC2119].
-
 
 
 
@@ -971,6 +971,10 @@ A.7.  Since draft-ietf-httpbis-alt-svc-05
 
    Restore Origin field in ALT-SVC frame ([18]).
 
+A.8.  Since draft-ietf-httpbis-alt-svc-06
+
+   None yet.
+
 Authors' Addresses
 
    Mark Nottingham
@@ -992,10 +996,6 @@ Authors' Addresses
 
    EMail: julian.reschke@greenbytes.de
    URI:   https://greenbytes.de/tech/webdav/
-
-
-
-
 
 
 
