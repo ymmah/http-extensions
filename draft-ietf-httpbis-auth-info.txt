@@ -4,7 +4,8 @@
 
 HTTPbis Working Group                                         J. Reschke
 Internet-Draft                                                greenbytes
-Intended status: Standards Track                       February 10, 2015
+Updates: 2617 (if approved)                            February 10, 2015
+Intended status: Standards Track
 Expires: August 14, 2015
 
 
@@ -45,7 +46,6 @@ Status of This Memo
    material or to cite them other than as "work in progress."
 
    This Internet-Draft will expire on August 14, 2015.
-
 
 
 
@@ -306,6 +306,8 @@ A.3.  draft-ietf-httpbis-auth-info-01
    State that scheme definitions need to define whether the header field
    can be used in trailers.
 
+   Add "updates: 2617" to boilerplate.
+
 Author's Address
 
    Julian F. Reschke
@@ -316,8 +318,6 @@ Author's Address
 
    EMail: julian.reschke@greenbytes.de
    URI:   http://greenbytes.de/tech/webdav/
-
-
 
 
 
