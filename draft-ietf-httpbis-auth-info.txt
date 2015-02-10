@@ -28,7 +28,7 @@ Editorial Note (To be removed by RFC Editor)
    Working Group information can be found at [2] and [3]; source code
    and issues list for this draft can be found at [4].
 
-   The changes in this draft are summarized in Appendix A.3.
+   The changes in this draft are summarized in Appendix A.4.
 
 Status of This Memo
 
@@ -92,6 +92,7 @@ Table of Contents
      A.1.  draft-reschke-httpauth-auth-info-00 . . . . . . . . . . .   6
      A.2.  draft-ietf-httpbis-auth-info-00 . . . . . . . . . . . . .   6
      A.3.  draft-ietf-httpbis-auth-info-01 . . . . . . . . . . . . .   6
+     A.4.  draft-ietf-httpbis-auth-info-02 . . . . . . . . . . . . .   6
 
 1.  Introduction
 
@@ -105,7 +106,6 @@ Table of Contents
    description for use not only in "Digest" ([DIGEST]), but also other
    future schemes that might have the same requirements for carrying
    additional information during authentication.
-
 
 
 
@@ -308,6 +308,10 @@ A.3.  draft-ietf-httpbis-auth-info-01
 
    Add "updates: 2617" to boilerplate.
 
+A.4.  draft-ietf-httpbis-auth-info-02
+
+   None yet.
+
 Author's Address
 
    Julian F. Reschke
@@ -318,10 +322,6 @@ Author's Address
 
    EMail: julian.reschke@greenbytes.de
    URI:   http://greenbytes.de/tech/webdav/
-
-
-
-
 
 
 
