@@ -458,7 +458,7 @@ ul p {
        content: "Reschke";
   }
   @bottom-center {
-       content: "Expires August 9, 2015";
+       content: "Expires August 14, 2015";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -493,7 +493,7 @@ ul p {
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Reschke, J. F.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-auth-info-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2015-02-05">
+      <meta name="dct.issued" scheme="ISO8601" content="2015-02-10">
       <meta name="dct.abstract" content="This specification defines the &#34;Authentication-Info&#34; and &#34;Proxy-Authentication-Info&#34; response header fields for use in HTTP authentication schemes which need to return additional information during or after authentication.">
       <meta name="description" content="This specification defines the &#34;Authentication-Info&#34; and &#34;Proxy-Authentication-Info&#34; response header fields for use in HTTP authentication schemes which need to return additional information during or after authentication.">
    </head>
@@ -510,10 +510,10 @@ ul p {
             </tr>
             <tr>
                <td class="left">Intended status: Standards Track</td>
-               <td class="right">February 5, 2015</td>
+               <td class="right">February 10, 2015</td>
             </tr>
             <tr>
-               <td class="left">Expires: August 9, 2015</td>
+               <td class="left">Expires: August 14, 2015</td>
                <td class="right"></td>
             </tr>
          </tbody>
@@ -540,7 +540,7 @@ ul p {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on August 9, 2015.</p>
+         <p>This Internet-Draft will expire on August 14, 2015.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
@@ -617,7 +617,7 @@ ul p {
          <div id="rfc.section.3.p.3">
             <p>The Authentication-Info header field can be used in any HTTP response, independently of request method and status code. Its
                semantics are defined by the applicable authentication scheme. Intermediaries are not allowed to modify the field value in
-               any way. Authentication-Info can be used inside trailers (<a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="rfc7230.html#chunked.trailer.part" title="Chunked Trailer Part">Section 4.1.2</a>).
+               any way. Authentication-Info can be used inside trailers (<a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="rfc7230.html#chunked.trailer.part" title="Chunked Trailer Part">Section 4.1.2</a>) when the authentication scheme explicitly allows this.
             </p>
          </div>
          <div>
@@ -709,7 +709,7 @@ ul p {
          </div>
          <div id="rfc.section.7.p.2">
             <p>Additional thanks go to the members of the HTTPAuth and HTTPbis Working Groups, namely Amos Jeffries, Benjamin Kaduk, Alexey
-               Melnikov, Yutaka Oiwa, Rifaat Shekh-Yusef, and Martin Thomson.
+               Melnikov, Mark Nottingham, Yutaka Oiwa, Rifaat Shekh-Yusef, and Martin Thomson.
             </p>
          </div>
       </div>
@@ -780,7 +780,7 @@ ul p {
          <div id="since.01">
             <h2 id="rfc.section.A.3"><a href="#rfc.section.A.3">A.3</a>&nbsp;<a href="#since.01">draft-ietf-httpbis-auth-info-01</a></h2>
             <div id="rfc.section.A.3.p.1">
-               <p>None yet.</p>
+               <p>State that scheme definitions need to define whether the header field can be used in trailers.</p>
             </div>
          </div>
       </div>
