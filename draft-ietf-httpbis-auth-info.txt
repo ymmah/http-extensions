@@ -17,8 +17,8 @@ Abstract
 
    This specification defines the "Authentication-Info" and "Proxy-
    Authentication-Info" response header fields for use in HTTP
-   authentication schemes which need to return additional information
-   during or after authentication.
+   authentication schemes which need to return information once the
+   client's authentication credentials have been accepted.
 
 Editorial Note (To be removed by RFC Editor)
 
@@ -98,8 +98,8 @@ Table of Contents
 
    This specification defines the "Authentication-Info" and "Proxy-
    Authentication-Info" response header fields for use in HTTP
-   authentication schemes ([RFC7235]) which need to return additional
-   information during or after authentication.
+   authentication schemes ([RFC7235]) which need to return information
+   once the client's authentication credentials have been accepted.
 
    Both were previously defined in Section 3 of [RFC2617], defining the
    HTTP "Digest" authentication scheme.  This document generalizes the
@@ -126,8 +126,10 @@ Internet-Draft          HTTP Authentication-Info           February 2015
 3.  The Authentication-Info Response Header Field
 
    HTTP authentication schemes can use the Authentication-Info response
-   header field to communicate additional information regarding the
-   successful authentication.
+   header field to communicate information after the client's
+   authentication credentials have been accepted.  This information can
+   include a finalization message from the server (e.g., it can contain
+   the server authentication).
 
    The field value is a list of parameters (name/value pairs), using the
    "auth-param" syntax defined in Section 2.1 of [RFC7235].  This
@@ -158,8 +160,6 @@ Internet-Draft          HTTP Authentication-Info           February 2015
    restrict the format for senders to one of the two variants.  This can
    be important when it is known that deployed implementations will fail
    when encountering one of the two formats.
-
-
 
 
 

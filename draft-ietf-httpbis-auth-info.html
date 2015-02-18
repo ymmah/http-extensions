@@ -497,8 +497,8 @@ ul p {
       <meta name="dct.creator" content="Reschke, J. F.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-auth-info-latest">
       <meta name="dct.issued" scheme="ISO8601" content="2015-02-18">
-      <meta name="dct.abstract" content="This specification defines the &#34;Authentication-Info&#34; and &#34;Proxy-Authentication-Info&#34; response header fields for use in HTTP authentication schemes which need to return additional information during or after authentication.">
-      <meta name="description" content="This specification defines the &#34;Authentication-Info&#34; and &#34;Proxy-Authentication-Info&#34; response header fields for use in HTTP authentication schemes which need to return additional information during or after authentication.">
+      <meta name="dct.abstract" content="This specification defines the &#34;Authentication-Info&#34; and &#34;Proxy-Authentication-Info&#34; response header fields for use in HTTP authentication schemes which need to return information once the client's authentication credentials have been accepted.">
+      <meta name="description" content="This specification defines the &#34;Authentication-Info&#34; and &#34;Proxy-Authentication-Info&#34; response header fields for use in HTTP authentication schemes which need to return information once the client's authentication credentials have been accepted.">
    </head>
    <body onload="initFeedback();">
       <table class="header" id="rfc.headerblock">
@@ -529,7 +529,7 @@ ul p {
       <p class="title" id="rfc.title">The Hypertext Transfer Protocol (HTTP) Authentication-Info and Proxy-Authentication-Info Response&nbsp;Header Fields<br><span class="filename">draft-ietf-httpbis-auth-info-latest</span></p>
       <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
       <p>This specification defines the "Authentication-Info" and "Proxy-Authentication-Info" response header fields for use in HTTP
-         authentication schemes which need to return additional information during or after authentication.
+         authentication schemes which need to return information once the client's authentication credentials have been accepted.
       </p>
       <h1 id="rfc.note.1"><a href="#rfc.note.1">Editorial Note (To be removed by RFC Editor)</a></h1>
       <p>Discussion of this draft takes place on the HTTPBIS working group mailing list (ietf-http-wg@w3.org), which is archived at &lt;<a href="https://lists.w3.org/Archives/Public/ietf-http-wg/">https://lists.w3.org/Archives/Public/ietf-http-wg/</a>&gt;.
@@ -592,7 +592,7 @@ ul p {
          <h1 id="rfc.section.1" class="np"><a href="#rfc.section.1">1.</a>&nbsp;<a href="#introduction">Introduction</a></h1>
          <div id="rfc.section.1.p.1">
             <p>This specification defines the "Authentication-Info" and "Proxy-Authentication-Info" response header fields for use in HTTP
-               authentication schemes (<a href="#RFC7235"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Authentication">[RFC7235]</cite></a>) which need to return additional information during or after authentication.
+               authentication schemes (<a href="#RFC7235"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Authentication">[RFC7235]</cite></a>) which need to return information once the client's authentication credentials have been accepted.
             </p>
          </div>
          <div id="rfc.section.1.p.2">
@@ -612,8 +612,9 @@ ul p {
       <div id="authentication-info">
          <h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a>&nbsp;<a href="#authentication-info">The Authentication-Info Response Header Field</a></h1>
          <div id="rfc.section.3.p.1">
-            <p>HTTP authentication schemes can use the Authentication-Info response header field to communicate additional information regarding
-               the successful authentication.
+            <p>HTTP authentication schemes can use the Authentication-Info response header field to communicate information after the client's
+               authentication credentials have been accepted. This information can include a finalization message from the server (e.g.,
+               it can contain the server authentication).
             </p>
          </div>
          <div id="rfc.section.3.p.2">
