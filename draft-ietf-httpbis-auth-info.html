@@ -626,8 +626,14 @@ ul p {
 </pre></div>
          <div id="rfc.section.3.p.3">
             <p>The Authentication-Info header field can be used in any HTTP response, independently of request method and status code. Its
-               semantics are defined by the applicable authentication scheme. Intermediaries are not allowed to modify the field value in
-               any way. Authentication-Info can be used inside trailers (<a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="rfc7230.html#chunked.trailer.part" title="Chunked Trailer Part">Section 4.1.2</a>) when the authentication scheme explicitly allows this.
+               semantics are defined by the applicable authentication scheme.
+            </p>
+         </div>
+         <div id="rfc.section.3.p.4">
+            <p>A proxy forwarding a response is not allowed to modify the field value in any way.</p>
+         </div>
+         <div id="rfc.section.3.p.5">
+            <p>Authentication-Info can be used inside trailers (<a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="rfc7230.html#chunked.trailer.part" title="Chunked Trailer Part">Section 4.1.2</a>) when the authentication scheme explicitly allows this.
             </p>
          </div>
          <div>
@@ -803,6 +809,10 @@ ul p {
             </div>
             <div id="rfc.section.A.4.p.2">
                <p>Clarify purpose of header consistently (&lt;<a href="https://github.com/httpwg/http-extensions/issues/49">https://github.com/httpwg/http-extensions/issues/49</a>&gt;).
+               </p>
+            </div>
+            <div id="rfc.section.A.4.p.3">
+               <p>The do-not-modify rule does not include proxies that consume Authentication-Info (&lt;<a href="https://github.com/httpwg/http-extensions/issues/50">https://github.com/httpwg/http-extensions/issues/50</a>&gt;).
                </p>
             </div>
          </div>
