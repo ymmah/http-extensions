@@ -5,10 +5,10 @@
 HTTPbis Working Group                                          A. Hutton
 Internet-Draft                                                     Unify
 Intended status: Standards Track                               J. Uberti
-Expires: August 24, 2015                                          Google
+Expires: September 2, 2015                                        Google
                                                               M. Thomson
                                                                  Mozilla
-                                                       February 20, 2015
+                                                           March 1, 2015
 
 
                  The Tunnel-Protocol HTTP Header Field
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 24, 2015.
+   This Internet-Draft will expire on September 2, 2015.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Hutton, et al.           Expires August 24, 2015                [Page 1]
+Hutton, et al.          Expires September 2, 2015               [Page 1]
 
-Internet-Draft               Tunnel-Protocol               February 2015
+Internet-Draft               Tunnel-Protocol                  March 2015
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -81,6 +81,7 @@ Table of Contents
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
      5.2.  Informative References  . . . . . . . . . . . . . . . . .   5
      5.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   5
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   5
 
 1.  Introduction
 
@@ -104,15 +105,17 @@ Table of Contents
 
    The Tunnel-Protocol header field carries an indication of client
    intent only.  In TLS, the final choice of application protocol is
+
+
+
+
+Hutton, et al.          Expires September 2, 2015               [Page 2]
+
+Internet-Draft               Tunnel-Protocol                  March 2015
+
+
    made by the server from the set of choices presented by the client.
    Other protocols could negotiate protocols differently.
-
-
-
-Hutton, et al.           Expires August 24, 2015                [Page 2]
-
-Internet-Draft               Tunnel-Protocol               February 2015
-
 
    Proxies do not implement the tunneled protocol, though they might
    choose to make policy decisions based on the value of the header
@@ -159,16 +162,15 @@ Internet-Draft               Tunnel-Protocol               February 2015
    o  Octets in the ALPN protocol MUST NOT be percent-encoded if they
       are valid token characters except "%", and
 
-   o  When using percent-encoding, uppercase hex digits MUST be used.
 
 
 
-
-
-Hutton, et al.           Expires August 24, 2015                [Page 3]
+Hutton, et al.          Expires September 2, 2015               [Page 3]
 
-Internet-Draft               Tunnel-Protocol               February 2015
+Internet-Draft               Tunnel-Protocol                  March 2015
 
+
+   o  When using percent-encoding, uppercase hex digits MUST be used.
 
    With these constraints, recipients can apply simple string comparison
    to match protocol identifiers.
@@ -219,11 +221,9 @@ Internet-Draft               Tunnel-Protocol               February 2015
 
 
 
-
-
-Hutton, et al.           Expires August 24, 2015                [Page 4]
+Hutton, et al.          Expires September 2, 2015               [Page 4]
 
-Internet-Draft               Tunnel-Protocol               February 2015
+Internet-Draft               Tunnel-Protocol                  March 2015
 
 
 5.  References
@@ -277,9 +277,9 @@ Authors' Addresses
 
 
 
-Hutton, et al.           Expires August 24, 2015                [Page 5]
+Hutton, et al.          Expires September 2, 2015               [Page 5]
 
-Internet-Draft               Tunnel-Protocol               February 2015
+Internet-Draft               Tunnel-Protocol                  March 2015
 
 
    Andrew Hutton
@@ -333,4 +333,4 @@ Internet-Draft               Tunnel-Protocol               February 2015
 
 
 
-Hutton, et al.           Expires August 24, 2015                [Page 6]
+Hutton, et al.          Expires September 2, 2015               [Page 6]
