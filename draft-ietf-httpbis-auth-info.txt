@@ -4,9 +4,9 @@
 
 HTTPbis Working Group                                         J. Reschke
 Internet-Draft                                                greenbytes
-Updates: 2617 (if approved)                                March 3, 2015
+Updates: 2617 (if approved)                                March 6, 2015
 Intended status: Standards Track
-Expires: September 4, 2015
+Expires: September 7, 2015
 
 
  The Hypertext Transfer Protocol (HTTP) Authentication-Info and Proxy-
@@ -28,7 +28,7 @@ Editorial Note (To be removed by RFC Editor)
    Working Group information can be found at [2] and [3]; source code
    and issues list for this draft can be found at [4].
 
-   The changes in this draft are summarized in Appendix A.4.
+   The changes in this draft are summarized in Appendix A.5.
 
 Status of This Memo
 
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 4, 2015.
+   This Internet-Draft will expire on September 7, 2015.
 
 
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Reschke                 Expires September 4, 2015               [Page 1]
+Reschke                 Expires September 7, 2015               [Page 1]
 
 Internet-Draft          HTTP Authentication-Info              March 2015
 
@@ -93,6 +93,7 @@ Table of Contents
      A.2.  draft-ietf-httpbis-auth-info-00 . . . . . . . . . . . . .   7
      A.3.  draft-ietf-httpbis-auth-info-01 . . . . . . . . . . . . .   7
      A.4.  draft-ietf-httpbis-auth-info-02 . . . . . . . . . . . . .   7
+     A.5.  draft-ietf-httpbis-auth-info-03 . . . . . . . . . . . . .   7
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   7
 
 1.  Introduction
@@ -108,8 +109,7 @@ Table of Contents
 
 
 
-
-Reschke                 Expires September 4, 2015               [Page 2]
+Reschke                 Expires September 7, 2015               [Page 2]
 
 Internet-Draft          HTTP Authentication-Info              March 2015
 
@@ -165,7 +165,7 @@ Internet-Draft          HTTP Authentication-Info              March 2015
 
 
 
-Reschke                 Expires September 4, 2015               [Page 3]
+Reschke                 Expires September 7, 2015               [Page 3]
 
 Internet-Draft          HTTP Authentication-Info              March 2015
 
@@ -221,7 +221,7 @@ Internet-Draft          HTTP Authentication-Info              March 2015
 
 
 
-Reschke                 Expires September 4, 2015               [Page 4]
+Reschke                 Expires September 7, 2015               [Page 4]
 
 Internet-Draft          HTTP Authentication-Info              March 2015
 
@@ -269,7 +269,7 @@ Internet-Draft          HTTP Authentication-Info              March 2015
 
    [DIGEST]   Shekh-Yusef, R., Ed., Ahrens, D., and S. Bremer, "HTTP
               Digest Access Authentication", draft-ietf-httpauth-
-              digest-14 (work in progress), February 2015.
+              digest-15 (work in progress), March 2015.
 
 
 
@@ -277,7 +277,7 @@ Internet-Draft          HTTP Authentication-Info              March 2015
 
 
 
-Reschke                 Expires September 4, 2015               [Page 5]
+Reschke                 Expires September 7, 2015               [Page 5]
 
 Internet-Draft          HTTP Authentication-Info              March 2015
 
@@ -333,7 +333,7 @@ Internet-Draft          HTTP Authentication-Info              March 2015
 
 
 
-Reschke                 Expires September 4, 2015               [Page 6]
+Reschke                 Expires September 7, 2015               [Page 6]
 
 Internet-Draft          HTTP Authentication-Info              March 2015
 
@@ -376,7 +376,23 @@ A.4.  draft-ietf-httpbis-auth-info-02
    Borrow more proxy auth related considerations from RFC 7235 for the
    description of Proxy-Authentication-Info ([8]).
 
+A.5.  draft-ietf-httpbis-auth-info-03
+
+   Updated DIGEST reference.
+
 Author's Address
+
+
+
+
+
+
+
+
+Reschke                 Expires September 7, 2015               [Page 7]
+
+Internet-Draft          HTTP Authentication-Info              March 2015
+
 
    Julian F. Reschke
    greenbytes GmbH
@@ -389,4 +405,44 @@ Author's Address
 
 
 
-Reschke                 Expires September 4, 2015               [Page 7]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Reschke                 Expires September 7, 2015               [Page 8]
