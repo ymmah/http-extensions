@@ -73,19 +73,31 @@ Copyright Notice
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
+   This document may contain material from IETF Documents or IETF
+   Contributions published or made publicly available before November
+   10, 2008.  The person(s) controlling the copyright in some of this
+   material may not have granted the IETF Trust the right to allow
+   modifications of such material outside the IETF Standards Process.
+   Without obtaining an adequate license from the person(s) controlling
+   the copyright in such materials, this document may not be modified
+   outside the IETF Standards Process, and derivative works of it may
+   not be created outside the IETF Standards Process, except to format
+   it for publication as an RFC or to translate it into languages other
+   than English.
+
 Table of Contents
 
-   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
    2.  Notational Conventions  . . . . . . . . . . . . . . . . . . .   3
    3.  The Authentication-Info Response Header Field . . . . . . . .   3
-     3.1.  Parameter Value Format  . . . . . . . . . . . . . . . . .   3
+     3.1.  Parameter Value Format  . . . . . . . . . . . . . . . . .   4
    4.  The Proxy-Authentication-Info Response Header Field . . . . .   4
    5.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
    7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   5
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   5
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
-     8.2.  Informative References  . . . . . . . . . . . . . . . . .   5
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .   6
      8.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   6
    Appendix A.  Change Log (to be removed by RFC Editor before
                 publication) . . . . . . . . . . . . . . . . . . . .   7
@@ -94,6 +106,14 @@ Table of Contents
      A.3.  draft-ietf-httpbis-auth-info-01 . . . . . . . . . . . . .   7
      A.4.  draft-ietf-httpbis-auth-info-02 . . . . . . . . . . . . .   7
      A.5.  draft-ietf-httpbis-auth-info-03 . . . . . . . . . . . . .   7
+
+
+
+Reschke                Expires September 11, 2015               [Page 2]
+
+Internet-Draft          HTTP Authentication-Info              March 2015
+
+
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   8
 
 1.  Introduction
@@ -106,14 +126,6 @@ Table of Contents
    Both were previously defined in Section 3 of [RFC2617], defining the
    HTTP "Digest" authentication scheme.  This document generalizes the
    description for use not only in "Digest" ([DIGEST]), but also in
-
-
-
-Reschke                Expires September 11, 2015               [Page 2]
-
-Internet-Draft          HTTP Authentication-Info              March 2015
-
-
    other future schemes that might have the same requirements for
    carrying additional information during authentication.
 
@@ -151,6 +163,13 @@ Internet-Draft          HTTP Authentication-Info              March 2015
    A proxy forwarding a response is not allowed to modify the field
    value in any way.
 
+
+
+Reschke                Expires September 11, 2015               [Page 3]
+
+Internet-Draft          HTTP Authentication-Info              March 2015
+
+
    Authentication-Info can be used inside trailers ([RFC7230],
    Section 4.1.2) when the authentication scheme explicitly allows this.
 
@@ -162,13 +181,6 @@ Internet-Draft          HTTP Authentication-Info              March 2015
    Authentication scheme definitions need to allow both notations, both
    for senders and recipients.  This allows recipients to use generic
    parsing components, independent of the authentication scheme in use.
-
-
-
-Reschke                Expires September 11, 2015               [Page 3]
-
-Internet-Draft          HTTP Authentication-Info              March 2015
-
 
    For backwards compatibility, authentication scheme definitions can
    restrict the format for senders to one of the two variants.  This can
@@ -204,18 +216,6 @@ Internet-Draft          HTTP Authentication-Info              March 2015
    authentication-scheme specific parameters; this will have to be
    considered in the definitions of these schemes.
 
-6.  IANA Considerations
-
-   HTTP header fields are registered within the "Message Headers"
-   registry located at [5], as defined by [BCP90].
-
-   This document updates the definitions of the "Authentication-Info"
-   and "Proxy-Authentication-Info" header fields, so the "Permanent
-   Message Header Field Names" registry shall be updated accordingly:
-
-
-
-
 
 
 
@@ -225,6 +225,15 @@ Reschke                Expires September 11, 2015               [Page 4]
 
 Internet-Draft          HTTP Authentication-Info              March 2015
 
+
+6.  IANA Considerations
+
+   HTTP header fields are registered within the "Message Headers"
+   registry located at [5], as defined by [BCP90].
+
+   This document updates the definitions of the "Authentication-Info"
+   and "Proxy-Authentication-Info" header fields, so the "Permanent
+   Message Header Field Names" registry shall be updated accordingly:
 
    +---------------------------+----------+----------+-----------------+
    | Header Field Name         | Protocol | Status   | Reference       |
@@ -261,15 +270,6 @@ Internet-Draft          HTTP Authentication-Info              March 2015
    [RFC7235]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Authentication", RFC 7235, June 2014.
 
-8.2.  Informative References
-
-   [BCP90]    Klyne, G., Nottingham, M., and J. Mogul, "Registration
-              Procedures for Message Header Fields", BCP 90, RFC 3864,
-              September 2004.
-
-   [DIGEST]   Shekh-Yusef, R., Ed., Ahrens, D., and S. Bremer, "HTTP
-              Digest Access Authentication", draft-ietf-httpauth-
-              digest-15 (work in progress), March 2015.
 
 
 
@@ -281,6 +281,16 @@ Reschke                Expires September 11, 2015               [Page 5]
 
 Internet-Draft          HTTP Authentication-Info              March 2015
 
+
+8.2.  Informative References
+
+   [BCP90]    Klyne, G., Nottingham, M., and J. Mogul, "Registration
+              Procedures for Message Header Fields", BCP 90, RFC 3864,
+              September 2004.
+
+   [DIGEST]   Shekh-Yusef, R., Ed., Ahrens, D., and S. Bremer, "HTTP
+              Digest Access Authentication", draft-ietf-httpauth-
+              digest-15 (work in progress), March 2015.
 
    [RFC2617]  Franks, J., Hallam-Baker, P., Hostetler, J., Lawrence, S.,
               Leach, P., Luotonen, A., and L. Stewart, "HTTP
@@ -296,16 +306,6 @@ Internet-Draft          HTTP Authentication-Info              March 2015
    [3] https://github.com/httpwg/http-extensions/issues/50
 
    [4] https://github.com/httpwg/http-extensions/issues/51
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -383,8 +383,8 @@ A.5.  draft-ietf-httpbis-auth-info-03
    Clarify how the applicable auth scheme is determined (it is present
    in the request's (Proxy-)Authorization header field).
 
-
-
+   Adjust the IPR boilerplate because we are using some text from RFC
+   2617.
 
 
 
