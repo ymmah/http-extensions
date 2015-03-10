@@ -94,7 +94,7 @@ Table of Contents
      A.3.  draft-ietf-httpbis-auth-info-01 . . . . . . . . . . . . .   7
      A.4.  draft-ietf-httpbis-auth-info-02 . . . . . . . . . . . . .   7
      A.5.  draft-ietf-httpbis-auth-info-03 . . . . . . . . . . . . .   7
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   7
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   8
 
 1.  Introduction
 
@@ -145,7 +145,8 @@ Internet-Draft          HTTP Authentication-Info              March 2015
 
    The Authentication-Info header field can be used in any HTTP
    response, independently of request method and status code.  Its
-   semantics are defined by the applicable authentication scheme.
+   semantics are defined by the authentication scheme indicated by the
+   Authorization header field of the corresponding request.
 
    A proxy forwarding a response is not allowed to modify the field
    value in any way.
@@ -161,7 +162,6 @@ Internet-Draft          HTTP Authentication-Info              March 2015
    Authentication scheme definitions need to allow both notations, both
    for senders and recipients.  This allows recipients to use generic
    parsing components, independent of the authentication scheme in use.
-
 
 
 
@@ -380,8 +380,8 @@ A.5.  draft-ietf-httpbis-auth-info-03
 
    Updated DIGEST reference.
 
-Author's Address
-
+   Clarify how the applicable auth scheme is determined (it is present
+   in the request's (Proxy-)Authorization header field).
 
 
 
@@ -394,6 +394,8 @@ Reschke                Expires September 11, 2015               [Page 7]
 Internet-Draft          HTTP Authentication-Info              March 2015
 
 
+Author's Address
+
    Julian F. Reschke
    greenbytes GmbH
    Hafenweg 16
@@ -402,8 +404,6 @@ Internet-Draft          HTTP Authentication-Info              March 2015
 
    EMail: julian.reschke@greenbytes.de
    URI:   http://greenbytes.de/tech/webdav/
-
-
 
 
 
