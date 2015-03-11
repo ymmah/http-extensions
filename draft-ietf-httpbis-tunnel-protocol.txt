@@ -2,7 +2,7 @@
 
 
 
-HTTPbis Working Group                                          A. Hutton
+HTTP Working Group                                             A. Hutton
 Internet-Draft                                                     Unify
 Intended status: Standards Track                               J. Uberti
 Expires: September 12, 2015                                       Google

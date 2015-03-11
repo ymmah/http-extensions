@@ -2,7 +2,7 @@
 
 
 
-HTTPbis Working Group                                      M. Nottingham
+HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Experimental                                 M. Thomson
 Expires: September 12, 2015                                      Mozilla
