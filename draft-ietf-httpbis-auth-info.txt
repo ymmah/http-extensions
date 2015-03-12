@@ -4,9 +4,9 @@
 
 HTTP Working Group                                            J. Reschke
 Internet-Draft                                                greenbytes
-Updates: 2617 (if approved)                               March 11, 2015
+Updates: 2617 (if approved)                               March 12, 2015
 Intended status: Standards Track
-Expires: September 12, 2015
+Expires: September 13, 2015
 
 
  The Hypertext Transfer Protocol (HTTP) Authentication-Info and Proxy-
@@ -28,7 +28,7 @@ Editorial Note (To be removed by RFC Editor)
    Working Group information can be found at [2] and [3]; source code
    and issues list for this draft can be found at [4].
 
-   The changes in this draft are summarized in Appendix A.5.
+   The changes in this draft are summarized in Appendix A.6.
 
 Status of This Memo
 
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 12, 2015.
+   This Internet-Draft will expire on September 13, 2015.
 
 
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Reschke                Expires September 12, 2015               [Page 1]
+Reschke                Expires September 13, 2015               [Page 1]
 
 Internet-Draft          HTTP Authentication-Info              March 2015
 
@@ -102,18 +102,19 @@ Table of Contents
    Appendix A.  Change Log (to be removed by RFC Editor before
                 publication) . . . . . . . . . . . . . . . . . . . .   7
      A.1.  draft-reschke-httpauth-auth-info-00 . . . . . . . . . . .   7
-     A.2.  draft-ietf-httpbis-auth-info-00 . . . . . . . . . . . . .   7
-     A.3.  draft-ietf-httpbis-auth-info-01 . . . . . . . . . . . . .   7
-     A.4.  draft-ietf-httpbis-auth-info-02 . . . . . . . . . . . . .   7
-     A.5.  draft-ietf-httpbis-auth-info-03 . . . . . . . . . . . . .   7
+     A.2.  Since draft-ietf-httpbis-auth-info-00 . . . . . . . . . .   7
+     A.3.  Since draft-ietf-httpbis-auth-info-01 . . . . . . . . . .   7
+     A.4.  Since draft-ietf-httpbis-auth-info-02 . . . . . . . . . .   7
+     A.5.  Since draft-ietf-httpbis-auth-info-03 . . . . . . . . . .   7
 
 
 
-Reschke                Expires September 12, 2015               [Page 2]
+Reschke                Expires September 13, 2015               [Page 2]
 
 Internet-Draft          HTTP Authentication-Info              March 2015
 
 
+     A.6.  Since draft-ietf-httpbis-auth-info-04 . . . . . . . . . .   8
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   8
 
 1.  Introduction
@@ -160,15 +161,17 @@ Internet-Draft          HTTP Authentication-Info              March 2015
    semantics are defined by the authentication scheme indicated by the
    Authorization header field of the corresponding request.
 
-   A proxy forwarding a response is not allowed to modify the field
-   value in any way.
 
 
 
-Reschke                Expires September 12, 2015               [Page 3]
+
+Reschke                Expires September 13, 2015               [Page 3]
 
 Internet-Draft          HTTP Authentication-Info              March 2015
 
+
+   A proxy forwarding a response is not allowed to modify the field
+   value in any way.
 
    Authentication-Info can be used inside trailers ([RFC7230],
    Section 4.1.2) when the authentication scheme explicitly allows this.
@@ -218,10 +221,7 @@ Internet-Draft          HTTP Authentication-Info              March 2015
 
 
 
-
-
-
-Reschke                Expires September 12, 2015               [Page 4]
+Reschke                Expires September 13, 2015               [Page 4]
 
 Internet-Draft          HTTP Authentication-Info              March 2015
 
@@ -277,7 +277,7 @@ Internet-Draft          HTTP Authentication-Info              March 2015
 
 
 
-Reschke                Expires September 12, 2015               [Page 5]
+Reschke                Expires September 13, 2015               [Page 5]
 
 Internet-Draft          HTTP Authentication-Info              March 2015
 
@@ -333,7 +333,7 @@ Internet-Draft          HTTP Authentication-Info              March 2015
 
 
 
-Reschke                Expires September 12, 2015               [Page 6]
+Reschke                Expires September 13, 2015               [Page 6]
 
 Internet-Draft          HTTP Authentication-Info              March 2015
 
@@ -350,21 +350,21 @@ A.1.  draft-reschke-httpauth-auth-info-00
 
    Make it clearer that these are really just response header fields.
 
-A.2.  draft-ietf-httpbis-auth-info-00
+A.2.  Since draft-ietf-httpbis-auth-info-00
 
    Rephrase introduction of header field to be closer to what RFC 2617
    said ("successful authentication").
 
    Update DIGEST reference.
 
-A.3.  draft-ietf-httpbis-auth-info-01
+A.3.  Since draft-ietf-httpbis-auth-info-01
 
    State that scheme definitions need to define whether the header field
    can be used in trailers.
 
    Add "updates: 2617" to boilerplate.
 
-A.4.  draft-ietf-httpbis-auth-info-02
+A.4.  Since draft-ietf-httpbis-auth-info-02
 
    Updated DIGEST reference.
 
@@ -376,7 +376,7 @@ A.4.  draft-ietf-httpbis-auth-info-02
    Borrow more proxy auth related considerations from RFC 7235 for the
    description of Proxy-Authentication-Info ([8]).
 
-A.5.  draft-ietf-httpbis-auth-info-03
+A.5.  Since draft-ietf-httpbis-auth-info-03
 
    Updated DIGEST reference.
 
@@ -389,10 +389,14 @@ A.5.  draft-ietf-httpbis-auth-info-03
 
 
 
-Reschke                Expires September 12, 2015               [Page 7]
+Reschke                Expires September 13, 2015               [Page 7]
 
 Internet-Draft          HTTP Authentication-Info              March 2015
 
+
+A.6.  Since draft-ietf-httpbis-auth-info-04
+
+   None yet.
 
 Author's Address
 
@@ -441,8 +445,4 @@ Author's Address
 
 
 
-
-
-
-
-Reschke                Expires September 12, 2015               [Page 8]
+Reschke                Expires September 13, 2015               [Page 8]
