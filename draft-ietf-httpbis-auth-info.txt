@@ -4,9 +4,9 @@
 
 HTTP Working Group                                            J. Reschke
 Internet-Draft                                                greenbytes
-Updates: 2617 (if approved)                               March 12, 2015
+Updates: 2617 (if approved)                               March 15, 2015
 Intended status: Standards Track
-Expires: September 13, 2015
+Expires: September 16, 2015
 
 
  The Hypertext Transfer Protocol (HTTP) Authentication-Info and Proxy-
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 13, 2015.
+   This Internet-Draft will expire on September 16, 2015.
 
 
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Reschke                Expires September 13, 2015               [Page 1]
+Reschke                Expires September 16, 2015               [Page 1]
 
 Internet-Draft          HTTP Authentication-Info              March 2015
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Reschke                Expires September 13, 2015               [Page 2]
+Reschke                Expires September 16, 2015               [Page 2]
 
 Internet-Draft          HTTP Authentication-Info              March 2015
 
@@ -159,13 +159,13 @@ Internet-Draft          HTTP Authentication-Info              March 2015
    The Authentication-Info header field can be used in any HTTP
    response, independently of request method and status code.  Its
    semantics are defined by the authentication scheme indicated by the
-   Authorization header field of the corresponding request.
+   Authorization header field ([RFC7235], Section 4.2) of the
+   corresponding request.
 
 
 
 
-
-Reschke                Expires September 13, 2015               [Page 3]
+Reschke                Expires September 16, 2015               [Page 3]
 
 Internet-Draft          HTTP Authentication-Info              March 2015
 
@@ -193,8 +193,10 @@ Internet-Draft          HTTP Authentication-Info              March 2015
 4.  The Proxy-Authentication-Info Response Header Field
 
    The Proxy-Authentication-Info response header field is equivalent to
-   Authentication-Info, except that it applies to proxy authentication
-   ([RFC7235]):
+   Authentication-Info, except that its semantics are defined by the
+   authentication scheme indicated by the Proxy-Authorization header
+   field ([RFC7235], Section 4.4) of the corresponding request, and
+   applies to proxy authentication ([RFC7235], Section 2):
 
      Proxy-Authentication-Info = #auth-param
 
@@ -216,15 +218,16 @@ Internet-Draft          HTTP Authentication-Info              March 2015
    unencrypted channel can affect security and privacy.  The presence of
    the header fields alone indicates that HTTP authentication is in use.
    Additional information could be exposed by the contents of the
-   authentication-scheme specific parameters; this will have to be
-   considered in the definitions of these schemes.
 
 
 
-Reschke                Expires September 13, 2015               [Page 4]
+Reschke                Expires September 16, 2015               [Page 4]
 
 Internet-Draft          HTTP Authentication-Info              March 2015
 
+
+   authentication-scheme specific parameters; this will have to be
+   considered in the definitions of these schemes.
 
 6.  IANA Considerations
 
@@ -274,10 +277,7 @@ Internet-Draft          HTTP Authentication-Info              March 2015
 
 
 
-
-
-
-Reschke                Expires September 13, 2015               [Page 5]
+Reschke                Expires September 16, 2015               [Page 5]
 
 Internet-Draft          HTTP Authentication-Info              March 2015
 
@@ -333,7 +333,7 @@ Internet-Draft          HTTP Authentication-Info              March 2015
 
 
 
-Reschke                Expires September 13, 2015               [Page 6]
+Reschke                Expires September 16, 2015               [Page 6]
 
 Internet-Draft          HTTP Authentication-Info              March 2015
 
@@ -389,14 +389,15 @@ A.5.  Since draft-ietf-httpbis-auth-info-03
 
 
 
-Reschke                Expires September 13, 2015               [Page 7]
+Reschke                Expires September 16, 2015               [Page 7]
 
 Internet-Draft          HTTP Authentication-Info              March 2015
 
 
 A.6.  Since draft-ietf-httpbis-auth-info-04
 
-   None yet.
+   Add another clarification about how the applicable scheme for Proxy-
+   Authentication-Info is determined.
 
 Author's Address
 
@@ -444,5 +445,4 @@ Author's Address
 
 
 
-
-Reschke                Expires September 13, 2015               [Page 8]
+Reschke                Expires September 16, 2015               [Page 8]

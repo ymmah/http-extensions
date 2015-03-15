@@ -461,7 +461,7 @@ ul p {
        content: "Reschke";
   }
   @bottom-center {
-       content: "Expires September 13, 2015";
+       content: "Expires September 16, 2015";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -496,7 +496,7 @@ ul p {
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Reschke, J. F.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-auth-info-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2015-03-12">
+      <meta name="dct.issued" scheme="ISO8601" content="2015-03-15">
       <meta name="dct.abstract" content="This specification defines the &#34;Authentication-Info&#34; and &#34;Proxy-Authentication-Info&#34; response header fields for use in HTTP authentication schemes which need to return information once the client's authentication credentials have been accepted.">
       <meta name="description" content="This specification defines the &#34;Authentication-Info&#34; and &#34;Proxy-Authentication-Info&#34; response header fields for use in HTTP authentication schemes which need to return information once the client's authentication credentials have been accepted.">
    </head>
@@ -514,14 +514,14 @@ ul p {
             <tr>
                <td class="left">Updates: <a href="https://tools.ietf.org/html/rfc2617">2617</a> (if approved)
                </td>
-               <td class="right">March 12, 2015</td>
+               <td class="right">March 15, 2015</td>
             </tr>
             <tr>
                <td class="left">Intended status: Standards Track</td>
                <td class="right"></td>
             </tr>
             <tr>
-               <td class="left">Expires: September 13, 2015</td>
+               <td class="left">Expires: September 16, 2015</td>
                <td class="right"></td>
             </tr>
          </tbody>
@@ -548,7 +548,7 @@ ul p {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on September 13, 2015.</p>
+         <p>This Internet-Draft will expire on September 16, 2015.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
@@ -635,7 +635,7 @@ ul p {
 </pre></div>
          <div id="rfc.section.3.p.3">
             <p>The Authentication-Info header field can be used in any HTTP response, independently of request method and status code. Its
-               semantics are defined by the authentication scheme indicated by the Authorization header field of the corresponding request.
+               semantics are defined by the authentication scheme indicated by the Authorization header field (<a href="#RFC7235"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Authentication">[RFC7235]</cite></a>, <a href="rfc7235.html#header.authorization" title="Authorization">Section 4.2</a>) of the corresponding request.
             </p>
          </div>
          <div id="rfc.section.3.p.4">
@@ -667,8 +667,8 @@ ul p {
       <div id="proxy-authentication-info">
          <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a>&nbsp;<a href="#proxy-authentication-info">The Proxy-Authentication-Info Response Header Field</a></h1>
          <div id="rfc.section.4.p.1">
-            <p>The Proxy-Authentication-Info response header field is equivalent to Authentication-Info, except that it applies to proxy
-               authentication (<a href="#RFC7235"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Authentication">[RFC7235]</cite></a>):
+            <p>The Proxy-Authentication-Info response header field is equivalent to Authentication-Info, except that its semantics are defined
+               by the authentication scheme indicated by the Proxy-Authorization header field (<a href="#RFC7235"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Authentication">[RFC7235]</cite></a>, <a href="rfc7235.html#header.proxy-authorization" title="Proxy-Authorization">Section 4.4</a>) of the corresponding request, and applies to proxy authentication (<a href="#RFC7235"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Authentication">[RFC7235]</cite></a>, <a href="https://tools.ietf.org/html/rfc7235#section-2">Section 2</a>):
             </p>
          </div>
          <div id="rfc.section.4.p.2"><span id="rfc.figure.u.2"><pre class="inline">  <a href="#proxy-authentication-info" class="smpl">Proxy-Authentication-Info</a> = #<a href="#notational.conventions" class="smpl">auth-param</a>
@@ -853,7 +853,7 @@ ul p {
          <div id="since.04">
             <h2 id="rfc.section.A.6"><a href="#rfc.section.A.6">A.6</a>&nbsp;<a href="#since.04">Since draft-ietf-httpbis-auth-info-04</a></h2>
             <div id="rfc.section.A.6.p.1">
-               <p>None yet.</p>
+               <p>Add another clarification about how the applicable scheme for Proxy-Authentication-Info is determined.</p>
             </div>
          </div>
       </div>
