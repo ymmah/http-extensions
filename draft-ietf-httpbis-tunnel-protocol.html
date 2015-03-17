@@ -645,6 +645,11 @@ Tunnel-Protocol: h2, http%2F1.1
                This is indistinguishable from the case where either client or proxy does not support the Tunnel-Protocol header field.
             </p>
          </div>
+         <div id="rfc.section.4.p.3">
+            <p>The value of the Tunnel-Protocol header field could be falsified by a client. The use of protocols like <a href="#RFC5246">TLS</a> <cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite> make it very difficult or impossible to verify that the header field is correct even after a connection is established. A
+               proxy therefore cannot rely on the value of the Tunnel-Protocol header field as a policy input in all cases.
+            </p>
+         </div>
       </div>
       <h1 id="rfc.references"><a id="rfc.section.5" href="#rfc.section.5">5.</a> References
       </h1>
