@@ -5,10 +5,10 @@
 HTTP Working Group                                             A. Hutton
 Internet-Draft                                                     Unify
 Intended status: Standards Track                               J. Uberti
-Expires: September 16, 2015                                       Google
+Expires: September 18, 2015                                       Google
                                                               M. Thomson
                                                                  Mozilla
-                                                          March 15, 2015
+                                                          March 17, 2015
 
 
                  The Tunnel-Protocol HTTP Header Field
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 16, 2015.
+   This Internet-Draft will expire on September 18, 2015.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Hutton, et al.         Expires September 16, 2015               [Page 1]
+Hutton, et al.         Expires September 18, 2015               [Page 1]
 
 Internet-Draft               Tunnel-Protocol                  March 2015
 
@@ -81,7 +81,7 @@ Table of Contents
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
      5.2.  Informative References  . . . . . . . . . . . . . . . . .   5
      5.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   5
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   5
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   6
 
 1.  Introduction
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Hutton, et al.         Expires September 16, 2015               [Page 2]
+Hutton, et al.         Expires September 18, 2015               [Page 2]
 
 Internet-Draft               Tunnel-Protocol                  March 2015
 
@@ -119,7 +119,8 @@ Internet-Draft               Tunnel-Protocol                  March 2015
 
    Proxies do not implement the tunneled protocol, though they might
    choose to make policy decisions based on the value of the header
-   field.
+   field.  For example, a proxy could use the application protocol to
+   select appropriate traffic prioritization.
 
 1.1.  Requirements Language
 
@@ -164,8 +165,7 @@ Internet-Draft               Tunnel-Protocol                  March 2015
 
 
 
-
-Hutton, et al.         Expires September 16, 2015               [Page 3]
+Hutton, et al.         Expires September 18, 2015               [Page 3]
 
 Internet-Draft               Tunnel-Protocol                  March 2015
 
@@ -211,7 +211,7 @@ Internet-Draft               Tunnel-Protocol                  March 2015
    configurable whitelist of safe request targets."
 
    The Tunnel-Protocol header field described in this document is an
-   OPTIONAL header field.  Clients and HTTP Proxies could choose to not
+   OPTIONAL header field.  Clients and HTTP proxies could choose to not
    support the header and therefore fail to provide it, or ignore it
    when present.  If the header is not available or ignored, a proxy
    cannot identify the purpose of the tunnel and use this as input to
@@ -221,10 +221,17 @@ Internet-Draft               Tunnel-Protocol                  March 2015
 
 
 
-Hutton, et al.         Expires September 16, 2015               [Page 4]
+Hutton, et al.         Expires September 18, 2015               [Page 4]
 
 Internet-Draft               Tunnel-Protocol                  March 2015
 
+
+   The value of the Tunnel-Protocol header field could be falsified by a
+   client.  The use of protocols like TLS [RFC5246] make it very
+   difficult or impossible to verify that the header field is correct
+   even after a connection is established.  A proxy therefore cannot
+   rely on the value of the Tunnel-Protocol header field as a policy
+   input in all cases.
 
 5.  References
 
@@ -268,19 +275,14 @@ Internet-Draft               Tunnel-Protocol                  March 2015
 
    [2] https://www.iana.org/assignments/message-headers
 
-Authors' Addresses
 
 
-
-
-
-
-
-
-Hutton, et al.         Expires September 16, 2015               [Page 5]
+Hutton, et al.         Expires September 18, 2015               [Page 5]
 
 Internet-Draft               Tunnel-Protocol                  March 2015
 
+
+Authors' Addresses
 
    Andrew Hutton
    Unify
@@ -331,6 +333,4 @@ Internet-Draft               Tunnel-Protocol                  March 2015
 
 
 
-
-
-Hutton, et al.         Expires September 16, 2015               [Page 6]
+Hutton, et al.         Expires September 18, 2015               [Page 6]
