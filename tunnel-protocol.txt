@@ -240,36 +240,36 @@ Internet-Draft               Tunnel-Protocol                  March 2015
 5.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119, March 1997.
+              Requirement Levels", BCP 14, RFC 2119, March 1997,
+              <http://www.rfc-editor.org/info/rfc2119>.
 
    [RFC3864]  Klyne, G., Nottingham, M., and J. Mogul, "Registration
               Procedures for Message Header Fields", BCP 90, RFC 3864,
-              September 2004.
+              September 2004, <http://www.rfc-editor.org/info/rfc3864>.
 
    [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
               Resource Identifier (URI): Generic Syntax", STD 66, RFC
-              3986, January 2005.
+              3986, January 2005,
+              <http://www.rfc-editor.org/info/rfc3986>.
 
    [RFC7230]  Fielding, R. and J. Reschke, "Hypertext Transfer Protocol
               (HTTP/1.1): Message Syntax and Routing", RFC 7230, June
-              2014.
+              2014, <http://www.rfc-editor.org/info/rfc7230>.
 
    [RFC7231]  Fielding, R. and J. Reschke, "Hypertext Transfer Protocol
-              (HTTP/1.1): Semantics and Content", RFC 7231, June 2014.
+              (HTTP/1.1): Semantics and Content", RFC 7231, June 2014,
+              <http://www.rfc-editor.org/info/rfc7231>.
 
    [RFC7301]  Friedl, S., Popov, A., Langley, A., and E. Stephan,
               "Transport Layer Security (TLS) Application-Layer Protocol
-              Negotiation Extension", RFC 7301, July 2014.
+              Negotiation Extension", RFC 7301, July 2014,
+              <http://www.rfc-editor.org/info/rfc7301>.
 
 5.2.  Informative References
 
    [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
-              (TLS) Protocol Version 1.2", RFC 5246, August 2008.
-
-   [RFC5766]  Mahy, R., Matthews, P., and J. Rosenberg, "Traversal Using
-              Relays around NAT (TURN): Relay Extensions to Session
-              Traversal Utilities for NAT (STUN)", RFC 5766, April 2010.
-
+              (TLS) Protocol Version 1.2", RFC 5246, August 2008,
+              <http://www.rfc-editor.org/info/rfc5246>.
 
 
 
@@ -281,6 +281,11 @@ Hutton, et al.         Expires September 25, 2015               [Page 5]
 
 Internet-Draft               Tunnel-Protocol                  March 2015
 
+
+   [RFC5766]  Mahy, R., Matthews, P., and J. Rosenberg, "Traversal Using
+              Relays around NAT (TURN): Relay Extensions to Session
+              Traversal Utilities for NAT (STUN)", RFC 5766, April 2010,
+              <http://www.rfc-editor.org/info/rfc5766>.
 
    [TRAFFIC]  Pironti, A., Strub, P-Y., and K. Bhargavan, "Website Users
               by TLS Traffic Analysis: New Attacks and Effective
@@ -323,11 +328,6 @@ Authors' Addresses
    US
 
    EMail: martin.thomson@gmail.com
-
-
-
-
-
 
 
 
