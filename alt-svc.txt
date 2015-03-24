@@ -524,9 +524,9 @@ Internet-Draft          HTTP Alternative Services             March 2015
    The ALTSVC frame is a non-critical extension to HTTP/2.  Endpoints
    that do not support this frame can safely ignore it.
 
-   An ALTSVC frame from a server to a client on a client-initiated
-   stream indicates that the conveyed alternative service is associated
-   with the origin of that stream.
+   An ALTSVC frame from a server to a client on a stream other than
+   stream 0 indicates that the conveyed alternative service is
+   associated with the origin of that stream.
 
    An ALTSVC frame from a server to a client on stream 0 indicates that
    the conveyed alternative service is associated with the origin
@@ -573,9 +573,9 @@ Internet-Draft          HTTP Alternative Services             March 2015
    receives an ALTSVC frame MUST treat it as a connection error of type
    PROTOCOL_ERROR.
 
-   An ALTSVC frame on a client-initiated stream containing non-empty
-   "Origin" information is invalid and MUST be ignored.  Likewise, an
-   ALTSVC frame on stream 0 with empty (length 0) "Origin" information
+   An ALTSVC frame on stream 0 with empty (length 0) "Origin"
+   information is invalid and MUST be ignored.  An ALTSVC frame on a
+   stream other than stream 0 containing non-empty "Origin" information
    is invalid and MUST be ignored.
 
    The ALTSVC frame is processed hop-by-hop.  An intermediary MUST NOT
@@ -887,7 +887,7 @@ Internet-Draft          HTTP Alternative Services             March 2015
 
    [14] https://github.com/httpwg/http-extensions/issues/38
 
-
+   [15] https://github.com/httpwg/http-extensions/issues/44
 
 
 
@@ -973,7 +973,7 @@ A.7.  Since draft-ietf-httpbis-alt-svc-05
 
 A.8.  Since draft-ietf-httpbis-alt-svc-06
 
-   None yet.
+   alt svc frame on pushed (even and non-0) frame ([19]).
 
 Authors' Addresses
 

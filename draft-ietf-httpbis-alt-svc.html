@@ -991,8 +991,8 @@ Alt-Svc: h2c=":8000"; ma=60
             <p>The ALTSVC frame is a non-critical extension to HTTP/2. Endpoints that do not support this frame can safely ignore it.</p>
          </div>
          <div id="rfc.section.4.p.3">
-            <p>An ALTSVC frame from a server to a client on a client-initiated stream indicates that the conveyed alternative service is
-               associated with the origin of that stream.
+            <p>An ALTSVC frame from a server to a client on a stream other than stream 0 indicates that the conveyed alternative service
+               is associated with the origin of that stream.
             </p>
          </div>
          <div id="rfc.section.4.p.4">
@@ -1033,7 +1033,7 @@ Alt-Svc: h2c=":8000"; ma=60
             </p>
          </div>
          <div id="rfc.section.4.p.9">
-            <p>An ALTSVC frame on a client-initiated stream containing non-empty "Origin" information is invalid and <em class="bcp14">MUST</em> be ignored. Likewise, an ALTSVC frame on stream 0 with empty (length 0) "Origin" information is invalid and <em class="bcp14">MUST</em> be ignored.
+            <p>An ALTSVC frame on stream 0 with empty (length 0) "Origin" information is invalid and <em class="bcp14">MUST</em> be ignored. An ALTSVC frame on a stream other than stream 0 containing non-empty "Origin" information is invalid and <em class="bcp14">MUST</em> be ignored.
             </p>
          </div>
          <div id="rfc.section.4.p.10">
@@ -1424,7 +1424,8 @@ Alt-Used: alternate.example.net
          <div id="changes.since.draft-ietf-httpbis-alt-svc-06">
             <h2 id="rfc.section.A.8"><a href="#rfc.section.A.8">A.8</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-06">Since draft-ietf-httpbis-alt-svc-06</a></h2>
             <div id="rfc.section.A.8.p.1">
-               <p>None yet.</p>
+               <p>alt svc frame on pushed (even and non-0) frame (&lt;<a href="https://github.com/httpwg/http-extensions/issues/44">https://github.com/httpwg/http-extensions/issues/44</a>&gt;).
+               </p>
             </div>
          </div>
       </div>
