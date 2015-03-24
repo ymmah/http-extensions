@@ -80,7 +80,7 @@ Table of Contents
    5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   5
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
      5.2.  Informative References  . . . . . . . . . . . . . . . . .   5
-     5.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   5
+     5.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   6
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   6
 
 1.  Introduction
@@ -226,53 +226,53 @@ Hutton, et al.         Expires September 25, 2015               [Page 4]
 Internet-Draft               Tunnel-Protocol                  March 2015
 
 
+   The value of the Tunnel-Protocol header field could be falsified by a
+   client.  If the data being sent through the tunnel is encrypted (for
+   example, with TLS [RFC5246]), then the proxy might not be able to
+   directly inspect the data to verify that the claimed protocol is the
+   one which is actually being used, though a proxy might be able to
+   perform traffic analysis [TRAFFIC].  A proxy therefore cannot rely on
+   the value of the Tunnel-Protocol header field as a policy input in
+   all cases.
+
 5.  References
 
 5.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119, March 1997,
-              <http://www.rfc-editor.org/info/rfc2119>.
+              Requirement Levels", BCP 14, RFC 2119, March 1997.
 
    [RFC3864]  Klyne, G., Nottingham, M., and J. Mogul, "Registration
               Procedures for Message Header Fields", BCP 90, RFC 3864,
-              September 2004, <http://www.rfc-editor.org/info/rfc3864>.
+              September 2004.
 
    [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
               Resource Identifier (URI): Generic Syntax", STD 66, RFC
-              3986, January 2005,
-              <http://www.rfc-editor.org/info/rfc3986>.
+              3986, January 2005.
 
    [RFC7230]  Fielding, R. and J. Reschke, "Hypertext Transfer Protocol
               (HTTP/1.1): Message Syntax and Routing", RFC 7230, June
-              2014, <http://www.rfc-editor.org/info/rfc7230>.
+              2014.
 
    [RFC7231]  Fielding, R. and J. Reschke, "Hypertext Transfer Protocol
-              (HTTP/1.1): Semantics and Content", RFC 7231, June 2014,
-              <http://www.rfc-editor.org/info/rfc7231>.
+              (HTTP/1.1): Semantics and Content", RFC 7231, June 2014.
 
    [RFC7301]  Friedl, S., Popov, A., Langley, A., and E. Stephan,
               "Transport Layer Security (TLS) Application-Layer Protocol
-              Negotiation Extension", RFC 7301, July 2014,
-              <http://www.rfc-editor.org/info/rfc7301>.
+              Negotiation Extension", RFC 7301, July 2014.
 
 5.2.  Informative References
 
    [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
-              (TLS) Protocol Version 1.2", RFC 5246, August 2008,
-              <http://www.rfc-editor.org/info/rfc5246>.
+              (TLS) Protocol Version 1.2", RFC 5246, August 2008.
 
    [RFC5766]  Mahy, R., Matthews, P., and J. Rosenberg, "Traversal Using
               Relays around NAT (TURN): Relay Extensions to Session
-              Traversal Utilities for NAT (STUN)", RFC 5766, April 2010,
-              <http://www.rfc-editor.org/info/rfc5766>.
+              Traversal Utilities for NAT (STUN)", RFC 5766, April 2010.
 
-5.3.  URIs
 
-   [1] http://www.iana.org/assignments/tls-extensiontype-values/#alpn-
-       protocol-ids
 
-   [2] https://www.iana.org/assignments/message-headers
+
 
 
 
@@ -281,6 +281,20 @@ Hutton, et al.         Expires September 25, 2015               [Page 5]
 
 Internet-Draft               Tunnel-Protocol                  March 2015
 
+
+   [TRAFFIC]  Pironti, A., Strub, P-Y., and K. Bhargavan, "Website Users
+              by TLS Traffic Analysis: New Attacks and Effective
+              Countermeasures, Revision 1", 2012,
+              <https://alfredo.pironti.eu/research/publications/full/
+              identifying-website-users-tls-traffic-analysis-new-
+              attacks-and-effective-counterme>.
+
+5.3.  URIs
+
+   [1] http://www.iana.org/assignments/tls-extensiontype-values/#alpn-
+       protocol-ids
+
+   [2] https://www.iana.org/assignments/message-headers
 
 Authors' Addresses
 
@@ -309,20 +323,6 @@ Authors' Addresses
    US
 
    EMail: martin.thomson@gmail.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

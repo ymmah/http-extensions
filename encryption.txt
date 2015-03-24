@@ -424,22 +424,22 @@ Internet-Draft         Opportunistic HTTP Security            March 2015
               (work in progress), October 2014.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119, March 1997,
-              <http://www.rfc-editor.org/info/rfc2119>.
+              Requirement Levels", BCP 14, RFC 2119, March 1997.
 
-   [RFC2818]  Rescorla, E., "HTTP Over TLS", RFC 2818, May 2000,
-              <http://www.rfc-editor.org/info/rfc2818>.
+   [RFC2818]  Rescorla, E., "HTTP Over TLS", RFC 2818, May 2000.
 
    [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
-              (TLS) Protocol Version 1.2", RFC 5246, August 2008,
-              <http://www.rfc-editor.org/info/rfc5246>.
+              (TLS) Protocol Version 1.2", RFC 5246, August 2008.
 
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454, December
-              2011, <http://www.rfc-editor.org/info/rfc6454>.
+              2011.
 
    [RFC7234]  Fielding, R., Nottingham, M., and J. Reschke, "Hypertext
               Transfer Protocol (HTTP/1.1): Caching", RFC 7234, June
-              2014, <http://www.rfc-editor.org/info/rfc7234>.
+              2014.
+
+
+
 
 
 
@@ -453,12 +453,10 @@ Internet-Draft         Opportunistic HTTP Security            March 2015
 7.2.  Informative References
 
    [RFC7258]  Farrell, S. and H. Tschofenig, "Pervasive Monitoring Is an
-              Attack", BCP 188, RFC 7258, May 2014,
-              <http://www.rfc-editor.org/info/rfc7258>.
+              Attack", BCP 188, RFC 7258, May 2014.
 
    [RFC7435]  Dukhovni, V., "Opportunistic Security: Some Protection
-              Most of the Time", RFC 7435, December 2014,
-              <http://www.rfc-editor.org/info/rfc7435>.
+              Most of the Time", RFC 7435, December 2014.
 
 Appendix A.  Acknowledgements
 
@@ -478,6 +476,8 @@ Authors' Addresses
    Mozilla
 
    Email: martin.thomson@gmail.com
+
+
 
 
 
