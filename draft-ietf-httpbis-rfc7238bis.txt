@@ -213,8 +213,8 @@ Internet-Draft            HTTP Status Code 308                March 2015
 6.  IANA Considerations
 
    The "Hypertext Transfer Protocol (HTTP) Status Code Registry"
-   (defined in Section 8.2 of [RFC7231] and located at [1]) needs to be
-   updated with the registration below:
+   (defined in Section 8.2 of [RFC7231] and located at [1]) has been
+   updated to reference this specification.
 
 
 
