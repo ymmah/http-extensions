@@ -271,7 +271,7 @@ Internet-Draft          HTTP Authentication-Info              April 2015
 
    [DIGEST]   Shekh-Yusef, R., Ed., Ahrens, D., and S. Bremer, "HTTP
               Digest Access Authentication", draft-ietf-httpauth-
-              digest-15 (work in progress), March 2015.
+              digest-16 (work in progress), April 2015.
 
 
 
@@ -401,7 +401,7 @@ A.6.  Since draft-ietf-httpbis-auth-info-04
 
 A.7.  Since draft-ietf-httpbis-auth-info-05
 
-   None yet.
+   Updated DIGEST reference.
 
 Appendix B.  Acknowledgements
 
