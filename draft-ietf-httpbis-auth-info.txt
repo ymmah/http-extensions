@@ -28,7 +28,7 @@ Editorial Note (To be removed by RFC Editor)
    Working Group information can be found at [2] and [3]; source code
    and issues list for this draft can be found at [4].
 
-   The changes in this draft are summarized in Appendix A.6.
+   The changes in this draft are summarized in Appendix A.7.
 
 Status of This Memo
 
@@ -114,6 +114,7 @@ Reschke                  Expires October 9, 2015                [Page 2]
 Internet-Draft          HTTP Authentication-Info              April 2015
 
 
+     A.7.  Since draft-ietf-httpbis-auth-info-05 . . . . . . . . . .   8
    Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .   8
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   8
 
@@ -161,7 +162,6 @@ Internet-Draft          HTTP Authentication-Info              April 2015
    semantics are defined by the authentication scheme indicated by the
    Authorization header field ([RFC7235], Section 4.2) of the
    corresponding request.
-
 
 
 
@@ -399,6 +399,10 @@ A.6.  Since draft-ietf-httpbis-auth-info-04
    Add another clarification about how the applicable scheme for Proxy-
    Authentication-Info is determined.
 
+A.7.  Since draft-ietf-httpbis-auth-info-05
+
+   None yet.
+
 Appendix B.  Acknowledgements
 
    This document is based on the header field definitions in RFCs 2069
@@ -421,10 +425,6 @@ Author's Address
 
    EMail: julian.reschke@greenbytes.de
    URI:   http://greenbytes.de/tech/webdav/
-
-
-
-
 
 
 
