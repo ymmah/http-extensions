@@ -29,7 +29,7 @@ Editorial Note (To be removed by RFC Editor before publication)
    Working Group information can be found at [2] and [3]; source code
    and issues list for this draft can be found at [4].
 
-   The changes in this draft are summarized in Appendix A.3.
+   The changes in this draft are summarized in Appendix A.4.
 
 Status of This Memo
 
@@ -91,6 +91,7 @@ Table of Contents
      A.1.  Since draft-reschke-http-cice-00  . . . . . . . . . . . .   7
      A.2.  Since draft-reschke-http-cice-01  . . . . . . . . . . . .   7
      A.3.  Since draft-reschke-http-cice-02  . . . . . . . . . . . .   7
+     A.4.  Since draft-ietf-httpbis-cice-00  . . . . . . . . . . . .   7
    Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .   7
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   7
 
@@ -105,7 +106,6 @@ Table of Contents
    discoverability is not on par with response messages.  This document
    extends the HTTP "Accept-Encoding" header field ([RFC7231],
    Section 5.3.4) for use in responses.
-
 
 
 
@@ -363,6 +363,10 @@ A.3.  Since draft-reschke-http-cice-02
 
    First Working Group draft; updated boilerplate accordingly.
 
+A.4.  Since draft-ietf-httpbis-cice-00
+
+   None yet.
+
 Appendix B.  Acknowledgements
 
    Thanks go to the members of the and HTTPbis Working Group, namely
@@ -378,10 +382,6 @@ Author's Address
 
    EMail: julian.reschke@greenbytes.de
    URI:   http://greenbytes.de/tech/webdav/
-
-
-
-
 
 
 
