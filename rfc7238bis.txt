@@ -4,9 +4,9 @@
 
 HTTP Working Group                                            J. Reschke
 Internet-Draft                                                greenbytes
-Obsoletes: 7238 (if approved)                              April 2, 2015
+Obsoletes: 7238 (if approved)                             April 19, 2015
 Intended status: Standards Track
-Expires: October 4, 2015
+Expires: October 21, 2015
 
 
   The Hypertext Transfer Protocol Status Code 308 (Permanent Redirect)
@@ -32,7 +32,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 4, 2015.
+   This Internet-Draft will expire on October 21, 2015.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Reschke                  Expires October 4, 2015                [Page 1]
+Reschke                 Expires October 21, 2015                [Page 1]
 
 Internet-Draft            HTTP Status Code 308                April 2015
 
@@ -66,11 +66,11 @@ Table of Contents
    4.  Deployment Considerations . . . . . . . . . . . . . . . . . .   3
    5.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
-   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   5
-     7.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .   5
-     7.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   5
-   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .   6
+   7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   5
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   5
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .   5
+     8.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   6
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   6
 
 1.  Introduction
@@ -98,7 +98,7 @@ Table of Contents
    308, defining this missing variant (Section 3).
 
    This specification contains no technical changes from the
-   Experimental RFC 7238, which it obsoletes.
+   experimental RFC 7238, which it obsoletes.
 
 2.  Notational Conventions
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Reschke                  Expires October 4, 2015                [Page 2]
+Reschke                 Expires October 21, 2015                [Page 2]
 
 Internet-Draft            HTTP Status Code 308                April 2015
 
@@ -141,7 +141,7 @@ Internet-Draft            HTTP Status Code 308                April 2015
 4.  Deployment Considerations
 
    Section 6 of [RFC7231] requires recipients to treat unknown 3xx
-   status codes the same way as status code 300 (Multiple Choices)
+   status codes the same way as status code 300 Multiple Choices
    ([RFC7231], Section 6.4.1).  Thus, servers will not be able to rely
    on automatic redirection happening similar to status codes 301, 302,
    or 307.
@@ -165,7 +165,7 @@ Internet-Draft            HTTP Status Code 308                April 2015
 
 
 
-Reschke                  Expires October 4, 2015                [Page 3]
+Reschke                 Expires October 21, 2015                [Page 3]
 
 Internet-Draft            HTTP Status Code 308                April 2015
 
@@ -204,24 +204,24 @@ Internet-Draft            HTTP Status Code 308                April 2015
    All security considerations that apply to HTTP redirects apply to the
    308 status code as well (see Section 9 of [RFC7231]).
 
-   Unsecured communication over the Internet is subject to man-in-the-
+   Unsecured communication over the Internet is subject to man in the
    middle modification of messages, including changing status codes or
-   redirect targets.  Use of Transport Layer Security (TLS) is one way
-   to mitigate those attacks.  See Section 9 of [RFC7230] for related
-   attacks on authority and message integrity.
+   redirect targets.  Use of TLS is one way to mitigate those attacks.
+   See Section 9 of [RFC7230] for related attacks on authority and
+   message integrity.
 
 6.  IANA Considerations
 
    The "Hypertext Transfer Protocol (HTTP) Status Code Registry"
-   (defined in Section 8.2 of [RFC7231] and located at [1]) has been
-   updated to reference this specification.
+   (defined in Section 8.2 of [RFC7231] and located at [1]) needs to be
+   updated with the registration below:
 
 
 
 
 
 
-Reschke                  Expires October 4, 2015                [Page 4]
+Reschke                 Expires October 21, 2015                [Page 4]
 
 Internet-Draft            HTTP Status Code 308                April 2015
 
@@ -232,57 +232,7 @@ Internet-Draft            HTTP Status Code 308                April 2015
    | 308   | Permanent Redirect | Section 3 of this specification  |
    +-------+--------------------+----------------------------------+
 
-7.  References
-
-7.1.  Normative References
-
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119, March 1997,
-              <http://www.rfc-editor.org/info/rfc2119>.
-
-   [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
-              Resource Identifier (URI): Generic Syntax", STD 66, RFC
-              3986, January 2005,
-              <http://www.rfc-editor.org/info/rfc3986>.
-
-   [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
-              Protocol (HTTP/1.1): Message Syntax and Routing", RFC
-              7230, June 2014, <http://www.rfc-editor.org/info/rfc7230>.
-
-   [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
-              Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
-              June 2014, <http://www.rfc-editor.org/info/rfc7231>.
-
-   [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
-              Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
-              RFC 7234, June 2014,
-              <http://www.rfc-editor.org/info/rfc7234>.
-
-7.2.  Informative References
-
-   [HTML]     Hickson, I., Berjon, R., Faulkner, S., Leithead, T., Doyle
-              Navara, E., O'Connor, E., and S. Pfeiffer, "HTML5", W3C
-              Recommendation REC-html5-20141028, October 2014,
-              <http://www.w3.org/TR/2014/REC-html5-20141028/>.
-
-              Latest version available at [2].
-
-7.3.  URIs
-
-   [1] http://www.iana.org/assignments/http-status-codes
-
-
-
-
-
-
-
-Reschke                  Expires October 4, 2015                [Page 5]
-
-Internet-Draft            HTTP Status Code 308                April 2015
-
-
-Appendix A.  Acknowledgements
+7.  Acknowledgements
 
    The definition for the new status code 308 reuses text from the
    HTTP/1.1 definitions of status codes 301 and 307.
@@ -291,6 +241,50 @@ Appendix A.  Acknowledgements
    Eran Hammer-Lahav, Bjoern Hoehrmann, Barry Leiba, Subramanian
    Moonesamy, Kathleen Moriarty, Peter Saint-Andre, Robert Sparks, and
    Roy Fielding for feedback on this document.
+
+8.  References
+
+8.1.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119, March 1997.
+
+   [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
+              Resource Identifier (URI): Generic Syntax", STD 66, RFC
+              3986, January 2005.
+
+   [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
+              Protocol (HTTP/1.1): Message Syntax and Routing", RFC
+              7230, June 2014.
+
+   [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
+              Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
+              June 2014.
+
+   [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
+              Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
+              RFC 7234, June 2014.
+
+8.2.  Informative References
+
+   [HTML]     Hickson, I., Berjon, R., Faulkner, S., Leithead, T., Doyle
+              Navara, E., O'Connor, E., and S. Pfeiffer, "HTML5", W3C
+              Recommendation REC-html5-20141028, October 2014,
+              <http://www.w3.org/TR/2014/REC-html5-20141028/>.
+
+              Latest version available at [2].
+
+
+
+
+Reschke                 Expires October 21, 2015                [Page 5]
+
+Internet-Draft            HTTP Status Code 308                April 2015
+
+
+8.3.  URIs
+
+   [1] http://www.iana.org/assignments/http-status-codes
 
 Author's Address
 
@@ -333,4 +327,10 @@ Author's Address
 
 
 
-Reschke                  Expires October 4, 2015                [Page 6]
+
+
+
+
+
+
+Reschke                 Expires October 21, 2015                [Page 6]

@@ -5,10 +5,10 @@
 HTTP Working Group                                             A. Hutton
 Internet-Draft                                                     Unify
 Intended status: Standards Track                               J. Uberti
-Expires: October 20, 2015                                         Google
+Expires: October 21, 2015                                         Google
                                                               M. Thomson
                                                                  Mozilla
-                                                          April 18, 2015
+                                                          April 19, 2015
 
 
                  The Tunnel-Protocol HTTP Header Field
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 20, 2015.
+   This Internet-Draft will expire on October 21, 2015.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Hutton, et al.          Expires October 20, 2015                [Page 1]
+Hutton, et al.          Expires October 21, 2015                [Page 1]
 
 Internet-Draft               Tunnel-Protocol                  April 2015
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Hutton, et al.          Expires October 20, 2015                [Page 2]
+Hutton, et al.          Expires October 21, 2015                [Page 2]
 
 Internet-Draft               Tunnel-Protocol                  April 2015
 
@@ -165,7 +165,7 @@ Internet-Draft               Tunnel-Protocol                  April 2015
 
 
 
-Hutton, et al.          Expires October 20, 2015                [Page 3]
+Hutton, et al.          Expires October 21, 2015                [Page 3]
 
 Internet-Draft               Tunnel-Protocol                  April 2015
 
@@ -221,7 +221,7 @@ Internet-Draft               Tunnel-Protocol                  April 2015
 
 
 
-Hutton, et al.          Expires October 20, 2015                [Page 4]
+Hutton, et al.          Expires October 21, 2015                [Page 4]
 
 Internet-Draft               Tunnel-Protocol                  April 2015
 
@@ -240,52 +240,47 @@ Internet-Draft               Tunnel-Protocol                  April 2015
 5.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119, March 1997,
-              <http://www.rfc-editor.org/info/rfc2119>.
+              Requirement Levels", BCP 14, RFC 2119, March 1997.
 
    [RFC3864]  Klyne, G., Nottingham, M., and J. Mogul, "Registration
               Procedures for Message Header Fields", BCP 90, RFC 3864,
-              September 2004, <http://www.rfc-editor.org/info/rfc3864>.
+              September 2004.
 
    [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
               Resource Identifier (URI): Generic Syntax", STD 66, RFC
-              3986, January 2005,
-              <http://www.rfc-editor.org/info/rfc3986>.
+              3986, January 2005.
 
    [RFC7230]  Fielding, R. and J. Reschke, "Hypertext Transfer Protocol
               (HTTP/1.1): Message Syntax and Routing", RFC 7230, June
-              2014, <http://www.rfc-editor.org/info/rfc7230>.
+              2014.
 
    [RFC7231]  Fielding, R. and J. Reschke, "Hypertext Transfer Protocol
-              (HTTP/1.1): Semantics and Content", RFC 7231, June 2014,
-              <http://www.rfc-editor.org/info/rfc7231>.
+              (HTTP/1.1): Semantics and Content", RFC 7231, June 2014.
 
    [RFC7301]  Friedl, S., Popov, A., Langley, A., and E. Stephan,
               "Transport Layer Security (TLS) Application-Layer Protocol
-              Negotiation Extension", RFC 7301, July 2014,
-              <http://www.rfc-editor.org/info/rfc7301>.
+              Negotiation Extension", RFC 7301, July 2014.
 
 5.2.  Informative References
 
    [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
-              (TLS) Protocol Version 1.2", RFC 5246, August 2008,
-              <http://www.rfc-editor.org/info/rfc5246>.
-
-
-
-
-
-
-
-Hutton, et al.          Expires October 20, 2015                [Page 5]
-
-Internet-Draft               Tunnel-Protocol                  April 2015
-
+              (TLS) Protocol Version 1.2", RFC 5246, August 2008.
 
    [RFC5766]  Mahy, R., Matthews, P., and J. Rosenberg, "Traversal Using
               Relays around NAT (TURN): Relay Extensions to Session
-              Traversal Utilities for NAT (STUN)", RFC 5766, April 2010,
-              <http://www.rfc-editor.org/info/rfc5766>.
+              Traversal Utilities for NAT (STUN)", RFC 5766, April 2010.
+
+
+
+
+
+
+
+
+Hutton, et al.          Expires October 21, 2015                [Page 5]
+
+Internet-Draft               Tunnel-Protocol                  April 2015
+
 
    [TRAFFIC]  Pironti, A., Strub, P-Y., and K. Bhargavan, "Website Users
               by TLS Traffic Analysis: New Attacks and Effective
@@ -333,4 +328,9 @@ Authors' Addresses
 
 
 
-Hutton, et al.          Expires October 20, 2015                [Page 6]
+
+
+
+
+
+Hutton, et al.          Expires October 21, 2015                [Page 6]

@@ -5,10 +5,10 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft                                                    Akamai
 Intended status: Standards Track                              P. McManus
-Expires: October 20, 2015                                        Mozilla
+Expires: October 21, 2015                                        Mozilla
                                                               J. Reschke
                                                               greenbytes
-                                                          April 18, 2015
+                                                          April 19, 2015
 
 
                        HTTP Alternative Services
@@ -46,14 +46,14 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 20, 2015.
+   This Internet-Draft will expire on October 21, 2015.
 
 
 
 
 
 
-Nottingham, et al.      Expires October 20, 2015                [Page 1]
+Nottingham, et al.      Expires October 21, 2015                [Page 1]
 
 Internet-Draft          HTTP Alternative Services             April 2015
 
@@ -99,7 +99,7 @@ Table of Contents
    10. Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  14
    11. References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
      11.1.  Normative References . . . . . . . . . . . . . . . . . .  15
-     11.2.  Informative References . . . . . . . . . . . . . . . . .  16
+     11.2.  Informative References . . . . . . . . . . . . . . . . .  15
      11.3.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .  16
    Appendix A.  Change Log (to be removed by RFC Editor before
                 publication) . . . . . . . . . . . . . . . . . . . .  17
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Nottingham, et al.      Expires October 20, 2015                [Page 2]
+Nottingham, et al.      Expires October 21, 2015                [Page 2]
 
 Internet-Draft          HTTP Alternative Services             April 2015
 
@@ -165,7 +165,7 @@ Internet-Draft          HTTP Alternative Services             April 2015
 
 
 
-Nottingham, et al.      Expires October 20, 2015                [Page 3]
+Nottingham, et al.      Expires October 21, 2015                [Page 3]
 
 Internet-Draft          HTTP Alternative Services             April 2015
 
@@ -221,7 +221,7 @@ Internet-Draft          HTTP Alternative Services             April 2015
 
 
 
-Nottingham, et al.      Expires October 20, 2015                [Page 4]
+Nottingham, et al.      Expires October 21, 2015                [Page 4]
 
 Internet-Draft          HTTP Alternative Services             April 2015
 
@@ -277,7 +277,7 @@ Internet-Draft          HTTP Alternative Services             April 2015
 
 
 
-Nottingham, et al.      Expires October 20, 2015                [Page 5]
+Nottingham, et al.      Expires October 21, 2015                [Page 5]
 
 Internet-Draft          HTTP Alternative Services             April 2015
 
@@ -333,7 +333,7 @@ Internet-Draft          HTTP Alternative Services             April 2015
 
 
 
-Nottingham, et al.      Expires October 20, 2015                [Page 6]
+Nottingham, et al.      Expires October 21, 2015                [Page 6]
 
 Internet-Draft          HTTP Alternative Services             April 2015
 
@@ -389,7 +389,7 @@ Internet-Draft          HTTP Alternative Services             April 2015
 
 
 
-Nottingham, et al.      Expires October 20, 2015                [Page 7]
+Nottingham, et al.      Expires October 21, 2015                [Page 7]
 
 Internet-Draft          HTTP Alternative Services             April 2015
 
@@ -445,7 +445,7 @@ Internet-Draft          HTTP Alternative Services             April 2015
 
 
 
-Nottingham, et al.      Expires October 20, 2015                [Page 8]
+Nottingham, et al.      Expires October 21, 2015                [Page 8]
 
 Internet-Draft          HTTP Alternative Services             April 2015
 
@@ -501,7 +501,7 @@ Internet-Draft          HTTP Alternative Services             April 2015
 
 
 
-Nottingham, et al.      Expires October 20, 2015                [Page 9]
+Nottingham, et al.      Expires October 21, 2015                [Page 9]
 
 Internet-Draft          HTTP Alternative Services             April 2015
 
@@ -524,9 +524,9 @@ Internet-Draft          HTTP Alternative Services             April 2015
    The ALTSVC frame is a non-critical extension to HTTP/2.  Endpoints
    that do not support this frame can safely ignore it.
 
-   An ALTSVC frame from a server to a client on a stream other than
-   stream 0 indicates that the conveyed alternative service is
-   associated with the origin of that stream.
+   An ALTSVC frame from a server to a client on a client-initiated
+   stream indicates that the conveyed alternative service is associated
+   with the origin of that stream.
 
    An ALTSVC frame from a server to a client on stream 0 indicates that
    the conveyed alternative service is associated with the origin
@@ -557,7 +557,7 @@ Internet-Draft          HTTP Alternative Services             April 2015
 
 
 
-Nottingham, et al.      Expires October 20, 2015               [Page 10]
+Nottingham, et al.      Expires October 21, 2015               [Page 10]
 
 Internet-Draft          HTTP Alternative Services             April 2015
 
@@ -573,9 +573,9 @@ Internet-Draft          HTTP Alternative Services             April 2015
    receives an ALTSVC frame MUST treat it as a connection error of type
    PROTOCOL_ERROR.
 
-   An ALTSVC frame on stream 0 with empty (length 0) "Origin"
-   information is invalid and MUST be ignored.  An ALTSVC frame on a
-   stream other than stream 0 containing non-empty "Origin" information
+   An ALTSVC frame on a client-initiated stream containing non-empty
+   "Origin" information is invalid and MUST be ignored.  Likewise, an
+   ALTSVC frame on stream 0 with empty (length 0) "Origin" information
    is invalid and MUST be ignored.
 
    The ALTSVC frame is processed hop-by-hop.  An intermediary MUST NOT
@@ -613,7 +613,7 @@ Internet-Draft          HTTP Alternative Services             April 2015
 
 
 
-Nottingham, et al.      Expires October 20, 2015               [Page 11]
+Nottingham, et al.      Expires October 21, 2015               [Page 11]
 
 Internet-Draft          HTTP Alternative Services             April 2015
 
@@ -669,7 +669,7 @@ Internet-Draft          HTTP Alternative Services             April 2015
 
 
 
-Nottingham, et al.      Expires October 20, 2015               [Page 12]
+Nottingham, et al.      Expires October 21, 2015               [Page 12]
 
 Internet-Draft          HTTP Alternative Services             April 2015
 
@@ -725,7 +725,7 @@ Internet-Draft          HTTP Alternative Services             April 2015
 
 
 
-Nottingham, et al.      Expires October 20, 2015               [Page 13]
+Nottingham, et al.      Expires October 21, 2015               [Page 13]
 
 Internet-Draft          HTTP Alternative Services             April 2015
 
@@ -781,7 +781,7 @@ Internet-Draft          HTTP Alternative Services             April 2015
 
 
 
-Nottingham, et al.      Expires October 20, 2015               [Page 14]
+Nottingham, et al.      Expires October 21, 2015               [Page 14]
 
 Internet-Draft          HTTP Alternative Services             April 2015
 
@@ -798,64 +798,52 @@ Internet-Draft          HTTP Alternative Services             April 2015
               (work in progress), November 2014.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119, March 1997,
-              <http://www.rfc-editor.org/info/rfc2119>.
+              Requirement Levels", BCP 14, RFC 2119, March 1997.
 
    [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
               Resource Identifier (URI): Generic Syntax", STD 66, RFC
-              3986, January 2005,
-              <http://www.rfc-editor.org/info/rfc3986>.
+              3986, January 2005.
 
    [RFC5234]  Crocker, D. and P. Overell, "Augmented BNF for Syntax
-              Specifications: ABNF", STD 68, RFC 5234, January 2008,
-              <http://www.rfc-editor.org/info/rfc5234>.
+              Specifications: ABNF", STD 68, RFC 5234, January 2008.
 
    [RFC5890]  Klensin, J., "Internationalized Domain Names for
               Applications (IDNA): Definitions and Document Framework",
-              RFC 5890, August 2010,
-              <http://www.rfc-editor.org/info/rfc5890>.
+              RFC 5890, August 2010.
 
    [RFC6066]  Eastlake, D., "Transport Layer Security (TLS) Extensions:
-              Extension Definitions", RFC 6066, January 2011,
-              <http://www.rfc-editor.org/info/rfc6066>.
+              Extension Definitions", RFC 6066, January 2011.
 
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454, December
-              2011, <http://www.rfc-editor.org/info/rfc6454>.
+              2011.
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing", RFC
-              7230, June 2014, <http://www.rfc-editor.org/info/rfc7230>.
+              7230, June 2014.
 
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
-              RFC 7234, June 2014,
-              <http://www.rfc-editor.org/info/rfc7234>.
-
-
-
-
-
-
-
-Nottingham, et al.      Expires October 20, 2015               [Page 15]
-
-Internet-Draft          HTTP Alternative Services             April 2015
-
+              RFC 7234, June 2014.
 
    [RFC7301]  Friedl, S., Popov, A., Langley, A., and S. Emile,
               "Transport Layer Security (TLS) Application-Layer Protocol
-              Negotiation Extension", RFC 7301, July 2014,
-              <http://www.rfc-editor.org/info/rfc7301>.
+              Negotiation Extension", RFC 7301, July 2014.
 
 11.2.  Informative References
 
    [BCP90]    Klyne, G., Nottingham, M., and J. Mogul, "Registration
               Procedures for Message Header Fields", BCP 90, RFC 3864,
-              September 2004, <http://www.rfc-editor.org/info/rfc3864>.
+              September 2004.
+
+
+
+Nottingham, et al.      Expires October 21, 2015               [Page 15]
+
+Internet-Draft          HTTP Alternative Services             April 2015
+
 
    [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
-              (TLS) Protocol Version 1.2", RFC 5246, August 2008,
-              <http://www.rfc-editor.org/info/rfc5246>.
+              (TLS) Protocol Version 1.2", RFC 5246, August 2008.
 
 11.3.  URIs
 
@@ -887,13 +875,25 @@ Internet-Draft          HTTP Alternative Services             April 2015
 
    [14] https://github.com/httpwg/http-extensions/issues/38
 
-   [15] https://github.com/httpwg/http-extensions/issues/44
 
 
 
 
 
-Nottingham, et al.      Expires October 20, 2015               [Page 16]
+
+
+
+
+
+
+
+
+
+
+
+
+
+Nottingham, et al.      Expires October 21, 2015               [Page 16]
 
 Internet-Draft          HTTP Alternative Services             April 2015
 
@@ -949,7 +949,7 @@ A.5.  Since draft-ietf-httpbis-alt-svc-03
 
 
 
-Nottingham, et al.      Expires October 20, 2015               [Page 17]
+Nottingham, et al.      Expires October 21, 2015               [Page 17]
 
 Internet-Draft          HTTP Alternative Services             April 2015
 
@@ -973,7 +973,7 @@ A.7.  Since draft-ietf-httpbis-alt-svc-05
 
 A.8.  Since draft-ietf-httpbis-alt-svc-06
 
-   alt svc frame on pushed (even and non-0) frame ([19]).
+   None yet.
 
 Authors' Addresses
 
@@ -1005,4 +1005,4 @@ Authors' Addresses
 
 
 
-Nottingham, et al.      Expires October 20, 2015               [Page 18]
+Nottingham, et al.      Expires October 21, 2015               [Page 18]

@@ -4,9 +4,9 @@
 
 HTTP Working Group                                            J. Reschke
 Internet-Draft                                                greenbytes
-Updates: 2617 (if approved)                               April 18, 2015
+Updates: 2617 (if approved)                               April 19, 2015
 Intended status: Standards Track
-Expires: October 20, 2015
+Expires: October 21, 2015
 
 
  The Hypertext Transfer Protocol (HTTP) Authentication-Info and Proxy-
@@ -28,7 +28,7 @@ Editorial Note (To be removed by RFC Editor)
    Working Group information can be found at [2] and [3]; source code
    and issues list for this draft can be found at [4].
 
-   The changes in this draft are summarized in Appendix A.7.
+   The changes in this draft are summarized in Appendix A.6.
 
 Status of This Memo
 
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 20, 2015.
+   This Internet-Draft will expire on October 21, 2015.
 
 
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Reschke                 Expires October 20, 2015                [Page 1]
+Reschke                 Expires October 21, 2015                [Page 1]
 
 Internet-Draft          HTTP Authentication-Info              April 2015
 
@@ -94,10 +94,11 @@ Table of Contents
    4.  The Proxy-Authentication-Info Response Header Field . . . . .   4
    5.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
-   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   5
-     7.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .   5
-     7.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   6
+   7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   5
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   5
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .   6
+     8.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   6
    Appendix A.  Change Log (to be removed by RFC Editor before
                 publication) . . . . . . . . . . . . . . . . . . . .   7
      A.1.  draft-reschke-httpauth-auth-info-00 . . . . . . . . . . .   7
@@ -105,17 +106,15 @@ Table of Contents
      A.3.  Since draft-ietf-httpbis-auth-info-01 . . . . . . . . . .   7
      A.4.  Since draft-ietf-httpbis-auth-info-02 . . . . . . . . . .   7
      A.5.  Since draft-ietf-httpbis-auth-info-03 . . . . . . . . . .   7
-     A.6.  Since draft-ietf-httpbis-auth-info-04 . . . . . . . . . .   8
 
 
 
-Reschke                 Expires October 20, 2015                [Page 2]
+Reschke                 Expires October 21, 2015                [Page 2]
 
 Internet-Draft          HTTP Authentication-Info              April 2015
 
 
-     A.7.  Since draft-ietf-httpbis-auth-info-05 . . . . . . . . . .   8
-   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .   8
+     A.6.  Since draft-ietf-httpbis-auth-info-04 . . . . . . . . . .   8
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   8
 
 1.  Introduction
@@ -165,7 +164,8 @@ Internet-Draft          HTTP Authentication-Info              April 2015
 
 
 
-Reschke                 Expires October 20, 2015                [Page 3]
+
+Reschke                 Expires October 21, 2015                [Page 3]
 
 Internet-Draft          HTTP Authentication-Info              April 2015
 
@@ -221,7 +221,7 @@ Internet-Draft          HTTP Authentication-Info              April 2015
 
 
 
-Reschke                 Expires October 20, 2015                [Page 4]
+Reschke                 Expires October 21, 2015                [Page 4]
 
 Internet-Draft          HTTP Authentication-Info              April 2015
 
@@ -247,48 +247,57 @@ Internet-Draft          HTTP Authentication-Info              April 2015
    |                           |          |          | this document   |
    +---------------------------+----------+----------+-----------------+
 
-7.  References
+7.  Acknowledgements
 
-7.1.  Normative References
+   This document is based on the header field definitions in RFCs 2069
+   and 2617, whose authors are: John Franks, Phillip M.  Hallam-Baker,
+   Jeffery L.  Hostetler, Scott D.  Lawrence, Paul J.  Leach, Ari
+   Luotonen, Eric W.  Sink, and Lawrence C.  Stewart.
+
+   Additional thanks go to the members of the HTTPAuth and HTTPbis
+   Working Groups, namely Amos Jeffries, Benjamin Kaduk, Alexey
+   Melnikov, Mark Nottingham, Yutaka Oiwa, Rifaat Shekh-Yusef, and
+   Martin Thomson.
+
+8.  References
+
+8.1.  Normative References
 
    [RFC5234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
-              Specifications: ABNF", STD 68, RFC 5234, January 2008,
-              <http://www.rfc-editor.org/info/rfc5234>.
+              Specifications: ABNF", STD 68, RFC 5234, January 2008.
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing", RFC
-              7230, June 2014, <http://www.rfc-editor.org/info/rfc7230>.
+              7230, June 2014.
 
    [RFC7235]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
-              Protocol (HTTP/1.1): Authentication", RFC 7235, June 2014,
-              <http://www.rfc-editor.org/info/rfc7235>.
-
-7.2.  Informative References
-
-   [BCP90]    Klyne, G., Nottingham, M., and J. Mogul, "Registration
-              Procedures for Message Header Fields", BCP 90, RFC 3864,
-              September 2004, <http://www.rfc-editor.org/info/rfc3864>.
-
-   [DIGEST]   Shekh-Yusef, R., Ed., Ahrens, D., and S. Bremer, "HTTP
-              Digest Access Authentication", draft-ietf-httpauth-
-              digest-18 (work in progress), April 2015.
+              Protocol (HTTP/1.1): Authentication", RFC 7235, June 2014.
 
 
 
 
 
-Reschke                 Expires October 20, 2015                [Page 5]
+Reschke                 Expires October 21, 2015                [Page 5]
 
 Internet-Draft          HTTP Authentication-Info              April 2015
 
 
+8.2.  Informative References
+
+   [BCP90]    Klyne, G., Nottingham, M., and J. Mogul, "Registration
+              Procedures for Message Header Fields", BCP 90, RFC 3864,
+              September 2004.
+
+   [DIGEST]   Shekh-Yusef, R., Ed., Ahrens, D., and S. Bremer, "HTTP
+              Digest Access Authentication", draft-ietf-httpauth-
+              digest-15 (work in progress), March 2015.
+
    [RFC2617]  Franks, J., Hallam-Baker, P., Hostetler, J., Lawrence, S.,
               Leach, P., Luotonen, A., and L. Stewart, "HTTP
               Authentication: Basic and Digest Access Authentication",
-              RFC 2617, June 1999,
-              <http://www.rfc-editor.org/info/rfc2617>.
+              RFC 2617, June 1999.
 
-7.3.  URIs
+8.3.  URIs
 
    [1] http://www.iana.org/assignments/message-headers
 
@@ -324,16 +333,7 @@ Internet-Draft          HTTP Authentication-Info              April 2015
 
 
 
-
-
-
-
-
-
-
-
-
-Reschke                 Expires October 20, 2015                [Page 6]
+Reschke                 Expires October 21, 2015                [Page 6]
 
 Internet-Draft          HTTP Authentication-Info              April 2015
 
@@ -389,7 +389,7 @@ A.5.  Since draft-ietf-httpbis-auth-info-03
 
 
 
-Reschke                 Expires October 20, 2015                [Page 7]
+Reschke                 Expires October 21, 2015                [Page 7]
 
 Internet-Draft          HTTP Authentication-Info              April 2015
 
@@ -398,22 +398,6 @@ A.6.  Since draft-ietf-httpbis-auth-info-04
 
    Add another clarification about how the applicable scheme for Proxy-
    Authentication-Info is determined.
-
-A.7.  Since draft-ietf-httpbis-auth-info-05
-
-   Updated DIGEST reference.
-
-Appendix B.  Acknowledgements
-
-   This document is based on the header field definitions in RFCs 2069
-   and 2617, whose authors are: John Franks, Phillip M.  Hallam-Baker,
-   Jeffery L.  Hostetler, Scott D.  Lawrence, Paul J.  Leach, Ari
-   Luotonen, Eric W.  Sink, and Lawrence C.  Stewart.
-
-   Additional thanks go to the members of the HTTPAuth and HTTPbis
-   Working Groups, namely Amos Jeffries, Benjamin Kaduk, Alexey
-   Melnikov, Mark Nottingham, Yutaka Oiwa, Rifaat Shekh-Yusef, and
-   Martin Thomson.
 
 Author's Address
 
@@ -445,4 +429,20 @@ Author's Address
 
 
 
-Reschke                 Expires October 20, 2015                [Page 8]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Reschke                 Expires October 21, 2015                [Page 8]
