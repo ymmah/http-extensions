@@ -3,7 +3,88 @@
 <html lang="en">
    <head profile="http://dublincore.org/documents/2008/08/04/dc-html/">
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <title>An HTTP Status Code to Report Legal Obstacles</title><style type="text/css" title="Xml2Rfc (sans serif)">
+      <title>An HTTP Status Code to Report Legal Obstacles</title><script type="application/javascript">
+var buttonsAdded = false;
+
+function initFeedback() {
+  var fb = document.createElement("div");
+  fb.className = "feedback noprint";
+  fb.setAttribute("onclick", "feedback();");
+  fb.appendChild(document.createTextNode("feedback"));
+
+  document.body.appendChild(fb);
+}
+
+function feedback() {
+  toggleButtonsToElementsByName("h1");
+  toggleButtonsToElementsByName("h2");
+  toggleButtonsToElementsByName("h3");
+  toggleButtonsToElementsByName("h4");
+
+  buttonsAdded = !buttonsAdded;
+}
+
+function toggleButtonsToElementsByName(name) {
+  var list = document.getElementsByTagName(name);
+  for (var i = 0; i < list.length; i++) {
+    toggleButton(list.item(i));
+  }
+}
+
+function toggleButton(node) {
+  if (! buttonsAdded) {
+
+    // docname
+    var template = "mailto:ietf-http-wg@w3.org?subject={docname},%20%22{section}%22&body=<{ref}>:";
+
+    var id = node.getAttribute("id");
+    // better id available?
+    var titlelinks = node.getElementsByTagName("a");
+    for (var i = 0; i < titlelinks.length; i++) {
+      var tl = titlelinks.item(i);
+      if (tl.getAttribute("id")) {
+        id = tl.getAttribute("id");
+      }
+    }
+
+    // ref
+    var ref = window.location.toString();
+    var hash = ref.indexOf("#");
+    if (hash != -1) {
+      ref = ref.substring(0, hash);
+    }
+    if (id != "") {
+      ref += "#" + id;
+    }
+
+    // docname
+    var docname = "draft-ietf-httpbis-legally-restricted-status-latest";
+
+    // section
+    var section = node.textContent;
+    section = section.replace("\u00a0", " ");
+
+    // build URI from template
+    var uri = template.replace("{docname}", encodeURIComponent(docname));
+    uri = uri.replace("{section}", encodeURIComponent(section));
+    uri = uri.replace("{ref}", encodeURIComponent(ref));
+
+    var button = document.createElement("a");
+    button.className = "fbbutton noprint";
+    button.setAttribute("href", uri);
+    button.appendChild(document.createTextNode("send feedback"));
+    node.appendChild(button);
+  }
+  else {
+    var buttons = node.getElementsByTagName("a");
+    for (var i = 0; i < buttons.length; i++) {
+      var b = buttons.item(i);
+      if (b.className == "fbbutton noprint") {
+        node.removeChild(b);
+      }
+    }
+  }
+}</script><style type="text/css" title="Xml2Rfc (sans serif)">
 a {
   text-decoration: none;
 }
@@ -234,6 +315,28 @@ ul p {
 .warning {
   font-size: 130%;
   background-color: yellow;
+}.feedback {
+  position: fixed;
+  bottom: 1%;
+  right: 1%;
+  padding: 3px 5px;
+  color: white;
+  border-radius: 5px;
+  background: #006400;
+  border: 1px solid silver;
+  -webkit-user-select: none; 
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.fbbutton {
+  margin-left: 1em;
+  color: #303030;
+  font-size: small;
+  font-weight: normal;
+  background: #d0d000;
+  padding: 1px 4px;
+  border: 1px solid silver;
+  border-radius: 5px;
 }
 
 @media screen {
@@ -324,7 +427,7 @@ ul p {
       <link rel="Chapter" title="4 Security Considerations" href="#rfc.section.4">
       <link rel="Chapter" title="5 IANA Considerations" href="#rfc.section.5">
       <link rel="Chapter" href="#rfc.section.6" title="6 Normative References">
-      <link rel="Appendix" title="A Acknowledgements" href="#rfc.section.A">
+      <link rel="Appendix" title="Acknowledgements" href="#rfc.section.unnumbered-1">
       <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.717, 2015/03/23 17:14:43, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Bray, T.">
@@ -333,11 +436,11 @@ ul p {
       <meta name="dct.abstract" content="This document specifies a Hypertext Transfer Protocol (HTTP) status code for use when resource access is denied as a consequence of legal demands.">
       <meta name="description" content="This document specifies a Hypertext Transfer Protocol (HTTP) status code for use when resource access is denied as a consequence of legal demands.">
    </head>
-   <body>
+   <body onload="initFeedback();">
       <table class="header" id="rfc.headerblock">
          <tbody>
             <tr>
-               <td class="left">Network Working Group</td>
+               <td class="left">HTTP Working Group</td>
                <td class="right">T. Bray</td>
             </tr>
             <tr>
@@ -363,6 +466,11 @@ ul p {
       <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
       <p>This document specifies a Hypertext Transfer Protocol (HTTP) status code for use when resource access is denied as a consequence
          of legal demands.
+      </p>
+      <h1 id="rfc.note.1"><a href="#rfc.note.1">Editorial Note (To be removed by RFC Editor before publication)</a></h1>
+      <p>Discussion of this draft takes place on the HTTPBIS working group mailing list (ietf-http-wg@w3.org), which is archived at &lt;<a href="https://lists.w3.org/Archives/Public/ietf-http-wg/">https://lists.w3.org/Archives/Public/ietf-http-wg/</a>&gt;.
+      </p>
+      <p>Working Group information can be found at &lt;<a href="https://tools.ietf.org/wg/httpbis/">https://tools.ietf.org/wg/httpbis/</a>&gt; and &lt;<a href="http://httpwg.github.io/">http://httpwg.github.io/</a>&gt;; source code and issues list for this draft can be found at &lt;<a href="https://github.com/httpwg/http-extensions">https://github.com/httpwg/http-extensions</a>&gt;.
       </p>
       <div id="rfc.status">
          <h1><a href="#rfc.status">Status of this Memo</a></h1>
@@ -395,7 +503,7 @@ ul p {
             <li><a href="#rfc.section.4">4.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.4">Security Considerations</a></li>
             <li><a href="#rfc.section.5">5.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.5">IANA Considerations</a></li>
             <li><a href="#rfc.section.6">6.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references">Normative References</a></li>
-            <li><a href="#rfc.section.A">A.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.A">Acknowledgements</a></li>
+            <li><a href="#rfc.section.unnumbered-1">Acknowledgements</a></li>
             <li><a href="#rfc.authors">Author's Address</a></li>
          </ul>
       </div>
@@ -449,7 +557,7 @@ ul p {
                example:
             </p>
          </div>
-         <div id="rfc.figure.u.1"><pre>
+         <div id="rfc.figure.u.1"><pre class="text">
 HTTP/1.1 451 Unavailable For Legal Reasons
 Content-Type: text/html
 
@@ -522,17 +630,16 @@ Content-Type: text/html
          </tr>
       </table>
       <div>
-         <h1 id="rfc.section.A" class="np"><a href="#rfc.section.A">A.</a>&nbsp;Acknowledgements
-         </h1>
-         <div id="rfc.section.A.p.1">
+         <h1 id="rfc.section.unnumbered-1">Acknowledgements</h1>
+         <div id="rfc.section.unnumbered-1.p.1">
             <p>Thanks to Terence Eden, who observed that the existing status code 403 was not really suitable for this situation, and suggested
                the creation of a new status code.
             </p>
          </div>
-         <div id="rfc.section.A.p.2">
+         <div id="rfc.section.unnumbered-1.p.2">
             <p>Thanks also to Ray Bradbury.</p>
          </div>
-         <div id="rfc.section.A.p.3">
+         <div id="rfc.section.unnumbered-1.p.3">
             <p>The author takes all responsibility for errors and omissions.</p>
          </div>
       </div>
