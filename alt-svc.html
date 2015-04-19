@@ -3,7 +3,7 @@
 <html lang="en">
    <head profile="http://dublincore.org/documents/2008/08/04/dc-html/">
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <title>HTTP Alternative Services</title><script>
+      <title>HTTP Alternative Services</title><script type="application/javascript">
 var buttonsAdded = false;
 
 function initFeedback() {
@@ -495,7 +495,7 @@ ul p {
       <link rel="Chapter" title="10 Acknowledgements" href="#rfc.section.10">
       <link rel="Chapter" href="#rfc.section.11" title="11 References">
       <link rel="Appendix" title="A Change Log (to be removed by RFC Editor before publication)" href="#rfc.section.A">
-      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.712, 2015/02/19 11:08:37, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
+      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.717, 2015/03/23 17:14:43, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
       <meta name="keywords" content="HTTP, ALPN, Alternative Services">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Nottingham, M.">
@@ -991,8 +991,8 @@ Alt-Svc: h2c=":8000"; ma=60
             <p>The ALTSVC frame is a non-critical extension to HTTP/2. Endpoints that do not support this frame can safely ignore it.</p>
          </div>
          <div id="rfc.section.4.p.3">
-            <p>An ALTSVC frame from a server to a client on a client-initiated stream indicates that the conveyed alternative service is
-               associated with the origin of that stream.
+            <p>An ALTSVC frame from a server to a client on a stream other than stream 0 indicates that the conveyed alternative service
+               is associated with the origin of that stream.
             </p>
          </div>
          <div id="rfc.section.4.p.4">
@@ -1033,7 +1033,7 @@ Alt-Svc: h2c=":8000"; ma=60
             </p>
          </div>
          <div id="rfc.section.4.p.9">
-            <p>An ALTSVC frame on a client-initiated stream containing non-empty "Origin" information is invalid and <em class="bcp14">MUST</em> be ignored. Likewise, an ALTSVC frame on stream 0 with empty (length 0) "Origin" information is invalid and <em class="bcp14">MUST</em> be ignored.
+            <p>An ALTSVC frame on stream 0 with empty (length 0) "Origin" information is invalid and <em class="bcp14">MUST</em> be ignored. An ALTSVC frame on a stream other than stream 0 containing non-empty "Origin" information is invalid and <em class="bcp14">MUST</em> be ignored.
             </p>
          </div>
          <div id="rfc.section.4.p.10">
@@ -1268,47 +1268,47 @@ Alt-Used: alternate.example.net
          </tr>
          <tr>
             <td class="reference"><b id="RFC2119">[RFC2119]</b></td>
-            <td class="top">Bradner, S., “<a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>”, BCP&nbsp;14, RFC&nbsp;2119, March&nbsp;1997.
+            <td class="top">Bradner, S., “<a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>”, BCP&nbsp;14, RFC&nbsp;2119, March&nbsp;1997, &lt;<a href="http://www.rfc-editor.org/info/rfc2119">http://www.rfc-editor.org/info/rfc2119</a>&gt;.
             </td>
          </tr>
          <tr>
             <td class="reference"><b id="RFC3986">[RFC3986]</b></td>
-            <td class="top">Berners-Lee, T., Fielding, R., and L. Masinter, “<a href="https://tools.ietf.org/html/rfc3986">Uniform Resource Identifier (URI): Generic Syntax</a>”, STD&nbsp;66, RFC&nbsp;3986, January&nbsp;2005.
+            <td class="top">Berners-Lee, T., Fielding, R., and L. Masinter, “<a href="https://tools.ietf.org/html/rfc3986">Uniform Resource Identifier (URI): Generic Syntax</a>”, STD&nbsp;66, RFC&nbsp;3986, January&nbsp;2005, &lt;<a href="http://www.rfc-editor.org/info/rfc3986">http://www.rfc-editor.org/info/rfc3986</a>&gt;.
             </td>
          </tr>
          <tr>
             <td class="reference"><b id="RFC5234">[RFC5234]</b></td>
-            <td class="top">Crocker, D. and P. Overell, “<a href="https://tools.ietf.org/html/rfc5234">Augmented BNF for Syntax Specifications: ABNF</a>”, STD&nbsp;68, RFC&nbsp;5234, January&nbsp;2008.
+            <td class="top">Crocker, D. and P. Overell, “<a href="https://tools.ietf.org/html/rfc5234">Augmented BNF for Syntax Specifications: ABNF</a>”, STD&nbsp;68, RFC&nbsp;5234, January&nbsp;2008, &lt;<a href="http://www.rfc-editor.org/info/rfc5234">http://www.rfc-editor.org/info/rfc5234</a>&gt;.
             </td>
          </tr>
          <tr>
             <td class="reference"><b id="RFC5890">[RFC5890]</b></td>
-            <td class="top">Klensin, J., “<a href="https://tools.ietf.org/html/rfc5890">Internationalized Domain Names for Applications (IDNA): Definitions and Document Framework</a>”, RFC&nbsp;5890, August&nbsp;2010.
+            <td class="top">Klensin, J., “<a href="https://tools.ietf.org/html/rfc5890">Internationalized Domain Names for Applications (IDNA): Definitions and Document Framework</a>”, RFC&nbsp;5890, August&nbsp;2010, &lt;<a href="http://www.rfc-editor.org/info/rfc5890">http://www.rfc-editor.org/info/rfc5890</a>&gt;.
             </td>
          </tr>
          <tr>
             <td class="reference"><b id="RFC6066">[RFC6066]</b></td>
-            <td class="top">Eastlake, D., “<a href="https://tools.ietf.org/html/rfc6066">Transport Layer Security (TLS) Extensions: Extension Definitions</a>”, RFC&nbsp;6066, January&nbsp;2011.
+            <td class="top">Eastlake, D., “<a href="https://tools.ietf.org/html/rfc6066">Transport Layer Security (TLS) Extensions: Extension Definitions</a>”, RFC&nbsp;6066, January&nbsp;2011, &lt;<a href="http://www.rfc-editor.org/info/rfc6066">http://www.rfc-editor.org/info/rfc6066</a>&gt;.
             </td>
          </tr>
          <tr>
             <td class="reference"><b id="RFC6454">[RFC6454]</b></td>
-            <td class="top">Barth, A., “<a href="https://tools.ietf.org/html/rfc6454">The Web Origin Concept</a>”, RFC&nbsp;6454, December&nbsp;2011.
+            <td class="top">Barth, A., “<a href="https://tools.ietf.org/html/rfc6454">The Web Origin Concept</a>”, RFC&nbsp;6454, December&nbsp;2011, &lt;<a href="http://www.rfc-editor.org/info/rfc6454">http://www.rfc-editor.org/info/rfc6454</a>&gt;.
             </td>
          </tr>
          <tr>
             <td class="reference"><b id="RFC7230">[RFC7230]</b></td>
-            <td class="top">Fielding, R., Ed. and J. Reschke, Ed., “<a href="https://tools.ietf.org/html/rfc7230">Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</a>”, RFC&nbsp;7230, June&nbsp;2014.
+            <td class="top">Fielding, R., Ed. and J. Reschke, Ed., “<a href="https://tools.ietf.org/html/rfc7230">Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</a>”, RFC&nbsp;7230, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7230">http://www.rfc-editor.org/info/rfc7230</a>&gt;.
             </td>
          </tr>
          <tr>
             <td class="reference"><b id="RFC7234">[RFC7234]</b></td>
-            <td class="top">Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke, Ed., “<a href="https://tools.ietf.org/html/rfc7234">Hypertext Transfer Protocol (HTTP/1.1): Caching</a>”, RFC&nbsp;7234, June&nbsp;2014.
+            <td class="top">Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke, Ed., “<a href="https://tools.ietf.org/html/rfc7234">Hypertext Transfer Protocol (HTTP/1.1): Caching</a>”, RFC&nbsp;7234, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7234">http://www.rfc-editor.org/info/rfc7234</a>&gt;.
             </td>
          </tr>
          <tr>
             <td class="reference"><b id="RFC7301">[RFC7301]</b></td>
-            <td class="top">Friedl, S., Popov, A., Langley, A., and S. Emile, “<a href="https://tools.ietf.org/html/rfc7301">Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension</a>”, RFC&nbsp;7301, July&nbsp;2014.
+            <td class="top">Friedl, S., Popov, A., Langley, A., and S. Emile, “<a href="https://tools.ietf.org/html/rfc7301">Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension</a>”, RFC&nbsp;7301, July&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7301">http://www.rfc-editor.org/info/rfc7301</a>&gt;.
             </td>
          </tr>
       </table>
@@ -1317,12 +1317,12 @@ Alt-Used: alternate.example.net
       <table>
          <tr>
             <td class="reference"><b id="BCP90">[BCP90]</b></td>
-            <td class="top">Klyne, G., Nottingham, M., and J. Mogul, “<a href="https://tools.ietf.org/html/rfc3864">Registration Procedures for Message Header Fields</a>”, BCP&nbsp;90, RFC&nbsp;3864, September&nbsp;2004.
+            <td class="top">Klyne, G., Nottingham, M., and J. Mogul, “<a href="https://tools.ietf.org/html/rfc3864">Registration Procedures for Message Header Fields</a>”, BCP&nbsp;90, RFC&nbsp;3864, September&nbsp;2004, &lt;<a href="http://www.rfc-editor.org/info/rfc3864">http://www.rfc-editor.org/info/rfc3864</a>&gt;.
             </td>
          </tr>
          <tr>
             <td class="reference"><b id="RFC5246">[RFC5246]</b></td>
-            <td class="top">Dierks, T. and E. Rescorla, “<a href="https://tools.ietf.org/html/rfc5246">The Transport Layer Security (TLS) Protocol Version 1.2</a>”, RFC&nbsp;5246, August&nbsp;2008.
+            <td class="top">Dierks, T. and E. Rescorla, “<a href="https://tools.ietf.org/html/rfc5246">The Transport Layer Security (TLS) Protocol Version 1.2</a>”, RFC&nbsp;5246, August&nbsp;2008, &lt;<a href="http://www.rfc-editor.org/info/rfc5246">http://www.rfc-editor.org/info/rfc5246</a>&gt;.
             </td>
          </tr>
       </table>
@@ -1424,7 +1424,8 @@ Alt-Used: alternate.example.net
          <div id="changes.since.draft-ietf-httpbis-alt-svc-06">
             <h2 id="rfc.section.A.8"><a href="#rfc.section.A.8">A.8</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-06">Since draft-ietf-httpbis-alt-svc-06</a></h2>
             <div id="rfc.section.A.8.p.1">
-               <p>None yet.</p>
+               <p>alt svc frame on pushed (even and non-0) frame (&lt;<a href="https://github.com/httpwg/http-extensions/issues/44">https://github.com/httpwg/http-extensions/issues/44</a>&gt;).
+               </p>
             </div>
          </div>
       </div>

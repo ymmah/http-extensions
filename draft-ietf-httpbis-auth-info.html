@@ -3,7 +3,7 @@
 <html lang="en">
    <head profile="http://dublincore.org/documents/2008/08/04/dc-html/">
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <title>The Hypertext Transfer Protocol (HTTP) Authentication-Info and Proxy-Authentication-Info Response&nbsp;Header Fields</title><script>
+      <title>The Hypertext Transfer Protocol (HTTP) Authentication-Info and Proxy-Authentication-Info Response&nbsp;Header Fields</title><script type="application/javascript">
 var buttonsAdded = false;
 
 function initFeedback() {
@@ -488,10 +488,10 @@ ul p {
       <link rel="Chapter" title="4 The Proxy-Authentication-Info Response Header Field" href="#rfc.section.4">
       <link rel="Chapter" title="5 Security Considerations" href="#rfc.section.5">
       <link rel="Chapter" title="6 IANA Considerations" href="#rfc.section.6">
-      <link rel="Chapter" title="7 Acknowledgements" href="#rfc.section.7">
-      <link rel="Chapter" href="#rfc.section.8" title="8 References">
+      <link rel="Chapter" href="#rfc.section.7" title="7 References">
       <link rel="Appendix" title="A Change Log (to be removed by RFC Editor before publication)" href="#rfc.section.A">
-      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.712, 2015/02/19 11:08:37, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
+      <link rel="Appendix" title="Acknowledgements" href="#rfc.section.unnumbered-1">
+      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.717, 2015/03/23 17:14:43, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
       <meta name="keywords" content="HTTP, authentication">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Reschke, J. F.">
@@ -536,7 +536,7 @@ ul p {
       </p>
       <p>Working Group information can be found at &lt;<a href="https://tools.ietf.org/wg/httpbis/">https://tools.ietf.org/wg/httpbis/</a>&gt; and &lt;<a href="http://httpwg.github.io/">http://httpwg.github.io/</a>&gt;; source code and issues list for this draft can be found at &lt;<a href="https://github.com/httpwg/http-extensions">https://github.com/httpwg/http-extensions</a>&gt;.
       </p>
-      <p>The changes in this draft are summarized in <a href="#since.04" title="Since draft-ietf-httpbis-auth-info-04">Appendix&nbsp;A.6</a>.
+      <p>The changes in this draft are summarized in <a href="#since.05" title="Since draft-ietf-httpbis-auth-info-05">Appendix&nbsp;A.7</a>.
       </p>
       <div id="rfc.status">
          <h1><a href="#rfc.status">Status of This Memo</a></h1>
@@ -579,10 +579,9 @@ ul p {
             <li><a href="#rfc.section.4">4.</a>&nbsp;&nbsp;&nbsp;<a href="#proxy-authentication-info">The Proxy-Authentication-Info Response Header Field</a></li>
             <li><a href="#rfc.section.5">5.</a>&nbsp;&nbsp;&nbsp;<a href="#security.considerations">Security Considerations</a></li>
             <li><a href="#rfc.section.6">6.</a>&nbsp;&nbsp;&nbsp;<a href="#iana.considerations">IANA Considerations</a></li>
-            <li><a href="#rfc.section.7">7.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.7">Acknowledgements</a></li>
-            <li><a href="#rfc.section.8">8.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references">References</a><ul>
-                  <li><a href="#rfc.section.8.1">8.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.1">Normative References</a></li>
-                  <li><a href="#rfc.section.8.2">8.2</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.2">Informative References</a></li>
+            <li><a href="#rfc.section.7">7.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references">References</a><ul>
+                  <li><a href="#rfc.section.7.1">7.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.1">Normative References</a></li>
+                  <li><a href="#rfc.section.7.2">7.2</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.2">Informative References</a></li>
                </ul>
             </li>
             <li><a href="#rfc.section.A">A.</a>&nbsp;&nbsp;&nbsp;<a href="#change.log">Change Log (to be removed by RFC Editor before publication)</a><ul>
@@ -592,8 +591,10 @@ ul p {
                   <li><a href="#rfc.section.A.4">A.4</a>&nbsp;&nbsp;&nbsp;<a href="#since.02">Since draft-ietf-httpbis-auth-info-02</a></li>
                   <li><a href="#rfc.section.A.5">A.5</a>&nbsp;&nbsp;&nbsp;<a href="#since.03">Since draft-ietf-httpbis-auth-info-03</a></li>
                   <li><a href="#rfc.section.A.6">A.6</a>&nbsp;&nbsp;&nbsp;<a href="#since.04">Since draft-ietf-httpbis-auth-info-04</a></li>
+                  <li><a href="#rfc.section.A.7">A.7</a>&nbsp;&nbsp;&nbsp;<a href="#since.05">Since draft-ietf-httpbis-auth-info-05</a></li>
                </ul>
             </li>
+            <li><a href="#rfc.section.unnumbered-1">Acknowledgements</a></li>
             <li><a href="#rfc.authors">Author's Address</a></li>
          </ul>
       </div>
@@ -628,7 +629,7 @@ ul p {
          </div>
          <div id="rfc.section.3.p.2">
             <p>The field value is a list of parameters (name/value pairs), using the "auth-param" syntax defined in <a href="rfc7235.html#challenge.and.response" title="Challenge and Response">Section 2.1</a> of <a href="#RFC7235"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Authentication">[RFC7235]</cite></a>. This specification only describes the generic format; authentication schemes using "Authentication-Info" will define the
-               individual parameters. The "Digest" Authentication Scheme, for instance, defines multiple parameters in <a href="https://tools.ietf.org/html/draft-ietf-httpauth-digest-15#section-3.5">Section 3.5</a> of <a href="#DIGEST"><cite title="HTTP Digest Access Authentication">[DIGEST]</cite></a>.
+               individual parameters. The "Digest" Authentication Scheme, for instance, defines multiple parameters in <a href="https://tools.ietf.org/html/draft-ietf-httpauth-digest-18#section-3.5">Section 3.5</a> of <a href="#DIGEST"><cite title="HTTP Digest Access Authentication">[DIGEST]</cite></a>.
             </p>
          </div>
          <div id="rfc.figure.u.1"><pre class="inline">  <a href="#authentication-info" class="smpl">Authentication-Info</a> = #<a href="#notational.conventions" class="smpl">auth-param</a>
@@ -733,57 +734,43 @@ ul p {
             </table>
          </div>
       </div>
-      <div>
-         <h1 id="rfc.section.7"><a href="#rfc.section.7">7.</a>&nbsp;Acknowledgements
-         </h1>
-         <div id="rfc.section.7.p.1">
-            <p>This document is based on the header field definitions in RFCs 2069 and 2617, whose authors are: John Franks, Phillip M. Hallam-Baker,
-               Jeffery L. Hostetler, Scott D. Lawrence, Paul J. Leach, Ari Luotonen, Eric W. Sink, and Lawrence C. Stewart.
-            </p>
-         </div>
-         <div id="rfc.section.7.p.2">
-            <p>Additional thanks go to the members of the HTTPAuth and HTTPbis Working Groups, namely Amos Jeffries, Benjamin Kaduk, Alexey
-               Melnikov, Mark Nottingham, Yutaka Oiwa, Rifaat Shekh-Yusef, and Martin Thomson.
-            </p>
-         </div>
-      </div>
-      <h1 id="rfc.references"><a id="rfc.section.8" href="#rfc.section.8">8.</a> References
+      <h1 id="rfc.references"><a id="rfc.section.7" href="#rfc.section.7">7.</a> References
       </h1>
-      <h2 id="rfc.references.1"><a href="#rfc.section.8.1" id="rfc.section.8.1">8.1</a> Normative References
+      <h2 id="rfc.references.1"><a href="#rfc.section.7.1" id="rfc.section.7.1">7.1</a> Normative References
       </h2>
       <table>
          <tr>
             <td class="reference"><b id="RFC5234">[RFC5234]</b></td>
-            <td class="top">Crocker, D., Ed. and P. Overell, “<a href="https://tools.ietf.org/html/rfc5234">Augmented BNF for Syntax Specifications: ABNF</a>”, STD&nbsp;68, RFC&nbsp;5234, January&nbsp;2008.
+            <td class="top">Crocker, D., Ed. and P. Overell, “<a href="https://tools.ietf.org/html/rfc5234">Augmented BNF for Syntax Specifications: ABNF</a>”, STD&nbsp;68, RFC&nbsp;5234, January&nbsp;2008, &lt;<a href="http://www.rfc-editor.org/info/rfc5234">http://www.rfc-editor.org/info/rfc5234</a>&gt;.
             </td>
          </tr>
          <tr>
             <td class="reference"><b id="RFC7230">[RFC7230]</b></td>
-            <td class="top">Fielding, R., Ed. and J. Reschke, Ed., “<a href="https://tools.ietf.org/html/rfc7230">Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</a>”, RFC&nbsp;7230, June&nbsp;2014.
+            <td class="top">Fielding, R., Ed. and J. Reschke, Ed., “<a href="https://tools.ietf.org/html/rfc7230">Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</a>”, RFC&nbsp;7230, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7230">http://www.rfc-editor.org/info/rfc7230</a>&gt;.
             </td>
          </tr>
          <tr>
             <td class="reference"><b id="RFC7235">[RFC7235]</b></td>
-            <td class="top">Fielding, R., Ed. and J. Reschke, Ed., “<a href="https://tools.ietf.org/html/rfc7235">Hypertext Transfer Protocol (HTTP/1.1): Authentication</a>”, RFC&nbsp;7235, June&nbsp;2014.
+            <td class="top">Fielding, R., Ed. and J. Reschke, Ed., “<a href="https://tools.ietf.org/html/rfc7235">Hypertext Transfer Protocol (HTTP/1.1): Authentication</a>”, RFC&nbsp;7235, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7235">http://www.rfc-editor.org/info/rfc7235</a>&gt;.
             </td>
          </tr>
       </table>
-      <h2 id="rfc.references.2"><a href="#rfc.section.8.2" id="rfc.section.8.2">8.2</a> Informative References
+      <h2 id="rfc.references.2"><a href="#rfc.section.7.2" id="rfc.section.7.2">7.2</a> Informative References
       </h2>
       <table>
          <tr>
             <td class="reference"><b id="BCP90">[BCP90]</b></td>
-            <td class="top">Klyne, G., Nottingham, M., and J. Mogul, “<a href="https://tools.ietf.org/html/rfc3864">Registration Procedures for Message Header Fields</a>”, BCP&nbsp;90, RFC&nbsp;3864, September&nbsp;2004.
+            <td class="top">Klyne, G., Nottingham, M., and J. Mogul, “<a href="https://tools.ietf.org/html/rfc3864">Registration Procedures for Message Header Fields</a>”, BCP&nbsp;90, RFC&nbsp;3864, September&nbsp;2004, &lt;<a href="http://www.rfc-editor.org/info/rfc3864">http://www.rfc-editor.org/info/rfc3864</a>&gt;.
             </td>
          </tr>
          <tr>
             <td class="reference"><b id="DIGEST">[DIGEST]</b></td>
-            <td class="top">Shekh-Yusef, R., Ed., Ahrens, D., and S. Bremer, “<a href="https://tools.ietf.org/html/draft-ietf-httpauth-digest-15">HTTP Digest Access Authentication</a>”, Internet-Draft&nbsp;draft-ietf-httpauth-digest-15 (work in progress), March&nbsp;2015.
+            <td class="top">Shekh-Yusef, R., Ed., Ahrens, D., and S. Bremer, “<a href="https://tools.ietf.org/html/draft-ietf-httpauth-digest-18">HTTP Digest Access Authentication</a>”, Internet-Draft&nbsp;draft-ietf-httpauth-digest-18 (work in progress), April&nbsp;2015.
             </td>
          </tr>
          <tr>
             <td class="reference"><b id="RFC2617">[RFC2617]</b></td>
-            <td class="top">Franks, J., Hallam-Baker, P., Hostetler, J., Lawrence, S., Leach, P., Luotonen, A., and L. Stewart, “<a href="https://tools.ietf.org/html/rfc2617">HTTP Authentication: Basic and Digest Access Authentication</a>”, RFC&nbsp;2617, June&nbsp;1999.
+            <td class="top">Franks, J., Hallam-Baker, P., Hostetler, J., Lawrence, S., Leach, P., Luotonen, A., and L. Stewart, “<a href="https://tools.ietf.org/html/rfc2617">HTTP Authentication: Basic and Digest Access Authentication</a>”, RFC&nbsp;2617, June&nbsp;1999, &lt;<a href="http://www.rfc-editor.org/info/rfc2617">http://www.rfc-editor.org/info/rfc2617</a>&gt;.
             </td>
          </tr>
       </table>
@@ -855,6 +842,25 @@ ul p {
             <div id="rfc.section.A.6.p.1">
                <p>Add another clarification about how the applicable scheme for Proxy-Authentication-Info is determined.</p>
             </div>
+         </div>
+         <div id="since.05">
+            <h2 id="rfc.section.A.7"><a href="#rfc.section.A.7">A.7</a>&nbsp;<a href="#since.05">Since draft-ietf-httpbis-auth-info-05</a></h2>
+            <div id="rfc.section.A.7.p.1">
+               <p>Updated DIGEST reference.</p>
+            </div>
+         </div>
+      </div>
+      <div>
+         <h1 id="rfc.section.unnumbered-1">Acknowledgements</h1>
+         <div id="rfc.section.unnumbered-1.p.1">
+            <p>This document is based on the header field definitions in RFCs 2069 and 2617, whose authors are: John Franks, Phillip M. Hallam-Baker,
+               Jeffery L. Hostetler, Scott D. Lawrence, Paul J. Leach, Ari Luotonen, Eric W. Sink, and Lawrence C. Stewart.
+            </p>
+         </div>
+         <div id="rfc.section.unnumbered-1.p.2">
+            <p>Additional thanks go to the members of the HTTPAuth and HTTPbis Working Groups, namely Amos Jeffries, Benjamin Kaduk, Alexey
+               Melnikov, Mark Nottingham, Yutaka Oiwa, Rifaat Shekh-Yusef, and Martin Thomson.
+            </p>
          </div>
       </div>
       <div class="avoidbreakinside">
