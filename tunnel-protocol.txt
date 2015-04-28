@@ -5,10 +5,10 @@
 HTTP Working Group                                             A. Hutton
 Internet-Draft                                                     Unify
 Intended status: Standards Track                               J. Uberti
-Expires: October 29, 2015                                         Google
+Expires: October 30, 2015                                         Google
                                                               M. Thomson
                                                                  Mozilla
-                                                          April 27, 2015
+                                                          April 28, 2015
 
 
                        The ALPN HTTP Header Field
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 29, 2015.
+   This Internet-Draft will expire on October 30, 2015.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Hutton, et al.          Expires October 29, 2015                [Page 1]
+Hutton, et al.          Expires October 30, 2015                [Page 1]
 
 Internet-Draft               The ALPN Header                  April 2015
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Hutton, et al.          Expires October 29, 2015                [Page 2]
+Hutton, et al.          Expires October 30, 2015                [Page 2]
 
 Internet-Draft               The ALPN Header                  April 2015
 
@@ -165,7 +165,7 @@ Internet-Draft               The ALPN Header                  April 2015
 
 
 
-Hutton, et al.          Expires October 29, 2015                [Page 3]
+Hutton, et al.          Expires October 30, 2015                [Page 3]
 
 Internet-Draft               The ALPN Header                  April 2015
 
@@ -184,9 +184,10 @@ Internet-Draft               The ALPN Header                  April 2015
 
 3.  IANA Considerations
 
-   HTTP header fields are registered within the "Message Headers"
-   registry maintained at [6].  This document defines and registers the
-   ALPN header field, according to [RFC3864] as follows:
+   HTTP header fields are registered within the "Permanent Message
+   Header Field Names" registry maintained at [6].  This document
+   defines and registers the ALPN header field, according to [RFC3864]
+   as follows:
 
    Header Field Name:  ALPN
 
@@ -216,15 +217,17 @@ Internet-Draft               The ALPN Header                  April 2015
    present.  If the header is not available or ignored, a proxy cannot
    identify the purpose of the tunnel and use this as input to any
    authorization decision regarding the tunnel.  This is
-   indistinguishable from the case where either client or proxy does not
-   support the ALPN header field.
 
 
 
-Hutton, et al.          Expires October 29, 2015                [Page 4]
+
+Hutton, et al.          Expires October 30, 2015                [Page 4]
 
 Internet-Draft               The ALPN Header                  April 2015
 
+
+   indistinguishable from the case where either client or proxy does not
+   support the ALPN header field.
 
    The value of the ALPN header field could be falsified by a client.
    If the data being sent through the tunnel is encrypted (for example,
@@ -270,17 +273,19 @@ Internet-Draft               The ALPN Header                  April 2015
               (TLS) Protocol Version 1.2", RFC 5246, August 2008,
               <http://www.rfc-editor.org/info/rfc5246>.
 
+
+
+
+
+Hutton, et al.          Expires October 30, 2015                [Page 5]
+
+Internet-Draft               The ALPN Header                  April 2015
+
+
    [RFC5766]  Mahy, R., Matthews, P., and J. Rosenberg, "Traversal Using
               Relays around NAT (TURN): Relay Extensions to Session
               Traversal Utilities for NAT (STUN)", RFC 5766, April 2010,
               <http://www.rfc-editor.org/info/rfc5766>.
-
-
-
-Hutton, et al.          Expires October 29, 2015                [Page 5]
-
-Internet-Draft               The ALPN Header                  April 2015
-
 
    [TRAFFIC]  Pironti, A., Strub, P-Y., and K. Bhargavan, "Website Users
               by TLS Traffic Analysis: New Attacks and Effective
@@ -328,9 +333,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-Hutton, et al.          Expires October 29, 2015                [Page 6]
+Hutton, et al.          Expires October 30, 2015                [Page 6]
