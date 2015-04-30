@@ -177,7 +177,7 @@ Internet-Draft          HTTP Alternative Services             April 2015
    document are to be interpreted as described in [RFC2119].
 
    This document uses the Augmented BNF defined in [RFC5234] along with
-   the "#rule" extension defined in Section 7 of [RFC7230].  The "rules
+   the "#rule" extension defined in Section 7 of [RFC7230].  The rules
    below are defined in [RFC7230] and [RFC7234]:
 
    OWS           = <OWS, see [RFC7230], Section 3.2.3>
