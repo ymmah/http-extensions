@@ -343,10 +343,9 @@ Internet-Draft         Opportunistic HTTP Security            April 2015
    persistence - can increase as the value is seen more over time.
 
    Once a server has indicated that it will support authenticated TLS, a
-   client MAY use key pinning [I-D.ietf-websec-key-pinning] or any other
-   mechanism that would otherwise be restricted to use with "https"
-   URIs, provided that the mechanism can be restricted to a single HTTP
-   origin.
+   client MAY use key pinning [RFC7469] or any other mechanism that
+   would otherwise be restricted to use with "https" URIs, provided that
+   the mechanism can be restricted to a single HTTP origin.
 
 6.  Security Considerations
 
@@ -389,6 +388,7 @@ Internet-Draft         Opportunistic HTTP Security            April 2015
 
 
 
+
 Nottingham & Thomson    Expires November 1, 2015                [Page 7]
 
 Internet-Draft         Opportunistic HTTP Security            April 2015
@@ -418,11 +418,6 @@ Internet-Draft         Opportunistic HTTP Security            April 2015
               Protocol version 2", draft-ietf-httpbis-http2-17 (work in
               progress), February 2015.
 
-   [I-D.ietf-websec-key-pinning]
-              Evans, C., Palmer, C., and R. Sleevi, "Public Key Pinning
-              Extension for HTTP", draft-ietf-websec-key-pinning-21
-              (work in progress), October 2014.
-
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119, March 1997,
               <http://www.rfc-editor.org/info/rfc2119>.
@@ -440,6 +435,11 @@ Internet-Draft         Opportunistic HTTP Security            April 2015
    [RFC7234]  Fielding, R., Nottingham, M., and J. Reschke, "Hypertext
               Transfer Protocol (HTTP/1.1): Caching", RFC 7234, June
               2014, <http://www.rfc-editor.org/info/rfc7234>.
+
+   [RFC7469]  Evans, C., Palmer, C., and R. Sleevi, "Public Key Pinning
+              Extension for HTTP", RFC 7469, April 2015,
+              <http://www.rfc-editor.org/info/rfc7469>.
+
 
 
 
