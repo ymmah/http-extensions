@@ -794,8 +794,8 @@ Internet-Draft          HTTP Alternative Services             April 2015
 11.1.  Normative References
 
    [HTTP2]    Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
-              Transfer Protocol version 2", draft-ietf-httpbis-http2-16
-              (work in progress), November 2014.
+              Transfer Protocol version 2", draft-ietf-httpbis-http2-17
+              (work in progress), February 2015.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119, March 1997,
