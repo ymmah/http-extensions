@@ -177,9 +177,15 @@ Internet-Draft          HTTP Alternative Services             April 2015
    document are to be interpreted as described in [RFC2119].
 
    This document uses the Augmented BNF defined in [RFC5234] along with
-   the "OWS", "delta-seconds", "parameter", "port", "quoted-string",
-   "token", and "uri-host" rules from [RFC7230], and uses the "#rule"
-   extension defined in Section 7 of that document.
+   the "#rule" extension defined in Section 7 of [RFC7230].  The "rules
+   below are defined in [RFC7230] and [RFC7234]:
+
+   OWS           = <OWS, see [RFC7230], Section 3.2.3>
+   delta-seconds = <delta-seconds; see [RFC7234], Section 1.2.1>
+   port          = <port, see [RFC7230], Section 2.7>
+   quoted-string = <quoted-string, see [RFC7230], Section 3.2.6>
+   token         = <token, see [RFC7230], Section 3.2.6>
+   uri-host      = <uri-host, see [RFC7230], Section 2.7>
 
 2.  Alternative Services Concepts
 
@@ -212,12 +218,6 @@ Internet-Draft          HTTP Alternative Services             April 2015
    "above" the access mechanism.  The alternative service is essentially
    alternative routing information that can also be used to reach the
    origin in the same way that DNS CNAME or SRV records define routing
-   information at the name resolution level.  Each origin maps to a set
-   of these routes -- the default route is derived from origin itself
-   and the other routes are introduced based on alternative-protocol
-   information.
-
-
 
 
 
@@ -225,6 +225,11 @@ Nottingham, et al.      Expires November 1, 2015                [Page 4]
 
 Internet-Draft          HTTP Alternative Services             April 2015
 
+
+   information at the name resolution level.  Each origin maps to a set
+   of these routes -- the default route is derived from origin itself
+   and the other routes are introduced based on alternative-protocol
+   information.
 
    Furthermore, it is important to note that the first member of an
    alternative service tuple is different from the "scheme" component of
@@ -269,11 +274,6 @@ Internet-Draft          HTTP Alternative Services             April 2015
 
    The remainder of this section describes requirements that are common
    to alternative services, regardless of how they are discovered.
-
-
-
-
-
 
 
 
@@ -385,7 +385,7 @@ Internet-Draft          HTTP Alternative Services             April 2015
    alternative   = protocol-id "=" alt-authority
    protocol-id   = token ; percent-encoded ALPN protocol identifier
    alt-authority = quoted-string ; containing [ uri-host ] ":" port
-
+   parameter     = token "=" ( token / quoted-string )
 
 
 
@@ -889,7 +889,7 @@ Internet-Draft          HTTP Alternative Services             April 2015
 
    [15] https://github.com/httpwg/http-extensions/issues/44
 
-
+   [16] https://github.com/httpwg/http-extensions/issues/65
 
 
 
@@ -975,6 +975,8 @@ A.8.  Since draft-ietf-httpbis-alt-svc-06
 
    alt svc frame on pushed (even and non-0) frame ([19]).
 
+   ABNF for "parameter" ([20]).
+
 Authors' Addresses
 
    Mark Nottingham
@@ -996,8 +998,6 @@ Authors' Addresses
 
    EMail: julian.reschke@greenbytes.de
    URI:   https://greenbytes.de/tech/webdav/
-
-
 
 
 
