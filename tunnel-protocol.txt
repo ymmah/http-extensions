@@ -20,14 +20,6 @@ Abstract
    protocol will be used within the tunnel once established, using the
    ALPN header field.
 
-Editorial Note (To be removed by RFC Editor)
-
-   Discussion of this draft takes place on the HTTPBIS working group
-   mailing list (ietf-http-wg@w3.org), which is archived at [1].
-
-   Working Group information can be found at [2] and [3]; source code
-   and issues list for this draft can be found at [4].
-
 Status of This Memo
 
    This Internet-Draft is submitted in full conformance with the
@@ -50,6 +42,14 @@ Copyright Notice
    Copyright (c) 2015 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (http://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
+
 
 
 
@@ -58,13 +58,6 @@ Hutton, et al.          Expires November 2, 2015                [Page 1]
 Internet-Draft               The ALPN Header                    May 2015
 
 
-   This document is subject to BCP 78 and the IETF Trust's Legal
-   Provisions Relating to IETF Documents
-   (http://trustee.ietf.org/license-info) in effect on the date of
-   publication of this document.  Please review these documents
-   carefully, as they describe your rights and restrictions with respect
-   to this document.  Code Components extracted from this document must
-   include Simplified BSD License text as described in Section 4.e of
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
@@ -75,11 +68,12 @@ Table of Contents
    2.  The ALPN HTTP Header Field  . . . . . . . . . . . . . . . . .   3
      2.1.  Header Field Values . . . . . . . . . . . . . . . . . . .   3
      2.2.  Syntax  . . . . . . . . . . . . . . . . . . . . . . . . .   3
+     2.3.  Usage . . . . . . . . . . . . . . . . . . . . . . . . . .   4
    3.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
    4.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
    5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   5
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
-     5.2.  Informative References  . . . . . . . . . . . . . . . . .   5
+     5.2.  Informative References  . . . . . . . . . . . . . . . . .   6
      5.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   6
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   6
 
@@ -91,9 +85,9 @@ Table of Contents
    closed.  Such tunnels are commonly used to create end-to-end virtual
    connections, through one or more proxies.
 
-   The HTTP ALPN header field identifies the protocol that will be
-   spoken within the tunnel, using the Application Layer Protocol
-   Negotiation identifier (ALPN, [RFC7301]).
+   The HTTP ALPN header field identifies the protocol that will be used
+   within the tunnel, using the Application Layer Protocol Negotiation
+   identifier (ALPN, [RFC7301]).
 
    When the CONNECT method is used to establish a tunnel, the ALPN
    header field can be used to identify the protocol that the client
@@ -104,8 +98,14 @@ Table of Contents
    protocols are indicated.
 
    The ALPN header field carries an indication of client intent only.
-   In TLS, the final choice of application protocol is made by the
+   An ALPN identifier is used only for protocol identification.  No
+   negotiation takes place using this header field.  In TLS, the final
+   choice of application protocol is made by the server from the set of
+   choices presented by the client.  Other protocols could negotiate
+   protocols differently.
 
+   Proxies do not implement the tunneled protocol, though they might
+   choose to make policy decisions based on the value of the header
 
 
 
@@ -114,11 +114,6 @@ Hutton, et al.          Expires November 2, 2015                [Page 2]
 Internet-Draft               The ALPN Header                    May 2015
 
 
-   server from the set of choices presented by the client.  Other
-   protocols could negotiate protocols differently.
-
-   Proxies do not implement the tunneled protocol, though they might
-   choose to make policy decisions based on the value of the header
    field.  For example, a proxy could use the application protocol to
    select appropriate traffic prioritization.
 
@@ -137,7 +132,7 @@ Internet-Draft               The ALPN Header                    May 2015
 2.1.  Header Field Values
 
    Valid values for the protocol field are taken from the "Application-
-   Layer Protocol Negotiation (ALPN) Protocol ID" registry ([5])
+   Layer Protocol Negotiation (ALPN) Protocol ID" registry ([1])
    established by [RFC7301].
 
 2.2.  Syntax
@@ -162,6 +157,11 @@ Internet-Draft               The ALPN Header                    May 2015
    o  Octets in the ALPN protocol MUST NOT be percent-encoded if they
       are valid token characters except "%", and
 
+   o  When using percent-encoding, uppercase hex digits MUST be used.
+
+   With these constraints, recipients can apply simple string comparison
+   to match protocol identifiers.
+
 
 
 
@@ -170,11 +170,6 @@ Hutton, et al.          Expires November 2, 2015                [Page 3]
 Internet-Draft               The ALPN Header                    May 2015
 
 
-   o  When using percent-encoding, uppercase hex digits MUST be used.
-
-   With these constraints, recipients can apply simple string comparison
-   to match protocol identifiers.
-
    For example:
 
 
@@ -182,10 +177,26 @@ Internet-Draft               The ALPN Header                    May 2015
      Host: www.example.com
      ALPN: h2, http%2F1.1
 
+2.3.  Usage
+
+   For a CONNECT tunnel that consequently uses a protocol that operates
+   over TLS, the value of the ALPN header field contains the same list
+   of ALPN identifiers that will be sent in the TLS ClientHello message
+   [RFC7301].
+
+   Where no protocol negotiation is expected to occur, such as in
+   protocols that do not use TLS, the ALPN header field contains the
+   single protocol that is intended to be used.  If an alternative form
+   of protocol negotiation is possible, the ALPN header field contains
+   the set of protocols that might be negotiated.
+
+   The ALPN identifier and registry are used to identify a protocol, not
+   a single protocol layer or component.
+
 3.  IANA Considerations
 
    HTTP header fields are registered within the "Permanent Message
-   Header Field Names" registry maintained at [6].  This document
+   Header Field Names" registry maintained at [2].  This document
    defines and registers the ALPN header field, according to [RFC3864]
    as follows:
 
@@ -207,6 +218,14 @@ Internet-Draft               The ALPN Header                    May 2015
    Section 4.3.6 of [RFC7231] apply.  It states that there "are
    significant risks in establishing a tunnel to arbitrary servers,
    particularly when the destination is a well-known or reserved TCP
+
+
+
+Hutton, et al.          Expires November 2, 2015                [Page 4]
+
+Internet-Draft               The ALPN Header                    May 2015
+
+
    port that is not intended for Web traffic.  Proxies that support
    CONNECT SHOULD restrict its use to a limited set of known ports or a
    configurable whitelist of safe request targets."
@@ -217,15 +236,6 @@ Internet-Draft               The ALPN Header                    May 2015
    present.  If the header is not available or ignored, a proxy cannot
    identify the purpose of the tunnel and use this as input to any
    authorization decision regarding the tunnel.  This is
-
-
-
-
-Hutton, et al.          Expires November 2, 2015                [Page 4]
-
-Internet-Draft               The ALPN Header                    May 2015
-
-
    indistinguishable from the case where either client or proxy does not
    support the ALPN header field.
 
@@ -262,6 +272,16 @@ Internet-Draft               The ALPN Header                    May 2015
               (HTTP/1.1): Semantics and Content", RFC 7231, June 2014,
               <http://www.rfc-editor.org/info/rfc7231>.
 
+
+
+
+
+
+Hutton, et al.          Expires November 2, 2015                [Page 5]
+
+Internet-Draft               The ALPN Header                    May 2015
+
+
    [RFC7301]  Friedl, S., Popov, A., Langley, A., and E. Stephan,
               "Transport Layer Security (TLS) Application-Layer Protocol
               Negotiation Extension", RFC 7301, July 2014,
@@ -272,15 +292,6 @@ Internet-Draft               The ALPN Header                    May 2015
    [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
               (TLS) Protocol Version 1.2", RFC 5246, August 2008,
               <http://www.rfc-editor.org/info/rfc5246>.
-
-
-
-
-
-Hutton, et al.          Expires November 2, 2015                [Page 5]
-
-Internet-Draft               The ALPN Header                    May 2015
-
 
    [RFC5766]  Mahy, R., Matthews, P., and J. Rosenberg, "Traversal Using
               Relays around NAT (TURN): Relay Extensions to Session
@@ -321,6 +332,12 @@ Authors' Addresses
    EMail: justin@uberti.name
 
 
+
+Hutton, et al.          Expires November 2, 2015                [Page 6]
+
+Internet-Draft               The ALPN Header                    May 2015
+
+
    Martin Thomson
    Mozilla
    331 E Evelyn Street
@@ -333,4 +350,43 @@ Authors' Addresses
 
 
 
-Hutton, et al.          Expires November 2, 2015                [Page 6]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hutton, et al.          Expires November 2, 2015                [Page 7]

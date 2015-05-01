@@ -472,11 +472,6 @@ ul p {
       <p>This specification allows HTTP CONNECT requests to indicate what protocol will be used within the tunnel once established,
          using the ALPN header field.
       </p>
-      <h1 id="rfc.note.1"><a href="#rfc.note.1">Editorial Note (To be removed by RFC Editor)</a></h1>
-      <p>Discussion of this draft takes place on the HTTPBIS working group mailing list (ietf-http-wg@w3.org), which is archived at &lt;<a href="https://lists.w3.org/Archives/Public/ietf-http-wg/">https://lists.w3.org/Archives/Public/ietf-http-wg/</a>&gt;.
-      </p>
-      <p>Working Group information can be found at &lt;<a href="https://tools.ietf.org/wg/httpbis/">https://tools.ietf.org/wg/httpbis/</a>&gt; and &lt;<a href="http://httpwg.github.io/">http://httpwg.github.io/</a>&gt;; source code and issues list for this draft can be found at &lt;<a href="https://github.com/httpwg/http-extensions">https://github.com/httpwg/http-extensions</a>&gt;.
-      </p>
       <div id="rfc.status">
          <h1><a href="#rfc.status">Status of This Memo</a></h1>
          <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
@@ -509,6 +504,7 @@ ul p {
             <li><a href="#rfc.section.2">2.</a>&nbsp;&nbsp;&nbsp;<a href="#tp">The ALPN HTTP Header Field</a><ul>
                   <li><a href="#rfc.section.2.1">2.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.2.1">Header Field Values</a></li>
                   <li><a href="#rfc.section.2.2">2.2</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.2.2">Syntax</a></li>
+                  <li><a href="#rfc.section.2.3">2.3</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.2.3">Usage</a></li>
                </ul>
             </li>
             <li><a href="#rfc.section.3">3.</a>&nbsp;&nbsp;&nbsp;<a href="#IANA">IANA Considerations</a></li>
@@ -530,7 +526,7 @@ ul p {
             </p>
          </div>
          <div id="rfc.section.1.p.2">
-            <p>The HTTP ALPN header field identifies the protocol that will be spoken within the tunnel, using the Application Layer Protocol
+            <p>The HTTP ALPN header field identifies the protocol that will be used within the tunnel, using the Application Layer Protocol
                Negotiation identifier (ALPN, <a href="#RFC7301"><cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[RFC7301]</cite></a>).
             </p>
          </div>
@@ -541,8 +537,9 @@ ul p {
             </p>
          </div>
          <div id="rfc.section.1.p.4">
-            <p>The ALPN header field carries an indication of client intent only. In TLS, the final choice of application protocol is made
-               by the server from the set of choices presented by the client. Other protocols could negotiate protocols differently.
+            <p>The ALPN header field carries an indication of client intent only. An ALPN identifier is used only for protocol identification.
+               No negotiation takes place using this header field. In TLS, the final choice of application protocol is made by the server
+               from the set of choices presented by the client. Other protocols could negotiate protocols differently.
             </p>
          </div>
          <div id="rfc.section.1.p.5">
@@ -608,6 +605,24 @@ CONNECT www.example.com HTTP/1.1
 Host: www.example.com
 ALPN: h2, http%2F1.1
 </pre></div>
+         </div>
+         <div>
+            <h2 id="rfc.section.2.3"><a href="#rfc.section.2.3">2.3</a>&nbsp;Usage
+            </h2>
+            <div id="rfc.section.2.3.p.1">
+               <p>For a CONNECT tunnel that consequently uses a protocol that operates over TLS, the value of the ALPN header field contains
+                  the same list of ALPN identifiers that will be sent in the TLS ClientHello message <a href="#RFC7301"><cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[RFC7301]</cite></a>.
+               </p>
+            </div>
+            <div id="rfc.section.2.3.p.2">
+               <p>Where no protocol negotiation is expected to occur, such as in protocols that do not use TLS, the ALPN header field contains
+                  the single protocol that is intended to be used. If an alternative form of protocol negotiation is possible, the ALPN header
+                  field contains the set of protocols that might be negotiated.
+               </p>
+            </div>
+            <div id="rfc.section.2.3.p.3">
+               <p>The ALPN identifier and registry are used to identify a protocol, not a single protocol layer or component.</p>
+            </div>
          </div>
       </div>
       <div id="IANA">
