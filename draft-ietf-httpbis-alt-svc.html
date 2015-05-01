@@ -605,6 +605,7 @@ ul p {
                   <li><a href="#rfc.section.9.2">9.2</a>&nbsp;&nbsp;&nbsp;<a href="#host_security">Changing Hosts</a></li>
                   <li><a href="#rfc.section.9.3">9.3</a>&nbsp;&nbsp;&nbsp;<a href="#changing-protocols">Changing Protocols</a></li>
                   <li><a href="#rfc.section.9.4">9.4</a>&nbsp;&nbsp;&nbsp;<a href="#tracking">Tracking Clients Using Alternative Services</a></li>
+                  <li><a href="#rfc.section.9.5">9.5</a>&nbsp;&nbsp;&nbsp;<a href="#confusion-regarding-request-scheme">Confusion Regarding Request Scheme</a></li>
                </ul>
             </li>
             <li><a href="#rfc.section.10">10.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references">References</a><ul>
@@ -1254,6 +1255,14 @@ Alt-Used: alternate.example.net
                </p>
             </div>
          </div>
+         <div id="confusion-regarding-request-scheme">
+            <h2 id="rfc.section.9.5"><a href="#rfc.section.9.5">9.5</a>&nbsp;<a href="#confusion-regarding-request-scheme">Confusion Regarding Request Scheme</a></h2>
+            <div id="rfc.section.9.5.p.1">
+               <p>Alternative Services <em class="bcp14">MUST NOT</em> be advertised for a protocol that is not designed to carry the scheme. In particular, HTTP/1.1 over TLS cannot carry safely
+                  requests for http resources.
+               </p>
+            </div>
+         </div>
       </div>
       <h1 id="rfc.references"><a id="rfc.section.10" href="#rfc.section.10">10.</a> References
       </h1>
@@ -1412,14 +1421,10 @@ Alt-Used: alternate.example.net
          <div id="changes.since.draft-ietf-httpbis-alt-svc-05">
             <h2 id="rfc.section.A.7"><a href="#rfc.section.A.7">A.7</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-05">Since draft-ietf-httpbis-alt-svc-05</a></h2>
             <div id="rfc.section.A.7.p.1">
-               <p>Align opp-sec and alt-svc (&lt;<a href="https://github.com/httpwg/http-extensions/issues/33">https://github.com/httpwg/http-extensions/issues/33</a>&gt;).
-               </p>
-            </div>
-            <div id="rfc.section.A.7.p.2">
                <p>Go back to specifying the origin in Alt-Used, but make it a "SHOULD" (&lt;<a href="https://github.com/httpwg/http-extensions/issues/34">https://github.com/httpwg/http-extensions/issues/34</a>&gt;).
                </p>
             </div>
-            <div id="rfc.section.A.7.p.3">
+            <div id="rfc.section.A.7.p.2">
                <p>Restore Origin field in ALT-SVC frame (&lt;<a href="https://github.com/httpwg/http-extensions/issues/38">https://github.com/httpwg/http-extensions/issues/38</a>&gt;).
                </p>
             </div>
@@ -1427,10 +1432,18 @@ Alt-Used: alternate.example.net
          <div id="changes.since.draft-ietf-httpbis-alt-svc-06">
             <h2 id="rfc.section.A.8"><a href="#rfc.section.A.8">A.8</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-06">Since draft-ietf-httpbis-alt-svc-06</a></h2>
             <div id="rfc.section.A.8.p.1">
-               <p>alt svc frame on pushed (even and non-0) frame (&lt;<a href="https://github.com/httpwg/http-extensions/issues/44">https://github.com/httpwg/http-extensions/issues/44</a>&gt;).
+               <p>Disallow use of alternative services when the protocol might not carry the scheme (&lt;<a href="https://github.com/httpwg/http-extensions/issues/12">https://github.com/httpwg/http-extensions/issues/12</a>&gt;).
                </p>
             </div>
             <div id="rfc.section.A.8.p.2">
+               <p>Align opp-sec and alt-svc (&lt;<a href="https://github.com/httpwg/http-extensions/issues/33">https://github.com/httpwg/http-extensions/issues/33</a>&gt;).
+               </p>
+            </div>
+            <div id="rfc.section.A.8.p.3">
+               <p>alt svc frame on pushed (even and non-0) frame (&lt;<a href="https://github.com/httpwg/http-extensions/issues/44">https://github.com/httpwg/http-extensions/issues/44</a>&gt;).
+               </p>
+            </div>
+            <div id="rfc.section.A.8.p.4">
                <p>ABNF for "parameter" (&lt;<a href="https://github.com/httpwg/http-extensions/issues/65">https://github.com/httpwg/http-extensions/issues/65</a>&gt;).
                </p>
             </div>

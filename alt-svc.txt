@@ -96,16 +96,16 @@ Table of Contents
      9.2.  Changing Hosts  . . . . . . . . . . . . . . . . . . . . .  13
      9.3.  Changing Protocols  . . . . . . . . . . . . . . . . . . .  14
      9.4.  Tracking Clients Using Alternative Services . . . . . . .  14
-   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  14
-     10.1.  Normative References . . . . . . . . . . . . . . . . . .  14
-     10.2.  Informative References . . . . . . . . . . . . . . . . .  15
+     9.5.  Confusion Regarding Request Scheme  . . . . . . . . . . .  14
+   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
+     10.1.  Normative References . . . . . . . . . . . . . . . . . .  15
+     10.2.  Informative References . . . . . . . . . . . . . . . . .  16
      10.3.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .  16
    Appendix A.  Change Log (to be removed by RFC Editor before
                 publication) . . . . . . . . . . . . . . . . . . . .  17
      A.1.  Since draft-nottingham-httpbis-alt-svc-05 . . . . . . . .  17
      A.2.  Since draft-ietf-httpbis-alt-svc-00 . . . . . . . . . . .  17
      A.3.  Since draft-ietf-httpbis-alt-svc-01 . . . . . . . . . . .  17
-     A.4.  Since draft-ietf-httpbis-alt-svc-02 . . . . . . . . . . .  17
 
 
 
@@ -114,6 +114,7 @@ Nottingham, et al.      Expires November 2, 2015                [Page 2]
 Internet-Draft          HTTP Alternative Services               May 2015
 
 
+     A.4.  Since draft-ietf-httpbis-alt-svc-02 . . . . . . . . . . .  17
      A.5.  Since draft-ietf-httpbis-alt-svc-03 . . . . . . . . . . .  17
      A.6.  Since draft-ietf-httpbis-alt-svc-04 . . . . . . . . . . .  18
      A.7.  Since draft-ietf-httpbis-alt-svc-05 . . . . . . . . . . .  18
@@ -158,7 +159,6 @@ Internet-Draft          HTTP Alternative Services               May 2015
    servers (or their nominated alternatives) can indicate that they are
    not authoritative for a given origin, in cases where the wrong
    location is used.
-
 
 
 
@@ -771,13 +771,13 @@ Internet-Draft          HTTP Alternative Services               May 2015
    when origin-specific data is cleared (for instance, when cookies are
    cleared).
 
-10.  References
+9.5.  Confusion Regarding Request Scheme
 
-10.1.  Normative References
+   Alternative Services MUST NOT be advertised for a protocol that is
+   not designed to carry the scheme.  In particular, HTTP/1.1 over TLS
+   cannot carry safely requests for http resources.
 
-   [HTTP2]    Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
-              Transfer Protocol version 2", draft-ietf-httpbis-http2-17
-              (work in progress), February 2015.
+
 
 
 
@@ -785,6 +785,14 @@ Nottingham, et al.      Expires November 2, 2015               [Page 14]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
+
+10.  References
+
+10.1.  Normative References
+
+   [HTTP2]    Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
+              Transfer Protocol version 2", draft-ietf-httpbis-http2-17
+              (work in progress), February 2015.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119, March 1997,
@@ -825,6 +833,15 @@ Internet-Draft          HTTP Alternative Services               May 2015
               Negotiation Extension", RFC 7301, July 2014,
               <http://www.rfc-editor.org/info/rfc7301>.
 
+
+
+
+
+Nottingham, et al.      Expires November 2, 2015               [Page 15]
+
+Internet-Draft          HTTP Alternative Services               May 2015
+
+
 10.2.  Informative References
 
    [BCP90]    Klyne, G., Nottingham, M., and J. Mogul, "Registration
@@ -834,13 +851,6 @@ Internet-Draft          HTTP Alternative Services               May 2015
    [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
               (TLS) Protocol Version 1.2", RFC 5246, August 2008,
               <http://www.rfc-editor.org/info/rfc5246>.
-
-
-
-Nottingham, et al.      Expires November 2, 2015               [Page 15]
-
-Internet-Draft          HTTP Alternative Services               May 2015
-
 
 10.3.  URIs
 
@@ -868,27 +878,17 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
    [12] https://github.com/httpwg/http-extensions/issues/37
 
-   [13] https://github.com/httpwg/http-extensions/issues/33
+   [13] https://github.com/httpwg/http-extensions/issues/34
 
-   [14] https://github.com/httpwg/http-extensions/issues/34
+   [14] https://github.com/httpwg/http-extensions/issues/38
 
-   [15] https://github.com/httpwg/http-extensions/issues/38
+   [15] https://github.com/httpwg/http-extensions/issues/12
 
-   [16] https://github.com/httpwg/http-extensions/issues/44
+   [16] https://github.com/httpwg/http-extensions/issues/33
 
-   [17] https://github.com/httpwg/http-extensions/issues/65
+   [17] https://github.com/httpwg/http-extensions/issues/44
 
-
-
-
-
-
-
-
-
-
-
-
+   [18] https://github.com/httpwg/http-extensions/issues/65
 
 
 
@@ -966,18 +966,21 @@ A.6.  Since draft-ietf-httpbis-alt-svc-04
 
 A.7.  Since draft-ietf-httpbis-alt-svc-05
 
-   Align opp-sec and alt-svc ([17]).
-
    Go back to specifying the origin in Alt-Used, but make it a "SHOULD"
-   ([18]).
+   ([17]).
 
-   Restore Origin field in ALT-SVC frame ([19]).
+   Restore Origin field in ALT-SVC frame ([18]).
 
 A.8.  Since draft-ietf-httpbis-alt-svc-06
 
-   alt svc frame on pushed (even and non-0) frame ([20]).
+   Disallow use of alternative services when the protocol might not
+   carry the scheme ([19]).
 
-   ABNF for "parameter" ([21]).
+   Align opp-sec and alt-svc ([20]).
+
+   alt svc frame on pushed (even and non-0) frame ([21]).
+
+   ABNF for "parameter" ([22]).
 
 Appendix B.  Acknowledgements
 
@@ -996,9 +999,6 @@ Authors' Addresses
 
    EMail: mnot@mnot.net
    URI:   https://www.mnot.net/
-
-
-
 
 
 
