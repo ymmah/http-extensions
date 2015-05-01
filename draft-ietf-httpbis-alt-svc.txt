@@ -151,13 +151,13 @@ Internet-Draft          HTTP Alternative Services               May 2015
    of interacting with it on the network.  It defines a general
    framework for this in Section 2, along with specific mechanisms for
    advertising their existence using HTTP header fields (Section 3) or
-   an HTTP/2 frame type (Section 4).
+   HTTP/2 frames (Section 4), plus a way to indicate that an alternative
+   service was used (Section 5).
 
    It also introduces a new status code in Section 6, so that origin
    servers (or their nominated alternatives) can indicate that they are
    not authoritative for a given origin, in cases where the wrong
    location is used.
-
 
 
 
