@@ -5,10 +5,10 @@
 HTTP Working Group                                             A. Hutton
 Internet-Draft                                                     Unify
 Intended status: Standards Track                               J. Uberti
-Expires: November 1, 2015                                         Google
+Expires: November 2, 2015                                         Google
                                                               M. Thomson
                                                                  Mozilla
-                                                          April 30, 2015
+                                                             May 1, 2015
 
 
                        The ALPN HTTP Header Field
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on November 1, 2015.
+   This Internet-Draft will expire on November 2, 2015.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Hutton, et al.          Expires November 1, 2015                [Page 1]
+Hutton, et al.          Expires November 2, 2015                [Page 1]
 
-Internet-Draft               The ALPN Header                  April 2015
+Internet-Draft               The ALPN Header                    May 2015
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Hutton, et al.          Expires November 1, 2015                [Page 2]
+Hutton, et al.          Expires November 2, 2015                [Page 2]
 
-Internet-Draft               The ALPN Header                  April 2015
+Internet-Draft               The ALPN Header                    May 2015
 
 
    server from the set of choices presented by the client.  Other
@@ -165,9 +165,9 @@ Internet-Draft               The ALPN Header                  April 2015
 
 
 
-Hutton, et al.          Expires November 1, 2015                [Page 3]
+Hutton, et al.          Expires November 2, 2015                [Page 3]
 
-Internet-Draft               The ALPN Header                  April 2015
+Internet-Draft               The ALPN Header                    May 2015
 
 
    o  When using percent-encoding, uppercase hex digits MUST be used.
@@ -221,9 +221,9 @@ Internet-Draft               The ALPN Header                  April 2015
 
 
 
-Hutton, et al.          Expires November 1, 2015                [Page 4]
+Hutton, et al.          Expires November 2, 2015                [Page 4]
 
-Internet-Draft               The ALPN Header                  April 2015
+Internet-Draft               The ALPN Header                    May 2015
 
 
    indistinguishable from the case where either client or proxy does not
@@ -277,9 +277,9 @@ Internet-Draft               The ALPN Header                  April 2015
 
 
 
-Hutton, et al.          Expires November 1, 2015                [Page 5]
+Hutton, et al.          Expires November 2, 2015                [Page 5]
 
-Internet-Draft               The ALPN Header                  April 2015
+Internet-Draft               The ALPN Header                    May 2015
 
 
    [RFC5766]  Mahy, R., Matthews, P., and J. Rosenberg, "Traversal Using
@@ -333,4 +333,4 @@ Authors' Addresses
 
 
 
-Hutton, et al.          Expires November 1, 2015                [Page 6]
+Hutton, et al.          Expires November 2, 2015                [Page 6]
