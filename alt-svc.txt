@@ -245,9 +245,9 @@ Internet-Draft          HTTP Alternative Services               May 2015
    before.
 
    Importantly, this includes its security context; in particular, when
-   TLS [RFC5246] is in use, the alternative service will need to present
-   a certificate for the origin's host name, not that of the
-   alternative.  Likewise, the Host header field ([RFC7230],
+   TLS [RFC5246] is used to authenticate, the alternative service will
+   need to present a certificate for the origin's host name, not that of
+   the alternative.  Likewise, the Host header field ([RFC7230],
    Section 5.4) is still derived from the origin, not the alternative
    service (just as it would if a CNAME were being used).
 
@@ -868,15 +868,15 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
    [12] https://github.com/httpwg/http-extensions/issues/37
 
-   [13] https://github.com/httpwg/http-extensions/issues/34
+   [13] https://github.com/httpwg/http-extensions/issues/33
 
-   [14] https://github.com/httpwg/http-extensions/issues/38
+   [14] https://github.com/httpwg/http-extensions/issues/34
 
-   [15] https://github.com/httpwg/http-extensions/issues/44
+   [15] https://github.com/httpwg/http-extensions/issues/38
 
-   [16] https://github.com/httpwg/http-extensions/issues/65
+   [16] https://github.com/httpwg/http-extensions/issues/44
 
-
+   [17] https://github.com/httpwg/http-extensions/issues/65
 
 
 
@@ -966,16 +966,18 @@ A.6.  Since draft-ietf-httpbis-alt-svc-04
 
 A.7.  Since draft-ietf-httpbis-alt-svc-05
 
-   Go back to specifying the origin in Alt-Used, but make it a "SHOULD"
-   ([17]).
+   Align opp-sec and alt-svc ([17]).
 
-   Restore Origin field in ALT-SVC frame ([18]).
+   Go back to specifying the origin in Alt-Used, but make it a "SHOULD"
+   ([18]).
+
+   Restore Origin field in ALT-SVC frame ([19]).
 
 A.8.  Since draft-ietf-httpbis-alt-svc-06
 
-   alt svc frame on pushed (even and non-0) frame ([19]).
+   alt svc frame on pushed (even and non-0) frame ([20]).
 
-   ABNF for "parameter" ([20]).
+   ABNF for "parameter" ([21]).
 
 Appendix B.  Acknowledgements
 
@@ -996,11 +998,9 @@ Authors' Addresses
    URI:   https://www.mnot.net/
 
 
-   Patrick McManus
-   Mozilla
 
-   EMail: mcmanus@ducksong.com
-   URI:   https://mozillians.org/u/pmcmanus/
+
+
 
 
 
@@ -1010,18 +1010,18 @@ Nottingham, et al.      Expires November 2, 2015               [Page 18]
 Internet-Draft          HTTP Alternative Services               May 2015
 
 
+   Patrick McManus
+   Mozilla
+
+   EMail: mcmanus@ducksong.com
+   URI:   https://mozillians.org/u/pmcmanus/
+
+
    Julian F. Reschke
    greenbytes GmbH
 
    EMail: julian.reschke@greenbytes.de
    URI:   https://greenbytes.de/tech/webdav/
-
-
-
-
-
-
-
 
 
 

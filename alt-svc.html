@@ -737,8 +737,8 @@ uri-host      = &lt;uri-host, see <a href="#RFC7230"><cite title="Hypertext Tran
             </p>
          </div>
          <div id="rfc.section.2.p.7">
-            <p>Importantly, this includes its security context; in particular, when TLS <a href="#RFC5246"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite></a> is in use, the alternative service will need to present a certificate for the origin's host name, not that of the alternative.
-               Likewise, the Host header field (<a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#header.host" title="Host">Section 5.4</a>) is still derived from the origin, not the alternative service (just as it would if a CNAME were being used).
+            <p>Importantly, this includes its security context; in particular, when TLS <a href="#RFC5246"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite></a> is used to authenticate, the alternative service will need to present a certificate for the origin's host name, not that of
+               the alternative. Likewise, the Host header field (<a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#header.host" title="Host">Section 5.4</a>) is still derived from the origin, not the alternative service (just as it would if a CNAME were being used).
             </p>
          </div>
          <div id="rfc.section.2.p.8">
@@ -1412,10 +1412,14 @@ Alt-Used: alternate.example.net
          <div id="changes.since.draft-ietf-httpbis-alt-svc-05">
             <h2 id="rfc.section.A.7"><a href="#rfc.section.A.7">A.7</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-05">Since draft-ietf-httpbis-alt-svc-05</a></h2>
             <div id="rfc.section.A.7.p.1">
-               <p>Go back to specifying the origin in Alt-Used, but make it a "SHOULD" (&lt;<a href="https://github.com/httpwg/http-extensions/issues/34">https://github.com/httpwg/http-extensions/issues/34</a>&gt;).
+               <p>Align opp-sec and alt-svc (&lt;<a href="https://github.com/httpwg/http-extensions/issues/33">https://github.com/httpwg/http-extensions/issues/33</a>&gt;).
                </p>
             </div>
             <div id="rfc.section.A.7.p.2">
+               <p>Go back to specifying the origin in Alt-Used, but make it a "SHOULD" (&lt;<a href="https://github.com/httpwg/http-extensions/issues/34">https://github.com/httpwg/http-extensions/issues/34</a>&gt;).
+               </p>
+            </div>
+            <div id="rfc.section.A.7.p.3">
                <p>Restore Origin field in ALT-SVC frame (&lt;<a href="https://github.com/httpwg/http-extensions/issues/38">https://github.com/httpwg/http-extensions/issues/38</a>&gt;).
                </p>
             </div>
