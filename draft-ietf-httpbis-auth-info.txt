@@ -4,9 +4,9 @@
 
 HTTP Working Group                                            J. Reschke
 Internet-Draft                                                greenbytes
-Updates: 2617 (if approved)                                  May 1, 2015
+Updates: 2617 (if approved)                                  May 4, 2015
 Intended status: Standards Track
-Expires: November 2, 2015
+Expires: November 5, 2015
 
 
  The Hypertext Transfer Protocol (HTTP) Authentication-Info and Proxy-
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on November 2, 2015.
+   This Internet-Draft will expire on November 5, 2015.
 
 
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Reschke                 Expires November 2, 2015                [Page 1]
+Reschke                 Expires November 5, 2015                [Page 1]
 
 Internet-Draft          HTTP Authentication-Info                May 2015
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Reschke                 Expires November 2, 2015                [Page 2]
+Reschke                 Expires November 5, 2015                [Page 2]
 
 Internet-Draft          HTTP Authentication-Info                May 2015
 
@@ -165,7 +165,7 @@ Internet-Draft          HTTP Authentication-Info                May 2015
 
 
 
-Reschke                 Expires November 2, 2015                [Page 3]
+Reschke                 Expires November 5, 2015                [Page 3]
 
 Internet-Draft          HTTP Authentication-Info                May 2015
 
@@ -221,7 +221,7 @@ Internet-Draft          HTTP Authentication-Info                May 2015
 
 
 
-Reschke                 Expires November 2, 2015                [Page 4]
+Reschke                 Expires November 5, 2015                [Page 4]
 
 Internet-Draft          HTTP Authentication-Info                May 2015
 
@@ -277,7 +277,7 @@ Internet-Draft          HTTP Authentication-Info                May 2015
 
 
 
-Reschke                 Expires November 2, 2015                [Page 5]
+Reschke                 Expires November 5, 2015                [Page 5]
 
 Internet-Draft          HTTP Authentication-Info                May 2015
 
@@ -333,7 +333,7 @@ Internet-Draft          HTTP Authentication-Info                May 2015
 
 
 
-Reschke                 Expires November 2, 2015                [Page 6]
+Reschke                 Expires November 5, 2015                [Page 6]
 
 Internet-Draft          HTTP Authentication-Info                May 2015
 
@@ -389,7 +389,7 @@ A.5.  Since draft-ietf-httpbis-auth-info-03
 
 
 
-Reschke                 Expires November 2, 2015                [Page 7]
+Reschke                 Expires November 5, 2015                [Page 7]
 
 Internet-Draft          HTTP Authentication-Info                May 2015
 
@@ -445,4 +445,4 @@ Author's Address
 
 
 
-Reschke                 Expires November 2, 2015                [Page 8]
+Reschke                 Expires November 5, 2015                [Page 8]

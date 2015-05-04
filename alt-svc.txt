@@ -5,10 +5,10 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft                                                    Akamai
 Intended status: Standards Track                              P. McManus
-Expires: November 2, 2015                                        Mozilla
+Expires: November 5, 2015                                        Mozilla
                                                               J. Reschke
                                                               greenbytes
-                                                             May 1, 2015
+                                                             May 4, 2015
 
 
                        HTTP Alternative Services
@@ -46,14 +46,14 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on November 2, 2015.
+   This Internet-Draft will expire on November 5, 2015.
 
 
 
 
 
 
-Nottingham, et al.      Expires November 2, 2015                [Page 1]
+Nottingham, et al.      Expires November 5, 2015                [Page 1]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -102,25 +102,25 @@ Table of Contents
      10.2.  Informative References . . . . . . . . . . . . . . . . .  16
      10.3.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .  16
    Appendix A.  Change Log (to be removed by RFC Editor before
-                publication) . . . . . . . . . . . . . . . . . . . .  17
-     A.1.  Since draft-nottingham-httpbis-alt-svc-05 . . . . . . . .  17
-     A.2.  Since draft-ietf-httpbis-alt-svc-00 . . . . . . . . . . .  17
-     A.3.  Since draft-ietf-httpbis-alt-svc-01 . . . . . . . . . . .  17
+                publication) . . . . . . . . . . . . . . . . . . . .  18
+     A.1.  Since draft-nottingham-httpbis-alt-svc-05 . . . . . . . .  18
+     A.2.  Since draft-ietf-httpbis-alt-svc-00 . . . . . . . . . . .  18
+     A.3.  Since draft-ietf-httpbis-alt-svc-01 . . . . . . . . . . .  18
 
 
 
-Nottingham, et al.      Expires November 2, 2015                [Page 2]
+Nottingham, et al.      Expires November 5, 2015                [Page 2]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
 
-     A.4.  Since draft-ietf-httpbis-alt-svc-02 . . . . . . . . . . .  17
-     A.5.  Since draft-ietf-httpbis-alt-svc-03 . . . . . . . . . . .  17
-     A.6.  Since draft-ietf-httpbis-alt-svc-04 . . . . . . . . . . .  18
-     A.7.  Since draft-ietf-httpbis-alt-svc-05 . . . . . . . . . . .  18
-     A.8.  Since draft-ietf-httpbis-alt-svc-06 . . . . . . . . . . .  18
-   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  18
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  18
+     A.4.  Since draft-ietf-httpbis-alt-svc-02 . . . . . . . . . . .  18
+     A.5.  Since draft-ietf-httpbis-alt-svc-03 . . . . . . . . . . .  18
+     A.6.  Since draft-ietf-httpbis-alt-svc-04 . . . . . . . . . . .  19
+     A.7.  Since draft-ietf-httpbis-alt-svc-05 . . . . . . . . . . .  19
+     A.8.  Since draft-ietf-httpbis-alt-svc-06 . . . . . . . . . . .  19
+   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  19
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  19
 
 1.  Introduction
 
@@ -165,7 +165,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 2, 2015                [Page 3]
+Nottingham, et al.      Expires November 5, 2015                [Page 3]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -221,7 +221,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 2, 2015                [Page 4]
+Nottingham, et al.      Expires November 5, 2015                [Page 4]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -277,7 +277,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 2, 2015                [Page 5]
+Nottingham, et al.      Expires November 5, 2015                [Page 5]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -333,7 +333,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 2, 2015                [Page 6]
+Nottingham, et al.      Expires November 5, 2015                [Page 6]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -389,7 +389,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 2, 2015                [Page 7]
+Nottingham, et al.      Expires November 5, 2015                [Page 7]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -445,7 +445,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 2, 2015                [Page 8]
+Nottingham, et al.      Expires November 5, 2015                [Page 8]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -501,7 +501,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 2, 2015                [Page 9]
+Nottingham, et al.      Expires November 5, 2015                [Page 9]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -557,7 +557,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 2, 2015               [Page 10]
+Nottingham, et al.      Expires November 5, 2015               [Page 10]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -613,7 +613,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 2, 2015               [Page 11]
+Nottingham, et al.      Expires November 5, 2015               [Page 11]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -669,7 +669,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 2, 2015               [Page 12]
+Nottingham, et al.      Expires November 5, 2015               [Page 12]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -725,7 +725,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 2, 2015               [Page 13]
+Nottingham, et al.      Expires November 5, 2015               [Page 13]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -767,7 +767,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
    Clients concerned by the additional fingerprinting can choose to
    ignore alternative service advertisements.
 
-   In a browser, any alternative service information MUST be removed
+   In a user agent, any alternative service information MUST be removed
    when origin-specific data is cleared (for instance, when cookies are
    cleared).
 
@@ -781,7 +781,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 2, 2015               [Page 14]
+Nottingham, et al.      Expires November 5, 2015               [Page 14]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -837,7 +837,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 2, 2015               [Page 15]
+Nottingham, et al.      Expires November 5, 2015               [Page 15]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -888,12 +888,68 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
    [17] https://github.com/httpwg/http-extensions/issues/44
 
-   [18] https://github.com/httpwg/http-extensions/issues/65
+   [18] https://github.com/httpwg/http-extensions/pull/61
 
 
 
 
-Nottingham, et al.      Expires November 2, 2015               [Page 16]
+Nottingham, et al.      Expires November 5, 2015               [Page 16]
+
+Internet-Draft          HTTP Alternative Services               May 2015
+
+
+   [19] https://github.com/httpwg/http-extensions/issues/65
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Nottingham, et al.      Expires November 5, 2015               [Page 17]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -949,7 +1005,7 @@ A.5.  Since draft-ietf-httpbis-alt-svc-03
 
 
 
-Nottingham, et al.      Expires November 2, 2015               [Page 17]
+Nottingham, et al.      Expires November 5, 2015               [Page 18]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -980,7 +1036,9 @@ A.8.  Since draft-ietf-httpbis-alt-svc-06
 
    alt svc frame on pushed (even and non-0) frame ([21]).
 
-   ABNF for "parameter" ([22]).
+   "browser" -> "user agent" ([22]).
+
+   ABNF for "parameter" ([23]).
 
 Appendix B.  Acknowledgements
 
@@ -1003,9 +1061,7 @@ Authors' Addresses
 
 
 
-
-
-Nottingham, et al.      Expires November 2, 2015               [Page 18]
+Nottingham, et al.      Expires November 5, 2015               [Page 19]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -1061,4 +1117,4 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 2, 2015               [Page 19]
+Nottingham, et al.      Expires November 5, 2015               [Page 20]
