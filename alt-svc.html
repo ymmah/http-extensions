@@ -462,7 +462,7 @@ ul p {
        content: "Nottingham, et al.";
   }
   @bottom-center {
-       content: "Expires November 5, 2015";
+       content: "Expires November 16, 2015";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -502,7 +502,7 @@ ul p {
       <meta name="dct.creator" content="McManus, P.">
       <meta name="dct.creator" content="Reschke, J. F.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-alt-svc-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2015-05-04">
+      <meta name="dct.issued" scheme="ISO8601" content="2015-05-15">
       <meta name="dct.abstract" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
       <meta name="description" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
    </head>
@@ -522,7 +522,7 @@ ul p {
                <td class="right">P. McManus</td>
             </tr>
             <tr>
-               <td class="left">Expires: November 5, 2015</td>
+               <td class="left">Expires: November 16, 2015</td>
                <td class="right">Mozilla</td>
             </tr>
             <tr>
@@ -535,7 +535,7 @@ ul p {
             </tr>
             <tr>
                <td class="left"></td>
-               <td class="right">May 4, 2015</td>
+               <td class="right">May 15, 2015</td>
             </tr>
          </tbody>
       </table>
@@ -561,7 +561,7 @@ ul p {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on November 5, 2015.</p>
+         <p>This Internet-Draft will expire on November 16, 2015.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
@@ -654,7 +654,7 @@ ul p {
                <li>An origin server might wish to redirect a client to a different server when it needs to go down for maintenance, or it has
                   found a server in a location that is more local to the client.
                </li>
-               <li>An origin server might wish to offer access to its resources using a new protocol (such as HTTP/2, see <a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>) or one using improved security (such as Transport Layer Security (TLS), see <a href="#RFC5246"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite></a>).
+               <li>An origin server might wish to offer access to its resources using a new protocol (such as HTTP/2, see <a href="#RFC7540"><cite title="Hypertext Transfer Protocol version 2">[RFC7540]</cite></a>) or one using improved security (such as Transport Layer Security (TLS), see <a href="#RFC5246"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite></a>).
                </li>
                <li>An origin server might wish to segment its clients into groups of capabilities, such as those supporting Server Name Indication
                   (SNI, see <a href="https://tools.ietf.org/html/rfc6066#section-3">Section 3</a> of <a href="#RFC6066"><cite title="Transport Layer Security (TLS) Extensions: Extension Definitions">[RFC6066]</cite></a>) and those not supporting it, for operational purposes.
@@ -891,7 +891,7 @@ parameter     = <a href="#imported.abnf" class="smpl">token</a> "=" ( <a href="#
          </div>
          <div id="rfc.figure.u.5">
             <p>For example:</p><pre class="text">Alt-Svc: h2=":8000"
-</pre><p>This indicates the "h2" protocol (<a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>) on the same host using the indicated port 8000.
+</pre><p>This indicates the "h2" protocol (<a href="#RFC7540"><cite title="Hypertext Transfer Protocol version 2">[RFC7540]</cite></a>) on the same host using the indicated port 8000.
             </p>
          </div>
          <div id="rfc.figure.u.6">
@@ -942,7 +942,7 @@ parameter     = <a href="#imported.abnf" class="smpl">token</a> "=" ( <a href="#
             </p>
          </div>
          <div id="rfc.section.3.p.8">
-            <p>When using HTTP/2 (<a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>), servers <em class="bcp14">SHOULD</em> instead send an ALTSVC frame (<a href="#frame" title="The ALTSVC HTTP/2 Frame">Section&nbsp;4</a>). A single ALTSVC frame can be sent for a connection; a new frame is not needed for every request.
+            <p>When using HTTP/2 (<a href="#RFC7540"><cite title="Hypertext Transfer Protocol version 2">[RFC7540]</cite></a>), servers <em class="bcp14">SHOULD</em> instead send an ALTSVC frame (<a href="#frame" title="The ALTSVC HTTP/2 Frame">Section&nbsp;4</a>). A single ALTSVC frame can be sent for a connection; a new frame is not needed for every request.
             </p>
          </div>
          <div id="rfc.section.3.p.9">
@@ -995,7 +995,7 @@ Alt-Svc: h2c=":8000"; ma=60
       <div id="frame">
          <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a>&nbsp;<a href="#frame">The ALTSVC HTTP/2 Frame</a></h1>
          <div id="rfc.section.4.p.1">
-            <p>The ALTSVC HTTP/2 frame (<a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>, <a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-17#section-4" title="HTTP Frames">Section 4</a>) advertises the availability of an alternative service to an HTTP/2 client.
+            <p>The ALTSVC HTTP/2 frame (<a href="#RFC7540"><cite title="Hypertext Transfer Protocol version 2">[RFC7540]</cite></a>, <a href="https://tools.ietf.org/html/rfc7540#section-4" title="HTTP Frames">Section 4</a>) advertises the availability of an alternative service to an HTTP/2 client.
             </p>
          </div>
          <div id="rfc.section.4.p.2">
@@ -1090,7 +1090,7 @@ Alt-Used: alternate.example.net
       <div id="status">
          <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a>&nbsp;<a href="#status">The 421 Misdirected Request HTTP Status Code</a></h1>
          <div id="rfc.section.6.p.1">
-            <p>The 421 (Misdirected Request) status code is defined in <a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-17#section-9.1.2" title="The 421 (Misdirected Request) Status Code">Section 9.1.2</a> of <a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a> to indicate that the current server instance is not authoritative for the requested resource. This can be used to indicate
+            <p>The 421 (Misdirected Request) status code is defined in <a href="https://tools.ietf.org/html/rfc7540#section-9.1.2" title="The 421 (Misdirected Request) Status Code">Section 9.1.2</a> of <a href="#RFC7540"><cite title="Hypertext Transfer Protocol version 2">[RFC7540]</cite></a> to indicate that the current server instance is not authoritative for the requested resource. This can be used to indicate
                that an alternative service is not authoritative; see <a href="#alternative" title="Alternative Services Concepts">Section&nbsp;2</a>).
             </p>
          </div>
@@ -1153,7 +1153,7 @@ Alt-Used: alternate.example.net
          <div id="alt-svc-frame-registration">
             <h2 id="rfc.section.7.2"><a href="#rfc.section.7.2">7.2</a>&nbsp;<a href="#alt-svc-frame-registration">The ALTSVC HTTP/2 Frame Type</a></h2>
             <div id="rfc.section.7.2.p.1">
-               <p>This document registers the ALTSVC frame type in the HTTP/2 Frame Types registry (<a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>, <a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-17#section-11.2" title="Frame Type Registry">Section 11.2</a>). 
+               <p>This document registers the ALTSVC frame type in the HTTP/2 Frame Types registry (<a href="#RFC7540"><cite title="Hypertext Transfer Protocol version 2">[RFC7540]</cite></a>, <a href="https://tools.ietf.org/html/rfc7540#section-11.2" title="Frame Type Registry">Section 11.2</a>). 
                </p>
                <ul class="empty">
                   <li>Frame Type: ALTSVC</li>
@@ -1270,11 +1270,6 @@ Alt-Used: alternate.example.net
       </h2>
       <table>
          <tr>
-            <td class="reference"><b id="HTTP2">[HTTP2]</b></td>
-            <td class="top">Belshe, M., Peon, R., and M. Thomson, Ed., “<a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-17">Hypertext Transfer Protocol version 2</a>”, Internet-Draft&nbsp;draft-ietf-httpbis-http2-17 (work in progress), February&nbsp;2015.
-            </td>
-         </tr>
-         <tr>
             <td class="reference"><b id="RFC2119">[RFC2119]</b></td>
             <td class="top">Bradner, S., “<a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>”, BCP&nbsp;14, RFC&nbsp;2119, March&nbsp;1997, &lt;<a href="http://www.rfc-editor.org/info/rfc2119">http://www.rfc-editor.org/info/rfc2119</a>&gt;.
             </td>
@@ -1317,6 +1312,11 @@ Alt-Used: alternate.example.net
          <tr>
             <td class="reference"><b id="RFC7301">[RFC7301]</b></td>
             <td class="top">Friedl, S., Popov, A., Langley, A., and S. Emile, “<a href="https://tools.ietf.org/html/rfc7301">Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension</a>”, RFC&nbsp;7301, July&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7301">http://www.rfc-editor.org/info/rfc7301</a>&gt;.
+            </td>
+         </tr>
+         <tr>
+            <td class="reference"><b id="RFC7540">[RFC7540]</b></td>
+            <td class="top">Belshe, M., Peon, R., and M. Thomson, Ed., “<a href="https://tools.ietf.org/html/rfc7540">Hypertext Transfer Protocol version 2</a>”, RFC&nbsp;7540, May&nbsp;2015, &lt;<a href="http://www.rfc-editor.org/info/rfc7540">http://www.rfc-editor.org/info/rfc7540</a>&gt;.
             </td>
          </tr>
       </table>
@@ -1450,6 +1450,9 @@ Alt-Used: alternate.example.net
             <div id="rfc.section.A.8.p.5">
                <p>ABNF for "parameter" (&lt;<a href="https://github.com/httpwg/http-extensions/issues/65">https://github.com/httpwg/http-extensions/issues/65</a>&gt;).
                </p>
+            </div>
+            <div id="rfc.section.A.8.p.6">
+               <p>Updated HTTP/2 reference.</p>
             </div>
          </div>
       </div>

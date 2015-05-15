@@ -5,10 +5,10 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft                                                    Akamai
 Intended status: Standards Track                              P. McManus
-Expires: November 5, 2015                                        Mozilla
+Expires: November 16, 2015                                       Mozilla
                                                               J. Reschke
                                                               greenbytes
-                                                             May 4, 2015
+                                                            May 15, 2015
 
 
                        HTTP Alternative Services
@@ -46,14 +46,14 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on November 5, 2015.
+   This Internet-Draft will expire on November 16, 2015.
 
 
 
 
 
 
-Nottingham, et al.      Expires November 5, 2015                [Page 1]
+Nottingham, et al.      Expires November 16, 2015               [Page 1]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Nottingham, et al.      Expires November 5, 2015                [Page 2]
+Nottingham, et al.      Expires November 16, 2015               [Page 2]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -139,8 +139,9 @@ Internet-Draft          HTTP Alternative Services               May 2015
       server in a location that is more local to the client.
 
    o  An origin server might wish to offer access to its resources using
-      a new protocol (such as HTTP/2, see [HTTP2]) or one using improved
-      security (such as Transport Layer Security (TLS), see [RFC5246]).
+      a new protocol (such as HTTP/2, see [RFC7540]) or one using
+      improved security (such as Transport Layer Security (TLS), see
+      [RFC5246]).
 
    o  An origin server might wish to segment its clients into groups of
       capabilities, such as those supporting Server Name Indication
@@ -164,8 +165,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-
-Nottingham, et al.      Expires November 5, 2015                [Page 3]
+Nottingham, et al.      Expires November 16, 2015               [Page 3]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -221,7 +221,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 5, 2015                [Page 4]
+Nottingham, et al.      Expires November 16, 2015               [Page 4]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -277,7 +277,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 5, 2015                [Page 5]
+Nottingham, et al.      Expires November 16, 2015               [Page 5]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -333,7 +333,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 5, 2015                [Page 6]
+Nottingham, et al.      Expires November 16, 2015               [Page 6]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -389,7 +389,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 5, 2015                [Page 7]
+Nottingham, et al.      Expires November 16, 2015               [Page 7]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -419,8 +419,8 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
    Alt-Svc: h2=":8000"
 
-   This indicates the "h2" protocol ([HTTP2]) on the same host using the
-   indicated port 8000.
+   This indicates the "h2" protocol ([RFC7540]) on the same host using
+   the indicated port 8000.
 
    An example involving a change of host:
 
@@ -445,7 +445,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 5, 2015                [Page 8]
+Nottingham, et al.      Expires November 16, 2015               [Page 8]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -461,7 +461,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
    new connection to one or more alternative services immediately, or
    simultaneously with subsequent requests on the same connection.
 
-   When using HTTP/2 ([HTTP2]), servers SHOULD instead send an ALTSVC
+   When using HTTP/2 ([RFC7540]), servers SHOULD instead send an ALTSVC
    frame (Section 4).  A single ALTSVC frame can be sent for a
    connection; a new frame is not needed for every request.
 
@@ -501,7 +501,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 5, 2015                [Page 9]
+Nottingham, et al.      Expires November 16, 2015               [Page 9]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -518,7 +518,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 4.  The ALTSVC HTTP/2 Frame
 
-   The ALTSVC HTTP/2 frame ([HTTP2], Section 4) advertises the
+   The ALTSVC HTTP/2 frame ([RFC7540], Section 4) advertises the
    availability of an alternative service to an HTTP/2 client.
 
    The ALTSVC frame is a non-critical extension to HTTP/2.  Endpoints
@@ -557,7 +557,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 5, 2015               [Page 10]
+Nottingham, et al.      Expires November 16, 2015              [Page 10]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -613,7 +613,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 5, 2015               [Page 11]
+Nottingham, et al.      Expires November 16, 2015              [Page 11]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -625,7 +625,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 6.  The 421 Misdirected Request HTTP Status Code
 
    The 421 (Misdirected Request) status code is defined in Section 9.1.2
-   of [HTTP2] to indicate that the current server instance is not
+   of [RFC7540] to indicate that the current server instance is not
    authoritative for the requested resource.  This can be used to
    indicate that an alternative service is not authoritative; see
    Section 2).
@@ -663,13 +663,13 @@ Internet-Draft          HTTP Alternative Services               May 2015
 7.2.  The ALTSVC HTTP/2 Frame Type
 
    This document registers the ALTSVC frame type in the HTTP/2 Frame
-   Types registry ([HTTP2], Section 11.2).
+   Types registry ([RFC7540], Section 11.2).
 
       Frame Type: ALTSVC
 
 
 
-Nottingham, et al.      Expires November 5, 2015               [Page 12]
+Nottingham, et al.      Expires November 16, 2015              [Page 12]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -725,7 +725,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 5, 2015               [Page 13]
+Nottingham, et al.      Expires November 16, 2015              [Page 13]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -781,7 +781,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 5, 2015               [Page 14]
+Nottingham, et al.      Expires November 16, 2015              [Page 14]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -789,10 +789,6 @@ Internet-Draft          HTTP Alternative Services               May 2015
 10.  References
 
 10.1.  Normative References
-
-   [HTTP2]    Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
-              Transfer Protocol version 2", draft-ietf-httpbis-http2-17
-              (work in progress), February 2015.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119, March 1997,
@@ -833,11 +829,15 @@ Internet-Draft          HTTP Alternative Services               May 2015
               Negotiation Extension", RFC 7301, July 2014,
               <http://www.rfc-editor.org/info/rfc7301>.
 
+   [RFC7540]  Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
+              Transfer Protocol version 2", RFC 7540, May 2015,
+              <http://www.rfc-editor.org/info/rfc7540>.
 
 
 
 
-Nottingham, et al.      Expires November 5, 2015               [Page 15]
+
+Nottingham, et al.      Expires November 16, 2015              [Page 15]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -893,7 +893,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 5, 2015               [Page 16]
+Nottingham, et al.      Expires November 16, 2015              [Page 16]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -949,7 +949,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 5, 2015               [Page 17]
+Nottingham, et al.      Expires November 16, 2015              [Page 17]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -1005,7 +1005,7 @@ A.5.  Since draft-ietf-httpbis-alt-svc-03
 
 
 
-Nottingham, et al.      Expires November 5, 2015               [Page 18]
+Nottingham, et al.      Expires November 16, 2015              [Page 18]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -1040,6 +1040,8 @@ A.8.  Since draft-ietf-httpbis-alt-svc-06
 
    ABNF for "parameter" ([23]).
 
+   Updated HTTP/2 reference.
+
 Appendix B.  Acknowledgements
 
    Thanks to Adam Langley, Bence Beky, Eliot Lear, Erik Nygren, Guy
@@ -1052,18 +1054,23 @@ Appendix B.  Acknowledgements
 
 Authors' Addresses
 
+
+
+
+
+
+
+
+Nottingham, et al.      Expires November 16, 2015              [Page 19]
+
+Internet-Draft          HTTP Alternative Services               May 2015
+
+
    Mark Nottingham
    Akamai
 
    EMail: mnot@mnot.net
    URI:   https://www.mnot.net/
-
-
-
-
-Nottingham, et al.      Expires November 5, 2015               [Page 19]
-
-Internet-Draft          HTTP Alternative Services               May 2015
 
 
    Patrick McManus
@@ -1110,11 +1117,4 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-
-
-
-
-
-
-
-Nottingham, et al.      Expires November 5, 2015               [Page 20]
+Nottingham, et al.      Expires November 16, 2015              [Page 20]
