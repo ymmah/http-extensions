@@ -119,8 +119,9 @@ Internet-Draft          HTTP Alternative Services               May 2015
      A.6.  Since draft-ietf-httpbis-alt-svc-04 . . . . . . . . . . .  19
      A.7.  Since draft-ietf-httpbis-alt-svc-05 . . . . . . . . . . .  19
      A.8.  Since draft-ietf-httpbis-alt-svc-06 . . . . . . . . . . .  19
+     A.9.  Since draft-ietf-httpbis-alt-svc-07 . . . . . . . . . . .  19
    Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  19
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  19
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  20
 
 1.  Introduction
 
@@ -160,7 +161,6 @@ Internet-Draft          HTTP Alternative Services               May 2015
    servers (or their nominated alternatives) can indicate that they are
    not authoritative for a given origin, in cases where the wrong
    location is used.
-
 
 
 
@@ -1042,6 +1042,10 @@ A.8.  Since draft-ietf-httpbis-alt-svc-06
 
    Updated HTTP/2 reference.
 
+A.9.  Since draft-ietf-httpbis-alt-svc-07
+
+   None yet.
+
 Appendix B.  Acknowledgements
 
    Thanks to Adam Langley, Bence Beky, Eliot Lear, Erik Nygren, Guy
@@ -1052,10 +1056,6 @@ Appendix B.  Acknowledgements
    The Alt-Svc header field was influenced by the design of the
    Alternate-Protocol header field in SPDY.
 
-Authors' Addresses
-
-
-
 
 
 
@@ -1065,6 +1065,8 @@ Nottingham, et al.      Expires November 16, 2015              [Page 19]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
+
+Authors' Addresses
 
    Mark Nottingham
    Akamai
@@ -1085,8 +1087,6 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
    EMail: julian.reschke@greenbytes.de
    URI:   https://greenbytes.de/tech/webdav/
-
-
 
 
 
