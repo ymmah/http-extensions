@@ -21,10 +21,13 @@ Abstract
 Editorial Note (To be removed by RFC Editor before publication)
 
    Discussion of this draft takes place on the HTTPBIS working group
-   mailing list (ietf-http-wg@w3.org), which is archived at [1].
+   mailing list (ietf-http-wg@w3.org), which is archived at
+   <https://lists.w3.org/Archives/Public/ietf-http-wg/>.
 
-   Working Group information can be found at [2] and [3]; source code
-   and issues list for this draft can be found at [4].
+   Working Group information can be found at <https://tools.ietf.org/wg/
+   httpbis/> and <http://httpwg.github.io/>; source code and issues list
+   for this draft can be found at <https://github.com/httpwg/http-
+   extensions>.
 
 Status of This Memo
 
@@ -43,13 +46,10 @@ Status of This Memo
 
    This Internet-Draft will expire on October 3, 2015.
 
-Copyright Notice
 
-   Copyright (c) 2015 IETF Trust and the persons identified as the
-   document authors.  All rights reserved.
 
-   This document is subject to BCP 78 and the IETF Trust's Legal
-   Provisions Relating to IETF Documents
+
+
 
 
 
@@ -58,6 +58,13 @@ Bray                     Expires October 3, 2015                [Page 1]
 Internet-Draft               HTTP-status-451                  April 2015
 
 
+Copyright Notice
+
+   Copyright (c) 2015 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
    (http://trustee.ietf.org/license-info) in effect on the date of
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
@@ -69,7 +76,7 @@ Internet-Draft               HTTP-status-451                  April 2015
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
-   2.  Requirements  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   2.  Requirements  . . . . . . . . . . . . . . . . . . . . . . . .   3
    3.  451 Unavailable For Legal Reasons . . . . . . . . . . . . . .   3
    4.  Security Considerations . . . . . . . . . . . . . . . . . . .   3
    5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
@@ -97,13 +104,6 @@ Table of Contents
    although this draft is NOT a work item of the IETF HTTPbis Working
    Group.
 
-2.  Requirements
-
-   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-   document are to be interpreted as described in [RFC2119].
-
-
 
 
 
@@ -113,6 +113,12 @@ Bray                     Expires October 3, 2015                [Page 2]
 
 Internet-Draft               HTTP-status-451                  April 2015
 
+
+2.  Requirements
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in [RFC2119].
 
 3.  451 Unavailable For Legal Reasons
 
@@ -153,13 +159,7 @@ Internet-Draft               HTTP-status-451                  April 2015
 
 4.  Security Considerations
 
-4.1.  451 Unavailable for Legal Reasons
 
-   The 451 status code is optional; clients cannot rely upon its use.
-   It is possible that certain legal authorities may wish to avoid
-   transparency, and not only demand the restriction of access to
-   certain resources, but also avoid disclosing that the demand was
-   made.
 
 
 
@@ -169,6 +169,14 @@ Bray                     Expires October 3, 2015                [Page 3]
 
 Internet-Draft               HTTP-status-451                  April 2015
 
+
+4.1.  451 Unavailable for Legal Reasons
+
+   The 451 status code is optional; clients cannot rely upon its use.
+   It is possible that certain legal authorities may wish to avoid
+   transparency, and not only demand the restriction of access to
+   certain resources, but also avoid disclosing that the demand was
+   made.
 
 5.  IANA Considerations
 
@@ -207,6 +215,17 @@ Appendix A.  Acknowledgements
 
 Author's Address
 
+
+
+
+
+
+
+Bray                     Expires October 3, 2015                [Page 4]
+
+Internet-Draft               HTTP-status-451                  April 2015
+
+
    Tim Bray
    Textuality
 
@@ -221,4 +240,41 @@ Author's Address
 
 
 
-Bray                     Expires October 3, 2015                [Page 4]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bray                     Expires October 3, 2015                [Page 5]

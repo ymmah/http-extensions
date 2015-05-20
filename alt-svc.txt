@@ -5,10 +5,10 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft                                                    Akamai
 Intended status: Standards Track                              P. McManus
-Expires: November 16, 2015                                       Mozilla
+Expires: November 21, 2015                                       Mozilla
                                                               J. Reschke
                                                               greenbytes
-                                                            May 15, 2015
+                                                            May 20, 2015
 
 
                        HTTP Alternative Services
@@ -24,10 +24,13 @@ Abstract
 Editorial Note (To be removed by RFC Editor)
 
    Discussion of this draft takes place on the HTTPBIS working group
-   mailing list (ietf-http-wg@w3.org), which is archived at [1].
+   mailing list (ietf-http-wg@w3.org), which is archived at
+   <https://lists.w3.org/Archives/Public/ietf-http-wg/>.
 
-   Working Group information can be found at [2] and [3]; source code
-   and issues list for this draft can be found at [4].
+   Working Group information can be found at <https://tools.ietf.org/wg/
+   httpbis/> and <http://httpwg.github.io/>; source code and issues list
+   for this draft can be found at <https://github.com/httpwg/http-
+   extensions>.
 
    The changes in this draft are summarized in Appendix A.
 
@@ -46,14 +49,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on November 16, 2015.
+   This Internet-Draft will expire on November 21, 2015.
 
 
 
-
-
-
-Nottingham, et al.      Expires November 16, 2015               [Page 1]
+Nottingham, et al.      Expires November 21, 2015               [Page 1]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -100,28 +100,27 @@ Table of Contents
    10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
      10.1.  Normative References . . . . . . . . . . . . . . . . . .  15
      10.2.  Informative References . . . . . . . . . . . . . . . . .  16
-     10.3.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .  16
    Appendix A.  Change Log (to be removed by RFC Editor before
-                publication) . . . . . . . . . . . . . . . . . . . .  18
-     A.1.  Since draft-nottingham-httpbis-alt-svc-05 . . . . . . . .  18
-     A.2.  Since draft-ietf-httpbis-alt-svc-00 . . . . . . . . . . .  18
-     A.3.  Since draft-ietf-httpbis-alt-svc-01 . . . . . . . . . . .  18
+                publication) . . . . . . . . . . . . . . . . . . . .  17
+     A.1.  Since draft-nottingham-httpbis-alt-svc-05 . . . . . . . .  17
+     A.2.  Since draft-ietf-httpbis-alt-svc-00 . . . . . . . . . . .  17
+     A.3.  Since draft-ietf-httpbis-alt-svc-01 . . . . . . . . . . .  17
+     A.4.  Since draft-ietf-httpbis-alt-svc-02 . . . . . . . . . . .  17
 
 
 
-Nottingham, et al.      Expires November 16, 2015               [Page 2]
+Nottingham, et al.      Expires November 21, 2015               [Page 2]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
 
-     A.4.  Since draft-ietf-httpbis-alt-svc-02 . . . . . . . . . . .  18
-     A.5.  Since draft-ietf-httpbis-alt-svc-03 . . . . . . . . . . .  18
-     A.6.  Since draft-ietf-httpbis-alt-svc-04 . . . . . . . . . . .  19
-     A.7.  Since draft-ietf-httpbis-alt-svc-05 . . . . . . . . . . .  19
-     A.8.  Since draft-ietf-httpbis-alt-svc-06 . . . . . . . . . . .  19
-     A.9.  Since draft-ietf-httpbis-alt-svc-07 . . . . . . . . . . .  19
+     A.5.  Since draft-ietf-httpbis-alt-svc-03 . . . . . . . . . . .  17
+     A.6.  Since draft-ietf-httpbis-alt-svc-04 . . . . . . . . . . .  18
+     A.7.  Since draft-ietf-httpbis-alt-svc-05 . . . . . . . . . . .  18
+     A.8.  Since draft-ietf-httpbis-alt-svc-06 . . . . . . . . . . .  18
+     A.9.  Since draft-ietf-httpbis-alt-svc-07 . . . . . . . . . . .  18
    Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  19
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  20
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  19
 
 1.  Introduction
 
@@ -165,7 +164,8 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 16, 2015               [Page 3]
+
+Nottingham, et al.      Expires November 21, 2015               [Page 3]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -221,7 +221,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 16, 2015               [Page 4]
+Nottingham, et al.      Expires November 21, 2015               [Page 4]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -277,7 +277,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 16, 2015               [Page 5]
+Nottingham, et al.      Expires November 21, 2015               [Page 5]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -333,7 +333,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 16, 2015               [Page 6]
+Nottingham, et al.      Expires November 21, 2015               [Page 6]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -389,7 +389,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 16, 2015               [Page 7]
+Nottingham, et al.      Expires November 21, 2015               [Page 7]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -445,7 +445,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 16, 2015               [Page 8]
+Nottingham, et al.      Expires November 21, 2015               [Page 8]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -501,7 +501,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 16, 2015               [Page 9]
+Nottingham, et al.      Expires November 21, 2015               [Page 9]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -557,7 +557,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 16, 2015              [Page 10]
+Nottingham, et al.      Expires November 21, 2015              [Page 10]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -613,7 +613,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 16, 2015              [Page 11]
+Nottingham, et al.      Expires November 21, 2015              [Page 11]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -644,7 +644,8 @@ Internet-Draft          HTTP Alternative Services               May 2015
 7.1.  Header Field Registrations
 
    HTTP header fields are registered within the "Message Headers"
-   registry maintained at [5].
+   registry maintained at <https://www.iana.org/assignments/message-
+   headers/>.
 
    This document defines the following HTTP header fields, so their
    associated registry entries shall be added according to the permanent
@@ -665,14 +666,15 @@ Internet-Draft          HTTP Alternative Services               May 2015
    This document registers the ALTSVC frame type in the HTTP/2 Frame
    Types registry ([RFC7540], Section 11.2).
 
-      Frame Type: ALTSVC
 
 
 
-Nottingham, et al.      Expires November 16, 2015              [Page 12]
+Nottingham, et al.      Expires November 21, 2015              [Page 12]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
+
+      Frame Type: ALTSVC
 
       Code: 0xa
 
@@ -723,9 +725,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-
-
-Nottingham, et al.      Expires November 16, 2015              [Page 13]
+Nottingham, et al.      Expires November 21, 2015              [Page 13]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -781,7 +781,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 16, 2015              [Page 14]
+Nottingham, et al.      Expires November 21, 2015              [Page 14]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -837,7 +837,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-Nottingham, et al.      Expires November 16, 2015              [Page 15]
+Nottingham, et al.      Expires November 21, 2015              [Page 15]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -852,53 +852,30 @@ Internet-Draft          HTTP Alternative Services               May 2015
               (TLS) Protocol Version 1.2", RFC 5246, August 2008,
               <http://www.rfc-editor.org/info/rfc5246>.
 
-10.3.  URIs
 
-   [1] https://www.iana.org/assignments/message-headers/
 
-   [2] https://github.com/http2/http2-spec/issues/446
 
-   [3] https://github.com/http2/http2-spec/issues/502
 
-   [4] https://github.com/http2/http2-spec/pull/503
 
-   [5] https://github.com/http2/http2-spec/pull/507
 
-   [6] https://github.com/httpwg/http-extensions/issues/5
 
-   [7] https://github.com/httpwg/http-extensions/issues/2
 
-   [8] https://github.com/httpwg/http-extensions/issues/17
 
-   [9] https://github.com/httpwg/http-extensions/issues/19
 
-   [10] https://github.com/httpwg/http-extensions/issues/34
 
-   [11] https://github.com/httpwg/http-extensions/issues/36
 
-   [12] https://github.com/httpwg/http-extensions/issues/37
 
-   [13] https://github.com/httpwg/http-extensions/issues/34
 
-   [14] https://github.com/httpwg/http-extensions/issues/38
 
-   [15] https://github.com/httpwg/http-extensions/issues/12
 
-   [16] https://github.com/httpwg/http-extensions/issues/33
 
-   [17] https://github.com/httpwg/http-extensions/issues/44
 
-   [18] https://github.com/httpwg/http-extensions/pull/61
 
 
 
 
-Nottingham, et al.      Expires November 16, 2015              [Page 16]
-
-Internet-Draft          HTTP Alternative Services               May 2015
 
 
-   [19] https://github.com/httpwg/http-extensions/issues/65
 
 
 
@@ -916,40 +893,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Nottingham, et al.      Expires November 16, 2015              [Page 17]
+Nottingham, et al.      Expires November 21, 2015              [Page 16]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
@@ -967,84 +911,104 @@ A.2.  Since draft-ietf-httpbis-alt-svc-00
    Selected 421 as proposed status code for "Not Authoritative".
 
    Changed header field syntax to use percent-encoding of ALPN protocol
-   names ([6]).
+   names (<https://github.com/http2/http2-spec/issues/446>).
 
 A.3.  Since draft-ietf-httpbis-alt-svc-01
 
    Updated HTTP/1.1 references.
 
    Renamed "Service" to "Alt-Svc-Used" and reduced information to a flag
-   to address fingerprinting concerns ([7]).
+   to address fingerprinting concerns (<https://github.com/http2/http2-
+   spec/issues/502>).
 
-   Note that ALTSVC frame is preferred to Alt-Svc header field ([8]).
+   Note that ALTSVC frame is preferred to Alt-Svc header field
+   (<https://github.com/http2/http2-spec/pull/503>).
 
-   Incorporate ALTSRV frame ([9]).
+   Incorporate ALTSRV frame (<https://github.com/http2/http2-spec/
+   pull/507>).
 
    Moved definition of status code 421 to HTTP/2.
 
-   Partly resolved [10].
+   Partly resolved <https://github.com/httpwg/http-extensions/issues/5>.
 
 A.4.  Since draft-ietf-httpbis-alt-svc-02
 
    Updated ALPN reference.
 
-   Resolved [11].
+   Resolved <https://github.com/httpwg/http-extensions/issues/2>.
 
 A.5.  Since draft-ietf-httpbis-alt-svc-03
 
-   Renamed "Alt-Svc-Used" to "Alt-Used" ([12]).
+   Renamed "Alt-Svc-Used" to "Alt-Used" (<https://github.com/httpwg/
+   http-extensions/issues/17>).
 
-   Clarify ALTSVC Origin information requirements ([13]).
-
-   Remove/tune language with respect to tracking risks (see [14]).
-
-
+   Clarify ALTSVC Origin information requirements
+   (<https://github.com/httpwg/http-extensions/issues/19>).
 
 
 
 
 
-
-Nottingham, et al.      Expires November 16, 2015              [Page 18]
+Nottingham, et al.      Expires November 21, 2015              [Page 17]
 
 Internet-Draft          HTTP Alternative Services               May 2015
 
 
+   Remove/tune language with respect to tracking risks (see
+   <https://github.com/httpwg/http-extensions/issues/34>).
+
 A.6.  Since draft-ietf-httpbis-alt-svc-04
 
    Mention tracking by alt-svc host name in Security Considerations
-   ([15]).
+   (<https://github.com/httpwg/http-extensions/issues/36>).
 
    "421 (Not Authoritative)" -> "421 (Misdirected Request)".
 
    Allow the frame to carry multiple indicator and use the same payload
-   formats for both ([16]).
+   formats for both (<https://github.com/httpwg/http-extensions/
+   issues/37>).
 
 A.7.  Since draft-ietf-httpbis-alt-svc-05
 
    Go back to specifying the origin in Alt-Used, but make it a "SHOULD"
-   ([17]).
+   (<https://github.com/httpwg/http-extensions/issues/34>).
 
-   Restore Origin field in ALT-SVC frame ([18]).
+   Restore Origin field in ALT-SVC frame (<https://github.com/httpwg/
+   http-extensions/issues/38>).
 
 A.8.  Since draft-ietf-httpbis-alt-svc-06
 
    Disallow use of alternative services when the protocol might not
-   carry the scheme ([19]).
+   carry the scheme (<https://github.com/httpwg/http-extensions/
+   issues/12>).
 
-   Align opp-sec and alt-svc ([20]).
+   Align opp-sec and alt-svc (<https://github.com/httpwg/http-
+   extensions/issues/33>).
 
-   alt svc frame on pushed (even and non-0) frame ([21]).
+   alt svc frame on pushed (even and non-0) frame
+   (<https://github.com/httpwg/http-extensions/issues/44>).
 
-   "browser" -> "user agent" ([22]).
+   "browser" -> "user agent" (<https://github.com/httpwg/http-
+   extensions/pull/61>).
 
-   ABNF for "parameter" ([23]).
+   ABNF for "parameter" (<https://github.com/httpwg/http-extensions/
+   issues/65>).
 
    Updated HTTP/2 reference.
 
 A.9.  Since draft-ietf-httpbis-alt-svc-07
 
    None yet.
+
+
+
+
+
+
+Nottingham, et al.      Expires November 21, 2015              [Page 18]
+
+Internet-Draft          HTTP Alternative Services               May 2015
+
 
 Appendix B.  Acknowledgements
 
@@ -1055,16 +1019,6 @@ Appendix B.  Acknowledgements
 
    The Alt-Svc header field was influenced by the design of the
    Alternate-Protocol header field in SPDY.
-
-
-
-
-
-
-Nottingham, et al.      Expires November 16, 2015              [Page 19]
-
-Internet-Draft          HTTP Alternative Services               May 2015
-
 
 Authors' Addresses
 
@@ -1107,14 +1061,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-
-
-
-
-Nottingham, et al.      Expires November 16, 2015              [Page 20]
+Nottingham, et al.      Expires November 21, 2015              [Page 19]
