@@ -323,7 +323,7 @@ ul p {
       <link rel="Chapter" title="6 Security Considerations" href="#rfc.section.6">
       <link rel="Chapter" href="#rfc.section.7" title="7 References">
       <link rel="Appendix" title="A Acknowledgements" href="#rfc.section.A">
-      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.729, 2015/05/14 13:36:11, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
+      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.717, 2015/03/23 17:14:43, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
       <meta name="keywords" content="Internet-Draft">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Nottingham, M.">
@@ -419,8 +419,8 @@ ul p {
             </p>
          </div>
          <div id="rfc.section.1.p.2">
-            <p>Serving <tt>https</tt> URIs require acquiring and configuring a valid certificate, which means that some deployments find supporting TLS difficult.
-               This document describes a usage model whereby sites can serve <tt>http</tt> URIs over TLS without being required to support strong server authentication.
+            <p>Currently, <tt>https</tt> URIs require acquiring and configuring a valid certificate, which means that some deployments find supporting TLS difficult.
+               Therefore, this document describes a usage model whereby sites can serve <tt>http</tt> URIs over TLS without being required to support strong server authentication.
             </p>
          </div>
          <div id="rfc.section.1.p.3">
@@ -429,7 +429,7 @@ ul p {
             </p>
          </div>
          <div id="rfc.section.1.p.4">
-            <p>By its nature, this technique is vulnerable to active attacks. A mechanism for partially mitigating them is described in <a href="#http-tls" title="Requiring Use of TLS">Section&nbsp;5</a>.
+            <p>By its nature, this technique is vulnerable to active attacks. A mechanism for partially mitigating them is described in <a href="#http-tls" title="Requiring Use of TLS">Section&nbsp;5</a>. It does not offer the same level of protection as afforded to <tt>https</tt> URIs, but increases the likelihood that an active attack be detected.
             </p>
          </div>
          <div id="goals-and-non-goals">
@@ -444,8 +444,8 @@ ul p {
                </p>
             </div>
             <div id="rfc.section.1.1.p.3">
-               <p>A final (but significant) goal is to provide for ease of implementation, deployment and operation. This mechanism is expected
-                  to have a minimal impact upon performance, and a trivial administrative effort to configure.
+               <p>A final (but significant) goal is to provide for ease of implementation, deployment and operation. This mechanism should have
+                  a minimal impact upon performance, and should not require extensive administrative effort to configure.
                </p>
             </div>
          </div>
@@ -470,7 +470,7 @@ ul p {
          </div>
          <div id="rfc.section.2.p.3">
             <p>A client that places the importance of protection against passive attacks over performance might choose to withhold requests
-               until an encrypted connection is available. However, if such a connection cannot be successfully established, the client can
+               until an encrypted connection is available. However, if such a connection cannot be successfully established, the client MAY
                resume its use of the cleartext connection.
             </p>
          </div>
@@ -491,7 +491,7 @@ ul p {
          </div>
          <div id="rfc.section.3.p.2">
             <p>When connecting to an alternative service for an <tt>http</tt> URI, clients are not required to perform the server authentication procedure described in Section 3.1 of <a href="#RFC2818"><cite title="HTTP Over TLS">[RFC2818]</cite></a>. The server certificate, if one is proffered by the alternative service, is not necessarily checked for validity, expiration,
-               issuance by a trusted certificate authority or matched against the name in the URI. Therefore, the alternative service can
+               issuance by a trusted certificate authority or matched against the name in the URI. Therefore, the alternative service MAY
                provide any certificate, or even select TLS cipher suites that do not include authentication.
             </p>
          </div>
@@ -510,7 +510,7 @@ ul p {
       <div id="interaction-with-https-uris">
          <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a>&nbsp;<a href="#interaction-with-https-uris">Interaction with “https” URIs</a></h1>
          <div id="rfc.section.4.p.1">
-            <p>When using alternative services, requests for resources identified by both <tt>http</tt> and <tt>https</tt> URIs might use the same connection, because HTTP/2 permits requests for multiple origins on the same connection.
+            <p>When using alternative services, both <tt>http</tt> and <tt>https</tt> URIs might use the same connection, because HTTP/2 permits requests for multiple origins on the same connection.
             </p>
          </div>
          <div id="rfc.section.4.p.2">
@@ -530,14 +530,14 @@ ul p {
                attack. It’s unclear at this point whether the additional effort (and modest operational cost) is worthwhile.
             </p>
          </div>
-         <div id="rfc.section.5.p.2" class="avoidbreakafter">
+         <div id="rfc.section.5.p.2">
             <p>The mechanism described in this specification is trivial to mount an active attack against, for two reasons:</p>
          </div>
          <div id="rfc.section.5.p.3">
             <ul>
                <li>A client that doesn’t perform authentication is an easy victim of server impersonation, through man-in-the-middle attacks.</li>
-               <li>A client that is willing to use HTTP over cleartext to resolve the resource will do so if access to any TLS-enabled alternative
-                  services is blocked at the network layer.
+               <li>A client that is willing to use cleartext to resolve the resource will do so if access to any TLS-enabled alternative services
+                  is blocked at the network layer.
                </li>
             </ul>
          </div>
@@ -555,8 +555,8 @@ ul p {
          </div>
          <div id="the-http-tls-header-field">
             <h2 id="rfc.section.5.1"><a href="#rfc.section.5.1">5.1</a>&nbsp;<a href="#the-http-tls-header-field">The HTTP-TLS Header Field</a></h2>
-            <div id="rfc.section.5.1.p.1" class="avoidbreakafter">
-               <p>A alternative service can make this commitment by sending a <tt>HTTP-TLS</tt> header field, described here using the ‘#’ ABNF extension defined in Section 7 of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>:
+            <div id="rfc.section.5.1.p.1">
+               <p>A alternative service can make this commitment by sending a <tt>HTTP-TLS</tt> header field:
                </p>
             </div>
             <div id="rfc.figure.u.1"><pre>
@@ -568,7 +568,7 @@ HTTP-TLS     = 1#parameter
                   to cleartext protocols while this information is considered fresh.
                </p>
             </div>
-            <div id="rfc.section.5.1.p.3" class="avoidbreakafter">
+            <div id="rfc.section.5.1.p.3">
                <p>For example:</p>
             </div>
             <div id="rfc.figure.u.2"><pre>
@@ -578,7 +578,7 @@ Host: example.com
 
 HTTP/1.1 200 OK
 Content-Type: text/html
-Cache-Control: max-age=600
+Cache-Control: 600
 Age: 30
 Date: Thu, 1 May 2014 16:20:09 GMT
 HTTP-TLS: ma=3600
@@ -589,7 +589,7 @@ HTTP-TLS: ma=3600
                </p>
             </div>
             <div id="rfc.section.5.1.p.5">
-               <p>Authentication for HTTP over TLS is described in Section 3.1 of <a href="#RFC2818"><cite title="HTTP Over TLS">[RFC2818]</cite></a>, noting the additional requirements in Section 2.1 of <a href="#I-D.ietf-httpbis-alt-svc"><cite title="HTTP Alternative Services">[I-D.ietf-httpbis-alt-svc]</cite></a>. The header field MUST be ignored if strong authentication fails; otherwise, an attacker could create a persistent denial
+               <p>Authentication for HTTP over TLS is described in Section 3.1 of <a href="#RFC2818"><cite title="HTTP Over TLS">[RFC2818]</cite></a>, noting the additional requirements in <a href="#I-D.ietf-httpbis-alt-svc"><cite title="HTTP Alternative Services">[I-D.ietf-httpbis-alt-svc]</cite></a>. The header field MUST be ignored if strong authentication fails; otherwise, an attacker could create a persistent denial
                   of service by falsifying a commitment.
                </p>
             </div>
@@ -601,14 +601,10 @@ HTTP-TLS: ma=3600
 ma-parameter     = delta-seconds
 </pre></div>
             <div id="rfc.section.5.1.p.7">
-               <p>The commitment made by the <tt>HTTP-TLS</tt> header field applies only to the origin of the resource that generates the <tt>HTTP-TLS</tt> header field.
+               <p>The commitment made by the <tt>HTTP-TLS</tt> header field applies only to the origin of the resource that generates the <tt>HTTP-TLS</tt> header field. Requests for an origin that has a persisted, unexpired value for <tt>HTTP-TLS</tt> MUST fail if they cannot be made over an authenticated TLS connection.
                </p>
             </div>
             <div id="rfc.section.5.1.p.8">
-               <p>Requests for an origin that has a persisted, unexpired value for <tt>HTTP-TLS</tt> MUST fail if they cannot be made over an authenticated TLS connection.
-               </p>
-            </div>
-            <div id="rfc.section.5.1.p.9">
                <p>Note that the commitment is not bound to a particular alternative service. Clients SHOULD use alternative services that they
                   become aware of. However, clients MUST NOT use an unauthenticated alternative service for an origin with this commitment.
                   Where there is an active commitment, clients MAY instead ignore advertisements for unsecured alternatives services.
@@ -624,7 +620,7 @@ ma-parameter     = delta-seconds
                </p>
             </div>
             <div id="rfc.section.5.2.p.2">
-               <p>Once a server has indicated that it will support authenticated TLS, a client MAY use key pinning <a href="#RFC7469"><cite title="Public Key Pinning Extension for HTTP">[RFC7469]</cite></a> or any other mechanism that would otherwise be restricted to use with “https” URIs, provided that the mechanism can be restricted
+               <p>Once a server has indicated that it will support authenticated TLS, a client MAY use key pinning <a href="#I-D.ietf-websec-key-pinning"><cite title="Public Key Pinning Extension for HTTP">[I-D.ietf-websec-key-pinning]</cite></a> or any other mechanism that would otherwise be restricted to use with “https” URIs, provided that the mechanism can be restricted
                   to a single HTTP origin.
                </p>
             </div>
@@ -694,6 +690,11 @@ ma-parameter     = delta-seconds
             </td>
          </tr>
          <tr>
+            <td class="reference"><b id="I-D.ietf-websec-key-pinning">[I-D.ietf-websec-key-pinning]</b></td>
+            <td class="top">Evans, C., Palmer, C., and R. Sleevi, “<a href="https://tools.ietf.org/html/draft-ietf-websec-key-pinning-21">Public Key Pinning Extension for HTTP</a>”, Internet-Draft&nbsp;draft-ietf-websec-key-pinning-21 (work in progress), October&nbsp;2014.
+            </td>
+         </tr>
+         <tr>
             <td class="reference"><b id="RFC2119">[RFC2119]</b></td>
             <td class="top"><a href="mailto:sob@harvard.edu">Bradner, S.</a>, “<a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>”, BCP&nbsp;14, RFC&nbsp;2119, March&nbsp;1997, &lt;<a href="http://www.rfc-editor.org/info/rfc2119">http://www.rfc-editor.org/info/rfc2119</a>&gt;.
             </td>
@@ -714,18 +715,8 @@ ma-parameter     = delta-seconds
             </td>
          </tr>
          <tr>
-            <td class="reference"><b id="RFC7230">[RFC7230]</b></td>
-            <td class="top">Fielding, R. and J. Reschke, “<a href="https://tools.ietf.org/html/rfc7230">Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</a>”, RFC&nbsp;7230, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7230">http://www.rfc-editor.org/info/rfc7230</a>&gt;.
-            </td>
-         </tr>
-         <tr>
             <td class="reference"><b id="RFC7234">[RFC7234]</b></td>
             <td class="top">Fielding, R., Nottingham, M., and J. Reschke, “<a href="https://tools.ietf.org/html/rfc7234">Hypertext Transfer Protocol (HTTP/1.1): Caching</a>”, RFC&nbsp;7234, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7234">http://www.rfc-editor.org/info/rfc7234</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC7469">[RFC7469]</b></td>
-            <td class="top">Evans, C., Palmer, C., and R. Sleevi, “<a href="https://tools.ietf.org/html/rfc7469">Public Key Pinning Extension for HTTP</a>”, RFC&nbsp;7469, April&nbsp;2015, &lt;<a href="http://www.rfc-editor.org/info/rfc7469">http://www.rfc-editor.org/info/rfc7469</a>&gt;.
             </td>
          </tr>
       </table>

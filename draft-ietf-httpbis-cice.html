@@ -493,7 +493,7 @@ ul p {
       <link rel="Chapter" href="#rfc.section.8" title="8 References">
       <link rel="Appendix" title="A Change Log (to be removed by RFC Editor before publication)" href="#rfc.section.A">
       <link rel="Appendix" title="Acknowledgements" href="#rfc.section.unnumbered-1">
-      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.729, 2015/05/14 13:36:11, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
+      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.717, 2015/03/23 17:14:43, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
       <meta name="keywords" content="HTTP, content-encoding">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Reschke, J. F.">
@@ -647,7 +647,7 @@ ul p {
       </div>
       <div id="example">
          <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a>&nbsp;<a href="#example">Example</a></h1>
-         <div id="rfc.section.4.p.1" class="avoidbreakafter">
+         <div id="rfc.section.4.p.1">
             <p>Client submits a POST request using Content-Encoding "compress" (<a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, <a href="rfc7231.html#content.codings" title="Content Codings">Section 3.1.2.1</a>):
             </p>
          </div>
@@ -658,7 +658,7 @@ Content-Encoding: compress
 
 ...compressed payload...
 </pre></div>
-         <div id="rfc.section.4.p.2" class="avoidbreakafter">
+         <div id="rfc.section.4.p.2">
             <p>Server rejects request because it only allows the "gzip" content coding:</p>
          </div>
          <div id="rfc.figure.u.2"><pre class="text">HTTP/1.1 415 Unsupported Media Type
@@ -672,7 +672,7 @@ Content-Type: text/plain
          <div id="rfc.section.4.p.3">
             <p>...at which point the client can retry the request with the supported "gzip" content coding.</p>
          </div>
-         <div id="rfc.section.4.p.4" class="avoidbreakafter">
+         <div id="rfc.section.4.p.4">
             <p>Alternatively, a server that does not support any content codings in requests could answer with:</p>
          </div>
          <div id="rfc.figure.u.3"><pre class="text">HTTP/1.1 415 Unsupported Media Type
@@ -712,7 +712,7 @@ Content-Type: text/plain
             <p>HTTP header fields are registered within the "Message Headers" registry located at &lt;<a href="http://www.iana.org/assignments/message-headers">http://www.iana.org/assignments/message-headers</a>&gt;, as defined by <a href="#BCP90"><cite title="Registration Procedures for Message Header Fields">[BCP90]</cite></a>.
             </p>
          </div>
-         <div id="rfc.section.7.p.2" class="avoidbreakafter">
+         <div id="rfc.section.7.p.2">
             <p>This document updates the definition of the "Accept-Encoding" header field, so the "Permanent Message Header Field Names"
                registry shall be updated accordingly:
             </p>
