@@ -492,10 +492,10 @@ ul p {
       <link rel="Chapter" title="7 IANA Considerations" href="#rfc.section.7">
       <link rel="Chapter" title="8 Internationalization Considerations" href="#rfc.section.8">
       <link rel="Chapter" title="9 Security Considerations" href="#rfc.section.9">
-      <link rel="Chapter" title="10 Acknowledgements" href="#rfc.section.10">
-      <link rel="Chapter" href="#rfc.section.11" title="11 References">
+      <link rel="Chapter" href="#rfc.section.10" title="10 References">
       <link rel="Appendix" title="A Change Log (to be removed by RFC Editor before publication)" href="#rfc.section.A">
-      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.717, 2015/03/23 17:14:43, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
+      <link rel="Appendix" title="Acknowledgements" href="#rfc.section.unnumbered-1">
+      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.729, 2015/05/14 13:36:11, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
       <meta name="keywords" content="HTTP, ALPN, Alternative Services">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Nottingham, M.">
@@ -605,12 +605,12 @@ ul p {
                   <li><a href="#rfc.section.9.2">9.2</a>&nbsp;&nbsp;&nbsp;<a href="#host_security">Changing Hosts</a></li>
                   <li><a href="#rfc.section.9.3">9.3</a>&nbsp;&nbsp;&nbsp;<a href="#changing-protocols">Changing Protocols</a></li>
                   <li><a href="#rfc.section.9.4">9.4</a>&nbsp;&nbsp;&nbsp;<a href="#tracking">Tracking Clients Using Alternative Services</a></li>
+                  <li><a href="#rfc.section.9.5">9.5</a>&nbsp;&nbsp;&nbsp;<a href="#confusion-regarding-request-scheme">Confusion Regarding Request Scheme</a></li>
                </ul>
             </li>
-            <li><a href="#rfc.section.10">10.</a>&nbsp;&nbsp;&nbsp;<a href="#acknowledgements">Acknowledgements</a></li>
-            <li><a href="#rfc.section.11">11.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references">References</a><ul>
-                  <li><a href="#rfc.section.11.1">11.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.1">Normative References</a></li>
-                  <li><a href="#rfc.section.11.2">11.2</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.2">Informative References</a></li>
+            <li><a href="#rfc.section.10">10.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references">References</a><ul>
+                  <li><a href="#rfc.section.10.1">10.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.1">Normative References</a></li>
+                  <li><a href="#rfc.section.10.2">10.2</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.2">Informative References</a></li>
                </ul>
             </li>
             <li><a href="#rfc.section.A">A.</a>&nbsp;&nbsp;&nbsp;<a href="#change.log">Change Log (to be removed by RFC Editor before publication)</a><ul>
@@ -622,8 +622,10 @@ ul p {
                   <li><a href="#rfc.section.A.6">A.6</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-04">Since draft-ietf-httpbis-alt-svc-04</a></li>
                   <li><a href="#rfc.section.A.7">A.7</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-05">Since draft-ietf-httpbis-alt-svc-05</a></li>
                   <li><a href="#rfc.section.A.8">A.8</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-06">Since draft-ietf-httpbis-alt-svc-06</a></li>
+                  <li><a href="#rfc.section.A.9">A.9</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-07">Since draft-ietf-httpbis-alt-svc-07</a></li>
                </ul>
             </li>
+            <li><a href="#acknowledgements">Acknowledgements</a></li>
             <li><a href="#rfc.authors">Authors' Addresses</a></li>
          </ul>
       </div>
@@ -631,7 +633,7 @@ ul p {
          <li>Figures
             
             <ul>
-               <li><a href="#rfc.figure.u.10">ALTSVC Frame Payload</a></li>
+               <li><a href="#rfc.figure.u.11">ALTSVC Frame Payload</a></li>
             </ul>
          </li>
       </ul>
@@ -653,7 +655,7 @@ ul p {
                <li>An origin server might wish to redirect a client to a different server when it needs to go down for maintenance, or it has
                   found a server in a location that is more local to the client.
                </li>
-               <li>An origin server might wish to offer access to its resources using a new protocol (such as HTTP/2, see <a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>) or one using improved security (such as Transport Layer Security (TLS), see <a href="#RFC5246"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite></a>).
+               <li>An origin server might wish to offer access to its resources using a new protocol (such as HTTP/2, see <a href="#RFC7540"><cite title="Hypertext Transfer Protocol version 2">[RFC7540]</cite></a>) or one using improved security (such as Transport Layer Security (TLS), see <a href="#RFC5246"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite></a>).
                </li>
                <li>An origin server might wish to segment its clients into groups of capabilities, such as those supporting Server Name Indication
                   (SNI, see <a href="https://tools.ietf.org/html/rfc6066#section-3">Section 3</a> of <a href="#RFC6066"><cite title="Transport Layer Security (TLS) Extensions: Extension Definitions">[RFC6066]</cite></a>) and those not supporting it, for operational purposes.
@@ -662,7 +664,7 @@ ul p {
          </div>
          <div id="rfc.section.1.p.4">
             <p>This specification defines a new concept in HTTP, "Alternative Services", that allows an origin server to nominate additional
-               means of interacting with it on the network. It defines a general framework for this in <a href="#alternative" title="Alternative Services Concepts">Section&nbsp;2</a>, along with specific mechanisms for advertising their existence using HTTP header fields (<a href="#alt-svc" title="The Alt-Svc HTTP Header Field">Section&nbsp;3</a>) or an HTTP/2 frame type (<a href="#frame" title="The ALTSVC HTTP/2 Frame">Section&nbsp;4</a>).
+               means of interacting with it on the network. It defines a general framework for this in <a href="#alternative" title="Alternative Services Concepts">Section&nbsp;2</a>, along with specific mechanisms for advertising their existence using HTTP header fields (<a href="#alt-svc" title="The Alt-Svc HTTP Header Field">Section&nbsp;3</a>) or HTTP/2 frames (<a href="#frame" title="The ALTSVC HTTP/2 Frame">Section&nbsp;4</a>), plus a way to indicate that an alternative service was used (<a href="#indicator" title="The Alt-Used HTTP Header Field">Section&nbsp;5</a>).
             </p>
          </div>
          <div id="rfc.section.1.p.5">
@@ -677,10 +679,19 @@ ul p {
                   in this document are to be interpreted as described in <a href="#RFC2119"><cite title="Key words for use in RFCs to Indicate Requirement Levels">[RFC2119]</cite></a>.
                </p>
             </div>
-            <div id="rfc.section.1.1.p.2">
-               <p>This document uses the Augmented BNF defined in <a href="#RFC5234"><cite title="Augmented BNF for Syntax Specifications: ABNF">[RFC5234]</cite></a> along with the "OWS", "delta-seconds", "parameter", "port", "quoted-string", "token", and "uri-host" rules from <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, and uses the "#rule" extension defined in <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#abnf.extension" title="ABNF List Extension: #rule">Section 7</a> of that document.
-               </p>
+            <div id="imported.abnf" class="avoidbreakafter">
+               <div id="rfc.section.1.1.p.2">
+                  <p>      This document uses the Augmented BNF defined in <a href="#RFC5234"><cite title="Augmented BNF for Syntax Specifications: ABNF">[RFC5234]</cite></a> along with the "#rule" extension defined in <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#abnf.extension" title="ABNF List Extension: #rule">Section 7</a> of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>. The rules below are defined in <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a> and <a href="#RFC7234"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Caching">[RFC7234]</cite></a>:
+                  </p>
+               </div>
             </div>
+            <div id="rfc.figure.u.1"><pre class="inline">OWS           = &lt;OWS, see <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#whitespace" title="Whitespace">Section 3.2.3</a>&gt;
+delta-seconds = &lt;delta-seconds; see <a href="#RFC7234"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Caching">[RFC7234]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7234.html#delta-seconds" title="Delta Seconds">Section 1.2.1</a>&gt;
+port          = &lt;port, see <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#uri" title="Uniform Resource Identifiers">Section 2.7</a>&gt;
+quoted-string = &lt;quoted-string, see <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#field.components" title="Field Value Components">Section 3.2.6</a>&gt;
+token         = &lt;token, see <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#field.components" title="Field Value Components">Section 3.2.6</a>&gt;
+uri-host      = &lt;uri-host, see <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#uri" title="Uniform Resource Identifiers">Section 2.7</a>&gt;
+</pre></div>
          </div>
       </div>
       <div id="alternative">
@@ -696,10 +707,10 @@ ul p {
                in the sense of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#establishing.authority" title="Establishing Authority">Section 9.1</a>.
             </p>
          </div>
-         <div id="rfc.figure.u.1">
+         <div id="rfc.figure.u.2">
             <p>For example, an origin:</p><pre class="text">("http", "www.example.com", "80")
 </pre></div>
-         <div id="rfc.figure.u.2">
+         <div id="rfc.figure.u.3">
             <p>might declare that its resources are also accessible at the alternative service:</p><pre class="text">("h2", "new.example.com", "81")
 </pre></div>
          <div id="rfc.section.2.p.3">
@@ -728,8 +739,8 @@ ul p {
             </p>
          </div>
          <div id="rfc.section.2.p.7">
-            <p>Importantly, this includes its security context; in particular, when TLS <a href="#RFC5246"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite></a> is in use, the alternative service will need to present a certificate for the origin's host name, not that of the alternative.
-               Likewise, the Host header field (<a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#header.host" title="Host">Section 5.4</a>) is still derived from the origin, not the alternative service (just as it would if a CNAME were being used).
+            <p>Importantly, this includes its security context; in particular, when TLS <a href="#RFC5246"><cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite></a> is used to authenticate, the alternative service will need to present a certificate for the origin's host name, not that of
+               the alternative. Likewise, the Host header field (<a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#header.host" title="Host">Section 5.4</a>) is still derived from the origin, not the alternative service (just as it would if a CNAME were being used).
             </p>
          </div>
          <div id="rfc.section.2.p.8">
@@ -853,10 +864,11 @@ ul p {
                to responses.
             </p>
          </div>
-         <div id="rfc.figure.u.3"><pre class="inline">Alt-Svc       = 1#( alternative *( OWS ";" OWS parameter ) )
+         <div id="rfc.figure.u.4"><pre class="inline">Alt-Svc       = 1#( alternative *( OWS ";" OWS parameter ) )
 alternative   = protocol-id "=" alt-authority
-protocol-id   = token ; percent-encoded ALPN protocol identifier
-alt-authority = quoted-string ; containing [ uri-host ] ":" port
+protocol-id   = <a href="#imported.abnf" class="smpl">token</a> ; percent-encoded ALPN protocol identifier
+alt-authority = <a href="#imported.abnf" class="smpl">quoted-string</a> ; containing [ <a href="#imported.abnf" class="smpl">uri-host</a> ] ":" <a href="#imported.abnf" class="smpl">port</a>
+parameter     = <a href="#imported.abnf" class="smpl">token</a> "=" ( <a href="#imported.abnf" class="smpl">token</a> / <a href="#imported.abnf" class="smpl">quoted-string</a> )
 </pre></div>
          <div id="rfc.section.3.p.2">
             <p>ALPN protocol names are octet sequences with no additional constraints on format. Octets not allowed in tokens (<a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#field.components" title="Field Value Components">Section 3.2.6</a>) <em class="bcp14">MUST</em> be percent-encoded as per <a href="https://tools.ietf.org/html/rfc3986#section-2.1">Section 2.1</a> of <a href="#RFC3986"><cite title="Uniform Resource Identifier (URI): Generic Syntax">[RFC3986]</cite></a>. Consequently, the octet representing the percent character "%" (hex 25) <em class="bcp14">MUST</em> be percent-encoded as well.
@@ -878,12 +890,12 @@ alt-authority = quoted-string ; containing [ uri-host ] ":" port
             <p>The "alt-authority" component consists of an <em class="bcp14">OPTIONAL</em> uri-host ("host" in <a href="https://tools.ietf.org/html/rfc3986#section-3.2.2">Section 3.2.2</a> of <a href="#RFC3986"><cite title="Uniform Resource Identifier (URI): Generic Syntax">[RFC3986]</cite></a>), a colon (":"), and a port number.
             </p>
          </div>
-         <div id="rfc.figure.u.4">
+         <div id="rfc.figure.u.5">
             <p>For example:</p><pre class="text">Alt-Svc: h2=":8000"
-</pre><p>This indicates the "h2" protocol (<a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>) on the same host using the indicated port 8000.
+</pre><p>This indicates the "h2" protocol (<a href="#RFC7540"><cite title="Hypertext Transfer Protocol version 2">[RFC7540]</cite></a>) on the same host using the indicated port 8000.
             </p>
          </div>
-         <div id="rfc.figure.u.5">
+         <div id="rfc.figure.u.6">
             <p>An example involving a change of host:</p><pre class="text">Alt-Svc: h2="new.example.org:80"
 </pre><p>This indicates the "h2" protocol on the host "new.example.org", running on port 80. Note that the "quoted-string" syntax needs
                to be used because ":" is not an allowed character in "token".
@@ -922,7 +934,7 @@ alt-authority = quoted-string ; containing [ uri-host ] ":" port
             <p>Alt-Svc <em class="bcp14">MAY</em> occur in any HTTP response message, regardless of the status code.
             </p>
          </div>
-         <div id="rfc.figure.u.6">
+         <div id="rfc.figure.u.7">
             <p>The Alt-Svc field value can have multiple values:</p><pre class="text">Alt-Svc: h2c=":8000", h2=":443"
 </pre></div>
          <div id="rfc.section.3.p.7">
@@ -931,7 +943,7 @@ alt-authority = quoted-string ; containing [ uri-host ] ":" port
             </p>
          </div>
          <div id="rfc.section.3.p.8">
-            <p>When using HTTP/2 (<a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>), servers <em class="bcp14">SHOULD</em> instead send an ALTSVC frame (<a href="#frame" title="The ALTSVC HTTP/2 Frame">Section&nbsp;4</a>). A single ALTSVC frame can be sent for a connection; a new frame is not needed for every request.
+            <p>When using HTTP/2 (<a href="#RFC7540"><cite title="Hypertext Transfer Protocol version 2">[RFC7540]</cite></a>), servers <em class="bcp14">SHOULD</em> instead send an ALTSVC frame (<a href="#frame" title="The ALTSVC HTTP/2 Frame">Section&nbsp;4</a>). A single ALTSVC frame can be sent for a connection; a new frame is not needed for every request.
             </p>
          </div>
          <div id="rfc.section.3.p.9">
@@ -940,23 +952,23 @@ alt-authority = quoted-string ; containing [ uri-host ] ":" port
          </div>
          <div id="caching-alt-svc-header-field-values">
             <h2 id="rfc.section.3.1"><a href="#rfc.section.3.1">3.1</a>&nbsp;<a href="#caching-alt-svc-header-field-values">Caching Alt-Svc Header Field Values</a></h2>
-            <div id="rfc.section.3.1.p.1">
+            <div id="rfc.section.3.1.p.1" class="avoidbreakafter">
                <p>When an alternative service is advertised using Alt-Svc, it is considered fresh for 24 hours from generation of the message.
-                  This can be modified with the 'ma' (max-age) parameter;
+                  This can be modified with the 'ma' (max-age) parameter:
                </p>
             </div>
-            <div id="rfc.figure.u.7"><pre class="text">Alt-Svc: h2=":443"; ma=3600
+            <div id="rfc.figure.u.8"><pre class="text">Alt-Svc: h2=":443"; ma=3600
 </pre></div>
             <div id="rfc.section.3.1.p.2">
                <p>which indicates the number of seconds since the response was generated the alternative service is considered fresh for.</p>
             </div>
-            <div id="rfc.figure.u.8"><pre class="inline">ma = delta-seconds
+            <div id="rfc.figure.u.9"><pre class="inline">ma = <a href="#imported.abnf" class="smpl">delta-seconds</a>
 </pre></div>
             <div id="rfc.section.3.1.p.3">
                <p>See <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7234.html#age.calculations" title="Calculating Age">Section 4.2.3</a> of <a href="#RFC7234"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Caching">[RFC7234]</cite></a> for details of determining response age.
                </p>
             </div>
-            <div id="rfc.figure.u.9">
+            <div id="rfc.figure.u.10">
                <p>For example, a response:</p><pre class="text">HTTP/1.1 200 OK
 Content-Type: text/html
 Cache-Control: 600
@@ -984,7 +996,7 @@ Alt-Svc: h2c=":8000"; ma=60
       <div id="frame">
          <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a>&nbsp;<a href="#frame">The ALTSVC HTTP/2 Frame</a></h1>
          <div id="rfc.section.4.p.1">
-            <p>The ALTSVC HTTP/2 frame (<a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>, <a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-16#section-4" title="HTTP Frames">Section 4</a>) advertises the availability of an alternative service to an HTTP/2 client.
+            <p>The ALTSVC HTTP/2 frame (<a href="#RFC7540"><cite title="Hypertext Transfer Protocol version 2">[RFC7540]</cite></a>, <a href="https://tools.ietf.org/html/rfc7540#section-4" title="HTTP Frames">Section 4</a>) advertises the availability of an alternative service to an HTTP/2 client.
             </p>
          </div>
          <div id="rfc.section.4.p.2">
@@ -1004,7 +1016,7 @@ Alt-Svc: h2c=":8000"; ma=60
          <div id="rfc.section.4.p.5">
             <p>The ALTSVC frame type is 0xa (decimal 10).</p>
          </div>
-         <div id="rfc.figure.u.10"><pre class="drawing"> +-------------------------------+-------------------------------+
+         <div id="rfc.figure.u.11"><pre class="drawing"> +-------------------------------+-------------------------------+
  |         Origin-Len (16)       | Origin? (*)                 ...
  +-------------------------------+-------------------------------+
  |                   Alt-Svc-Field-Value (*)                   ...
@@ -1049,7 +1061,7 @@ Alt-Svc: h2c=":8000"; ma=60
                header field (<a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#header.host" title="Host">Section 5.4</a> of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>) identifies the host and port of the origin.
             </p>
          </div>
-         <div id="rfc.figure.u.11"><pre class="inline">Alt-Used     = uri-host [ ":" port ]
+         <div id="rfc.figure.u.12"><pre class="inline">Alt-Used     = uri-host [ ":" port ]
 </pre></div>
          <div id="rfc.section.5.p.2">
             <p>Alt-Used is intended to allow alternative services to detect loops, differentiate traffic for purposes of load balancing,
@@ -1065,7 +1077,7 @@ Alt-Svc: h2c=":8000"; ma=60
             <p>As the Alt-Used header field might be used by the server for tracking the client, a client <em class="bcp14">MAY</em> choose not to include it in its requests for protecting its privacy (see <a href="#tracking" title="Tracking Clients Using Alternative Services">Section&nbsp;9.4</a>).
             </p>
          </div>
-         <div id="rfc.figure.u.12">
+         <div id="rfc.figure.u.13">
             <p>For example:</p><pre class="text2">GET /thing HTTP/1.1
 Host: origin.example.com
 Alt-Used: alternate.example.net
@@ -1079,7 +1091,7 @@ Alt-Used: alternate.example.net
       <div id="status">
          <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a>&nbsp;<a href="#status">The 421 Misdirected Request HTTP Status Code</a></h1>
          <div id="rfc.section.6.p.1">
-            <p>The 421 (Misdirected Request) status code is defined in <a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-16#section-9.1.2" title="The 421 (Misdirected Request) Status Code">Section 9.1.2</a> of <a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a> to indicate that the current server instance is not authoritative for the requested resource. This can be used to indicate
+            <p>The 421 (Misdirected Request) status code is defined in <a href="https://tools.ietf.org/html/rfc7540#section-9.1.2" title="The 421 (Misdirected Request) Status Code">Section 9.1.2</a> of <a href="#RFC7540"><cite title="Hypertext Transfer Protocol version 2">[RFC7540]</cite></a> to indicate that the current server instance is not authoritative for the requested resource. This can be used to indicate
                that an alternative service is not authoritative; see <a href="#alternative" title="Alternative Services Concepts">Section&nbsp;2</a>).
             </p>
          </div>
@@ -1101,7 +1113,7 @@ Alt-Used: alternate.example.net
                <p>HTTP header fields are registered within the "Message Headers" registry maintained at &lt;<a href="https://www.iana.org/assignments/message-headers/">https://www.iana.org/assignments/message-headers/</a>&gt;.
                </p>
             </div>
-            <div id="rfc.section.7.1.p.2">
+            <div id="rfc.section.7.1.p.2" class="avoidbreakafter">
                <p>This document defines the following HTTP header fields, so their associated registry entries shall be added according to the
                   permanent registrations below (see <a href="#BCP90"><cite title="Registration Procedures for Message Header Fields">[BCP90]</cite></a>):
                </p>
@@ -1142,7 +1154,7 @@ Alt-Used: alternate.example.net
          <div id="alt-svc-frame-registration">
             <h2 id="rfc.section.7.2"><a href="#rfc.section.7.2">7.2</a>&nbsp;<a href="#alt-svc-frame-registration">The ALTSVC HTTP/2 Frame Type</a></h2>
             <div id="rfc.section.7.2.p.1">
-               <p>This document registers the ALTSVC frame type in the HTTP/2 Frame Types registry (<a href="#HTTP2"><cite title="Hypertext Transfer Protocol version 2">[HTTP2]</cite></a>, <a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-16#section-11.2" title="Frame Type Registry">Section 11.2</a>). 
+               <p>This document registers the ALTSVC frame type in the HTTP/2 Frame Types registry (<a href="#RFC7540"><cite title="Hypertext Transfer Protocol version 2">[RFC7540]</cite></a>, <a href="https://tools.ietf.org/html/rfc7540#section-11.2" title="Frame Type Registry">Section 11.2</a>). 
                </p>
                <ul class="empty">
                   <li>Frame Type: ALTSVC</li>
@@ -1219,7 +1231,7 @@ Alt-Used: alternate.example.net
                </p>
             </div>
             <div id="rfc.section.9.3.p.2">
-               <p>For example, if a "https://" URI had a protocol advertised that does not use some form of end-to-end encryption (most likely,
+               <p>For example, if a "https://" URI has a protocol advertised that does not use some form of end-to-end encryption (most likely,
                   TLS), it violates the expectations for security that the URI scheme implies.
                </p>
             </div>
@@ -1240,32 +1252,24 @@ Alt-Used: alternate.example.net
                <p>Clients concerned by the additional fingerprinting can choose to ignore alternative service advertisements.</p>
             </div>
             <div id="rfc.section.9.4.p.3">
-               <p>In a browser, any alternative service information <em class="bcp14">MUST</em> be removed when origin-specific data is cleared (for instance, when cookies are cleared).
+               <p>In a user agent, any alternative service information <em class="bcp14">MUST</em> be removed when origin-specific data is cleared (for instance, when cookies are cleared).
+               </p>
+            </div>
+         </div>
+         <div id="confusion-regarding-request-scheme">
+            <h2 id="rfc.section.9.5"><a href="#rfc.section.9.5">9.5</a>&nbsp;<a href="#confusion-regarding-request-scheme">Confusion Regarding Request Scheme</a></h2>
+            <div id="rfc.section.9.5.p.1">
+               <p>Alternative Services <em class="bcp14">MUST NOT</em> be advertised for a protocol that is not designed to carry the scheme. In particular, HTTP/1.1 over TLS cannot carry safely
+                  requests for http resources.
                </p>
             </div>
          </div>
       </div>
-      <div id="acknowledgements">
-         <h1 id="rfc.section.10"><a href="#rfc.section.10">10.</a>&nbsp;<a href="#acknowledgements">Acknowledgements</a></h1>
-         <div id="rfc.section.10.p.1">
-            <p>Thanks to Adam Langley, Bence Beky, Eliot Lear, Erik Nygren, Guy Podjarny, Herve Ruellan, Martin Thomson, Matthew Kerwin,
-               Paul Hoffman, Richard Barnes, Stephen Farrell, Stephen Ludin, and Will Chan for their feedback and suggestions.
-            </p>
-         </div>
-         <div id="rfc.section.10.p.2">
-            <p>The Alt-Svc header field was influenced by the design of the Alternate-Protocol header field in SPDY.</p>
-         </div>
-      </div>
-      <h1 id="rfc.references"><a id="rfc.section.11" href="#rfc.section.11">11.</a> References
+      <h1 id="rfc.references"><a id="rfc.section.10" href="#rfc.section.10">10.</a> References
       </h1>
-      <h2 id="rfc.references.1"><a href="#rfc.section.11.1" id="rfc.section.11.1">11.1</a> Normative References
+      <h2 id="rfc.references.1"><a href="#rfc.section.10.1" id="rfc.section.10.1">10.1</a> Normative References
       </h2>
       <table>
-         <tr>
-            <td class="reference"><b id="HTTP2">[HTTP2]</b></td>
-            <td class="top">Belshe, M., Peon, R., and M. Thomson, Ed., “<a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-16">Hypertext Transfer Protocol version 2</a>”, Internet-Draft&nbsp;draft-ietf-httpbis-http2-16 (work in progress), November&nbsp;2014.
-            </td>
-         </tr>
          <tr>
             <td class="reference"><b id="RFC2119">[RFC2119]</b></td>
             <td class="top">Bradner, S., “<a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>”, BCP&nbsp;14, RFC&nbsp;2119, March&nbsp;1997, &lt;<a href="http://www.rfc-editor.org/info/rfc2119">http://www.rfc-editor.org/info/rfc2119</a>&gt;.
@@ -1311,8 +1315,13 @@ Alt-Used: alternate.example.net
             <td class="top">Friedl, S., Popov, A., Langley, A., and S. Emile, “<a href="https://tools.ietf.org/html/rfc7301">Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension</a>”, RFC&nbsp;7301, July&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7301">http://www.rfc-editor.org/info/rfc7301</a>&gt;.
             </td>
          </tr>
+         <tr>
+            <td class="reference"><b id="RFC7540">[RFC7540]</b></td>
+            <td class="top">Belshe, M., Peon, R., and M. Thomson, Ed., “<a href="https://tools.ietf.org/html/rfc7540">Hypertext Transfer Protocol version 2</a>”, RFC&nbsp;7540, May&nbsp;2015, &lt;<a href="http://www.rfc-editor.org/info/rfc7540">http://www.rfc-editor.org/info/rfc7540</a>&gt;.
+            </td>
+         </tr>
       </table>
-      <h2 id="rfc.references.2"><a href="#rfc.section.11.2" id="rfc.section.11.2">11.2</a> Informative References
+      <h2 id="rfc.references.2"><a href="#rfc.section.10.2" id="rfc.section.10.2">10.2</a> Informative References
       </h2>
       <table>
          <tr>
@@ -1424,9 +1433,45 @@ Alt-Used: alternate.example.net
          <div id="changes.since.draft-ietf-httpbis-alt-svc-06">
             <h2 id="rfc.section.A.8"><a href="#rfc.section.A.8">A.8</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-06">Since draft-ietf-httpbis-alt-svc-06</a></h2>
             <div id="rfc.section.A.8.p.1">
+               <p>Disallow use of alternative services when the protocol might not carry the scheme (&lt;<a href="https://github.com/httpwg/http-extensions/issues/12">https://github.com/httpwg/http-extensions/issues/12</a>&gt;).
+               </p>
+            </div>
+            <div id="rfc.section.A.8.p.2">
+               <p>Align opp-sec and alt-svc (&lt;<a href="https://github.com/httpwg/http-extensions/issues/33">https://github.com/httpwg/http-extensions/issues/33</a>&gt;).
+               </p>
+            </div>
+            <div id="rfc.section.A.8.p.3">
                <p>alt svc frame on pushed (even and non-0) frame (&lt;<a href="https://github.com/httpwg/http-extensions/issues/44">https://github.com/httpwg/http-extensions/issues/44</a>&gt;).
                </p>
             </div>
+            <div id="rfc.section.A.8.p.4">
+               <p>"browser" -&gt; "user agent" (&lt;<a href="https://github.com/httpwg/http-extensions/pull/61">https://github.com/httpwg/http-extensions/pull/61</a>&gt;).
+               </p>
+            </div>
+            <div id="rfc.section.A.8.p.5">
+               <p>ABNF for "parameter" (&lt;<a href="https://github.com/httpwg/http-extensions/issues/65">https://github.com/httpwg/http-extensions/issues/65</a>&gt;).
+               </p>
+            </div>
+            <div id="rfc.section.A.8.p.6">
+               <p>Updated HTTP/2 reference.</p>
+            </div>
+         </div>
+         <div id="changes.since.draft-ietf-httpbis-alt-svc-07">
+            <h2 id="rfc.section.A.9"><a href="#rfc.section.A.9">A.9</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-07">Since draft-ietf-httpbis-alt-svc-07</a></h2>
+            <div id="rfc.section.A.9.p.1">
+               <p>None yet.</p>
+            </div>
+         </div>
+      </div>
+      <div id="acknowledgements">
+         <h1 id="rfc.section.unnumbered-1"><a href="#acknowledgements">Acknowledgements</a></h1>
+         <div id="rfc.section.unnumbered-1.p.1">
+            <p>Thanks to Adam Langley, Bence Beky, Eliot Lear, Erik Nygren, Guy Podjarny, Herve Ruellan, Martin Thomson, Matthew Kerwin,
+               Paul Hoffman, Richard Barnes, Stephen Farrell, Stephen Ludin, and Will Chan for their feedback and suggestions.
+            </p>
+         </div>
+         <div id="rfc.section.unnumbered-1.p.2">
+            <p>The Alt-Svc header field was influenced by the design of the Alternate-Protocol header field in SPDY.</p>
          </div>
       </div>
       <div class="avoidbreakinside">

@@ -491,7 +491,7 @@ ul p {
       <link rel="Chapter" href="#rfc.section.7" title="7 References">
       <link rel="Appendix" title="A Change Log (to be removed by RFC Editor before publication)" href="#rfc.section.A">
       <link rel="Appendix" title="Acknowledgements" href="#rfc.section.unnumbered-1">
-      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.717, 2015/03/23 17:14:43, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
+      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.729, 2015/05/14 13:36:11, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
       <meta name="keywords" content="HTTP, authentication">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Reschke, J. F.">
@@ -629,7 +629,7 @@ ul p {
          </div>
          <div id="rfc.section.3.p.2">
             <p>The field value is a list of parameters (name/value pairs), using the "auth-param" syntax defined in <a href="rfc7235.html#challenge.and.response" title="Challenge and Response">Section 2.1</a> of <a href="#RFC7235"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Authentication">[RFC7235]</cite></a>. This specification only describes the generic format; authentication schemes using "Authentication-Info" will define the
-               individual parameters. The "Digest" Authentication Scheme, for instance, defines multiple parameters in <a href="https://tools.ietf.org/html/draft-ietf-httpauth-digest-18#section-3.5">Section 3.5</a> of <a href="#DIGEST"><cite title="HTTP Digest Access Authentication">[DIGEST]</cite></a>.
+               individual parameters. The "Digest" Authentication Scheme, for instance, defines multiple parameters in <a href="https://tools.ietf.org/html/draft-ietf-httpauth-digest-19#section-3.5">Section 3.5</a> of <a href="#DIGEST"><cite title="HTTP Digest Access Authentication">[DIGEST]</cite></a>.
             </p>
          </div>
          <div id="rfc.figure.u.1"><pre class="inline">  <a href="#authentication-info" class="smpl">Authentication-Info</a> = #<a href="#notational.conventions" class="smpl">auth-param</a>
@@ -667,7 +667,7 @@ ul p {
       </div>
       <div id="proxy-authentication-info">
          <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a>&nbsp;<a href="#proxy-authentication-info">The Proxy-Authentication-Info Response Header Field</a></h1>
-         <div id="rfc.section.4.p.1">
+         <div id="rfc.section.4.p.1" class="avoidbreakafter">
             <p>The Proxy-Authentication-Info response header field is equivalent to Authentication-Info, except that its semantics are defined
                by the authentication scheme indicated by the Proxy-Authorization header field (<a href="#RFC7235"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Authentication">[RFC7235]</cite></a>, <a href="rfc7235.html#header.proxy-authorization" title="Proxy-Authorization">Section 4.4</a>) of the corresponding request, and applies to proxy authentication (<a href="#RFC7235"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Authentication">[RFC7235]</cite></a>, <a href="https://tools.ietf.org/html/rfc7235#section-2">Section 2</a>):
             </p>
@@ -699,7 +699,7 @@ ul p {
             <p>HTTP header fields are registered within the "Message Headers" registry located at &lt;<a href="http://www.iana.org/assignments/message-headers">http://www.iana.org/assignments/message-headers</a>&gt;, as defined by <a href="#BCP90"><cite title="Registration Procedures for Message Header Fields">[BCP90]</cite></a>.
             </p>
          </div>
-         <div id="rfc.section.6.p.2">
+         <div id="rfc.section.6.p.2" class="avoidbreakafter">
             <p>This document updates the definitions of the "Authentication-Info" and "Proxy-Authentication-Info" header fields, so the "Permanent
                Message Header Field Names" registry shall be updated accordingly:
             </p>
@@ -765,7 +765,7 @@ ul p {
          </tr>
          <tr>
             <td class="reference"><b id="DIGEST">[DIGEST]</b></td>
-            <td class="top">Shekh-Yusef, R., Ed., Ahrens, D., and S. Bremer, “<a href="https://tools.ietf.org/html/draft-ietf-httpauth-digest-18">HTTP Digest Access Authentication</a>”, Internet-Draft&nbsp;draft-ietf-httpauth-digest-18 (work in progress), April&nbsp;2015.
+            <td class="top">Shekh-Yusef, R., Ed., Ahrens, D., and S. Bremer, “<a href="https://tools.ietf.org/html/draft-ietf-httpauth-digest-19">HTTP Digest Access Authentication</a>”, Internet-Draft&nbsp;draft-ietf-httpauth-digest-19 (work in progress), April&nbsp;2015.
             </td>
          </tr>
          <tr>
