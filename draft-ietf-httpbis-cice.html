@@ -485,7 +485,7 @@ ul p {
       <link rel="Copyright" href="#rfc.copyrightnotice">
       <link rel="Chapter" title="1 Introduction" href="#rfc.section.1">
       <link rel="Chapter" title="2 Notational Conventions" href="#rfc.section.2">
-      <link rel="Chapter" title="3 Extensions to 'Accept-Encoding' Header Field" href="#rfc.section.3">
+      <link rel="Chapter" title="3 Using the 'Accept-Encoding' Header Field in Responses" href="#rfc.section.3">
       <link rel="Chapter" title="4 Example" href="#rfc.section.4">
       <link rel="Chapter" title="5 Deployment Considerations" href="#rfc.section.5">
       <link rel="Chapter" title="6 Security Considerations" href="#rfc.section.6">
@@ -499,8 +499,8 @@ ul p {
       <meta name="dct.creator" content="Reschke, J. F.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-cice-latest">
       <meta name="dct.issued" scheme="ISO8601" content="2015-05-27">
-      <meta name="dct.abstract" content="In HTTP, &#34;Content Codings&#34; allow for payload encodings such as for compression or integrity checks. In particular, the &#34;gzip&#34; content coding is widely used for payload data sent in response messages. Content Codings can be used in request messages as well, however discoverability is not on par with response messages. This document extends the HTTP &#34;Accept-Encoding&#34; header field for use in responses.">
-      <meta name="description" content="In HTTP, &#34;Content Codings&#34; allow for payload encodings such as for compression or integrity checks. In particular, the &#34;gzip&#34; content coding is widely used for payload data sent in response messages. Content Codings can be used in request messages as well, however discoverability is not on par with response messages. This document extends the HTTP &#34;Accept-Encoding&#34; header field for use in responses.">
+      <meta name="dct.abstract" content="In HTTP, content codings allow for payload encodings such as for compression or integrity checks. In particular, the &#34;gzip&#34; content coding is widely used for payload data sent in response messages. Content codings can be used in request messages as well, however discoverability is not on par with response messages. This document allows the HTTP &#34;Accept-Encoding&#34; header field to be used in responses, to indicate that content codings are allowed in requests.">
+      <meta name="description" content="In HTTP, content codings allow for payload encodings such as for compression or integrity checks. In particular, the &#34;gzip&#34; content coding is widely used for payload data sent in response messages. Content codings can be used in request messages as well, however discoverability is not on par with response messages. This document allows the HTTP &#34;Accept-Encoding&#34; header field to be used in responses, to indicate that content codings are allowed in requests.">
    </head>
    <body onload="initFeedback();">
       <table class="header" id="rfc.headerblock">
@@ -525,11 +525,12 @@ ul p {
       </table>
       <p class="title" id="rfc.title">Hypertext Transfer Protocol (HTTP) Client-Initiated Content-Encoding<br><span class="filename">draft-ietf-httpbis-cice-latest</span></p>
       <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
-      <p>In HTTP, "Content Codings" allow for payload encodings such as for compression or integrity checks. In particular, the "gzip"
+      <p>In HTTP, content codings allow for payload encodings such as for compression or integrity checks. In particular, the "gzip"
          content coding is widely used for payload data sent in response messages.
       </p>
-      <p>Content Codings can be used in request messages as well, however discoverability is not on par with response messages. This
-         document extends the HTTP "Accept-Encoding" header field for use in responses.
+      <p>Content codings can be used in request messages as well, however discoverability is not on par with response messages. This
+         document allows the HTTP "Accept-Encoding" header field to be used in responses, to indicate that content codings are allowed
+         in requests.
       </p>
       <h1 id="rfc.note.1"><a href="#rfc.note.1">Editorial Note (To be removed by RFC Editor before publication)</a></h1>
       <p>Discussion of this draft takes place on the HTTPBIS working group mailing list (ietf-http-wg@w3.org), which is archived at &lt;<a href="https://lists.w3.org/Archives/Public/ietf-http-wg/">https://lists.w3.org/Archives/Public/ietf-http-wg/</a>&gt;.
@@ -565,7 +566,7 @@ ul p {
          <ul class="toc">
             <li><a href="#rfc.section.1">1.</a>&nbsp;&nbsp;&nbsp;<a href="#introduction">Introduction</a></li>
             <li><a href="#rfc.section.2">2.</a>&nbsp;&nbsp;&nbsp;<a href="#notational.conventions">Notational Conventions</a></li>
-            <li><a href="#rfc.section.3">3.</a>&nbsp;&nbsp;&nbsp;<a href="#accept-encoding">Extensions to 'Accept-Encoding' Header Field</a></li>
+            <li><a href="#rfc.section.3">3.</a>&nbsp;&nbsp;&nbsp;<a href="#accept-encoding">Using the 'Accept-Encoding' Header Field in Responses</a></li>
             <li><a href="#rfc.section.4">4.</a>&nbsp;&nbsp;&nbsp;<a href="#example">Example</a></li>
             <li><a href="#rfc.section.5">5.</a>&nbsp;&nbsp;&nbsp;<a href="#deployment.considerations">Deployment Considerations</a></li>
             <li><a href="#rfc.section.6">6.</a>&nbsp;&nbsp;&nbsp;<a href="#security.considerations">Security Considerations</a></li>
@@ -589,12 +590,12 @@ ul p {
       <div id="introduction">
          <h1 id="rfc.section.1" class="np"><a href="#rfc.section.1">1.</a>&nbsp;<a href="#introduction">Introduction</a></h1>
          <div id="rfc.section.1.p.1">
-            <p>In HTTP, "Content Codings" allow for payload encodings such as for compression or integrity checks (<a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, <a href="rfc7231.html#data.encoding" title="Encoding for Compression or Integrity">Section 3.1.2</a>). In particular, the "gzip" content coding is widely used for payload data sent in response messages.
+            <p>In HTTP, content codings allow for payload encodings such as for compression or integrity checks (<a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, <a href="rfc7231.html#data.encoding" title="Encoding for Compression or Integrity">Section 3.1.2</a>). In particular, the "gzip" content coding is widely used for payload data sent in response messages.
             </p>
          </div>
          <div id="rfc.section.1.p.2">
-            <p>Content Codings can be used in request messages as well, however discoverability is not on par with response messages. This
-               document extends the HTTP "Accept-Encoding" header field (<a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, <a href="rfc7231.html#header.accept-encoding" title="Accept-Encoding">Section 5.3.4</a>) for use in responses.
+            <p>Content codings can be used in request messages as well, however discoverability is not on par with response messages. This
+               document allows the HTTP "Accept-Encoding" header field (<a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, <a href="rfc7231.html#header.accept-encoding" title="Accept-Encoding">Section 5.3.4</a>) to be used in responses, to indicate that content codings are allowed in requests.
             </p>
          </div>
       </div>
@@ -606,26 +607,25 @@ ul p {
             </p>
          </div>
          <div id="rfc.section.2.p.2">
-            <p>This document reuses terminology used in the base HTTP specifications, namely <a href="rfc7230.html#architecture" title="Architecture">Section 2</a> of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a> and <a href="rfc7231.html#data.encoding" title="Encoding for Compression or Integrity">Section 3.1.2</a> of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>.
+            <p>This document reuses terminology defined in the base HTTP specifications, namely <a href="rfc7230.html#architecture" title="Architecture">Section 2</a> of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a> and <a href="rfc7231.html#data.encoding" title="Encoding for Compression or Integrity">Section 3.1.2</a> of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>.
             </p>
          </div>
       </div>
       <div id="accept-encoding">
-         <h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a>&nbsp;<a href="#accept-encoding">Extensions to 'Accept-Encoding' Header Field</a></h1>
+         <h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a>&nbsp;<a href="#accept-encoding">Using the 'Accept-Encoding' Header Field in Responses</a></h1>
          <div id="rfc.section.3.p.1">
             <p><a href="rfc7231.html#header.accept-encoding" title="Accept-Encoding">Section 5.3.4</a> of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a> defines "Accept-Encoding" as a request header field only.
             </p>
          </div>
          <div id="rfc.section.3.p.2">
-            <p>This specification extends that definition to allow "Accept-Encoding" as a response header field as well. When present, it
-               indicates what content codings a resource was willing to accept at the time of the response. A field value that only contains
-               "identity" implies that no content codings are supported.
+            <p>This specification expands that definition to allow "Accept-Encoding" as a response header field as well. When present in
+               a response, it indicates what content codings the resource was willing to accept in the associated request. A field value
+               that only contains "identity" implies that no content codings were supported.
             </p>
          </div>
          <div id="rfc.section.3.p.3">
-            <p>Note that this information is specific to the specific request. The set of supported encodings might be different for other
-               resources on the same server, could also change depending on other aspects of the request (such as the request method), or
-               might change in the future.
+            <p>Note that this information is specific to the associated request; the set of supported encodings might be different for other
+               resources on the same server, and could change over time or depend on other aspects of the request (such as the request method).
             </p>
          </div>
          <div id="rfc.section.3.p.4">
@@ -639,16 +639,17 @@ ul p {
             </p>
          </div>
          <div id="rfc.section.3.p.6">
-            <p>While sending "Accept-Encoding" in a 415 (Unsupported Media Type) response will be the most common use case, it is not restricted
-               to this particular status code. For instance, a server might include it in a 2xx response when a request payload was big enough
-               to justify use of a compression coding, but the client failed to do so.
+            <p>It is expected that the most common use of "Accept-Encoding" in responses will have the 415 (Unsupported Media Type) status
+               code, in response to optimistic use of a content coding by clients. However, the header field can also be used to indicate
+               to clients that content codings are supported, to optimize future interactions. For example, a resource might include it in
+               a 2xx response when the request payload was big enough to justify use of a compression coding, but the client failed do so.
             </p>
          </div>
       </div>
       <div id="example">
          <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a>&nbsp;<a href="#example">Example</a></h1>
          <div id="rfc.section.4.p.1" class="avoidbreakafter">
-            <p>Client submits a POST request using Content-Encoding "compress" (<a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, <a href="rfc7231.html#content.codings" title="Content Codings">Section 3.1.2.1</a>):
+            <p>A client submits a POST request using the "compress" content coding (<a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, <a href="rfc7231.html#content.codings" title="Content Codings">Section 3.1.2.1</a>):
             </p>
          </div>
          <div id="rfc.figure.u.1"><pre class="text2">POST /edit/ HTTP/1.1
@@ -659,7 +660,7 @@ Content-Encoding: compress
 ...compressed payload...
 </pre></div>
          <div id="rfc.section.4.p.2" class="avoidbreakafter">
-            <p>Server rejects request because it only allows the "gzip" content coding:</p>
+            <p>The server rejects request because it only allows the "gzip" content coding:</p>
          </div>
          <div id="rfc.figure.u.2"><pre class="text">HTTP/1.1 415 Unsupported Media Type
 Date: Fri, 09 May 2014 11:43:53 GMT
@@ -687,7 +688,7 @@ Content-Type: text/plain
       <div id="deployment.considerations">
          <h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a>&nbsp;<a href="#deployment.considerations">Deployment Considerations</a></h1>
          <div id="rfc.section.5.p.1">
-            <p>Servers that do not support content codings in requests already are required to fail a request that does use a content coding. <a href="rfc7231.html#status.415" title="415 Unsupported Media Type">Section 6.5.13</a> of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a> recommends to use the status code 415 (Unsupported Media Type), so the only change needed is to include the "Accept-Encoding"
+            <p>Servers that do not support content codings in requests already are required to fail a request that does use a content coding. <a href="rfc7231.html#status.415" title="415 Unsupported Media Type">Section 6.5.13</a> of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a> recommends using the status code 415 (Unsupported Media Type), so the only change needed is to include the "Accept-Encoding"
                header field with value "identity" in that response.
             </p>
          </div>
@@ -695,7 +696,7 @@ Content-Type: text/plain
             <p>Servers that do support some content codings are required to fail requests with unsupported content codings as well. To be
                compliant with this specification, servers will need to use the status code 415 (Unsupported Media Type) to signal the problem,
                and will have to include an "Accept-Encoding" header field that enumerates the content codings that are supported. As the
-               set of supported content codings usually is static and small, adding the header field ought to be trivial.
+               set of supported content codings is usually static and small, adding the header field ought to be trivial.
             </p>
          </div>
       </div>
@@ -733,7 +734,7 @@ Content-Type: text/plain
                      <td class="left">Accept-Encoding</td>
                      <td class="left">http</td>
                      <td class="left">standard</td>
-                     <td class="left"><a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, <a href="rfc7231.html#header.accept-encoding" title="Accept-Encoding">Section 5.3.4</a>, extended by <a href="#accept-encoding" title="Extensions to 'Accept-Encoding' Header Field">Section&nbsp;3</a> of this document
+                     <td class="left"><a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, <a href="rfc7231.html#header.accept-encoding" title="Accept-Encoding">Section 5.3.4</a>, and <a href="#accept-encoding" title="Using the 'Accept-Encoding' Header Field in Responses">Section&nbsp;3</a> of this document
                      </td>
                   </tr>
                </tbody>
