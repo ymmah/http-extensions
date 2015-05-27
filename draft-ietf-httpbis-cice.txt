@@ -365,7 +365,7 @@ A.3.  Since draft-reschke-http-cice-02
 
 A.4.  Since draft-ietf-httpbis-cice-00
 
-   None yet.
+   Apply editorial improvements suggested by Mark Nottingham.
 
 Appendix B.  Acknowledgements
 
