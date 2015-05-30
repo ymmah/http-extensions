@@ -33,7 +33,7 @@ Editorial Note (To be removed by RFC Editor before publication)
    for this draft can be found at <https://github.com/httpwg/http-
    extensions>.
 
-   The changes in this draft are summarized in Appendix A.4.
+   The changes in this draft are summarized in Appendix A.5.
 
 Status of This Memo
 
@@ -93,6 +93,7 @@ Table of Contents
      A.2.  Since draft-reschke-http-cice-01  . . . . . . . . . . . .   7
      A.3.  Since draft-reschke-http-cice-02  . . . . . . . . . . . .   7
      A.4.  Since draft-ietf-httpbis-cice-00  . . . . . . . . . . . .   7
+     A.5.  Since draft-ietf-httpbis-cice-01  . . . . . . . . . . . .   7
    Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .   7
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   7
 
@@ -105,7 +106,6 @@ Table of Contents
 
    Content codings can be used in request messages as well, however
    discoverability is not on par with response messages.  This document
-   extends the HTTP "Accept-Encoding" header field ([RFC7231],
 
 
 
@@ -114,6 +114,7 @@ Reschke                 Expires December 1, 2015                [Page 2]
 Internet-Draft                  HTTP CICE                       May 2015
 
 
+   extends the HTTP "Accept-Encoding" header field ([RFC7231],
    Section 5.3.4) for use in responses, to indicate that content codings
    are supported in requests.
 
@@ -161,7 +162,6 @@ Internet-Draft                  HTTP CICE                       May 2015
    response to optimistic use of a content coding by clients.  However,
    the header field can also be used to indicate to clients that content
    codings are supported, to optimize future interactions.  For example,
-   a resource might include it in a 2xx response when the request
 
 
 
@@ -170,6 +170,7 @@ Reschke                 Expires December 1, 2015                [Page 3]
 Internet-Draft                  HTTP CICE                       May 2015
 
 
+   a resource might include it in a 2xx response when the request
    payload was big enough to justify use of a compression coding, but
    the client failed do so.
 
@@ -216,8 +217,7 @@ Internet-Draft                  HTTP CICE                       May 2015
    required to fail a request that does use a content coding.
    Section 6.5.13 of [RFC7231] recommends using the status code 415
    (Unsupported Media Type), so the only change needed is to include the
-   "Accept-Encoding" header field with value "identity" in that
-   response.
+
 
 
 
@@ -225,6 +225,9 @@ Reschke                 Expires December 1, 2015                [Page 4]
 
 Internet-Draft                  HTTP CICE                       May 2015
 
+
+   "Accept-Encoding" header field with value "identity" in that
+   response.
 
    Servers that do support some content codings are required to fail
    requests with unsupported content codings as well.  To be compliant
@@ -268,10 +271,7 @@ Internet-Draft                  HTTP CICE                       May 2015
               RFC2119, March 1997,
               <http://www.rfc-editor.org/info/rfc2119>.
 
-   [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
-              Protocol (HTTP/1.1): Message Syntax and Routing", RFC
-              7230, DOI 10.17487/RFC7230, June 2014,
-              <http://www.rfc-editor.org/info/rfc7230>.
+
 
 
 
@@ -281,6 +281,11 @@ Reschke                 Expires December 1, 2015                [Page 5]
 
 Internet-Draft                  HTTP CICE                       May 2015
 
+
+   [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
+              Protocol (HTTP/1.1): Message Syntax and Routing", RFC
+              7230, DOI 10.17487/RFC7230, June 2014,
+              <http://www.rfc-editor.org/info/rfc7230>.
 
    [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Semantics and Content", RFC 7231, DOI
@@ -292,11 +297,6 @@ Internet-Draft                  HTTP CICE                       May 2015
    [BCP90]    Klyne, G., Nottingham, M., and J. Mogul, "Registration
               Procedures for Message Header Fields", BCP 90, RFC 3864,
               September 2004, <http://www.rfc-editor.org/info/bcp90>.
-
-
-
-
-
 
 
 
@@ -367,6 +367,10 @@ A.4.  Since draft-ietf-httpbis-cice-00
 
    Apply editorial improvements suggested by Mark Nottingham.
 
+A.5.  Since draft-ietf-httpbis-cice-01
+
+   None yet.
+
 Appendix B.  Acknowledgements
 
    Thanks go to the members of the and HTTPbis Working Group, namely
@@ -382,10 +386,6 @@ Author's Address
 
    EMail: julian.reschke@greenbytes.de
    URI:   http://greenbytes.de/tech/webdav/
-
-
-
-
 
 
 
