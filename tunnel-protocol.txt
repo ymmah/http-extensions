@@ -143,7 +143,7 @@ Internet-Draft               The ALPN Header                    May 2015
    Section 2 of [RFC7230].
 
 
-   ALPN = "ALPN":" 1#protocol-id
+   ALPN = 1#protocol-id
    protocol-id     = token ; percent-encoded ALPN protocol identifier
 
    ALPN protocol names are octet sequences with no additional
@@ -237,14 +237,14 @@ Internet-Draft               The ALPN Header                    May 2015
    CONNECT SHOULD restrict its use to a limited set of known ports or a
    configurable whitelist of safe request targets."
 
-   The ALPN header field described in this document is an OPTIONAL
-   header field.  Clients and HTTP proxies could choose to not support
-   the header and therefore fail to provide it, or ignore it when
-   present.  If the header is not available or ignored, a proxy cannot
-   identify the purpose of the tunnel and use this as input to any
-   authorization decision regarding the tunnel.  This is
-   indistinguishable from the case where either client or proxy does not
-   support the ALPN header field.
+   The ALPN header field described in this document is OPTIONAL.
+   Clients and HTTP proxies could choose to not support the header and
+   therefore fail to provide it, or ignore it when present.  If the
+   header is not available or ignored, a proxy cannot identify the
+   purpose of the tunnel and use this as input to any authorization
+   decision regarding the tunnel.  This is indistinguishable from the
+   case where either client or proxy does not support the ALPN header
+   field.
 
    The value of the ALPN header field could be falsified by a client.
    If the data being sent through the tunnel is encrypted (for example,

@@ -583,7 +583,7 @@ ul p {
                </p>
             </div>
             <div id="rfc.figure.u.1"><pre class="inline">
-ALPN = "ALPN":" 1#protocol-id
+ALPN = 1#protocol-id
 protocol-id     = token ; percent-encoded ALPN protocol identifier
 </pre></div>
             <div id="rfc.section.2.2.p.2">
@@ -657,10 +657,10 @@ ALPN: h2, http%2F1.1
             </p>
          </div>
          <div id="rfc.section.4.p.2">
-            <p>The ALPN header field described in this document is an OPTIONAL header field. Clients and HTTP proxies could choose to not
-               support the header and therefore fail to provide it, or ignore it when present. If the header is not available or ignored,
-               a proxy cannot identify the purpose of the tunnel and use this as input to any authorization decision regarding the tunnel.
-               This is indistinguishable from the case where either client or proxy does not support the ALPN header field.
+            <p>The ALPN header field described in this document is OPTIONAL. Clients and HTTP proxies could choose to not support the header
+               and therefore fail to provide it, or ignore it when present. If the header is not available or ignored, a proxy cannot identify
+               the purpose of the tunnel and use this as input to any authorization decision regarding the tunnel. This is indistinguishable
+               from the case where either client or proxy does not support the ALPN header field.
             </p>
          </div>
          <div id="rfc.section.4.p.3">
