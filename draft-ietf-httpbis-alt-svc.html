@@ -938,8 +938,9 @@ parameter     = <a href="#imported.abnf" class="smpl">token</a> "=" ( <a href="#
             <p>The Alt-Svc field value can have multiple values:</p><pre class="text">Alt-Svc: h2c=":8000", h2=":443"
 </pre></div>
          <div id="rfc.section.3.p.7">
-            <p>The value(s) advertised by Alt-Svc can be used by clients to open a new connection to one or more alternative services immediately,
-               or simultaneously with subsequent requests on the same connection.
+            <p>The value(s) advertised by Alt-Svc can be used by clients to open a new connection to an alternative service. Subsequent requests
+               can start using this new connection immediately, or can continue using the existing connection while the new connection is
+               created.
             </p>
          </div>
          <div id="rfc.section.3.p.8">
@@ -1459,7 +1460,8 @@ Alt-Used: alternate.example.net
          <div id="changes.since.draft-ietf-httpbis-alt-svc-07">
             <h2 id="rfc.section.A.9"><a href="#rfc.section.A.9">A.9</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-07">Since draft-ietf-httpbis-alt-svc-07</a></h2>
             <div id="rfc.section.A.9.p.1">
-               <p>None yet.</p>
+               <p>Number of alternate services used (&lt;<a href="https://github.com/httpwg/http-extensions/issues/58">https://github.com/httpwg/http-extensions/issues/58</a>&gt;).
+               </p>
             </div>
          </div>
       </div>

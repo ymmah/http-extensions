@@ -458,8 +458,9 @@ Internet-Draft          HTTP Alternative Services               May 2015
    Alt-Svc: h2c=":8000", h2=":443"
 
    The value(s) advertised by Alt-Svc can be used by clients to open a
-   new connection to one or more alternative services immediately, or
-   simultaneously with subsequent requests on the same connection.
+   new connection to an alternative service.  Subsequent requests can
+   start using this new connection immediately, or can continue using
+   the existing connection while the new connection is created.
 
    When using HTTP/2 ([RFC7540]), servers SHOULD instead send an ALTSVC
    frame (Section 4).  A single ALTSVC frame can be sent for a
@@ -497,7 +498,6 @@ Internet-Draft          HTTP Alternative Services               May 2015
    30 seconds (as per the Age header field value), so therefore the
    alternative service is only fresh for the 30 seconds from when this
    response was received, minus estimated transit time.
-
 
 
 
@@ -998,8 +998,8 @@ A.8.  Since draft-ietf-httpbis-alt-svc-06
 
 A.9.  Since draft-ietf-httpbis-alt-svc-07
 
-   None yet.
-
+   Number of alternate services used (<https://github.com/httpwg/http-
+   extensions/issues/58>).
 
 
 
