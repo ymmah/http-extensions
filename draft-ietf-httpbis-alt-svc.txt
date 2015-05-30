@@ -458,7 +458,7 @@ Internet-Draft          HTTP Alternative Services               May 2015
    Alt-Svc: h2c=":8000", h2=":443"
 
    The value(s) advertised by Alt-Svc can be used by clients to open a
-   new connection to an alternative service.  Subsequent requests can
+   new connection to an alternative services.  Subsequent requests can
    start using this new connection immediately, or can continue using
    the existing connection while the new connection is created.
 
@@ -998,8 +998,8 @@ A.8.  Since draft-ietf-httpbis-alt-svc-06
 
 A.9.  Since draft-ietf-httpbis-alt-svc-07
 
-   Number of alternate services used (<https://github.com/httpwg/http-
-   extensions/issues/58>).
+   None yet.
+
 
 
 
