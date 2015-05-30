@@ -5,8 +5,8 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Experimental                                 M. Thomson
-Expires: November 28, 2015                                       Mozilla
-                                                            May 27, 2015
+Expires: December 1, 2015                                        Mozilla
+                                                            May 30, 2015
 
 
                     Opportunistic Security for HTTP
@@ -33,7 +33,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on November 28, 2015.
+   This Internet-Draft will expire on December 1, 2015.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Nottingham & Thomson    Expires November 28, 2015               [Page 1]
+Nottingham & Thomson    Expires December 1, 2015                [Page 1]
 
 Internet-Draft         Opportunistic HTTP Security              May 2015
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Nottingham & Thomson    Expires November 28, 2015               [Page 2]
+Nottingham & Thomson    Expires December 1, 2015                [Page 2]
 
 Internet-Draft         Opportunistic HTTP Security              May 2015
 
@@ -165,7 +165,7 @@ Internet-Draft         Opportunistic HTTP Security              May 2015
 
 
 
-Nottingham & Thomson    Expires November 28, 2015               [Page 3]
+Nottingham & Thomson    Expires December 1, 2015                [Page 3]
 
 Internet-Draft         Opportunistic HTTP Security              May 2015
 
@@ -221,7 +221,7 @@ Internet-Draft         Opportunistic HTTP Security              May 2015
 
 
 
-Nottingham & Thomson    Expires November 28, 2015               [Page 4]
+Nottingham & Thomson    Expires December 1, 2015                [Page 4]
 
 Internet-Draft         Opportunistic HTTP Security              May 2015
 
@@ -277,7 +277,7 @@ Internet-Draft         Opportunistic HTTP Security              May 2015
 
 
 
-Nottingham & Thomson    Expires November 28, 2015               [Page 5]
+Nottingham & Thomson    Expires December 1, 2015                [Page 5]
 
 Internet-Draft         Opportunistic HTTP Security              May 2015
 
@@ -333,7 +333,7 @@ Internet-Draft         Opportunistic HTTP Security              May 2015
 
 
 
-Nottingham & Thomson    Expires November 28, 2015               [Page 6]
+Nottingham & Thomson    Expires December 1, 2015                [Page 6]
 
 Internet-Draft         Opportunistic HTTP Security              May 2015
 
@@ -389,7 +389,7 @@ Internet-Draft         Opportunistic HTTP Security              May 2015
 
 
 
-Nottingham & Thomson    Expires November 28, 2015               [Page 7]
+Nottingham & Thomson    Expires December 1, 2015                [Page 7]
 
 Internet-Draft         Opportunistic HTTP Security              May 2015
 
@@ -427,50 +427,56 @@ Internet-Draft         Opportunistic HTTP Security              May 2015
               progress), February 2015.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119, March 1997,
+              Requirement Levels", BCP 14, RFC 2119, DOI 10.17487/
+              RFC2119, March 1997,
               <http://www.rfc-editor.org/info/rfc2119>.
 
-   [RFC2818]  Rescorla, E., "HTTP Over TLS", RFC 2818, May 2000,
+   [RFC2818]  Rescorla, E., "HTTP Over TLS", RFC 2818, DOI 10.17487/
+              RFC2818, May 2000,
               <http://www.rfc-editor.org/info/rfc2818>.
 
    [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
-              (TLS) Protocol Version 1.2", RFC 5246, August 2008,
+              (TLS) Protocol Version 1.2", RFC 5246, DOI 10.17487/
+              RFC5246, August 2008,
               <http://www.rfc-editor.org/info/rfc5246>.
 
-   [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454, December
-              2011, <http://www.rfc-editor.org/info/rfc6454>.
 
 
 
 
 
-
-Nottingham & Thomson    Expires November 28, 2015               [Page 8]
+Nottingham & Thomson    Expires December 1, 2015                [Page 8]
 
 Internet-Draft         Opportunistic HTTP Security              May 2015
 
 
+   [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454, DOI
+              10.17487/RFC6454, December 2011,
+              <http://www.rfc-editor.org/info/rfc6454>.
+
    [RFC7230]  Fielding, R. and J. Reschke, "Hypertext Transfer Protocol
-              (HTTP/1.1): Message Syntax and Routing", RFC 7230, June
-              2014, <http://www.rfc-editor.org/info/rfc7230>.
+              (HTTP/1.1): Message Syntax and Routing", RFC 7230, DOI
+              10.17487/RFC7230, June 2014,
+              <http://www.rfc-editor.org/info/rfc7230>.
 
    [RFC7234]  Fielding, R., Nottingham, M., and J. Reschke, "Hypertext
-              Transfer Protocol (HTTP/1.1): Caching", RFC 7234, June
-              2014, <http://www.rfc-editor.org/info/rfc7234>.
+              Transfer Protocol (HTTP/1.1): Caching", RFC 7234, DOI
+              10.17487/RFC7234, June 2014,
+              <http://www.rfc-editor.org/info/rfc7234>.
 
    [RFC7469]  Evans, C., Palmer, C., and R. Sleevi, "Public Key Pinning
-              Extension for HTTP", RFC 7469, April 2015,
-              <http://www.rfc-editor.org/info/rfc7469>.
+              Extension for HTTP", RFC 7469, DOI 10.17487/RFC7469, April
+              2015, <http://www.rfc-editor.org/info/rfc7469>.
 
 7.2.  Informative References
 
    [RFC7258]  Farrell, S. and H. Tschofenig, "Pervasive Monitoring Is an
-              Attack", BCP 188, RFC 7258, May 2014,
-              <http://www.rfc-editor.org/info/rfc7258>.
+              Attack", BCP 188, RFC 7258, DOI 10.17487/RFC7258, May
+              2014, <http://www.rfc-editor.org/info/rfc7258>.
 
    [RFC7435]  Dukhovni, V., "Opportunistic Security: Some Protection
-              Most of the Time", RFC 7435, December 2014,
-              <http://www.rfc-editor.org/info/rfc7435>.
+              Most of the Time", RFC 7435, DOI 10.17487/RFC7435,
+              December 2014, <http://www.rfc-editor.org/info/rfc7435>.
 
 Appendix A.  Acknowledgements
 
@@ -495,10 +501,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-Nottingham & Thomson    Expires November 28, 2015               [Page 9]
+Nottingham & Thomson    Expires December 1, 2015                [Page 9]
