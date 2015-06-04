@@ -388,7 +388,7 @@ ul p {
        content: "Internet-Draft";
   }
   @top-right {
-       content: "May 2015";
+       content: "June 2015";
   }
   @top-center {
        content: "The ALPN Header";
@@ -397,7 +397,7 @@ ul p {
        content: "Hutton, et al.";
   }
   @bottom-center {
-       content: "Expires December 1, 2015";
+       content: "Expires December 6, 2015";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -430,9 +430,9 @@ ul p {
       <meta name="dct.creator" content="Uberti, J.">
       <meta name="dct.creator" content="Thomson, M.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-tunnel-protocol-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2015-05-30">
-      <meta name="dct.abstract" content="This specification allows HTTP CONNECT requests to indicate what protocol will be used within the tunnel once established, using the ALPN header field.">
-      <meta name="description" content="This specification allows HTTP CONNECT requests to indicate what protocol will be used within the tunnel once established, using the ALPN header field.">
+      <meta name="dct.issued" scheme="ISO8601" content="2015-06-04">
+      <meta name="dct.abstract" content="This specification allows HTTP CONNECT requests to indicate what protocol is intended to be used within the tunnel once established, using the ALPN header field.">
+      <meta name="description" content="This specification allows HTTP CONNECT requests to indicate what protocol is intended to be used within the tunnel once established, using the ALPN header field.">
    </head>
    <body onload="initFeedback();">
       <table class="header" id="rfc.headerblock">
@@ -450,7 +450,7 @@ ul p {
                <td class="right">J. Uberti</td>
             </tr>
             <tr>
-               <td class="left">Expires: December 1, 2015</td>
+               <td class="left">Expires: December 6, 2015</td>
                <td class="right">Google</td>
             </tr>
             <tr>
@@ -463,13 +463,13 @@ ul p {
             </tr>
             <tr>
                <td class="left"></td>
-               <td class="right">May 30, 2015</td>
+               <td class="right">June 4, 2015</td>
             </tr>
          </tbody>
       </table>
       <p class="title" id="rfc.title">The ALPN HTTP Header Field<br><span class="filename">draft-ietf-httpbis-tunnel-protocol-latest</span></p>
       <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
-      <p>This specification allows HTTP CONNECT requests to indicate what protocol will be used within the tunnel once established,
+      <p>This specification allows HTTP CONNECT requests to indicate what protocol is intended to be used within the tunnel once established,
          using the ALPN header field.
       </p>
       <div id="rfc.status">
@@ -482,7 +482,7 @@ ul p {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on December 1, 2015.</p>
+         <p>This Internet-Draft will expire on December 6, 2015.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
@@ -526,14 +526,12 @@ ul p {
             </p>
          </div>
          <div id="rfc.section.1.p.2">
-            <p>The HTTP ALPN header field identifies the protocol that will be used within the tunnel, using the Application Layer Protocol
-               Negotiation identifier (ALPN, <a href="#RFC7301"><cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[RFC7301]</cite></a>).
+            <p>The HTTP ALPN header field identifies the protocol or protocols that the client intends to use within a tunnel that is established
+               using CONNECT. This uses the Application Layer Protocol Negotiation identifier (ALPN, <a href="#RFC7301"><cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[RFC7301]</cite></a>).
             </p>
          </div>
          <div id="rfc.section.1.p.3">
-            <p>When the CONNECT method is used to establish a tunnel, the ALPN header field can be used to identify the protocol that the
-               client intends to use with that tunnel. For a tunnel that is then secured using <a href="#RFC5246">TLS</a> <cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite>, the header field carries the same application protocol label as will be carried within the TLS handshake. If there are multiple
-               possible application protocols, all of those application protocols are indicated.
+            <p>For a tunnel that is then secured using <a href="#RFC5246">TLS</a> <cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite>, the header field carries the same application protocol label as will be carried within the TLS handshake <a href="#RFC7301"><cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[RFC7301]</cite></a>. If there are multiple possible application protocols, all of those application protocols are indicated.
             </p>
          </div>
          <div id="rfc.section.1.p.4">
@@ -561,8 +559,8 @@ ul p {
       <div id="tp">
          <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a>&nbsp;<a href="#tp">The ALPN HTTP Header Field</a></h1>
          <div id="rfc.section.2.p.1">
-            <p>Clients include the ALPN header field in an HTTP CONNECT request to indicate the application layer protocol that will be used
-               within the tunnel, or the set of protocols that might be used within the tunnel.
+            <p>Clients include the ALPN header field in an HTTP CONNECT request to indicate the application layer protocol that a client
+               intends to use within the tunnel, or a set of protocols that might be used within the tunnel.
             </p>
          </div>
          <div>
@@ -611,8 +609,8 @@ ALPN: h2, http%2F1.1
             <h2 id="rfc.section.2.3"><a href="#rfc.section.2.3">2.3</a>&nbsp;Usage
             </h2>
             <div id="rfc.section.2.3.p.1">
-               <p>For a CONNECT tunnel that conveys a TLS session that in turn encapsulates another protocol, the value of the ALPN header field
-                  contains the same list of ALPN identifiers that will be sent in the TLS ClientHello message <a href="#RFC7301"><cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[RFC7301]</cite></a>.
+               <p>For a CONNECT tunnel that conveys a protocol secured with TLS, the value of the ALPN header field contains the same list of
+                  ALPN identifiers that will be sent in the TLS ClientHello message <a href="#RFC7301"><cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[RFC7301]</cite></a>.
                </p>
             </div>
             <div id="rfc.section.2.3.p.2">
@@ -622,8 +620,8 @@ ALPN: h2, http%2F1.1
                </p>
             </div>
             <div id="rfc.section.2.3.p.3">
-               <p>When used in the ALPN header field, the ALPN identifier and registry are used to identify an entire application protocol stack,
-                  not a single protocol layer or component.
+               <p>When used in the ALPN header field, an ALPN identifier is used to identify an entire application protocol stack, not a single
+                  protocol layer or component.
                </p>
             </div>
          </div>
@@ -657,9 +655,9 @@ ALPN: h2, http%2F1.1
             </p>
          </div>
          <div id="rfc.section.4.p.2">
-            <p>The ALPN header field described in this document is OPTIONAL. Clients and HTTP proxies could choose to not support the header
-               and therefore fail to provide it, or ignore it when present. If the header is not available or ignored, a proxy cannot identify
-               the purpose of the tunnel and use this as input to any authorization decision regarding the tunnel. This is indistinguishable
+            <p>The ALPN header field described in this document is OPTIONAL. Clients and HTTP proxies could choose to not support it and
+               therefore either fail to provide it, or ignore it when present. If the header field is not available or ignored, a proxy cannot
+               identify the purpose of the tunnel and use this as input to any authorization decision regarding the tunnel. This is indistinguishable
                from the case where either client or proxy does not support the ALPN header field.
             </p>
          </div>

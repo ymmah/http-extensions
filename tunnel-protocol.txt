@@ -5,10 +5,10 @@
 HTTP Working Group                                             A. Hutton
 Internet-Draft                                                     Unify
 Intended status: Standards Track                               J. Uberti
-Expires: December 1, 2015                                         Google
+Expires: December 6, 2015                                         Google
                                                               M. Thomson
                                                                  Mozilla
-                                                            May 30, 2015
+                                                            June 4, 2015
 
 
                        The ALPN HTTP Header Field
@@ -17,8 +17,8 @@ Expires: December 1, 2015                                         Google
 Abstract
 
    This specification allows HTTP CONNECT requests to indicate what
-   protocol will be used within the tunnel once established, using the
-   ALPN header field.
+   protocol is intended to be used within the tunnel once established,
+   using the ALPN header field.
 
 Status of This Memo
 
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 1, 2015.
+   This Internet-Draft will expire on December 6, 2015.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Hutton, et al.          Expires December 1, 2015                [Page 1]
+Hutton, et al.          Expires December 6, 2015                [Page 1]
 
-Internet-Draft               The ALPN Header                    May 2015
+Internet-Draft               The ALPN Header                   June 2015
 
 
    the Trust Legal Provisions and are provided without warranty as
@@ -84,17 +84,16 @@ Table of Contents
    closed.  Such tunnels are commonly used to create end-to-end virtual
    connections, through one or more proxies.
 
-   The HTTP ALPN header field identifies the protocol that will be used
-   within the tunnel, using the Application Layer Protocol Negotiation
+   The HTTP ALPN header field identifies the protocol or protocols that
+   the client intends to use within a tunnel that is established using
+   CONNECT.  This uses the Application Layer Protocol Negotiation
    identifier (ALPN, [RFC7301]).
 
-   When the CONNECT method is used to establish a tunnel, the ALPN
-   header field can be used to identify the protocol that the client
-   intends to use with that tunnel.  For a tunnel that is then secured
-   using TLS [RFC5246], the header field carries the same application
-   protocol label as will be carried within the TLS handshake.  If there
-   are multiple possible application protocols, all of those application
-   protocols are indicated.
+   For a tunnel that is then secured using TLS [RFC5246], the header
+   field carries the same application protocol label as will be carried
+   within the TLS handshake [RFC7301].  If there are multiple possible
+   application protocols, all of those application protocols are
+   indicated.
 
    The ALPN header field carries an indication of client intent only.
    An ALPN identifier is used here only to identify the application
@@ -109,9 +108,10 @@ Table of Contents
 
 
 
-Hutton, et al.          Expires December 1, 2015                [Page 2]
+
+Hutton, et al.          Expires December 6, 2015                [Page 2]
 
-Internet-Draft               The ALPN Header                    May 2015
+Internet-Draft               The ALPN Header                   June 2015
 
 
    field.  For example, a proxy could use the application protocol to
@@ -126,8 +126,9 @@ Internet-Draft               The ALPN Header                    May 2015
 2.  The ALPN HTTP Header Field
 
    Clients include the ALPN header field in an HTTP CONNECT request to
-   indicate the application layer protocol that will be used within the
-   tunnel, or the set of protocols that might be used within the tunnel.
+   indicate the application layer protocol that a client intends to use
+   within the tunnel, or a set of protocols that might be used within
+   the tunnel.
 
 2.1.  Header Field Values
 
@@ -160,15 +161,17 @@ Internet-Draft               The ALPN Header                    May 2015
 
    o  When using percent-encoding, uppercase hex digits MUST be used.
 
+
+
+
+
+Hutton, et al.          Expires December 6, 2015                [Page 3]
+
+Internet-Draft               The ALPN Header                   June 2015
+
+
    With these constraints, recipients can apply simple string comparison
    to match protocol identifiers.
-
-
-
-Hutton, et al.          Expires December 1, 2015                [Page 3]
-
-Internet-Draft               The ALPN Header                    May 2015
-
 
    For example:
 
@@ -179,10 +182,10 @@ Internet-Draft               The ALPN Header                    May 2015
 
 2.3.  Usage
 
-   For a CONNECT tunnel that conveys a TLS session that in turn
-   encapsulates another protocol, the value of the ALPN header field
-   contains the same list of ALPN identifiers that will be sent in the
-   TLS ClientHello message [RFC7301].
+   For a CONNECT tunnel that conveys a protocol secured with TLS, the
+   value of the ALPN header field contains the same list of ALPN
+   identifiers that will be sent in the TLS ClientHello message
+   [RFC7301].
 
    Where no protocol negotiation is expected to occur, such as in
    protocols that do not use TLS, the ALPN header field contains a
@@ -191,9 +194,9 @@ Internet-Draft               The ALPN Header                    May 2015
    protocol negotiation is possible, the ALPN header field contains the
    set of protocols that might be negotiated.
 
-   When used in the ALPN header field, the ALPN identifier and registry
-   are used to identify an entire application protocol stack, not a
-   single protocol layer or component.
+   When used in the ALPN header field, an ALPN identifier is used to
+   identify an entire application protocol stack, not a single protocol
+   layer or component.
 
 3.  IANA Considerations
 
@@ -218,12 +221,9 @@ Internet-Draft               The ALPN Header                    May 2015
 
 
 
-
-
-
-Hutton, et al.          Expires December 1, 2015                [Page 4]
+Hutton, et al.          Expires December 6, 2015                [Page 4]
 
-Internet-Draft               The ALPN Header                    May 2015
+Internet-Draft               The ALPN Header                   June 2015
 
 
 4.  Security Considerations
@@ -238,9 +238,9 @@ Internet-Draft               The ALPN Header                    May 2015
    configurable whitelist of safe request targets."
 
    The ALPN header field described in this document is OPTIONAL.
-   Clients and HTTP proxies could choose to not support the header and
-   therefore fail to provide it, or ignore it when present.  If the
-   header is not available or ignored, a proxy cannot identify the
+   Clients and HTTP proxies could choose to not support it and therefore
+   either fail to provide it, or ignore it when present.  If the header
+   field is not available or ignored, a proxy cannot identify the
    purpose of the tunnel and use this as input to any authorization
    decision regarding the tunnel.  This is indistinguishable from the
    case where either client or proxy does not support the ALPN header
@@ -277,9 +277,9 @@ Internet-Draft               The ALPN Header                    May 2015
 
 
 
-Hutton, et al.          Expires December 1, 2015                [Page 5]
+Hutton, et al.          Expires December 6, 2015                [Page 5]
 
-Internet-Draft               The ALPN Header                    May 2015
+Internet-Draft               The ALPN Header                   June 2015
 
 
    [RFC7230]  Fielding, R. and J. Reschke, "Hypertext Transfer Protocol
@@ -333,9 +333,9 @@ Authors' Addresses
 
 
 
-Hutton, et al.          Expires December 1, 2015                [Page 6]
+Hutton, et al.          Expires December 6, 2015                [Page 6]
 
-Internet-Draft               The ALPN Header                    May 2015
+Internet-Draft               The ALPN Header                   June 2015
 
 
    Justin Uberti
@@ -389,4 +389,4 @@ Internet-Draft               The ALPN Header                    May 2015
 
 
 
-Hutton, et al.          Expires December 1, 2015                [Page 7]
+Hutton, et al.          Expires December 6, 2015                [Page 7]
