@@ -633,7 +633,7 @@ ul p {
          <li>Figures
             
             <ul>
-               <li><a href="#rfc.figure.u.13">ALTSVC Frame Payload</a></li>
+               <li><a href="#rfc.figure.u.11">ALTSVC Frame Payload</a></li>
             </ul>
          </li>
       </ul>
@@ -681,7 +681,7 @@ ul p {
             </div>
             <div id="imported.abnf" class="avoidbreakafter">
                <div id="rfc.section.1.1.p.2">
-                  <p>       This document uses the Augmented BNF defined in <a href="#RFC5234"><cite title="Augmented BNF for Syntax Specifications: ABNF">[RFC5234]</cite></a> along with the "#rule" extension defined in <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#abnf.extension" title="ABNF List Extension: #rule">Section 7</a> of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>. The rules below are defined in <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a> and <a href="#RFC7234"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Caching">[RFC7234]</cite></a>:
+                  <p>      This document uses the Augmented BNF defined in <a href="#RFC5234"><cite title="Augmented BNF for Syntax Specifications: ABNF">[RFC5234]</cite></a> along with the "#rule" extension defined in <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#abnf.extension" title="ABNF List Extension: #rule">Section 7</a> of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>. The rules below are defined in <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a> and <a href="#RFC7234"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Caching">[RFC7234]</cite></a>:
                   </p>
                </div>
             </div>
@@ -803,9 +803,8 @@ uri-host      = &lt;uri-host, see <a href="#RFC7230"><cite title="Hypertext Tran
                </p>
             </div>
             <div id="rfc.section.2.2.p.4">
-               <p>When alternative services are used to send a client to the most optimal server, a change in network configuration can result
-                  in cached values becoming suboptimal. Therefore, clients SHOULD remove from cache all alternative services that lack the "persist"
-                  flag with the value "1" when they detect such a change (when information about network state is available).
+               <p>Clients ought to consider that changes in network configurations can result in suboptimal or compromised cached alternative
+                  services.
                </p>
             </div>
          </div>
@@ -990,19 +989,6 @@ Alt-Svc: h2c=":8000"; ma=60
                </p>
             </div>
             <div id="rfc.section.3.1.p.6">
-               <p>By default, cached alternative services will be cleared when the client detects a network change. Alternative services that
-                  are intended to be longer-lived (e.g., those that are not specific to the client access network) can carry the "persist" parameter
-                  with a value "1" as a hint that the service is potentially useful beyond a network configuration change.
-               </p>
-            </div>
-            <div id="rfc.figure.u.11"><pre class="inline">persist = 1*<a href="#imported.abnf" class="smpl">DIGIT</a>
-</pre></div>
-            <div id="rfc.section.3.1.p.7" class="avoidbreakafter">
-               <p>For example:</p>
-            </div>
-            <div id="rfc.figure.u.12"><pre class="text">Alt-Svc: h2=":443"; ma=2592000; persist=1
-</pre></div>
-            <div id="rfc.section.3.1.p.8">
                <p>See <a href="#caching" title="Alternative Service Caching">Section&nbsp;2.2</a> for general requirements on caching alternative services.
                </p>
             </div>
@@ -1031,7 +1017,7 @@ Alt-Svc: h2c=":8000"; ma=60
          <div id="rfc.section.4.p.5">
             <p>The ALTSVC frame type is 0xa (decimal 10).</p>
          </div>
-         <div id="rfc.figure.u.13"><pre class="drawing"> +-------------------------------+-------------------------------+
+         <div id="rfc.figure.u.11"><pre class="drawing"> +-------------------------------+-------------------------------+
  |         Origin-Len (16)       | Origin? (*)                 ...
  +-------------------------------+-------------------------------+
  |                   Alt-Svc-Field-Value (*)                   ...
@@ -1076,7 +1062,7 @@ Alt-Svc: h2c=":8000"; ma=60
                header field (<a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#header.host" title="Host">Section 5.4</a> of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>) identifies the host and port of the origin.
             </p>
          </div>
-         <div id="rfc.figure.u.14"><pre class="inline">Alt-Used     = uri-host [ ":" port ]
+         <div id="rfc.figure.u.12"><pre class="inline">Alt-Used     = uri-host [ ":" port ]
 </pre></div>
          <div id="rfc.section.5.p.2">
             <p>Alt-Used is intended to allow alternative services to detect loops, differentiate traffic for purposes of load balancing,
@@ -1092,7 +1078,7 @@ Alt-Svc: h2c=":8000"; ma=60
             <p>As the Alt-Used header field might be used by the server for tracking the client, a client <em class="bcp14">MAY</em> choose not to include it in its requests for protecting its privacy (see <a href="#tracking" title="Tracking Clients Using Alternative Services">Section&nbsp;9.4</a>).
             </p>
          </div>
-         <div id="rfc.figure.u.15">
+         <div id="rfc.figure.u.13">
             <p>For example:</p><pre class="text2">GET /thing HTTP/1.1
 Host: origin.example.com
 Alt-Used: alternate.example.net
@@ -1260,12 +1246,11 @@ Alt-Used: alternate.example.net
             <h2 id="rfc.section.9.4"><a href="#rfc.section.9.4">9.4</a>&nbsp;<a href="#tracking">Tracking Clients Using Alternative Services</a></h2>
             <div id="rfc.section.9.4.p.1">
                <p>Choosing an alternative service implies connecting to a new, server-supplied host name. By using many different (potentially
-                  unique) host names, servers could conceivably track client requests. Such tracking could follow users across multiple networks,
-                  when the "persist" flag is used.
+                  unique) host names, servers could conceivably track client requests.
                </p>
             </div>
             <div id="rfc.section.9.4.p.2">
-               <p>Clients concerned by the additional fingerprinting surface can choose not to use alternative services.</p>
+               <p>Clients concerned by the additional fingerprinting can choose to ignore alternative service advertisements.</p>
             </div>
             <div id="rfc.section.9.4.p.3">
                <p>In a user agent, any alternative service information <em class="bcp14">MUST</em> be removed when origin-specific data is cleared (for instance, when cookies are cleared).

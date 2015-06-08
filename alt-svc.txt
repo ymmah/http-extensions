@@ -89,14 +89,14 @@ Table of Contents
    6.  The 421 Misdirected Request HTTP Status Code  . . . . . . . .  12
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  12
      7.1.  Header Field Registrations  . . . . . . . . . . . . . . .  12
-     7.2.  The ALTSVC HTTP/2 Frame Type  . . . . . . . . . . . . . .  13
+     7.2.  The ALTSVC HTTP/2 Frame Type  . . . . . . . . . . . . . .  12
    8.  Internationalization Considerations . . . . . . . . . . . . .  13
    9.  Security Considerations . . . . . . . . . . . . . . . . . . .  13
      9.1.  Changing Ports  . . . . . . . . . . . . . . . . . . . . .  13
-     9.2.  Changing Hosts  . . . . . . . . . . . . . . . . . . . . .  14
+     9.2.  Changing Hosts  . . . . . . . . . . . . . . . . . . . . .  13
      9.3.  Changing Protocols  . . . . . . . . . . . . . . . . . . .  14
-     9.4.  Tracking Clients Using Alternative Services . . . . . . .  15
-     9.5.  Confusion Regarding Request Scheme  . . . . . . . . . . .  15
+     9.4.  Tracking Clients Using Alternative Services . . . . . . .  14
+     9.5.  Confusion Regarding Request Scheme  . . . . . . . . . . .  14
    10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
      10.1.  Normative References . . . . . . . . . . . . . . . . . .  15
      10.2.  Informative References . . . . . . . . . . . . . . . . .  16
@@ -314,12 +314,8 @@ Internet-Draft          HTTP Alternative Services              June 2015
    service can be used for establishing new requests, not limiting the
    use of existing ones.
 
-   When alternative services are used to send a client to the most
-   optimal server, a change in network configuration can result in
-   cached values becoming suboptimal.  Therefore, clients SHOULD remove
-   from cache all alternative services that lack the "persist" flag with
-   the value "1" when they detect such a change (when information about
-   network state is available).
+   Clients ought to consider that changes in network configurations can
+   result in suboptimal or compromised cached alternative services.
 
 2.3.  Requiring Server Name Indication
 
@@ -330,6 +326,10 @@ Internet-Draft          HTTP Alternative Services              June 2015
    Note that the SNI information provided in TLS by the client will be
    that of the origin, not the alternative (as will the Host HTTP header
    field-value).
+
+
+
+
 
 
 
@@ -513,19 +513,6 @@ Internet-Draft          HTTP Alternative Services              June 2015
    value invalidates and replaces all cached alternative services for
    that origin.
 
-   By default, cached alternative services will be cleared when the
-   client detects a network change.  Alternative services that are
-   intended to be longer-lived (e.g., those that are not specific to the
-   client access network) can carry the "persist" parameter with a value
-   "1" as a hint that the service is potentially useful beyond a network
-   configuration change.
-
-   persist = 1*DIGIT
-
-   For example:
-
-   Alt-Svc: h2=":443"; ma=2592000; persist=1
-
    See Section 2.2 for general requirements on caching alternative
    services.
 
@@ -549,19 +536,6 @@ Internet-Draft          HTTP Alternative Services              June 2015
 
    The ALTSVC frame type is 0xa (decimal 10).
 
-
-
-
-
-
-
-
-
-Nottingham, et al.      Expires December 10, 2015              [Page 10]
-
-Internet-Draft          HTTP Alternative Services              June 2015
-
-
     +-------------------------------+-------------------------------+
     |         Origin-Len (16)       | Origin? (*)                 ...
     +-------------------------------+-------------------------------+
@@ -578,6 +552,15 @@ Internet-Draft          HTTP Alternative Services              June 2015
    Origin:  An OPTIONAL sequence of characters containing the ASCII
       serialization of an origin ([RFC6454], Section 6.2) that the
       alternative service is applicable to.
+
+
+
+
+
+Nottingham, et al.      Expires December 10, 2015              [Page 10]
+
+Internet-Draft          HTTP Alternative Services              June 2015
+
 
    Alt-Svc-Field-Value:  A sequence of octets (length determined by
       subtracting the length of all preceding fields from the frame
@@ -609,15 +592,6 @@ Internet-Draft          HTTP Alternative Services              June 2015
 
    Alt-Used     = uri-host [ ":" port ]
 
-
-
-
-
-Nottingham, et al.      Expires December 10, 2015              [Page 11]
-
-Internet-Draft          HTTP Alternative Services              June 2015
-
-
    Alt-Used is intended to allow alternative services to detect loops,
    differentiate traffic for purposes of load balancing, and generally
    to ensure that it is possible to identify the intended destination of
@@ -636,6 +610,13 @@ Internet-Draft          HTTP Alternative Services              June 2015
      GET /thing HTTP/1.1
      Host: origin.example.com
      Alt-Used: alternate.example.net
+
+
+
+Nottingham, et al.      Expires December 10, 2015              [Page 11]
+
+Internet-Draft          HTTP Alternative Services              June 2015
+
 
    The extension parameters (ext-param) are reserved for future use;
    specifications that want to define an extension will need to update
@@ -666,14 +647,6 @@ Internet-Draft          HTTP Alternative Services              June 2015
    registry maintained at <https://www.iana.org/assignments/message-
    headers/>.
 
-
-
-
-Nottingham, et al.      Expires December 10, 2015              [Page 12]
-
-Internet-Draft          HTTP Alternative Services              June 2015
-
-
    This document defines the following HTTP header fields, so their
    associated registry entries shall be added according to the permanent
    registrations below (see [BCP90]):
@@ -692,6 +665,14 @@ Internet-Draft          HTTP Alternative Services              June 2015
 
    This document registers the ALTSVC frame type in the HTTP/2 Frame
    Types registry ([RFC7540], Section 11.2).
+
+
+
+
+Nottingham, et al.      Expires December 10, 2015              [Page 12]
+
+Internet-Draft          HTTP Alternative Services              June 2015
+
 
       Frame Type: ALTSVC
 
@@ -723,13 +704,6 @@ Internet-Draft          HTTP Alternative Services              June 2015
    alternative services, and restricting who can open a port for
    listening on that host.
 
-
-
-Nottingham, et al.      Expires December 10, 2015              [Page 13]
-
-Internet-Draft          HTTP Alternative Services              June 2015
-
-
 9.2.  Changing Hosts
 
    When the host is changed due to the use of an alternative service, it
@@ -748,6 +722,13 @@ Internet-Draft          HTTP Alternative Services              June 2015
    authenticated with the origin's identity; i.e., presenting a
    certificate for the origin proves that the alternative service is
    authorized to serve traffic for the origin.
+
+
+
+Nottingham, et al.      Expires December 10, 2015              [Page 13]
+
+Internet-Draft          HTTP Alternative Services              June 2015
+
 
    However, this authorization is only as strong as the method used to
    authenticate the alternative service.  In particular, there are well-
@@ -777,25 +758,14 @@ Internet-Draft          HTTP Alternative Services              June 2015
    requirements and expectations (of specifications, implementations and
    end users) are met.
 
-
-
-
-
-Nottingham, et al.      Expires December 10, 2015              [Page 14]
-
-Internet-Draft          HTTP Alternative Services              June 2015
-
-
 9.4.  Tracking Clients Using Alternative Services
 
    Choosing an alternative service implies connecting to a new, server-
    supplied host name.  By using many different (potentially unique)
-   host names, servers could conceivably track client requests.  Such
-   tracking could follow users across multiple networks, when the
-   "persist" flag is used.
+   host names, servers could conceivably track client requests.
 
-   Clients concerned by the additional fingerprinting surface can choose
-   not to use alternative services.
+   Clients concerned by the additional fingerprinting can choose to
+   ignore alternative service advertisements.
 
    In a user agent, any alternative service information MUST be removed
    when origin-specific data is cleared (for instance, when cookies are
@@ -806,6 +776,15 @@ Internet-Draft          HTTP Alternative Services              June 2015
    Alternative Services MUST NOT be advertised for a protocol that is
    not designed to carry the scheme.  In particular, HTTP/1.1 over TLS
    cannot carry safely requests for http resources.
+
+
+
+
+
+Nottingham, et al.      Expires December 10, 2015              [Page 14]
+
+Internet-Draft          HTTP Alternative Services              June 2015
+
 
 10.  References
 
@@ -835,13 +814,6 @@ Internet-Draft          HTTP Alternative Services              June 2015
               Extension Definitions", RFC 6066, DOI 10.17487/RFC6066,
               January 2011, <http://www.rfc-editor.org/info/rfc6066>.
 
-
-
-Nottingham, et al.      Expires December 10, 2015              [Page 15]
-
-Internet-Draft          HTTP Alternative Services              June 2015
-
-
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454, DOI
               10.17487/RFC6454, December 2011,
               <http://www.rfc-editor.org/info/rfc6454>.
@@ -861,6 +833,15 @@ Internet-Draft          HTTP Alternative Services              June 2015
               Negotiation Extension", RFC 7301, DOI 10.17487/RFC7301,
               July 2014, <http://www.rfc-editor.org/info/rfc7301>.
 
+
+
+
+
+Nottingham, et al.      Expires December 10, 2015              [Page 15]
+
+Internet-Draft          HTTP Alternative Services              June 2015
+
+
    [RFC7540]  Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
               Transfer Protocol version 2", RFC 7540, DOI 10.17487/
               RFC7540, May 2015,
@@ -876,6 +857,25 @@ Internet-Draft          HTTP Alternative Services              June 2015
               (TLS) Protocol Version 1.2", RFC 5246, DOI 10.17487/
               RFC5246, August 2008,
               <http://www.rfc-editor.org/info/rfc5246>.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

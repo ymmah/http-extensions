@@ -140,7 +140,7 @@ Internet-Draft         Opportunistic HTTP Security             June 2015
    An origin server that supports the resolution of "http" URIs can
    indicate support for this specification by providing an alternative
    service advertisement [I-D.ietf-httpbis-alt-svc] for a protocol
-   identifier that uses TLS, such as "h2" [I-D.ietf-httpbis-http2].
+   identifier that uses TLS, such as "h2" [RFC7540].
 
    A client that receives such an advertisement MAY make future requests
    intended for the associated origin ([RFC6454]) to the identified
@@ -421,11 +421,6 @@ Internet-Draft         Opportunistic HTTP Security             June 2015
               Alternative Services", draft-ietf-httpbis-alt-svc-07 (work
               in progress), May 2015.
 
-   [I-D.ietf-httpbis-http2]
-              Belshe, M., Peon, R., and M. Thomson, "Hypertext Transfer
-              Protocol version 2", draft-ietf-httpbis-http2-17 (work in
-              progress), February 2015.
-
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119, DOI 10.17487/
               RFC2119, March 1997,
@@ -440,6 +435,11 @@ Internet-Draft         Opportunistic HTTP Security             June 2015
               RFC5246, August 2008,
               <http://www.rfc-editor.org/info/rfc5246>.
 
+   [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454, DOI
+              10.17487/RFC6454, December 2011,
+              <http://www.rfc-editor.org/info/rfc6454>.
+
+
 
 
 
@@ -449,10 +449,6 @@ Nottingham & Thomson    Expires December 10, 2015               [Page 8]
 
 Internet-Draft         Opportunistic HTTP Security             June 2015
 
-
-   [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454, DOI
-              10.17487/RFC6454, December 2011,
-              <http://www.rfc-editor.org/info/rfc6454>.
 
    [RFC7230]  Fielding, R. and J. Reschke, "Hypertext Transfer Protocol
               (HTTP/1.1): Message Syntax and Routing", RFC 7230, DOI
@@ -467,6 +463,11 @@ Internet-Draft         Opportunistic HTTP Security             June 2015
    [RFC7469]  Evans, C., Palmer, C., and R. Sleevi, "Public Key Pinning
               Extension for HTTP", RFC 7469, DOI 10.17487/RFC7469, April
               2015, <http://www.rfc-editor.org/info/rfc7469>.
+
+   [RFC7540]  Belshe, M., Peon, R., and M. Thomson, "Hypertext Transfer
+              Protocol Version 2 (HTTP/2)", RFC 7540, DOI 10.17487/
+              RFC7540, May 2015,
+              <http://www.rfc-editor.org/info/rfc7540>.
 
 7.2.  Informative References
 
@@ -496,7 +497,6 @@ Authors' Addresses
    Mozilla
 
    Email: martin.thomson@gmail.com
-
 
 
 
