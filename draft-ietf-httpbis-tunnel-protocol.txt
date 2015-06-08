@@ -140,8 +140,8 @@ Internet-Draft               The ALPN Header                   June 2015
 2.2.  Syntax
 
    The ABNF (Augmented Backus-Naur Form) syntax for the ALPN header
-   field is given below.  It is based on the Generic Grammar defined in
-   Section 2 of [RFC7230].
+   field value is given below.  It uses the syntax defined in
+   Section 1.2 of [RFC7230].
 
 
    ALPN = 1#protocol-id
