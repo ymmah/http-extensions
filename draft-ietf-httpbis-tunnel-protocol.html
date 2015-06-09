@@ -626,8 +626,8 @@ ALPN: h2, http%2F1.1
             <div id="rfc.section.2.3.p.4">
                <p>A proxy can use the value of the ALPN header field as input to authorization decisions. The header field exposes protocol
                   information at the HTTP layer, allowing authorization decisions to be made earlier, with better error reporting (such as a
-                  403 status code). However, due to the potential for falsification, it is not suitable as the sole basis for authorization,
-                  since different values can be reported in the header field to what is used.
+                  403 status code). The ALPN header field might be used to deny a request quickly and cleanly, but the potential for falsification
+                  makes it insufficient for authorizing requests.
                </p>
             </div>
             <div id="rfc.section.2.3.p.5">
