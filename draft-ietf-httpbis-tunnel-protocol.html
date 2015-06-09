@@ -397,7 +397,7 @@ ul p {
        content: "Hutton, et al.";
   }
   @bottom-center {
-       content: "Expires December 10, 2015";
+       content: "Expires December 11, 2015";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -430,7 +430,7 @@ ul p {
       <meta name="dct.creator" content="Uberti, J.">
       <meta name="dct.creator" content="Thomson, M.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-tunnel-protocol-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2015-06-08">
+      <meta name="dct.issued" scheme="ISO8601" content="2015-06-09">
       <meta name="dct.abstract" content="This specification allows HTTP CONNECT requests to indicate what protocol is intended to be used within the tunnel once established, using the ALPN header field.">
       <meta name="description" content="This specification allows HTTP CONNECT requests to indicate what protocol is intended to be used within the tunnel once established, using the ALPN header field.">
    </head>
@@ -450,7 +450,7 @@ ul p {
                <td class="right">J. Uberti</td>
             </tr>
             <tr>
-               <td class="left">Expires: December 10, 2015</td>
+               <td class="left">Expires: December 11, 2015</td>
                <td class="right">Google</td>
             </tr>
             <tr>
@@ -463,7 +463,7 @@ ul p {
             </tr>
             <tr>
                <td class="left"></td>
-               <td class="right">June 8, 2015</td>
+               <td class="right">June 9, 2015</td>
             </tr>
          </tbody>
       </table>
@@ -482,7 +482,7 @@ ul p {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on December 10, 2015.</p>
+         <p>This Internet-Draft will expire on December 11, 2015.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
@@ -608,20 +608,36 @@ ALPN: h2, http%2F1.1
             <h2 id="rfc.section.2.3"><a href="#rfc.section.2.3">2.3</a>&nbsp;Usage
             </h2>
             <div id="rfc.section.2.3.p.1">
+               <p>When used in the ALPN header field, an ALPN identifier is used to identify an entire application protocol stack, not a single
+                  protocol layer or component.
+               </p>
+            </div>
+            <div id="rfc.section.2.3.p.2">
                <p>For a CONNECT tunnel that conveys a protocol secured with TLS, the value of the ALPN header field contains the same list of
                   ALPN identifiers that will be sent in the TLS ClientHello message <a href="#RFC7301"><cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[RFC7301]</cite></a>.
                </p>
             </div>
-            <div id="rfc.section.2.3.p.2">
+            <div id="rfc.section.2.3.p.3">
                <p>Where no protocol negotiation is expected to occur, such as in protocols that do not use TLS, the ALPN header field contains
                   a single ALPN Protocol Identifier corresponding to the application protocol that is intended to be used. If an alternative
                   form of protocol negotiation is possible, the ALPN header field contains the set of protocols that might be negotiated.
                </p>
             </div>
-            <div id="rfc.section.2.3.p.3">
-               <p>When used in the ALPN header field, an ALPN identifier is used to identify an entire application protocol stack, not a single
-                  protocol layer or component.
+            <div id="rfc.section.2.3.p.4">
+               <p>A proxy can use the value of the ALPN header field as input to authorization decisions. The header field exposes protocol
+                  information at the HTTP layer, allowing authorization decisions to be made earlier, with better error reporting (such as a
+                  403 status code). However, due to the potential for falsification, it is not suitable as the sole basis for authorization,
+                  since different values can be reported in the header field to what is used.
                </p>
+            </div>
+            <div id="rfc.section.2.3.p.5">
+               <p>A proxy could attempt to inspect packets to determine the protocol in use. This requires that the proxy understand each ALPN
+                  identifier. Protocols like TLS could hide negotiated protocols, or protocol negotiation details could change over time. Proxies
+                  SHOULD NOT break a CONNECT tunnel solely on the basis of a failure to recognize the protocol.
+               </p>
+            </div>
+            <div id="rfc.section.2.3.p.6">
+               <p>A proxy can use the ALPN header field value to change how it manages or prioritizes connections.</p>
             </div>
          </div>
       </div>
@@ -661,6 +677,11 @@ ALPN: h2, http%2F1.1
             </p>
          </div>
          <div id="rfc.section.4.p.3">
+            <p>There is no confidentiality protection for the ALPN header field. ALPN identifiers that might expose confidential or sensitive
+               information SHOULD NOT be sent, as described in Section 5 of <a href="#RFC7301"><cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[RFC7301]</cite></a>.
+            </p>
+         </div>
+         <div id="rfc.section.4.p.4">
             <p>The value of the ALPN header field could be falsified by a client. If the data being sent through the tunnel is encrypted
                (for example, with <a href="#RFC5246">TLS</a> <cite title="The Transport Layer Security (TLS) Protocol Version 1.2">[RFC5246]</cite>), then the proxy might not be able to directly inspect the data to verify that the claimed protocol is the one which is actually
                being used, though a proxy might be able to perform traffic analysis <a href="#TRAFFIC"><cite title="Website Users by TLS Traffic Analysis: New Attacks and Effective Countermeasures, Revision 1">[TRAFFIC]</cite></a>. A proxy therefore cannot rely on the value of the ALPN header field as a policy input in all cases.
