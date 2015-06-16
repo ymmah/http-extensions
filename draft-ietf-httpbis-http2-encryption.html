@@ -445,7 +445,7 @@ ul p {
             </div>
             <div id="rfc.section.1.1.p.3">
                <p>A final (but significant) goal is to provide for ease of implementation, deployment and operation. This mechanism is expected
-                  to have a minimal impact upon performance, and a trivial administrative effort to configure.
+                  to have a minimal impact upon performance, and require a trivial administrative effort to configure.
                </p>
             </div>
          </div>
@@ -484,9 +484,7 @@ ul p {
       <div id="auth">
          <h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a>&nbsp;<a href="#auth">Server Authentication</a></h1>
          <div id="rfc.section.3.p.1">
-            <p>By their nature, “http” URIs do not require cryptographically strong server authentication; that is only implied by “https”
-               URIs. Furthermore, doing so (as per <a href="#RFC2818"><cite title="HTTP Over TLS">[RFC2818]</cite></a>) creates a number of operational challenges. For these reasons, server authentication is not mandatory for “http” URIs when
-               using the mechanism described in this specification.
+            <p>By their nature, <tt>http</tt> URIs do not require cryptographically strong server authentication; that is only implied by <tt>https</tt> URIs. Furthermore, doing so (as per <a href="#RFC2818"><cite title="HTTP Over TLS">[RFC2818]</cite></a>) creates a number of operational challenges. For these reasons, server authentication is not mandatory for <tt>http</tt> URIs when using the mechanism described in this specification.
             </p>
          </div>
          <div id="rfc.section.3.p.2">
@@ -624,8 +622,7 @@ ma-parameter     = delta-seconds
                </p>
             </div>
             <div id="rfc.section.5.2.p.2">
-               <p>Once a server has indicated that it will support authenticated TLS, a client MAY use key pinning <a href="#RFC7469"><cite title="Public Key Pinning Extension for HTTP">[RFC7469]</cite></a> or any other mechanism that would otherwise be restricted to use with “https” URIs, provided that the mechanism can be restricted
-                  to a single HTTP origin.
+               <p>Once a server has indicated that it will support authenticated TLS, a client MAY use key pinning <a href="#RFC7469"><cite title="Public Key Pinning Extension for HTTP">[RFC7469]</cite></a> or any other mechanism that would otherwise be restricted to use with <tt>https</tt> URIs, provided that the mechanism can be restricted to a single HTTP origin.
                </p>
             </div>
          </div>

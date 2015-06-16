@@ -126,7 +126,7 @@ Internet-Draft         Opportunistic HTTP Security             June 2015
 
    A final (but significant) goal is to provide for ease of
    implementation, deployment and operation.  This mechanism is expected
-   to have a minimal impact upon performance, and a trivial
+   to have a minimal impact upon performance, and require a trivial
    administrative effort to configure.
 
 1.2.  Notational Conventions
