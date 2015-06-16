@@ -5,8 +5,8 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Experimental                                 M. Thomson
-Expires: December 13, 2015                                       Mozilla
-                                                           June 11, 2015
+Expires: December 18, 2015                                       Mozilla
+                                                           June 16, 2015
 
 
                     Opportunistic Security for HTTP
@@ -33,7 +33,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 13, 2015.
+   This Internet-Draft will expire on December 18, 2015.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Nottingham & Thomson    Expires December 13, 2015               [Page 1]
+Nottingham & Thomson    Expires December 18, 2015               [Page 1]
 
 Internet-Draft         Opportunistic HTTP Security             June 2015
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Nottingham & Thomson    Expires December 13, 2015               [Page 2]
+Nottingham & Thomson    Expires December 18, 2015               [Page 2]
 
 Internet-Draft         Opportunistic HTTP Security             June 2015
 
@@ -165,7 +165,7 @@ Internet-Draft         Opportunistic HTTP Security             June 2015
 
 
 
-Nottingham & Thomson    Expires December 13, 2015               [Page 3]
+Nottingham & Thomson    Expires December 18, 2015               [Page 3]
 
 Internet-Draft         Opportunistic HTTP Security             June 2015
 
@@ -221,7 +221,7 @@ Internet-Draft         Opportunistic HTTP Security             June 2015
 
 
 
-Nottingham & Thomson    Expires December 13, 2015               [Page 4]
+Nottingham & Thomson    Expires December 18, 2015               [Page 4]
 
 Internet-Draft         Opportunistic HTTP Security             June 2015
 
@@ -277,7 +277,7 @@ Internet-Draft         Opportunistic HTTP Security             June 2015
 
 
 
-Nottingham & Thomson    Expires December 13, 2015               [Page 5]
+Nottingham & Thomson    Expires December 18, 2015               [Page 5]
 
 Internet-Draft         Opportunistic HTTP Security             June 2015
 
@@ -333,7 +333,7 @@ Internet-Draft         Opportunistic HTTP Security             June 2015
 
 
 
-Nottingham & Thomson    Expires December 13, 2015               [Page 6]
+Nottingham & Thomson    Expires December 18, 2015               [Page 6]
 
 Internet-Draft         Opportunistic HTTP Security             June 2015
 
@@ -389,7 +389,7 @@ Internet-Draft         Opportunistic HTTP Security             June 2015
 
 
 
-Nottingham & Thomson    Expires December 13, 2015               [Page 7]
+Nottingham & Thomson    Expires December 18, 2015               [Page 7]
 
 Internet-Draft         Opportunistic HTTP Security             June 2015
 
@@ -417,9 +417,9 @@ Internet-Draft         Opportunistic HTTP Security             June 2015
 7.1.  Normative References
 
    [I-D.ietf-httpbis-alt-svc]
-              Nottingham, M., McManus, P., and J. Reschke, "HTTP
-              Alternative Services", draft-ietf-httpbis-alt-svc-07 (work
-              in progress), May 2015.
+              mnot, m., McManus, P., and J. Reschke, "HTTP Alternative
+              Services", draft-ietf-httpbis-alt-svc-07 (work in
+              progress), May 2015.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119, DOI 10.17487/
@@ -445,7 +445,7 @@ Internet-Draft         Opportunistic HTTP Security             June 2015
 
 
 
-Nottingham & Thomson    Expires December 13, 2015               [Page 8]
+Nottingham & Thomson    Expires December 18, 2015               [Page 8]
 
 Internet-Draft         Opportunistic HTTP Security             June 2015
 
@@ -501,4 +501,4 @@ Authors' Addresses
 
 
 
-Nottingham & Thomson    Expires December 13, 2015               [Page 9]
+Nottingham & Thomson    Expires December 18, 2015               [Page 9]
