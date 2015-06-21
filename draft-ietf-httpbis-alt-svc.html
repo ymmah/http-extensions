@@ -462,7 +462,7 @@ ul p {
        content: "Nottingham, et al.";
   }
   @bottom-center {
-       content: "Expires December 21, 2015";
+       content: "Expires December 23, 2015";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -502,7 +502,7 @@ ul p {
       <meta name="dct.creator" content="McManus, P.">
       <meta name="dct.creator" content="Reschke, J. F.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-alt-svc-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2015-06-19">
+      <meta name="dct.issued" scheme="ISO8601" content="2015-06-21">
       <meta name="dct.abstract" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
       <meta name="description" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
    </head>
@@ -522,7 +522,7 @@ ul p {
                <td class="right">P. McManus</td>
             </tr>
             <tr>
-               <td class="left">Expires: December 21, 2015</td>
+               <td class="left">Expires: December 23, 2015</td>
                <td class="right">Mozilla</td>
             </tr>
             <tr>
@@ -535,7 +535,7 @@ ul p {
             </tr>
             <tr>
                <td class="left"></td>
-               <td class="right">June 19, 2015</td>
+               <td class="right">June 21, 2015</td>
             </tr>
          </tbody>
       </table>
@@ -561,7 +561,7 @@ ul p {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on December 21, 2015.</p>
+         <p>This Internet-Draft will expire on December 23, 2015.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
@@ -1042,8 +1042,7 @@ Alt-Svc: h2c=":8000"; ma=60
             <p>The ALTSVC frame does not define any flags.</p>
          </div>
          <div id="rfc.section.4.p.8">
-            <p>The ALTSVC frame is intended for receipt by clients; a server that receives an ALTSVC frame <em class="bcp14">MUST</em> treat it as a connection error of type PROTOCOL_ERROR.
-            </p>
+            <p>The ALTSVC frame is intended for receipt by clients; a server that receives an ALTSVC frame can safely ignore it.</p>
          </div>
          <div id="rfc.section.4.p.9">
             <p>An ALTSVC frame on stream 0 with empty (length 0) "Origin" information is invalid and <em class="bcp14">MUST</em> be ignored. An ALTSVC frame on a stream other than stream 0 containing non-empty "Origin" information is invalid and <em class="bcp14">MUST</em> be ignored.
@@ -1460,6 +1459,10 @@ Alt-Used: alternate.example.net
          <div id="changes.since.draft-ietf-httpbis-alt-svc-07">
             <h2 id="rfc.section.A.9"><a href="#rfc.section.A.9">A.9</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-07">Since draft-ietf-httpbis-alt-svc-07</a></h2>
             <div id="rfc.section.A.9.p.1">
+               <p>Unexpected Alt-Svc frames (&lt;<a href="https://github.com/httpwg/http-extensions/issues/18">https://github.com/httpwg/http-extensions/issues/18</a>&gt;).
+               </p>
+            </div>
+            <div id="rfc.section.A.9.p.2">
                <p>Number of alternate services used (&lt;<a href="https://github.com/httpwg/http-extensions/issues/58">https://github.com/httpwg/http-extensions/issues/58</a>&gt;).
                </p>
             </div>
@@ -1469,7 +1472,7 @@ Alt-Used: alternate.example.net
          <h1 id="rfc.section.unnumbered-1"><a href="#acknowledgements">Acknowledgements</a></h1>
          <div id="rfc.section.unnumbered-1.p.1">
             <p>Thanks to Adam Langley, Bence Beky, Eliot Lear, Erik Nygren, Guy Podjarny, Herve Ruellan, Martin Thomson, Matthew Kerwin,
-               Paul Hoffman, Richard Barnes, Stephen Farrell, Stephen Ludin, and Will Chan for their feedback and suggestions.
+               Mike Bishop, Paul Hoffman, Richard Barnes, Stephen Farrell, Stephen Ludin, and Will Chan for their feedback and suggestions.
             </p>
          </div>
          <div id="rfc.section.unnumbered-1.p.2">

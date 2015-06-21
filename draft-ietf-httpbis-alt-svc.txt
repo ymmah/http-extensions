@@ -5,10 +5,10 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft                                                    Akamai
 Intended status: Standards Track                              P. McManus
-Expires: December 21, 2015                                       Mozilla
+Expires: December 23, 2015                                       Mozilla
                                                               J. Reschke
                                                               greenbytes
-                                                           June 19, 2015
+                                                           June 21, 2015
 
 
                        HTTP Alternative Services
@@ -49,11 +49,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 21, 2015.
+   This Internet-Draft will expire on December 23, 2015.
 
 
 
-Nottingham, et al.      Expires December 21, 2015               [Page 1]
+Nottingham, et al.      Expires December 23, 2015               [Page 1]
 
 Internet-Draft          HTTP Alternative Services              June 2015
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Nottingham, et al.      Expires December 21, 2015               [Page 2]
+Nottingham, et al.      Expires December 23, 2015               [Page 2]
 
 Internet-Draft          HTTP Alternative Services              June 2015
 
@@ -165,7 +165,7 @@ Internet-Draft          HTTP Alternative Services              June 2015
 
 
 
-Nottingham, et al.      Expires December 21, 2015               [Page 3]
+Nottingham, et al.      Expires December 23, 2015               [Page 3]
 
 Internet-Draft          HTTP Alternative Services              June 2015
 
@@ -221,7 +221,7 @@ Internet-Draft          HTTP Alternative Services              June 2015
 
 
 
-Nottingham, et al.      Expires December 21, 2015               [Page 4]
+Nottingham, et al.      Expires December 23, 2015               [Page 4]
 
 Internet-Draft          HTTP Alternative Services              June 2015
 
@@ -277,7 +277,7 @@ Internet-Draft          HTTP Alternative Services              June 2015
 
 
 
-Nottingham, et al.      Expires December 21, 2015               [Page 5]
+Nottingham, et al.      Expires December 23, 2015               [Page 5]
 
 Internet-Draft          HTTP Alternative Services              June 2015
 
@@ -333,7 +333,7 @@ Internet-Draft          HTTP Alternative Services              June 2015
 
 
 
-Nottingham, et al.      Expires December 21, 2015               [Page 6]
+Nottingham, et al.      Expires December 23, 2015               [Page 6]
 
 Internet-Draft          HTTP Alternative Services              June 2015
 
@@ -389,7 +389,7 @@ Internet-Draft          HTTP Alternative Services              June 2015
 
 
 
-Nottingham, et al.      Expires December 21, 2015               [Page 7]
+Nottingham, et al.      Expires December 23, 2015               [Page 7]
 
 Internet-Draft          HTTP Alternative Services              June 2015
 
@@ -445,7 +445,7 @@ Internet-Draft          HTTP Alternative Services              June 2015
 
 
 
-Nottingham, et al.      Expires December 21, 2015               [Page 8]
+Nottingham, et al.      Expires December 23, 2015               [Page 8]
 
 Internet-Draft          HTTP Alternative Services              June 2015
 
@@ -501,7 +501,7 @@ Internet-Draft          HTTP Alternative Services              June 2015
 
 
 
-Nottingham, et al.      Expires December 21, 2015               [Page 9]
+Nottingham, et al.      Expires December 23, 2015               [Page 9]
 
 Internet-Draft          HTTP Alternative Services              June 2015
 
@@ -557,7 +557,7 @@ Internet-Draft          HTTP Alternative Services              June 2015
 
 
 
-Nottingham, et al.      Expires December 21, 2015              [Page 10]
+Nottingham, et al.      Expires December 23, 2015              [Page 10]
 
 Internet-Draft          HTTP Alternative Services              June 2015
 
@@ -570,8 +570,7 @@ Internet-Draft          HTTP Alternative Services              June 2015
    The ALTSVC frame does not define any flags.
 
    The ALTSVC frame is intended for receipt by clients; a server that
-   receives an ALTSVC frame MUST treat it as a connection error of type
-   PROTOCOL_ERROR.
+   receives an ALTSVC frame can safely ignore it.
 
    An ALTSVC frame on stream 0 with empty (length 0) "Origin"
    information is invalid and MUST be ignored.  An ALTSVC frame on a
@@ -613,7 +612,8 @@ Internet-Draft          HTTP Alternative Services              June 2015
 
 
 
-Nottingham, et al.      Expires December 21, 2015              [Page 11]
+
+Nottingham, et al.      Expires December 23, 2015              [Page 11]
 
 Internet-Draft          HTTP Alternative Services              June 2015
 
@@ -669,7 +669,7 @@ Internet-Draft          HTTP Alternative Services              June 2015
 
 
 
-Nottingham, et al.      Expires December 21, 2015              [Page 12]
+Nottingham, et al.      Expires December 23, 2015              [Page 12]
 
 Internet-Draft          HTTP Alternative Services              June 2015
 
@@ -725,7 +725,7 @@ Internet-Draft          HTTP Alternative Services              June 2015
 
 
 
-Nottingham, et al.      Expires December 21, 2015              [Page 13]
+Nottingham, et al.      Expires December 23, 2015              [Page 13]
 
 Internet-Draft          HTTP Alternative Services              June 2015
 
@@ -781,7 +781,7 @@ Internet-Draft          HTTP Alternative Services              June 2015
 
 
 
-Nottingham, et al.      Expires December 21, 2015              [Page 14]
+Nottingham, et al.      Expires December 23, 2015              [Page 14]
 
 Internet-Draft          HTTP Alternative Services              June 2015
 
@@ -837,7 +837,7 @@ Internet-Draft          HTTP Alternative Services              June 2015
 
 
 
-Nottingham, et al.      Expires December 21, 2015              [Page 15]
+Nottingham, et al.      Expires December 23, 2015              [Page 15]
 
 Internet-Draft          HTTP Alternative Services              June 2015
 
@@ -893,7 +893,7 @@ Internet-Draft          HTTP Alternative Services              June 2015
 
 
 
-Nottingham, et al.      Expires December 21, 2015              [Page 16]
+Nottingham, et al.      Expires December 23, 2015              [Page 16]
 
 Internet-Draft          HTTP Alternative Services              June 2015
 
@@ -949,7 +949,7 @@ A.5.  Since draft-ietf-httpbis-alt-svc-03
 
 
 
-Nottingham, et al.      Expires December 21, 2015              [Page 17]
+Nottingham, et al.      Expires December 23, 2015              [Page 17]
 
 Internet-Draft          HTTP Alternative Services              June 2015
 
@@ -998,24 +998,27 @@ A.8.  Since draft-ietf-httpbis-alt-svc-06
 
 A.9.  Since draft-ietf-httpbis-alt-svc-07
 
-   Number of alternate services used (<https://github.com/httpwg/http-
-   extensions/issues/58>).
+   Unexpected Alt-Svc frames (<https://github.com/httpwg/http-
+   extensions/issues/18>).
 
 
 
 
 
-Nottingham, et al.      Expires December 21, 2015              [Page 18]
+Nottingham, et al.      Expires December 23, 2015              [Page 18]
 
 Internet-Draft          HTTP Alternative Services              June 2015
 
 
+   Number of alternate services used (<https://github.com/httpwg/http-
+   extensions/issues/58>).
+
 Appendix B.  Acknowledgements
 
    Thanks to Adam Langley, Bence Beky, Eliot Lear, Erik Nygren, Guy
-   Podjarny, Herve Ruellan, Martin Thomson, Matthew Kerwin, Paul
-   Hoffman, Richard Barnes, Stephen Farrell, Stephen Ludin, and Will
-   Chan for their feedback and suggestions.
+   Podjarny, Herve Ruellan, Martin Thomson, Matthew Kerwin, Mike Bishop,
+   Paul Hoffman, Richard Barnes, Stephen Farrell, Stephen Ludin, and
+   Will Chan for their feedback and suggestions.
 
    The Alt-Svc header field was influenced by the design of the
    Alternate-Protocol header field in SPDY.
@@ -1058,7 +1061,4 @@ Authors' Addresses
 
 
 
-
-
-
-Nottingham, et al.      Expires December 21, 2015              [Page 19]
+Nottingham, et al.      Expires December 23, 2015              [Page 19]
