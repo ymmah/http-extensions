@@ -58,7 +58,7 @@ function toggleButton(node) {
     }
 
     // docname
-    var docname = "draft-ietf-httpbis-legally-restricted-status-latest";
+    var docname = "draft-ietf-httpbis-legally-restricted-status-01";
 
     // section
     var section = node.textContent;
@@ -429,9 +429,10 @@ ul p {
       <link rel="Chapter" href="#rfc.section.6" title="6 Normative References">
       <link rel="Appendix" title="Acknowledgements" href="#rfc.section.unnumbered-1">
       <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.733, 2015/05/28 13:08:20, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
+      <meta name="keywords" content="HTTP">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Bray, T.">
-      <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-legally-restricted-status-latest">
+      <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-legally-restricted-status-01">
       <meta name="dct.issued" scheme="ISO8601" content="2015-04">
       <meta name="dct.abstract" content="This document specifies a Hypertext Transfer Protocol (HTTP) status code for use when resource access is denied as a consequence of legal demands.">
       <meta name="description" content="This document specifies a Hypertext Transfer Protocol (HTTP) status code for use when resource access is denied as a consequence of legal demands.">
@@ -462,7 +463,7 @@ ul p {
             </tr>
          </tbody>
       </table>
-      <p class="title" id="rfc.title">An HTTP Status Code to Report Legal Obstacles<br><span class="filename">draft-ietf-httpbis-legally-restricted-status-latest</span></p>
+      <p class="title" id="rfc.title">An HTTP Status Code to Report Legal Obstacles<br><span class="filename">draft-ietf-httpbis-legally-restricted-status-01</span></p>
       <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
       <p>This document specifies a Hypertext Transfer Protocol (HTTP) status code for use when resource access is denied as a consequence
          of legal demands.
@@ -526,9 +527,7 @@ ul p {
             </p>
          </div>
          <div id="rfc.section.1.p.4">
-            <p>Feedback should occur on the ietf-http-wg@w3.org mailing list, although this draft is NOT a work item of the IETF HTTPbis
-               Working Group.
-            </p>
+            <p>Feedback should occur on the ietf-http-wg@w3.org mailing list.</p>
          </div>
       </div>
       <div>
@@ -581,6 +580,11 @@ Content-Type: text/html
                Tor network.
             </p>
          </div>
+         <div id="rfc.section.3.p.6">
+            <p>A 451 response is cacheable by default; i.e., unless otherwise indicated by the method definition or explicit cache controls;
+               see <a href="#RFC7234"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Caching">[RFC7234]</cite></a>.
+            </p>
+         </div>
       </div>
       <div>
          <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a>&nbsp;Security Considerations
@@ -628,6 +632,11 @@ Content-Type: text/html
             <td class="top">Aboba, B. and E. Davies, “<a href="https://tools.ietf.org/html/rfc4924">Reflections on Internet Transparency</a>”, RFC&nbsp;4924, July&nbsp;2007, &lt;<a href="http://www.rfc-editor.org/info/rfc4924">http://www.rfc-editor.org/info/rfc4924</a>&gt;.
             </td>
          </tr>
+         <tr>
+            <td class="reference"><b id="RFC7234">[RFC7234]</b></td>
+            <td class="top">Fielding, R., Nottingham, M., and J. Reschke, “<a href="https://tools.ietf.org/html/rfc7234">Hypertext Transfer Protocol (HTTP/1.1): Caching</a>”, RFC&nbsp;7234, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7234">http://www.rfc-editor.org/info/rfc7234</a>&gt;.
+            </td>
+         </tr>
       </table>
       <div>
          <h1 id="rfc.section.unnumbered-1">Acknowledgements</h1>
@@ -638,9 +647,6 @@ Content-Type: text/html
          </div>
          <div id="rfc.section.unnumbered-1.p.2">
             <p>Thanks also to Ray Bradbury.</p>
-         </div>
-         <div id="rfc.section.unnumbered-1.p.3">
-            <p>The author takes all responsibility for errors and omissions.</p>
          </div>
       </div>
       <div class="avoidbreakinside">

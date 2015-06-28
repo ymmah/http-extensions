@@ -10,7 +10,7 @@ Expires: October 3, 2015
 
 
              An HTTP Status Code to Report Legal Obstacles
-          draft-ietf-httpbis-legally-restricted-status-latest
+            draft-ietf-httpbis-legally-restricted-status-01
 
 Abstract
 
@@ -78,11 +78,11 @@ Table of Contents
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Requirements  . . . . . . . . . . . . . . . . . . . . . . . .   3
    3.  451 Unavailable For Legal Reasons . . . . . . . . . . . . . .   3
-   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   3
+   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
    5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
    6.  Normative References  . . . . . . . . . . . . . . . . . . . .   4
    Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .   4
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   4
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   5
 
 1.  Introduction
 
@@ -100,9 +100,9 @@ Table of Contents
    restrict access to content.  As that document notes, and as Section 4
    of [RFC4084] states, such restrictions should be made explicit.
 
-   Feedback should occur on the ietf-http-wg@w3.org mailing list,
-   although this draft is NOT a work item of the IETF HTTPbis Working
-   Group.
+   Feedback should occur on the ietf-http-wg@w3.org mailing list.
+
+
 
 
 
@@ -157,9 +157,9 @@ Internet-Draft               HTTP-status-451                  April 2015
    Note that in many cases clients can still access the denied resource
    by using technical countermeasures such as a VPN or the Tor network.
 
-4.  Security Considerations
-
-
+   A 451 response is cacheable by default; i.e., unless otherwise
+   indicated by the method definition or explicit cache controls; see
+   [RFC7234].
 
 
 
@@ -169,6 +169,8 @@ Bray                     Expires October 3, 2015                [Page 3]
 
 Internet-Draft               HTTP-status-451                  April 2015
 
+
+4.  Security Considerations
 
 4.1.  451 Unavailable for Legal Reasons
 
@@ -203,6 +205,10 @@ Internet-Draft               HTTP-status-451                  April 2015
               Transparency", RFC 4924, July 2007,
               <http://www.rfc-editor.org/info/rfc4924>.
 
+   [RFC7234]  Fielding, R., Nottingham, M., and J. Reschke, "Hypertext
+              Transfer Protocol (HTTP/1.1): Caching", RFC 7234, June
+              2014, <http://www.rfc-editor.org/info/rfc7234>.
+
 Appendix A.  Acknowledgements
 
    Thanks to Terence Eden, who observed that the existing status code
@@ -210,12 +216,6 @@ Appendix A.  Acknowledgements
    creation of a new status code.
 
    Thanks also to Ray Bradbury.
-
-   The author takes all responsibility for errors and omissions.
-
-Author's Address
-
-
 
 
 
@@ -226,13 +226,13 @@ Bray                     Expires October 3, 2015                [Page 4]
 Internet-Draft               HTTP-status-451                  April 2015
 
 
+Author's Address
+
    Tim Bray
    Textuality
 
    Email: tbray@textuality.com
    URI:   http://www.tbray.org/ongoing/
-
-
 
 
 
