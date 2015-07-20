@@ -194,20 +194,22 @@ Internet-Draft               HTTP-status-451                  April 2015
 6.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119, March 1997,
+              Requirement Levels", BCP 14, RFC 2119, DOI 10.17487/
+              RFC2119, March 1997,
               <http://www.rfc-editor.org/info/rfc2119>.
 
    [RFC4084]  Klensin, J., "Terminology for Describing Internet
-              Connectivity", BCP 104, RFC 4084, May 2005,
-              <http://www.rfc-editor.org/info/rfc4084>.
+              Connectivity", BCP 104, RFC 4084, DOI 10.17487/RFC4084,
+              May 2005, <http://www.rfc-editor.org/info/rfc4084>.
 
-   [RFC4924]  Aboba, B. and E. Davies, "Reflections on Internet
-              Transparency", RFC 4924, July 2007,
+   [RFC4924]  Aboba, B., Ed. and E. Davies, "Reflections on Internet
+              Transparency", RFC 4924, DOI 10.17487/RFC4924, July 2007,
               <http://www.rfc-editor.org/info/rfc4924>.
 
-   [RFC7234]  Fielding, R., Nottingham, M., and J. Reschke, "Hypertext
-              Transfer Protocol (HTTP/1.1): Caching", RFC 7234, June
-              2014, <http://www.rfc-editor.org/info/rfc7234>.
+   [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
+              Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
+              RFC 7234, DOI 10.17487/RFC7234, June 2014,
+              <http://www.rfc-editor.org/info/rfc7234>.
 
 Appendix A.  Acknowledgements
 
@@ -216,8 +218,6 @@ Appendix A.  Acknowledgements
    creation of a new status code.
 
    Thanks also to Ray Bradbury.
-
-
 
 
 
