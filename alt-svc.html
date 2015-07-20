@@ -840,17 +840,21 @@ uri-host      = &lt;uri-host, see <a href="#RFC7230"><cite title="Hypertext Tran
                </p>
             </div>
             <div id="rfc.section.2.4.p.4">
+               <p>A client configured to use a proxy for a given request <em class="bcp14">SHOULD NOT</em> directly connect to an alternative service for it, but instead route it through that proxy.
+               </p>
+            </div>
+            <div id="rfc.section.2.4.p.5">
                <p>When a client uses an alternative service for a request, it can indicate this to the server using the Alt-Used header field
                   (<a href="#indicator" title="The Alt-Used HTTP Header Field">Section&nbsp;5</a>).
                </p>
             </div>
-            <div id="rfc.section.2.4.p.5">
+            <div id="rfc.section.2.4.p.6">
                <p>The client does not need to block requests on any existing connection; it can be used until the alternative connection is
                   established. However, if the security properties of the existing connection are weak (e.g. cleartext HTTP/1.1) then it might
                   make sense to block until the new connection is fully available in order to avoid information leakage.
                </p>
             </div>
-            <div id="rfc.section.2.4.p.6">
+            <div id="rfc.section.2.4.p.7">
                <p>Furthermore, if the connection to the alternative service fails or is unresponsive, the client <em class="bcp14">MAY</em> fall back to using the origin or another alternative service. Note, however, that this could be the basis of a downgrade attack,
                   thus losing any enhanced security properties of the alternative service.
                </p>
@@ -1464,6 +1468,10 @@ Alt-Used: alternate.example.net
             </div>
             <div id="rfc.section.A.9.p.2">
                <p>Number of alternate services used (&lt;<a href="https://github.com/httpwg/http-extensions/issues/58">https://github.com/httpwg/http-extensions/issues/58</a>&gt;).
+               </p>
+            </div>
+            <div id="rfc.section.A.9.p.3">
+               <p>Proxy and .pac interaction (&lt;<a href="https://github.com/httpwg/http-extensions/issues/62">https://github.com/httpwg/http-extensions/issues/62</a>&gt;).
                </p>
             </div>
          </div>
