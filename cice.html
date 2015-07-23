@@ -462,7 +462,7 @@ ul p {
        content: "Reschke";
   }
   @bottom-center {
-       content: "Expires January 22, 2016";
+       content: "Expires January 24, 2016";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -498,7 +498,7 @@ ul p {
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Reschke, J. F.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-cice-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2015-07-21">
+      <meta name="dct.issued" scheme="ISO8601" content="2015-07-23">
       <meta name="dct.abstract" content="In HTTP, content codings allow for payload encodings such as for compression or integrity checks. In particular, the &#34;gzip&#34; content coding is widely used for payload data sent in response messages. Content codings can be used in request messages as well, however discoverability is not on par with response messages. This document extends the HTTP &#34;Accept-Encoding&#34; header field for use in responses, to indicate that content codings are supported in requests.">
       <meta name="description" content="In HTTP, content codings allow for payload encodings such as for compression or integrity checks. In particular, the &#34;gzip&#34; content coding is widely used for payload data sent in response messages. Content codings can be used in request messages as well, however discoverability is not on par with response messages. This document extends the HTTP &#34;Accept-Encoding&#34; header field for use in responses, to indicate that content codings are supported in requests.">
    </head>
@@ -515,10 +515,10 @@ ul p {
             </tr>
             <tr>
                <td class="left">Intended status: Standards Track</td>
-               <td class="right">July 21, 2015</td>
+               <td class="right">July 23, 2015</td>
             </tr>
             <tr>
-               <td class="left">Expires: January 22, 2016</td>
+               <td class="left">Expires: January 24, 2016</td>
                <td class="right"></td>
             </tr>
          </tbody>
@@ -549,7 +549,7 @@ ul p {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on January 22, 2016.</p>
+         <p>This Internet-Draft will expire on January 24, 2016.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
@@ -689,7 +689,7 @@ Content-Type: text/plain
       <div id="deployment.considerations">
          <h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a>&nbsp;<a href="#deployment.considerations">Deployment Considerations</a></h1>
          <div id="rfc.section.5.p.1">
-            <p>Servers that do not support content codings in requests already are required to fail a request that does use a content coding. <a href="rfc7231.html#status.415" title="415 Unsupported Media Type">Section 6.5.13</a> of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a> recommends using the status code 415 (Unsupported Media Type), so the only change needed is to include the "Accept-Encoding"
+            <p>Servers that do not support content codings in requests already are required to fail a request that uses a content coding. <a href="rfc7231.html#status.415" title="415 Unsupported Media Type">Section 6.5.13</a> of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a> recommends using the status code 415 (Unsupported Media Type), so the only change needed is to include the "Accept-Encoding"
                header field with value "identity" in that response.
             </p>
          </div>
