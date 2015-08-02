@@ -5,10 +5,10 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft                                                    Akamai
 Intended status: Standards Track                              P. McManus
-Expires: January 24, 2016                                        Mozilla
+Expires: February 3, 2016                                        Mozilla
                                                               J. Reschke
                                                               greenbytes
-                                                           July 23, 2015
+                                                          August 2, 2015
 
 
                        HTTP Alternative Services
@@ -49,13 +49,13 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 24, 2016.
+   This Internet-Draft will expire on February 3, 2016.
 
 
 
-Nottingham, et al.      Expires January 24, 2016                [Page 1]
+Nottingham, et al.      Expires February 3, 2016                [Page 1]
 
-Internet-Draft          HTTP Alternative Services              July 2015
+Internet-Draft          HTTP Alternative Services            August 2015
 
 
 Copyright Notice
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Nottingham, et al.      Expires January 24, 2016                [Page 2]
+Nottingham, et al.      Expires February 3, 2016                [Page 2]
 
-Internet-Draft          HTTP Alternative Services              July 2015
+Internet-Draft          HTTP Alternative Services            August 2015
 
 
      A.5.  Since draft-ietf-httpbis-alt-svc-03 . . . . . . . . . . .  17
@@ -165,9 +165,9 @@ Internet-Draft          HTTP Alternative Services              July 2015
 
 
 
-Nottingham, et al.      Expires January 24, 2016                [Page 3]
+Nottingham, et al.      Expires February 3, 2016                [Page 3]
 
-Internet-Draft          HTTP Alternative Services              July 2015
+Internet-Draft          HTTP Alternative Services            August 2015
 
 
 1.1.  Notational Conventions
@@ -221,9 +221,9 @@ Internet-Draft          HTTP Alternative Services              July 2015
 
 
 
-Nottingham, et al.      Expires January 24, 2016                [Page 4]
+Nottingham, et al.      Expires February 3, 2016                [Page 4]
 
-Internet-Draft          HTTP Alternative Services              July 2015
+Internet-Draft          HTTP Alternative Services            August 2015
 
 
    information at the name resolution level.  Each origin maps to a set
@@ -277,9 +277,9 @@ Internet-Draft          HTTP Alternative Services              July 2015
 
 
 
-Nottingham, et al.      Expires January 24, 2016                [Page 5]
+Nottingham, et al.      Expires February 3, 2016                [Page 5]
 
-Internet-Draft          HTTP Alternative Services              July 2015
+Internet-Draft          HTTP Alternative Services            August 2015
 
 
 2.1.  Host Authentication
@@ -333,9 +333,9 @@ Internet-Draft          HTTP Alternative Services              July 2015
 
 
 
-Nottingham, et al.      Expires January 24, 2016                [Page 6]
+Nottingham, et al.      Expires February 3, 2016                [Page 6]
 
-Internet-Draft          HTTP Alternative Services              July 2015
+Internet-Draft          HTTP Alternative Services            August 2015
 
 
 2.4.  Using Alternative Services
@@ -389,9 +389,9 @@ Internet-Draft          HTTP Alternative Services              July 2015
 
 
 
-Nottingham, et al.      Expires January 24, 2016                [Page 7]
+Nottingham, et al.      Expires February 3, 2016                [Page 7]
 
-Internet-Draft          HTTP Alternative Services              July 2015
+Internet-Draft          HTTP Alternative Services            August 2015
 
 
    Alt-Svc       = 1#( alternative *( OWS ";" OWS parameter ) )
@@ -445,9 +445,9 @@ Internet-Draft          HTTP Alternative Services              July 2015
 
 
 
-Nottingham, et al.      Expires January 24, 2016                [Page 8]
+Nottingham, et al.      Expires February 3, 2016                [Page 8]
 
-Internet-Draft          HTTP Alternative Services              July 2015
+Internet-Draft          HTTP Alternative Services            August 2015
 
 
    Examples for protocol name escaping:
@@ -501,9 +501,9 @@ Internet-Draft          HTTP Alternative Services              July 2015
 
 
 
-Nottingham, et al.      Expires January 24, 2016                [Page 9]
+Nottingham, et al.      Expires February 3, 2016                [Page 9]
 
-Internet-Draft          HTTP Alternative Services              July 2015
+Internet-Draft          HTTP Alternative Services            August 2015
 
 
    For example, a response:
@@ -557,9 +557,9 @@ Internet-Draft          HTTP Alternative Services              July 2015
 
 
 
-Nottingham, et al.      Expires January 24, 2016               [Page 10]
+Nottingham, et al.      Expires February 3, 2016               [Page 10]
 
-Internet-Draft          HTTP Alternative Services              July 2015
+Internet-Draft          HTTP Alternative Services            August 2015
 
 
     +-------------------------------+-------------------------------+
@@ -613,9 +613,9 @@ Internet-Draft          HTTP Alternative Services              July 2015
 
 
 
-Nottingham, et al.      Expires January 24, 2016               [Page 11]
+Nottingham, et al.      Expires February 3, 2016               [Page 11]
 
-Internet-Draft          HTTP Alternative Services              July 2015
+Internet-Draft          HTTP Alternative Services            August 2015
 
 
    to ensure that it is possible to identify the intended destination of
@@ -669,9 +669,9 @@ Internet-Draft          HTTP Alternative Services              July 2015
 
 
 
-Nottingham, et al.      Expires January 24, 2016               [Page 12]
+Nottingham, et al.      Expires February 3, 2016               [Page 12]
 
-Internet-Draft          HTTP Alternative Services              July 2015
+Internet-Draft          HTTP Alternative Services            August 2015
 
 
    This document defines the following HTTP header fields, so their
@@ -725,9 +725,9 @@ Internet-Draft          HTTP Alternative Services              July 2015
 
 
 
-Nottingham, et al.      Expires January 24, 2016               [Page 13]
+Nottingham, et al.      Expires February 3, 2016               [Page 13]
 
-Internet-Draft          HTTP Alternative Services              July 2015
+Internet-Draft          HTTP Alternative Services            August 2015
 
 
 9.2.  Changing Hosts
@@ -781,9 +781,9 @@ Internet-Draft          HTTP Alternative Services              July 2015
 
 
 
-Nottingham, et al.      Expires January 24, 2016               [Page 14]
+Nottingham, et al.      Expires February 3, 2016               [Page 14]
 
-Internet-Draft          HTTP Alternative Services              July 2015
+Internet-Draft          HTTP Alternative Services            August 2015
 
 
 9.4.  Tracking Clients Using Alternative Services
@@ -837,9 +837,9 @@ Internet-Draft          HTTP Alternative Services              July 2015
 
 
 
-Nottingham, et al.      Expires January 24, 2016               [Page 15]
+Nottingham, et al.      Expires February 3, 2016               [Page 15]
 
-Internet-Draft          HTTP Alternative Services              July 2015
+Internet-Draft          HTTP Alternative Services            August 2015
 
 
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454, DOI
@@ -893,9 +893,9 @@ Internet-Draft          HTTP Alternative Services              July 2015
 
 
 
-Nottingham, et al.      Expires January 24, 2016               [Page 16]
+Nottingham, et al.      Expires February 3, 2016               [Page 16]
 
-Internet-Draft          HTTP Alternative Services              July 2015
+Internet-Draft          HTTP Alternative Services            August 2015
 
 
 Appendix A.  Change Log (to be removed by RFC Editor before publication)
@@ -949,9 +949,9 @@ A.5.  Since draft-ietf-httpbis-alt-svc-03
 
 
 
-Nottingham, et al.      Expires January 24, 2016               [Page 17]
+Nottingham, et al.      Expires February 3, 2016               [Page 17]
 
-Internet-Draft          HTTP Alternative Services              July 2015
+Internet-Draft          HTTP Alternative Services            August 2015
 
 
    Remove/tune language with respect to tracking risks (see
@@ -1005,9 +1005,9 @@ A.9.  Since draft-ietf-httpbis-alt-svc-07
 
 
 
-Nottingham, et al.      Expires January 24, 2016               [Page 18]
+Nottingham, et al.      Expires February 3, 2016               [Page 18]
 
-Internet-Draft          HTTP Alternative Services              July 2015
+Internet-Draft          HTTP Alternative Services            August 2015
 
 
    Number of alternate services used (<https://github.com/httpwg/http-
@@ -1061,4 +1061,4 @@ Authors' Addresses
 
 
 
-Nottingham, et al.      Expires January 24, 2016               [Page 19]
+Nottingham, et al.      Expires February 3, 2016               [Page 19]

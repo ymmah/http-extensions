@@ -4,8 +4,8 @@
 
 HTTP Working Group                                            J. Reschke
 Internet-Draft                                                greenbytes
-Intended status: Standards Track                           July 23, 2015
-Expires: January 24, 2016
+Intended status: Standards Track                          August 2, 2015
+Expires: February 3, 2016
 
 
   Hypertext Transfer Protocol (HTTP) Client-Initiated Content-Encoding
@@ -20,7 +20,7 @@ Abstract
    Content codings can be used in request messages as well, however
    discoverability is not on par with response messages.  This document
    extends the HTTP "Accept-Encoding" header field for use in responses,
-   to indicate that content codings are supported in requests.
+   to indicate the content codings that are supported in requests.
 
 Editorial Note (To be removed by RFC Editor before publication)
 
@@ -53,12 +53,12 @@ Status of This Memo
 
 
 
-Reschke                 Expires January 24, 2016                [Page 1]
+Reschke                 Expires February 3, 2016                [Page 1]
 
-Internet-Draft                  HTTP CICE                      July 2015
+Internet-Draft                  HTTP CICE                    August 2015
 
 
-   This Internet-Draft will expire on January 24, 2016.
+   This Internet-Draft will expire on February 3, 2016.
 
 Copyright Notice
 
@@ -109,14 +109,14 @@ Table of Contents
 
 
 
-Reschke                 Expires January 24, 2016                [Page 2]
+Reschke                 Expires February 3, 2016                [Page 2]
 
-Internet-Draft                  HTTP CICE                      July 2015
+Internet-Draft                  HTTP CICE                    August 2015
 
 
    extends the HTTP "Accept-Encoding" header field ([RFC7231],
-   Section 5.3.4) for use in responses, to indicate that content codings
-   are supported in requests.
+   Section 5.3.4) for use in responses, to indicate the content codings
+   that are supported in requests.
 
 2.  Notational Conventions
 
@@ -165,9 +165,9 @@ Internet-Draft                  HTTP CICE                      July 2015
 
 
 
-Reschke                 Expires January 24, 2016                [Page 3]
+Reschke                 Expires February 3, 2016                [Page 3]
 
-Internet-Draft                  HTTP CICE                      July 2015
+Internet-Draft                  HTTP CICE                    August 2015
 
 
    a resource might include it in a 2xx response when the request
@@ -215,18 +215,18 @@ Internet-Draft                  HTTP CICE                      July 2015
 
    Servers that do not support content codings in requests already are
    required to fail a request that uses a content coding.
-   Section 6.5.13 of [RFC7231] recommends using the status code 415
-   (Unsupported Media Type), so the only change needed is to include the
+   Section 6.5.13 of [RFC7231] defines the status code 415 (Unsupported
+   Media Type) for this purpose, so the only change needed is to include
 
 
 
 
-Reschke                 Expires January 24, 2016                [Page 4]
+Reschke                 Expires February 3, 2016                [Page 4]
 
-Internet-Draft                  HTTP CICE                      July 2015
+Internet-Draft                  HTTP CICE                    August 2015
 
 
-   "Accept-Encoding" header field with value "identity" in that
+   the "Accept-Encoding" header field with value "identity" in that
    response.
 
    Servers that do support some content codings are required to fail
@@ -277,9 +277,9 @@ Internet-Draft                  HTTP CICE                      July 2015
 
 
 
-Reschke                 Expires January 24, 2016                [Page 5]
+Reschke                 Expires February 3, 2016                [Page 5]
 
-Internet-Draft                  HTTP CICE                      July 2015
+Internet-Draft                  HTTP CICE                    August 2015
 
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
@@ -333,9 +333,9 @@ Internet-Draft                  HTTP CICE                      July 2015
 
 
 
-Reschke                 Expires January 24, 2016                [Page 6]
+Reschke                 Expires February 3, 2016                [Page 6]
 
-Internet-Draft                  HTTP CICE                      July 2015
+Internet-Draft                  HTTP CICE                    August 2015
 
 
 Appendix A.  Change Log (to be removed by RFC Editor before publication)
@@ -374,7 +374,7 @@ A.5.  Since draft-ietf-httpbis-cice-01
 Appendix B.  Acknowledgements
 
    Thanks go to the members of the and HTTPbis Working Group, namely
-   Amos Jeffries, Mark Nottingham, and Ted Hardie.
+   Amos Jeffries, Mark Nottingham, Pete Resnick, and Ted Hardie.
 
 Author's Address
 
@@ -389,4 +389,4 @@ Author's Address
 
 
 
-Reschke                 Expires January 24, 2016                [Page 7]
+Reschke                 Expires February 3, 2016                [Page 7]
