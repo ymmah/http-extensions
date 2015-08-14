@@ -135,8 +135,8 @@ Internet-Draft          HTTP Alternative Services            August 2015
    For example:
 
    o  An origin server might wish to redirect a client to a different
-      server when it needs to go down for maintenance, or it has found a
-      server in a location that is more local to the client.
+      server when it is under load, or it has found a server in a
+      location that is more local to the client.
 
    o  An origin server might wish to offer access to its resources using
       a new protocol (such as HTTP/2, see [RFC7540]) or one using
@@ -1016,6 +1016,10 @@ Internet-Draft          HTTP Alternative Services            August 2015
    Proxy and .pac interaction (<https://github.com/httpwg/http-
    extensions/issues/62>).
 
+   Incorporate several editorial improvements suggested by Mike Bishop
+   (<https://github.com/httpwg/http-extensions/pull/77>,
+   <https://github.com/httpwg/http-extensions/pull/78>).
+
 Appendix B.  Acknowledgements
 
    Thanks to Adam Langley, Bence Beky, Eliot Lear, Erik Nygren, Guy
@@ -1047,10 +1051,6 @@ Authors' Addresses
 
    EMail: julian.reschke@greenbytes.de
    URI:   https://greenbytes.de/tech/webdav/
-
-
-
-
 
 
 
