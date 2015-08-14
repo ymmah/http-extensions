@@ -4,8 +4,8 @@
 
 HTTP Working Group                                            J. Reschke
 Internet-Draft                                                greenbytes
-Intended status: Standards Track                         August 13, 2015
-Expires: February 14, 2016
+Intended status: Standards Track                         August 14, 2015
+Expires: February 15, 2016
 
 
   Hypertext Transfer Protocol (HTTP) Client-Initiated Content-Encoding
@@ -53,12 +53,12 @@ Status of This Memo
 
 
 
-Reschke                 Expires February 14, 2016               [Page 1]
+Reschke                 Expires February 15, 2016               [Page 1]
 
 Internet-Draft                  HTTP CICE                    August 2015
 
 
-   This Internet-Draft will expire on February 14, 2016.
+   This Internet-Draft will expire on February 15, 2016.
 
 Copyright Notice
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Reschke                 Expires February 14, 2016               [Page 2]
+Reschke                 Expires February 15, 2016               [Page 2]
 
 Internet-Draft                  HTTP CICE                    August 2015
 
@@ -165,7 +165,7 @@ Internet-Draft                  HTTP CICE                    August 2015
 
 
 
-Reschke                 Expires February 14, 2016               [Page 3]
+Reschke                 Expires February 15, 2016               [Page 3]
 
 Internet-Draft                  HTTP CICE                    August 2015
 
@@ -221,7 +221,7 @@ Internet-Draft                  HTTP CICE                    August 2015
 
 
 
-Reschke                 Expires February 14, 2016               [Page 4]
+Reschke                 Expires February 15, 2016               [Page 4]
 
 Internet-Draft                  HTTP CICE                    August 2015
 
@@ -277,7 +277,7 @@ Internet-Draft                  HTTP CICE                    August 2015
 
 
 
-Reschke                 Expires February 14, 2016               [Page 5]
+Reschke                 Expires February 15, 2016               [Page 5]
 
 Internet-Draft                  HTTP CICE                    August 2015
 
@@ -333,7 +333,7 @@ Internet-Draft                  HTTP CICE                    August 2015
 
 
 
-Reschke                 Expires February 14, 2016               [Page 6]
+Reschke                 Expires February 15, 2016               [Page 6]
 
 Internet-Draft                  HTTP CICE                    August 2015
 
@@ -389,7 +389,7 @@ Author's Address
 
 
 
-Reschke                 Expires February 14, 2016               [Page 7]
+Reschke                 Expires February 15, 2016               [Page 7]
 
 Internet-Draft                  HTTP CICE                    August 2015
 
@@ -445,4 +445,4 @@ Internet-Draft                  HTTP CICE                    August 2015
 
 
 
-Reschke                 Expires February 14, 2016               [Page 8]
+Reschke                 Expires February 15, 2016               [Page 8]
