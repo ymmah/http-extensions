@@ -82,7 +82,7 @@ Table of Contents
      2.2.  Alternative Service Caching . . . . . . . . . . . . . . .   6
      2.3.  Requiring Server Name Indication  . . . . . . . . . . . .   6
      2.4.  Using Alternative Services  . . . . . . . . . . . . . . .   7
-   3.  The Alt-Svc HTTP Header Field . . . . . . . . . . . . . . . .   7
+   3.  The Alt-Svc HTTP Header Field . . . . . . . . . . . . . . . .   8
      3.1.  Caching Alt-Svc Header Field Values . . . . . . . . . . .   9
    4.  The ALTSVC HTTP/2 Frame . . . . . . . . . . . . . . . . . . .  10
    5.  The Alt-Used HTTP Header Field  . . . . . . . . . . . . . . .  11
@@ -263,9 +263,24 @@ Internet-Draft          HTTP Alternative Services            August 2015
 
    o  A port, as per [RFC3986], Section 3.2.3
 
+   The ALPN protocol name is used to identify the application protocol
+   or suite of protocols used by the alternative service.  Note that for
+   the purpose of this specification, an ALPN protocol name implicitly
+   includes TLS in the suite of protocols it identifies, unless
+   specified otherwise in its definition.  In particular, the ALPN name
+   "http/1.1", registered by Section 6 of [RFC7301], identifies HTTP/1.1
+   over TLS.
+
    Additionally, each alternative service MUST have:
 
    o  A freshness lifetime, expressed in seconds; see Section 2.2
+
+
+
+Nottingham, et al.      Expires February 15, 2016               [Page 5]
+
+Internet-Draft          HTTP Alternative Services            August 2015
+
 
    There are many ways that a client could discover the alternative
    service(s) associated with an origin.  This document describes two
@@ -274,13 +289,6 @@ Internet-Draft          HTTP Alternative Services            August 2015
 
    The remainder of this section describes requirements that are common
    to alternative services, regardless of how they are discovered.
-
-
-
-Nottingham, et al.      Expires February 15, 2016               [Page 5]
-
-Internet-Draft          HTTP Alternative Services            August 2015
-
 
 2.1.  Host Authentication
 
@@ -323,20 +331,16 @@ Internet-Draft          HTTP Alternative Services            August 2015
    also supports TLS Server Name Indication (SNI).  This supports the
    conservation of IP addresses on the alternative service host.
 
-   Note that the SNI information provided in TLS by the client will be
-   that of the origin, not the alternative (as will the Host HTTP header
-   field-value).
-
-
-
-
-
 
 
 Nottingham, et al.      Expires February 15, 2016               [Page 6]
 
 Internet-Draft          HTTP Alternative Services            August 2015
 
+
+   Note that the SNI information provided in TLS by the client will be
+   that of the origin, not the alternative (as will the Host HTTP header
+   field-value).
 
 2.4.  Using Alternative Services
 
@@ -379,11 +383,7 @@ Internet-Draft          HTTP Alternative Services            August 2015
    a downgrade attack, thus losing any enhanced security properties of
    the alternative service.
 
-3.  The Alt-Svc HTTP Header Field
 
-   An HTTP(S) origin server can advertise the availability of
-   alternative services to clients by adding an Alt-Svc header field to
-   responses.
 
 
 
@@ -393,6 +393,12 @@ Nottingham, et al.      Expires February 15, 2016               [Page 7]
 
 Internet-Draft          HTTP Alternative Services            August 2015
 
+
+3.  The Alt-Svc HTTP Header Field
+
+   An HTTP(S) origin server can advertise the availability of
+   alternative services to clients by adding an Alt-Svc header field to
+   responses.
 
    Alt-Svc       = 1#( alternative *( OWS ";" OWS parameter ) )
    alternative   = protocol-id "=" alt-authority
@@ -435,12 +441,6 @@ Internet-Draft          HTTP Alternative Services            August 2015
    This indicates the "h2" protocol on the host "new.example.org",
    running on port 80.  Note that the "quoted-string" syntax needs to be
    used because ":" is not an allowed character in "token".
-
-
-
-
-
-
 
 
 
@@ -1010,6 +1010,9 @@ Nottingham, et al.      Expires February 15, 2016              [Page 18]
 Internet-Draft          HTTP Alternative Services            August 2015
 
 
+   ALPN identifiers in Alt-Svc (<https://github.com/httpwg/http-
+   extensions/issues/43>).
+
    Number of alternate services used (<https://github.com/httpwg/http-
    extensions/issues/58>).
 
@@ -1051,9 +1054,6 @@ Authors' Addresses
 
    EMail: julian.reschke@greenbytes.de
    URI:   https://greenbytes.de/tech/webdav/
-
-
-
 
 
 

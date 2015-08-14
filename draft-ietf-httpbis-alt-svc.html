@@ -756,18 +756,24 @@ uri-host      = &lt;uri-host, see <a href="#RFC7230"><cite title="Hypertext Tran
             </ul>
          </div>
          <div id="rfc.section.2.p.10">
+            <p>The ALPN protocol name is used to identify the application protocol or suite of protocols used by the alternative service.
+               Note that for the purpose of this specification, an ALPN protocol name implicitly includes TLS in the suite of protocols it
+               identifies, unless specified otherwise in its definition. In particular, the ALPN name "http/1.1", registered by <a href="https://tools.ietf.org/html/rfc7301#section-6">Section 6</a> of <a href="#RFC7301"><cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[RFC7301]</cite></a>, identifies HTTP/1.1 over TLS.
+            </p>
+         </div>
+         <div id="rfc.section.2.p.11">
             <p>Additionally, each alternative service <em class="bcp14">MUST</em> have: 
             </p>
             <ul>
                <li>A freshness lifetime, expressed in seconds; see <a href="#caching" title="Alternative Service Caching">Section&nbsp;2.2</a></li>
             </ul>
          </div>
-         <div id="rfc.section.2.p.11">
+         <div id="rfc.section.2.p.12">
             <p>There are many ways that a client could discover the alternative service(s) associated with an origin. This document describes
                two such mechanisms: an HTTP header field (<a href="#alt-svc" title="The Alt-Svc HTTP Header Field">Section&nbsp;3</a>) and an HTTP/2 frame type (<a href="#frame" title="The ALTSVC HTTP/2 Frame">Section&nbsp;4</a>).
             </p>
          </div>
-         <div id="rfc.section.2.p.12">
+         <div id="rfc.section.2.p.13">
             <p>The remainder of this section describes requirements that are common to alternative services, regardless of how they are discovered.</p>
          </div>
          <div id="host_auth">
@@ -1467,14 +1473,18 @@ Alt-Used: alternate.example.net
                </p>
             </div>
             <div id="rfc.section.A.9.p.2">
-               <p>Number of alternate services used (&lt;<a href="https://github.com/httpwg/http-extensions/issues/58">https://github.com/httpwg/http-extensions/issues/58</a>&gt;).
+               <p>ALPN identifiers in Alt-Svc (&lt;<a href="https://github.com/httpwg/http-extensions/issues/43">https://github.com/httpwg/http-extensions/issues/43</a>&gt;).
                </p>
             </div>
             <div id="rfc.section.A.9.p.3">
-               <p>Proxy and .pac interaction (&lt;<a href="https://github.com/httpwg/http-extensions/issues/62">https://github.com/httpwg/http-extensions/issues/62</a>&gt;).
+               <p>Number of alternate services used (&lt;<a href="https://github.com/httpwg/http-extensions/issues/58">https://github.com/httpwg/http-extensions/issues/58</a>&gt;).
                </p>
             </div>
             <div id="rfc.section.A.9.p.4">
+               <p>Proxy and .pac interaction (&lt;<a href="https://github.com/httpwg/http-extensions/issues/62">https://github.com/httpwg/http-extensions/issues/62</a>&gt;).
+               </p>
+            </div>
+            <div id="rfc.section.A.9.p.5">
                <p>Incorporate several editorial improvements suggested by Mike Bishop (&lt;<a href="https://github.com/httpwg/http-extensions/pull/77">https://github.com/httpwg/http-extensions/pull/77</a>&gt;, &lt;<a href="https://github.com/httpwg/http-extensions/pull/78">https://github.com/httpwg/http-extensions/pull/78</a>&gt;).
                </p>
             </div>
