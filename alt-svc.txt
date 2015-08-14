@@ -156,10 +156,10 @@ Internet-Draft          HTTP Alternative Services            August 2015
    HTTP/2 frames (Section 4), plus a way to indicate that an alternative
    service was used (Section 5).
 
-   It also introduces a new status code in Section 6, so that origin
-   servers (or their nominated alternatives) can indicate that they are
-   not authoritative for a given origin, in cases where the wrong
-   location is used.
+   It also endorses the status code 421 (Misdirected Request)
+   (Section 6) that origin servers (or their nominated alternatives) can
+   use to indicate that they are not authoritative for a given origin,
+   in cases where the wrong location is used.
 
 
 
@@ -227,9 +227,9 @@ Internet-Draft          HTTP Alternative Services            August 2015
 
 
    information at the name resolution level.  Each origin maps to a set
-   of these routes -- the default route is derived from origin itself
-   and the other routes are introduced based on alternative-protocol
-   information.
+   of these routes -- the default route is derived from thr origin
+   itself and the other routes are introduced based on alternative-
+   protocol information.
 
    Furthermore, it is important to note that the first member of an
    alternative service tuple is different from the "scheme" component of
@@ -311,8 +311,8 @@ Internet-Draft          HTTP Alternative Services            August 2015
    Clients with existing connections to an alternative service do not
    need to stop using it when its freshness lifetime ends; i.e., the
    caching mechanism is intended for limiting how long an alternative
-   service can be used for establishing new requests, not limiting the
-   use of existing ones.
+   service can be used for establishing new connections, not limiting
+   the use of existing ones.
 
    Clients ought to consider that changes in network configurations can
    result in suboptimal or compromised cached alternative services.
@@ -803,7 +803,7 @@ Internet-Draft          HTTP Alternative Services            August 2015
 
    Alternative Services MUST NOT be advertised for a protocol that is
    not designed to carry the scheme.  In particular, HTTP/1.1 over TLS
-   cannot carry safely requests for http resources.
+   cannot safely carry requests for http resources.
 
 10.  References
 

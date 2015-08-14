@@ -668,7 +668,7 @@ ul p {
             </p>
          </div>
          <div id="rfc.section.1.p.5">
-            <p>It also introduces a new status code in <a href="#status" title="The 421 Misdirected Request HTTP Status Code">Section&nbsp;6</a>, so that origin servers (or their nominated alternatives) can indicate that they are not authoritative for a given origin,
+            <p>It also endorses the status code 421 (Misdirected Request) (<a href="#status" title="The 421 Misdirected Request HTTP Status Code">Section&nbsp;6</a>) that origin servers (or their nominated alternatives) can use to indicate that they are not authoritative for a given origin,
                in cases where the wrong location is used.
             </p>
          </div>
@@ -722,7 +722,7 @@ uri-host      = &lt;uri-host, see <a href="#RFC7230"><cite title="Hypertext Tran
             <p>Alternative services do not replace or change the origin for any given resource; in general, they are not visible to the software
                "above" the access mechanism. The alternative service is essentially alternative routing information that can also be used
                to reach the origin in the same way that DNS CNAME or SRV records define routing information at the name resolution level.
-               Each origin maps to a set of these routes — the default route is derived from origin itself and the other routes are introduced
+               Each origin maps to a set of these routes — the default route is derived from thr origin itself and the other routes are introduced
                based on alternative-protocol information.
             </p>
          </div>
@@ -798,7 +798,7 @@ uri-host      = &lt;uri-host, see <a href="#RFC7230"><cite title="Hypertext Tran
             </div>
             <div id="rfc.section.2.2.p.3">
                <p>Clients with existing connections to an alternative service do not need to stop using it when its freshness lifetime ends;
-                  i.e., the caching mechanism is intended for limiting how long an alternative service can be used for establishing new requests,
+                  i.e., the caching mechanism is intended for limiting how long an alternative service can be used for establishing new connections,
                   not limiting the use of existing ones.
                </p>
             </div>
@@ -1263,7 +1263,7 @@ Alt-Used: alternate.example.net
          <div id="confusion-regarding-request-scheme">
             <h2 id="rfc.section.9.5"><a href="#rfc.section.9.5">9.5</a>&nbsp;<a href="#confusion-regarding-request-scheme">Confusion Regarding Request Scheme</a></h2>
             <div id="rfc.section.9.5.p.1">
-               <p>Alternative Services <em class="bcp14">MUST NOT</em> be advertised for a protocol that is not designed to carry the scheme. In particular, HTTP/1.1 over TLS cannot carry safely
+               <p>Alternative Services <em class="bcp14">MUST NOT</em> be advertised for a protocol that is not designed to carry the scheme. In particular, HTTP/1.1 over TLS cannot safely carry
                   requests for http resources.
                </p>
             </div>
