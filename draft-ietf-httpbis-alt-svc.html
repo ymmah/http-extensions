@@ -462,7 +462,7 @@ ul p {
        content: "Nottingham, et al.";
   }
   @bottom-center {
-       content: "Expires February 15, 2016";
+       content: "Expires February 27, 2016";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -502,7 +502,7 @@ ul p {
       <meta name="dct.creator" content="McManus, P.">
       <meta name="dct.creator" content="Reschke, J. F.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-alt-svc-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2015-08-14">
+      <meta name="dct.issued" scheme="ISO8601" content="2015-08-26">
       <meta name="dct.abstract" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
       <meta name="description" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
    </head>
@@ -522,7 +522,7 @@ ul p {
                <td class="right">P. McManus</td>
             </tr>
             <tr>
-               <td class="left">Expires: February 15, 2016</td>
+               <td class="left">Expires: February 27, 2016</td>
                <td class="right">Mozilla</td>
             </tr>
             <tr>
@@ -535,7 +535,7 @@ ul p {
             </tr>
             <tr>
                <td class="left"></td>
-               <td class="right">August 14, 2015</td>
+               <td class="right">August 26, 2015</td>
             </tr>
          </tbody>
       </table>
@@ -561,7 +561,7 @@ ul p {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on February 15, 2016.</p>
+         <p>This Internet-Draft will expire on February 27, 2016.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
@@ -874,17 +874,27 @@ uri-host      = &lt;uri-host, see <a href="#RFC7230"><cite title="Hypertext Tran
                to responses.
             </p>
          </div>
-         <div id="rfc.figure.u.4"><pre class="inline">Alt-Svc       = 1#( alternative *( OWS ";" OWS parameter ) )
+         <div id="rfc.figure.u.4"><pre class="inline">Alt-Svc       = 1#alt-value
+alt-value     = clear / ( alternative *( OWS ";" OWS parameter ) )
+clear         = %x63.6C.65.61.72; "clear", case-sensitive
 alternative   = protocol-id "=" alt-authority
 protocol-id   = <a href="#imported.abnf" class="smpl">token</a> ; percent-encoded ALPN protocol name
 alt-authority = <a href="#imported.abnf" class="smpl">quoted-string</a> ; containing [ <a href="#imported.abnf" class="smpl">uri-host</a> ] ":" <a href="#imported.abnf" class="smpl">port</a>
 parameter     = <a href="#imported.abnf" class="smpl">token</a> "=" ( <a href="#imported.abnf" class="smpl">token</a> / <a href="#imported.abnf" class="smpl">quoted-string</a> )
 </pre></div>
          <div id="rfc.section.3.p.2">
+            <p>The field value consists of a list of values, each of which indicating one alternative service or being the keyword "clear".</p>
+         </div>
+         <div id="rfc.section.3.p.3">
+            <p>Any field value containing the special value "clear" indicates that the origin requests all alternatives for that origin to
+               be invalidated (including those received in the same response).
+            </p>
+         </div>
+         <div id="rfc.section.3.p.4">
             <p>ALPN protocol names are octet sequences with no additional constraints on format. Octets not allowed in tokens (<a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#field.components" title="Field Value Components">Section 3.2.6</a>) <em class="bcp14">MUST</em> be percent-encoded as per <a href="https://tools.ietf.org/html/rfc3986#section-2.1">Section 2.1</a> of <a href="#RFC3986"><cite title="Uniform Resource Identifier (URI): Generic Syntax">[RFC3986]</cite></a>. Consequently, the octet representing the percent character "%" (hex 25) <em class="bcp14">MUST</em> be percent-encoded as well.
             </p>
          </div>
-         <div id="rfc.section.3.p.3">
+         <div id="rfc.section.3.p.5">
             <p>In order to have precisely one way to represent any ALPN protocol name, the following additional constraints apply: </p>
             <ol>
                <li>Octets in the ALPN protocol name <em class="bcp14">MUST NOT</em> be percent-encoded if they are valid token characters except "%", and
@@ -893,10 +903,10 @@ parameter     = <a href="#imported.abnf" class="smpl">token</a> "=" ( <a href="#
                </li>
             </ol>
          </div>
-         <div id="rfc.section.3.p.4">
+         <div id="rfc.section.3.p.6">
             <p>With these constraints, recipients can apply simple string comparison to match protocol identifiers.</p>
          </div>
-         <div id="rfc.section.3.p.5">
+         <div id="rfc.section.3.p.7">
             <p>The "alt-authority" component consists of an <em class="bcp14">OPTIONAL</em> uri-host ("host" in <a href="https://tools.ietf.org/html/rfc3986#section-3.2.2">Section 3.2.2</a> of <a href="#RFC3986"><cite title="Uniform Resource Identifier (URI): Generic Syntax">[RFC3986]</cite></a>), a colon (":"), and a port number.
             </p>
          </div>
@@ -940,24 +950,29 @@ parameter     = <a href="#imported.abnf" class="smpl">token</a> "=" ( <a href="#
                </tbody>
             </table>
          </div>
-         <div id="rfc.section.3.p.6">
+         <div id="rfc.section.3.p.8">
             <p>Alt-Svc <em class="bcp14">MAY</em> occur in any HTTP response message, regardless of the status code.
             </p>
          </div>
          <div id="rfc.figure.u.7">
             <p>The Alt-Svc field value can have multiple values:</p><pre class="text">Alt-Svc: h2c=":8000", h2=":443"
 </pre></div>
-         <div id="rfc.section.3.p.7">
+         <div id="rfc.section.3.p.9">
+            <p>When multiple values are present, the order of the values reflects the server's preference (with the first value being the
+               most preferred alternative).
+            </p>
+         </div>
+         <div id="rfc.section.3.p.10">
             <p>The value(s) advertised by Alt-Svc can be used by clients to open a new connection to an alternative service. Subsequent requests
                can start using this new connection immediately, or can continue using the existing connection while the new connection is
                created.
             </p>
          </div>
-         <div id="rfc.section.3.p.8">
+         <div id="rfc.section.3.p.11">
             <p>When using HTTP/2 (<a href="#RFC7540"><cite title="Hypertext Transfer Protocol version 2">[RFC7540]</cite></a>), servers <em class="bcp14">SHOULD</em> instead send an ALTSVC frame (<a href="#frame" title="The ALTSVC HTTP/2 Frame">Section&nbsp;4</a>). A single ALTSVC frame can be sent for a connection; a new frame is not needed for every request.
             </p>
          </div>
-         <div id="rfc.section.3.p.9">
+         <div id="rfc.section.3.p.12">
             <p>Note that all field elements that allow "quoted-string" syntax <em class="bcp14">MUST</em> be processed as per <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#field.components" title="Field Value Components">Section 3.2.6</a> of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>.
             </p>
          </div>
@@ -1469,22 +1484,26 @@ Alt-Used: alternate.example.net
          <div id="changes.since.draft-ietf-httpbis-alt-svc-07">
             <h2 id="rfc.section.A.9"><a href="#rfc.section.A.9">A.9</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-07">Since draft-ietf-httpbis-alt-svc-07</a></h2>
             <div id="rfc.section.A.9.p.1">
-               <p>Unexpected Alt-Svc frames (&lt;<a href="https://github.com/httpwg/http-extensions/issues/18">https://github.com/httpwg/http-extensions/issues/18</a>&gt;).
+               <p>Alt-Svc alternative cache invalidation (&lt;<a href="https://github.com/httpwg/http-extensions/issues/16">https://github.com/httpwg/http-extensions/issues/16</a>&gt;).
                </p>
             </div>
             <div id="rfc.section.A.9.p.2">
-               <p>ALPN identifiers in Alt-Svc (&lt;<a href="https://github.com/httpwg/http-extensions/issues/43">https://github.com/httpwg/http-extensions/issues/43</a>&gt;).
+               <p>Unexpected Alt-Svc frames (&lt;<a href="https://github.com/httpwg/http-extensions/issues/18">https://github.com/httpwg/http-extensions/issues/18</a>&gt;).
                </p>
             </div>
             <div id="rfc.section.A.9.p.3">
-               <p>Number of alternate services used (&lt;<a href="https://github.com/httpwg/http-extensions/issues/58">https://github.com/httpwg/http-extensions/issues/58</a>&gt;).
+               <p>ALPN identifiers in Alt-Svc (&lt;<a href="https://github.com/httpwg/http-extensions/issues/43">https://github.com/httpwg/http-extensions/issues/43</a>&gt;).
                </p>
             </div>
             <div id="rfc.section.A.9.p.4">
-               <p>Proxy and .pac interaction (&lt;<a href="https://github.com/httpwg/http-extensions/issues/62">https://github.com/httpwg/http-extensions/issues/62</a>&gt;).
+               <p>Number of alternate services used (&lt;<a href="https://github.com/httpwg/http-extensions/issues/58">https://github.com/httpwg/http-extensions/issues/58</a>&gt;).
                </p>
             </div>
             <div id="rfc.section.A.9.p.5">
+               <p>Proxy and .pac interaction (&lt;<a href="https://github.com/httpwg/http-extensions/issues/62">https://github.com/httpwg/http-extensions/issues/62</a>&gt;).
+               </p>
+            </div>
+            <div id="rfc.section.A.9.p.6">
                <p>Incorporate several editorial improvements suggested by Mike Bishop (&lt;<a href="https://github.com/httpwg/http-extensions/pull/77">https://github.com/httpwg/http-extensions/pull/77</a>&gt;, &lt;<a href="https://github.com/httpwg/http-extensions/pull/78">https://github.com/httpwg/http-extensions/pull/78</a>&gt;).
                </p>
             </div>
