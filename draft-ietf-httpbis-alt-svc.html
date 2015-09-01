@@ -951,7 +951,8 @@ parameter     = <a href="#imported.abnf" class="smpl">token</a> "=" ( <a href="#
             </table>
          </div>
          <div id="rfc.section.3.p.8">
-            <p>Alt-Svc <em class="bcp14">MAY</em> occur in any HTTP response message, regardless of the status code.
+            <p>Alt-Svc <em class="bcp14">MAY</em> occur in any HTTP response message, regardless of the status code. Note that recipients of Alt-Svc are free to ignore the
+               header field (and indeed need to in some situations; see <a href="#host_auth" title="Host Authentication">Section&nbsp;2.1</a>).
             </p>
          </div>
          <div id="rfc.figure.u.7">
@@ -1492,18 +1493,22 @@ Alt-Used: alternate.example.net
                </p>
             </div>
             <div id="rfc.section.A.9.p.3">
-               <p>ALPN identifiers in Alt-Svc (&lt;<a href="https://github.com/httpwg/http-extensions/issues/43">https://github.com/httpwg/http-extensions/issues/43</a>&gt;).
+               <p>Associating Alt-Svc header with an origin (&lt;<a href="https://github.com/httpwg/http-extensions/issues/21">https://github.com/httpwg/http-extensions/issues/21</a>&gt;).
                </p>
             </div>
             <div id="rfc.section.A.9.p.4">
-               <p>Number of alternate services used (&lt;<a href="https://github.com/httpwg/http-extensions/issues/58">https://github.com/httpwg/http-extensions/issues/58</a>&gt;).
+               <p>ALPN identifiers in Alt-Svc (&lt;<a href="https://github.com/httpwg/http-extensions/issues/43">https://github.com/httpwg/http-extensions/issues/43</a>&gt;).
                </p>
             </div>
             <div id="rfc.section.A.9.p.5">
-               <p>Proxy and .pac interaction (&lt;<a href="https://github.com/httpwg/http-extensions/issues/62">https://github.com/httpwg/http-extensions/issues/62</a>&gt;).
+               <p>Number of alternate services used (&lt;<a href="https://github.com/httpwg/http-extensions/issues/58">https://github.com/httpwg/http-extensions/issues/58</a>&gt;).
                </p>
             </div>
             <div id="rfc.section.A.9.p.6">
+               <p>Proxy and .pac interaction (&lt;<a href="https://github.com/httpwg/http-extensions/issues/62">https://github.com/httpwg/http-extensions/issues/62</a>&gt;).
+               </p>
+            </div>
+            <div id="rfc.section.A.9.p.7">
                <p>Incorporate several editorial improvements suggested by Mike Bishop (&lt;<a href="https://github.com/httpwg/http-extensions/pull/77">https://github.com/httpwg/http-extensions/pull/77</a>&gt;, &lt;<a href="https://github.com/httpwg/http-extensions/pull/78">https://github.com/httpwg/http-extensions/pull/78</a>&gt;).
                </p>
             </div>
