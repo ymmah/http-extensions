@@ -4,8 +4,8 @@
 
 HTTP Working Group                                               T. Bray
 Internet-Draft                                                Textuality
-Intended status: Standards Track                         August 26, 2015
-Expires: February 27, 2016
+Intended status: Standards Track                       September 1, 2015
+Expires: March 4, 2016
 
 
              An HTTP Status Code to Report Legal Obstacles
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on February 27, 2016.
+   This Internet-Draft will expire on March 4, 2016.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Bray                    Expires February 27, 2016               [Page 1]
+Bray                      Expires March 4, 2016                 [Page 1]
 
-Internet-Draft               HTTP-status-451                 August 2015
+Internet-Draft               HTTP-status-451              September 2015
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Bray                    Expires February 27, 2016               [Page 2]
+Bray                      Expires March 4, 2016                 [Page 2]
 
-Internet-Draft               HTTP-status-451                 August 2015
+Internet-Draft               HTTP-status-451              September 2015
 
 
 3.  451 Unavailable For Legal Reasons
@@ -157,21 +157,18 @@ Internet-Draft               HTTP-status-451                 August 2015
 
 4.  Security Considerations
 
-4.1.  451 Unavailable for Legal Reasons
-
    The 451 status code is optional; clients cannot rely upon its use.
    It is possible that certain legal authorities may wish to avoid
    transparency, and not only demand the restriction of access to
-
-
-
-Bray                    Expires February 27, 2016               [Page 3]
-
-Internet-Draft               HTTP-status-451                 August 2015
-
-
    certain resources, but also avoid disclosing that the demand was
    made.
+
+
+
+Bray                      Expires March 4, 2016                 [Page 3]
+
+Internet-Draft               HTTP-status-451              September 2015
+
 
 5.  IANA Considerations
 
@@ -214,18 +211,6 @@ Appendix A.  Acknowledgements
 
 Author's Address
 
-
-
-
-
-
-
-
-Bray                    Expires February 27, 2016               [Page 4]
-
-Internet-Draft               HTTP-status-451                 August 2015
-
-
    Tim Bray
    Textuality
 
@@ -236,45 +221,4 @@ Internet-Draft               HTTP-status-451                 August 2015
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Bray                    Expires February 27, 2016               [Page 5]
+Bray                      Expires March 4, 2016                 [Page 4]
