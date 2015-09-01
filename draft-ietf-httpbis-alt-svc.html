@@ -952,7 +952,7 @@ parameter     = <a href="#imported.abnf" class="smpl">token</a> "=" ( <a href="#
          </div>
          <div id="rfc.section.3.p.8">
             <p>Alt-Svc <em class="bcp14">MAY</em> occur in any HTTP response message, regardless of the status code. Note that recipients of Alt-Svc are free to ignore the
-               header field (and indeed need to in some situations; see <a href="#host_auth" title="Host Authentication">Section&nbsp;2.1</a>).
+               header field (and indeed need to in some situations; see Sections <a href="#host_auth" title="Host Authentication">2.1</a> and <a href="#status" title="The 421 Misdirected Request HTTP Status Code">6</a>).
             </p>
          </div>
          <div id="rfc.figure.u.7">
@@ -1126,7 +1126,7 @@ Alt-Used: alternate.example.net
             </p>
          </div>
          <div id="rfc.section.6.p.3">
-            <p>A 421 (Misdirected Request) response <em class="bcp14">MAY</em> carry an Alt-Svc header field.
+            <p>An Alt-Svc header field in a 421 (Misdirected Request) response <em class="bcp14">MUST</em> be ignored.
             </p>
          </div>
       </div>
@@ -1509,6 +1509,10 @@ Alt-Used: alternate.example.net
                </p>
             </div>
             <div id="rfc.section.A.9.p.7">
+               <p>Alt-Svc header with 421 status (&lt;<a href="https://github.com/httpwg/http-extensions/issues/75">https://github.com/httpwg/http-extensions/issues/75</a>&gt;).
+               </p>
+            </div>
+            <div id="rfc.section.A.9.p.8">
                <p>Incorporate several editorial improvements suggested by Mike Bishop (&lt;<a href="https://github.com/httpwg/http-extensions/pull/77">https://github.com/httpwg/http-extensions/pull/77</a>&gt;, &lt;<a href="https://github.com/httpwg/http-extensions/pull/78">https://github.com/httpwg/http-extensions/pull/78</a>&gt;).
                </p>
             </div>
