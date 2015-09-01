@@ -4,12 +4,12 @@
 
 HTTP Working Group                                               T. Bray
 Internet-Draft                                                Textuality
-Intended status: Standards Track                       September 1, 2015
-Expires: March 4, 2016
+Intended status: Standards Track                             August 2015
+Expires: February 2, 2016
 
 
              An HTTP Status Code to Report Legal Obstacles
-            draft-ietf-httpbis-legally-restricted-status-01
+            draft-ietf-httpbis-legally-restricted-status-02
 
 Abstract
 
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on March 4, 2016.
+   This Internet-Draft will expire on February 2, 2016.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Bray                      Expires March 4, 2016                 [Page 1]
+Bray                    Expires February 2, 2016                [Page 1]
 
-Internet-Draft               HTTP-status-451              September 2015
+Internet-Draft               HTTP-status-451                 August 2015
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -73,11 +73,12 @@ Table of Contents
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Requirements  . . . . . . . . . . . . . . . . . . . . . . . .   2
    3.  451 Unavailable For Legal Reasons . . . . . . . . . . . . . .   3
-   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   3
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
-   6.  Normative References  . . . . . . . . . . . . . . . . . . . .   4
-   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .   4
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   4
+   4.  Identifying Blocking Entities . . . . . . . . . . . . . . . .   3
+   5.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
+   7.  Normative References  . . . . . . . . . . . . . . . . . . . .   4
+   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .   5
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   5
 
 1.  Introduction
 
@@ -85,7 +86,7 @@ Table of Contents
    code for use when a server operator has a received a legal demand to
    deny access to a resource.
 
-   This status code may be used to provide transparency in circumstances
+   This status code can be used to provide transparency in circumstances
    where issues of law or public policy affect server operations.  This
    transparency may be beneficial both to these operators and to end
    users.
@@ -108,10 +109,9 @@ Table of Contents
 
 
 
-
-Bray                      Expires March 4, 2016                 [Page 2]
+Bray                    Expires February 2, 2016                [Page 2]
 
-Internet-Draft               HTTP-status-451              September 2015
+Internet-Draft               HTTP-status-451                 August 2015
 
 
 3.  451 Unavailable For Legal Reasons
@@ -119,7 +119,7 @@ Internet-Draft               HTTP-status-451              September 2015
    This status code indicates that the server is denying access to the
    resource as a consequence of a legal demand.
 
-   The server in question may not be an origin server.  This type of
+   The server in question might not be an origin server.  This type of
    legal demand typically most directly affects the operations of ISPs
    and search engines.
 
@@ -155,25 +155,49 @@ Internet-Draft               HTTP-status-451              September 2015
    indicated by the method definition or explicit cache controls; see
    [RFC7234].
 
-4.  Security Considerations
+4.  Identifying Blocking Entities
+
+   As noted above, when an attempt to access a resource fails with
+   status 451, the entity blocking access might or might not be the
+   origin server.  There are a variety of entities in the resource-
+   access path which could choose to deny access, for example ISPs,
+   cache providers, and DNS servers.
+
+
+
+Bray                    Expires February 2, 2016                [Page 3]
+
+Internet-Draft               HTTP-status-451                 August 2015
+
+
+   It is useful, when legal blockages occur, to be able to identify the
+   entities actually implementing the blocking.
+
+   When an entity blocks access to a resource and returns status 451, it
+   SHOULD include a "Link" HTTP header field [RFC5988] whose value is a
+   URI reference [RFC3986] identifying itself.  When used for this
+   purpose, the "Link" header field MUST have a "rel" parameter whose
+   value is "blocked-by".
+
+   The intent is that the header be used to identify the entity actually
+   implementing blockage, not any other entity mandating it.  A human
+   readable response body, as discussed above, is the appropriate
+   location for discussion of administrative and policy issues.
+
+5.  Security Considerations
+
+5.1.  451 Unavailable for Legal Reasons
 
    The 451 status code is optional; clients cannot rely upon its use.
-   It is possible that certain legal authorities may wish to avoid
+   It is possible that certain legal authorities might wish to avoid
    transparency, and not only demand the restriction of access to
    certain resources, but also avoid disclosing that the demand was
    made.
 
-
-
-Bray                      Expires March 4, 2016                 [Page 3]
-
-Internet-Draft               HTTP-status-451              September 2015
-
-
-5.  IANA Considerations
+6.  IANA Considerations
 
    The HTTP Status Codes Registry should be updated with the following
-   entries:
+   entry:
 
    o  Code: 451
 
@@ -181,12 +205,26 @@ Internet-Draft               HTTP-status-451              September 2015
 
    o  Specification: [ this document ]
 
-6.  Normative References
+7.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119, DOI 10.17487/
               RFC2119, March 1997,
               <http://www.rfc-editor.org/info/rfc2119>.
+
+   [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
+              Resource Identifier (URI): Generic Syntax", STD 66, RFC
+              3986, DOI 10.17487/RFC3986, January 2005,
+              <http://www.rfc-editor.org/info/rfc3986>.
+
+
+
+
+
+Bray                    Expires February 2, 2016                [Page 4]
+
+Internet-Draft               HTTP-status-451                 August 2015
+
 
    [RFC4084]  Klensin, J., "Terminology for Describing Internet
               Connectivity", BCP 104, RFC 4084, DOI 10.17487/RFC4084,
@@ -195,6 +233,10 @@ Internet-Draft               HTTP-status-451              September 2015
    [RFC4924]  Aboba, B., Ed. and E. Davies, "Reflections on Internet
               Transparency", RFC 4924, DOI 10.17487/RFC4924, July 2007,
               <http://www.rfc-editor.org/info/rfc4924>.
+
+   [RFC5988]  Nottingham, M., "Web Linking", RFC 5988, DOI 10.17487/
+              RFC5988, October 2010,
+              <http://www.rfc-editor.org/info/rfc5988>.
 
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
@@ -221,4 +263,18 @@ Author's Address
 
 
 
-Bray                      Expires March 4, 2016                 [Page 4]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bray                    Expires February 2, 2016                [Page 5]
