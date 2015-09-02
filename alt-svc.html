@@ -597,9 +597,14 @@ ul p {
             <li><a href="#rfc.section.7">7.</a>&nbsp;&nbsp;&nbsp;<a href="#iana-considerations">IANA Considerations</a><ul>
                   <li><a href="#rfc.section.7.1">7.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.7.1">Header Field Registrations</a></li>
                   <li><a href="#rfc.section.7.2">7.2</a>&nbsp;&nbsp;&nbsp;<a href="#alt-svc-frame-registration">The ALTSVC HTTP/2 Frame Type</a></li>
+                  <li><a href="#rfc.section.7.3">7.3</a>&nbsp;&nbsp;&nbsp;<a href="#iana.parameters">Alt-Svc Parameter Registry</a><ul>
+                        <li><a href="#rfc.section.7.3.1">7.3.1</a>&nbsp;&nbsp;&nbsp;<a href="#parameter.registry.procedure">Procedure</a></li>
+                        <li><a href="#rfc.section.7.3.2">7.3.2</a>&nbsp;&nbsp;&nbsp;<a href="#parameter.registrations">Registrations</a></li>
+                     </ul>
+                  </li>
                </ul>
             </li>
-            <li><a href="#rfc.section.8">8.</a>&nbsp;&nbsp;&nbsp;<a href="#tnternationalization-considerations">Internationalization Considerations</a></li>
+            <li><a href="#rfc.section.8">8.</a>&nbsp;&nbsp;&nbsp;<a href="#internationalization-considerations">Internationalization Considerations</a></li>
             <li><a href="#rfc.section.9">9.</a>&nbsp;&nbsp;&nbsp;<a href="#security-considerations">Security Considerations</a><ul>
                   <li><a href="#rfc.section.9.1">9.1</a>&nbsp;&nbsp;&nbsp;<a href="#changing-ports">Changing Ports</a></li>
                   <li><a href="#rfc.section.9.2">9.2</a>&nbsp;&nbsp;&nbsp;<a href="#host_security">Changing Hosts</a></li>
@@ -975,6 +980,14 @@ parameter     = <a href="#imported.abnf" class="smpl">token</a> "=" ( <a href="#
             </p>
          </div>
          <div id="rfc.section.3.p.12">
+            <p>This specification defines one parameter: "ma", defined in <a href="#caching-alt-svc-header-field-values" title="Caching Alt-Svc Header Field Values">Section&nbsp;3.1</a>. Unknown parameters <em class="bcp14">MUST</em> be ignored, that is the values (alt-value) they appear in <em class="bcp14">MUST</em> be processed as if the unknown parameter was not present.
+            </p>
+         </div>
+         <div id="rfc.section.3.p.13">
+            <p>New parameters can be defined in extension specifications (see <a href="#iana.parameters" title="Alt-Svc Parameter Registry">Section&nbsp;7.3</a> for registration details).
+            </p>
+         </div>
+         <div id="rfc.section.3.p.14">
             <p>Note that all field elements that allow "quoted-string" syntax <em class="bcp14">MUST</em> be processed as per <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#field.components" title="Field Value Components">Section 3.2.6</a> of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>.
             </p>
          </div>
@@ -1191,9 +1204,55 @@ Alt-Used: alternate.example.net
                </ul>
             </div>
          </div>
+         <div id="iana.parameters">
+            <h2 id="rfc.section.7.3"><a href="#rfc.section.7.3">7.3</a>&nbsp;<a href="#iana.parameters">Alt-Svc Parameter Registry</a></h2>
+            <div id="rfc.section.7.3.p.1">
+               <p>The HTTP Alt-Svc Parameter Registry defines the name space for the cache directives. It will be created and maintained at
+                  (the suggested URI) &lt;<a href="http://www.iana.org/assignments/http-alt-svc-parameters">http://www.iana.org/assignments/http-alt-svc-parameters</a>&gt;.
+               </p>
+            </div>
+            <div id="parameter.registry.procedure">
+               <h3 id="rfc.section.7.3.1"><a href="#rfc.section.7.3.1">7.3.1</a>&nbsp;<a href="#parameter.registry.procedure">Procedure</a></h3>
+               <div id="rfc.section.7.3.1.p.1">
+                  <p>A registration <em class="bcp14">MUST</em> include the following fields: 
+                  </p>
+                  <ul>
+                     <li>Parameter Name</li>
+                     <li>Pointer to specification text</li>
+                  </ul>
+               </div>
+               <div id="rfc.section.7.3.1.p.2">
+                  <p>Values to be added to this name space require IETF Review (see <a href="#RFC5226"><cite title="Guidelines for Writing an IANA Considerations Section in RFCs">[RFC5226]</cite></a>, <a href="https://tools.ietf.org/html/rfc5226#section-4.1">Section 4.1</a>).
+                  </p>
+               </div>
+            </div>
+            <div id="parameter.registrations">
+               <h3 id="rfc.section.7.3.2"><a href="#rfc.section.7.3.2">7.3.2</a>&nbsp;<a href="#parameter.registrations">Registrations</a></h3>
+               <div id="rfc.section.7.3.2.p.1" class="avoidbreakafter">
+                  <p>The HTTP Alt-Svc Parameter Registry is to be populated with the registration below:</p>
+               </div>
+               <div id="rfc.table.u.2">
+                  <table class="tt full left" cellpadding="3" cellspacing="0">
+                     <thead>
+                        <tr>
+                           <th>Alt-Svc Parameter</th>
+                           <th>Reference</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td class="left">ma</td>
+                           <td class="left"><a href="#caching-alt-svc-header-field-values" title="Caching Alt-Svc Header Field Values">Section&nbsp;3.1</a> 
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
       </div>
-      <div id="tnternationalization-considerations">
-         <h1 id="rfc.section.8"><a href="#rfc.section.8">8.</a>&nbsp;<a href="#tnternationalization-considerations">Internationalization Considerations</a></h1>
+      <div id="internationalization-considerations">
+         <h1 id="rfc.section.8"><a href="#rfc.section.8">8.</a>&nbsp;<a href="#internationalization-considerations">Internationalization Considerations</a></h1>
          <div id="rfc.section.8.p.1">
             <p>An internationalized domain name that appears in either the header field (<a href="#alt-svc" title="The Alt-Svc HTTP Header Field">Section&nbsp;3</a>) or the HTTP/2 frame (<a href="#frame" title="The ALTSVC HTTP/2 Frame">Section&nbsp;4</a>) <em class="bcp14">MUST</em> be expressed using A-labels (<a href="#RFC5890"><cite title="Internationalized Domain Names for Applications (IDNA): Definitions and Document Framework">[RFC5890]</cite></a>, <a href="https://tools.ietf.org/html/rfc5890#section-2.3.2.1">Section 2.3.2.1</a>).
             </p>
@@ -1305,6 +1364,11 @@ Alt-Used: alternate.example.net
          <tr>
             <td class="reference"><b id="RFC3986">[RFC3986]</b></td>
             <td class="top">Berners-Lee, T., Fielding, R., and L. Masinter, “<a href="https://tools.ietf.org/html/rfc3986">Uniform Resource Identifier (URI): Generic Syntax</a>”, STD&nbsp;66, RFC&nbsp;3986, <a href="http://dx.doi.org/10.17487/RFC3986">DOI&nbsp;10.17487/RFC3986</a>, January&nbsp;2005, &lt;<a href="http://www.rfc-editor.org/info/rfc3986">http://www.rfc-editor.org/info/rfc3986</a>&gt;.
+            </td>
+         </tr>
+         <tr>
+            <td class="reference"><b id="RFC5226">[RFC5226]</b></td>
+            <td class="top">Narten, T. and H. Alvestrand, “<a href="https://tools.ietf.org/html/rfc5226">Guidelines for Writing an IANA Considerations Section in RFCs</a>”, BCP&nbsp;26, RFC&nbsp;5226, <a href="http://dx.doi.org/10.17487/RFC5226">DOI&nbsp;10.17487/RFC5226</a>, May&nbsp;2008, &lt;<a href="http://www.rfc-editor.org/info/rfc5226">http://www.rfc-editor.org/info/rfc5226</a>&gt;.
             </td>
          </tr>
          <tr>
@@ -1506,18 +1570,22 @@ Alt-Used: alternate.example.net
                </p>
             </div>
             <div id="rfc.section.A.9.p.6">
-               <p>Proxy and .pac interaction (&lt;<a href="https://github.com/httpwg/http-extensions/issues/62">https://github.com/httpwg/http-extensions/issues/62</a>&gt;).
+               <p>Need to define extensibility for alt-svc parameters (&lt;<a href="https://github.com/httpwg/http-extensions/issues/59">https://github.com/httpwg/http-extensions/issues/59</a>&gt;).
                </p>
             </div>
             <div id="rfc.section.A.9.p.7">
-               <p>Alt-Svc header with 421 status (&lt;<a href="https://github.com/httpwg/http-extensions/issues/75">https://github.com/httpwg/http-extensions/issues/75</a>&gt;).
+               <p>Proxy and .pac interaction (&lt;<a href="https://github.com/httpwg/http-extensions/issues/62">https://github.com/httpwg/http-extensions/issues/62</a>&gt;).
                </p>
             </div>
             <div id="rfc.section.A.9.p.8">
-               <p>Incorporate several editorial improvements suggested by Mike Bishop (&lt;<a href="https://github.com/httpwg/http-extensions/pull/77">https://github.com/httpwg/http-extensions/pull/77</a>&gt;, &lt;<a href="https://github.com/httpwg/http-extensions/pull/78">https://github.com/httpwg/http-extensions/pull/78</a>&gt;).
+               <p>Alt-Svc header with 421 status (&lt;<a href="https://github.com/httpwg/http-extensions/issues/75">https://github.com/httpwg/http-extensions/issues/75</a>&gt;).
                </p>
             </div>
             <div id="rfc.section.A.9.p.9">
+               <p>Incorporate several editorial improvements suggested by Mike Bishop (&lt;<a href="https://github.com/httpwg/http-extensions/pull/77">https://github.com/httpwg/http-extensions/pull/77</a>&gt;, &lt;<a href="https://github.com/httpwg/http-extensions/pull/78">https://github.com/httpwg/http-extensions/pull/78</a>&gt;).
+               </p>
+            </div>
+            <div id="rfc.section.A.9.p.10">
                <p>Alt-Svc response header field in HTTP/2 frame (&lt;<a href="https://github.com/httpwg/http-extensions/issues/87">https://github.com/httpwg/http-extensions/issues/87</a>&gt;).
                </p>
             </div>
