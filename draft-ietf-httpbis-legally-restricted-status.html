@@ -63,23 +63,32 @@ dl p {
   margin-left: 0em;
 }
 h1 {
+  color: green;
+  font-size: 150%;
+  line-height: 18pt;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 36pt;
+  margin-bottom: 0pt;
+}
+h2 {
   font-size: 130%;
   line-height: 21pt;
   page-break-after: avoid;
 }
-h1.np {
+h2.np {
   page-break-before: always;
 }
-h2 {
+h3 {
   font-size: 120%;
   line-height: 15pt;
   page-break-after: avoid;
 }
-h3 {
+h4 {
   font-size: 110%;
   page-break-after: avoid;
 }
-h4, h5, h6 {
+h5, h6 {
   page-break-after: avoid;
 }
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -184,7 +193,7 @@ li.excluded {
 ul p {
   margin-left: 0em;
 }
-.title, .filename, h1, h2, h3, h4 {
+.filename, h1, h2, h3, h4 {
   font-family: candara, calibri, segoe, optima, arial, sans-serif;
 }
 
@@ -206,10 +215,11 @@ ul p {
 }
 .filename {
   color: #333333;
-  font-size: 75%;
+  font-size: 112%;
   font-weight: bold;
   line-height: 21pt;
   text-align: center;
+  margin-top: 0pt;
 }
 .fn {
   font-weight: bold;
@@ -219,14 +229,6 @@ ul p {
 }
 .right {
   text-align: right;
-}
-.title {
-  color: green;
-  font-size: 150%;
-  line-height: 18pt;
-  font-weight: bold;
-  text-align: center;
-  margin-top: 36pt;
 }
 .warning {
   font-size: 130%;
@@ -323,7 +325,7 @@ ul p {
       <link rel="Chapter" title="6 IANA Considerations" href="#rfc.section.6">
       <link rel="Chapter" href="#rfc.section.7" title="7 Normative References">
       <link rel="Appendix" title="A Acknowledgements" href="#rfc.section.A">
-      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.733, 2015/05/28 13:08:20, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
+      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.738, 2015/09/03 09:04:03, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
       <meta name="keywords" content="HTTP">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Bray, T.">
@@ -353,18 +355,21 @@ ul p {
             </tr>
          </tbody>
       </table>
-      <p class="title" id="rfc.title">An HTTP Status Code to Report Legal Obstacles<br><span class="filename">draft-ietf-httpbis-legally-restricted-status-02</span></p>
-      <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
+      <div id="rfc.title">
+         <h1>An HTTP Status Code to Report Legal Obstacles</h1>
+         <p class="filename">draft-ietf-httpbis-legally-restricted-status-02</p>
+      </div>
+      <h2 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h2>
       <p>This document specifies a Hypertext Transfer Protocol (HTTP) status code for use when resource access is denied as a consequence
          of legal demands.
       </p>
-      <h1 id="rfc.note.1"><a href="#rfc.note.1">Editorial Note (To be removed by RFC Editor before publication)</a></h1>
+      <h2 id="rfc.note.1"><a href="#rfc.note.1">Editorial Note (To be removed by RFC Editor before publication)</a></h2>
       <p>Discussion of this draft takes place on the HTTPBIS working group mailing list (ietf-http-wg@w3.org), which is archived at &lt;<a href="https://lists.w3.org/Archives/Public/ietf-http-wg/">https://lists.w3.org/Archives/Public/ietf-http-wg/</a>&gt;.
       </p>
       <p>Working Group information can be found at &lt;<a href="https://tools.ietf.org/wg/httpbis/">https://tools.ietf.org/wg/httpbis/</a>&gt; and &lt;<a href="http://httpwg.github.io/">http://httpwg.github.io/</a>&gt;; source code and issues list for this draft can be found at &lt;<a href="https://github.com/httpwg/http-extensions">https://github.com/httpwg/http-extensions</a>&gt;.
       </p>
       <div id="rfc.status">
-         <h1><a href="#rfc.status">Status of this Memo</a></h1>
+         <h2><a href="#rfc.status">Status of this Memo</a></h2>
          <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
          <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF). Note that other groups may also distribute
             working documents as Internet-Drafts. The list of current Internet-Drafts is at <a href="http://datatracker.ietf.org/drafts/current/">http://datatracker.ietf.org/drafts/current/</a>.
@@ -376,7 +381,7 @@ ul p {
          <p>This Internet-Draft will expire in February 2016.</p>
       </div>
       <div id="rfc.copyrightnotice">
-         <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
+         <h2><a href="#rfc.copyrightnotice">Copyright Notice</a></h2>
          <p>Copyright © 2015 IETF Trust and the persons identified as the document authors. All rights reserved.</p>
          <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (<a href="http://trustee.ietf.org/license-info">http://trustee.ietf.org/license-info</a>) in effect on the date of publication of this document. Please review these documents carefully, as they describe your rights
             and restrictions with respect to this document. Code Components extracted from this document must include Simplified BSD License
@@ -386,7 +391,7 @@ ul p {
       </div>
       <hr class="noprint">
       <div id="rfc.toc">
-         <h1 class="np"><a href="#rfc.toc">Table of Contents</a></h1>
+         <h2 class="np"><a href="#rfc.toc">Table of Contents</a></h2>
          <ul class="toc">
             <li><a href="#rfc.section.1">1.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.1">Introduction</a></li>
             <li><a href="#rfc.section.2">2.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.2">Requirements</a></li>
@@ -400,8 +405,8 @@ ul p {
          </ul>
       </div>
       <div>
-         <h1 id="rfc.section.1" class="np"><a href="#rfc.section.1">1.</a>&nbsp;Introduction
-         </h1>
+         <h2 id="rfc.section.1" class="np"><a href="#rfc.section.1">1.</a>&nbsp;Introduction
+         </h2>
          <div id="rfc.section.1.p.1">
             <p>This document specifies a Hypertext Transfer Protocol (HTTP) status code for use when a server operator has a received a legal
                demand to deny access to a resource.
@@ -422,8 +427,8 @@ ul p {
          </div>
       </div>
       <div>
-         <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a>&nbsp;Requirements
-         </h1>
+         <h2 id="rfc.section.2"><a href="#rfc.section.2">2.</a>&nbsp;Requirements
+         </h2>
          <div id="rfc.section.2.p.1">
             <p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL"
                in this document are to be interpreted as described in <a href="#RFC2119"><cite title="Key words for use in RFCs to Indicate Requirement Levels">[RFC2119]</cite></a>.
@@ -431,8 +436,8 @@ ul p {
          </div>
       </div>
       <div>
-         <h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a>&nbsp;451 Unavailable For Legal Reasons
-         </h1>
+         <h2 id="rfc.section.3"><a href="#rfc.section.3">3.</a>&nbsp;451 Unavailable For Legal Reasons
+         </h2>
          <div id="rfc.section.3.p.1">
             <p>This status code indicates that the server is denying access to the resource as a consequence of a legal demand.</p>
          </div>
@@ -478,8 +483,8 @@ Content-Type: text/html
          </div>
       </div>
       <div>
-         <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a>&nbsp;Identifying Blocking Entities
-         </h1>
+         <h2 id="rfc.section.4"><a href="#rfc.section.4">4.</a>&nbsp;Identifying Blocking Entities
+         </h2>
          <div id="rfc.section.4.p.1">
             <p>As noted above, when an attempt to access a resource fails with status 451, the entity blocking access might or might not
                be the origin server. There are a variety of entities in the resource-access path which could choose to deny access, for example
@@ -501,11 +506,11 @@ Content-Type: text/html
          </div>
       </div>
       <div>
-         <h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a>&nbsp;Security Considerations
-         </h1>
+         <h2 id="rfc.section.5"><a href="#rfc.section.5">5.</a>&nbsp;Security Considerations
+         </h2>
          <div>
-            <h2 id="rfc.section.5.1"><a href="#rfc.section.5.1">5.1</a>&nbsp;451 Unavailable for Legal Reasons
-            </h2>
+            <h3 id="rfc.section.5.1"><a href="#rfc.section.5.1">5.1</a>&nbsp;451 Unavailable for Legal Reasons
+            </h3>
             <div id="rfc.section.5.1.p.1">
                <p>The 451 status code is optional; clients cannot rely upon its use. It is possible that certain legal authorities might wish
                   to avoid transparency, and not only demand the restriction of access to certain resources, but also avoid disclosing that
@@ -515,8 +520,8 @@ Content-Type: text/html
          </div>
       </div>
       <div>
-         <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a>&nbsp;IANA Considerations
-         </h1>
+         <h2 id="rfc.section.6"><a href="#rfc.section.6">6.</a>&nbsp;IANA Considerations
+         </h2>
          <div id="rfc.section.6.p.1" class="avoidbreakafter">
             <p>The HTTP Status Codes Registry should be updated with the following entry:</p>
          </div>
@@ -528,8 +533,8 @@ Content-Type: text/html
             </ul>
          </div>
       </div>
-      <h1 id="rfc.references"><a href="#rfc.section.7" id="rfc.section.7">7.</a> Normative References
-      </h1>
+      <h2 id="rfc.references.1"><a href="#rfc.section.7" id="rfc.section.7">7.</a> Normative References
+      </h2>
       <table>
          <tr>
             <td class="reference"><b id="RFC2119">[RFC2119]</b></td>
@@ -563,8 +568,8 @@ Content-Type: text/html
          </tr>
       </table>
       <div>
-         <h1 id="rfc.section.A" class="np"><a href="#rfc.section.A">A.</a>&nbsp;Acknowledgements
-         </h1>
+         <h2 id="rfc.section.A" class="np"><a href="#rfc.section.A">A.</a>&nbsp;Acknowledgements
+         </h2>
          <div id="rfc.section.A.p.1">
             <p>Thanks to Terence Eden, who observed that the existing status code 403 was not really suitable for this situation, and suggested
                the creation of a new status code.
@@ -575,7 +580,7 @@ Content-Type: text/html
          </div>
       </div>
       <div class="avoidbreakinside">
-         <h1 id="rfc.authors"><a href="#rfc.authors">Author's Address</a></h1>
+         <h2 id="rfc.authors"><a href="#rfc.authors">Author's Address</a></h2>
          <p><b>Tim Bray</b><br>Textuality<br>EMail: <a href="mailto:tbray@textuality.com">tbray@textuality.com</a><br>URI: <a href="http://www.tbray.org/ongoing/">http://www.tbray.org/ongoing/</a></p>
       </div>
    </body>

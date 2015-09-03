@@ -144,23 +144,32 @@ dl p {
   margin-left: 0em;
 }
 h1 {
+  color: green;
+  font-size: 150%;
+  line-height: 18pt;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 36pt;
+  margin-bottom: 0pt;
+}
+h2 {
   font-size: 130%;
   line-height: 21pt;
   page-break-after: avoid;
 }
-h1.np {
+h2.np {
   page-break-before: always;
 }
-h2 {
+h3 {
   font-size: 120%;
   line-height: 15pt;
   page-break-after: avoid;
 }
-h3 {
+h4 {
   font-size: 110%;
   page-break-after: avoid;
 }
-h4, h5, h6 {
+h5, h6 {
   page-break-after: avoid;
 }
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -265,7 +274,7 @@ li.excluded {
 ul p {
   margin-left: 0em;
 }
-.title, .filename, h1, h2, h3, h4 {
+.filename, h1, h2, h3, h4 {
   font-family: candara, calibri, segoe, optima, arial, sans-serif;
 }
 
@@ -287,10 +296,11 @@ ul p {
 }
 .filename {
   color: #333333;
-  font-size: 75%;
+  font-size: 112%;
   font-weight: bold;
   line-height: 21pt;
   text-align: center;
+  margin-top: 0pt;
 }
 .fn {
   font-weight: bold;
@@ -300,14 +310,6 @@ ul p {
 }
 .right {
   text-align: right;
-}
-.title {
-  color: green;
-  font-size: 150%;
-  line-height: 18pt;
-  font-weight: bold;
-  text-align: center;
-  margin-top: 36pt;
 }
 .warning {
   font-size: 130%;
@@ -397,7 +399,7 @@ ul p {
        content: "Hutton, et al.";
   }
   @bottom-center {
-       content: "Expires March 5, 2016";
+       content: "Expires March 6, 2016";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -423,14 +425,14 @@ ul p {
       <link rel="Chapter" title="3 IANA Considerations" href="#rfc.section.3">
       <link rel="Chapter" title="4 Security Considerations" href="#rfc.section.4">
       <link rel="Chapter" href="#rfc.section.5" title="5 References">
-      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.733, 2015/05/28 13:08:20, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
+      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.738, 2015/09/03 09:04:03, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
       <meta name="keywords" content="HTTP CONNECT, Firewall, HTTP proxy">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Hutton, A.">
       <meta name="dct.creator" content="Uberti, J.">
       <meta name="dct.creator" content="Thomson, M.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-tunnel-protocol-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2015-09-02">
+      <meta name="dct.issued" scheme="ISO8601" content="2015-09-03">
       <meta name="dct.abstract" content="This specification allows HTTP CONNECT requests to indicate what protocol is intended to be used within the tunnel once established, using the ALPN header field.">
       <meta name="description" content="This specification allows HTTP CONNECT requests to indicate what protocol is intended to be used within the tunnel once established, using the ALPN header field.">
    </head>
@@ -450,7 +452,7 @@ ul p {
                <td class="right">J. Uberti</td>
             </tr>
             <tr>
-               <td class="left">Expires: March 5, 2016</td>
+               <td class="left">Expires: March 6, 2016</td>
                <td class="right">Google</td>
             </tr>
             <tr>
@@ -463,17 +465,20 @@ ul p {
             </tr>
             <tr>
                <td class="left"></td>
-               <td class="right">September 2, 2015</td>
+               <td class="right">September 3, 2015</td>
             </tr>
          </tbody>
       </table>
-      <p class="title" id="rfc.title">The ALPN HTTP Header Field<br><span class="filename">draft-ietf-httpbis-tunnel-protocol-latest</span></p>
-      <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
+      <div id="rfc.title">
+         <h1>The ALPN HTTP Header Field</h1>
+         <p class="filename">draft-ietf-httpbis-tunnel-protocol-latest</p>
+      </div>
+      <h2 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h2>
       <p>This specification allows HTTP CONNECT requests to indicate what protocol is intended to be used within the tunnel once established,
          using the ALPN header field.
       </p>
       <div id="rfc.status">
-         <h1><a href="#rfc.status">Status of This Memo</a></h1>
+         <h2><a href="#rfc.status">Status of This Memo</a></h2>
          <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
          <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF). Note that other groups may also distribute
             working documents as Internet-Drafts. The list of current Internet-Drafts is at <a href="http://datatracker.ietf.org/drafts/current/">http://datatracker.ietf.org/drafts/current/</a>.
@@ -482,10 +487,10 @@ ul p {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on March 5, 2016.</p>
+         <p>This Internet-Draft will expire on March 6, 2016.</p>
       </div>
       <div id="rfc.copyrightnotice">
-         <h1><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
+         <h2><a href="#rfc.copyrightnotice">Copyright Notice</a></h2>
          <p>Copyright © 2015 IETF Trust and the persons identified as the document authors. All rights reserved.</p>
          <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (<a href="http://trustee.ietf.org/license-info">http://trustee.ietf.org/license-info</a>) in effect on the date of publication of this document. Please review these documents carefully, as they describe your rights
             and restrictions with respect to this document. Code Components extracted from this document must include Simplified BSD License
@@ -495,7 +500,7 @@ ul p {
       </div>
       <hr class="noprint">
       <div id="rfc.toc">
-         <h1 class="np"><a href="#rfc.toc">Table of Contents</a></h1>
+         <h2 class="np"><a href="#rfc.toc">Table of Contents</a></h2>
          <ul class="toc">
             <li><a href="#rfc.section.1">1.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.1">Introduction</a><ul>
                   <li><a href="#rfc.section.1.1">1.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.section.1.1">Requirements Language</a></li>
@@ -518,8 +523,8 @@ ul p {
          </ul>
       </div>
       <div>
-         <h1 id="rfc.section.1" class="np"><a href="#rfc.section.1">1.</a>&nbsp;Introduction
-         </h1>
+         <h2 id="rfc.section.1" class="np"><a href="#rfc.section.1">1.</a>&nbsp;Introduction
+         </h2>
          <div id="rfc.section.1.p.1">
             <p>The HTTP CONNECT method (Section 4.3.6 of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>) requests that the recipient establish a tunnel to the identified origin server and thereafter forward packets, in both directions,
                until the tunnel is closed. Such tunnels are commonly used to create end-to-end virtual connections, through one or more proxies.
@@ -547,8 +552,8 @@ ul p {
             </p>
          </div>
          <div>
-            <h2 id="rfc.section.1.1"><a href="#rfc.section.1.1">1.1</a>&nbsp;Requirements Language
-            </h2>
+            <h3 id="rfc.section.1.1"><a href="#rfc.section.1.1">1.1</a>&nbsp;Requirements Language
+            </h3>
             <div id="rfc.section.1.1.p.1">
                <p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL"
                   in this document are to be interpreted as described in <a href="#RFC2119">RFC 2119</a> <cite title="Key words for use in RFCs to Indicate Requirement Levels">[RFC2119]</cite>.
@@ -557,15 +562,15 @@ ul p {
          </div>
       </div>
       <div id="tp">
-         <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a>&nbsp;<a href="#tp">The ALPN HTTP Header Field</a></h1>
+         <h2 id="rfc.section.2"><a href="#rfc.section.2">2.</a>&nbsp;<a href="#tp">The ALPN HTTP Header Field</a></h2>
          <div id="rfc.section.2.p.1">
             <p>Clients include the ALPN header field in an HTTP CONNECT request to indicate the application layer protocol that a client
                intends to use within the tunnel, or a set of protocols that might be used within the tunnel.
             </p>
          </div>
          <div>
-            <h2 id="rfc.section.2.1"><a href="#rfc.section.2.1">2.1</a>&nbsp;Header Field Values
-            </h2>
+            <h3 id="rfc.section.2.1"><a href="#rfc.section.2.1">2.1</a>&nbsp;Header Field Values
+            </h3>
             <div id="rfc.section.2.1.p.1">
                <p>Valid values for the protocol field are taken from the "Application-Layer Protocol Negotiation (ALPN) Protocol ID" registry
                   (&lt;<a href="http://www.iana.org/assignments/tls-extensiontype-values/#alpn-protocol-ids">http://www.iana.org/assignments/tls-extensiontype-values/#alpn-protocol-ids</a>&gt;) established by <a href="#RFC7301"><cite title="Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension">[RFC7301]</cite></a>.
@@ -573,8 +578,8 @@ ul p {
             </div>
          </div>
          <div>
-            <h2 id="rfc.section.2.2"><a href="#rfc.section.2.2">2.2</a>&nbsp;Syntax
-            </h2>
+            <h3 id="rfc.section.2.2"><a href="#rfc.section.2.2">2.2</a>&nbsp;Syntax
+            </h3>
             <div id="rfc.section.2.2.p.1">
                <p>The ABNF (Augmented Backus-Naur Form) syntax for the ALPN header field value is given below. It uses the syntax defined in Section 1.2 of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>.
                </p>
@@ -605,8 +610,8 @@ ALPN: h2, http%2F1.1
 </pre></div>
          </div>
          <div>
-            <h2 id="rfc.section.2.3"><a href="#rfc.section.2.3">2.3</a>&nbsp;Usage
-            </h2>
+            <h3 id="rfc.section.2.3"><a href="#rfc.section.2.3">2.3</a>&nbsp;Usage
+            </h3>
             <div id="rfc.section.2.3.p.1">
                <p>When used in the ALPN header field, an ALPN identifier is used to identify an entire application protocol stack, not a single
                   protocol layer or component.
@@ -641,7 +646,7 @@ ALPN: h2, http%2F1.1
          </div>
       </div>
       <div id="IANA">
-         <h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a>&nbsp;<a href="#IANA">IANA Considerations</a></h1>
+         <h2 id="rfc.section.3"><a href="#rfc.section.3">3.</a>&nbsp;<a href="#IANA">IANA Considerations</a></h2>
          <div id="rfc.section.3.p.1">
             <p>HTTP header fields are registered within the "Permanent Message Header Field Names" registry maintained at &lt;<a href="https://www.iana.org/assignments/message-headers">https://www.iana.org/assignments/message-headers</a>&gt;. This document defines and registers the ALPN header field, according to <a href="#RFC3864"><cite title="Registration Procedures for Message Header Fields">[RFC3864]</cite></a> as follows: 
             </p>
@@ -661,7 +666,7 @@ ALPN: h2, http%2F1.1
          </div>
       </div>
       <div id="Security">
-         <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a>&nbsp;<a href="#Security">Security Considerations</a></h1>
+         <h2 id="rfc.section.4"><a href="#rfc.section.4">4.</a>&nbsp;<a href="#Security">Security Considerations</a></h2>
          <div id="rfc.section.4.p.1">
             <p>In case of using HTTP CONNECT to a TURN server ("Traversal Using Relays around NAT", <a href="#RFC5766"><cite title="Traversal Using Relays around NAT (TURN): Relay Extensions to Session Traversal Utilities for NAT (STUN)">[RFC5766]</cite></a>) the security considerations of Section 4.3.6 of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a> apply. It states that there "are significant risks in establishing a tunnel to arbitrary servers, particularly when the destination
                is a well-known or reserved TCP port that is not intended for Web traffic. Proxies that support CONNECT SHOULD restrict its
@@ -687,10 +692,10 @@ ALPN: h2, http%2F1.1
             </p>
          </div>
       </div>
-      <h1 id="rfc.references"><a id="rfc.section.5" href="#rfc.section.5">5.</a> References
-      </h1>
-      <h2 id="rfc.references.1"><a href="#rfc.section.5.1" id="rfc.section.5.1">5.1</a> Normative References
+      <h2 id="rfc.references"><a id="rfc.section.5" href="#rfc.section.5">5.</a> References
       </h2>
+      <h3 id="rfc.references.1"><a href="#rfc.section.5.1" id="rfc.section.5.1">5.1</a> Normative References
+      </h3>
       <table>
          <tr>
             <td class="reference"><b id="RFC2119">[RFC2119]</b></td>
@@ -723,8 +728,8 @@ ALPN: h2, http%2F1.1
             </td>
          </tr>
       </table>
-      <h2 id="rfc.references.2"><a href="#rfc.section.5.2" id="rfc.section.5.2">5.2</a> Informative References
-      </h2>
+      <h3 id="rfc.references.2"><a href="#rfc.section.5.2" id="rfc.section.5.2">5.2</a> Informative References
+      </h3>
       <table>
          <tr>
             <td class="reference"><b id="RFC5246">[RFC5246]</b></td>
@@ -743,7 +748,7 @@ ALPN: h2, http%2F1.1
          </tr>
       </table>
       <div class="avoidbreakinside">
-         <h1 id="rfc.authors"><a href="#rfc.authors">Authors' Addresses</a></h1>
+         <h2 id="rfc.authors"><a href="#rfc.authors">Authors' Addresses</a></h2>
          <p><b>Andrew Hutton</b><br>Unify<br>Technology Drive<br>Nottingham, NG9 1LA<br>UK<br>Email: <a href="mailto:andrew.hutton@unify.com">andrew.hutton@unify.com</a></p>
          <p><b>Justin Uberti</b><br>Google<br>747 6th Ave S<br>Kirkland, WA&nbsp;98033<br>US<br>Email: <a href="mailto:justin@uberti.name">justin@uberti.name</a></p>
          <p><b>Martin Thomson</b><br>Mozilla<br>331 E Evelyn Street<br>Mountain View, CA&nbsp;94041<br>US<br>Email: <a href="mailto:martin.thomson@gmail.com">martin.thomson@gmail.com</a></p>
