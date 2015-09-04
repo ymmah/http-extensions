@@ -4,8 +4,8 @@
 
 HTTP Working Group                                            J. Reschke
 Internet-Draft                                                greenbytes
-Intended status: Standards Track                       September 3, 2015
-Expires: March 6, 2016
+Intended status: Standards Track                       September 4, 2015
+Expires: March 7, 2016
 
 
   Hypertext Transfer Protocol (HTTP) Client-Initiated Content-Encoding
@@ -53,12 +53,12 @@ Status of This Memo
 
 
 
-Reschke                   Expires March 6, 2016                 [Page 1]
+Reschke                   Expires March 7, 2016                 [Page 1]
 
 Internet-Draft                  HTTP CICE                 September 2015
 
 
-   This Internet-Draft will expire on March 6, 2016.
+   This Internet-Draft will expire on March 7, 2016.
 
 Copyright Notice
 
@@ -98,7 +98,7 @@ Table of Contents
      A.5.  Since draft-ietf-httpbis-cice-01  . . . . . . . . . . . .   7
      A.6.  Since draft-ietf-httpbis-cice-02  . . . . . . . . . . . .   7
    Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .   7
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   7
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   8
 
 1.  Introduction
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Reschke                   Expires March 6, 2016                 [Page 2]
+Reschke                   Expires March 7, 2016                 [Page 2]
 
 Internet-Draft                  HTTP CICE                 September 2015
 
@@ -154,18 +154,18 @@ Internet-Draft                  HTTP CICE                 September 2015
    problems.
 
    Servers that fail a request due to an unsupported content coding
-   SHOULD respond with a 415 status and SHOULD include an "Accept-
+   ought to respond with a 415 status and ought to include an "Accept-
    Encoding" header field in that response, allowing clients to
    distinguish between content coding related issues and media type
    related issues.  In order to avoid confusion with media type related
    problems, servers that fail a request with a 415 status for reasons
-   unrelated to content codings SHOULD NOT include the "Accept-Encoding"
+   unrelated to content codings MUST NOT include the "Accept-Encoding"
    header field.
 
 
 
 
-Reschke                   Expires March 6, 2016                 [Page 3]
+Reschke                   Expires March 7, 2016                 [Page 3]
 
 Internet-Draft                  HTTP CICE                 September 2015
 
@@ -221,7 +221,7 @@ Internet-Draft                  HTTP CICE                 September 2015
 
 
 
-Reschke                   Expires March 6, 2016                 [Page 4]
+Reschke                   Expires March 7, 2016                 [Page 4]
 
 Internet-Draft                  HTTP CICE                 September 2015
 
@@ -277,7 +277,7 @@ Internet-Draft                  HTTP CICE                 September 2015
 
 
 
-Reschke                   Expires March 6, 2016                 [Page 5]
+Reschke                   Expires March 7, 2016                 [Page 5]
 
 Internet-Draft                  HTTP CICE                 September 2015
 
@@ -333,7 +333,7 @@ Internet-Draft                  HTTP CICE                 September 2015
 
 
 
-Reschke                   Expires March 6, 2016                 [Page 6]
+Reschke                   Expires March 7, 2016                 [Page 6]
 
 Internet-Draft                  HTTP CICE                 September 2015
 
@@ -379,20 +379,22 @@ A.6.  Since draft-ietf-httpbis-cice-02
 Appendix B.  Acknowledgements
 
    Thanks go to the members of the and HTTPbis Working Group, namely
-   Amos Jeffries, Mark Nottingham, Pete Resnick, and Ted Hardie.
-
-Author's Address
-
+   Amos Jeffries, Ben Campbell, Mark Nottingham, Pete Resnick, and Ted
+   Hardie.
 
 
 
 
 
 
-Reschke                   Expires March 6, 2016                 [Page 7]
+
+
+Reschke                   Expires March 7, 2016                 [Page 7]
 
 Internet-Draft                  HTTP CICE                 September 2015
 
+
+Author's Address
 
    Julian F. Reschke
    greenbytes GmbH
@@ -443,6 +445,4 @@ Internet-Draft                  HTTP CICE                 September 2015
 
 
 
-
-
-Reschke                   Expires March 6, 2016                 [Page 8]
+Reschke                   Expires March 7, 2016                 [Page 8]
