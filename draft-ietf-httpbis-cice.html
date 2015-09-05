@@ -716,7 +716,13 @@ Content-Type: text/plain
       <div id="security.considerations">
          <h2 id="rfc.section.6"><a href="#rfc.section.6">6.</a>&nbsp;<a href="#security.considerations">Security Considerations</a></h2>
          <div id="rfc.section.6.p.1">
-            <p>This specification does not introduce any new security considerations beyond those discussed in <a href="rfc7231.html#security.considerations" title="Security Considerations">Section 9</a> of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>.
+            <p>This specification only adds discovery of supported content codings and diagnostics for requests failing due to unsupported
+               content codings. As such, it doesn't introduce any new security considerations over those already present in HTTP/1.1 (<a href="rfc7231.html#security.considerations" title="Security Considerations">Section 9</a> of <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>) and HTTP/2 (<a href="https://tools.ietf.org/html/rfc7540#section-10" title="Security Considerations">Section 10</a> of <a href="#RFC7540"><cite title="Hypertext Transfer Protocol Version 2 (HTTP/2)">[RFC7540]</cite></a>).
+            </p>
+         </div>
+         <div id="rfc.section.6.p.2">
+            <p>However, the point of better discoverability and diagnostics is to make it easier to use content codings in requests. This
+               might lead to increased usage of compression codings such as gzip (<a href="rfc7230.html#compression.codings" title="Compression Codings">Section 4.2</a> of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>), which, when used over a secure channel, can enable side-channel attacks such as BREACH (see <a href="https://tools.ietf.org/html/rfc7540#section-10.6">Section 10.6</a> of <a href="#RFC7540"><cite title="Hypertext Transfer Protocol Version 2 (HTTP/2)">[RFC7540]</cite></a> and <a href="#BREACH"><cite title="BREACH: Reviving the CRIME Attack">[BREACH]</cite></a>). At the time of publication, it was unclear how BREACH-like attacks can be applied to compression in HTTP requests.
             </p>
          </div>
       </div>
@@ -820,6 +826,16 @@ Content-Type: text/plain
             <td class="top"><a href="mailto:GK-IETF@ninebynine.org">Klyne, G.</a>, <a href="mailto:mnot@pobox.com">Nottingham, M.</a>, and <a href="mailto:JeffMogul@acm.org">J. Mogul</a>, “<a href="https://tools.ietf.org/html/rfc3864">Registration Procedures for Message Header Fields</a>”, BCP&nbsp;90, RFC&nbsp;3864, September&nbsp;2004, &lt;<a href="http://www.rfc-editor.org/info/bcp90">http://www.rfc-editor.org/info/bcp90</a>&gt;.
             </td>
          </tr>
+         <tr>
+            <td class="reference"><b id="BREACH">[BREACH]</b></td>
+            <td class="top">Gluck, Y., Harris, N., and A. Prado, “<a href="http://breachattack.com/resources/BREACH%20-%20SSL,%20gone%20in%2030%20seconds.pdf">BREACH: Reviving the CRIME Attack</a>”, July&nbsp;2013, &lt;<a href="http://breachattack.com/resources/BREACH%20-%20SSL,%20gone%20in%2030%20seconds.pdf">http://breachattack.com/resources/BREACH%20-%20SSL,%20gone%20in%2030%20seconds.pdf</a>&gt;.
+            </td>
+         </tr>
+         <tr>
+            <td class="reference"><b id="RFC7540">[RFC7540]</b></td>
+            <td class="top">Belshe, M., Peon, R., and M. Thomson, Ed., “<a href="https://tools.ietf.org/html/rfc7540">Hypertext Transfer Protocol Version 2 (HTTP/2)</a>”, RFC&nbsp;7540, <a href="http://dx.doi.org/10.17487/RFC7540">DOI&nbsp;10.17487/RFC7540</a>, May&nbsp;2015, &lt;<a href="http://www.rfc-editor.org/info/rfc7540">http://www.rfc-editor.org/info/rfc7540</a>&gt;.
+            </td>
+         </tr>
       </table>
       <div id="change.log">
          <h2 id="rfc.section.A" class="np"><a href="#rfc.section.A">A.</a>&nbsp;<a href="#change.log">Change Log (to be removed by RFC Editor before publication)</a></h2>
@@ -868,7 +884,8 @@ Content-Type: text/plain
          <div id="changes.since.02">
             <h3 id="rfc.section.A.6"><a href="#rfc.section.A.6">A.6</a>&nbsp;<a href="#changes.since.02">Since draft-ietf-httpbis-cice-02</a></h3>
             <div id="rfc.section.A.6.p.1">
-               <p>None yet.</p>
+               <p>Add BREACH like attacks to security considerations (&lt;<a href="https://github.com/httpwg/http-extensions/issues/94">https://github.com/httpwg/http-extensions/issues/94</a>&gt;).
+               </p>
             </div>
          </div>
       </div>

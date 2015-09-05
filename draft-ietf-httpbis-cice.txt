@@ -88,17 +88,17 @@ Table of Contents
      7.2.  Status Code Registry  . . . . . . . . . . . . . . . . . .   6
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   6
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .   6
-     8.2.  Informative References  . . . . . . . . . . . . . . . . .   6
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .   7
    Appendix A.  Change Log (to be removed by RFC Editor before
-                publication) . . . . . . . . . . . . . . . . . . . .   7
-     A.1.  Since draft-reschke-http-cice-00  . . . . . . . . . . . .   7
-     A.2.  Since draft-reschke-http-cice-01  . . . . . . . . . . . .   7
-     A.3.  Since draft-reschke-http-cice-02  . . . . . . . . . . . .   7
-     A.4.  Since draft-ietf-httpbis-cice-00  . . . . . . . . . . . .   7
-     A.5.  Since draft-ietf-httpbis-cice-01  . . . . . . . . . . . .   7
-     A.6.  Since draft-ietf-httpbis-cice-02  . . . . . . . . . . . .   7
-   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .   7
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   8
+                publication) . . . . . . . . . . . . . . . . . . . .   8
+     A.1.  Since draft-reschke-http-cice-00  . . . . . . . . . . . .   8
+     A.2.  Since draft-reschke-http-cice-01  . . . . . . . . . . . .   8
+     A.3.  Since draft-reschke-http-cice-02  . . . . . . . . . . . .   8
+     A.4.  Since draft-ietf-httpbis-cice-00  . . . . . . . . . . . .   8
+     A.5.  Since draft-ietf-httpbis-cice-01  . . . . . . . . . . . .   8
+     A.6.  Since draft-ietf-httpbis-cice-02  . . . . . . . . . . . .   8
+   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .   8
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   9
 
 1.  Introduction
 
@@ -246,8 +246,19 @@ Internet-Draft                  HTTP CICE                 September 2015
 
 6.  Security Considerations
 
-   This specification does not introduce any new security considerations
-   beyond those discussed in Section 9 of [RFC7231].
+   This specification only adds discovery of supported content codings
+   and diagnostics for requests failing due to unsupported content
+   codings.  As such, it doesn't introduce any new security
+   considerations over those already present in HTTP/1.1 (Section 9 of
+   [RFC7231]) and HTTP/2 (Section 10 of [RFC7540]).
+
+   However, the point of better discoverability and diagnostics is to
+   make it easier to use content codings in requests.  This might lead
+   to increased usage of compression codings such as gzip (Section 4.2
+   of [RFC7230]), which, when used over a secure channel, can enable
+   side-channel attacks such as BREACH (see Section 10.6 of [RFC7540]
+   and [BREACH]).  At the time of publication, it was unclear how
+   BREACH-like attacks can be applied to compression in HTTP requests.
 
 7.  IANA Considerations
 
@@ -261,17 +272,6 @@ Internet-Draft                  HTTP CICE                 September 2015
    field, so the "Permanent Message Header Field Names" registry ought
    to be updated accordingly:
 
-   +-----------------+----------+----------+---------------------------+
-   | Header Field    | Protocol | Status   | Reference                 |
-   | Name            |          |          |                           |
-   +-----------------+----------+----------+---------------------------+
-   | Accept-Encoding | http     | standard | [RFC7231], Section 5.3.4, |
-   |                 |          |          | and Section 3 of this     |
-   |                 |          |          | document                  |
-   +-----------------+----------+----------+---------------------------+
-
-
-
 
 
 
@@ -281,6 +281,15 @@ Reschke                   Expires March 8, 2016                 [Page 5]
 
 Internet-Draft                  HTTP CICE                 September 2015
 
+
+   +-----------------+----------+----------+---------------------------+
+   | Header Field    | Protocol | Status   | Reference                 |
+   | Name            |          |          |                           |
+   +-----------------+----------+----------+---------------------------+
+   | Accept-Encoding | http     | standard | [RFC7231], Section 5.3.4, |
+   |                 |          |          | and Section 3 of this     |
+   |                 |          |          | document                  |
+   +-----------------+----------+----------+---------------------------+
 
 7.2.  Status Code Registry
 
@@ -317,15 +326,6 @@ Internet-Draft                  HTTP CICE                 September 2015
               10.17487/RFC7231, June 2014,
               <http://www.rfc-editor.org/info/rfc7231>.
 
-8.2.  Informative References
-
-   [BCP90]    Klyne, G., Nottingham, M., and J. Mogul, "Registration
-              Procedures for Message Header Fields", BCP 90, RFC 3864,
-              September 2004, <http://www.rfc-editor.org/info/bcp90>.
-
-
-
-
 
 
 
@@ -334,6 +334,62 @@ Internet-Draft                  HTTP CICE                 September 2015
 
 
 Reschke                   Expires March 8, 2016                 [Page 6]
+
+Internet-Draft                  HTTP CICE                 September 2015
+
+
+8.2.  Informative References
+
+   [BCP90]    Klyne, G., Nottingham, M., and J. Mogul, "Registration
+              Procedures for Message Header Fields", BCP 90, RFC 3864,
+              September 2004, <http://www.rfc-editor.org/info/bcp90>.
+
+   [BREACH]   Gluck, Y., Harris, N., and A. Prado, "BREACH: Reviving the
+              CRIME Attack", July 2013,
+              <http://breachattack.com/resources/
+              BREACH%20-%20SSL,%20gone%20in%2030%20seconds.pdf>.
+
+   [RFC7540]  Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
+              Transfer Protocol Version 2 (HTTP/2)", RFC 7540, DOI
+              10.17487/RFC7540, May 2015,
+              <http://www.rfc-editor.org/info/rfc7540>.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Reschke                   Expires March 8, 2016                 [Page 7]
 
 Internet-Draft                  HTTP CICE                 September 2015
 
@@ -374,7 +430,8 @@ A.5.  Since draft-ietf-httpbis-cice-01
 
 A.6.  Since draft-ietf-httpbis-cice-02
 
-   None yet.
+   Add BREACH like attacks to security considerations
+   (<https://github.com/httpwg/http-extensions/issues/94>).
 
 Appendix B.  Acknowledgements
 
@@ -388,8 +445,7 @@ Appendix B.  Acknowledgements
 
 
 
-
-Reschke                   Expires March 8, 2016                 [Page 7]
+Reschke                   Expires March 8, 2016                 [Page 8]
 
 Internet-Draft                  HTTP CICE                 September 2015
 
@@ -445,4 +501,4 @@ Author's Address
 
 
 
-Reschke                   Expires March 8, 2016                 [Page 8]
+Reschke                   Expires March 8, 2016                 [Page 9]
