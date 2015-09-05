@@ -430,6 +430,9 @@ A.5.  Since draft-ietf-httpbis-cice-01
 
 A.6.  Since draft-ietf-httpbis-cice-02
 
+   Removed normative language that required used of Accept-Encoding in
+   responses (which would have made existing servers non-compliant).
+
    Add BREACH like attacks to security considerations
    (<https://github.com/httpwg/http-extensions/issues/94>).
 
@@ -438,9 +441,6 @@ Appendix B.  Acknowledgements
    Thanks go to the members of the and HTTPbis Working Group, namely
    Amos Jeffries, Ben Campbell, Mark Nottingham, Pete Resnick, and Ted
    Hardie.
-
-
-
 
 
 
