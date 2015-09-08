@@ -33,7 +33,7 @@ Editorial Note (To be removed by RFC Editor before publication)
    for this draft can be found at <https://github.com/httpwg/http-
    extensions>.
 
-   The changes in this draft are summarized in Appendix A.6.
+   The changes in this draft are summarized in Appendix A.7.
 
 Status of This Memo
 
@@ -97,15 +97,15 @@ Table of Contents
      A.4.  Since draft-ietf-httpbis-cice-00  . . . . . . . . . . . .   8
      A.5.  Since draft-ietf-httpbis-cice-01  . . . . . . . . . . . .   8
      A.6.  Since draft-ietf-httpbis-cice-02  . . . . . . . . . . . .   8
-   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .   8
+     A.7.  Since draft-ietf-httpbis-cice-03  . . . . . . . . . . . .   8
+   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .   9
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   9
 
 1.  Introduction
 
    In HTTP, content codings allow for payload encodings such as for
    compression or integrity checks ([RFC7231], Section 3.1.2).  In
-   particular, the "gzip" content coding ([RFC7230], Section 4.2) is
-   widely used for payload data sent in response messages.
+
 
 
 
@@ -113,6 +113,9 @@ Reschke                  Expires March 11, 2016                 [Page 2]
 
 Internet-Draft                  HTTP CICE                 September 2015
 
+
+   particular, the "gzip" content coding ([RFC7230], Section 4.2) is
+   widely used for payload data sent in response messages.
 
    Content codings can be used in request messages as well, however
    discoverability is not on par with response messages.  This document
@@ -159,9 +162,6 @@ Internet-Draft                  HTTP CICE                 September 2015
    distinguish between content coding related issues and media type
    related issues.  In order to avoid confusion with media type related
    problems, servers that fail a request with a 415 status for reasons
-   unrelated to content codings MUST NOT include the "Accept-Encoding"
-   header field.
-
 
 
 
@@ -169,6 +169,9 @@ Reschke                  Expires March 11, 2016                 [Page 3]
 
 Internet-Draft                  HTTP CICE                 September 2015
 
+
+   unrelated to content codings MUST NOT include the "Accept-Encoding"
+   header field.
 
    It is expected that the most common use of "Accept-Encoding" in
    responses will have the 415 (Unsupported Media Type) status code, in
@@ -215,9 +218,6 @@ Internet-Draft                  HTTP CICE                 September 2015
      Content-Type: text/plain
 
      This resource does not support content codings in requests.
-
-
-
 
 
 
@@ -436,11 +436,11 @@ A.6.  Since draft-ietf-httpbis-cice-02
    Add BREACH like attacks to security considerations
    (<https://github.com/httpwg/http-extensions/issues/94>).
 
-Appendix B.  Acknowledgements
+A.7.  Since draft-ietf-httpbis-cice-03
 
-   Thanks go to the members of the and HTTPbis Working Group, namely
-   Amos Jeffries, Ben Campbell, Mark Nottingham, Pete Resnick, Stephen
-   Farrell, and Ted Hardie.
+   None yet.
+
+
 
 
 
@@ -449,6 +449,12 @@ Reschke                  Expires March 11, 2016                 [Page 8]
 
 Internet-Draft                  HTTP CICE                 September 2015
 
+
+Appendix B.  Acknowledgements
+
+   Thanks go to the members of the and HTTPbis Working Group, namely
+   Amos Jeffries, Ben Campbell, Mark Nottingham, Pete Resnick, Stephen
+   Farrell, and Ted Hardie.
 
 Author's Address
 
@@ -460,12 +466,6 @@ Author's Address
 
    EMail: julian.reschke@greenbytes.de
    URI:   http://greenbytes.de/tech/webdav/
-
-
-
-
-
-
 
 
 
