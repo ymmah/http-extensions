@@ -140,7 +140,7 @@ Internet-Draft          HTTP Authentication-Info          September 2015
    The field value is a list of parameters (name/value pairs), using the
    "auth-param" syntax defined in Section 2.1 of [RFC7235].  This
    specification only describes the generic format; authentication
-   schemes using "Authentication-Info" will define the individual
+   schemes using Authentication-Info will define the individual
    parameters.  The "Digest" Authentication Scheme, for instance,
    defines multiple parameters in Section 3.5 of [RFC7616].
 
