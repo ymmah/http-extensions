@@ -187,10 +187,10 @@ Internet-Draft          HTTP Authentication-Info          September 2015
 4.  The Proxy-Authentication-Info Response Header Field
 
    The Proxy-Authentication-Info response header field is equivalent to
-   Authentication-Info, except that its semantics are defined by the
+   Authentication-Info, except that it applies to proxy authentication
+   ([RFC7235], Section 2) and its semantics are defined by the
    authentication scheme indicated by the Proxy-Authorization header
-   field ([RFC7235], Section 4.4) of the corresponding request, and
-   applies to proxy authentication ([RFC7235], Section 2):
+   field ([RFC7235], Section 4.4) of the corresponding request:
 
      Proxy-Authentication-Info = #auth-param
 
