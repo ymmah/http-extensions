@@ -1078,11 +1078,11 @@ Internet-Draft          HTTP Alternative Services         September 2015
    Number of alternate services used (<https://github.com/httpwg/http-
    extensions/issues/58>).
 
-   Need to define extensibility for alt-svc parameters
-   (<https://github.com/httpwg/http-extensions/issues/59>).
-
    Proxy and .pac interaction (<https://github.com/httpwg/http-
    extensions/issues/62>).
+
+   Need to define extensibility for alt-svc parameters
+   (<https://github.com/httpwg/http-extensions/issues/69>).
 
    Alt-Svc header with 421 status (<https://github.com/httpwg/http-
    extensions/issues/75>).
