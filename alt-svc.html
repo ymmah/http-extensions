@@ -464,7 +464,7 @@ ul p {
        content: "Nottingham, et al.";
   }
   @bottom-center {
-       content: "Expires March 15, 2016";
+       content: "Expires March 22, 2016";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -504,7 +504,7 @@ ul p {
       <meta name="dct.creator" content="McManus, P.">
       <meta name="dct.creator" content="Reschke, J. F.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-alt-svc-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2015-09-12">
+      <meta name="dct.issued" scheme="ISO8601" content="2015-09-19">
       <meta name="dct.abstract" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
       <meta name="description" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
    </head>
@@ -524,7 +524,7 @@ ul p {
                <td class="right">P. McManus</td>
             </tr>
             <tr>
-               <td class="left">Expires: March 15, 2016</td>
+               <td class="left">Expires: March 22, 2016</td>
                <td class="right">Mozilla</td>
             </tr>
             <tr>
@@ -537,7 +537,7 @@ ul p {
             </tr>
             <tr>
                <td class="left"></td>
-               <td class="right">September 12, 2015</td>
+               <td class="right">September 19, 2015</td>
             </tr>
          </tbody>
       </table>
@@ -566,7 +566,7 @@ ul p {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on March 15, 2016.</p>
+         <p>This Internet-Draft will expire on March 22, 2016.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h2><a href="#rfc.copyrightnotice">Copyright Notice</a></h2>
@@ -884,20 +884,21 @@ uri-host      = &lt;uri-host, see <a href="#RFC7230"><cite title="Hypertext Tran
                to responses.
             </p>
          </div>
-         <div id="rfc.figure.u.4"><pre class="inline">Alt-Svc       = 1#alt-value
-alt-value     = clear / ( alternative *( OWS ";" OWS parameter ) )
+         <div id="rfc.figure.u.4"><pre class="inline">Alt-Svc       = clear / 1#alt-value
 clear         = %x63.6C.65.61.72; "clear", case-sensitive
+alt-value     = alternative *( OWS ";" OWS parameter )
 alternative   = protocol-id "=" alt-authority
 protocol-id   = <a href="#imported.abnf" class="smpl">token</a> ; percent-encoded ALPN protocol name
 alt-authority = <a href="#imported.abnf" class="smpl">quoted-string</a> ; containing [ <a href="#imported.abnf" class="smpl">uri-host</a> ] ":" <a href="#imported.abnf" class="smpl">port</a>
 parameter     = <a href="#imported.abnf" class="smpl">token</a> "=" ( <a href="#imported.abnf" class="smpl">token</a> / <a href="#imported.abnf" class="smpl">quoted-string</a> )
 </pre></div>
          <div id="rfc.section.3.p.2">
-            <p>The field value consists of a list of values, each of which indicating one alternative service or being the keyword "clear".</p>
+            <p>The field value consists either of a list of values, each of which indicating one alternative service, or the keyword "clear".</p>
          </div>
          <div id="rfc.section.3.p.3">
-            <p>Any field value containing the special value "clear" indicates that the origin requests all alternatives for that origin to
-               be invalidated (including those received in the same response).
+            <p>A field value containing the special value "clear" indicates that the origin requests all alternatives for that origin to
+               be invalidated (including those specified in the same response, in case of an invalid reply containing both "clear" and alternative
+               services).
             </p>
          </div>
          <div id="rfc.section.3.p.4">
