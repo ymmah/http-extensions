@@ -464,7 +464,7 @@ ul p {
        content: "Nottingham, et al.";
   }
   @bottom-center {
-       content: "Expires March 22, 2016";
+       content: "Expires March 23, 2016";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -504,7 +504,7 @@ ul p {
       <meta name="dct.creator" content="McManus, P.">
       <meta name="dct.creator" content="Reschke, J. F.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-alt-svc-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2015-09-19">
+      <meta name="dct.issued" scheme="ISO8601" content="2015-09-20">
       <meta name="dct.abstract" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
       <meta name="description" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
    </head>
@@ -524,7 +524,7 @@ ul p {
                <td class="right">P. McManus</td>
             </tr>
             <tr>
-               <td class="left">Expires: March 22, 2016</td>
+               <td class="left">Expires: March 23, 2016</td>
                <td class="right">Mozilla</td>
             </tr>
             <tr>
@@ -537,7 +537,7 @@ ul p {
             </tr>
             <tr>
                <td class="left"></td>
-               <td class="right">September 19, 2015</td>
+               <td class="right">September 20, 2015</td>
             </tr>
          </tbody>
       </table>
@@ -566,7 +566,7 @@ ul p {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on March 22, 2016.</p>
+         <p>This Internet-Draft will expire on March 23, 2016.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h2><a href="#rfc.copyrightnotice">Copyright Notice</a></h2>
@@ -643,7 +643,7 @@ ul p {
          <li>Figures
             
             <ul>
-               <li><a href="#rfc.figure.u.11">ALTSVC Frame Payload</a></li>
+               <li><a href="#rfc.figure.u.13">ALTSVC Frame Payload</a></li>
             </ul>
          </li>
       </ul>
@@ -691,11 +691,12 @@ ul p {
             </div>
             <div id="imported.abnf" class="avoidbreakafter">
                <div id="rfc.section.1.1.p.2">
-                  <p>      This document uses the Augmented BNF defined in <a href="#RFC5234"><cite title="Augmented BNF for Syntax Specifications: ABNF">[RFC5234]</cite></a> along with the "#rule" extension defined in <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#abnf.extension" title="ABNF List Extension: #rule">Section 7</a> of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>. The rules below are defined in <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a> and <a href="#RFC7234"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Caching">[RFC7234]</cite></a>:
+                  <p>       This document uses the Augmented BNF defined in <a href="#RFC5234"><cite title="Augmented BNF for Syntax Specifications: ABNF">[RFC5234]</cite></a> along with the "#rule" extension defined in <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#abnf.extension" title="ABNF List Extension: #rule">Section 7</a> of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>. The rules below are defined in <a href="#RFC5234"><cite title="Augmented BNF for Syntax Specifications: ABNF">[RFC5234]</cite></a>, <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, and <a href="#RFC7234"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Caching">[RFC7234]</cite></a>:
                   </p>
                </div>
             </div>
-            <div id="rfc.figure.u.1"><pre class="inline">OWS           = &lt;OWS, see <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#whitespace" title="Whitespace">Section 3.2.3</a>&gt;
+            <div id="rfc.figure.u.1"><pre class="inline">DIGIT         = &lt;DIGIT, see <a href="#RFC5234"><cite title="Augmented BNF for Syntax Specifications: ABNF">[RFC5234]</cite></a>, <a href="https://tools.ietf.org/html/rfc5234#appendix-B.1">Appendix B.1</a>&gt;
+OWS           = &lt;OWS, see <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#whitespace" title="Whitespace">Section 3.2.3</a>&gt;
 delta-seconds = &lt;delta-seconds; see <a href="#RFC7234"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Caching">[RFC7234]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7234.html#delta-seconds" title="Delta Seconds">Section 1.2.1</a>&gt;
 port          = &lt;port, see <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#uri" title="Uniform Resource Identifiers">Section 2.7</a>&gt;
 quoted-string = &lt;quoted-string, see <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#field.components" title="Field Value Components">Section 3.2.6</a>&gt;
@@ -819,8 +820,9 @@ uri-host      = &lt;uri-host, see <a href="#RFC7230"><cite title="Hypertext Tran
                </p>
             </div>
             <div id="rfc.section.2.2.p.4">
-               <p>Clients ought to consider that changes in network configurations can result in suboptimal or compromised cached alternative
-                  services.
+               <p>When alternative services are used to send a client to the most optimal server, a change in network configuration can result
+                  in cached values becoming suboptimal. Therefore, clients <em class="bcp14">SHOULD</em> remove from cache all alternative services that lack the "persist" flag with the value "1" when they detect such a change
+                  (when information about network state is available).
                </p>
             </div>
          </div>
@@ -986,7 +988,7 @@ parameter     = <a href="#imported.abnf" class="smpl">token</a> "=" ( <a href="#
             </p>
          </div>
          <div id="rfc.section.3.p.12">
-            <p>This specification defines one parameter: "ma", defined in <a href="#caching-alt-svc-header-field-values" title="Caching Alt-Svc Header Field Values">Section&nbsp;3.1</a>. Unknown parameters <em class="bcp14">MUST</em> be ignored, that is the values (alt-value) they appear in <em class="bcp14">MUST</em> be processed as if the unknown parameter was not present.
+            <p>This specification defines two parameters: "ma" and "persist", defined in <a href="#caching-alt-svc-header-field-values" title="Caching Alt-Svc Header Field Values">Section&nbsp;3.1</a>. Unknown parameters <em class="bcp14">MUST</em> be ignored, that is the values (alt-value) they appear in <em class="bcp14">MUST</em> be processed as if the unknown parameter was not present.
             </p>
          </div>
          <div id="rfc.section.3.p.13">
@@ -1035,6 +1037,23 @@ Alt-Svc: h2c=":8000"; ma=60
                </p>
             </div>
             <div id="rfc.section.3.1.p.6">
+               <p>By default, cached alternative services will be cleared when the client detects a network change. Alternative services that
+                  are intended to be longer-lived (e.g., those that are not specific to the client access network) can carry the "persist" parameter
+                  with a value "1" as a hint that the service is potentially useful beyond a network configuration change.
+               </p>
+            </div>
+            <div id="rfc.figure.u.11"><pre class="inline">persist = 1<a href="#imported.abnf" class="smpl">DIGIT</a>
+</pre></div>
+            <div id="rfc.section.3.1.p.7" class="avoidbreakafter">
+               <p>For example:</p>
+            </div>
+            <div id="rfc.figure.u.12"><pre class="text">Alt-Svc: h2=":443"; ma=2592000; persist=1
+</pre></div>
+            <div id="rfc.section.3.1.p.8">
+               <p>This specification only a defines a single value for "persist"; others can be defined in future specifications. Clients <em class="bcp14">MUST</em> ignore "persist" parameters with unknown values.
+               </p>
+            </div>
+            <div id="rfc.section.3.1.p.9">
                <p>See <a href="#caching" title="Alternative Service Caching">Section&nbsp;2.2</a> for general requirements on caching alternative services.
                </p>
             </div>
@@ -1063,7 +1082,7 @@ Alt-Svc: h2c=":8000"; ma=60
          <div id="rfc.section.4.p.5">
             <p>The ALTSVC frame type is 0xa (decimal 10).</p>
          </div>
-         <div id="rfc.figure.u.11"><pre class="drawing"> +-------------------------------+-------------------------------+
+         <div id="rfc.figure.u.13"><pre class="drawing"> +-------------------------------+-------------------------------+
  |         Origin-Len (16)       | Origin? (*)                 ...
  +-------------------------------+-------------------------------+
  |                   Alt-Svc-Field-Value (*)                   ...
@@ -1107,7 +1126,7 @@ Alt-Svc: h2c=":8000"; ma=60
                header field (<a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#header.host" title="Host">Section 5.4</a> of <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>) identifies the host and port of the origin.
             </p>
          </div>
-         <div id="rfc.figure.u.12"><pre class="inline">Alt-Used     = uri-host [ ":" port ]
+         <div id="rfc.figure.u.14"><pre class="inline">Alt-Used     = uri-host [ ":" port ]
 </pre></div>
          <div id="rfc.section.5.p.2">
             <p>Alt-Used is intended to allow alternative services to detect loops, differentiate traffic for purposes of load balancing,
@@ -1123,7 +1142,7 @@ Alt-Svc: h2c=":8000"; ma=60
             <p>As the Alt-Used header field might be used by the server for tracking the client, a client <em class="bcp14">MAY</em> choose not to include it in its requests for protecting its privacy (see <a href="#tracking" title="Tracking Clients Using Alternative Services">Section&nbsp;9.4</a>).
             </p>
          </div>
-         <div id="rfc.figure.u.13">
+         <div id="rfc.figure.u.15">
             <p>For example:</p><pre class="text2">GET /thing HTTP/1.1
 Host: origin.example.com
 Alt-Used: alternate.example.net
@@ -1235,7 +1254,7 @@ Alt-Used: alternate.example.net
             <div id="parameter.registrations">
                <h4 id="rfc.section.7.3.2"><a href="#rfc.section.7.3.2">7.3.2</a>&nbsp;<a href="#parameter.registrations">Registrations</a></h4>
                <div id="rfc.section.7.3.2.p.1" class="avoidbreakafter">
-                  <p>The HTTP Alt-Svc Parameter Registry is to be populated with the registration below:</p>
+                  <p>The HTTP Alt-Svc Parameter Registry is to be populated with the registrations below:</p>
                </div>
                <div id="rfc.table.u.2">
                   <table class="tt full tleft" cellpadding="3" cellspacing="0">
@@ -1248,6 +1267,11 @@ Alt-Used: alternate.example.net
                      <tbody>
                         <tr>
                            <td class="left">ma</td>
+                           <td class="left"><a href="#caching-alt-svc-header-field-values" title="Caching Alt-Svc Header Field Values">Section&nbsp;3.1</a> 
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="left">persist</td>
                            <td class="left"><a href="#caching-alt-svc-header-field-values" title="Caching Alt-Svc Header Field Values">Section&nbsp;3.1</a> 
                            </td>
                         </tr>
@@ -1337,7 +1361,8 @@ Alt-Used: alternate.example.net
             <h3 id="rfc.section.9.4"><a href="#rfc.section.9.4">9.4</a>&nbsp;<a href="#tracking">Tracking Clients Using Alternative Services</a></h3>
             <div id="rfc.section.9.4.p.1">
                <p>Choosing an alternative service implies connecting to a new, server-supplied host name. By using many different (potentially
-                  unique) host names, servers could conceivably track client requests.
+                  unique) host names, servers could conceivably track client requests. Such tracking could follow users across multiple networks,
+                  when the "persist" flag is used.
                </p>
             </div>
             <div id="rfc.section.9.4.p.2">
@@ -1584,14 +1609,18 @@ Alt-Used: alternate.example.net
                </p>
             </div>
             <div id="rfc.section.A.9.p.8">
-               <p>Alt-Svc header with 421 status (&lt;<a href="https://github.com/httpwg/http-extensions/issues/75">https://github.com/httpwg/http-extensions/issues/75</a>&gt;).
+               <p>Persistence of alternates across network changes (&lt;<a href="https://github.com/httpwg/http-extensions/issues/71">https://github.com/httpwg/http-extensions/issues/71</a>&gt;).
                </p>
             </div>
             <div id="rfc.section.A.9.p.9">
-               <p>Incorporate several editorial improvements suggested by Mike Bishop (&lt;<a href="https://github.com/httpwg/http-extensions/pull/77">https://github.com/httpwg/http-extensions/pull/77</a>&gt;, &lt;<a href="https://github.com/httpwg/http-extensions/pull/78">https://github.com/httpwg/http-extensions/pull/78</a>&gt;).
+               <p>Alt-Svc header with 421 status (&lt;<a href="https://github.com/httpwg/http-extensions/issues/75">https://github.com/httpwg/http-extensions/issues/75</a>&gt;).
                </p>
             </div>
             <div id="rfc.section.A.9.p.10">
+               <p>Incorporate several editorial improvements suggested by Mike Bishop (&lt;<a href="https://github.com/httpwg/http-extensions/pull/77">https://github.com/httpwg/http-extensions/pull/77</a>&gt;, &lt;<a href="https://github.com/httpwg/http-extensions/pull/78">https://github.com/httpwg/http-extensions/pull/78</a>&gt;).
+               </p>
+            </div>
+            <div id="rfc.section.A.9.p.11">
                <p>Alt-Svc response header field in HTTP/2 frame (&lt;<a href="https://github.com/httpwg/http-extensions/issues/87">https://github.com/httpwg/http-extensions/issues/87</a>&gt;).
                </p>
             </div>
