@@ -4,8 +4,8 @@
 
 HTTP Working Group                                            J. Reschke
 Internet-Draft                                                greenbytes
-Intended status: Standards Track                      September 30, 2015
-Expires: April 2, 2016
+Intended status: Standards Track                         October 1, 2015
+Expires: April 3, 2016
 
 
   Hypertext Transfer Protocol (HTTP) Client-Initiated Content-Encoding
@@ -53,12 +53,12 @@ Status of This Memo
 
 
 
-Reschke                   Expires April 2, 2016                 [Page 1]
+Reschke                   Expires April 3, 2016                 [Page 1]
 
-Internet-Draft                  HTTP CICE                 September 2015
+Internet-Draft                  HTTP CICE                   October 2015
 
 
-   This Internet-Draft will expire on April 2, 2016.
+   This Internet-Draft will expire on April 3, 2016.
 
 Copyright Notice
 
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Reschke                   Expires April 2, 2016                 [Page 2]
+Reschke                   Expires April 3, 2016                 [Page 2]
 
-Internet-Draft                  HTTP CICE                 September 2015
+Internet-Draft                  HTTP CICE                   October 2015
 
 
    particular, the "gzip" content coding ([RFC7230], Section 4.2) is
@@ -165,9 +165,9 @@ Internet-Draft                  HTTP CICE                 September 2015
 
 
 
-Reschke                   Expires April 2, 2016                 [Page 3]
+Reschke                   Expires April 3, 2016                 [Page 3]
 
-Internet-Draft                  HTTP CICE                 September 2015
+Internet-Draft                  HTTP CICE                   October 2015
 
 
    unrelated to content codings MUST NOT include the "Accept-Encoding"
@@ -221,9 +221,9 @@ Internet-Draft                  HTTP CICE                 September 2015
 
 
 
-Reschke                   Expires April 2, 2016                 [Page 4]
+Reschke                   Expires April 3, 2016                 [Page 4]
 
-Internet-Draft                  HTTP CICE                 September 2015
+Internet-Draft                  HTTP CICE                   October 2015
 
 
 5.  Deployment Considerations
@@ -277,9 +277,9 @@ Internet-Draft                  HTTP CICE                 September 2015
 
 
 
-Reschke                   Expires April 2, 2016                 [Page 5]
+Reschke                   Expires April 3, 2016                 [Page 5]
 
-Internet-Draft                  HTTP CICE                 September 2015
+Internet-Draft                  HTTP CICE                   October 2015
 
 
    +-----------------+----------+----------+---------------------------+
@@ -333,9 +333,9 @@ Internet-Draft                  HTTP CICE                 September 2015
 
 
 
-Reschke                   Expires April 2, 2016                 [Page 6]
+Reschke                   Expires April 3, 2016                 [Page 6]
 
-Internet-Draft                  HTTP CICE                 September 2015
+Internet-Draft                  HTTP CICE                   October 2015
 
 
 8.2.  Informative References
@@ -389,9 +389,9 @@ Internet-Draft                  HTTP CICE                 September 2015
 
 
 
-Reschke                   Expires April 2, 2016                 [Page 7]
+Reschke                   Expires April 3, 2016                 [Page 7]
 
-Internet-Draft                  HTTP CICE                 September 2015
+Internet-Draft                  HTTP CICE                   October 2015
 
 
 Appendix A.  Change Log (to be removed by RFC Editor before publication)
@@ -445,9 +445,9 @@ A.7.  Since draft-ietf-httpbis-cice-03
 
 
 
-Reschke                   Expires April 2, 2016                 [Page 8]
+Reschke                   Expires April 3, 2016                 [Page 8]
 
-Internet-Draft                  HTTP CICE                 September 2015
+Internet-Draft                  HTTP CICE                   October 2015
 
 
 Appendix B.  Acknowledgements
@@ -501,4 +501,4 @@ Author's Address
 
 
 
-Reschke                   Expires April 2, 2016                 [Page 9]
+Reschke                   Expires April 3, 2016                 [Page 9]

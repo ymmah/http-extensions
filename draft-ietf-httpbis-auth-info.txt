@@ -4,9 +4,9 @@
 
 HTTP Working Group                                            J. Reschke
 Internet-Draft                                                greenbytes
-Obsoletes: 2617 (if approved)                         September 30, 2015
+Obsoletes: 2617 (if approved)                            October 1, 2015
 Intended status: Standards Track
-Expires: April 2, 2016
+Expires: April 3, 2016
 
 
  HTTP Authentication-Info and Proxy-Authentication-Info Response Header
@@ -47,15 +47,15 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 2, 2016.
+   This Internet-Draft will expire on April 3, 2016.
 
 
 
 
 
-Reschke                   Expires April 2, 2016                 [Page 1]
+Reschke                   Expires April 3, 2016                 [Page 1]
 
-Internet-Draft          HTTP Authentication-Info          September 2015
+Internet-Draft          HTTP Authentication-Info            October 2015
 
 
 Copyright Notice
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Reschke                   Expires April 2, 2016                 [Page 2]
+Reschke                   Expires April 3, 2016                 [Page 2]
 
-Internet-Draft          HTTP Authentication-Info          September 2015
+Internet-Draft          HTTP Authentication-Info            October 2015
 
 
    Both were previously defined in Section 3 of [RFC2617], defining the
@@ -165,9 +165,9 @@ Internet-Draft          HTTP Authentication-Info          September 2015
 
 
 
-Reschke                   Expires April 2, 2016                 [Page 3]
+Reschke                   Expires April 3, 2016                 [Page 3]
 
-Internet-Draft          HTTP Authentication-Info          September 2015
+Internet-Draft          HTTP Authentication-Info            October 2015
 
 
 3.1.  Parameter Value Format
@@ -221,9 +221,9 @@ Internet-Draft          HTTP Authentication-Info          September 2015
 
 
 
-Reschke                   Expires April 2, 2016                 [Page 4]
+Reschke                   Expires April 3, 2016                 [Page 4]
 
-Internet-Draft          HTTP Authentication-Info          September 2015
+Internet-Draft          HTTP Authentication-Info            October 2015
 
 
 6.  IANA Considerations
@@ -277,9 +277,9 @@ Internet-Draft          HTTP Authentication-Info          September 2015
 
 
 
-Reschke                   Expires April 2, 2016                 [Page 5]
+Reschke                   Expires April 3, 2016                 [Page 5]
 
-Internet-Draft          HTTP Authentication-Info          September 2015
+Internet-Draft          HTTP Authentication-Info            October 2015
 
 
    [RFC2617]  Franks, J., Hallam-Baker, P., Hostetler, J., Lawrence, S.,
@@ -333,9 +333,9 @@ Internet-Draft          HTTP Authentication-Info          September 2015
 
 
 
-Reschke                   Expires April 2, 2016                 [Page 6]
+Reschke                   Expires April 3, 2016                 [Page 6]
 
-Internet-Draft          HTTP Authentication-Info          September 2015
+Internet-Draft          HTTP Authentication-Info            October 2015
 
 
 Appendix A.  Acknowledgements
@@ -389,4 +389,4 @@ Author's Address
 
 
 
-Reschke                   Expires April 2, 2016                 [Page 7]
+Reschke                   Expires April 3, 2016                 [Page 7]
