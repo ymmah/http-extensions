@@ -412,6 +412,13 @@ Internet-Draft         Opportunistic HTTP Security          October 2015
 
    HTTP/1.1 MUST NOT be used for opportunistically secured requests.
 
+   Some HTTP/1.1 implementations use ambient signals to determine if a
+   request is for an "https" resource.  For example, implementations
+   might look for TLS on the stack or a port number of 443.  An
+   implementation that supports opportunistically secured requests
+   SHOULD suppress these signals if there is any potential for
+   confusion.
+
 7.  References
 
 7.1.  Normative References
@@ -435,13 +442,6 @@ Internet-Draft         Opportunistic HTTP Security          October 2015
               RFC5246, August 2008,
               <http://www.rfc-editor.org/info/rfc5246>.
 
-   [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454, DOI
-              10.17487/RFC6454, December 2011,
-              <http://www.rfc-editor.org/info/rfc6454>.
-
-
-
-
 
 
 
@@ -449,6 +449,10 @@ Nottingham & Thomson      Expires April 4, 2016                 [Page 8]
 
 Internet-Draft         Opportunistic HTTP Security          October 2015
 
+
+   [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454, DOI
+              10.17487/RFC6454, December 2011,
+              <http://www.rfc-editor.org/info/rfc6454>.
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing", RFC
@@ -493,6 +497,15 @@ Authors' Addresses
    URI:   http://www.mnot.net/
 
 
+
+
+
+
+Nottingham & Thomson      Expires April 4, 2016                 [Page 9]
+
+Internet-Draft         Opportunistic HTTP Security          October 2015
+
+
    Martin Thomson
    Mozilla
 
@@ -501,4 +514,47 @@ Authors' Addresses
 
 
 
-Nottingham & Thomson      Expires April 4, 2016                 [Page 9]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Nottingham & Thomson      Expires April 4, 2016                [Page 10]

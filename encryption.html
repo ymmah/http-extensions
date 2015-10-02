@@ -678,6 +678,11 @@ ma-parameter     = delta-seconds
             <div id="rfc.section.6.4.p.2">
                <p>HTTP/1.1 MUST NOT be used for opportunistically secured requests.</p>
             </div>
+            <div id="rfc.section.6.4.p.3">
+               <p>Some HTTP/1.1 implementations use ambient signals to determine if a request is for an <tt>https</tt> resource. For example, implementations might look for TLS on the stack or a port number of 443. An implementation that supports
+                  opportunistically secured requests SHOULD suppress these signals if there is any potential for confusion.
+               </p>
+            </div>
          </div>
       </div>
       <h2 id="rfc.references"><a id="rfc.section.7" href="#rfc.section.7">7.</a> References
