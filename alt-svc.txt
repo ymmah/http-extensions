@@ -806,22 +806,41 @@ Internet-Draft          HTTP Alternative Services           October 2015
    Using an alternative service implies accessing an origin's resources
    on an alternative port, at a minimum.  An attacker that can inject
    alternative services and listen at the advertised port is therefore
-   able to hijack an origin.
+   able to hijack an origin.  On certain servers, it is normal for users
+   to be able to control some personal pages available on a shared port,
+   and also to accept to requests on less-privileged ports.
 
-   For example, an attacker that can add HTTP response header fields can
-   redirect traffic to a different port on the same host using the Alt-
-   Svc header field; if that port is under the attacker's control, they
-   can thus masquerade as the HTTP server.
+   For example, an attacker that can add HTTP response header fields to
+   some pages can redirect traffic for an entire origin to a different
+   port on the same host using the Alt-Svc header field; if that port is
+   under the attacker's control, they can thus masquerade as the HTTP
+   server.
 
-   This risk can be mitigated by restricting the ability to advertise
-   alternative services, and restricting who can open a port for
-   listening on that host.
+   On servers, this risk can be reducted by restricting the ability to
+   advertise alternative services, and restricting who can open a port
+   for listening on that host.  Clients can reduce this risk by imposing
+   stronger requirements (e.g. strong authentication) when moving from
+   System Ports to User or Dynamic Ports, or from User Ports to Dynamic
+   Ports, as defined in Appendix of [RFC6335].
+
+   It is always valid for a client to ignore an alternative service
+   advertisement which does not meet its implementation-specific
+   security requirements.  Servers can increase the likelihood of
+   clients using the alternative service by providing strong
+   authentication even when not required.
 
 9.2.  Changing Hosts
 
    When the host is changed due to the use of an alternative service, it
    presents an opportunity for attackers to hijack communication to an
    origin.
+
+
+
+Nottingham, et al.        Expires April 8, 2016                [Page 15]
+
+Internet-Draft          HTTP Alternative Services           October 2015
+
 
    For example, if an attacker can convince a user agent to send all
    traffic for "innocent.example.org" to "evil.example.com" by
@@ -833,15 +852,6 @@ Internet-Draft          HTTP Alternative Services           October 2015
    This is the reason for the requirement in Section 2.1 that any
    alternative service with a host different to the origin's be strongly
    authenticated with the origin's identity; i.e., presenting a
-
-
-
-
-Nottingham, et al.        Expires April 8, 2016                [Page 15]
-
-Internet-Draft          HTTP Alternative Services           October 2015
-
-
    certificate for the origin proves that the alternative service is
    authorized to serve traffic for the origin.
 
@@ -881,22 +891,19 @@ Internet-Draft          HTTP Alternative Services           October 2015
    tracking could follow users across multiple networks, when the
    "persist" flag is used.
 
-   Clients concerned by the additional fingerprinting can choose to
-   ignore alternative service advertisements.
-
-   In a user agent, any alternative service information MUST be removed
-   when origin-specific data is cleared (for instance, when cookies are
-   cleared).
-
-
-
-
 
 
 Nottingham, et al.        Expires April 8, 2016                [Page 16]
 
 Internet-Draft          HTTP Alternative Services           October 2015
 
+
+   Clients concerned by the additional fingerprinting can choose to
+   ignore alternative service advertisements.
+
+   In a user agent, any alternative service information MUST be removed
+   when origin-specific data is cleared (for instance, when cookies are
+   cleared).
 
 9.5.  Confusion Regarding Request Scheme
 
@@ -937,14 +944,7 @@ Internet-Draft          HTTP Alternative Services           October 2015
               Extension Definitions", RFC 6066, DOI 10.17487/RFC6066,
               January 2011, <http://www.rfc-editor.org/info/rfc6066>.
 
-   [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454, DOI
-              10.17487/RFC6454, December 2011,
-              <http://www.rfc-editor.org/info/rfc6454>.
 
-   [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
-              Protocol (HTTP/1.1): Message Syntax and Routing", RFC
-              7230, DOI 10.17487/RFC7230, June 2014,
-              <http://www.rfc-editor.org/info/rfc7230>.
 
 
 
@@ -953,6 +953,15 @@ Nottingham, et al.        Expires April 8, 2016                [Page 17]
 
 Internet-Draft          HTTP Alternative Services           October 2015
 
+
+   [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454, DOI
+              10.17487/RFC6454, December 2011,
+              <http://www.rfc-editor.org/info/rfc6454>.
+
+   [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
+              Protocol (HTTP/1.1): Message Syntax and Routing", RFC
+              7230, DOI 10.17487/RFC7230, June 2014,
+              <http://www.rfc-editor.org/info/rfc7230>.
 
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
@@ -980,21 +989,12 @@ Internet-Draft          HTTP Alternative Services           October 2015
               RFC5246, August 2008,
               <http://www.rfc-editor.org/info/rfc5246>.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   [RFC6335]  Cotton, M., Eggert, L., Touch, J., Westerlund, M., and S.
+              Cheshire, "Internet Assigned Numbers Authority (IANA)
+              Procedures for the Management of the Service Name and
+              Transport Protocol Port Number Registry", RFC 6335, DOI
+              10.17487/RFC6335, August 2011,
+              <http://www.rfc-editor.org/info/rfc6335>.
 
 
 

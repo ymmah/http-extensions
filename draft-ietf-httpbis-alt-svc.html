@@ -1295,17 +1295,27 @@ Alt-Used: alternate.example.net
             <h3 id="rfc.section.9.1"><a href="#rfc.section.9.1">9.1</a>&nbsp;<a href="#changing-ports">Changing Ports</a></h3>
             <div id="rfc.section.9.1.p.1">
                <p>Using an alternative service implies accessing an origin's resources on an alternative port, at a minimum. An attacker that
-                  can inject alternative services and listen at the advertised port is therefore able to hijack an origin.
+                  can inject alternative services and listen at the advertised port is therefore able to hijack an origin. On certain servers,
+                  it is normal for users to be able to control some personal pages available on a shared port, and also to accept to requests
+                  on less-privileged ports.
                </p>
             </div>
             <div id="rfc.section.9.1.p.2">
-               <p>For example, an attacker that can add HTTP response header fields can redirect traffic to a different port on the same host
-                  using the Alt-Svc header field; if that port is under the attacker's control, they can thus masquerade as the HTTP server.
+               <p>For example, an attacker that can add HTTP response header fields to some pages can redirect traffic for an entire origin
+                  to a different port on the same host using the Alt-Svc header field; if that port is under the attacker's control, they can
+                  thus masquerade as the HTTP server.
                </p>
             </div>
             <div id="rfc.section.9.1.p.3">
-               <p>This risk can be mitigated by restricting the ability to advertise alternative services, and restricting who can open a port
-                  for listening on that host.
+               <p>On servers, this risk can be reducted by restricting the ability to advertise alternative services, and restricting who can
+                  open a port for listening on that host. Clients can reduce this risk by imposing stronger requirements (e.g. strong authentication)
+                  when moving from System Ports to User or Dynamic Ports, or from User Ports to Dynamic Ports, as defined in <a href="https://tools.ietf.org/html/rfc6335">Appendix ERROR: Anchor 'section-6' in RFC6335 not found in source file ''.</a> of <a href="#RFC6335"><cite title="Internet Assigned Numbers Authority (IANA) Procedures for the Management of the Service Name and Transport Protocol Port Number Registry">[RFC6335]</cite></a>.
+               </p>
+            </div>
+            <div id="rfc.section.9.1.p.4">
+               <p>It is always valid for a client to ignore an alternative service advertisement which does not meet its implementation-specific
+                  security requirements. Servers can increase the likelihood of clients using the alternative service by providing strong authentication
+                  even when not required.
                </p>
             </div>
          </div>
@@ -1430,6 +1440,10 @@ Alt-Used: alternate.example.net
          </dd>
          <dt id="RFC5246">[RFC5246]</dt>
          <dd>Dierks, T. and E. Rescorla, “<a href="https://tools.ietf.org/html/rfc5246">The Transport Layer Security (TLS) Protocol Version 1.2</a>”, RFC&nbsp;5246, <a href="http://dx.doi.org/10.17487/RFC5246">DOI&nbsp;10.17487/RFC5246</a>, August&nbsp;2008, &lt;<a href="http://www.rfc-editor.org/info/rfc5246">http://www.rfc-editor.org/info/rfc5246</a>&gt;.
+         </dd>
+         <dt id="RFC6335">[RFC6335]</dt>
+         <dd>Cotton, M., Eggert, L., Touch, J., Westerlund, M., and S. Cheshire, “<a href="https://tools.ietf.org/html/rfc6335">Internet Assigned Numbers Authority (IANA) Procedures for the Management of the Service Name and Transport Protocol Port Number
+               Registry</a>”, RFC&nbsp;6335, <a href="http://dx.doi.org/10.17487/RFC6335">DOI&nbsp;10.17487/RFC6335</a>, August&nbsp;2011, &lt;<a href="http://www.rfc-editor.org/info/rfc6335">http://www.rfc-editor.org/info/rfc6335</a>&gt;.
          </dd>
       </dl>
       <div id="change.log">
