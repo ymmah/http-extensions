@@ -1211,8 +1211,11 @@ Internet-Draft          HTTP Alternative Services           October 2015
 
 A.10.  Since draft-ietf-httpbis-alt-svc-08
 
-   Alt-Svc: Elevation of privilege (<https://github.com/httpwg/http-
-   extensions/issues/73>).
+   Elevation of privilege (<https://github.com/httpwg/http-extensions/
+   issues/73>).
+
+   Alternates of alternates (<https://github.com/httpwg/http-extensions/
+   issues/74>).
 
 Appendix B.  Acknowledgements
 
@@ -1223,9 +1226,6 @@ Appendix B.  Acknowledgements
 
    The Alt-Svc header field was influenced by the design of the
    Alternate-Protocol header field in SPDY.
-
-
-
 
 
 
