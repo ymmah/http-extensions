@@ -16,10 +16,10 @@ function initFeedback() {
 }
 
 function feedback() {
-  toggleButtonsToElementsByName("h1");
   toggleButtonsToElementsByName("h2");
   toggleButtonsToElementsByName("h3");
   toggleButtonsToElementsByName("h4");
+  toggleButtonsToElementsByName("h5");
 
   buttonsAdded = !buttonsAdded;
 }
@@ -142,6 +142,12 @@ ul.empty li {
 }
 dl p {
   margin-left: 0em;
+}
+dl.reference > dt {
+  font-weight: bold;
+}
+dl.reference > dd {
+  margin-left: 6em;
 }
 h1 {
   color: green;
@@ -305,11 +311,6 @@ table.header td {
   background-color: gray;
   width: 50%;
 }
-td.reference {
-  vertical-align: top;
-  white-space: nowrap;
-  padding-right: 1em;
-}
 thead {
   display:table-header-group;
 }
@@ -464,7 +465,7 @@ ul p {
        content: "Nottingham, et al.";
   }
   @bottom-center {
-       content: "Expires April 4, 2016";
+       content: "Expires April 8, 2016";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -497,14 +498,14 @@ ul p {
       <link rel="Chapter" href="#rfc.section.10" title="10 References">
       <link rel="Appendix" title="A Change Log (to be removed by RFC Editor before publication)" href="#rfc.section.A">
       <link rel="Appendix" title="Acknowledgements" href="#rfc.section.unnumbered-1">
-      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.743, 2015/09/25 12:36:08, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
+      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.753, 2015/10/05 19:01:29, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
       <meta name="keywords" content="HTTP, ALPN, Alternative Services">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Nottingham, M.">
       <meta name="dct.creator" content="McManus, P.">
       <meta name="dct.creator" content="Reschke, J. F.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-alt-svc-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2015-10-02">
+      <meta name="dct.issued" scheme="ISO8601" content="2015-10-06">
       <meta name="dct.abstract" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
       <meta name="description" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
    </head>
@@ -524,7 +525,7 @@ ul p {
                <td class="right">P. McManus</td>
             </tr>
             <tr>
-               <td class="left">Expires: April 4, 2016</td>
+               <td class="left">Expires: April 8, 2016</td>
                <td class="right">Mozilla</td>
             </tr>
             <tr>
@@ -537,7 +538,7 @@ ul p {
             </tr>
             <tr>
                <td class="left"></td>
-               <td class="right">October 2, 2015</td>
+               <td class="right">October 6, 2015</td>
             </tr>
          </tbody>
       </table>
@@ -566,7 +567,7 @@ ul p {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on April 4, 2016.</p>
+         <p>This Internet-Draft will expire on April 8, 2016.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h2><a href="#rfc.copyrightnotice">Copyright Notice</a></h2>
@@ -1386,77 +1387,51 @@ Alt-Used: alternate.example.net
       </h2>
       <h3 id="rfc.references.1"><a href="#rfc.section.10.1" id="rfc.section.10.1">10.1</a> Normative References
       </h3>
-      <table>
-         <tr>
-            <td class="reference"><b id="RFC2119">[RFC2119]</b></td>
-            <td class="top">Bradner, S., “<a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>”, BCP&nbsp;14, RFC&nbsp;2119, <a href="http://dx.doi.org/10.17487/RFC2119">DOI&nbsp;10.17487/RFC2119</a>, March&nbsp;1997, &lt;<a href="http://www.rfc-editor.org/info/rfc2119">http://www.rfc-editor.org/info/rfc2119</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC3986">[RFC3986]</b></td>
-            <td class="top">Berners-Lee, T., Fielding, R., and L. Masinter, “<a href="https://tools.ietf.org/html/rfc3986">Uniform Resource Identifier (URI): Generic Syntax</a>”, STD&nbsp;66, RFC&nbsp;3986, <a href="http://dx.doi.org/10.17487/RFC3986">DOI&nbsp;10.17487/RFC3986</a>, January&nbsp;2005, &lt;<a href="http://www.rfc-editor.org/info/rfc3986">http://www.rfc-editor.org/info/rfc3986</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC5226">[RFC5226]</b></td>
-            <td class="top">Narten, T. and H. Alvestrand, “<a href="https://tools.ietf.org/html/rfc5226">Guidelines for Writing an IANA Considerations Section in RFCs</a>”, BCP&nbsp;26, RFC&nbsp;5226, <a href="http://dx.doi.org/10.17487/RFC5226">DOI&nbsp;10.17487/RFC5226</a>, May&nbsp;2008, &lt;<a href="http://www.rfc-editor.org/info/rfc5226">http://www.rfc-editor.org/info/rfc5226</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC5234">[RFC5234]</b></td>
-            <td class="top">Crocker, D. and P. Overell, “<a href="https://tools.ietf.org/html/rfc5234">Augmented BNF for Syntax Specifications: ABNF</a>”, STD&nbsp;68, RFC&nbsp;5234, <a href="http://dx.doi.org/10.17487/RFC5234">DOI&nbsp;10.17487/RFC5234</a>, January&nbsp;2008, &lt;<a href="http://www.rfc-editor.org/info/rfc5234">http://www.rfc-editor.org/info/rfc5234</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC5890">[RFC5890]</b></td>
-            <td class="top">Klensin, J., “<a href="https://tools.ietf.org/html/rfc5890">Internationalized Domain Names for Applications (IDNA): Definitions and Document Framework</a>”, RFC&nbsp;5890, <a href="http://dx.doi.org/10.17487/RFC5890">DOI&nbsp;10.17487/RFC5890</a>, August&nbsp;2010, &lt;<a href="http://www.rfc-editor.org/info/rfc5890">http://www.rfc-editor.org/info/rfc5890</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC6066">[RFC6066]</b></td>
-            <td class="top">Eastlake, D., “<a href="https://tools.ietf.org/html/rfc6066">Transport Layer Security (TLS) Extensions: Extension Definitions</a>”, RFC&nbsp;6066, <a href="http://dx.doi.org/10.17487/RFC6066">DOI&nbsp;10.17487/RFC6066</a>, January&nbsp;2011, &lt;<a href="http://www.rfc-editor.org/info/rfc6066">http://www.rfc-editor.org/info/rfc6066</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC6454">[RFC6454]</b></td>
-            <td class="top">Barth, A., “<a href="https://tools.ietf.org/html/rfc6454">The Web Origin Concept</a>”, RFC&nbsp;6454, <a href="http://dx.doi.org/10.17487/RFC6454">DOI&nbsp;10.17487/RFC6454</a>, December&nbsp;2011, &lt;<a href="http://www.rfc-editor.org/info/rfc6454">http://www.rfc-editor.org/info/rfc6454</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC7230">[RFC7230]</b></td>
-            <td class="top">Fielding, R., Ed. and J. Reschke, Ed., “<a href="https://tools.ietf.org/html/rfc7230">Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</a>”, RFC&nbsp;7230, <a href="http://dx.doi.org/10.17487/RFC7230">DOI&nbsp;10.17487/RFC7230</a>, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7230">http://www.rfc-editor.org/info/rfc7230</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC7234">[RFC7234]</b></td>
-            <td class="top">Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke, Ed., “<a href="https://tools.ietf.org/html/rfc7234">Hypertext Transfer Protocol (HTTP/1.1): Caching</a>”, RFC&nbsp;7234, <a href="http://dx.doi.org/10.17487/RFC7234">DOI&nbsp;10.17487/RFC7234</a>, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7234">http://www.rfc-editor.org/info/rfc7234</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC7301">[RFC7301]</b></td>
-            <td class="top">Friedl, S., Popov, A., Langley, A., and S. Emile, “<a href="https://tools.ietf.org/html/rfc7301">Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension</a>”, RFC&nbsp;7301, <a href="http://dx.doi.org/10.17487/RFC7301">DOI&nbsp;10.17487/RFC7301</a>, July&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7301">http://www.rfc-editor.org/info/rfc7301</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC7540">[RFC7540]</b></td>
-            <td class="top">Belshe, M., Peon, R., and M. Thomson, Ed., “<a href="https://tools.ietf.org/html/rfc7540">Hypertext Transfer Protocol version 2</a>”, RFC&nbsp;7540, <a href="http://dx.doi.org/10.17487/RFC7540">DOI&nbsp;10.17487/RFC7540</a>, May&nbsp;2015, &lt;<a href="http://www.rfc-editor.org/info/rfc7540">http://www.rfc-editor.org/info/rfc7540</a>&gt;.
-            </td>
-         </tr>
-      </table>
+      <dl class="reference">
+         <dt id="RFC2119">[RFC2119]</dt>
+         <dd>Bradner, S., “<a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>”, BCP&nbsp;14, RFC&nbsp;2119, <a href="http://dx.doi.org/10.17487/RFC2119">DOI&nbsp;10.17487/RFC2119</a>, March&nbsp;1997, &lt;<a href="http://www.rfc-editor.org/info/rfc2119">http://www.rfc-editor.org/info/rfc2119</a>&gt;.
+         </dd>
+         <dt id="RFC3986">[RFC3986]</dt>
+         <dd>Berners-Lee, T., Fielding, R., and L. Masinter, “<a href="https://tools.ietf.org/html/rfc3986">Uniform Resource Identifier (URI): Generic Syntax</a>”, STD&nbsp;66, RFC&nbsp;3986, <a href="http://dx.doi.org/10.17487/RFC3986">DOI&nbsp;10.17487/RFC3986</a>, January&nbsp;2005, &lt;<a href="http://www.rfc-editor.org/info/rfc3986">http://www.rfc-editor.org/info/rfc3986</a>&gt;.
+         </dd>
+         <dt id="RFC5226">[RFC5226]</dt>
+         <dd>Narten, T. and H. Alvestrand, “<a href="https://tools.ietf.org/html/rfc5226">Guidelines for Writing an IANA Considerations Section in RFCs</a>”, BCP&nbsp;26, RFC&nbsp;5226, <a href="http://dx.doi.org/10.17487/RFC5226">DOI&nbsp;10.17487/RFC5226</a>, May&nbsp;2008, &lt;<a href="http://www.rfc-editor.org/info/rfc5226">http://www.rfc-editor.org/info/rfc5226</a>&gt;.
+         </dd>
+         <dt id="RFC5234">[RFC5234]</dt>
+         <dd>Crocker, D. and P. Overell, “<a href="https://tools.ietf.org/html/rfc5234">Augmented BNF for Syntax Specifications: ABNF</a>”, STD&nbsp;68, RFC&nbsp;5234, <a href="http://dx.doi.org/10.17487/RFC5234">DOI&nbsp;10.17487/RFC5234</a>, January&nbsp;2008, &lt;<a href="http://www.rfc-editor.org/info/rfc5234">http://www.rfc-editor.org/info/rfc5234</a>&gt;.
+         </dd>
+         <dt id="RFC5890">[RFC5890]</dt>
+         <dd>Klensin, J., “<a href="https://tools.ietf.org/html/rfc5890">Internationalized Domain Names for Applications (IDNA): Definitions and Document Framework</a>”, RFC&nbsp;5890, <a href="http://dx.doi.org/10.17487/RFC5890">DOI&nbsp;10.17487/RFC5890</a>, August&nbsp;2010, &lt;<a href="http://www.rfc-editor.org/info/rfc5890">http://www.rfc-editor.org/info/rfc5890</a>&gt;.
+         </dd>
+         <dt id="RFC6066">[RFC6066]</dt>
+         <dd>Eastlake, D., “<a href="https://tools.ietf.org/html/rfc6066">Transport Layer Security (TLS) Extensions: Extension Definitions</a>”, RFC&nbsp;6066, <a href="http://dx.doi.org/10.17487/RFC6066">DOI&nbsp;10.17487/RFC6066</a>, January&nbsp;2011, &lt;<a href="http://www.rfc-editor.org/info/rfc6066">http://www.rfc-editor.org/info/rfc6066</a>&gt;.
+         </dd>
+         <dt id="RFC6454">[RFC6454]</dt>
+         <dd>Barth, A., “<a href="https://tools.ietf.org/html/rfc6454">The Web Origin Concept</a>”, RFC&nbsp;6454, <a href="http://dx.doi.org/10.17487/RFC6454">DOI&nbsp;10.17487/RFC6454</a>, December&nbsp;2011, &lt;<a href="http://www.rfc-editor.org/info/rfc6454">http://www.rfc-editor.org/info/rfc6454</a>&gt;.
+         </dd>
+         <dt id="RFC7230">[RFC7230]</dt>
+         <dd>Fielding, R., Ed. and J. Reschke, Ed., “<a href="https://tools.ietf.org/html/rfc7230">Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</a>”, RFC&nbsp;7230, <a href="http://dx.doi.org/10.17487/RFC7230">DOI&nbsp;10.17487/RFC7230</a>, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7230">http://www.rfc-editor.org/info/rfc7230</a>&gt;.
+         </dd>
+         <dt id="RFC7234">[RFC7234]</dt>
+         <dd>Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke, Ed., “<a href="https://tools.ietf.org/html/rfc7234">Hypertext Transfer Protocol (HTTP/1.1): Caching</a>”, RFC&nbsp;7234, <a href="http://dx.doi.org/10.17487/RFC7234">DOI&nbsp;10.17487/RFC7234</a>, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7234">http://www.rfc-editor.org/info/rfc7234</a>&gt;.
+         </dd>
+         <dt id="RFC7301">[RFC7301]</dt>
+         <dd>Friedl, S., Popov, A., Langley, A., and S. Emile, “<a href="https://tools.ietf.org/html/rfc7301">Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension</a>”, RFC&nbsp;7301, <a href="http://dx.doi.org/10.17487/RFC7301">DOI&nbsp;10.17487/RFC7301</a>, July&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7301">http://www.rfc-editor.org/info/rfc7301</a>&gt;.
+         </dd>
+         <dt id="RFC7540">[RFC7540]</dt>
+         <dd>Belshe, M., Peon, R., and M. Thomson, Ed., “<a href="https://tools.ietf.org/html/rfc7540">Hypertext Transfer Protocol version 2</a>”, RFC&nbsp;7540, <a href="http://dx.doi.org/10.17487/RFC7540">DOI&nbsp;10.17487/RFC7540</a>, May&nbsp;2015, &lt;<a href="http://www.rfc-editor.org/info/rfc7540">http://www.rfc-editor.org/info/rfc7540</a>&gt;.
+         </dd>
+      </dl>
       <h3 id="rfc.references.2"><a href="#rfc.section.10.2" id="rfc.section.10.2">10.2</a> Informative References
       </h3>
-      <table>
-         <tr>
-            <td class="reference"><b id="BCP90">[BCP90]</b></td>
-            <td class="top">Klyne, G., Nottingham, M., and J. Mogul, “<a href="https://tools.ietf.org/html/rfc3864">Registration Procedures for Message Header Fields</a>”, BCP&nbsp;90, RFC&nbsp;3864, September&nbsp;2004, &lt;<a href="http://www.rfc-editor.org/info/bcp90">http://www.rfc-editor.org/info/bcp90</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC5246">[RFC5246]</b></td>
-            <td class="top">Dierks, T. and E. Rescorla, “<a href="https://tools.ietf.org/html/rfc5246">The Transport Layer Security (TLS) Protocol Version 1.2</a>”, RFC&nbsp;5246, <a href="http://dx.doi.org/10.17487/RFC5246">DOI&nbsp;10.17487/RFC5246</a>, August&nbsp;2008, &lt;<a href="http://www.rfc-editor.org/info/rfc5246">http://www.rfc-editor.org/info/rfc5246</a>&gt;.
-            </td>
-         </tr>
-      </table>
+      <dl class="reference">
+         <dt id="BCP90">[BCP90]</dt>
+         <dd>Klyne, G., Nottingham, M., and J. Mogul, “<a href="https://tools.ietf.org/html/rfc3864">Registration Procedures for Message Header Fields</a>”, BCP&nbsp;90, RFC&nbsp;3864, September&nbsp;2004, &lt;<a href="http://www.rfc-editor.org/info/bcp90">http://www.rfc-editor.org/info/bcp90</a>&gt;.
+         </dd>
+         <dt id="RFC5246">[RFC5246]</dt>
+         <dd>Dierks, T. and E. Rescorla, “<a href="https://tools.ietf.org/html/rfc5246">The Transport Layer Security (TLS) Protocol Version 1.2</a>”, RFC&nbsp;5246, <a href="http://dx.doi.org/10.17487/RFC5246">DOI&nbsp;10.17487/RFC5246</a>, August&nbsp;2008, &lt;<a href="http://www.rfc-editor.org/info/rfc5246">http://www.rfc-editor.org/info/rfc5246</a>&gt;.
+         </dd>
+      </dl>
       <div id="change.log">
          <h2 id="rfc.section.A" class="np"><a href="#rfc.section.A">A.</a>&nbsp;<a href="#change.log">Change Log (to be removed by RFC Editor before publication)</a></h2>
          <div id="changes.since.draft-nottingham-httpbis-alt-svc-05">

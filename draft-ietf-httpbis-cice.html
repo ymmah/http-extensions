@@ -16,10 +16,10 @@ function initFeedback() {
 }
 
 function feedback() {
-  toggleButtonsToElementsByName("h1");
   toggleButtonsToElementsByName("h2");
   toggleButtonsToElementsByName("h3");
   toggleButtonsToElementsByName("h4");
+  toggleButtonsToElementsByName("h5");
 
   buttonsAdded = !buttonsAdded;
 }
@@ -142,6 +142,12 @@ ul.empty li {
 }
 dl p {
   margin-left: 0em;
+}
+dl.reference > dt {
+  font-weight: bold;
+}
+dl.reference > dd {
+  margin-left: 6em;
 }
 h1 {
   color: green;
@@ -305,11 +311,6 @@ table.header td {
   background-color: gray;
   width: 50%;
 }
-td.reference {
-  vertical-align: top;
-  white-space: nowrap;
-  padding-right: 1em;
-}
 thead {
   display:table-header-group;
 }
@@ -464,7 +465,7 @@ ul p {
        content: "Reschke";
   }
   @bottom-center {
-       content: "Expires April 4, 2016";
+       content: "Expires April 8, 2016";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -495,12 +496,12 @@ ul p {
       <link rel="Chapter" href="#rfc.section.8" title="8 References">
       <link rel="Appendix" title="A Change Log (to be removed by RFC Editor before publication)" href="#rfc.section.A">
       <link rel="Appendix" title="Acknowledgements" href="#rfc.section.unnumbered-1">
-      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.743, 2015/09/25 12:36:08, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
+      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.753, 2015/10/05 19:01:29, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
       <meta name="keywords" content="HTTP, content-encoding">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Reschke, J. F.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-cice-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2015-10-02">
+      <meta name="dct.issued" scheme="ISO8601" content="2015-10-06">
       <meta name="dct.abstract" content="In HTTP, content codings allow for payload encodings such as for compression or integrity checks. In particular, the &#34;gzip&#34; content coding is widely used for payload data sent in response messages. Content codings can be used in request messages as well, however discoverability is not on par with response messages. This document extends the HTTP &#34;Accept-Encoding&#34; header field for use in responses, to indicate the content codings that are supported in requests.">
       <meta name="description" content="In HTTP, content codings allow for payload encodings such as for compression or integrity checks. In particular, the &#34;gzip&#34; content coding is widely used for payload data sent in response messages. Content codings can be used in request messages as well, however discoverability is not on par with response messages. This document extends the HTTP &#34;Accept-Encoding&#34; header field for use in responses, to indicate the content codings that are supported in requests.">
    </head>
@@ -517,10 +518,10 @@ ul p {
             </tr>
             <tr>
                <td class="left">Intended status: Standards Track</td>
-               <td class="right">October 2, 2015</td>
+               <td class="right">October 6, 2015</td>
             </tr>
             <tr>
-               <td class="left">Expires: April 4, 2016</td>
+               <td class="left">Expires: April 8, 2016</td>
                <td class="right"></td>
             </tr>
          </tbody>
@@ -554,7 +555,7 @@ ul p {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on April 4, 2016.</p>
+         <p>This Internet-Draft will expire on April 8, 2016.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h2><a href="#rfc.copyrightnotice">Copyright Notice</a></h2>
@@ -802,42 +803,30 @@ Content-Type: text/plain
       </h2>
       <h3 id="rfc.references.1"><a href="#rfc.section.8.1" id="rfc.section.8.1">8.1</a> Normative References
       </h3>
-      <table>
-         <tr>
-            <td class="reference"><b id="RFC2119">[RFC2119]</b></td>
-            <td class="top"><a href="mailto:sob@harvard.edu">Bradner, S.</a>, “<a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>”, BCP&nbsp;14, RFC&nbsp;2119, <a href="http://dx.doi.org/10.17487/RFC2119">DOI&nbsp;10.17487/RFC2119</a>, March&nbsp;1997, &lt;<a href="http://www.rfc-editor.org/info/rfc2119">http://www.rfc-editor.org/info/rfc2119</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC7230">[RFC7230]</b></td>
-            <td class="top"><a href="mailto:fielding@gbiv.com">Fielding, R., Ed.</a> and <a href="mailto:julian.reschke@greenbytes.de">J. Reschke, Ed.</a>, “<a href="https://tools.ietf.org/html/rfc7230">Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</a>”, RFC&nbsp;7230, <a href="http://dx.doi.org/10.17487/RFC7230">DOI&nbsp;10.17487/RFC7230</a>, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7230">http://www.rfc-editor.org/info/rfc7230</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC7231">[RFC7231]</b></td>
-            <td class="top"><a href="mailto:fielding@gbiv.com">Fielding, R., Ed.</a> and <a href="mailto:julian.reschke@greenbytes.de">J. Reschke, Ed.</a>, “<a href="https://tools.ietf.org/html/rfc7231">Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content</a>”, RFC&nbsp;7231, <a href="http://dx.doi.org/10.17487/RFC7231">DOI&nbsp;10.17487/RFC7231</a>, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7231">http://www.rfc-editor.org/info/rfc7231</a>&gt;.
-            </td>
-         </tr>
-      </table>
+      <dl class="reference">
+         <dt id="RFC2119">[RFC2119]</dt>
+         <dd><a href="mailto:sob@harvard.edu">Bradner, S.</a>, “<a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>”, BCP&nbsp;14, RFC&nbsp;2119, <a href="http://dx.doi.org/10.17487/RFC2119">DOI&nbsp;10.17487/RFC2119</a>, March&nbsp;1997, &lt;<a href="http://www.rfc-editor.org/info/rfc2119">http://www.rfc-editor.org/info/rfc2119</a>&gt;.
+         </dd>
+         <dt id="RFC7230">[RFC7230]</dt>
+         <dd><a href="mailto:fielding@gbiv.com">Fielding, R., Ed.</a> and <a href="mailto:julian.reschke@greenbytes.de">J. Reschke, Ed.</a>, “<a href="https://tools.ietf.org/html/rfc7230">Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</a>”, RFC&nbsp;7230, <a href="http://dx.doi.org/10.17487/RFC7230">DOI&nbsp;10.17487/RFC7230</a>, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7230">http://www.rfc-editor.org/info/rfc7230</a>&gt;.
+         </dd>
+         <dt id="RFC7231">[RFC7231]</dt>
+         <dd><a href="mailto:fielding@gbiv.com">Fielding, R., Ed.</a> and <a href="mailto:julian.reschke@greenbytes.de">J. Reschke, Ed.</a>, “<a href="https://tools.ietf.org/html/rfc7231">Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content</a>”, RFC&nbsp;7231, <a href="http://dx.doi.org/10.17487/RFC7231">DOI&nbsp;10.17487/RFC7231</a>, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7231">http://www.rfc-editor.org/info/rfc7231</a>&gt;.
+         </dd>
+      </dl>
       <h3 id="rfc.references.2"><a href="#rfc.section.8.2" id="rfc.section.8.2">8.2</a> Informative References
       </h3>
-      <table>
-         <tr>
-            <td class="reference"><b id="BCP90">[BCP90]</b></td>
-            <td class="top"><a href="mailto:GK-IETF@ninebynine.org">Klyne, G.</a>, <a href="mailto:mnot@pobox.com">Nottingham, M.</a>, and <a href="mailto:JeffMogul@acm.org">J. Mogul</a>, “<a href="https://tools.ietf.org/html/rfc3864">Registration Procedures for Message Header Fields</a>”, BCP&nbsp;90, RFC&nbsp;3864, September&nbsp;2004, &lt;<a href="http://www.rfc-editor.org/info/bcp90">http://www.rfc-editor.org/info/bcp90</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="BREACH">[BREACH]</b></td>
-            <td class="top">Gluck, Y., Harris, N., and A. Prado, “<a href="http://breachattack.com/resources/BREACH%20-%20SSL,%20gone%20in%2030%20seconds.pdf">BREACH: Reviving the CRIME Attack</a>”, July&nbsp;2013, &lt;<a href="http://breachattack.com/resources/BREACH%20-%20SSL,%20gone%20in%2030%20seconds.pdf">http://breachattack.com/resources/BREACH%20-%20SSL,%20gone%20in%2030%20seconds.pdf</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC7540">[RFC7540]</b></td>
-            <td class="top">Belshe, M., Peon, R., and M. Thomson, Ed., “<a href="https://tools.ietf.org/html/rfc7540">Hypertext Transfer Protocol Version 2 (HTTP/2)</a>”, RFC&nbsp;7540, <a href="http://dx.doi.org/10.17487/RFC7540">DOI&nbsp;10.17487/RFC7540</a>, May&nbsp;2015, &lt;<a href="http://www.rfc-editor.org/info/rfc7540">http://www.rfc-editor.org/info/rfc7540</a>&gt;.
-            </td>
-         </tr>
-      </table>
+      <dl class="reference">
+         <dt id="BCP90">[BCP90]</dt>
+         <dd><a href="mailto:GK-IETF@ninebynine.org">Klyne, G.</a>, <a href="mailto:mnot@pobox.com">Nottingham, M.</a>, and <a href="mailto:JeffMogul@acm.org">J. Mogul</a>, “<a href="https://tools.ietf.org/html/rfc3864">Registration Procedures for Message Header Fields</a>”, BCP&nbsp;90, RFC&nbsp;3864, September&nbsp;2004, &lt;<a href="http://www.rfc-editor.org/info/bcp90">http://www.rfc-editor.org/info/bcp90</a>&gt;.
+         </dd>
+         <dt id="BREACH">[BREACH]</dt>
+         <dd>Gluck, Y., Harris, N., and A. Prado, “<a href="http://breachattack.com/resources/BREACH%20-%20SSL,%20gone%20in%2030%20seconds.pdf">BREACH: Reviving the CRIME Attack</a>”, July&nbsp;2013, &lt;<a href="http://breachattack.com/resources/BREACH%20-%20SSL,%20gone%20in%2030%20seconds.pdf">http://breachattack.com/resources/BREACH%20-%20SSL,%20gone%20in%2030%20seconds.pdf</a>&gt;.
+         </dd>
+         <dt id="RFC7540">[RFC7540]</dt>
+         <dd>Belshe, M., Peon, R., and M. Thomson, Ed., “<a href="https://tools.ietf.org/html/rfc7540">Hypertext Transfer Protocol Version 2 (HTTP/2)</a>”, RFC&nbsp;7540, <a href="http://dx.doi.org/10.17487/RFC7540">DOI&nbsp;10.17487/RFC7540</a>, May&nbsp;2015, &lt;<a href="http://www.rfc-editor.org/info/rfc7540">http://www.rfc-editor.org/info/rfc7540</a>&gt;.
+         </dd>
+      </dl>
       <div id="change.log">
          <h2 id="rfc.section.A" class="np"><a href="#rfc.section.A">A.</a>&nbsp;<a href="#change.log">Change Log (to be removed by RFC Editor before publication)</a></h2>
          <div id="changes.since.r.00">

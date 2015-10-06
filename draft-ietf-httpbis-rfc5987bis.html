@@ -16,10 +16,10 @@ function initFeedback() {
 }
 
 function feedback() {
-  toggleButtonsToElementsByName("h1");
   toggleButtonsToElementsByName("h2");
   toggleButtonsToElementsByName("h3");
   toggleButtonsToElementsByName("h4");
+  toggleButtonsToElementsByName("h5");
 
   buttonsAdded = !buttonsAdded;
 }
@@ -146,6 +146,12 @@ ul.empty li {
 dl p {
   margin-left: 0em;
 }
+dl.reference > dt {
+  font-weight: bold;
+}
+dl.reference > dd {
+  margin-left: 6em;
+}
 h1 {
   color: green;
   font-size: 150%;
@@ -249,11 +255,6 @@ table.header td {
 }
 table.header a {
   color: white;
-}
-td.reference {
-  vertical-align: top;
-  white-space: nowrap;
-  padding-right: 1em;
 }
 thead {
   display:table-header-group;
@@ -431,7 +432,7 @@ ul.ind li li {
        content: "Reschke";
   }
   @bottom-center {
-       content: "Expires April 4, 2016";
+       content: "Expires April 8, 2016";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -464,12 +465,12 @@ ul.ind li li {
       <link rel="Appendix" title="B Implementation Report" href="#rfc.section.B">
       <link rel="Appendix" title="C Change Log (to be removed by RFC Editor before publication)" href="#rfc.section.C">
       <link rel="Appendix" title="Acknowledgements" href="#rfc.section.unnumbered-1">
-      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.743, 2015/09/25 12:36:08, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
+      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.753, 2015/10/05 19:01:29, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
       <meta name="keywords" content="HTTP, header field parameter, internationalization">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Reschke, J. F.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-rfc5987bis-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2015-10-02">
+      <meta name="dct.issued" scheme="ISO8601" content="2015-10-06">
       <meta name="dct.replaces" content="urn:ietf:rfc:5987">
       <meta name="dct.abstract" content="By default, message header field parameters in Hypertext Transfer Protocol (HTTP) messages cannot carry characters outside the ISO-8859-1 character set. RFC 2231 defines an encoding mechanism for use in Multipurpose Internet Mail Extensions (MIME) headers. This document specifies an encoding suitable for use in HTTP header fields that is compatible with a profile of the encoding defined in RFC 2231.">
       <meta name="description" content="By default, message header field parameters in Hypertext Transfer Protocol (HTTP) messages cannot carry characters outside the ISO-8859-1 character set. RFC 2231 defines an encoding mechanism for use in Multipurpose Internet Mail Extensions (MIME) headers. This document specifies an encoding suitable for use in HTTP header fields that is compatible with a profile of the encoding defined in RFC 2231.">
@@ -488,14 +489,14 @@ ul.ind li li {
             <tr>
                <td class="left">Obsoletes: <a href="https://tools.ietf.org/html/rfc5987">5987</a> (if approved)
                </td>
-               <td class="right">October 2, 2015</td>
+               <td class="right">October 6, 2015</td>
             </tr>
             <tr>
                <td class="left">Intended status: Standards Track</td>
                <td class="right"></td>
             </tr>
             <tr>
-               <td class="left">Expires: April 4, 2016</td>
+               <td class="left">Expires: April 8, 2016</td>
                <td class="right"></td>
             </tr>
          </tbody>
@@ -527,7 +528,7 @@ ul.ind li li {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on April 4, 2016.</p>
+         <p>This Internet-Draft will expire on April 8, 2016.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h2><a href="#rfc.copyrightnotice">Copyright Notice</a></h2>
@@ -931,115 +932,73 @@ ul.ind li li {
       </h2>
       <h3 id="rfc.references.1"><a href="#rfc.section.7.1" id="rfc.section.7.1">7.1</a> Normative References
       </h3>
-      <table>
-         <tr>
-            <td class="reference"><b id="RFC2119">[RFC2119]</b></td>
-            <td class="top"><a href="mailto:sob@harvard.edu">Bradner, S.</a>, “<a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>”, BCP&nbsp;14, RFC&nbsp;2119, <a href="http://dx.doi.org/10.17487/RFC2119">DOI&nbsp;10.17487/RFC2119</a>, March&nbsp;1997, &lt;<a href="http://www.rfc-editor.org/info/rfc2119">http://www.rfc-editor.org/info/rfc2119</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC2616">[RFC2616]</b></td>
-            <td class="top"><a href="mailto:fielding@ics.uci.edu">Fielding, R.</a>, <a href="mailto:jg@w3.org">Gettys, J.</a>, <a href="mailto:mogul@wrl.dec.com">Mogul, J.</a>, <a href="mailto:frystyk@w3.org">Frystyk, H.</a>, <a href="mailto:masinter@parc.xerox.com">Masinter, L.</a>, <a href="mailto:paulle@microsoft.com">Leach, P.</a>, and <a href="mailto:timbl@w3.org">T. Berners-Lee</a>, “<a href="https://tools.ietf.org/html/rfc2616">Hypertext Transfer Protocol -- HTTP/1.1</a>”, RFC&nbsp;2616, <a href="http://dx.doi.org/10.17487/RFC2616">DOI&nbsp;10.17487/RFC2616</a>, June&nbsp;1999, &lt;<a href="http://www.rfc-editor.org/info/rfc2616">http://www.rfc-editor.org/info/rfc2616</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC2978">[RFC2978]</b></td>
-            <td class="top">Freed, N. and J. Postel, “<a href="https://tools.ietf.org/html/rfc2978">IANA Charset Registration Procedures</a>”, BCP&nbsp;19, RFC&nbsp;2978, <a href="http://dx.doi.org/10.17487/RFC2978">DOI&nbsp;10.17487/RFC2978</a>, October&nbsp;2000, &lt;<a href="http://www.rfc-editor.org/info/rfc2978">http://www.rfc-editor.org/info/rfc2978</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC3629">[RFC3629]</b></td>
-            <td class="top"><a href="mailto:fyergeau@alis.com">Yergeau, F.</a>, “<a href="https://tools.ietf.org/html/rfc3629">UTF-8, a transformation format of ISO 10646</a>”, STD&nbsp;63, RFC&nbsp;3629, <a href="http://dx.doi.org/10.17487/RFC3629">DOI&nbsp;10.17487/RFC3629</a>, November&nbsp;2003, &lt;<a href="http://www.rfc-editor.org/info/rfc3629">http://www.rfc-editor.org/info/rfc3629</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC3986">[RFC3986]</b></td>
-            <td class="top"><a href="mailto:timbl@w3.org">Berners-Lee, T.</a>, <a href="mailto:fielding@gbiv.com">Fielding, R.</a>, and <a href="mailto:LMM@acm.org">L. Masinter</a>, “<a href="https://tools.ietf.org/html/rfc3986">Uniform Resource Identifier (URI): Generic Syntax</a>”, STD&nbsp;66, RFC&nbsp;3986, <a href="http://dx.doi.org/10.17487/RFC3986">DOI&nbsp;10.17487/RFC3986</a>, January&nbsp;2005, &lt;<a href="http://www.rfc-editor.org/info/rfc3986">http://www.rfc-editor.org/info/rfc3986</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC5234">[RFC5234]</b></td>
-            <td class="top"><a href="mailto:dcrocker@bbiw.net">Crocker, D., Ed.</a> and <a href="mailto:paul.overell@thus.net">P. Overell</a>, “<a href="https://tools.ietf.org/html/rfc5234">Augmented BNF for Syntax Specifications: ABNF</a>”, STD&nbsp;68, RFC&nbsp;5234, <a href="http://dx.doi.org/10.17487/RFC5234">DOI&nbsp;10.17487/RFC5234</a>, January&nbsp;2008, &lt;<a href="http://www.rfc-editor.org/info/rfc5234">http://www.rfc-editor.org/info/rfc5234</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC5646">[RFC5646]</b></td>
-            <td class="top"><a href="mailto:addison@inter-locale.com">Phillips, A., Ed.</a> and <a href="mailto:mark.davis@google.com">M. Davis, Ed.</a>, “<a href="https://tools.ietf.org/html/rfc5646">Tags for Identifying Languages</a>”, BCP&nbsp;47, RFC&nbsp;5646, <a href="http://dx.doi.org/10.17487/RFC5646">DOI&nbsp;10.17487/RFC5646</a>, September&nbsp;2009, &lt;<a href="http://www.rfc-editor.org/info/rfc5646">http://www.rfc-editor.org/info/rfc5646</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC7230">[RFC7230]</b></td>
-            <td class="top"><a href="mailto:fielding@gbiv.com">Fielding, R., Ed.</a> and <a href="mailto:julian.reschke@greenbytes.de">J. Reschke, Ed.</a>, “<a href="https://tools.ietf.org/html/rfc7230">Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</a>”, RFC&nbsp;7230, <a href="http://dx.doi.org/10.17487/RFC7230">DOI&nbsp;10.17487/RFC7230</a>, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7230">http://www.rfc-editor.org/info/rfc7230</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC7231">[RFC7231]</b></td>
-            <td class="top"><a href="mailto:fielding@gbiv.com">Fielding, R., Ed.</a> and <a href="mailto:julian.reschke@greenbytes.de">J. Reschke, Ed.</a>, “<a href="https://tools.ietf.org/html/rfc7231">Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content</a>”, RFC&nbsp;7231, <a href="http://dx.doi.org/10.17487/RFC7231">DOI&nbsp;10.17487/RFC7231</a>, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7231">http://www.rfc-editor.org/info/rfc7231</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="USASCII">[USASCII]</b></td>
-            <td class="top">American National Standards Institute, “Coded Character Set -- 7-bit American Standard Code for Information Interchange”, ANSI&nbsp;X3.4, 1986.</td>
-         </tr>
-      </table>
+      <dl class="reference">
+         <dt id="RFC2119">[RFC2119]</dt>
+         <dd><a href="mailto:sob@harvard.edu">Bradner, S.</a>, “<a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>”, BCP&nbsp;14, RFC&nbsp;2119, <a href="http://dx.doi.org/10.17487/RFC2119">DOI&nbsp;10.17487/RFC2119</a>, March&nbsp;1997, &lt;<a href="http://www.rfc-editor.org/info/rfc2119">http://www.rfc-editor.org/info/rfc2119</a>&gt;.
+         </dd>
+         <dt id="RFC2616">[RFC2616]</dt>
+         <dd><a href="mailto:fielding@ics.uci.edu">Fielding, R.</a>, <a href="mailto:jg@w3.org">Gettys, J.</a>, <a href="mailto:mogul@wrl.dec.com">Mogul, J.</a>, <a href="mailto:frystyk@w3.org">Frystyk, H.</a>, <a href="mailto:masinter@parc.xerox.com">Masinter, L.</a>, <a href="mailto:paulle@microsoft.com">Leach, P.</a>, and <a href="mailto:timbl@w3.org">T. Berners-Lee</a>, “<a href="https://tools.ietf.org/html/rfc2616">Hypertext Transfer Protocol -- HTTP/1.1</a>”, RFC&nbsp;2616, <a href="http://dx.doi.org/10.17487/RFC2616">DOI&nbsp;10.17487/RFC2616</a>, June&nbsp;1999, &lt;<a href="http://www.rfc-editor.org/info/rfc2616">http://www.rfc-editor.org/info/rfc2616</a>&gt;.
+         </dd>
+         <dt id="RFC2978">[RFC2978]</dt>
+         <dd>Freed, N. and J. Postel, “<a href="https://tools.ietf.org/html/rfc2978">IANA Charset Registration Procedures</a>”, BCP&nbsp;19, RFC&nbsp;2978, <a href="http://dx.doi.org/10.17487/RFC2978">DOI&nbsp;10.17487/RFC2978</a>, October&nbsp;2000, &lt;<a href="http://www.rfc-editor.org/info/rfc2978">http://www.rfc-editor.org/info/rfc2978</a>&gt;.
+         </dd>
+         <dt id="RFC3629">[RFC3629]</dt>
+         <dd><a href="mailto:fyergeau@alis.com">Yergeau, F.</a>, “<a href="https://tools.ietf.org/html/rfc3629">UTF-8, a transformation format of ISO 10646</a>”, STD&nbsp;63, RFC&nbsp;3629, <a href="http://dx.doi.org/10.17487/RFC3629">DOI&nbsp;10.17487/RFC3629</a>, November&nbsp;2003, &lt;<a href="http://www.rfc-editor.org/info/rfc3629">http://www.rfc-editor.org/info/rfc3629</a>&gt;.
+         </dd>
+         <dt id="RFC3986">[RFC3986]</dt>
+         <dd><a href="mailto:timbl@w3.org">Berners-Lee, T.</a>, <a href="mailto:fielding@gbiv.com">Fielding, R.</a>, and <a href="mailto:LMM@acm.org">L. Masinter</a>, “<a href="https://tools.ietf.org/html/rfc3986">Uniform Resource Identifier (URI): Generic Syntax</a>”, STD&nbsp;66, RFC&nbsp;3986, <a href="http://dx.doi.org/10.17487/RFC3986">DOI&nbsp;10.17487/RFC3986</a>, January&nbsp;2005, &lt;<a href="http://www.rfc-editor.org/info/rfc3986">http://www.rfc-editor.org/info/rfc3986</a>&gt;.
+         </dd>
+         <dt id="RFC5234">[RFC5234]</dt>
+         <dd><a href="mailto:dcrocker@bbiw.net">Crocker, D., Ed.</a> and <a href="mailto:paul.overell@thus.net">P. Overell</a>, “<a href="https://tools.ietf.org/html/rfc5234">Augmented BNF for Syntax Specifications: ABNF</a>”, STD&nbsp;68, RFC&nbsp;5234, <a href="http://dx.doi.org/10.17487/RFC5234">DOI&nbsp;10.17487/RFC5234</a>, January&nbsp;2008, &lt;<a href="http://www.rfc-editor.org/info/rfc5234">http://www.rfc-editor.org/info/rfc5234</a>&gt;.
+         </dd>
+         <dt id="RFC5646">[RFC5646]</dt>
+         <dd><a href="mailto:addison@inter-locale.com">Phillips, A., Ed.</a> and <a href="mailto:mark.davis@google.com">M. Davis, Ed.</a>, “<a href="https://tools.ietf.org/html/rfc5646">Tags for Identifying Languages</a>”, BCP&nbsp;47, RFC&nbsp;5646, <a href="http://dx.doi.org/10.17487/RFC5646">DOI&nbsp;10.17487/RFC5646</a>, September&nbsp;2009, &lt;<a href="http://www.rfc-editor.org/info/rfc5646">http://www.rfc-editor.org/info/rfc5646</a>&gt;.
+         </dd>
+         <dt id="RFC7230">[RFC7230]</dt>
+         <dd><a href="mailto:fielding@gbiv.com">Fielding, R., Ed.</a> and <a href="mailto:julian.reschke@greenbytes.de">J. Reschke, Ed.</a>, “<a href="https://tools.ietf.org/html/rfc7230">Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</a>”, RFC&nbsp;7230, <a href="http://dx.doi.org/10.17487/RFC7230">DOI&nbsp;10.17487/RFC7230</a>, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7230">http://www.rfc-editor.org/info/rfc7230</a>&gt;.
+         </dd>
+         <dt id="RFC7231">[RFC7231]</dt>
+         <dd><a href="mailto:fielding@gbiv.com">Fielding, R., Ed.</a> and <a href="mailto:julian.reschke@greenbytes.de">J. Reschke, Ed.</a>, “<a href="https://tools.ietf.org/html/rfc7231">Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content</a>”, RFC&nbsp;7231, <a href="http://dx.doi.org/10.17487/RFC7231">DOI&nbsp;10.17487/RFC7231</a>, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7231">http://www.rfc-editor.org/info/rfc7231</a>&gt;.
+         </dd>
+         <dt id="USASCII">[USASCII]</dt>
+         <dd>American National Standards Institute, “Coded Character Set -- 7-bit American Standard Code for Information Interchange”, ANSI&nbsp;X3.4, 1986.</dd>
+      </dl>
       <h3 id="rfc.references.2"><a href="#rfc.section.7.2" id="rfc.section.7.2">7.2</a> Informative References
       </h3>
-      <table>
-         <tr>
-            <td class="reference"><b id="Err1912">[Err1912]</b></td>
-            <td class="top">RFC Errata, <a href="http://www.rfc-editor.org">Errata ID 1912, RFC 2978</a>, &lt;<a href="http://www.rfc-editor.org">http://www.rfc-editor.org</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="ISO-8859-1">[ISO-8859-1]</b></td>
-            <td class="top">International Organization for Standardization, “Information technology -- 8-bit single-byte coded graphic character sets -- Part 1: Latin alphabet No. 1”, ISO/IEC&nbsp;8859-1:1998, 1998.</td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC2045">[RFC2045]</b></td>
-            <td class="top"><a href="mailto:ned@innosoft.com">Freed, N.</a> and <a href="mailto:nsb@nsb.fv.com">N. Borenstein</a>, “<a href="https://tools.ietf.org/html/rfc2045">Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies</a>”, RFC&nbsp;2045, <a href="http://dx.doi.org/10.17487/RFC2045">DOI&nbsp;10.17487/RFC2045</a>, November&nbsp;1996, &lt;<a href="http://www.rfc-editor.org/info/rfc2045">http://www.rfc-editor.org/info/rfc2045</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC2047">[RFC2047]</b></td>
-            <td class="top"><a href="mailto:moore@cs.utk.edu">Moore, K.</a>, “<a href="https://tools.ietf.org/html/rfc2047">MIME (Multipurpose Internet Mail Extensions) Part Three: Message Header Extensions for Non-ASCII Text</a>”, RFC&nbsp;2047, <a href="http://dx.doi.org/10.17487/RFC2047">DOI&nbsp;10.17487/RFC2047</a>, November&nbsp;1996, &lt;<a href="http://www.rfc-editor.org/info/rfc2047">http://www.rfc-editor.org/info/rfc2047</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC2231">[RFC2231]</b></td>
-            <td class="top"><a href="mailto:ned.freed@innosoft.com">Freed, N.</a> and <a href="mailto:moore@cs.utk.edu">K. Moore</a>, “<a href="https://tools.ietf.org/html/rfc2231">MIME Parameter Value and Encoded Word Extensions: Character Sets, Languages, and Continuations</a>”, RFC&nbsp;2231, <a href="http://dx.doi.org/10.17487/RFC2231">DOI&nbsp;10.17487/RFC2231</a>, November&nbsp;1997, &lt;<a href="http://www.rfc-editor.org/info/rfc2231">http://www.rfc-editor.org/info/rfc2231</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC2277">[RFC2277]</b></td>
-            <td class="top"><a href="mailto:Harald.T.Alvestrand@uninett.no">Alvestrand, H.</a>, “<a href="https://tools.ietf.org/html/rfc2277">IETF Policy on Character Sets and Languages</a>”, BCP&nbsp;18, RFC&nbsp;2277, <a href="http://dx.doi.org/10.17487/RFC2277">DOI&nbsp;10.17487/RFC2277</a>, January&nbsp;1998, &lt;<a href="http://www.rfc-editor.org/info/rfc2277">http://www.rfc-editor.org/info/rfc2277</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC2388">[RFC2388]</b></td>
-            <td class="top"><a href="mailto:masinter@parc.xerox.com">Masinter, L.</a>, “<a href="https://tools.ietf.org/html/rfc2388">Returning Values from Forms: multipart/form-data</a>”, RFC&nbsp;2388, <a href="http://dx.doi.org/10.17487/RFC2388">DOI&nbsp;10.17487/RFC2388</a>, August&nbsp;1998, &lt;<a href="http://www.rfc-editor.org/info/rfc2388">http://www.rfc-editor.org/info/rfc2388</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC5987">[RFC5987]</b></td>
-            <td class="top"><a href="mailto:julian.reschke@greenbytes.de">Reschke, J.</a>, “<a href="https://tools.ietf.org/html/rfc5987">Character Set and Language Encoding for Hypertext Transfer Protocol (HTTP) Header Field Parameters</a>”, RFC&nbsp;5987, <a href="http://dx.doi.org/10.17487/RFC5987">DOI&nbsp;10.17487/RFC5987</a>, August&nbsp;2010, &lt;<a href="http://www.rfc-editor.org/info/rfc5987">http://www.rfc-editor.org/info/rfc5987</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC5988">[RFC5988]</b></td>
-            <td class="top"><a href="mailto:mnot at mnot.net">Nottingham, M.</a>, “<a href="https://tools.ietf.org/html/rfc5988">Web Linking</a>”, RFC&nbsp;5988, <a href="http://dx.doi.org/10.17487/RFC5988">DOI&nbsp;10.17487/RFC5988</a>, October&nbsp;2010, &lt;<a href="http://www.rfc-editor.org/info/rfc5988">http://www.rfc-editor.org/info/rfc5988</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC6266">[RFC6266]</b></td>
-            <td class="top"><a href="mailto:julian.reschke@greenbytes.de">Reschke, J.</a>, “<a href="https://tools.ietf.org/html/rfc6266">Use of the Content-Disposition Header Field in the Hypertext Transfer Protocol (HTTP)</a>”, RFC&nbsp;6266, <a href="http://dx.doi.org/10.17487/RFC6266">DOI&nbsp;10.17487/RFC6266</a>, June&nbsp;2011, &lt;<a href="http://www.rfc-editor.org/info/rfc6266">http://www.rfc-editor.org/info/rfc6266</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC6365">[RFC6365]</b></td>
-            <td class="top">Hoffman, P. and J. Klensin, “<a href="https://tools.ietf.org/html/rfc6365">Terminology Used in Internationalization in the IETF</a>”, BCP&nbsp;166, RFC&nbsp;6365, <a href="http://dx.doi.org/10.17487/RFC6365">DOI&nbsp;10.17487/RFC6365</a>, September&nbsp;2011, &lt;<a href="http://www.rfc-editor.org/info/rfc6365">http://www.rfc-editor.org/info/rfc6365</a>&gt;.
-            </td>
-         </tr>
-      </table>
+      <dl class="reference">
+         <dt id="Err1912">[Err1912]</dt>
+         <dd>RFC Errata, <a href="http://www.rfc-editor.org">Errata ID 1912, RFC 2978</a>, &lt;<a href="http://www.rfc-editor.org">http://www.rfc-editor.org</a>&gt;.
+         </dd>
+         <dt id="ISO-8859-1">[ISO-8859-1]</dt>
+         <dd>International Organization for Standardization, “Information technology -- 8-bit single-byte coded graphic character sets -- Part 1: Latin alphabet No. 1”, ISO/IEC&nbsp;8859-1:1998, 1998.</dd>
+         <dt id="RFC2045">[RFC2045]</dt>
+         <dd><a href="mailto:ned@innosoft.com">Freed, N.</a> and <a href="mailto:nsb@nsb.fv.com">N. Borenstein</a>, “<a href="https://tools.ietf.org/html/rfc2045">Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies</a>”, RFC&nbsp;2045, <a href="http://dx.doi.org/10.17487/RFC2045">DOI&nbsp;10.17487/RFC2045</a>, November&nbsp;1996, &lt;<a href="http://www.rfc-editor.org/info/rfc2045">http://www.rfc-editor.org/info/rfc2045</a>&gt;.
+         </dd>
+         <dt id="RFC2047">[RFC2047]</dt>
+         <dd><a href="mailto:moore@cs.utk.edu">Moore, K.</a>, “<a href="https://tools.ietf.org/html/rfc2047">MIME (Multipurpose Internet Mail Extensions) Part Three: Message Header Extensions for Non-ASCII Text</a>”, RFC&nbsp;2047, <a href="http://dx.doi.org/10.17487/RFC2047">DOI&nbsp;10.17487/RFC2047</a>, November&nbsp;1996, &lt;<a href="http://www.rfc-editor.org/info/rfc2047">http://www.rfc-editor.org/info/rfc2047</a>&gt;.
+         </dd>
+         <dt id="RFC2231">[RFC2231]</dt>
+         <dd><a href="mailto:ned.freed@innosoft.com">Freed, N.</a> and <a href="mailto:moore@cs.utk.edu">K. Moore</a>, “<a href="https://tools.ietf.org/html/rfc2231">MIME Parameter Value and Encoded Word Extensions: Character Sets, Languages, and Continuations</a>”, RFC&nbsp;2231, <a href="http://dx.doi.org/10.17487/RFC2231">DOI&nbsp;10.17487/RFC2231</a>, November&nbsp;1997, &lt;<a href="http://www.rfc-editor.org/info/rfc2231">http://www.rfc-editor.org/info/rfc2231</a>&gt;.
+         </dd>
+         <dt id="RFC2277">[RFC2277]</dt>
+         <dd><a href="mailto:Harald.T.Alvestrand@uninett.no">Alvestrand, H.</a>, “<a href="https://tools.ietf.org/html/rfc2277">IETF Policy on Character Sets and Languages</a>”, BCP&nbsp;18, RFC&nbsp;2277, <a href="http://dx.doi.org/10.17487/RFC2277">DOI&nbsp;10.17487/RFC2277</a>, January&nbsp;1998, &lt;<a href="http://www.rfc-editor.org/info/rfc2277">http://www.rfc-editor.org/info/rfc2277</a>&gt;.
+         </dd>
+         <dt id="RFC2388">[RFC2388]</dt>
+         <dd><a href="mailto:masinter@parc.xerox.com">Masinter, L.</a>, “<a href="https://tools.ietf.org/html/rfc2388">Returning Values from Forms: multipart/form-data</a>”, RFC&nbsp;2388, <a href="http://dx.doi.org/10.17487/RFC2388">DOI&nbsp;10.17487/RFC2388</a>, August&nbsp;1998, &lt;<a href="http://www.rfc-editor.org/info/rfc2388">http://www.rfc-editor.org/info/rfc2388</a>&gt;.
+         </dd>
+         <dt id="RFC5987">[RFC5987]</dt>
+         <dd><a href="mailto:julian.reschke@greenbytes.de">Reschke, J.</a>, “<a href="https://tools.ietf.org/html/rfc5987">Character Set and Language Encoding for Hypertext Transfer Protocol (HTTP) Header Field Parameters</a>”, RFC&nbsp;5987, <a href="http://dx.doi.org/10.17487/RFC5987">DOI&nbsp;10.17487/RFC5987</a>, August&nbsp;2010, &lt;<a href="http://www.rfc-editor.org/info/rfc5987">http://www.rfc-editor.org/info/rfc5987</a>&gt;.
+         </dd>
+         <dt id="RFC5988">[RFC5988]</dt>
+         <dd><a href="mailto:mnot at mnot.net">Nottingham, M.</a>, “<a href="https://tools.ietf.org/html/rfc5988">Web Linking</a>”, RFC&nbsp;5988, <a href="http://dx.doi.org/10.17487/RFC5988">DOI&nbsp;10.17487/RFC5988</a>, October&nbsp;2010, &lt;<a href="http://www.rfc-editor.org/info/rfc5988">http://www.rfc-editor.org/info/rfc5988</a>&gt;.
+         </dd>
+         <dt id="RFC6266">[RFC6266]</dt>
+         <dd><a href="mailto:julian.reschke@greenbytes.de">Reschke, J.</a>, “<a href="https://tools.ietf.org/html/rfc6266">Use of the Content-Disposition Header Field in the Hypertext Transfer Protocol (HTTP)</a>”, RFC&nbsp;6266, <a href="http://dx.doi.org/10.17487/RFC6266">DOI&nbsp;10.17487/RFC6266</a>, June&nbsp;2011, &lt;<a href="http://www.rfc-editor.org/info/rfc6266">http://www.rfc-editor.org/info/rfc6266</a>&gt;.
+         </dd>
+         <dt id="RFC6365">[RFC6365]</dt>
+         <dd>Hoffman, P. and J. Klensin, “<a href="https://tools.ietf.org/html/rfc6365">Terminology Used in Internationalization in the IETF</a>”, BCP&nbsp;166, RFC&nbsp;6365, <a href="http://dx.doi.org/10.17487/RFC6365">DOI&nbsp;10.17487/RFC6365</a>, September&nbsp;2011, &lt;<a href="http://www.rfc-editor.org/info/rfc6365">http://www.rfc-editor.org/info/rfc6365</a>&gt;.
+         </dd>
+      </dl>
       <div id="changes.from.rfc5987">
          <h2 id="rfc.section.A" class="np"><a href="#rfc.section.A">A.</a>&nbsp;<a href="#changes.from.rfc5987">Changes from RFC 5987</a></h2>
          <div id="rfc.section.A.p.1" class="avoidbreakafter">

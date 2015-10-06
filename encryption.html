@@ -62,6 +62,12 @@ ul.empty li {
 dl p {
   margin-left: 0em;
 }
+dl.reference > dt {
+  font-weight: bold;
+}
+dl.reference > dd {
+  margin-left: 6em;
+}
 h1 {
   color: green;
   font-size: 150%;
@@ -162,11 +168,6 @@ td.topnowrap {
 table.header td {
   background-color: gray;
   width: 50%;
-}
-td.reference {
-  vertical-align: top;
-  white-space: nowrap;
-  padding-right: 1em;
 }
 thead {
   display:table-header-group;
@@ -296,7 +297,7 @@ ul p {
        content: "Nottingham & Thomson";
   }
   @bottom-center {
-       content: "Expires April 4, 2016";
+       content: "Expires April 8, 2016";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -325,13 +326,13 @@ ul p {
       <link rel="Chapter" title="6 Security Considerations" href="#rfc.section.6">
       <link rel="Chapter" href="#rfc.section.7" title="7 References">
       <link rel="Appendix" title="A Acknowledgements" href="#rfc.section.A">
-      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.743, 2015/09/25 12:36:08, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
+      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.753, 2015/10/05 19:01:29, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
       <meta name="keywords" content="Internet-Draft">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Nottingham, M.">
       <meta name="dct.creator" content="Thomson, M.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-http2-encryption-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2015-10-02">
+      <meta name="dct.issued" scheme="ISO8601" content="2015-10-06">
       <meta name="dct.abstract" content="This document describes how http URIs can be accessed using Transport Layer Security (TLS) to mitigate pervasive monitoring attacks.">
       <meta name="description" content="This document describes how http URIs can be accessed using Transport Layer Security (TLS) to mitigate pervasive monitoring attacks.">
    </head>
@@ -351,8 +352,8 @@ ul p {
                <td class="right">Mozilla</td>
             </tr>
             <tr>
-               <td class="left">Expires: April 4, 2016</td>
-               <td class="right">October 2, 2015</td>
+               <td class="left">Expires: April 8, 2016</td>
+               <td class="right">October 6, 2015</td>
             </tr>
          </tbody>
       </table>
@@ -373,7 +374,7 @@ ul p {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on April 4, 2016.</p>
+         <p>This Internet-Draft will expire on April 8, 2016.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h2><a href="#rfc.copyrightnotice">Copyright Notice</a></h2>
@@ -689,67 +690,45 @@ ma-parameter     = delta-seconds
       </h2>
       <h3 id="rfc.references.1"><a href="#rfc.section.7.1" id="rfc.section.7.1">7.1</a> Normative References
       </h3>
-      <table>
-         <tr>
-            <td class="reference"><b id="I-D.ietf-httpbis-alt-svc">[I-D.ietf-httpbis-alt-svc]</b></td>
-            <td class="top">mnot, m., McManus, P., and J. Reschke, “<a href="https://tools.ietf.org/html/draft-ietf-httpbis-alt-svc-07">HTTP Alternative Services</a>”, Internet-Draft&nbsp;draft-ietf-httpbis-alt-svc-07 (work in progress), May&nbsp;2015.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC2119">[RFC2119]</b></td>
-            <td class="top">Bradner, S., “<a href="http://www.rfc-editor.org/info/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>”, BCP&nbsp;14, RFC&nbsp;2119, <a href="http://dx.doi.org/10.17487/RFC2119">DOI&nbsp;10.17487/RFC2119</a>, March&nbsp;1997, &lt;<a href="http://www.rfc-editor.org/info/rfc2119">http://www.rfc-editor.org/info/rfc2119</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC2818">[RFC2818]</b></td>
-            <td class="top">Rescorla, E., “<a href="http://www.rfc-editor.org/info/rfc2818">HTTP Over TLS</a>”, RFC&nbsp;2818, <a href="http://dx.doi.org/10.17487/RFC2818">DOI&nbsp;10.17487/RFC2818</a>, May&nbsp;2000, &lt;<a href="http://www.rfc-editor.org/info/rfc2818">http://www.rfc-editor.org/info/rfc2818</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC5246">[RFC5246]</b></td>
-            <td class="top">Dierks, T. and E. Rescorla, “<a href="http://www.rfc-editor.org/info/rfc5246">The Transport Layer Security (TLS) Protocol Version 1.2</a>”, RFC&nbsp;5246, <a href="http://dx.doi.org/10.17487/RFC5246">DOI&nbsp;10.17487/RFC5246</a>, August&nbsp;2008, &lt;<a href="http://www.rfc-editor.org/info/rfc5246">http://www.rfc-editor.org/info/rfc5246</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC6454">[RFC6454]</b></td>
-            <td class="top">Barth, A., “<a href="http://www.rfc-editor.org/info/rfc6454">The Web Origin Concept</a>”, RFC&nbsp;6454, <a href="http://dx.doi.org/10.17487/RFC6454">DOI&nbsp;10.17487/RFC6454</a>, December&nbsp;2011, &lt;<a href="http://www.rfc-editor.org/info/rfc6454">http://www.rfc-editor.org/info/rfc6454</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC7230">[RFC7230]</b></td>
-            <td class="top">Fielding, R., Ed. and J. Reschke, Ed., “<a href="http://www.rfc-editor.org/info/rfc7230">Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</a>”, RFC&nbsp;7230, <a href="http://dx.doi.org/10.17487/RFC7230">DOI&nbsp;10.17487/RFC7230</a>, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7230">http://www.rfc-editor.org/info/rfc7230</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC7234">[RFC7234]</b></td>
-            <td class="top">Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke, Ed., “<a href="http://www.rfc-editor.org/info/rfc7234">Hypertext Transfer Protocol (HTTP/1.1): Caching</a>”, RFC&nbsp;7234, <a href="http://dx.doi.org/10.17487/RFC7234">DOI&nbsp;10.17487/RFC7234</a>, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7234">http://www.rfc-editor.org/info/rfc7234</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC7469">[RFC7469]</b></td>
-            <td class="top">Evans, C., Palmer, C., and R. Sleevi, “<a href="http://www.rfc-editor.org/info/rfc7469">Public Key Pinning Extension for HTTP</a>”, RFC&nbsp;7469, <a href="http://dx.doi.org/10.17487/RFC7469">DOI&nbsp;10.17487/RFC7469</a>, April&nbsp;2015, &lt;<a href="http://www.rfc-editor.org/info/rfc7469">http://www.rfc-editor.org/info/rfc7469</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC7540">[RFC7540]</b></td>
-            <td class="top">Belshe, M., Peon, R., and M. Thomson, Ed., “<a href="http://www.rfc-editor.org/info/rfc7540">Hypertext Transfer Protocol Version 2 (HTTP/2)</a>”, RFC&nbsp;7540, <a href="http://dx.doi.org/10.17487/RFC7540">DOI&nbsp;10.17487/RFC7540</a>, May&nbsp;2015, &lt;<a href="http://www.rfc-editor.org/info/rfc7540">http://www.rfc-editor.org/info/rfc7540</a>&gt;.
-            </td>
-         </tr>
-      </table>
+      <dl class="reference">
+         <dt id="I-D.ietf-httpbis-alt-svc">[I-D.ietf-httpbis-alt-svc]</dt>
+         <dd>mnot, m., McManus, P., and J. Reschke, “<a href="https://tools.ietf.org/html/draft-ietf-httpbis-alt-svc-07">HTTP Alternative Services</a>”, Internet-Draft&nbsp;draft-ietf-httpbis-alt-svc-07 (work in progress), May&nbsp;2015.
+         </dd>
+         <dt id="RFC2119">[RFC2119]</dt>
+         <dd>Bradner, S., “<a href="http://www.rfc-editor.org/info/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>”, BCP&nbsp;14, RFC&nbsp;2119, <a href="http://dx.doi.org/10.17487/RFC2119">DOI&nbsp;10.17487/RFC2119</a>, March&nbsp;1997, &lt;<a href="http://www.rfc-editor.org/info/rfc2119">http://www.rfc-editor.org/info/rfc2119</a>&gt;.
+         </dd>
+         <dt id="RFC2818">[RFC2818]</dt>
+         <dd>Rescorla, E., “<a href="http://www.rfc-editor.org/info/rfc2818">HTTP Over TLS</a>”, RFC&nbsp;2818, <a href="http://dx.doi.org/10.17487/RFC2818">DOI&nbsp;10.17487/RFC2818</a>, May&nbsp;2000, &lt;<a href="http://www.rfc-editor.org/info/rfc2818">http://www.rfc-editor.org/info/rfc2818</a>&gt;.
+         </dd>
+         <dt id="RFC5246">[RFC5246]</dt>
+         <dd>Dierks, T. and E. Rescorla, “<a href="http://www.rfc-editor.org/info/rfc5246">The Transport Layer Security (TLS) Protocol Version 1.2</a>”, RFC&nbsp;5246, <a href="http://dx.doi.org/10.17487/RFC5246">DOI&nbsp;10.17487/RFC5246</a>, August&nbsp;2008, &lt;<a href="http://www.rfc-editor.org/info/rfc5246">http://www.rfc-editor.org/info/rfc5246</a>&gt;.
+         </dd>
+         <dt id="RFC6454">[RFC6454]</dt>
+         <dd>Barth, A., “<a href="http://www.rfc-editor.org/info/rfc6454">The Web Origin Concept</a>”, RFC&nbsp;6454, <a href="http://dx.doi.org/10.17487/RFC6454">DOI&nbsp;10.17487/RFC6454</a>, December&nbsp;2011, &lt;<a href="http://www.rfc-editor.org/info/rfc6454">http://www.rfc-editor.org/info/rfc6454</a>&gt;.
+         </dd>
+         <dt id="RFC7230">[RFC7230]</dt>
+         <dd>Fielding, R., Ed. and J. Reschke, Ed., “<a href="http://www.rfc-editor.org/info/rfc7230">Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</a>”, RFC&nbsp;7230, <a href="http://dx.doi.org/10.17487/RFC7230">DOI&nbsp;10.17487/RFC7230</a>, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7230">http://www.rfc-editor.org/info/rfc7230</a>&gt;.
+         </dd>
+         <dt id="RFC7234">[RFC7234]</dt>
+         <dd>Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke, Ed., “<a href="http://www.rfc-editor.org/info/rfc7234">Hypertext Transfer Protocol (HTTP/1.1): Caching</a>”, RFC&nbsp;7234, <a href="http://dx.doi.org/10.17487/RFC7234">DOI&nbsp;10.17487/RFC7234</a>, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7234">http://www.rfc-editor.org/info/rfc7234</a>&gt;.
+         </dd>
+         <dt id="RFC7469">[RFC7469]</dt>
+         <dd>Evans, C., Palmer, C., and R. Sleevi, “<a href="http://www.rfc-editor.org/info/rfc7469">Public Key Pinning Extension for HTTP</a>”, RFC&nbsp;7469, <a href="http://dx.doi.org/10.17487/RFC7469">DOI&nbsp;10.17487/RFC7469</a>, April&nbsp;2015, &lt;<a href="http://www.rfc-editor.org/info/rfc7469">http://www.rfc-editor.org/info/rfc7469</a>&gt;.
+         </dd>
+         <dt id="RFC7540">[RFC7540]</dt>
+         <dd>Belshe, M., Peon, R., and M. Thomson, Ed., “<a href="http://www.rfc-editor.org/info/rfc7540">Hypertext Transfer Protocol Version 2 (HTTP/2)</a>”, RFC&nbsp;7540, <a href="http://dx.doi.org/10.17487/RFC7540">DOI&nbsp;10.17487/RFC7540</a>, May&nbsp;2015, &lt;<a href="http://www.rfc-editor.org/info/rfc7540">http://www.rfc-editor.org/info/rfc7540</a>&gt;.
+         </dd>
+      </dl>
       <h3 id="rfc.references.2"><a href="#rfc.section.7.2" id="rfc.section.7.2">7.2</a> Informative References
       </h3>
-      <table>
-         <tr>
-            <td class="reference"><b id="RFC7258">[RFC7258]</b></td>
-            <td class="top">Farrell, S. and H. Tschofenig, “<a href="http://www.rfc-editor.org/info/rfc7258">Pervasive Monitoring Is an Attack</a>”, BCP&nbsp;188, RFC&nbsp;7258, <a href="http://dx.doi.org/10.17487/RFC7258">DOI&nbsp;10.17487/RFC7258</a>, May&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7258">http://www.rfc-editor.org/info/rfc7258</a>&gt;.
-            </td>
-         </tr>
-         <tr>
-            <td class="reference"><b id="RFC7435">[RFC7435]</b></td>
-            <td class="top">Dukhovni, V., “<a href="http://www.rfc-editor.org/info/rfc7435">Opportunistic Security: Some Protection Most of the Time</a>”, RFC&nbsp;7435, <a href="http://dx.doi.org/10.17487/RFC7435">DOI&nbsp;10.17487/RFC7435</a>, December&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7435">http://www.rfc-editor.org/info/rfc7435</a>&gt;.
-            </td>
-         </tr>
-      </table>
+      <dl class="reference">
+         <dt id="RFC7258">[RFC7258]</dt>
+         <dd>Farrell, S. and H. Tschofenig, “<a href="http://www.rfc-editor.org/info/rfc7258">Pervasive Monitoring Is an Attack</a>”, BCP&nbsp;188, RFC&nbsp;7258, <a href="http://dx.doi.org/10.17487/RFC7258">DOI&nbsp;10.17487/RFC7258</a>, May&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7258">http://www.rfc-editor.org/info/rfc7258</a>&gt;.
+         </dd>
+         <dt id="RFC7435">[RFC7435]</dt>
+         <dd>Dukhovni, V., “<a href="http://www.rfc-editor.org/info/rfc7435">Opportunistic Security: Some Protection Most of the Time</a>”, RFC&nbsp;7435, <a href="http://dx.doi.org/10.17487/RFC7435">DOI&nbsp;10.17487/RFC7435</a>, December&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7435">http://www.rfc-editor.org/info/rfc7435</a>&gt;.
+         </dd>
+      </dl>
       <div id="acknowledgements">
          <h2 id="rfc.section.A" class="np"><a href="#rfc.section.A">A.</a>&nbsp;<a href="#acknowledgements">Acknowledgements</a></h2>
          <div id="rfc.section.A.p.1">
