@@ -822,6 +822,11 @@ uri-host      = &lt;uri-host, see <a href="#RFC7230"><cite title="Hypertext Tran
                </p>
             </div>
             <div id="rfc.section.2.2.p.4">
+               <p>Alternative services are fully authoritative for the origin in question, including the ability to clear or update cached alternative
+                  service entries, extend freshness lifetimes, and any other authority the origin server would have.
+               </p>
+            </div>
+            <div id="rfc.section.2.2.p.5">
                <p>When alternative services are used to send a client to the most optimal server, a change in network configuration can result
                   in cached values becoming suboptimal. Therefore, clients <em class="bcp14">SHOULD</em> remove from cache all alternative services that lack the "persist" flag with the value "1" when they detect such a change
                   (when information about network state is available).
