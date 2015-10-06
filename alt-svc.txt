@@ -122,8 +122,9 @@ Internet-Draft          HTTP Alternative Services           October 2015
      A.7.  Since draft-ietf-httpbis-alt-svc-05 . . . . . . . . . . .  20
      A.8.  Since draft-ietf-httpbis-alt-svc-06 . . . . . . . . . . .  20
      A.9.  Since draft-ietf-httpbis-alt-svc-07 . . . . . . . . . . .  20
+     A.10. Since draft-ietf-httpbis-alt-svc-08 . . . . . . . . . . .  21
    Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  21
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  21
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  22
 
 1.  Introduction
 
@@ -161,7 +162,6 @@ Internet-Draft          HTTP Alternative Services           October 2015
 
    It also endorses the status code 421 (Misdirected Request)
    (Section 6) that origin servers (or their nominated alternatives) can
-
 
 
 
@@ -816,12 +816,12 @@ Internet-Draft          HTTP Alternative Services           October 2015
    under the attacker's control, they can thus masquerade as the HTTP
    server.
 
-   On servers, this risk can be reducted by restricting the ability to
+   On servers, this risk can be reduced by restricting the ability to
    advertise alternative services, and restricting who can open a port
    for listening on that host.  Clients can reduce this risk by imposing
    stronger requirements (e.g. strong authentication) when moving from
    System Ports to User or Dynamic Ports, or from User Ports to Dynamic
-   Ports, as defined in Appendix of [RFC6335].
+   Ports, as defined in Section 6 of [RFC6335].
 
    It is always valid for a client to ignore an alternative service
    advertisement which does not meet its implementation-specific
@@ -1153,6 +1153,11 @@ Internet-Draft          HTTP Alternative Services           October 2015
    Alt-Svc response header field in HTTP/2 frame
    (<https://github.com/httpwg/http-extensions/issues/87>).
 
+A.10.  Since draft-ietf-httpbis-alt-svc-08
+
+   Alt-Svc: Elevation of privilege (<https://github.com/httpwg/http-
+   extensions/issues/73>).
+
 Appendix B.  Acknowledgements
 
    Thanks to Adam Langley, Bence Beky, Eliot Lear, Erik Nygren, Guy
@@ -1163,6 +1168,16 @@ Appendix B.  Acknowledgements
    The Alt-Svc header field was influenced by the design of the
    Alternate-Protocol header field in SPDY.
 
+
+
+
+
+
+Nottingham, et al.        Expires April 8, 2016                [Page 21]
+
+Internet-Draft          HTTP Alternative Services           October 2015
+
+
 Authors' Addresses
 
    Mark Nottingham
@@ -1170,12 +1185,6 @@ Authors' Addresses
 
    EMail: mnot@mnot.net
    URI:   https://www.mnot.net/
-
-
-
-Nottingham, et al.        Expires April 8, 2016                [Page 21]
-
-Internet-Draft          HTTP Alternative Services           October 2015
 
 
    Patrick McManus
@@ -1190,15 +1199,6 @@ Internet-Draft          HTTP Alternative Services           October 2015
 
    EMail: julian.reschke@greenbytes.de
    URI:   https://greenbytes.de/tech/webdav/
-
-
-
-
-
-
-
-
-
 
 
 
