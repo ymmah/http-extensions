@@ -465,7 +465,7 @@ ul p {
        content: "Nottingham, et al.";
   }
   @bottom-center {
-       content: "Expires April 8, 2016";
+       content: "Expires April 9, 2016";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -505,7 +505,7 @@ ul p {
       <meta name="dct.creator" content="McManus, P.">
       <meta name="dct.creator" content="Reschke, J. F.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-alt-svc-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2015-10-06">
+      <meta name="dct.issued" scheme="ISO8601" content="2015-10-07">
       <meta name="dct.abstract" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
       <meta name="description" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
    </head>
@@ -525,7 +525,7 @@ ul p {
                <td class="right">P. McManus</td>
             </tr>
             <tr>
-               <td class="left">Expires: April 8, 2016</td>
+               <td class="left">Expires: April 9, 2016</td>
                <td class="right">Mozilla</td>
             </tr>
             <tr>
@@ -538,7 +538,7 @@ ul p {
             </tr>
             <tr>
                <td class="left"></td>
-               <td class="right">October 6, 2015</td>
+               <td class="right">October 7, 2015</td>
             </tr>
          </tbody>
       </table>
@@ -567,7 +567,7 @@ ul p {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on April 8, 2016.</p>
+         <p>This Internet-Draft will expire on April 9, 2016.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h2><a href="#rfc.copyrightnotice">Copyright Notice</a></h2>
@@ -881,7 +881,9 @@ uri-host      = &lt;uri-host, see <a href="#RFC7230"><cite title="Hypertext Tran
             </div>
             <div id="rfc.section.2.4.p.7">
                <p>Furthermore, if the connection to the alternative service fails or is unresponsive, the client <em class="bcp14">MAY</em> fall back to using the origin or another alternative service. Note, however, that this could be the basis of a downgrade attack,
-                  thus losing any enhanced security properties of the alternative service.
+                  thus losing any enhanced security properties of the alternative service. If the connection to the alternative service does
+                  not negotiate the expected protocol (for example, ALPN fails to negotiate h2, or an Upgrade request to h2c is not accepted),
+                  the connection to the alternative service <em class="bcp14">MUST</em> be considered to have failed.
                </p>
             </div>
          </div>
