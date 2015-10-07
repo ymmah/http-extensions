@@ -1156,11 +1156,6 @@ Alt-Svc: h2c=":8000"; ma=60
 Host: origin.example.com
 Alt-Used: alternate.example.net
 </pre></div>
-         <div id="rfc.section.5.p.5">
-            <p>The extension parameters (ext-param) are reserved for future use; specifications that want to define an extension will need
-               to update this document (and ought to introduce an extension registry).
-            </p>
-         </div>
       </div>
       <div id="status">
          <h2 id="rfc.section.6"><a href="#rfc.section.6">6.</a>&nbsp;<a href="#status">The 421 Misdirected Request HTTP Status Code</a></h2>
@@ -1625,14 +1620,18 @@ Alt-Used: alternate.example.net
          <div id="changes.since.draft-ietf-httpbis-alt-svc-08">
             <h3 id="rfc.section.A.10"><a href="#rfc.section.A.10">A.10</a>&nbsp;<a href="#changes.since.draft-ietf-httpbis-alt-svc-08">Since draft-ietf-httpbis-alt-svc-08</a></h3>
             <div id="rfc.section.A.10.p.1">
-               <p>Conflicts between Alt-Svc and ALPN (&lt;<a href="https://github.com/httpwg/http-extensions/issues/72">https://github.com/httpwg/http-extensions/issues/72</a>&gt;).
+               <p>Remove left over text about ext-params, applying to an earlier version of Alt-Used (see &lt;<a href="https://github.com/httpwg/http-extensions/issues/34">https://github.com/httpwg/http-extensions/issues/34</a>&gt;).
                </p>
             </div>
             <div id="rfc.section.A.10.p.2">
-               <p>Elevation of privilege (&lt;<a href="https://github.com/httpwg/http-extensions/issues/73">https://github.com/httpwg/http-extensions/issues/73</a>&gt;).
+               <p>Conflicts between Alt-Svc and ALPN (&lt;<a href="https://github.com/httpwg/http-extensions/issues/72">https://github.com/httpwg/http-extensions/issues/72</a>&gt;).
                </p>
             </div>
             <div id="rfc.section.A.10.p.3">
+               <p>Elevation of privilege (&lt;<a href="https://github.com/httpwg/http-extensions/issues/73">https://github.com/httpwg/http-extensions/issues/73</a>&gt;).
+               </p>
+            </div>
+            <div id="rfc.section.A.10.p.4">
                <p>Alternates of alternates (&lt;<a href="https://github.com/httpwg/http-extensions/issues/74">https://github.com/httpwg/http-extensions/issues/74</a>&gt;).
                </p>
             </div>

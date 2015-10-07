@@ -123,7 +123,7 @@ Internet-Draft          HTTP Alternative Services           October 2015
      A.8.  Since draft-ietf-httpbis-alt-svc-06 . . . . . . . . . . .  21
      A.9.  Since draft-ietf-httpbis-alt-svc-07 . . . . . . . . . . .  21
      A.10. Since draft-ietf-httpbis-alt-svc-08 . . . . . . . . . . .  22
-   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  22
+   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  23
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  23
 
 1.  Introduction
@@ -702,10 +702,6 @@ Internet-Draft          HTTP Alternative Services           October 2015
      Host: origin.example.com
      Alt-Used: alternate.example.net
 
-   The extension parameters (ext-param) are reserved for future use;
-   specifications that want to define an extension will need to update
-   this document (and ought to introduce an extension registry).
-
 6.  The 421 Misdirected Request HTTP Status Code
 
    The 421 (Misdirected Request) status code is defined in Section 9.1.2
@@ -722,6 +718,10 @@ Internet-Draft          HTTP Alternative Services           October 2015
 
    An Alt-Svc header field in a 421 (Misdirected Request) response MUST
    be ignored.
+
+
+
+
 
 
 
@@ -1211,6 +1211,10 @@ Internet-Draft          HTTP Alternative Services           October 2015
 
 A.10.  Since draft-ietf-httpbis-alt-svc-08
 
+   Remove left over text about ext-params, applying to an earlier
+   version of Alt-Used (see <https://github.com/httpwg/http-extensions/
+   issues/34>).
+
    Conflicts between Alt-Svc and ALPN (<https://github.com/httpwg/http-
    extensions/issues/72>).
 
@@ -1220,12 +1224,8 @@ A.10.  Since draft-ietf-httpbis-alt-svc-08
    Alternates of alternates (<https://github.com/httpwg/http-extensions/
    issues/74>).
 
-Appendix B.  Acknowledgements
 
-   Thanks to Adam Langley, Bence Beky, Eliot Lear, Erik Nygren, Guy
-   Podjarny, Herve Ruellan, Martin Thomson, Matthew Kerwin, Mike Bishop,
-   Paul Hoffman, Richard Barnes, Stephen Farrell, Stephen Ludin, and
-   Will Chan for their feedback and suggestions.
+
 
 
 
@@ -1233,6 +1233,13 @@ Nottingham, et al.        Expires April 9, 2016                [Page 22]
 
 Internet-Draft          HTTP Alternative Services           October 2015
 
+
+Appendix B.  Acknowledgements
+
+   Thanks to Adam Langley, Bence Beky, Eliot Lear, Erik Nygren, Guy
+   Podjarny, Herve Ruellan, Martin Thomson, Matthew Kerwin, Mike Bishop,
+   Paul Hoffman, Richard Barnes, Stephen Farrell, Stephen Ludin, and
+   Will Chan for their feedback and suggestions.
 
    The Alt-Svc header field was influenced by the design of the
    Alternate-Protocol header field in SPDY.
@@ -1258,13 +1265,6 @@ Authors' Addresses
 
    EMail: julian.reschke@greenbytes.de
    URI:   https://greenbytes.de/tech/webdav/
-
-
-
-
-
-
-
 
 
 
