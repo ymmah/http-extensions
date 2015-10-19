@@ -14,7 +14,7 @@ Expires: April 21, 2016                                 October 19, 2015
 Abstract
 
    The 'Key' header field for HTTP responses allows an origin server to
-   describe the secondary cache key ([RFC7234], section 4.1) for a
+   describe the secondary cache key (RFC 7234, Section 4.1) for a
    resource, by conveying what is effectively a short algorithm that can
    be used upon later requests to determine if a stored response is
    reusable for a given request.
