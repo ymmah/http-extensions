@@ -269,8 +269,8 @@ Internet-Draft                  HTTP CICE                  November 2015
    headers>, as defined by [BCP90].
 
    This document updates the definition of the "Accept-Encoding" header
-   field, so the "Permanent Message Header Field Names" registry ought
-   to be updated accordingly:
+   field.  The "Permanent Message Header Field Names" registry has been
+   updated as follows:
 
 
 
@@ -286,24 +286,25 @@ Internet-Draft                  HTTP CICE                  November 2015
    | Header Field    | Protocol | Status   | Reference                 |
    | Name            |          |          |                           |
    +-----------------+----------+----------+---------------------------+
-   | Accept-Encoding | http     | standard | [RFC7231], Section 5.3.4, |
-   |                 |          |          | and Section 3 of this     |
-   |                 |          |          | document                  |
+   | Accept-Encoding | http     | standard | Section 5.3.4 of          |
+   |                 |          |          | [RFC7231] and Section 3   |
+   |                 |          |          | of this document          |
    +-----------------+----------+----------+---------------------------+
 
 7.2.  Status Code Registry
 
-   HTTP status codes are registered within the "Status Code" registry
-   located at <http://www.iana.org/assignments/http-status-codes>.
+   HTTP status codes are registered within the "HTTP Status Codes"
+   registry located at <http://www.iana.org/assignments/http-status-
+   codes>.
 
    This document updates the definition of the status code 415
-   (Unsupported Media Type), so the "Status Code" registry ought to be
-   updated accordingly:
+   (Unsupported Media Type).  The "HTTP Status Codes" registry has been
+   updated as follows:
 
    +-------+-----------------+-----------------------------------------+
    | Value | Description     | Reference                               |
    +-------+-----------------+-----------------------------------------+
-   | 415   | Unsupported     | [RFC7231], Section 6.5.13, and Section  |
+   | 415   | Unsupported     | Section 6.5.13 of [RFC7231] and Section |
    |       | Media Type      | 3 of this document                      |
    +-------+-----------------+-----------------------------------------+
 
@@ -325,7 +326,6 @@ Internet-Draft                  HTTP CICE                  November 2015
               Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
               DOI 10.17487/RFC7231, June 2014,
               <http://www.rfc-editor.org/info/rfc7231>.
-
 
 
 
