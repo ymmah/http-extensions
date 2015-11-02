@@ -494,7 +494,6 @@ ul p {
       <link rel="Chapter" title="6 Security Considerations" href="#rfc.section.6">
       <link rel="Chapter" title="7 IANA Considerations" href="#rfc.section.7">
       <link rel="Chapter" href="#rfc.section.8" title="8 References">
-      <link rel="Appendix" title="A Change Log (to be removed by RFC Editor before publication)" href="#rfc.section.A">
       <link rel="Appendix" title="Acknowledgements" href="#rfc.section.unnumbered-1">
       <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.753, 2015/10/05 19:01:29, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
       <meta name="keywords" content="HTTP, content-encoding">
@@ -543,8 +542,6 @@ ul p {
       </p>
       <p>Working Group information can be found at &lt;<a href="https://tools.ietf.org/wg/httpbis/">https://tools.ietf.org/wg/httpbis/</a>&gt; and &lt;<a href="http://httpwg.github.io/">http://httpwg.github.io/</a>&gt;; source code and issues list for this draft can be found at &lt;<a href="https://github.com/httpwg/http-extensions">https://github.com/httpwg/http-extensions</a>&gt;.
       </p>
-      <p>The changes in this draft are summarized in <a href="#changes.since.03" title="Since draft-ietf-httpbis-cice-03">Appendix&nbsp;A.7</a>.
-      </p>
       <div id="rfc.status">
          <h2><a href="#rfc.status">Status of This Memo</a></h2>
          <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
@@ -584,16 +581,6 @@ ul p {
             <li><a href="#rfc.section.8">8.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references">References</a><ul>
                   <li><a href="#rfc.section.8.1">8.1</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.1">Normative References</a></li>
                   <li><a href="#rfc.section.8.2">8.2</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references.2">Informative References</a></li>
-               </ul>
-            </li>
-            <li><a href="#rfc.section.A">A.</a>&nbsp;&nbsp;&nbsp;<a href="#change.log">Change Log (to be removed by RFC Editor before publication)</a><ul>
-                  <li><a href="#rfc.section.A.1">A.1</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.r.00">Since draft-reschke-http-cice-00</a></li>
-                  <li><a href="#rfc.section.A.2">A.2</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.r.01">Since draft-reschke-http-cice-01</a></li>
-                  <li><a href="#rfc.section.A.3">A.3</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.r.02">Since draft-reschke-http-cice-02</a></li>
-                  <li><a href="#rfc.section.A.4">A.4</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.00">Since draft-ietf-httpbis-cice-00</a></li>
-                  <li><a href="#rfc.section.A.5">A.5</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.01">Since draft-ietf-httpbis-cice-01</a></li>
-                  <li><a href="#rfc.section.A.6">A.6</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.02">Since draft-ietf-httpbis-cice-02</a></li>
-                  <li><a href="#rfc.section.A.7">A.7</a>&nbsp;&nbsp;&nbsp;<a href="#changes.since.03">Since draft-ietf-httpbis-cice-03</a></li>
                </ul>
             </li>
             <li><a href="#rfc.section.unnumbered-1">Acknowledgements</a></li>
@@ -827,67 +814,6 @@ Content-Type: text/plain
          <dd>Belshe, M., Peon, R., and M. Thomson, Ed., “<a href="https://tools.ietf.org/html/rfc7540">Hypertext Transfer Protocol Version 2 (HTTP/2)</a>”, RFC&nbsp;7540, <a href="http://dx.doi.org/10.17487/RFC7540">DOI&nbsp;10.17487/RFC7540</a>, May&nbsp;2015, &lt;<a href="http://www.rfc-editor.org/info/rfc7540">http://www.rfc-editor.org/info/rfc7540</a>&gt;.
          </dd>
       </dl>
-      <div id="change.log">
-         <h2 id="rfc.section.A" class="np"><a href="#rfc.section.A">A.</a>&nbsp;<a href="#change.log">Change Log (to be removed by RFC Editor before publication)</a></h2>
-         <div id="changes.since.r.00">
-            <h3 id="rfc.section.A.1"><a href="#rfc.section.A.1">A.1</a>&nbsp;<a href="#changes.since.r.00">Since draft-reschke-http-cice-00</a></h3>
-            <div id="rfc.section.A.1.p.1">
-               <p>Clarified that the information returned in Accept-Encoding is per resource, not per server.</p>
-            </div>
-            <div id="rfc.section.A.1.p.2">
-               <p>Added some deployment considerations.</p>
-            </div>
-            <div id="rfc.section.A.1.p.3">
-               <p>Updated HTTP/1.1 references.</p>
-            </div>
-         </div>
-         <div id="changes.since.r.01">
-            <h3 id="rfc.section.A.2"><a href="#rfc.section.A.2">A.2</a>&nbsp;<a href="#changes.since.r.01">Since draft-reschke-http-cice-01</a></h3>
-            <div id="rfc.section.A.2.p.1">
-               <p>Restrict the scope of A-E from "future requests" to "at the time of this request".</p>
-            </div>
-            <div id="rfc.section.A.2.p.2">
-               <p>Mention use of A-E in responses other than 415.</p>
-            </div>
-            <div id="rfc.section.A.2.p.3">
-               <p>Recommend not to include A-E in a 415 response unless there was actually a problem related to content coding.</p>
-            </div>
-         </div>
-         <div id="changes.since.r.02">
-            <h3 id="rfc.section.A.3"><a href="#rfc.section.A.3">A.3</a>&nbsp;<a href="#changes.since.r.02">Since draft-reschke-http-cice-02</a></h3>
-            <div id="rfc.section.A.3.p.1">
-               <p>First Working Group draft; updated boilerplate accordingly.</p>
-            </div>
-         </div>
-         <div id="changes.since.00">
-            <h3 id="rfc.section.A.4"><a href="#rfc.section.A.4">A.4</a>&nbsp;<a href="#changes.since.00">Since draft-ietf-httpbis-cice-00</a></h3>
-            <div id="rfc.section.A.4.p.1">
-               <p>Apply editorial improvements suggested by Mark Nottingham.</p>
-            </div>
-         </div>
-         <div id="changes.since.01">
-            <h3 id="rfc.section.A.5"><a href="#rfc.section.A.5">A.5</a>&nbsp;<a href="#changes.since.01">Since draft-ietf-httpbis-cice-01</a></h3>
-            <div id="rfc.section.A.5.p.1">
-               <p>Clarify that we're also extending the definition of status code 415 (so update that IANA registry entry as well).</p>
-            </div>
-         </div>
-         <div id="changes.since.02">
-            <h3 id="rfc.section.A.6"><a href="#rfc.section.A.6">A.6</a>&nbsp;<a href="#changes.since.02">Since draft-ietf-httpbis-cice-02</a></h3>
-            <div id="rfc.section.A.6.p.1">
-               <p>Removed normative language that required used of Accept-Encoding in responses (which would have made existing servers non-compliant).</p>
-            </div>
-            <div id="rfc.section.A.6.p.2">
-               <p>Add BREACH like attacks to security considerations (&lt;<a href="https://github.com/httpwg/http-extensions/issues/94">https://github.com/httpwg/http-extensions/issues/94</a>&gt;).
-               </p>
-            </div>
-         </div>
-         <div id="changes.since.03">
-            <h3 id="rfc.section.A.7"><a href="#rfc.section.A.7">A.7</a>&nbsp;<a href="#changes.since.03">Since draft-ietf-httpbis-cice-03</a></h3>
-            <div id="rfc.section.A.7.p.1">
-               <p>None yet.</p>
-            </div>
-         </div>
-      </div>
       <div>
          <h2 id="rfc.section.unnumbered-1">Acknowledgements</h2>
          <div id="rfc.section.unnumbered-1.p.1">

@@ -33,8 +33,6 @@ Editorial Note (To be removed by RFC Editor before publication)
    for this draft can be found at <https://github.com/httpwg/http-
    extensions>.
 
-   The changes in this draft are summarized in Appendix A.7.
-
 Status of This Memo
 
    This Internet-Draft is submitted in full conformance with the
@@ -50,6 +48,8 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
+   This Internet-Draft will expire on May 5, 2016.
+
 
 
 
@@ -57,8 +57,6 @@ Reschke                    Expires May 5, 2016                  [Page 1]
 
 Internet-Draft                  HTTP CICE                  November 2015
 
-
-   This Internet-Draft will expire on May 5, 2016.
 
 Copyright Notice
 
@@ -81,39 +79,21 @@ Table of Contents
    2.  Notational Conventions  . . . . . . . . . . . . . . . . . . .   3
    3.  Using the 'Accept-Encoding' Header Field in Responses . . . .   3
    4.  Example . . . . . . . . . . . . . . . . . . . . . . . . . . .   4
-   5.  Deployment Considerations . . . . . . . . . . . . . . . . . .   5
+   5.  Deployment Considerations . . . . . . . . . . . . . . . . . .   4
    6.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
      7.1.  Header Field Registry . . . . . . . . . . . . . . . . . .   5
      7.2.  Status Code Registry  . . . . . . . . . . . . . . . . . .   6
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   6
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .   6
-     8.2.  Informative References  . . . . . . . . . . . . . . . . .   7
-   Appendix A.  Change Log (to be removed by RFC Editor before
-                publication) . . . . . . . . . . . . . . . . . . . .   8
-     A.1.  Since draft-reschke-http-cice-00  . . . . . . . . . . . .   8
-     A.2.  Since draft-reschke-http-cice-01  . . . . . . . . . . . .   8
-     A.3.  Since draft-reschke-http-cice-02  . . . . . . . . . . . .   8
-     A.4.  Since draft-ietf-httpbis-cice-00  . . . . . . . . . . . .   8
-     A.5.  Since draft-ietf-httpbis-cice-01  . . . . . . . . . . . .   8
-     A.6.  Since draft-ietf-httpbis-cice-02  . . . . . . . . . . . .   8
-     A.7.  Since draft-ietf-httpbis-cice-03  . . . . . . . . . . . .   8
-   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .   9
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   9
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .   6
+   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .   8
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   8
 
 1.  Introduction
 
    In HTTP, content codings allow for payload encodings such as for
    compression or integrity checks ([RFC7231], Section 3.1.2).  In
-
-
-
-
-Reschke                    Expires May 5, 2016                  [Page 2]
-
-Internet-Draft                  HTTP CICE                  November 2015
-
-
    particular, the "gzip" content coding ([RFC7230], Section 4.2) is
    widely used for payload data sent in response messages.
 
@@ -125,6 +105,14 @@ Internet-Draft                  HTTP CICE                  November 2015
    definition of status code 415 (Unsupported Media Type) ([RFC7231],
    Section 6.5.13), recommending that the "Accept-Encoding" header field
    be included when appropriate.
+
+
+
+
+Reschke                    Expires May 5, 2016                  [Page 2]
+
+Internet-Draft                  HTTP CICE                  November 2015
+
 
 2.  Notational Conventions
 
@@ -162,14 +150,6 @@ Internet-Draft                  HTTP CICE                  November 2015
    distinguish between issues related to content codings and media
    types.  In order to avoid confusion with issues related to media
    types, servers that fail a request with a 415 status for reasons
-
-
-
-Reschke                    Expires May 5, 2016                  [Page 3]
-
-Internet-Draft                  HTTP CICE                  November 2015
-
-
    unrelated to content codings MUST NOT include the "Accept-Encoding"
    header field.
 
@@ -181,6 +161,14 @@ Internet-Draft                  HTTP CICE                  November 2015
    a resource might include it in a 2xx response when the request
    payload was big enough to justify use of a compression coding but the
    client failed do so.
+
+
+
+
+Reschke                    Expires May 5, 2016                  [Page 3]
+
+Internet-Draft                  HTTP CICE                  November 2015
+
 
 4.  Example
 
@@ -219,13 +207,6 @@ Internet-Draft                  HTTP CICE                  November 2015
 
      This resource does not support content codings in requests.
 
-
-
-Reschke                    Expires May 5, 2016                  [Page 4]
-
-Internet-Draft                  HTTP CICE                  November 2015
-
-
 5.  Deployment Considerations
 
    Servers that do not support content codings in requests already are
@@ -237,6 +218,14 @@ Internet-Draft                  HTTP CICE                  November 2015
 
    Servers that do support some content codings are required to fail
    requests with unsupported content codings as well.  To be compliant
+
+
+
+Reschke                    Expires May 5, 2016                  [Page 4]
+
+Internet-Draft                  HTTP CICE                  November 2015
+
+
    with this specification, servers will need to use the status code 415
    (Unsupported Media Type) to signal the problem and will have to
    include an "Accept-Encoding" header field that enumerates the content
@@ -272,6 +261,17 @@ Internet-Draft                  HTTP CICE                  November 2015
    field.  The "Permanent Message Header Field Names" registry has been
    updated as follows:
 
+   +-----------------+----------+----------+---------------------------+
+   | Header Field    | Protocol | Status   | Reference                 |
+   | Name            |          |          |                           |
+   +-----------------+----------+----------+---------------------------+
+   | Accept-Encoding | http     | standard | Section 5.3.4 of          |
+   |                 |          |          | [RFC7231] and Section 3   |
+   |                 |          |          | of this document          |
+   +-----------------+----------+----------+---------------------------+
+
+
+
 
 
 
@@ -281,15 +281,6 @@ Reschke                    Expires May 5, 2016                  [Page 5]
 
 Internet-Draft                  HTTP CICE                  November 2015
 
-
-   +-----------------+----------+----------+---------------------------+
-   | Header Field    | Protocol | Status   | Reference                 |
-   | Name            |          |          |                           |
-   +-----------------+----------+----------+---------------------------+
-   | Accept-Encoding | http     | standard | Section 5.3.4 of          |
-   |                 |          |          | [RFC7231] and Section 3   |
-   |                 |          |          | of this document          |
-   +-----------------+----------+----------+---------------------------+
 
 7.2.  Status Code Registry
 
@@ -327,17 +318,6 @@ Internet-Draft                  HTTP CICE                  November 2015
               DOI 10.17487/RFC7231, June 2014,
               <http://www.rfc-editor.org/info/rfc7231>.
 
-
-
-
-
-
-
-Reschke                    Expires May 5, 2016                  [Page 6]
-
-Internet-Draft                  HTTP CICE                  November 2015
-
-
 8.2.  Informative References
 
    [BCP90]    Klyne, G., Nottingham, M., and J. Mogul, "Registration
@@ -348,6 +328,15 @@ Internet-Draft                  HTTP CICE                  November 2015
               CRIME Attack", July 2013,
               <http://breachattack.com/resources/
               BREACH%20-%20SSL,%20gone%20in%2030%20seconds.pdf>.
+
+
+
+
+
+Reschke                    Expires May 5, 2016                  [Page 6]
+
+Internet-Draft                  HTTP CICE                  November 2015
+
 
    [RFC7540]  Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
               Transfer Protocol Version 2 (HTTP/2)", RFC 7540,
@@ -389,68 +378,23 @@ Internet-Draft                  HTTP CICE                  November 2015
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 Reschke                    Expires May 5, 2016                  [Page 7]
 
 Internet-Draft                  HTTP CICE                  November 2015
 
 
-Appendix A.  Change Log (to be removed by RFC Editor before publication)
-
-A.1.  Since draft-reschke-http-cice-00
-
-   Clarified that the information returned in Accept-Encoding is per
-   resource, not per server.
-
-   Added some deployment considerations.
-
-   Updated HTTP/1.1 references.
-
-A.2.  Since draft-reschke-http-cice-01
-
-   Restrict the scope of A-E from "future requests" to "at the time of
-   this request".
-
-   Mention use of A-E in responses other than 415.
-
-   Recommend not to include A-E in a 415 response unless there was
-   actually a problem related to content coding.
-
-A.3.  Since draft-reschke-http-cice-02
-
-   First Working Group draft; updated boilerplate accordingly.
-
-A.4.  Since draft-ietf-httpbis-cice-00
-
-   Apply editorial improvements suggested by Mark Nottingham.
-
-A.5.  Since draft-ietf-httpbis-cice-01
-
-   Clarify that we're also extending the definition of status code 415
-   (so update that IANA registry entry as well).
-
-A.6.  Since draft-ietf-httpbis-cice-02
-
-   Removed normative language that required used of Accept-Encoding in
-   responses (which would have made existing servers non-compliant).
-
-   Add BREACH like attacks to security considerations
-   (<https://github.com/httpwg/http-extensions/issues/94>).
-
-A.7.  Since draft-ietf-httpbis-cice-03
-
-   None yet.
-
-
-
-
-
-
-Reschke                    Expires May 5, 2016                  [Page 8]
-
-Internet-Draft                  HTTP CICE                  November 2015
-
-
-Appendix B.  Acknowledgements
+Appendix A.  Acknowledgements
 
    Thanks go to the members of the HTTPbis Working Group, namely Amos
    Jeffries, Ben Campbell, Mark Nottingham, Pete Resnick, Stephen
@@ -501,4 +445,4 @@ Author's Address
 
 
 
-Reschke                    Expires May 5, 2016                  [Page 9]
+Reschke                    Expires May 5, 2016                  [Page 8]
