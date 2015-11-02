@@ -17,7 +17,7 @@ Abstract
    compression or integrity checks.  In particular, the "gzip" content
    coding is widely used for payload data sent in response messages.
 
-   Content codings can be used in request messages as well, however
+   Content codings can be used in request messages as well; however,
    discoverability is not on par with response messages.  This document
    extends the HTTP "Accept-Encoding" header field for use in responses,
    to indicate the content codings that are supported in requests.
@@ -117,7 +117,7 @@ Internet-Draft                  HTTP CICE                  November 2015
    particular, the "gzip" content coding ([RFC7230], Section 4.2) is
    widely used for payload data sent in response messages.
 
-   Content codings can be used in request messages as well, however
+   Content codings can be used in request messages as well; however,
    discoverability is not on par with response messages.  This document
    extends the HTTP "Accept-Encoding" header field ([RFC7231],
    Section 5.3.4) for use in responses, to indicate the content codings
@@ -149,8 +149,8 @@ Internet-Draft                  HTTP CICE                  November 2015
 
    Note that this information is specific to the associated request; the
    set of supported encodings might be different for other resources on
-   the same server, and could change over time or depend on other
-   aspects of the request (such as the request method).
+   the same server and could change over time or depend on other aspects
+   of the request (such as the request method).
 
    Section 6.5.13 of [RFC7231] defines status code 415 (Unsupported
    Media Type) to apply to both media type and content coding related
@@ -179,8 +179,8 @@ Internet-Draft                  HTTP CICE                  November 2015
    the header field can also be used to indicate to clients that content
    codings are supported, to optimize future interactions.  For example,
    a resource might include it in a 2xx response when the request
-   payload was big enough to justify use of a compression coding, but
-   the client failed do so.
+   payload was big enough to justify use of a compression coding but the
+   client failed do so.
 
 4.  Example
 
@@ -238,7 +238,7 @@ Internet-Draft                  HTTP CICE                  November 2015
    Servers that do support some content codings are required to fail
    requests with unsupported content codings as well.  To be compliant
    with this specification, servers will need to use the status code 415
-   (Unsupported Media Type) to signal the problem, and will have to
+   (Unsupported Media Type) to signal the problem and will have to
    include an "Accept-Encoding" header field that enumerates the content
    codings that are supported.  As the set of supported content codings
    is usually static and small, adding the header field ought to be

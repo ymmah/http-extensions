@@ -502,8 +502,8 @@ ul p {
       <meta name="dct.creator" content="Reschke, J. F.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-cice-latest">
       <meta name="dct.issued" scheme="ISO8601" content="2015-11-02">
-      <meta name="dct.abstract" content="In HTTP, content codings allow for payload encodings such as for compression or integrity checks. In particular, the &#34;gzip&#34; content coding is widely used for payload data sent in response messages. Content codings can be used in request messages as well, however discoverability is not on par with response messages. This document extends the HTTP &#34;Accept-Encoding&#34; header field for use in responses, to indicate the content codings that are supported in requests.">
-      <meta name="description" content="In HTTP, content codings allow for payload encodings such as for compression or integrity checks. In particular, the &#34;gzip&#34; content coding is widely used for payload data sent in response messages. Content codings can be used in request messages as well, however discoverability is not on par with response messages. This document extends the HTTP &#34;Accept-Encoding&#34; header field for use in responses, to indicate the content codings that are supported in requests.">
+      <meta name="dct.abstract" content="In HTTP, content codings allow for payload encodings such as for compression or integrity checks. In particular, the &#34;gzip&#34; content coding is widely used for payload data sent in response messages. Content codings can be used in request messages as well; however, discoverability is not on par with response messages. This document extends the HTTP &#34;Accept-Encoding&#34; header field for use in responses, to indicate the content codings that are supported in requests.">
+      <meta name="description" content="In HTTP, content codings allow for payload encodings such as for compression or integrity checks. In particular, the &#34;gzip&#34; content coding is widely used for payload data sent in response messages. Content codings can be used in request messages as well; however, discoverability is not on par with response messages. This document extends the HTTP &#34;Accept-Encoding&#34; header field for use in responses, to indicate the content codings that are supported in requests.">
    </head>
    <body onload="initFeedback();">
       <table class="header" id="rfc.headerblock">
@@ -534,7 +534,7 @@ ul p {
       <p>In HTTP, content codings allow for payload encodings such as for compression or integrity checks. In particular, the "gzip"
          content coding is widely used for payload data sent in response messages.
       </p>
-      <p>Content codings can be used in request messages as well, however discoverability is not on par with response messages. This
+      <p>Content codings can be used in request messages as well; however, discoverability is not on par with response messages. This
          document extends the HTTP "Accept-Encoding" header field for use in responses, to indicate the content codings that are supported
          in requests.
       </p>
@@ -607,7 +607,7 @@ ul p {
             </p>
          </div>
          <div id="rfc.section.1.p.2">
-            <p>Content codings can be used in request messages as well, however discoverability is not on par with response messages. This
+            <p>Content codings can be used in request messages as well; however, discoverability is not on par with response messages. This
                document extends the HTTP "Accept-Encoding" header field (<a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, <a href="rfc7231.html#header.accept-encoding" title="Accept-Encoding">Section 5.3.4</a>) for use in responses, to indicate the content codings that are supported in requests. It furthermore updates the definition
                of status code 415 (Unsupported Media Type) (<a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, <a href="rfc7231.html#status.415" title="415 Unsupported Media Type">Section 6.5.13</a>), recommending to include the "Accept-Encoding" header field when appropriate.
             </p>
@@ -639,7 +639,7 @@ ul p {
          </div>
          <div id="rfc.section.3.p.3">
             <p>Note that this information is specific to the associated request; the set of supported encodings might be different for other
-               resources on the same server, and could change over time or depend on other aspects of the request (such as the request method).
+               resources on the same server and could change over time or depend on other aspects of the request (such as the request method).
             </p>
          </div>
          <div id="rfc.section.3.p.4">
@@ -657,7 +657,7 @@ ul p {
             <p>It is expected that the most common use of "Accept-Encoding" in responses will have the 415 (Unsupported Media Type) status
                code, in response to optimistic use of a content coding by clients. However, the header field can also be used to indicate
                to clients that content codings are supported, to optimize future interactions. For example, a resource might include it in
-               a 2xx response when the request payload was big enough to justify use of a compression coding, but the client failed do so.
+               a 2xx response when the request payload was big enough to justify use of a compression coding but the client failed do so.
             </p>
          </div>
       </div>
@@ -709,7 +709,7 @@ Content-Type: text/plain
          </div>
          <div id="rfc.section.5.p.2">
             <p>Servers that do support some content codings are required to fail requests with unsupported content codings as well. To be
-               compliant with this specification, servers will need to use the status code 415 (Unsupported Media Type) to signal the problem,
+               compliant with this specification, servers will need to use the status code 415 (Unsupported Media Type) to signal the problem
                and will have to include an "Accept-Encoding" header field that enumerates the content codings that are supported. As the
                set of supported content codings is usually static and small, adding the header field ought to be trivial.
             </p>
