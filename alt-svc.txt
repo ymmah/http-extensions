@@ -319,7 +319,7 @@ Internet-Draft          HTTP Alternative Services          November 2015
    freshness lifetime with them; for example, the Alt-Svc header field
    uses the "ma" parameter.
 
-   Clients MAY choose to use an alternative service instead of the
+   Clients can choose to use an alternative service instead of the
    origin at any time when it is considered fresh; see Section 2.4 for
    specific recommendations.
 
@@ -369,7 +369,8 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
    Therefore, if a client becomes aware of an alternative service, the
    client SHOULD use that alternative service for all requests to the
-   associated origin as soon as it is available, provided that the
+   associated origin as soon as it is available, provided the
+   alternative service information is fresh (Section 2.2) and the
    security properties of the alternative service protocol are
    desirable, as compared to the existing connection.
 
@@ -383,7 +384,6 @@ Internet-Draft          HTTP Alternative Services          November 2015
    A client configured to use a proxy for a given request SHOULD NOT
    directly connect to an alternative service for it, but instead route
    it through that proxy.
-
 
 
 
@@ -1234,6 +1234,9 @@ Nottingham, et al.         Expires May 7, 2016                 [Page 22]
 Internet-Draft          HTTP Alternative Services          November 2015
 
 
+   Reconciling MAY/can vs. SHOULD (<https://github.com/httpwg/http-
+   extensions/issues/101>).
+
 Appendix B.  Acknowledgements
 
    Thanks to Adam Langley, Bence Beky, Eliot Lear, Erik Nygren, Guy
@@ -1265,9 +1268,6 @@ Authors' Addresses
 
    EMail: julian.reschke@greenbytes.de
    URI:   https://greenbytes.de/tech/webdav/
-
-
-
 
 
 

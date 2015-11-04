@@ -812,7 +812,7 @@ uri-host      = &lt;uri-host, see <a href="#RFC7230"><cite title="Hypertext Tran
                </p>
             </div>
             <div id="rfc.section.2.2.p.2">
-               <p>Clients <em class="bcp14">MAY</em> choose to use an alternative service instead of the origin at any time when it is considered fresh; see <a href="#switching" title="Using Alternative Services">Section&nbsp;2.4</a> for specific recommendations.
+               <p>Clients can choose to use an alternative service instead of the origin at any time when it is considered fresh; see <a href="#switching" title="Using Alternative Services">Section&nbsp;2.4</a> for specific recommendations.
                </p>
             </div>
             <div id="rfc.section.2.2.p.3">
@@ -854,8 +854,8 @@ uri-host      = &lt;uri-host, see <a href="#RFC7230"><cite title="Hypertext Tran
                </p>
             </div>
             <div id="rfc.section.2.4.p.2">
-               <p>Therefore, if a client becomes aware of an alternative service, the client <em class="bcp14">SHOULD</em> use that alternative service for all requests to the associated origin as soon as it is available, provided that the security
-                  properties of the alternative service protocol are desirable, as compared to the existing connection.
+               <p>Therefore, if a client becomes aware of an alternative service, the client <em class="bcp14">SHOULD</em> use that alternative service for all requests to the associated origin as soon as it is available, provided the alternative
+                  service information is fresh (<a href="#caching" title="Alternative Service Caching">Section&nbsp;2.2</a>) and the security properties of the alternative service protocol are desirable, as compared to the existing connection.
                </p>
             </div>
             <div id="rfc.section.2.4.p.3">
@@ -1637,6 +1637,10 @@ Alt-Used: alternate.example.net
             </div>
             <div id="rfc.section.A.10.p.5">
                <p>IANA procedure for alt-svc parameters (&lt;<a href="https://github.com/httpwg/http-extensions/issues/96">https://github.com/httpwg/http-extensions/issues/96</a>&gt;).
+               </p>
+            </div>
+            <div id="rfc.section.A.10.p.6">
+               <p>Reconciling MAY/can vs. SHOULD (&lt;<a href="https://github.com/httpwg/http-extensions/issues/101">https://github.com/httpwg/http-extensions/issues/101</a>&gt;).
                </p>
             </div>
          </div>
