@@ -4,8 +4,8 @@
 
 HTTP Working Group                                            J. Reschke
 Internet-Draft                                                greenbytes
-Intended status: Standards Track                        November 2, 2015
-Expires: May 5, 2016
+Intended status: Standards Track                        November 4, 2015
+Expires: May 7, 2016
 
 
   Hypertext Transfer Protocol (HTTP) Client-Initiated Content-Encoding
@@ -48,12 +48,12 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 5, 2016.
+   This Internet-Draft will expire on May 7, 2016.
 
 
 
 
-Reschke                    Expires May 5, 2016                  [Page 1]
+Reschke                    Expires May 7, 2016                  [Page 1]
 
 Internet-Draft                  HTTP CICE                  November 2015
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Reschke                    Expires May 5, 2016                  [Page 2]
+Reschke                    Expires May 7, 2016                  [Page 2]
 
 Internet-Draft                  HTTP CICE                  November 2015
 
@@ -165,7 +165,7 @@ Internet-Draft                  HTTP CICE                  November 2015
 
 
 
-Reschke                    Expires May 5, 2016                  [Page 3]
+Reschke                    Expires May 7, 2016                  [Page 3]
 
 Internet-Draft                  HTTP CICE                  November 2015
 
@@ -221,7 +221,7 @@ Internet-Draft                  HTTP CICE                  November 2015
 
 
 
-Reschke                    Expires May 5, 2016                  [Page 4]
+Reschke                    Expires May 7, 2016                  [Page 4]
 
 Internet-Draft                  HTTP CICE                  November 2015
 
@@ -277,7 +277,7 @@ Internet-Draft                  HTTP CICE                  November 2015
 
 
 
-Reschke                    Expires May 5, 2016                  [Page 5]
+Reschke                    Expires May 7, 2016                  [Page 5]
 
 Internet-Draft                  HTTP CICE                  November 2015
 
@@ -333,7 +333,7 @@ Internet-Draft                  HTTP CICE                  November 2015
 
 
 
-Reschke                    Expires May 5, 2016                  [Page 6]
+Reschke                    Expires May 7, 2016                  [Page 6]
 
 Internet-Draft                  HTTP CICE                  November 2015
 
@@ -389,16 +389,16 @@ Internet-Draft                  HTTP CICE                  November 2015
 
 
 
-Reschke                    Expires May 5, 2016                  [Page 7]
+Reschke                    Expires May 7, 2016                  [Page 7]
 
 Internet-Draft                  HTTP CICE                  November 2015
 
 
 Appendix A.  Acknowledgements
 
-   Thanks go to the members of the HTTPbis Working Group, namely Amos
-   Jeffries, Ben Campbell, Mark Nottingham, Pete Resnick, Stephen
-   Farrell, and Ted Hardie.
+   Thanks go to the Hypertext Transfer Protocol Working Group
+   participants, namely Amos Jeffries, Ben Campbell, Mark Nottingham,
+   Pete Resnick, Stephen Farrell, and Ted Hardie.
 
 Author's Address
 
@@ -445,4 +445,4 @@ Author's Address
 
 
 
-Reschke                    Expires May 5, 2016                  [Page 8]
+Reschke                    Expires May 7, 2016                  [Page 8]
