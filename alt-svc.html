@@ -1351,6 +1351,11 @@ Alt-Used: alternate.example.net
                   the user agent still directs traffic to the attacker even when not using the intermediary.
                </p>
             </div>
+            <div id="rfc.section.9.2.p.6">
+               <p>Implementations <em class="bcp14">MUST</em> perform any certificate-pinning validation (e.g. <a href="#RFC7469"><cite title="Public Key Pinning Extension for HTTP">[RFC7469]</cite></a>) on alternative services just as they would on direct connections to the origin. Implementations might also choose to add
+                  other requirements around which certificates are acceptable for alternative services.
+               </p>
+            </div>
          </div>
          <div id="changing-protocols">
             <h3 id="rfc.section.9.3"><a href="#rfc.section.9.3">9.3</a>&nbsp;<a href="#changing-protocols">Changing Protocols</a></h3>
@@ -1447,6 +1452,9 @@ Alt-Used: alternate.example.net
          <dt id="RFC6335">[RFC6335]</dt>
          <dd>Cotton, M., Eggert, L., Touch, J., Westerlund, M., and S. Cheshire, “<a href="https://tools.ietf.org/html/rfc6335">Internet Assigned Numbers Authority (IANA) Procedures for the Management of the Service Name and Transport Protocol Port Number
                Registry</a>”, RFC&nbsp;6335, <a href="http://dx.doi.org/10.17487/RFC6335">DOI&nbsp;10.17487/RFC6335</a>, August&nbsp;2011, &lt;<a href="http://www.rfc-editor.org/info/rfc6335">http://www.rfc-editor.org/info/rfc6335</a>&gt;.
+         </dd>
+         <dt id="RFC7469">[RFC7469]</dt>
+         <dd>Evans, C., Palmer, C., and R. Sleevi, “<a href="https://tools.ietf.org/html/rfc7469">Public Key Pinning Extension for HTTP</a>”, RFC&nbsp;7469, <a href="http://dx.doi.org/10.17487/RFC7469">DOI&nbsp;10.17487/RFC7469</a>, April&nbsp;2015, &lt;<a href="http://www.rfc-editor.org/info/rfc7469">http://www.rfc-editor.org/info/rfc7469</a>&gt;.
          </dd>
       </dl>
       <div id="change.log">
