@@ -1234,6 +1234,9 @@ Nottingham, et al.         Expires May 7, 2016                 [Page 22]
 Internet-Draft          HTTP Alternative Services          November 2015
 
 
+   Security for spoofed certs (<https://github.com/httpwg/http-
+   extensions/issues/98>).
+
    Reconciling MAY/can vs. SHOULD (<https://github.com/httpwg/http-
    extensions/issues/101>).
 
@@ -1268,9 +1271,6 @@ Authors' Addresses
 
    EMail: julian.reschke@greenbytes.de
    URI:   https://greenbytes.de/tech/webdav/
-
-
-
 
 
 
