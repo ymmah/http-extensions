@@ -1234,6 +1234,9 @@ Nottingham, et al.        Expires May 12, 2016                 [Page 22]
 Internet-Draft          HTTP Alternative Services          November 2015
 
 
+   Using alt-svc on localhost (no change to spec, see
+   <https://github.com/httpwg/http-extensions/issues/89>).
+
    IANA procedure for alt-svc parameters (<https://github.com/httpwg/
    http-extensions/issues/96>).
 
@@ -1271,9 +1274,6 @@ Authors' Addresses
 
    EMail: julian.reschke@greenbytes.de
    URI:   https://greenbytes.de/tech/webdav/
-
-
-
 
 
 
