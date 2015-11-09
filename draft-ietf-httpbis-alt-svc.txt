@@ -566,7 +566,7 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
      HTTP/1.1 200 OK
      Content-Type: text/html
-     Cache-Control: 600
+     Cache-Control: max-age=600
      Age: 30
      Alt-Svc: h2c=":8000"; ma=60
 
@@ -1243,12 +1243,15 @@ Internet-Draft          HTTP Alternative Services          November 2015
    Reconciling MAY/can vs. SHOULD (<https://github.com/httpwg/http-
    extensions/issues/101>).
 
+   Typo in alt-svc caching example (<https://github.com/httpwg/http-
+   extensions/issues/117>).
+
 Appendix B.  Acknowledgements
 
    Thanks to Adam Langley, Bence Beky, Eliot Lear, Erik Nygren, Guy
    Podjarny, Herve Ruellan, Martin Thomson, Matthew Kerwin, Mike Bishop,
-   Paul Hoffman, Richard Barnes, Stephen Farrell, Stephen Ludin, and
-   Will Chan for their feedback and suggestions.
+   Paul Hoffman, Richard Barnes, Richard Bradbury, Stephen Farrell,
+   Stephen Ludin, and Will Chan for their feedback and suggestions.
 
    The Alt-Svc header field was influenced by the design of the
    Alternate-Protocol header field in SPDY.
@@ -1274,9 +1277,6 @@ Authors' Addresses
 
    EMail: julian.reschke@greenbytes.de
    URI:   https://greenbytes.de/tech/webdav/
-
-
-
 
 
 

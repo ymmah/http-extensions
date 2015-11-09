@@ -1029,7 +1029,7 @@ parameter     = <a href="#imported.abnf" class="smpl">token</a> "=" ( <a href="#
             <div id="rfc.figure.u.10">
                <p>For example, a response:</p><pre class="text">HTTP/1.1 200 OK
 Content-Type: text/html
-Cache-Control: 600
+Cache-Control: max-age=600
 Age: 30
 Alt-Svc: h2c=":8000"; ma=60
 </pre><p>indicates that an alternative service is available and usable for the next 60 seconds. However, the response has already been
@@ -1659,13 +1659,18 @@ Alt-Used: alternate.example.net
                <p>Reconciling MAY/can vs. SHOULD (&lt;<a href="https://github.com/httpwg/http-extensions/issues/101">https://github.com/httpwg/http-extensions/issues/101</a>&gt;).
                </p>
             </div>
+            <div id="rfc.section.A.10.p.9">
+               <p>Typo in alt-svc caching example (&lt;<a href="https://github.com/httpwg/http-extensions/issues/117">https://github.com/httpwg/http-extensions/issues/117</a>&gt;).
+               </p>
+            </div>
          </div>
       </div>
       <div id="acknowledgements">
          <h2 id="rfc.section.unnumbered-1"><a href="#acknowledgements">Acknowledgements</a></h2>
          <div id="rfc.section.unnumbered-1.p.1">
             <p>Thanks to Adam Langley, Bence Beky, Eliot Lear, Erik Nygren, Guy Podjarny, Herve Ruellan, Martin Thomson, Matthew Kerwin,
-               Mike Bishop, Paul Hoffman, Richard Barnes, Stephen Farrell, Stephen Ludin, and Will Chan for their feedback and suggestions.
+               Mike Bishop, Paul Hoffman, Richard Barnes, Richard Bradbury, Stephen Farrell, Stephen Ludin, and Will Chan for their feedback
+               and suggestions.
             </p>
          </div>
          <div id="rfc.section.unnumbered-1.p.2">
