@@ -4,12 +4,12 @@
 
 HTTP Working Group                                               T. Bray
 Internet-Draft                                                Textuality
-Intended status: Standards Track                             August 2015
-Expires: February 2, 2016
+Intended status: Standards Track                       November 10, 2015
+Expires: May 13, 2016
 
 
              An HTTP Status Code to Report Legal Obstacles
-            draft-ietf-httpbis-legally-restricted-status-02
+            draft-ietf-httpbis-legally-restricted-status-03
 
 Abstract
 
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on February 2, 2016.
+   This Internet-Draft will expire on May 13, 2016.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Bray                    Expires February 2, 2016                [Page 1]
+Bray                      Expires May 13, 2016                  [Page 1]
 
-Internet-Draft               HTTP-status-451                 August 2015
+Internet-Draft               HTTP-status-451               November 2015
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -76,15 +76,16 @@ Table of Contents
    4.  Identifying Blocking Entities . . . . . . . . . . . . . . . .   3
    5.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
-   7.  Normative References  . . . . . . . . . . . . . . . . . . . .   4
+   7.  Normative References  . . . . . . . . . . . . . . . . . . . .   5
    Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .   5
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   5
 
 1.  Introduction
 
    This document specifies a Hypertext Transfer Protocol (HTTP) status
-   code for use when a server operator has a received a legal demand to
-   deny access to a resource.
+   code for use when a server operator has received a legal demand to
+   deny access to a resource or to a set of resources which includes the
+   requested resource.
 
    This status code can be used to provide transparency in circumstances
    where issues of law or public policy affect server operations.  This
@@ -108,10 +109,9 @@ Table of Contents
 
 
 
-
-Bray                    Expires February 2, 2016                [Page 2]
+Bray                      Expires May 13, 2016                  [Page 2]
 
-Internet-Draft               HTTP-status-451                 August 2015
+Internet-Draft               HTTP-status-451               November 2015
 
 
 3.  451 Unavailable For Legal Reasons
@@ -130,6 +130,7 @@ Internet-Draft               HTTP-status-451                 August 2015
 
 
    HTTP/1.1 451 Unavailable For Legal Reasons
+   Link: <https://spqr.example.org/legislatione>; rel="blocked-by"
    Content-Type: text/html
 
    <html>
@@ -160,15 +161,17 @@ Internet-Draft               HTTP-status-451                 August 2015
    As noted above, when an attempt to access a resource fails with
    status 451, the entity blocking access might or might not be the
    origin server.  There are a variety of entities in the resource-
+
+
+
+
+Bray                      Expires May 13, 2016                  [Page 3]
+
+Internet-Draft               HTTP-status-451               November 2015
+
+
    access path which could choose to deny access, for example ISPs,
    cache providers, and DNS servers.
-
-
-
-Bray                    Expires February 2, 2016                [Page 3]
-
-Internet-Draft               HTTP-status-451                 August 2015
-
 
    It is useful, when legal blockages occur, to be able to identify the
    entities actually implementing the blocking.
@@ -186,10 +189,8 @@ Internet-Draft               HTTP-status-451                 August 2015
 
 5.  Security Considerations
 
-5.1.  451 Unavailable for Legal Reasons
-
-   The 451 status code is optional; clients cannot rely upon its use.
-   It is possible that certain legal authorities might wish to avoid
+   Clients cannot rely upon the use of the 451 status code.  It is
+   possible that certain legal authorities might wish to avoid
    transparency, and not only demand the restriction of access to
    certain resources, but also avoid disclosing that the demand was
    made.
@@ -205,6 +206,26 @@ Internet-Draft               HTTP-status-451                 August 2015
 
    o  Specification: [ this document ]
 
+   The Link Relation Type Registry should updated with the following
+   entry:
+
+   o  Relation Name: blocked-by
+
+   o  Description: Identifies the entity blocking access to a resource
+      folllowing on receipt of a legal demand.
+
+   o  Reference: This document
+
+
+
+
+
+
+Bray                      Expires May 13, 2016                  [Page 4]
+
+Internet-Draft               HTTP-status-451               November 2015
+
+
 7.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
@@ -216,15 +237,6 @@ Internet-Draft               HTTP-status-451                 August 2015
               Resource Identifier (URI): Generic Syntax", STD 66,
               RFC 3986, DOI 10.17487/RFC3986, January 2005,
               <http://www.rfc-editor.org/info/rfc3986>.
-
-
-
-
-
-Bray                    Expires February 2, 2016                [Page 4]
-
-Internet-Draft               HTTP-status-451                 August 2015
-
 
    [RFC4084]  Klensin, J., "Terminology for Describing Internet
               Connectivity", BCP 104, RFC 4084, DOI 10.17487/RFC4084,
@@ -265,16 +277,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-Bray                    Expires February 2, 2016                [Page 5]
+Bray                      Expires May 13, 2016                  [Page 5]

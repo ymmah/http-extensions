@@ -288,7 +288,7 @@ ul p {
        content: "Internet-Draft";
   }
   @top-right {
-       content: "August 2015";
+       content: "November 2015";
   }
   @top-center {
        content: "HTTP-status-451";
@@ -297,7 +297,7 @@ ul p {
        content: "Bray";
   }
   @bottom-center {
-       content: "Expires February 2016";
+       content: "Expires May 13, 2016";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -330,8 +330,8 @@ ul p {
       <meta name="keywords" content="HTTP">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Bray, T.">
-      <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-legally-restricted-status-02">
-      <meta name="dct.issued" scheme="ISO8601" content="2015-08">
+      <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-legally-restricted-status-03">
+      <meta name="dct.issued" scheme="ISO8601" content="2015-11-10">
       <meta name="dct.abstract" content="This document specifies a Hypertext Transfer Protocol (HTTP) status code for use when resource access is denied as a consequence of legal demands.">
       <meta name="description" content="This document specifies a Hypertext Transfer Protocol (HTTP) status code for use when resource access is denied as a consequence of legal demands.">
    </head>
@@ -348,17 +348,17 @@ ul p {
             </tr>
             <tr>
                <td class="left">Intended status: Standards Track</td>
-               <td class="right">August 2015</td>
+               <td class="right">November 10, 2015</td>
             </tr>
             <tr>
-               <td class="left">Expires: February 2016</td>
+               <td class="left">Expires: May 13, 2016</td>
                <td class="right"></td>
             </tr>
          </tbody>
       </table>
       <div id="rfc.title">
          <h1>An HTTP Status Code to Report Legal Obstacles</h1>
-         <div class="filename">draft-ietf-httpbis-legally-restricted-status-02</div>
+         <div class="filename">draft-ietf-httpbis-legally-restricted-status-03</div>
       </div>
       <h2 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h2>
       <p>This document specifies a Hypertext Transfer Protocol (HTTP) status code for use when resource access is denied as a consequence
@@ -379,7 +379,7 @@ ul p {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire in February 2016.</p>
+         <p>This Internet-Draft will expire on May 13, 2016.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h2><a href="#rfc.copyrightnotice">Copyright Notice</a></h2>
@@ -409,8 +409,8 @@ ul p {
          <h2 id="rfc.section.1" class="np"><a href="#rfc.section.1">1.</a>&nbsp;Introduction
          </h2>
          <div id="rfc.section.1.p.1">
-            <p>This document specifies a Hypertext Transfer Protocol (HTTP) status code for use when a server operator has a received a legal
-               demand to deny access to a resource.
+            <p>This document specifies a Hypertext Transfer Protocol (HTTP) status code for use when a server operator has received a legal
+               demand to deny access to a resource or to a set of resources which includes the requested resource.
             </p>
          </div>
          <div id="rfc.section.1.p.2">
@@ -455,6 +455,7 @@ ul p {
          </div>
          <div id="rfc.figure.u.1"><pre class="text">
 HTTP/1.1 451 Unavailable For Legal Reasons
+Link: &lt;https://spqr.example.org/legislatione&gt;; rel="blocked-by"
 Content-Type: text/html
 
 &lt;html&gt;
@@ -509,15 +510,11 @@ Content-Type: text/html
       <div>
          <h2 id="rfc.section.5"><a href="#rfc.section.5">5.</a>&nbsp;Security Considerations
          </h2>
-         <div>
-            <h3 id="rfc.section.5.1"><a href="#rfc.section.5.1">5.1</a>&nbsp;451 Unavailable for Legal Reasons
-            </h3>
-            <div id="rfc.section.5.1.p.1">
-               <p>The 451 status code is optional; clients cannot rely upon its use. It is possible that certain legal authorities might wish
-                  to avoid transparency, and not only demand the restriction of access to certain resources, but also avoid disclosing that
-                  the demand was made.
-               </p>
-            </div>
+         <div id="rfc.section.5.p.1">
+            <p>Clients cannot rely upon the use of the 451 status code. It is possible that certain legal authorities might wish to avoid
+               transparency, and not only demand the restriction of access to certain resources, but also avoid disclosing that the demand
+               was made.
+            </p>
          </div>
       </div>
       <div>
@@ -531,6 +528,16 @@ Content-Type: text/html
                <li>Code: 451</li>
                <li>Description: Unavailable for Legal Reasons</li>
                <li>Specification: [ this document ]</li>
+            </ul>
+         </div>
+         <div id="rfc.section.6.p.3" class="avoidbreakafter">
+            <p>The Link Relation Type Registry should updated with the following entry:</p>
+         </div>
+         <div id="rfc.section.6.p.4">
+            <ul>
+               <li>Relation Name: blocked-by</li>
+               <li>Description: Identifies the entity blocking access to a resource folllowing on receipt of a legal demand.</li>
+               <li>Reference: This document</li>
             </ul>
          </div>
       </div>
