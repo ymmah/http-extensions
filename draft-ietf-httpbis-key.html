@@ -358,7 +358,7 @@ ul p {
        content: "Fielding & Nottingham";
   }
   @bottom-center {
-       content: "Expires May 13, 2016";
+       content: "Expires May 14, 2016";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -385,13 +385,14 @@ ul p {
       <link rel="Chapter" title="4 Security Considerations" href="#rfc.section.4">
       <link rel="Chapter" href="#rfc.section.5" title="5 References">
       <link rel="Appendix" title="A Acknowledgements" href="#rfc.section.A">
+      <link rel="Appendix" title="B Changes" href="#rfc.section.B">
       <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.753, 2015/10/05 19:01:29, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
       <meta name="keywords" content="content negotiation">
       <link rel="schema.dct" href="http://purl.org/dc/terms/">
       <meta name="dct.creator" content="Fielding, R.">
       <meta name="dct.creator" content="Nottingham, M.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-key-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2015-11-10">
+      <meta name="dct.issued" scheme="ISO8601" content="2015-11-11">
       <meta name="dct.abstract" content="The ‘Key’ header field for HTTP responses allows an origin server to describe the secondary cache key (RFC 7234, Section 4.1) for a resource, by conveying what is effectively a short algorithm that can be used upon later requests to determine if a stored response is reusable for a given request.Key has the advantage of avoiding an additional round trip for validation whenever a new request differs slightly, but not significantly, from prior requests.Key also informs user agents of the request characteristics that might result in different content, which can be useful if the user agent is not sending request header fields in order to reduce the risk of fingerprinting.">
       <meta name="description" content="The ‘Key’ header field for HTTP responses allows an origin server to describe the secondary cache key (RFC 7234, Section 4.1) for a resource, by conveying what is effectively a short algorithm that can be used upon later requests to determine if a stored response is reusable for a given request.Key has the advantage of avoiding an additional round trip for validation whenever a new request differs slightly, but not significantly, from prior requests.Key also informs user agents of the request characteristics that might result in different content, which can be useful if the user agent is not sending request header fields in order to reduce the risk of fingerprinting.">
    </head>
@@ -411,8 +412,8 @@ ul p {
                <td class="right">M. Nottingham</td>
             </tr>
             <tr>
-               <td class="left">Expires: May 13, 2016</td>
-               <td class="right">November 10, 2015</td>
+               <td class="left">Expires: May 14, 2016</td>
+               <td class="right">November 11, 2015</td>
             </tr>
          </tbody>
       </table>
@@ -444,7 +445,7 @@ ul p {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on May 13, 2016.</p>
+         <p>This Internet-Draft will expire on May 14, 2016.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h2><a href="#rfc.copyrightnotice">Copyright Notice</a></h2>
@@ -493,6 +494,10 @@ ul p {
                </ul>
             </li>
             <li><a href="#rfc.section.A">A.</a>&nbsp;&nbsp;&nbsp;<a href="#acknowledgements">Acknowledgements</a></li>
+            <li><a href="#rfc.section.B">B.</a>&nbsp;&nbsp;&nbsp;<a href="#changes">Changes</a><ul>
+                  <li><a href="#rfc.section.B.1">B.1</a>&nbsp;&nbsp;&nbsp;<a href="#since-00">Since -00</a></li>
+               </ul>
+            </li>
             <li><a href="#rfc.authors">Authors' Addresses</a></li>
          </ul>
       </div>
@@ -599,7 +604,7 @@ ul p {
   Key = 1#field-name *( ";" parameter )
 </pre></div>
          <div id="rfc.section.2.p.6">
-            <p>Note that, as per <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, parameter names are case-insensitive, and parameter values can be double-quoted strings (potentially with “"-escaped characters
+            <p>Note that, as per <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>, parameter names are case-insensitive, and parameter values can be double-quoted strings (potentially with “\“-escaped characters
                inside).
             </p>
          </div>
@@ -898,7 +903,7 @@ Key: Bar;div=5
 </pre></div>
                <div id="rfc.section.2.3.1.p.6" class="avoidbreakafter">
                   <p>indicates that the “Bar” header’s field value should be partitioned into groups of 5. Thus, the following field values would
-                     be considered the same (because, divided by 5, they all result in 1):
+                     be considered the same (because, divided by 5, they all result in 0):
                   </p>
                </div>
                <div id="rfc.figure.u.12"><pre>
@@ -1335,6 +1340,12 @@ Def: liam="678"         // '"678"'
          <h2 id="rfc.section.A" class="np"><a href="#rfc.section.A">A.</a>&nbsp;<a href="#acknowledgements">Acknowledgements</a></h2>
          <div id="rfc.section.A.p.1">
             <p>Thanks to Ilya Grigorik, Amos Jeffries and Yoav Weiss for their feedback.</p>
+         </div>
+      </div>
+      <div id="changes">
+         <h2 id="rfc.section.B"><a href="#rfc.section.B">B.</a>&nbsp;<a href="#changes">Changes</a></h2>
+         <div id="since-00">
+            <h3 id="rfc.section.B.1"><a href="#rfc.section.B.1">B.1</a>&nbsp;<a href="#since-00">Since -00</a></h3>
          </div>
       </div>
       <div class="avoidbreakinside">
