@@ -713,7 +713,7 @@ ul p {
                   <dd>Let <tt>secondary_key</tt> be an empty string.
                   </dd>
                   <dt>4)</dt>
-                  <dd>Create <tt>key_list</tt> by splitting <tt>key_value</tt> on “,” characters.
+                  <dd>Create <tt>key_list</tt> by splitting <tt>key_value</tt> on “,” characters, excepting “,” characters within quoted strings, as per <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a> Section 3.2.6..
                   </dd>
                   <dt>5)</dt>
                   <dd>For <tt>key_item</tt> in <tt>key_list</tt>: 
