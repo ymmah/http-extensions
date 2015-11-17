@@ -465,7 +465,7 @@ ul p {
        content: "Nottingham, et al.";
   }
   @bottom-center {
-       content: "Expires May 14, 2016";
+       content: "Expires May 20, 2016";
   }
   @bottom-right {
        content: "[Page " counter(page) "]";
@@ -505,7 +505,7 @@ ul p {
       <meta name="dct.creator" content="McManus, P.">
       <meta name="dct.creator" content="Reschke, J. F.">
       <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-alt-svc-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2015-11-11">
+      <meta name="dct.issued" scheme="ISO8601" content="2015-11-17">
       <meta name="dct.abstract" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
       <meta name="description" content="This document specifies &#34;alternative services&#34; for HTTP, which allow an origin's resources to be authoritatively available at a separate network location, possibly accessed with a different protocol configuration.">
    </head>
@@ -525,7 +525,7 @@ ul p {
                <td class="right">P. McManus</td>
             </tr>
             <tr>
-               <td class="left">Expires: May 14, 2016</td>
+               <td class="left">Expires: May 20, 2016</td>
                <td class="right">Mozilla</td>
             </tr>
             <tr>
@@ -538,7 +538,7 @@ ul p {
             </tr>
             <tr>
                <td class="left"></td>
-               <td class="right">November 11, 2015</td>
+               <td class="right">November 17, 2015</td>
             </tr>
          </tbody>
       </table>
@@ -567,7 +567,7 @@ ul p {
             documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
             in progress”.
          </p>
-         <p>This Internet-Draft will expire on May 14, 2016.</p>
+         <p>This Internet-Draft will expire on May 20, 2016.</p>
       </div>
       <div id="rfc.copyrightnotice">
          <h2><a href="#rfc.copyrightnotice">Copyright Notice</a></h2>
@@ -1071,7 +1071,7 @@ Alt-Svc: h2c=":8000"; ma=60
       <div id="frame">
          <h2 id="rfc.section.4"><a href="#rfc.section.4">4.</a>&nbsp;<a href="#frame">The ALTSVC HTTP/2 Frame</a></h2>
          <div id="rfc.section.4.p.1">
-            <p>The ALTSVC HTTP/2 frame (<a href="#RFC7540"><cite title="Hypertext Transfer Protocol version 2">[RFC7540]</cite></a>, <a href="https://tools.ietf.org/html/rfc7540#section-4" title="HTTP Frames">Section 4</a>) advertises the availability of an alternative service to an HTTP/2 client.
+            <p>The ALTSVC HTTP/2 frame (<a href="#RFC7540"><cite title="Hypertext Transfer Protocol version 2">[RFC7540]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7540.html#FramingLayer" title="HTTP Frames">Section 4</a>) advertises the availability of an alternative service to an HTTP/2 client.
             </p>
          </div>
          <div id="rfc.section.4.p.2">
@@ -1160,7 +1160,7 @@ Alt-Used: alternate.example.net
       <div id="status">
          <h2 id="rfc.section.6"><a href="#rfc.section.6">6.</a>&nbsp;<a href="#status">The 421 Misdirected Request HTTP Status Code</a></h2>
          <div id="rfc.section.6.p.1">
-            <p>The 421 (Misdirected Request) status code is defined in <a href="https://tools.ietf.org/html/rfc7540#section-9.1.2" title="The 421 (Misdirected Request) Status Code">Section 9.1.2</a> of <a href="#RFC7540"><cite title="Hypertext Transfer Protocol version 2">[RFC7540]</cite></a> to indicate that the current server instance is not authoritative for the requested resource. This can be used to indicate
+            <p>The 421 (Misdirected Request) status code is defined in <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7540.html#MisdirectedRequest" title="The 421 (Misdirected Request) Status Code">Section 9.1.2</a> of <a href="#RFC7540"><cite title="Hypertext Transfer Protocol version 2">[RFC7540]</cite></a> to indicate that the current server instance is not authoritative for the requested resource. This can be used to indicate
                that an alternative service is not authoritative; see <a href="#alternative" title="Alternative Services Concepts">Section&nbsp;2</a>).
             </p>
          </div>
@@ -1223,7 +1223,7 @@ Alt-Used: alternate.example.net
          <div id="alt-svc-frame-registration">
             <h3 id="rfc.section.7.2"><a href="#rfc.section.7.2">7.2</a>&nbsp;<a href="#alt-svc-frame-registration">The ALTSVC HTTP/2 Frame Type</a></h3>
             <div id="rfc.section.7.2.p.1">
-               <p>This document registers the ALTSVC frame type in the HTTP/2 Frame Types registry (<a href="#RFC7540"><cite title="Hypertext Transfer Protocol version 2">[RFC7540]</cite></a>, <a href="https://tools.ietf.org/html/rfc7540#section-11.2" title="Frame Type Registry">Section 11.2</a>). 
+               <p>This document registers the ALTSVC frame type in the HTTP/2 Frame Types registry (<a href="#RFC7540"><cite title="Hypertext Transfer Protocol version 2">[RFC7540]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7540.html#iana-frames" title="Frame Type Registry">Section 11.2</a>). 
                </p>
                <ul class="empty">
                   <li>Frame Type: ALTSVC</li>
@@ -1395,8 +1395,32 @@ Alt-Used: alternate.example.net
          <div id="confusion-regarding-request-scheme">
             <h3 id="rfc.section.9.5"><a href="#rfc.section.9.5">9.5</a>&nbsp;<a href="#confusion-regarding-request-scheme">Confusion Regarding Request Scheme</a></h3>
             <div id="rfc.section.9.5.p.1">
-               <p>Alternative Services <em class="bcp14">MUST NOT</em> be advertised for a protocol that is not designed to carry the scheme. In particular, HTTP/1.1 over TLS cannot safely carry
-                  requests for http resources.
+               <p>Some server-side HTTP applications make assumptions about security based upon connection context; for example, equating being
+                  served upon port 443 with the use of a HTTPS URL (and the various security properties that implies).
+               </p>
+            </div>
+            <div id="rfc.section.9.5.p.2">
+               <p>This affects not only the security properties of the connection itself, but also the state of the client at the other end
+                  of it; for example, a Web browser treats HTTPS URLs differently than HTTP URLs in many ways, not just for purposes of protocol
+                  handling.
+               </p>
+            </div>
+            <div id="rfc.section.9.5.p.3">
+               <p>Since one of the uses of Alternative Services is to allow a connection to be migrated to a different protocol and port, these
+                  applications can become confused about the security properties of a given connection, sending information (e.g., cookies,
+                  content) that is intended for a secure context (e.g., a HTTPS URL) to a client that is not treating it as one.
+               </p>
+            </div>
+            <div id="rfc.section.9.5.p.4">
+               <p>This risk can be mitigated in servers by using the URL scheme explicitly carried by the protocol (e.g., ":scheme" in HTTP/2
+                  or the "absolute form" of the request target in HTTP/1.1) as an indication of security context, instead of other connection
+                  properties (<a href="#RFC7540"><cite title="Hypertext Transfer Protocol version 2">[RFC7540]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7540.html#HttpRequest" title="Request Pseudo-Header Fields">Section 8.1.2.3</a> and <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, <a href="https://svn.tools.ietf.org/svn/wg/httpbis/specs/rfc7230.html#absolute-form" title="absolute-form">Section 5.3.2</a>).
+               </p>
+            </div>
+            <div id="rfc.section.9.5.p.5">
+               <p>When the protocol does not explicitly carry the scheme (e.g., as is usually the case for HTTP/1.1 over TLS, servers can, mitigate
+                  this risk by either assuming that all requests have an insecure context, or by refraining from advertising alternative services
+                  for insecure schemes (such as HTTP).
                </p>
             </div>
          </div>
@@ -1656,10 +1680,18 @@ Alt-Used: alternate.example.net
                </p>
             </div>
             <div id="rfc.section.A.10.p.8">
-               <p>Reconciling MAY/can vs. SHOULD (&lt;<a href="https://github.com/httpwg/http-extensions/issues/101">https://github.com/httpwg/http-extensions/issues/101</a>&gt;).
+               <p>Alt-svc from https (1.1) to https (1.1) (&lt;<a href="https://github.com/httpwg/http-extensions/issues/91">https://github.com/httpwg/http-extensions/issues/91</a>&gt;).
                </p>
             </div>
             <div id="rfc.section.A.10.p.9">
+               <p>Alt-svc vs the ability to convey the scheme inside the protocol (&lt;<a href="https://github.com/httpwg/http-extensions/issues/92">https://github.com/httpwg/http-extensions/issues/92</a>&gt;).
+               </p>
+            </div>
+            <div id="rfc.section.A.10.p.10">
+               <p>Reconciling MAY/can vs. SHOULD (&lt;<a href="https://github.com/httpwg/http-extensions/issues/101">https://github.com/httpwg/http-extensions/issues/101</a>&gt;).
+               </p>
+            </div>
+            <div id="rfc.section.A.10.p.11">
                <p>Typo in alt-svc caching example (&lt;<a href="https://github.com/httpwg/http-extensions/issues/117">https://github.com/httpwg/http-extensions/issues/117</a>&gt;).
                </p>
             </div>

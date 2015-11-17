@@ -5,8 +5,8 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Experimental                                 M. Thomson
-Expires: May 14, 2016                                            Mozilla
-                                                       November 11, 2015
+Expires: May 20, 2016                                            Mozilla
+                                                       November 17, 2015
 
 
                     Opportunistic Security for HTTP
@@ -33,7 +33,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 14, 2016.
+   This Internet-Draft will expire on May 20, 2016.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Nottingham & Thomson      Expires May 14, 2016                  [Page 1]
+Nottingham & Thomson      Expires May 20, 2016                  [Page 1]
 
 Internet-Draft         Opportunistic HTTP Security         November 2015
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Nottingham & Thomson      Expires May 14, 2016                  [Page 2]
+Nottingham & Thomson      Expires May 20, 2016                  [Page 2]
 
 Internet-Draft         Opportunistic HTTP Security         November 2015
 
@@ -165,7 +165,7 @@ Internet-Draft         Opportunistic HTTP Security         November 2015
 
 
 
-Nottingham & Thomson      Expires May 14, 2016                  [Page 3]
+Nottingham & Thomson      Expires May 20, 2016                  [Page 3]
 
 Internet-Draft         Opportunistic HTTP Security         November 2015
 
@@ -221,7 +221,7 @@ Internet-Draft         Opportunistic HTTP Security         November 2015
 
 
 
-Nottingham & Thomson      Expires May 14, 2016                  [Page 4]
+Nottingham & Thomson      Expires May 20, 2016                  [Page 4]
 
 Internet-Draft         Opportunistic HTTP Security         November 2015
 
@@ -277,7 +277,7 @@ Internet-Draft         Opportunistic HTTP Security         November 2015
 
 
 
-Nottingham & Thomson      Expires May 14, 2016                  [Page 5]
+Nottingham & Thomson      Expires May 20, 2016                  [Page 5]
 
 Internet-Draft         Opportunistic HTTP Security         November 2015
 
@@ -333,7 +333,7 @@ Internet-Draft         Opportunistic HTTP Security         November 2015
 
 
 
-Nottingham & Thomson      Expires May 14, 2016                  [Page 6]
+Nottingham & Thomson      Expires May 20, 2016                  [Page 6]
 
 Internet-Draft         Opportunistic HTTP Security         November 2015
 
@@ -389,7 +389,7 @@ Internet-Draft         Opportunistic HTTP Security         November 2015
 
 
 
-Nottingham & Thomson      Expires May 14, 2016                  [Page 7]
+Nottingham & Thomson      Expires May 20, 2016                  [Page 7]
 
 Internet-Draft         Opportunistic HTTP Security         November 2015
 
@@ -445,7 +445,7 @@ Internet-Draft         Opportunistic HTTP Security         November 2015
 
 
 
-Nottingham & Thomson      Expires May 14, 2016                  [Page 8]
+Nottingham & Thomson      Expires May 20, 2016                  [Page 8]
 
 Internet-Draft         Opportunistic HTTP Security         November 2015
 
@@ -501,7 +501,7 @@ Authors' Addresses
 
 
 
-Nottingham & Thomson      Expires May 14, 2016                  [Page 9]
+Nottingham & Thomson      Expires May 20, 2016                  [Page 9]
 
 Internet-Draft         Opportunistic HTTP Security         November 2015
 
@@ -557,4 +557,4 @@ Internet-Draft         Opportunistic HTTP Security         November 2015
 
 
 
-Nottingham & Thomson      Expires May 14, 2016                 [Page 10]
+Nottingham & Thomson      Expires May 20, 2016                 [Page 10]

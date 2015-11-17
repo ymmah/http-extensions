@@ -5,10 +5,10 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft                                                    Akamai
 Intended status: Standards Track                              P. McManus
-Expires: May 14, 2016                                            Mozilla
+Expires: May 20, 2016                                            Mozilla
                                                               J. Reschke
                                                               greenbytes
-                                                       November 11, 2015
+                                                       November 17, 2015
 
 
                        HTTP Alternative Services
@@ -49,11 +49,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 14, 2016.
+   This Internet-Draft will expire on May 20, 2016.
 
 
 
-Nottingham, et al.        Expires May 14, 2016                  [Page 1]
+Nottingham, et al.        Expires May 20, 2016                  [Page 1]
 
 Internet-Draft          HTTP Alternative Services          November 2015
 
@@ -100,16 +100,16 @@ Table of Contents
      9.3.  Changing Protocols  . . . . . . . . . . . . . . . . . . .  16
      9.4.  Tracking Clients Using Alternative Services . . . . . . .  17
      9.5.  Confusion Regarding Request Scheme  . . . . . . . . . . .  17
-   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  17
-     10.1.  Normative References . . . . . . . . . . . . . . . . . .  17
-     10.2.  Informative References . . . . . . . . . . . . . . . . .  18
+   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  18
+     10.1.  Normative References . . . . . . . . . . . . . . . . . .  18
+     10.2.  Informative References . . . . . . . . . . . . . . . . .  19
    Appendix A.  Change Log (to be removed by RFC Editor before
                 publication) . . . . . . . . . . . . . . . . . . . .  20
      A.1.  Since draft-nottingham-httpbis-alt-svc-05 . . . . . . . .  20
 
 
 
-Nottingham, et al.        Expires May 14, 2016                  [Page 2]
+Nottingham, et al.        Expires May 20, 2016                  [Page 2]
 
 Internet-Draft          HTTP Alternative Services          November 2015
 
@@ -165,7 +165,7 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 14, 2016                  [Page 3]
+Nottingham, et al.        Expires May 20, 2016                  [Page 3]
 
 Internet-Draft          HTTP Alternative Services          November 2015
 
@@ -221,7 +221,7 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 14, 2016                  [Page 4]
+Nottingham, et al.        Expires May 20, 2016                  [Page 4]
 
 Internet-Draft          HTTP Alternative Services          November 2015
 
@@ -277,7 +277,7 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 14, 2016                  [Page 5]
+Nottingham, et al.        Expires May 20, 2016                  [Page 5]
 
 Internet-Draft          HTTP Alternative Services          November 2015
 
@@ -333,7 +333,7 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 14, 2016                  [Page 6]
+Nottingham, et al.        Expires May 20, 2016                  [Page 6]
 
 Internet-Draft          HTTP Alternative Services          November 2015
 
@@ -389,7 +389,7 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 14, 2016                  [Page 7]
+Nottingham, et al.        Expires May 20, 2016                  [Page 7]
 
 Internet-Draft          HTTP Alternative Services          November 2015
 
@@ -445,7 +445,7 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 14, 2016                  [Page 8]
+Nottingham, et al.        Expires May 20, 2016                  [Page 8]
 
 Internet-Draft          HTTP Alternative Services          November 2015
 
@@ -501,7 +501,7 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 14, 2016                  [Page 9]
+Nottingham, et al.        Expires May 20, 2016                  [Page 9]
 
 Internet-Draft          HTTP Alternative Services          November 2015
 
@@ -557,7 +557,7 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 14, 2016                 [Page 10]
+Nottingham, et al.        Expires May 20, 2016                 [Page 10]
 
 Internet-Draft          HTTP Alternative Services          November 2015
 
@@ -613,7 +613,7 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 14, 2016                 [Page 11]
+Nottingham, et al.        Expires May 20, 2016                 [Page 11]
 
 Internet-Draft          HTTP Alternative Services          November 2015
 
@@ -669,7 +669,7 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 14, 2016                 [Page 12]
+Nottingham, et al.        Expires May 20, 2016                 [Page 12]
 
 Internet-Draft          HTTP Alternative Services          November 2015
 
@@ -725,7 +725,7 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 14, 2016                 [Page 13]
+Nottingham, et al.        Expires May 20, 2016                 [Page 13]
 
 Internet-Draft          HTTP Alternative Services          November 2015
 
@@ -781,7 +781,7 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 14, 2016                 [Page 14]
+Nottingham, et al.        Expires May 20, 2016                 [Page 14]
 
 Internet-Draft          HTTP Alternative Services          November 2015
 
@@ -837,7 +837,7 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 14, 2016                 [Page 15]
+Nottingham, et al.        Expires May 20, 2016                 [Page 15]
 
 Internet-Draft          HTTP Alternative Services          November 2015
 
@@ -893,7 +893,7 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 14, 2016                 [Page 16]
+Nottingham, et al.        Expires May 20, 2016                 [Page 16]
 
 Internet-Draft          HTTP Alternative Services          November 2015
 
@@ -924,9 +924,41 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 9.5.  Confusion Regarding Request Scheme
 
-   Alternative Services MUST NOT be advertised for a protocol that is
-   not designed to carry the scheme.  In particular, HTTP/1.1 over TLS
-   cannot safely carry requests for http resources.
+   Some server-side HTTP applications make assumptions about security
+   based upon connection context; for example, equating being served
+   upon port 443 with the use of a HTTPS URL (and the various security
+   properties that implies).
+
+   This affects not only the security properties of the connection
+   itself, but also the state of the client at the other end of it; for
+   example, a Web browser treats HTTPS URLs differently than HTTP URLs
+   in many ways, not just for purposes of protocol handling.
+
+   Since one of the uses of Alternative Services is to allow a
+   connection to be migrated to a different protocol and port, these
+   applications can become confused about the security properties of a
+   given connection, sending information (e.g., cookies, content) that
+   is intended for a secure context (e.g., a HTTPS URL) to a client that
+   is not treating it as one.
+
+   This risk can be mitigated in servers by using the URL scheme
+   explicitly carried by the protocol (e.g., ":scheme" in HTTP/2 or the
+   "absolute form" of the request target in HTTP/1.1) as an indication
+   of security context, instead of other connection properties
+   ([RFC7540], Section 8.1.2.3 and [RFC7230], Section 5.3.2).
+
+
+
+Nottingham, et al.        Expires May 20, 2016                 [Page 17]
+
+Internet-Draft          HTTP Alternative Services          November 2015
+
+
+   When the protocol does not explicitly carry the scheme (e.g., as is
+   usually the case for HTTP/1.1 over TLS, servers can, mitigate this
+   risk by either assuming that all requests have an insecure context,
+   or by refraining from advertising alternative services for insecure
+   schemes (such as HTTP).
 
 10.  References
 
@@ -946,13 +978,6 @@ Internet-Draft          HTTP Alternative Services          November 2015
               IANA Considerations Section in RFCs", BCP 26, RFC 5226,
               DOI 10.17487/RFC5226, May 2008,
               <http://www.rfc-editor.org/info/rfc5226>.
-
-
-
-Nottingham, et al.        Expires May 14, 2016                 [Page 17]
-
-Internet-Draft          HTTP Alternative Services          November 2015
-
 
    [RFC5234]  Crocker, D. and P. Overell, "Augmented BNF for Syntax
               Specifications: ABNF", STD 68, RFC 5234,
@@ -976,6 +1001,14 @@ Internet-Draft          HTTP Alternative Services          November 2015
               Protocol (HTTP/1.1): Message Syntax and Routing",
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
               <http://www.rfc-editor.org/info/rfc7230>.
+
+
+
+
+Nottingham, et al.        Expires May 20, 2016                 [Page 18]
+
+Internet-Draft          HTTP Alternative Services          November 2015
+
 
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
@@ -1003,13 +1036,6 @@ Internet-Draft          HTTP Alternative Services          November 2015
               DOI 10.17487/RFC5246, August 2008,
               <http://www.rfc-editor.org/info/rfc5246>.
 
-
-
-Nottingham, et al.        Expires May 14, 2016                 [Page 18]
-
-Internet-Draft          HTTP Alternative Services          November 2015
-
-
    [RFC6335]  Cotton, M., Eggert, L., Touch, J., Westerlund, M., and S.
               Cheshire, "Internet Assigned Numbers Authority (IANA)
               Procedures for the Management of the Service Name and
@@ -1035,33 +1061,7 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Nottingham, et al.        Expires May 14, 2016                 [Page 19]
+Nottingham, et al.        Expires May 20, 2016                 [Page 19]
 
 Internet-Draft          HTTP Alternative Services          November 2015
 
@@ -1117,7 +1117,7 @@ A.5.  Since draft-ietf-httpbis-alt-svc-03
 
 
 
-Nottingham, et al.        Expires May 14, 2016                 [Page 20]
+Nottingham, et al.        Expires May 20, 2016                 [Page 20]
 
 Internet-Draft          HTTP Alternative Services          November 2015
 
@@ -1173,7 +1173,7 @@ A.9.  Since draft-ietf-httpbis-alt-svc-07
 
 
 
-Nottingham, et al.        Expires May 14, 2016                 [Page 21]
+Nottingham, et al.        Expires May 20, 2016                 [Page 21]
 
 Internet-Draft          HTTP Alternative Services          November 2015
 
@@ -1229,7 +1229,7 @@ A.10.  Since draft-ietf-httpbis-alt-svc-08
 
 
 
-Nottingham, et al.        Expires May 14, 2016                 [Page 22]
+Nottingham, et al.        Expires May 20, 2016                 [Page 22]
 
 Internet-Draft          HTTP Alternative Services          November 2015
 
@@ -1239,6 +1239,12 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
    IANA procedure for alt-svc parameters (<https://github.com/httpwg/
    http-extensions/issues/96>).
+
+   Alt-svc from https (1.1) to https (1.1) (<https://github.com/httpwg/
+   http-extensions/issues/91>).
+
+   Alt-svc vs the ability to convey the scheme inside the protocol
+   (<https://github.com/httpwg/http-extensions/issues/92>).
 
    Reconciling MAY/can vs. SHOULD (<https://github.com/httpwg/http-
    extensions/issues/101>).
@@ -1272,6 +1278,18 @@ Authors' Addresses
    URI:   https://mozillians.org/u/pmcmanus/
 
 
+
+
+
+
+
+
+
+Nottingham, et al.        Expires May 20, 2016                 [Page 23]
+
+Internet-Draft          HTTP Alternative Services          November 2015
+
+
    Julian F. Reschke
    greenbytes GmbH
 
@@ -1285,4 +1303,42 @@ Authors' Addresses
 
 
 
-Nottingham, et al.        Expires May 14, 2016                 [Page 23]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Nottingham, et al.        Expires May 20, 2016                 [Page 24]
