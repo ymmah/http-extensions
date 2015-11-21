@@ -689,7 +689,7 @@ Internet-Draft          HTTP Alternative Services          November 2015
    traffic, since introducing this information after a protocol is in
    use has proven to be problematic.
 
-   When using an alternative service, clients SHOULD include a Alt-Used
+   When using an alternative service, clients SHOULD include an Alt-Used
    header field in all requests.
 
    As the Alt-Used header field might be used by the server for tracking
@@ -1254,14 +1254,16 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 A.11.  Since draft-ietf-httpbis-alt-svc-09
 
-   None yet.
+   Editorial improvements (<https://github.com/httpwg/http-extensions/
+   issues/120>).
 
 Appendix B.  Acknowledgements
 
    Thanks to Adam Langley, Bence Beky, Eliot Lear, Erik Nygren, Guy
-   Podjarny, Herve Ruellan, Martin Thomson, Matthew Kerwin, Mike Bishop,
-   Paul Hoffman, Richard Barnes, Richard Bradbury, Stephen Farrell,
-   Stephen Ludin, and Will Chan for their feedback and suggestions.
+   Podjarny, Herve Ruellan, Lucas Pardue, Martin Thomson, Matthew
+   Kerwin, Mike Bishop, Paul Hoffman, Richard Barnes, Richard Bradbury,
+   Stephen Farrell, Stephen Ludin, and Will Chan for their feedback and
+   suggestions.
 
    The Alt-Svc header field was influenced by the design of the
    Alternate-Protocol header field in SPDY.
@@ -1280,8 +1282,6 @@ Authors' Addresses
 
    EMail: mcmanus@ducksong.com
    URI:   https://mozillians.org/u/pmcmanus/
-
-
 
 
 
