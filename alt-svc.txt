@@ -16,7 +16,7 @@ Expires: May 25, 2016                                            Mozilla
 
 Abstract
 
-   This document specifies "alternative services" for HTTP, which allow
+   This document specifies "Alternative Services" for HTTP, which allow
    an origin's resources to be authoritatively available at a separate
    network location, possibly accessed with a different protocol
    configuration.
@@ -195,8 +195,8 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 2.  Alternative Services Concepts
 
-   This specification defines a new concept in HTTP, the "alternative
-   service".  When an origin (see [RFC6454]) has resources that are
+   This specification defines a new concept in HTTP, the "Alternative
+   Service".  When an origin (see [RFC6454]) has resources that are
    accessible through a different protocol / host / port combination, it
    is said to have an alternative service available.
 
@@ -1255,7 +1255,8 @@ Internet-Draft          HTTP Alternative Services          November 2015
 A.11.  Since draft-ietf-httpbis-alt-svc-09
 
    Editorial improvements (<https://github.com/httpwg/http-extensions/
-   issues/120>, <https://github.com/httpwg/http-extensions/issues/122>).
+   issues/118>, <https://github.com/httpwg/http-extensions/issues/120>,
+   <https://github.com/httpwg/http-extensions/issues/122>).
 
 Appendix B.  Acknowledgements
 
@@ -1277,11 +1278,10 @@ Authors' Addresses
    URI:   https://www.mnot.net/
 
 
-   Patrick McManus
-   Mozilla
 
-   EMail: mcmanus@ducksong.com
-   URI:   https://mozillians.org/u/pmcmanus/
+
+
+
 
 
 
@@ -1290,18 +1290,18 @@ Nottingham, et al.        Expires May 25, 2016                 [Page 23]
 Internet-Draft          HTTP Alternative Services          November 2015
 
 
+   Patrick McManus
+   Mozilla
+
+   EMail: mcmanus@ducksong.com
+   URI:   https://mozillians.org/u/pmcmanus/
+
+
    Julian F. Reschke
    greenbytes GmbH
 
    EMail: julian.reschke@greenbytes.de
    URI:   https://greenbytes.de/tech/webdav/
-
-
-
-
-
-
-
 
 
 
