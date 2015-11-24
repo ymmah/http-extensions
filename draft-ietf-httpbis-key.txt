@@ -872,6 +872,8 @@ Appendix B.  Changes
 
 B.1.  Since -00
 
+   o  Issue 108 (field-name cardinality) closed with no action.
+
 Authors' Addresses
 
    Roy T. Fielding
@@ -885,8 +887,6 @@ Authors' Addresses
 
    Email: mnot@mnot.net
    URI:   https://www.mnot.net/
-
-
 
 
 
