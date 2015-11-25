@@ -1,839 +1,124 @@
 <!DOCTYPE html
-  PUBLIC "-//W3C//DTD HTML 4.01//EN">
-<html lang="en">
-   <head profile="http://dublincore.org/documents/2008/08/04/dc-html/">
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <title>HTTP Client Hints</title><style type="text/css" title="Xml2Rfc (sans serif)">
-a {
-  text-decoration: none;
-}
-a.smpl {
-  color: black;
-}
-a:hover {
-  text-decoration: underline;
-}
-a:active {
-  text-decoration: underline;
-}
-address {
-  margin-top: 1em;
-  margin-left: 2em;
-  font-style: normal;
-}
-body {
-  color: black;
-  font-family: cambria, georgia, serif;
-  font-size: 12pt;
-  margin: 2em auto;
-  max-width: 1000px;
-}
-samp, tt, code, pre {
-  font-family: consolas, monaco, monospace;
-}
-cite {
-  font-style: normal;
-}
-dl {
-  margin-left: 2em;
-}
-dl > dt {
-  float: left;
-  margin-right: 1em;
-}
-dl.nohang > dt {
-  float: none;
-}
-dl > dd {
-  margin-bottom: .5em;
-}
-dl.compact > dd {
-  margin-bottom: .0em;
-}
-dl > dd > dl {
-  margin-top: 0.5em;
-}
-ul.empty {
-  list-style-type: none;
-}
-ul.empty li {
-  margin-top: .5em;
-}
-dl p {
-  margin-left: 0em;
-}
-dl.reference > dt {
-  font-weight: bold;
-}
-dl.reference > dd {
-  margin-left: 6em;
-}
-h1 {
-  color: green;
-  font-size: 150%;
-  line-height: 18pt;
-  font-weight: bold;
-  text-align: center;
-  margin-top: 36pt;
-  margin-bottom: 0pt;
-}
-h2 {
-  font-size: 130%;
-  line-height: 21pt;
-  page-break-after: avoid;
-}
-h2.np {
-  page-break-before: always;
-}
-h3 {
-  font-size: 120%;
-  line-height: 15pt;
-  page-break-after: avoid;
-}
-h4 {
-  font-size: 110%;
-  page-break-after: avoid;
-}
-h5, h6 {
-  page-break-after: avoid;
-}
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-  color: black;
-}
-img {
-  margin-left: 3em;
-}
-li {
-  margin-left: 2em;
-}
-ol {
-  margin-left: 2em;
-}
-ol.la {
-  list-style-type: lower-alpha;
-}
-ol.ua {
-  list-style-type: upper-alpha;
-}
-ol p {
-  margin-left: 0em;
-}
-p {
-  margin-left: 2em;
-}
-pre {
-  font-size: 11pt;
-  margin-left: 3em;
-  background-color: lightyellow;
-  padding: .25em;
-  page-break-inside: avoid;
-}
-pre.text2 {
-  border-style: dotted;
-  border-width: 1px;
-  background-color: #f0f0f0;
-}
-pre.inline {
-  background-color: white;
-  padding: 0em;
-  page-break-inside: auto;
-}
-pre.text {
-  border-style: dotted;
-  border-width: 1px;
-  background-color: #f8f8f8;
-}
-pre.drawing {
-  border-style: solid;
-  border-width: 1px;
-  background-color: #f8f8f8;
-  padding: 2em;
-}
-table {
-  margin-left: 2em;
-}
-table.header {
-  border-spacing: 1px;
-  width: 95%;
-  font-size: 11pt;
-  color: white;
-}
-td.top {
-  vertical-align: top;
-}
-td.topnowrap {
-  vertical-align: top;
-  white-space: nowrap;
-}
-table.header td {
-  background-color: gray;
-  width: 50%;
-}
-thead {
-  display:table-header-group;
-}
-ul.toc, ul.toc ul {
-  list-style: none;
-  margin-left: 1.5em;
-  padding-left: 0em;
-}
-ul.toc li {
-  line-height: 150%;
-  font-weight: bold;
-  margin-left: 0em;
-}
-ul.toc li li {
-  line-height: normal;
-  font-weight: normal;
-  font-size: 11pt;
-  margin-left: 0em;
-}
-li.excluded {
-  font-size: 0pt;
-}
-ul p {
-  margin-left: 0em;
-}
-.filename, h1, h2, h3, h4 {
-  font-family: candara, calibri, segoe, optima, arial, sans-serif;
-}
-
-.comment {
-  background-color: yellow;
-}
-.center {
-  text-align: center;
-}
-.error {
-  color: red;
-  font-style: italic;
-  font-weight: bold;
-}
-.figure {
-  font-weight: bold;
-  text-align: center;
-  font-size: 10pt;
-}
-.filename {
-  color: #333333;
-  font-size: 112%;
-  font-weight: bold;
-  line-height: 21pt;
-  text-align: center;
-  margin-top: 0pt;
-}
-.fn {
-  font-weight: bold;
-}
-.left {
-  text-align: left;
-}
-.right {
-  text-align: right;
-}
-.warning {
-  font-size: 130%;
-  background-color: yellow;
-}
-
-@media screen {
-  pre.text, pre.text2 {
-    width: 69em;
-  }
-}
-
-@media print {
-  .noprint {
-    display: none;
-  }
-
-  a {
-    color: black;
-    text-decoration: none;
-  }
-
-  table.header {
-    width: 90%;
-  }
-
-  td.header {
-    width: 50%;
-    color: black;
-    background-color: white;
-    vertical-align: top;
-    font-size: 110%;
-  }
-
-  ul.toc a:last-child::after {
-    content: leader('.') target-counter(attr(href), page);
-  }
-
-  ul.ind li li a {
-    content: target-counter(attr(href), page);
-  }
-
-  pre {
-    font-size: 10pt;
-  }
-
-  .print2col {
-    column-count: 2;
-    -moz-column-count: 2;
-    column-fill: auto;
-  }
-}
-
-@page {
-  @top-left {
-       content: "Internet-Draft";
-  }
-  @top-right {
-       content: "November 2015";
-  }
-  @top-center {
-       content: "HTTP Client Hints";
-  }
-  @bottom-left {
-       content: "Grigorik";
-  }
-  @bottom-center {
-       content: "Expires May 28, 2016";
-  }
-  @bottom-right {
-       content: "[Page " counter(page) "]";
-  }
-}
-
-@page:first {
-    @top-left {
-      content: normal;
-    }
-    @top-right {
-      content: normal;
-    }
-    @top-center {
-      content: normal;
-    }
-}
-</style><link rel="Contents" href="#rfc.toc">
-      <link rel="Author" href="#rfc.authors">
-      <link rel="Copyright" href="#rfc.copyrightnotice">
-      <link rel="Chapter" title="1 Introduction" href="#rfc.section.1">
-      <link rel="Chapter" title="2 Client Hint Request Header Fields" href="#rfc.section.2">
-      <link rel="Chapter" title="3 The DPR Client Hint" href="#rfc.section.3">
-      <link rel="Chapter" title="4 The Width Client Hint" href="#rfc.section.4">
-      <link rel="Chapter" title="5 The Viewport-Width Client Hint" href="#rfc.section.5">
-      <link rel="Chapter" title="6 The Downlink Client Hint" href="#rfc.section.6">
-      <link rel="Chapter" title="7 The Save-Data Hint" href="#rfc.section.7">
-      <link rel="Chapter" title="8 Examples" href="#rfc.section.8">
-      <link rel="Chapter" title="9 Security Considerations" href="#rfc.section.9">
-      <link rel="Chapter" title="10 IANA Considerations" href="#rfc.section.10">
-      <link rel="Chapter" href="#rfc.section.11" title="11 Normative References">
-      <meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.753, 2015/10/05 19:01:29, XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/">
-      <meta name="keywords" content="Content Negotiation">
-      <link rel="schema.dct" href="http://purl.org/dc/terms/">
-      <meta name="dct.creator" content="Grigorik, I.">
-      <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-client-hints-latest">
-      <meta name="dct.issued" scheme="ISO8601" content="2015-11-25">
-      <meta name="dct.abstract" content="An increasing diversity of Web-connected devices and software capabilities has created a need to deliver optimized content for each device.This specification defines a set of HTTP request header fields, colloquially known as Client Hints, to address this. They are intended to be used as input to proactive content negotiation; just as the Accept header allows clients to indicate what formats they prefer, Client Hints allow clients to indicate a list of device and agent specific preferences.">
-      <meta name="description" content="An increasing diversity of Web-connected devices and software capabilities has created a need to deliver optimized content for each device.This specification defines a set of HTTP request header fields, colloquially known as Client Hints, to address this. They are intended to be used as input to proactive content negotiation; just as the Accept header allows clients to indicate what formats they prefer, Client Hints allow clients to indicate a list of device and agent specific preferences.">
-   </head>
-   <body>
-      <table class="header" id="rfc.headerblock">
-         <tbody>
-            <tr>
-               <td class="left">HTTP Working Group</td>
-               <td class="right">I. Grigorik</td>
-            </tr>
-            <tr>
-               <td class="left">Internet-Draft</td>
-               <td class="right">Google</td>
-            </tr>
-            <tr>
-               <td class="left">Intended status: Standards Track</td>
-               <td class="right">November 25, 2015</td>
-            </tr>
-            <tr>
-               <td class="left">Expires: May 28, 2016</td>
-               <td class="right"></td>
-            </tr>
-         </tbody>
-      </table>
-      <div id="rfc.title">
-         <h1>HTTP Client Hints</h1>
-         <div class="filename">draft-ietf-httpbis-client-hints-latest</div>
-      </div>
-      <h2 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h2>
-      <p>An increasing diversity of Web-connected devices and software capabilities has created a need to deliver optimized content
-         for each device.
-      </p>
-      <p>This specification defines a set of HTTP request header fields, colloquially known as Client Hints, to address this. They
-         are intended to be used as input to proactive content negotiation; just as the Accept header allows clients to indicate what
-         formats they prefer, Client Hints allow clients to indicate a list of device and agent specific preferences.
-      </p>
-      <h2 id="rfc.note.1"><a href="#rfc.note.1">Note to Readers</a></h2>
-      <p>The issues list for this draft can be found at <a href="https://github.com/httpwg/http-extensions/labels/client-hints">https://github.com/httpwg/http-extensions/labels/client-hints</a>.
-      </p>
-      <div id="rfc.status">
-         <h2><a href="#rfc.status">Status of this Memo</a></h2>
-         <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
-         <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF). Note that other groups may also distribute
-            working documents as Internet-Drafts. The list of current Internet-Drafts is at <a href="http://datatracker.ietf.org/drafts/current/">http://datatracker.ietf.org/drafts/current/</a>.
-         </p>
-         <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other
-            documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work
-            in progress”.
-         </p>
-         <p>This Internet-Draft will expire on May 28, 2016.</p>
-      </div>
-      <div id="rfc.copyrightnotice">
-         <h2><a href="#rfc.copyrightnotice">Copyright Notice</a></h2>
-         <p>Copyright © 2015 IETF Trust and the persons identified as the document authors. All rights reserved.</p>
-         <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (<a href="http://trustee.ietf.org/license-info">http://trustee.ietf.org/license-info</a>) in effect on the date of publication of this document. Please review these documents carefully, as they describe your rights
-            and restrictions with respect to this document. Code Components extracted from this document must include Simplified BSD License
-            text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified
-            BSD License.
-         </p>
-      </div>
-      <hr class="noprint">
-      <div id="rfc.toc">
-         <h2 class="np"><a href="#rfc.toc">Table of Contents</a></h2>
-         <ul class="toc">
-            <li><a href="#rfc.section.1">1.</a>&nbsp;&nbsp;&nbsp;<a href="#introduction">Introduction</a><ul>
-                  <li><a href="#rfc.section.1.1">1.1</a>&nbsp;&nbsp;&nbsp;<a href="#notational-conventions">Notational Conventions</a></li>
-               </ul>
-            </li>
-            <li><a href="#rfc.section.2">2.</a>&nbsp;&nbsp;&nbsp;<a href="#client-hint-request-header-fields">Client Hint Request Header Fields</a><ul>
-                  <li><a href="#rfc.section.2.1">2.1</a>&nbsp;&nbsp;&nbsp;<a href="#sending-client-hints">Sending Client Hints</a></li>
-                  <li><a href="#rfc.section.2.2">2.2</a>&nbsp;&nbsp;&nbsp;<a href="#server-processing-of-client-hints">Server Processing of Client Hints</a><ul>
-                        <li><a href="#rfc.section.2.2.1">2.2.1</a>&nbsp;&nbsp;&nbsp;<a href="#advertising-support-for-client-hints">Advertising Support for Client Hints</a></li>
-                        <li><a href="#rfc.section.2.2.2">2.2.2</a>&nbsp;&nbsp;&nbsp;<a href="#interaction-with-caches">Interaction with Caches</a></li>
-                     </ul>
-                  </li>
-               </ul>
-            </li>
-            <li><a href="#rfc.section.3">3.</a>&nbsp;&nbsp;&nbsp;<a href="#the-dpr-client-hint">The DPR Client Hint</a><ul>
-                  <li><a href="#rfc.section.3.1">3.1</a>&nbsp;&nbsp;&nbsp;<a href="#confirming-selected-dpr">Confirming Selected DPR</a></li>
-               </ul>
-            </li>
-            <li><a href="#rfc.section.4">4.</a>&nbsp;&nbsp;&nbsp;<a href="#the-width-client-hint">The Width Client Hint</a></li>
-            <li><a href="#rfc.section.5">5.</a>&nbsp;&nbsp;&nbsp;<a href="#the-viewport-width-client-hint">The Viewport-Width Client Hint</a></li>
-            <li><a href="#rfc.section.6">6.</a>&nbsp;&nbsp;&nbsp;<a href="#the-downlink-client-hint">The Downlink Client Hint</a></li>
-            <li><a href="#rfc.section.7">7.</a>&nbsp;&nbsp;&nbsp;<a href="#the-save-data-hint">The Save-Data Hint</a></li>
-            <li><a href="#rfc.section.8">8.</a>&nbsp;&nbsp;&nbsp;<a href="#examples">Examples</a></li>
-            <li><a href="#rfc.section.9">9.</a>&nbsp;&nbsp;&nbsp;<a href="#security-considerations">Security Considerations</a></li>
-            <li><a href="#rfc.section.10">10.</a>&nbsp;&nbsp;&nbsp;<a href="#iana-considerations">IANA Considerations</a></li>
-            <li><a href="#rfc.section.11">11.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references">Normative References</a></li>
-            <li><a href="#rfc.authors">Author's Address</a></li>
-         </ul>
-      </div>
-      <div id="introduction">
-         <h2 id="rfc.section.1" class="np"><a href="#rfc.section.1">1.</a>&nbsp;<a href="#introduction">Introduction</a></h2>
-         <div id="rfc.section.1.p.1">
-            <p>There are thousands of different devices accessing the web, each with different device capabilities and preference information.
-               These device capabilities include hardware and software characteristics, as well as dynamic user and client preferences.
-            </p>
-         </div>
-         <div id="rfc.section.1.p.2" class="avoidbreakafter">
-            <p>One way to infer some of these capabilities is through User-Agent (UA) detection against an established database of client
-               signatures. However, this technique requires acquiring such a database, integrating it into the serving path, and keeping
-               it up to date. However, even once this infrastructure is deployed, UA sniffing has numerous limitations:
-            </p>
-         </div>
-         <div id="rfc.section.1.p.3">
-            <ul>
-               <li>UA detection cannot reliably identify all static variables</li>
-               <li>UA detection cannot infer any dynamic client preferences</li>
-               <li>UA detection requires an external device database</li>
-               <li>UA detection is not cache friendly</li>
-            </ul>
-         </div>
-         <div id="rfc.section.1.p.4">
-            <p>A popular alternative strategy is to use HTTP cookies to communicate some information about the client. However, this approach
-               is also not cache friendly, bound by same origin policy, and imposes additional client-side latency by requiring JavaScript
-               execution to create and manage HTTP cookies.
-            </p>
-         </div>
-         <div id="rfc.section.1.p.5">
-            <p>This document defines a set of new request header fields that allow the client to perform proactive content negotiation <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a> by indicating a list of device and agent specific preferences, through a mechanism similar to the Accept header which is used
-               to indicate preferred response formats.
-            </p>
-         </div>
-         <div id="rfc.section.1.p.6">
-            <p>Client Hints does not supersede or replace the User-Agent header field. Existing device detection mechanisms can continue
-               to use both mechanisms if necessary. By advertising its capabilities within a request header field, Client Hints allows for
-               cache friendly and proactive content negotiation.
-            </p>
-         </div>
-         <div id="notational-conventions">
-            <h3 id="rfc.section.1.1"><a href="#rfc.section.1.1">1.1</a>&nbsp;<a href="#notational-conventions">Notational Conventions</a></h3>
-            <div id="rfc.section.1.1.p.1">
-               <p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL”
-                  in this document are to be interpreted as described in <a href="#RFC2119"><cite title="Key words for use in RFCs to Indicate Requirement Levels">[RFC2119]</cite></a>.
-               </p>
-            </div>
-            <div id="rfc.section.1.1.p.2">
-               <p>This document uses the Augmented Backus-Naur Form (ABNF) notation of <a href="#RFC5234"><cite title="Augmented BNF for Syntax Specifications: ABNF">[RFC5234]</cite></a> with the list rule extension defined in <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, Appendix B. It includes by reference the DIGIT rule from <a href="#RFC5234"><cite title="Augmented BNF for Syntax Specifications: ABNF">[RFC5234]</cite></a>; the OWS, field-name and quoted-string rules from <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>; and the parameter rule from <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>.
-               </p>
-            </div>
-         </div>
-      </div>
-      <div id="client-hint-request-header-fields">
-         <h2 id="rfc.section.2"><a href="#rfc.section.2">2.</a>&nbsp;<a href="#client-hint-request-header-fields">Client Hint Request Header Fields</a></h2>
-         <div id="rfc.section.2.p.1">
-            <p>A Client Hint request header field is a HTTP header field that is used by HTTP clients to indicate configuration data that
-               can be used by the server to select an appropriate response. Each one conveys a list of client preferences that the server
-               can use to adapt and optimize the response.
-            </p>
-         </div>
-         <div id="rfc.section.2.p.2">
-            <p>This document defines a selection of Client Hint request header fields, and can be referenced by other specifications wishing
-               to use the same syntax and processing model.
-            </p>
-         </div>
-         <div id="sending-client-hints">
-            <h3 id="rfc.section.2.1"><a href="#rfc.section.2.1">2.1</a>&nbsp;<a href="#sending-client-hints">Sending Client Hints</a></h3>
-            <div id="rfc.section.2.1.p.1">
-               <p>Clients control which Client Hint headers and their respective header fields are communicated, based on their default settings,
-                  user configuration and/or preferences. The user may be given the choice to enable, disable, or override specific hints.
-               </p>
-            </div>
-            <div id="rfc.section.2.1.p.2">
-               <p>The client and server, or an intermediate proxy, may use an opt-in mechanism to negotiate which fields should be reported
-                  to allow for efficient content adaption.
-               </p>
-            </div>
-         </div>
-         <div id="server-processing-of-client-hints">
-            <h3 id="rfc.section.2.2"><a href="#rfc.section.2.2">2.2</a>&nbsp;<a href="#server-processing-of-client-hints">Server Processing of Client Hints</a></h3>
-            <div id="rfc.section.2.2.p.1">
-               <p>Servers MAY respond with an optimized response based on one or more received hints from the client. When doing so, and if
-                  the resource is cacheable, the server MUST also emit a Vary response header field (<a href="#RFC7234"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Caching">[RFC7234]</cite></a>), and optionally Key (<a href="#I-D.ietf-httpbis-key"><cite title="The Key HTTP Response Header Field">[I-D.ietf-httpbis-key]</cite></a>), to indicate which hints were used and whether the selected response is appropriate for a later request.
-               </p>
-            </div>
-            <div id="rfc.section.2.2.p.2">
-               <p>Further, depending on the used hint, the server MAY also need to emit additional response header fields to confirm the property
-                  of the response, such that the client can adjust its processing. For example, this specification defines “Content-DPR” response
-                  header field that MUST be returned by the server when the “DPR” hint is used to select the response.
-               </p>
-            </div>
-            <div id="advertising-support-for-client-hints">
-               <h4 id="rfc.section.2.2.1"><a href="#rfc.section.2.2.1">2.2.1</a>&nbsp;<a href="#advertising-support-for-client-hints">Advertising Support for Client Hints</a></h4>
-               <div id="rfc.section.2.2.1.p.1">
-                  <p>Servers can advertise support for Client Hints using the Accept-CH header or an equivalent HTML meta element with http-equiv
-                     attribute.
-                  </p>
-               </div>
-               <div id="rfc.figure.u.1"><pre>
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "about:legacy-compat">
+<html lang="en"><head profile="http://dublincore.org/documents/2008/08/04/dc-html/"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>HTTP Client Hints</title><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"><style type="text/css">
+      body {
+        padding-top: 80px;
+        padding-bottom: 80px;
+        position: relative;
+      }
+      .table.header th, .table.header td {
+        border-top: none;
+        padding: 0;
+      }
+      #rfc\.meta {
+        width: 40%;
+        float: right
+      }
+      #rfc\.toc > ul li {
+        list-style: none;
+      }
+      .container .nav-sublist {
+        padding-left: 20px;
+        padding-right: 10px;
+        font-size: 90%;
+      }
+      .container .navbar-brand {
+        padding-top: 0;
+      }
+      .container .nav > li > a {
+        padding: 10px 7px 5px 15px;
+        display: inline-block;
+      }
+      .container .nav > li > a + a {
+        padding: 10px 15px 5px 7px;
+        display: inline-block;
+      }
+      .container .nav > li > a {
+        padding: 5px 10px;
+      }
+      .filename {
+        color: rgb(119, 119, 119);
+        font-size: 23px;
+        font-weight: normal;
+        height: auto;
+        line-height: 23px;
+      }
+      dl {
+        margin-left: 1em;
+      }
+      dl.dl-horizontal: {
+        margin-left: 0;
+      }
+      dl > dt {
+        float: left;
+        margin-right: 1em;
+      }
+      dl.nohang > dt {
+        float: none;
+      }
+      dl > dd {
+        margin-bottom: .5em;
+      }
+      dl.compact > dd {
+        margin-bottom: 0em;
+      }
+      dl > dd > dl {
+        margin-top: 0.5em;
+        margin-bottom: 0em;
+      }
+      ul.empty {
+        list-style-type: none;
+      }
+      ul.empty li {
+        margin-top: .5em;
+      }
+      td.reference {
+        padding-right: 1em;
+        vertical-align: top;
+      }
+      .feedback {
+        position: fixed;
+        bottom: 5px;
+        right: 5px;
+      }
+      .fbbutton {
+        margin-left: 5px;
+      }
+      h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+        color: rgb(51, 51, 51);
+      }
+    </style><link rel="Author" href="#rfc.authors"><link rel="Copyright" href="#rfc.copyrightnotice"><link rel="Chapter" title="1 Introduction" href="#rfc.section.1"><link rel="Chapter" title="2 Client Hint Request Header Fields" href="#rfc.section.2"><link rel="Chapter" title="3 The DPR Client Hint" href="#rfc.section.3"><link rel="Chapter" title="4 The Width Client Hint" href="#rfc.section.4"><link rel="Chapter" title="5 The Viewport-Width Client Hint" href="#rfc.section.5"><link rel="Chapter" title="6 The Downlink Client Hint" href="#rfc.section.6"><link rel="Chapter" title="7 The Save-Data Hint" href="#rfc.section.7"><link rel="Chapter" title="8 Examples" href="#rfc.section.8"><link rel="Chapter" title="9 Security Considerations" href="#rfc.section.9"><link rel="Chapter" title="10 IANA Considerations" href="#rfc.section.10"><link rel="Chapter" href="#rfc.section.11" title="11 Normative References"><meta name="generator" content="https://github.com/mnot/RFCBootstrap XSLT vendor: SAXON 9.1.0.8 from Saxonica http://www.saxonica.com/"><meta name="keywords" content="Content Negotiation"><link rel="schema.dct" href="http://purl.org/dc/terms/"><meta name="dct.creator" content="Grigorik, I."><meta name="dct.identifier" content="urn:ietf:id:draft-ietf-httpbis-client-hints-latest"><meta name="dct.issued" scheme="ISO8601" content="2015-11-25"><meta name="dct.abstract" content="An increasing diversity of Web-connected devices and software capabilities has created a need to deliver optimized content for each device.This specification defines a set of HTTP request header fields, colloquially known as Client Hints, to address this. They are intended to be used as input to proactive content negotiation; just as the Accept header allows clients to indicate what formats they prefer, Client Hints allow clients to indicate a list of device and agent specific preferences."><meta name="description" content="An increasing diversity of Web-connected devices and software capabilities has created a need to deliver optimized content for each device.This specification defines a set of HTTP request header fields, colloquially known as Client Hints, to address this. They are intended to be used as input to proactive content negotiation; just as the Accept header allows clients to indicate what formats they prefer, Client Hints allow clients to indicate a list of device and agent specific preferences."></head><body><div class="container" id="top"><div class="row"><div class="col-md-4 col-md-push-8 hidden-sm hidden-xs" role="navigation"><div class="navbar"><div class="navbar-brand"><a href="#top">Internet-Draft</a></div><br clear="all"><div class=""><div id="rfc.toc"><ul class="nav"><li><a href="#rfc.section.1">1.</a>&nbsp;&nbsp;&nbsp;<a href="#introduction">Introduction</a><ul><li><a href="#rfc.section.1.1">1.1</a>&nbsp;&nbsp;&nbsp;<a href="#notational-conventions">Notational Conventions</a></li></ul></li><li><a href="#rfc.section.2">2.</a>&nbsp;&nbsp;&nbsp;<a href="#client-hint-request-header-fields">Client Hint Request Header Fields</a><ul><li><a href="#rfc.section.2.1">2.1</a>&nbsp;&nbsp;&nbsp;<a href="#sending-client-hints">Sending Client Hints</a></li><li><a href="#rfc.section.2.2">2.2</a>&nbsp;&nbsp;&nbsp;<a href="#server-processing-of-client-hints">Server Processing of Client Hints</a><ul><li><a href="#rfc.section.2.2.1">2.2.1</a>&nbsp;&nbsp;&nbsp;<a href="#advertising-support-for-client-hints">Advertising Support for Client Hints</a></li><li><a href="#rfc.section.2.2.2">2.2.2</a>&nbsp;&nbsp;&nbsp;<a href="#interaction-with-caches">Interaction with Caches</a></li></ul></li></ul></li><li><a href="#rfc.section.3">3.</a>&nbsp;&nbsp;&nbsp;<a href="#the-dpr-client-hint">The DPR Client Hint</a><ul><li><a href="#rfc.section.3.1">3.1</a>&nbsp;&nbsp;&nbsp;<a href="#confirming-selected-dpr">Confirming Selected DPR</a></li></ul></li><li><a href="#rfc.section.4">4.</a>&nbsp;&nbsp;&nbsp;<a href="#the-width-client-hint">The Width Client Hint</a></li><li><a href="#rfc.section.5">5.</a>&nbsp;&nbsp;&nbsp;<a href="#the-viewport-width-client-hint">The Viewport-Width Client Hint</a></li><li><a href="#rfc.section.6">6.</a>&nbsp;&nbsp;&nbsp;<a href="#the-downlink-client-hint">The Downlink Client Hint</a></li><li><a href="#rfc.section.7">7.</a>&nbsp;&nbsp;&nbsp;<a href="#the-save-data-hint">The Save-Data Hint</a></li><li><a href="#rfc.section.8">8.</a>&nbsp;&nbsp;&nbsp;<a href="#examples">Examples</a></li><li><a href="#rfc.section.9">9.</a>&nbsp;&nbsp;&nbsp;<a href="#security-considerations">Security Considerations</a></li><li><a href="#rfc.section.10">10.</a>&nbsp;&nbsp;&nbsp;<a href="#iana-considerations">IANA Considerations</a></li><li><a href="#rfc.section.11">11.</a>&nbsp;&nbsp;&nbsp;<a href="#rfc.references">Normative References</a></li><li><a href="#rfc.authors">Author's Address</a></li></ul></div></div></div></div><div class="col-md-8 col-md-pull-4 main" role="main"><table class="header" id="rfc.headerblock"><tbody><tr><td class="left">HTTP Working Group</td><td class="right">I. Grigorik</td></tr><tr><td class="left">Internet-Draft</td><td class="right">Google</td></tr><tr><td class="left">Intended status: Standards Track</td><td class="right">November 25, 2015</td></tr><tr><td class="left">Expires: May 28, 2016</td><td class="right"></td></tr></tbody></table><div id="rfc.title"><h1>HTTP Client Hints</h1><div class="filename">draft-ietf-httpbis-client-hints-latest</div></div><hr><h2 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h2><div class="lead"><p>An increasing diversity of Web-connected devices and software capabilities has created a need to deliver optimized content for each device.</p><p>This specification defines a set of HTTP request header fields, colloquially known as Client Hints, to address this. They are intended to be used as input to proactive content negotiation; just as the Accept header allows clients to indicate what formats they prefer, Client Hints allow clients to indicate a list of device and agent specific preferences.</p></div><h2 id="rfc.note.1"><a href="#rfc.note.1">Note to Readers</a></h2><p>The issues list for this draft can be found at <a href="https://github.com/httpwg/http-extensions/labels/client-hints">https://github.com/httpwg/http-extensions/labels/client-hints</a>.</p><div id="rfc.status"><h2><a href="#rfc.status">Status of this Memo</a></h2><p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p><p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF). Note that other groups may also distribute working documents as Internet-Drafts. The list of current Internet-Drafts is at <a href="http://datatracker.ietf.org/drafts/current/">http://datatracker.ietf.org/drafts/current/</a>.</p><p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as “work in progress”.</p><p>This Internet-Draft will expire on May 28, 2016.</p></div><div id="rfc.copyrightnotice"><h2><a href="#rfc.copyrightnotice">Copyright Notice</a></h2><p>Copyright © 2015 IETF Trust and the persons identified as the document authors. All rights reserved.</p><p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (<a href="http://trustee.ietf.org/license-info">http://trustee.ietf.org/license-info</a>) in effect on the date of publication of this document. Please review these documents carefully, as they describe your rights and restrictions with respect to this document. Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p></div><div id="introduction"><h2 id="rfc.section.1" class="np"><a href="#rfc.section.1">1.</a>&nbsp;<a href="#introduction">Introduction</a></h2><div id="rfc.section.1.p.1"><p>There are thousands of different devices accessing the web, each with different device capabilities and preference information. These device capabilities include hardware and software characteristics, as well as dynamic user and client preferences.</p></div><div id="rfc.section.1.p.2" class="avoidbreakafter"><p>One way to infer some of these capabilities is through User-Agent (UA) detection against an established database of client signatures. However, this technique requires acquiring such a database, integrating it into the serving path, and keeping it up to date. However, even once this infrastructure is deployed, UA sniffing has numerous limitations:</p></div><div id="rfc.section.1.p.3"><ul><li>UA detection cannot reliably identify all static variables</li><li>UA detection cannot infer any dynamic client preferences</li><li>UA detection requires an external device database</li><li>UA detection is not cache friendly</li></ul></div><div id="rfc.section.1.p.4"><p>A popular alternative strategy is to use HTTP cookies to communicate some information about the client. However, this approach is also not cache friendly, bound by same origin policy, and imposes additional client-side latency by requiring JavaScript execution to create and manage HTTP cookies.</p></div><div id="rfc.section.1.p.5"><p>This document defines a set of new request header fields that allow the client to perform proactive content negotiation <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a> by indicating a list of device and agent specific preferences, through a mechanism similar to the Accept header which is used to indicate preferred response formats.</p></div><div id="rfc.section.1.p.6"><p>Client Hints does not supersede or replace the User-Agent header field. Existing device detection mechanisms can continue to use both mechanisms if necessary. By advertising its capabilities within a request header field, Client Hints allows for cache friendly and proactive content negotiation.</p></div><div id="notational-conventions"><h3 id="rfc.section.1.1"><a href="#rfc.section.1.1">1.1</a>&nbsp;<a href="#notational-conventions">Notational Conventions</a></h3><div id="rfc.section.1.1.p.1"><p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be interpreted as described in <a href="#RFC2119"><cite title="Key words for use in RFCs to Indicate Requirement Levels">[RFC2119]</cite></a>.</p></div><div id="rfc.section.1.1.p.2"><p>This document uses the Augmented Backus-Naur Form (ABNF) notation of <a href="#RFC5234"><cite title="Augmented BNF for Syntax Specifications: ABNF">[RFC5234]</cite></a> with the list rule extension defined in <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>, Appendix B. It includes by reference the DIGIT rule from <a href="#RFC5234"><cite title="Augmented BNF for Syntax Specifications: ABNF">[RFC5234]</cite></a>; the OWS, field-name and quoted-string rules from <a href="#RFC7230"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing">[RFC7230]</cite></a>; and the parameter rule from <a href="#RFC7231"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content">[RFC7231]</cite></a>.</p></div></div></div><div id="client-hint-request-header-fields"><h2 id="rfc.section.2"><a href="#rfc.section.2">2.</a>&nbsp;<a href="#client-hint-request-header-fields">Client Hint Request Header Fields</a></h2><div id="rfc.section.2.p.1"><p>A Client Hint request header field is a HTTP header field that is used by HTTP clients to indicate configuration data that can be used by the server to select an appropriate response. Each one conveys a list of client preferences that the server can use to adapt and optimize the response.</p></div><div id="rfc.section.2.p.2"><p>This document defines a selection of Client Hint request header fields, and can be referenced by other specifications wishing to use the same syntax and processing model.</p></div><div id="sending-client-hints"><h3 id="rfc.section.2.1"><a href="#rfc.section.2.1">2.1</a>&nbsp;<a href="#sending-client-hints">Sending Client Hints</a></h3><div id="rfc.section.2.1.p.1"><p>Clients control which Client Hint headers and their respective header fields are communicated, based on their default settings, user configuration and/or preferences. The user may be given the choice to enable, disable, or override specific hints.</p></div><div id="rfc.section.2.1.p.2"><p>The client and server, or an intermediate proxy, may use an opt-in mechanism to negotiate which fields should be reported to allow for efficient content adaption.</p></div></div><div id="server-processing-of-client-hints"><h3 id="rfc.section.2.2"><a href="#rfc.section.2.2">2.2</a>&nbsp;<a href="#server-processing-of-client-hints">Server Processing of Client Hints</a></h3><div id="rfc.section.2.2.p.1"><p>Servers MAY respond with an optimized response based on one or more received hints from the client. When doing so, and if the resource is cacheable, the server MUST also emit a Vary response header field (<a href="#RFC7234"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Caching">[RFC7234]</cite></a>), and optionally Key (<a href="#I-D.ietf-httpbis-key"><cite title="The Key HTTP Response Header Field">[I-D.ietf-httpbis-key]</cite></a>), to indicate which hints were used and whether the selected response is appropriate for a later request.</p></div><div id="rfc.section.2.2.p.2"><p>Further, depending on the used hint, the server MAY also need to emit additional response header fields to confirm the property of the response, such that the client can adjust its processing. For example, this specification defines “Content-DPR” response header field that MUST be returned by the server when the “DPR” hint is used to select the response.</p></div><div id="advertising-support-for-client-hints"><h4 id="rfc.section.2.2.1"><a href="#rfc.section.2.2.1">2.2.1</a>&nbsp;<a href="#advertising-support-for-client-hints">Advertising Support for Client Hints</a></h4><div id="rfc.section.2.2.1.p.1"><p>Servers can advertise support for Client Hints using the Accept-CH header or an equivalent HTML meta element with http-equiv attribute.</p></div><div id="rfc.figure.u.1"><pre>
   Accept-CH = #token
-</pre></div>
-               <div id="rfc.section.2.2.1.p.2" class="avoidbreakafter">
-                  <p>For example:</p>
-               </div>
-               <div id="rfc.figure.u.2"><pre>
+</pre></div><div id="rfc.section.2.2.1.p.2" class="avoidbreakafter"><p>For example:</p></div><div id="rfc.figure.u.2"><pre>
   Accept-CH: DPR, Width, Viewport-Width, Downlink
-</pre></div>
-               <div id="rfc.section.2.2.1.p.3">
-                  <p>When a client receives Accept-CH, it SHOULD append the Client Hint headers that match the advertised field-values. For example,
-                     based on Accept-CH example above, the client would append DPR, Width, Viewport-Width, and Downlink headers to all subsequent
-                     requests.
-                  </p>
-               </div>
-            </div>
-            <div id="interaction-with-caches">
-               <h4 id="rfc.section.2.2.2"><a href="#rfc.section.2.2.2">2.2.2</a>&nbsp;<a href="#interaction-with-caches">Interaction with Caches</a></h4>
-               <div id="rfc.section.2.2.2.p.1">
-                  <p>When selecting an optimized response based on one or more Client Hints, and if the resource is cacheable, the server MUST
-                     also emit a Vary response header field (<a href="#RFC7234"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Caching">[RFC7234]</cite></a>) to indicate which hints were used and whether the selected response is appropriate for a later request.
-                  </p>
-               </div>
-               <div id="rfc.figure.u.3"><pre>
+</pre></div><div id="rfc.section.2.2.1.p.3"><p>When a client receives Accept-CH, it SHOULD append the Client Hint headers that match the advertised field-values. For example, based on Accept-CH example above, the client would append DPR, Width, Viewport-Width, and Downlink headers to all subsequent requests.</p></div></div><div id="interaction-with-caches"><h4 id="rfc.section.2.2.2"><a href="#rfc.section.2.2.2">2.2.2</a>&nbsp;<a href="#interaction-with-caches">Interaction with Caches</a></h4><div id="rfc.section.2.2.2.p.1"><p>When selecting an optimized response based on one or more Client Hints, and if the resource is cacheable, the server MUST also emit a Vary response header field (<a href="#RFC7234"><cite title="Hypertext Transfer Protocol (HTTP/1.1): Caching">[RFC7234]</cite></a>) to indicate which hints were used and whether the selected response is appropriate for a later request.</p></div><div id="rfc.figure.u.3"><pre>
   Vary: DPR
-</pre></div>
-               <div id="rfc.section.2.2.2.p.2">
-                  <p>Above example indicates that the cache key should be based on the DPR header.</p>
-               </div>
-               <div id="rfc.figure.u.4"><pre>
+</pre></div><div id="rfc.section.2.2.2.p.2"><p>Above example indicates that the cache key should be based on the DPR header.</p></div><div id="rfc.figure.u.4"><pre>
   Vary: DPR, Width, Downlink
-</pre></div>
-               <div id="rfc.section.2.2.2.p.3">
-                  <p>Above example indicates that the cache key should be based on the DPR, Width, and Downlink headers.</p>
-               </div>
-               <div id="rfc.section.2.2.2.p.4" class="avoidbreakafter">
-                  <p>Client Hints MAY be combined with Key (<a href="#I-D.ietf-httpbis-key"><cite title="The Key HTTP Response Header Field">[I-D.ietf-httpbis-key]</cite></a>) to enable fine-grained control of the cache key for improved cache efficiency. For example, the server MAY return the following
-                     set of instructions:
-                  </p>
-               </div>
-               <div id="rfc.figure.u.5"><pre>
+</pre></div><div id="rfc.section.2.2.2.p.3"><p>Above example indicates that the cache key should be based on the DPR, Width, and Downlink headers.</p></div><div id="rfc.section.2.2.2.p.4" class="avoidbreakafter"><p>Client Hints MAY be combined with Key (<a href="#I-D.ietf-httpbis-key"><cite title="The Key HTTP Response Header Field">[I-D.ietf-httpbis-key]</cite></a>) to enable fine-grained control of the cache key for improved cache efficiency. For example, the server MAY return the following set of instructions:</p></div><div id="rfc.figure.u.5"><pre>
   Key: DPR;partition=1.5:2.5:4.0
-</pre></div>
-               <div id="rfc.section.2.2.2.p.5">
-                  <p>Above example indicates that the cache key should be based on the value of the DPR header with three segments: less than 1.5,
-                     1.5 to less than 2.5, and 4.0 or greater.
-                  </p>
-               </div>
-               <div id="rfc.figure.u.6"><pre>
+</pre></div><div id="rfc.section.2.2.2.p.5"><p>Above example indicates that the cache key should be based on the value of the DPR header with three segments: less than 1.5, 1.5 to less than 2.5, and 4.0 or greater.</p></div><div id="rfc.figure.u.6"><pre>
   Key: Width;div=320
-</pre></div>
-               <div id="rfc.section.2.2.2.p.6">
-                  <p>Above example indicates that the cache key should be based on the value of the Width header and be partitioned into groups
-                     of 320: 0-320, 320-640, and so on.
-                  </p>
-               </div>
-               <div id="rfc.figure.u.7"><pre>
+</pre></div><div id="rfc.section.2.2.2.p.6"><p>Above example indicates that the cache key should be based on the value of the Width header and be partitioned into groups of 320: 0-320, 320-640, and so on.</p></div><div id="rfc.figure.u.7"><pre>
   Key: Downlink;partition=0.5:1.0:3.0:5.0:10
-</pre></div>
-               <div id="rfc.section.2.2.2.p.7">
-                  <p>Above example indicates that the cache key should be based on the (Mbps) value of the Downlink header with six segments: less
-                     than 0.5, 0.5 to less than 1.0, 1.0 to less than 3.0, 3.0 to less than 5.0, 5.0 to less than 10; 10 or higher.
-                  </p>
-               </div>
-            </div>
-         </div>
-      </div>
-      <div id="the-dpr-client-hint">
-         <h2 id="rfc.section.3"><a href="#rfc.section.3">3.</a>&nbsp;<a href="#the-dpr-client-hint">The DPR Client Hint</a></h2>
-         <div id="rfc.section.3.p.1">
-            <p>The “DPR” header field is a number that, in requests, indicates the client’s current Device Pixel Ratio (DPR), which is the
-               ratio of physical pixels over CSS px of the layout viewport on the device.
-            </p>
-         </div>
-         <div id="rfc.figure.u.8"><pre>
+</pre></div><div id="rfc.section.2.2.2.p.7"><p>Above example indicates that the cache key should be based on the (Mbps) value of the Downlink header with six segments: less than 0.5, 0.5 to less than 1.0, 1.0 to less than 3.0, 3.0 to less than 5.0, 5.0 to less than 10; 10 or higher.</p></div></div></div></div><div id="the-dpr-client-hint"><h2 id="rfc.section.3"><a href="#rfc.section.3">3.</a>&nbsp;<a href="#the-dpr-client-hint">The DPR Client Hint</a></h2><div id="rfc.section.3.p.1"><p>The “DPR” header field is a number that, in requests, indicates the client’s current Device Pixel Ratio (DPR), which is the ratio of physical pixels over CSS px of the layout viewport on the device.</p></div><div id="rfc.figure.u.8"><pre>
   DPR = 1*DIGIT [ "." 1*DIGIT ]
-</pre></div>
-         <div id="rfc.section.3.p.2">
-            <p>If DPR occurs in a message more than once, the last value overrides all previous occurrences.</p>
-         </div>
-         <div id="confirming-selected-dpr">
-            <h3 id="rfc.section.3.1"><a href="#rfc.section.3.1">3.1</a>&nbsp;<a href="#confirming-selected-dpr">Confirming Selected DPR</a></h3>
-            <div id="rfc.section.3.1.p.1">
-               <p>The “Content-DPR” header field is a number that indicates the ratio between physical pixels over CSS px of the selected image
-                  response.
-               </p>
-            </div>
-            <div id="rfc.figure.u.9"><pre>
+</pre></div><div id="rfc.section.3.p.2"><p>If DPR occurs in a message more than once, the last value overrides all previous occurrences.</p></div><div id="confirming-selected-dpr"><h3 id="rfc.section.3.1"><a href="#rfc.section.3.1">3.1</a>&nbsp;<a href="#confirming-selected-dpr">Confirming Selected DPR</a></h3><div id="rfc.section.3.1.p.1"><p>The “Content-DPR” header field is a number that indicates the ratio between physical pixels over CSS px of the selected image response.</p></div><div id="rfc.figure.u.9"><pre>
   Content-DPR = 1*DIGIT [ "." 1*DIGIT ]
-</pre></div>
-            <div id="rfc.section.3.1.p.2">
-               <p>DPR ratio affects the calculation of intrinsic size of image resources on the client - i.e. typically, the client automatically
-                  scales the natural size of the image by the DPR ratio to derive its display dimensions. As a result, the server must explicitly
-                  indicate the DPR of the selected image response whenever the DPR hint is used, and the client must use the DPR value returned
-                  by the server to perform its calculations. In case the server returned Content-DPR value contradicts previous client-side
-                  DPR indication, the server returned value must take precedence.
-               </p>
-            </div>
-            <div id="rfc.section.3.1.p.3">
-               <p>Note that DPR confirmation is only required for image responses, and the server does not need to confirm the resource width
-                  as this value can be derived from the resource itself once it is decoded by the client.
-               </p>
-            </div>
-            <div id="rfc.section.3.1.p.4">
-               <p>If Content-DPR occurs in a message more than once, the last value overrides all previous occurrences.</p>
-            </div>
-         </div>
-      </div>
-      <div id="the-width-client-hint">
-         <h2 id="rfc.section.4"><a href="#rfc.section.4">4.</a>&nbsp;<a href="#the-width-client-hint">The Width Client Hint</a></h2>
-         <div id="rfc.section.4.p.1">
-            <p>The “Width” header field is a number that, in requests, indicates the resource width in physical px (i.e. intrinsic size of
-               an image). The provided physical px value is a number rounded to the largest smallest following integer (i.e. ceiling value).
-            </p>
-         </div>
-         <div id="rfc.figure.u.10"><pre>
+</pre></div><div id="rfc.section.3.1.p.2"><p>DPR ratio affects the calculation of intrinsic size of image resources on the client - i.e. typically, the client automatically scales the natural size of the image by the DPR ratio to derive its display dimensions. As a result, the server must explicitly indicate the DPR of the selected image response whenever the DPR hint is used, and the client must use the DPR value returned by the server to perform its calculations. In case the server returned Content-DPR value contradicts previous client-side DPR indication, the server returned value must take precedence.</p></div><div id="rfc.section.3.1.p.3"><p>Note that DPR confirmation is only required for image responses, and the server does not need to confirm the resource width as this value can be derived from the resource itself once it is decoded by the client.</p></div><div id="rfc.section.3.1.p.4"><p>If Content-DPR occurs in a message more than once, the last value overrides all previous occurrences.</p></div></div></div><div id="the-width-client-hint"><h2 id="rfc.section.4"><a href="#rfc.section.4">4.</a>&nbsp;<a href="#the-width-client-hint">The Width Client Hint</a></h2><div id="rfc.section.4.p.1"><p>The “Width” header field is a number that, in requests, indicates the resource width in physical px (i.e. intrinsic size of an image). The provided physical px value is a number rounded to the largest smallest following integer (i.e. ceiling value).</p></div><div id="rfc.figure.u.10"><pre>
   Width = 1*DIGIT
-</pre></div>
-         <div id="rfc.section.4.p.2">
-            <p>If the resource width is not known at the time of the request or the resource does not have a display width, the Width header
-               field may be omitted. If Width occurs in a message more than once, the last value overrides all previous occurrences.
-            </p>
-         </div>
-      </div>
-      <div id="the-viewport-width-client-hint">
-         <h2 id="rfc.section.5"><a href="#rfc.section.5">5.</a>&nbsp;<a href="#the-viewport-width-client-hint">The Viewport-Width Client Hint</a></h2>
-         <div id="rfc.section.5.p.1">
-            <p>The “Viewport-Width” header field is a number that, in requests, indicates the layout viewport width in CSS px. The provided
-               CSS px value is a number rounded to the largest smallest following integer (i.e. ceiling value).
-            </p>
-         </div>
-         <div id="rfc.figure.u.11"><pre>
+</pre></div><div id="rfc.section.4.p.2"><p>If the resource width is not known at the time of the request or the resource does not have a display width, the Width header field may be omitted. If Width occurs in a message more than once, the last value overrides all previous occurrences.</p></div></div><div id="the-viewport-width-client-hint"><h2 id="rfc.section.5"><a href="#rfc.section.5">5.</a>&nbsp;<a href="#the-viewport-width-client-hint">The Viewport-Width Client Hint</a></h2><div id="rfc.section.5.p.1"><p>The “Viewport-Width” header field is a number that, in requests, indicates the layout viewport width in CSS px. The provided CSS px value is a number rounded to the largest smallest following integer (i.e. ceiling value).</p></div><div id="rfc.figure.u.11"><pre>
   Viewport-Width = 1*DIGIT
-</pre></div>
-         <div id="rfc.section.5.p.2">
-            <p>If Viewport-Width occurs in a message more than once, the last value overrides all previous occurrences.</p>
-         </div>
-      </div>
-      <div id="the-downlink-client-hint">
-         <h2 id="rfc.section.6"><a href="#rfc.section.6">6.</a>&nbsp;<a href="#the-downlink-client-hint">The Downlink Client Hint</a></h2>
-         <div id="rfc.section.6.p.1">
-            <p>The “Downlink” header field is a number that, in requests, indicates the client’s maximum downlink speed in megabits per second
-               (Mbps), as defined by the “downlinkMax” attribute in the W3C Network Information API.
-            </p>
-         </div>
-         <div id="rfc.figure.u.12"><pre>
+</pre></div><div id="rfc.section.5.p.2"><p>If Viewport-Width occurs in a message more than once, the last value overrides all previous occurrences.</p></div></div><div id="the-downlink-client-hint"><h2 id="rfc.section.6"><a href="#rfc.section.6">6.</a>&nbsp;<a href="#the-downlink-client-hint">The Downlink Client Hint</a></h2><div id="rfc.section.6.p.1"><p>The “Downlink” header field is a number that, in requests, indicates the client’s maximum downlink speed in megabits per second (Mbps), as defined by the “downlinkMax” attribute in the W3C Network Information API.</p></div><div id="rfc.figure.u.12"><pre>
   Downlink = 1*DIGIT [ "." 1*DIGIT ]
-</pre></div>
-         <div id="rfc.section.6.p.2">
-            <p>If Downlink occurs in a message more than once, the minimum value should be used to override other occurrences.</p>
-         </div>
-      </div>
-      <div id="the-save-data-hint">
-         <h2 id="rfc.section.7"><a href="#rfc.section.7">7.</a>&nbsp;<a href="#the-save-data-hint">The Save-Data Hint</a></h2>
-         <div id="rfc.section.7.p.1">
-            <p>The “Save-Data” header field is a token that, in requests, indicates client’s preference for reduced data usage, due to high
-               transfer costs, slow connection speeds, or other reasons.
-            </p>
-         </div>
-         <div id="rfc.figure.u.13"><pre>
+</pre></div><div id="rfc.section.6.p.2"><p>If Downlink occurs in a message more than once, the minimum value should be used to override other occurrences.</p></div></div><div id="the-save-data-hint"><h2 id="rfc.section.7"><a href="#rfc.section.7">7.</a>&nbsp;<a href="#the-save-data-hint">The Save-Data Hint</a></h2><div id="rfc.section.7.p.1"><p>The “Save-Data” header field is a token that, in requests, indicates client’s preference for reduced data usage, due to high transfer costs, slow connection speeds, or other reasons.</p></div><div id="rfc.figure.u.13"><pre>
   Save-Data = "on"
-</pre></div>
-         <div id="rfc.section.7.p.2">
-            <p>The token is a signal indicating explicit user opt-in into a reduced data usage mode on the client, and when communicated
-               to origins allows them to deliver alternate content honoring such preference - e.g. smaller image and video resources, alternate
-               markup, and so on.
-            </p>
-         </div>
-      </div>
-      <div id="examples">
-         <h2 id="rfc.section.8"><a href="#rfc.section.8">8.</a>&nbsp;<a href="#examples">Examples</a></h2>
-         <div id="rfc.section.8.p.1" class="avoidbreakafter">
-            <p>For example, given the following request headers:</p>
-         </div>
-         <div id="rfc.figure.u.14"><pre>
+</pre></div><div id="rfc.section.7.p.2"><p>The token is a signal indicating explicit user opt-in into a reduced data usage mode on the client, and when communicated to origins allows them to deliver alternate content honoring such preference - e.g. smaller image and video resources, alternate markup, and so on.</p></div></div><div id="examples"><h2 id="rfc.section.8"><a href="#rfc.section.8">8.</a>&nbsp;<a href="#examples">Examples</a></h2><div id="rfc.section.8.p.1" class="avoidbreakafter"><p>For example, given the following request headers:</p></div><div id="rfc.figure.u.14"><pre>
   DPR: 2.0
   Width: 320
   Viewport-Width: 320
-</pre></div>
-         <div id="rfc.section.8.p.2">
-            <p>The server knows that the device pixel ratio is 2.0, that the intended display width of requested resource is 160 CSS px (320
-               physical pixels at 2x resolution), and that the viewport width is 320 CSS px.
-            </p>
-         </div>
-         <div id="rfc.section.8.p.3" class="avoidbreakafter">
-            <p>If the server uses above hints to perform resource selection for an image asset, it must confirm its selection via the Content-DPR
-               response header to allow the client to calculate the appropriate intrinsic size of the image response. The server does not
-               need to confirm resource width, only the ratio between physical pixels and CSS px of the selected image resource:
-            </p>
-         </div>
-         <div id="rfc.figure.u.15"><pre>
+</pre></div><div id="rfc.section.8.p.2"><p>The server knows that the device pixel ratio is 2.0, that the intended display width of requested resource is 160 CSS px (320 physical pixels at 2x resolution), and that the viewport width is 320 CSS px.</p></div><div id="rfc.section.8.p.3" class="avoidbreakafter"><p>If the server uses above hints to perform resource selection for an image asset, it must confirm its selection via the Content-DPR response header to allow the client to calculate the appropriate intrinsic size of the image response. The server does not need to confirm resource width, only the ratio between physical pixels and CSS px of the selected image resource:</p></div><div id="rfc.figure.u.15"><pre>
   Content-DPR: 1.0
-</pre></div>
-         <div id="rfc.section.8.p.4">
-            <p>The Content-DPR response header indicates to the client that the server has selected resource with DPR ratio of 1.0. The client
-               may use this information to perform additional processing on the resource - for example, calculate the appropriate intrinsic
-               size of the image resource such that it is displayed at the correct resolution.
-            </p>
-         </div>
-         <div id="rfc.section.8.p.5" class="avoidbreakafter">
-            <p>Alternatively, the server could select an alternate resource based on the maximum downlink speed advertised in the request
-               headers:
-            </p>
-         </div>
-         <div id="rfc.figure.u.16"><pre>
+</pre></div><div id="rfc.section.8.p.4"><p>The Content-DPR response header indicates to the client that the server has selected resource with DPR ratio of 1.0. The client may use this information to perform additional processing on the resource - for example, calculate the appropriate intrinsic size of the image resource such that it is displayed at the correct resolution.</p></div><div id="rfc.section.8.p.5" class="avoidbreakafter"><p>Alternatively, the server could select an alternate resource based on the maximum downlink speed advertised in the request headers:</p></div><div id="rfc.figure.u.16"><pre>
   Downlink: 0.384
-</pre></div>
-         <div id="rfc.section.8.p.6">
-            <p>The server knows that the client’s maximum downlink speed is 0.384Mbps (GPRS EDGE), and it may use this information to select
-               an optimized resource - for example, an alternate image asset, stylesheet, HTML document, media stream, and so on.
-            </p>
-         </div>
-      </div>
-      <div id="security-considerations">
-         <h2 id="rfc.section.9"><a href="#rfc.section.9">9.</a>&nbsp;<a href="#security-considerations">Security Considerations</a></h2>
-         <div id="rfc.section.9.p.1">
-            <p>Client Hints defined in this specification do not expose any new information about the user’s environment beyond what is already
-               available to, and may be communicated by, the application at runtime via JavaScript - e.g. viewport and image display width,
-               device pixel ratio, and so on.
-            </p>
-         </div>
-         <div id="rfc.section.9.p.2">
-            <p>However, implementors should consider the privacy implications of various methods to enable delivery of Client Hints - see
-               “Sending Client Hints” section. For example, sending Client Hints on all requests may make information about the user’s environment
-               available to origins that otherwise did not have access to this data (e.g. origins hosting non-script resources), which may
-               or not be the desired outcome. The implementors may want to provide mechanisms to control such behavior via explicit opt-in,
-               or other mechanisms. Similarly, the implementors should consider how and whether delivery of Client Hints is affected when
-               the user is in “incognito” or similar privacy mode.
-            </p>
-         </div>
-      </div>
-      <div id="iana-considerations">
-         <h2 id="rfc.section.10"><a href="#rfc.section.10">10.</a>&nbsp;<a href="#iana-considerations">IANA Considerations</a></h2>
-         <div id="rfc.section.10.p.1">
-            <p>This document defines the “Accept-CH”, “DPR”, “Width”, and “Downlink” HTTP request fields, “Content-DPR” HTTP response field,
-               and registers them in the Permanent Message Header Fields registry.
-            </p>
-         </div>
-         <div id="rfc.section.10.p.2">
-            <ul>
-               <li>Header field name: DPR</li>
-               <li>Applicable protocol: HTTP</li>
-               <li>Status: standard</li>
-               <li>Author/Change controller: IETF</li>
-               <li>Specification document(s): [this document]</li>
-               <li>Related information: for Client Hints</li>
-               <li>Header field name: Width</li>
-               <li>Applicable protocol: HTTP</li>
-               <li>Status: standard</li>
-               <li>Author/Change controller: IETF</li>
-               <li>Specification document(s): [this document]</li>
-               <li>Related information: for Client Hints</li>
-               <li>Header field name: Viewport-Width</li>
-               <li>Applicable protocol: HTTP</li>
-               <li>Status: standard</li>
-               <li>Author/Change controller: IETF</li>
-               <li>Specification document(s): [this document]</li>
-               <li>Related information: for Client Hints</li>
-               <li>Header field name: Downlink</li>
-               <li>Applicable protocol: HTTP</li>
-               <li>Status: standard</li>
-               <li>Author/Change controller: IETF</li>
-               <li>Specification document(s): [this document]</li>
-               <li>Related information: for Client Hints</li>
-               <li>Header field name: Content-DPR</li>
-               <li>Applicable protocol: HTTP</li>
-               <li>Status: standard</li>
-               <li>Author/Change controller: IETF</li>
-               <li>Specification document(s): [this document]</li>
-               <li>Related information: for Client Hints</li>
-               <li>Header field name: Accept-CH</li>
-               <li>Applicable protocol: HTTP</li>
-               <li>Status: standard</li>
-               <li>Author/Change controller: IETF</li>
-               <li>Specification document(s): [this document]</li>
-               <li>Related information: for Client Hints</li>
-               <li>Header field name: Save-Data</li>
-               <li>Applicable protocol: HTTP</li>
-               <li>Status: standard</li>
-               <li>Author/Change controller: IETF</li>
-               <li>Specification document(s): [this document]</li>
-               <li>Related information: for Client Hints</li>
-            </ul>
-         </div>
-      </div>
-      <h2 id="rfc.references"><a href="#rfc.section.11" id="rfc.section.11">11.</a> Normative References
-      </h2>
-      <dl class="reference">
-         <dt id="I-D.ietf-httpbis-key">[I-D.ietf-httpbis-key]</dt>
-         <dd>Fielding, R. and m. mnot, “<a href="https://tools.ietf.org/html/draft-ietf-httpbis-key-00">The Key HTTP Response Header Field</a>”, Internet-Draft&nbsp;draft-ietf-httpbis-key-00 (work in progress), October&nbsp;2015.
-         </dd>
-         <dt id="RFC2119">[RFC2119]</dt>
-         <dd>Bradner, S., “<a href="http://www.rfc-editor.org/info/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>”, BCP&nbsp;14, RFC&nbsp;2119, <a href="http://dx.doi.org/10.17487/RFC2119">DOI&nbsp;10.17487/RFC2119</a>, March&nbsp;1997, &lt;<a href="http://www.rfc-editor.org/info/rfc2119">http://www.rfc-editor.org/info/rfc2119</a>&gt;.
-         </dd>
-         <dt id="RFC5234">[RFC5234]</dt>
-         <dd>Crocker, D., Ed. and P. Overell, “<a href="http://www.rfc-editor.org/info/rfc5234">Augmented BNF for Syntax Specifications: ABNF</a>”, STD&nbsp;68, RFC&nbsp;5234, <a href="http://dx.doi.org/10.17487/RFC5234">DOI&nbsp;10.17487/RFC5234</a>, January&nbsp;2008, &lt;<a href="http://www.rfc-editor.org/info/rfc5234">http://www.rfc-editor.org/info/rfc5234</a>&gt;.
-         </dd>
-         <dt id="RFC7230">[RFC7230]</dt>
-         <dd>Fielding, R., Ed. and J. Reschke, Ed., “<a href="http://www.rfc-editor.org/info/rfc7230">Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</a>”, RFC&nbsp;7230, <a href="http://dx.doi.org/10.17487/RFC7230">DOI&nbsp;10.17487/RFC7230</a>, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7230">http://www.rfc-editor.org/info/rfc7230</a>&gt;.
-         </dd>
-         <dt id="RFC7231">[RFC7231]</dt>
-         <dd>Fielding, R., Ed. and J. Reschke, Ed., “<a href="http://www.rfc-editor.org/info/rfc7231">Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content</a>”, RFC&nbsp;7231, <a href="http://dx.doi.org/10.17487/RFC7231">DOI&nbsp;10.17487/RFC7231</a>, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7231">http://www.rfc-editor.org/info/rfc7231</a>&gt;.
-         </dd>
-         <dt id="RFC7234">[RFC7234]</dt>
-         <dd>Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke, Ed., “<a href="http://www.rfc-editor.org/info/rfc7234">Hypertext Transfer Protocol (HTTP/1.1): Caching</a>”, RFC&nbsp;7234, <a href="http://dx.doi.org/10.17487/RFC7234">DOI&nbsp;10.17487/RFC7234</a>, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7234">http://www.rfc-editor.org/info/rfc7234</a>&gt;.
-         </dd>
-      </dl>
-      <div class="avoidbreakinside">
-         <h2 id="rfc.authors"><a href="#rfc.authors">Author's Address</a></h2>
-         <p><b>Ilya Grigorik</b><br>Google<br>EMail: <a href="mailto:ilya@igvita.com">ilya@igvita.com</a><br>URI: <a href="https://www.igvita.com/">https://www.igvita.com/</a></p>
-      </div>
-   </body>
-</html>
+</pre></div><div id="rfc.section.8.p.6"><p>The server knows that the client’s maximum downlink speed is 0.384Mbps (GPRS EDGE), and it may use this information to select an optimized resource - for example, an alternate image asset, stylesheet, HTML document, media stream, and so on.</p></div></div><div id="security-considerations"><h2 id="rfc.section.9"><a href="#rfc.section.9">9.</a>&nbsp;<a href="#security-considerations">Security Considerations</a></h2><div id="rfc.section.9.p.1"><p>Client Hints defined in this specification do not expose any new information about the user’s environment beyond what is already available to, and may be communicated by, the application at runtime via JavaScript - e.g. viewport and image display width, device pixel ratio, and so on.</p></div><div id="rfc.section.9.p.2"><p>However, implementors should consider the privacy implications of various methods to enable delivery of Client Hints - see “Sending Client Hints” section. For example, sending Client Hints on all requests may make information about the user’s environment available to origins that otherwise did not have access to this data (e.g. origins hosting non-script resources), which may or not be the desired outcome. The implementors may want to provide mechanisms to control such behavior via explicit opt-in, or other mechanisms. Similarly, the implementors should consider how and whether delivery of Client Hints is affected when the user is in “incognito” or similar privacy mode.</p></div></div><div id="iana-considerations"><h2 id="rfc.section.10"><a href="#rfc.section.10">10.</a>&nbsp;<a href="#iana-considerations">IANA Considerations</a></h2><div id="rfc.section.10.p.1"><p>This document defines the “Accept-CH”, “DPR”, “Width”, and “Downlink” HTTP request fields, “Content-DPR” HTTP response field, and registers them in the Permanent Message Header Fields registry.</p></div><div id="rfc.section.10.p.2"><ul><li>Header field name: DPR</li><li>Applicable protocol: HTTP</li><li>Status: standard</li><li>Author/Change controller: IETF</li><li>Specification document(s): [this document]</li><li>Related information: for Client Hints</li><li>Header field name: Width</li><li>Applicable protocol: HTTP</li><li>Status: standard</li><li>Author/Change controller: IETF</li><li>Specification document(s): [this document]</li><li>Related information: for Client Hints</li><li>Header field name: Viewport-Width</li><li>Applicable protocol: HTTP</li><li>Status: standard</li><li>Author/Change controller: IETF</li><li>Specification document(s): [this document]</li><li>Related information: for Client Hints</li><li>Header field name: Downlink</li><li>Applicable protocol: HTTP</li><li>Status: standard</li><li>Author/Change controller: IETF</li><li>Specification document(s): [this document]</li><li>Related information: for Client Hints</li><li>Header field name: Content-DPR</li><li>Applicable protocol: HTTP</li><li>Status: standard</li><li>Author/Change controller: IETF</li><li>Specification document(s): [this document]</li><li>Related information: for Client Hints</li><li>Header field name: Accept-CH</li><li>Applicable protocol: HTTP</li><li>Status: standard</li><li>Author/Change controller: IETF</li><li>Specification document(s): [this document]</li><li>Related information: for Client Hints</li><li>Header field name: Save-Data</li><li>Applicable protocol: HTTP</li><li>Status: standard</li><li>Author/Change controller: IETF</li><li>Specification document(s): [this document]</li><li>Related information: for Client Hints</li></ul></div></div><h2 id="rfc.references"><a href="#rfc.section.11" id="rfc.section.11">11.</a> Normative References</h2><dl class="reference"><dt id="I-D.ietf-httpbis-key">[I-D.ietf-httpbis-key]</dt><dd>Fielding, R. and m. mnot, “<a href="https://tools.ietf.org/html/draft-ietf-httpbis-key-00">The Key HTTP Response Header Field</a>”, Internet-Draft&nbsp;draft-ietf-httpbis-key-00 (work in progress), October&nbsp;2015.</dd><dt id="RFC2119">[RFC2119]</dt><dd>Bradner, S., “<a href="http://www.rfc-editor.org/info/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>”, BCP&nbsp;14, RFC&nbsp;2119, <a href="http://dx.doi.org/10.17487/RFC2119">DOI&nbsp;10.17487/RFC2119</a>, March&nbsp;1997, &lt;<a href="http://www.rfc-editor.org/info/rfc2119">http://www.rfc-editor.org/info/rfc2119</a>&gt;.</dd><dt id="RFC5234">[RFC5234]</dt><dd>Crocker, D., Ed. and P. Overell, “<a href="http://www.rfc-editor.org/info/rfc5234">Augmented BNF for Syntax Specifications: ABNF</a>”, STD&nbsp;68, RFC&nbsp;5234, <a href="http://dx.doi.org/10.17487/RFC5234">DOI&nbsp;10.17487/RFC5234</a>, January&nbsp;2008, &lt;<a href="http://www.rfc-editor.org/info/rfc5234">http://www.rfc-editor.org/info/rfc5234</a>&gt;.</dd><dt id="RFC7230">[RFC7230]</dt><dd>Fielding, R., Ed. and J. Reschke, Ed., “<a href="http://www.rfc-editor.org/info/rfc7230">Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</a>”, RFC&nbsp;7230, <a href="http://dx.doi.org/10.17487/RFC7230">DOI&nbsp;10.17487/RFC7230</a>, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7230">http://www.rfc-editor.org/info/rfc7230</a>&gt;.</dd><dt id="RFC7231">[RFC7231]</dt><dd>Fielding, R., Ed. and J. Reschke, Ed., “<a href="http://www.rfc-editor.org/info/rfc7231">Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content</a>”, RFC&nbsp;7231, <a href="http://dx.doi.org/10.17487/RFC7231">DOI&nbsp;10.17487/RFC7231</a>, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7231">http://www.rfc-editor.org/info/rfc7231</a>&gt;.</dd><dt id="RFC7234">[RFC7234]</dt><dd>Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke, Ed., “<a href="http://www.rfc-editor.org/info/rfc7234">Hypertext Transfer Protocol (HTTP/1.1): Caching</a>”, RFC&nbsp;7234, <a href="http://dx.doi.org/10.17487/RFC7234">DOI&nbsp;10.17487/RFC7234</a>, June&nbsp;2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7234">http://www.rfc-editor.org/info/rfc7234</a>&gt;.</dd></dl><div class="avoidbreakinside"><h2 id="rfc.authors"><a href="#rfc.authors">Author's Address</a></h2><p><b>Ilya Grigorik</b><br>Google<br>EMail: <a href="mailto:ilya@igvita.com">ilya@igvita.com</a><br>URI: <a href="https://www.igvita.com/">https://www.igvita.com/</a></p></div></div></div></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script></body></html>
