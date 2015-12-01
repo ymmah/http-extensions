@@ -5,10 +5,10 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft                                                    Akamai
 Intended status: Standards Track                              P. McManus
-Expires: May 28, 2016                                            Mozilla
+Expires: June 3, 2016                                            Mozilla
                                                               J. Reschke
                                                               greenbytes
-                                                       November 25, 2015
+                                                        December 1, 2015
 
 
                        HTTP Alternative Services
@@ -49,13 +49,13 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 28, 2016.
+   This Internet-Draft will expire on June 3, 2016.
 
 
 
-Nottingham, et al.        Expires May 28, 2016                  [Page 1]
+Nottingham, et al.        Expires June 3, 2016                  [Page 1]
 
-Internet-Draft          HTTP Alternative Services          November 2015
+Internet-Draft          HTTP Alternative Services          December 2015
 
 
 Copyright Notice
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Nottingham, et al.        Expires May 28, 2016                  [Page 2]
+Nottingham, et al.        Expires June 3, 2016                  [Page 2]
 
-Internet-Draft          HTTP Alternative Services          November 2015
+Internet-Draft          HTTP Alternative Services          December 2015
 
 
      A.2.  Since draft-ietf-httpbis-alt-svc-00 . . . . . . . . . . .  20
@@ -165,9 +165,9 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 28, 2016                  [Page 3]
+Nottingham, et al.        Expires June 3, 2016                  [Page 3]
 
-Internet-Draft          HTTP Alternative Services          November 2015
+Internet-Draft          HTTP Alternative Services          December 2015
 
 
    It also endorses the status code 421 (Misdirected Request)
@@ -221,9 +221,9 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 28, 2016                  [Page 4]
+Nottingham, et al.        Expires June 3, 2016                  [Page 4]
 
-Internet-Draft          HTTP Alternative Services          November 2015
+Internet-Draft          HTTP Alternative Services          December 2015
 
 
    Alternative services do not replace or change the origin for any
@@ -277,9 +277,9 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 28, 2016                  [Page 5]
+Nottingham, et al.        Expires June 3, 2016                  [Page 5]
 
-Internet-Draft          HTTP Alternative Services          November 2015
+Internet-Draft          HTTP Alternative Services          December 2015
 
 
    "http/1.1", registered by Section 6 of [RFC7301], identifies HTTP/1.1
@@ -333,9 +333,9 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 28, 2016                  [Page 6]
+Nottingham, et al.        Expires June 3, 2016                  [Page 6]
 
-Internet-Draft          HTTP Alternative Services          November 2015
+Internet-Draft          HTTP Alternative Services          December 2015
 
 
    Alternative services are fully authoritative for the origin in
@@ -389,9 +389,9 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 28, 2016                  [Page 7]
+Nottingham, et al.        Expires June 3, 2016                  [Page 7]
 
-Internet-Draft          HTTP Alternative Services          November 2015
+Internet-Draft          HTTP Alternative Services          December 2015
 
 
    When a client uses an alternative service for a request, it can
@@ -445,9 +445,9 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 28, 2016                  [Page 8]
+Nottingham, et al.        Expires June 3, 2016                  [Page 8]
 
-Internet-Draft          HTTP Alternative Services          November 2015
+Internet-Draft          HTTP Alternative Services          December 2015
 
 
    In order to have precisely one way to represent any ALPN protocol
@@ -501,9 +501,9 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 28, 2016                  [Page 9]
+Nottingham, et al.        Expires June 3, 2016                  [Page 9]
 
-Internet-Draft          HTTP Alternative Services          November 2015
+Internet-Draft          HTTP Alternative Services          December 2015
 
 
    The Alt-Svc field value can have multiple values:
@@ -557,9 +557,9 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 28, 2016                 [Page 10]
+Nottingham, et al.        Expires June 3, 2016                 [Page 10]
 
-Internet-Draft          HTTP Alternative Services          November 2015
+Internet-Draft          HTTP Alternative Services          December 2015
 
 
    For example, a response:
@@ -613,9 +613,9 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 28, 2016                 [Page 11]
+Nottingham, et al.        Expires June 3, 2016                 [Page 11]
 
-Internet-Draft          HTTP Alternative Services          November 2015
+Internet-Draft          HTTP Alternative Services          December 2015
 
 
    An ALTSVC frame from a server to a client on a stream other than
@@ -669,9 +669,9 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 28, 2016                 [Page 12]
+Nottingham, et al.        Expires June 3, 2016                 [Page 12]
 
-Internet-Draft          HTTP Alternative Services          November 2015
+Internet-Draft          HTTP Alternative Services          December 2015
 
 
 5.  The Alt-Used HTTP Header Field
@@ -725,9 +725,9 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 28, 2016                 [Page 13]
+Nottingham, et al.        Expires June 3, 2016                 [Page 13]
 
-Internet-Draft          HTTP Alternative Services          November 2015
+Internet-Draft          HTTP Alternative Services          December 2015
 
 
 7.  IANA Considerations
@@ -781,9 +781,9 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 28, 2016                 [Page 14]
+Nottingham, et al.        Expires June 3, 2016                 [Page 14]
 
-Internet-Draft          HTTP Alternative Services          November 2015
+Internet-Draft          HTTP Alternative Services          December 2015
 
 
    Values to be added to this name space require Expert Review (see
@@ -837,9 +837,9 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 28, 2016                 [Page 15]
+Nottingham, et al.        Expires June 3, 2016                 [Page 15]
 
-Internet-Draft          HTTP Alternative Services          November 2015
+Internet-Draft          HTTP Alternative Services          December 2015
 
 
    clients using the alternative service by providing strong
@@ -893,9 +893,9 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 28, 2016                 [Page 16]
+Nottingham, et al.        Expires June 3, 2016                 [Page 16]
 
-Internet-Draft          HTTP Alternative Services          November 2015
+Internet-Draft          HTTP Alternative Services          December 2015
 
 
    For example, if a "https://" URI has a protocol advertised that does
@@ -949,9 +949,9 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 28, 2016                 [Page 17]
+Nottingham, et al.        Expires June 3, 2016                 [Page 17]
 
-Internet-Draft          HTTP Alternative Services          November 2015
+Internet-Draft          HTTP Alternative Services          December 2015
 
 
    When the protocol does not explicitly carry the scheme (e.g., as is
@@ -1005,9 +1005,9 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 28, 2016                 [Page 18]
+Nottingham, et al.        Expires June 3, 2016                 [Page 18]
 
-Internet-Draft          HTTP Alternative Services          November 2015
+Internet-Draft          HTTP Alternative Services          December 2015
 
 
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
@@ -1061,9 +1061,9 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 28, 2016                 [Page 19]
+Nottingham, et al.        Expires June 3, 2016                 [Page 19]
 
-Internet-Draft          HTTP Alternative Services          November 2015
+Internet-Draft          HTTP Alternative Services          December 2015
 
 
 Appendix A.  Change Log (to be removed by RFC Editor before publication)
@@ -1117,9 +1117,9 @@ A.5.  Since draft-ietf-httpbis-alt-svc-03
 
 
 
-Nottingham, et al.        Expires May 28, 2016                 [Page 20]
+Nottingham, et al.        Expires June 3, 2016                 [Page 20]
 
-Internet-Draft          HTTP Alternative Services          November 2015
+Internet-Draft          HTTP Alternative Services          December 2015
 
 
    Remove/tune language with respect to tracking risks (see
@@ -1173,9 +1173,9 @@ A.9.  Since draft-ietf-httpbis-alt-svc-07
 
 
 
-Nottingham, et al.        Expires May 28, 2016                 [Page 21]
+Nottingham, et al.        Expires June 3, 2016                 [Page 21]
 
-Internet-Draft          HTTP Alternative Services          November 2015
+Internet-Draft          HTTP Alternative Services          December 2015
 
 
    Unexpected Alt-Svc frames (<https://github.com/httpwg/http-
@@ -1229,9 +1229,9 @@ A.10.  Since draft-ietf-httpbis-alt-svc-08
 
 
 
-Nottingham, et al.        Expires May 28, 2016                 [Page 22]
+Nottingham, et al.        Expires June 3, 2016                 [Page 22]
 
-Internet-Draft          HTTP Alternative Services          November 2015
+Internet-Draft          HTTP Alternative Services          December 2015
 
 
    Using alt-svc on localhost (no change to spec, see
@@ -1285,9 +1285,9 @@ Authors' Addresses
 
 
 
-Nottingham, et al.        Expires May 28, 2016                 [Page 23]
+Nottingham, et al.        Expires June 3, 2016                 [Page 23]
 
-Internet-Draft          HTTP Alternative Services          November 2015
+Internet-Draft          HTTP Alternative Services          December 2015
 
 
    Patrick McManus
@@ -1341,4 +1341,4 @@ Internet-Draft          HTTP Alternative Services          November 2015
 
 
 
-Nottingham, et al.        Expires May 28, 2016                 [Page 24]
+Nottingham, et al.        Expires June 3, 2016                 [Page 24]
