@@ -544,15 +544,15 @@ Internet-Draft          HTTP Alternative Services          December 2015
 
    When an alternative service is advertised using Alt-Svc, it is
    considered fresh for 24 hours from generation of the message.  This
-   can be modified with the 'ma' (max-age) parameter:
+   can be modified with the 'ma' (max-age) parameter.
 
-   Alt-Svc: h2=":443"; ma=3600
+   Syntax:
 
-   which indicates the number of seconds since the response was
-   generated the alternative service is considered fresh for.
+   ma = delta-seconds; see [RFC7234], Section 1.2.1
 
-   ma = delta-seconds
-
+   The delta-seconds value indicates the number of seconds since the
+   response was generated the alternative service is considered fresh
+   for.
 
 
 
@@ -561,6 +561,8 @@ Nottingham, et al.        Expires June 7, 2016                 [Page 10]
 
 Internet-Draft          HTTP Alternative Services          December 2015
 
+
+   Alt-Svc: h2=":443"; ma=3600
 
    See Section 4.2.3 of [RFC7234] for details of determining response
    age.
@@ -593,6 +595,8 @@ Internet-Draft          HTTP Alternative Services          December 2015
    "1" as a hint that the service is potentially useful beyond a network
    configuration change.
 
+   Syntax:
+
    persist = 1DIGIT
 
    For example:
@@ -605,10 +609,6 @@ Internet-Draft          HTTP Alternative Services          December 2015
 
    See Section 2.2 for general requirements on caching alternative
    services.
-
-
-
-
 
 
 
