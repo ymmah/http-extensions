@@ -124,8 +124,9 @@ Internet-Draft          HTTP Alternative Services          December 2015
      A.9.  Since draft-ietf-httpbis-alt-svc-07 . . . . . . . . . . .  21
      A.10. Since draft-ietf-httpbis-alt-svc-08 . . . . . . . . . . .  22
      A.11. Since draft-ietf-httpbis-alt-svc-09 . . . . . . . . . . .  23
+     A.12. Since draft-ietf-httpbis-alt-svc-10 . . . . . . . . . . .  23
    Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  23
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  23
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  24
 
 1.  Introduction
 
@@ -160,7 +161,6 @@ Internet-Draft          HTTP Alternative Services          December 2015
    advertising their existence using HTTP header fields (Section 3) or
    HTTP/2 frames (Section 4), plus a way to indicate that an alternative
    service was used (Section 5).
-
 
 
 
@@ -1263,6 +1263,10 @@ A.11.  Since draft-ietf-httpbis-alt-svc-09
    <https://github.com/httpwg/http-extensions/issues/125>,
    <https://github.com/httpwg/http-extensions/issues/126>).
 
+A.12.  Since draft-ietf-httpbis-alt-svc-10
+
+   None yet.
+
 Appendix B.  Acknowledgements
 
    Thanks to Adam Langley, Bence Beky, Eliot Lear, Erik Nygren, Guy
@@ -1274,13 +1278,9 @@ Appendix B.  Acknowledgements
    The Alt-Svc header field was influenced by the design of the
    Alternate-Protocol header field in SPDY.
 
-Authors' Addresses
 
-   Mark Nottingham
-   Akamai
 
-   EMail: mnot@mnot.net
-   URI:   https://www.mnot.net/
+
 
 
 
@@ -1288,6 +1288,15 @@ Authors' Addresses
 Nottingham, et al.        Expires June 17, 2016                [Page 23]
 
 Internet-Draft          HTTP Alternative Services          December 2015
+
+
+Authors' Addresses
+
+   Mark Nottingham
+   Akamai
+
+   EMail: mnot@mnot.net
+   URI:   https://www.mnot.net/
 
 
    Patrick McManus
@@ -1302,15 +1311,6 @@ Internet-Draft          HTTP Alternative Services          December 2015
 
    EMail: julian.reschke@greenbytes.de
    URI:   https://greenbytes.de/tech/webdav/
-
-
-
-
-
-
-
-
-
 
 
 
