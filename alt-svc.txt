@@ -964,7 +964,7 @@ Internet-Draft          HTTP Alternative Services          December 2015
    ([RFC7540], Section 8.1.2.3 and [RFC7230], Section 5.3.2).
 
    When the protocol does not explicitly carry the scheme (e.g., as is
-   usually the case for HTTP/1.1 over TLS, servers can, mitigate this
+   usually the case for HTTP/1.1 over TLS, servers can mitigate this
    risk by either assuming that all requests have an insecure context,
    or by refraining from advertising alternative services for insecure
    schemes (such as HTTP).
