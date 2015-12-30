@@ -2,7 +2,7 @@
 
 
 
-Network Working Group                                         M. Thomson
+HTTP Working Group                                            M. Thomson
 Internet-Draft                                                   Mozilla
 Intended status: Standards Track                       December 30, 2015
 Expires: July 2, 2016

@@ -2,7 +2,7 @@
 
 
 
-httpbis Working Group                                        R. Fielding
+HTTP Working Group                                           R. Fielding
 Internet-Draft                                Adobe Systems Incorporated
 Intended status: Standards Track                           M. Nottingham
 Expires: July 2, 2016                                  December 30, 2015
