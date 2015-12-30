@@ -16,6 +16,16 @@ Abstract
    This memo introduces a content-coding for HTTP that allows message
    payloads to be encrypted.
 
+Note to Readers
+
+   Discussion of this draft takes place on the HTTP working group
+   mailing list (ietf-http-wg@w3.org), which is archived at
+   https://lists.w3.org/Archives/Public/ietf-http-wg/ .
+
+   Working Group information can be found at http://httpwg.github.io/ ;
+   source code and issues list for this draft can be found at
+   https://github.com/httpwg/http-extensions/labels/encryption .
+
 Status of This Memo
 
    This Internet-Draft is submitted in full conformance with the
@@ -40,16 +50,6 @@ Copyright Notice
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
-   (http://trustee.ietf.org/license-info) in effect on the date of
-   publication of this document.  Please review these documents
-   carefully, as they describe your rights and restrictions with respect
-   to this document.  Code Components extracted from this document must
-   include Simplified BSD License text as described in Section 4.e of
-   the Trust Legal Provisions and are provided without warranty as
-   described in the Simplified BSD License.
-
-
-
 
 
 
@@ -58,46 +58,62 @@ Thomson                   Expires July 2, 2016                  [Page 1]
 Internet-Draft           HTTP encryption coding            December 2015
 
 
+   (http://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+
 Table of Contents
 
-   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
      1.1.  Notational Conventions  . . . . . . . . . . . . . . . . .   3
-   2.  The "aesgcm128" HTTP Content Encoding . . . . . . . . . . . .   3
+   2.  The "aesgcm128" HTTP Content Encoding . . . . . . . . . . . .   4
    3.  The Encryption HTTP Header Field  . . . . . . . . . . . . . .   5
      3.1.  Encryption Header Field Parameters  . . . . . . . . . . .   6
      3.2.  Content Encryption Key Derivation . . . . . . . . . . . .   6
      3.3.  Nonce Derivation  . . . . . . . . . . . . . . . . . . . .   7
    4.  Crypto-Key Header Field . . . . . . . . . . . . . . . . . . .   8
-     4.1.  Explicit Key  . . . . . . . . . . . . . . . . . . . . . .   8
+     4.1.  Explicit Key  . . . . . . . . . . . . . . . . . . . . . .   9
      4.2.  Diffie-Hellman  . . . . . . . . . . . . . . . . . . . . .   9
      4.3.  Pre-shared Authentication Secrets . . . . . . . . . . . .  10
    5.  Examples  . . . . . . . . . . . . . . . . . . . . . . . . . .  11
      5.1.  Successful GET Response . . . . . . . . . . . . . . . . .  11
      5.2.  Encryption and Compression  . . . . . . . . . . . . . . .  11
-     5.3.  Encryption with More Than One Key . . . . . . . . . . . .  11
+     5.3.  Encryption with More Than One Key . . . . . . . . . . . .  12
      5.4.  Encryption with Explicit Key  . . . . . . . . . . . . . .  12
      5.5.  Diffie-Hellman Encryption . . . . . . . . . . . . . . . .  12
    6.  Security Considerations . . . . . . . . . . . . . . . . . . .  13
      6.1.  Key and Nonce Reuse . . . . . . . . . . . . . . . . . . .  13
-     6.2.  Content Integrity . . . . . . . . . . . . . . . . . . . .  13
+     6.2.  Content Integrity . . . . . . . . . . . . . . . . . . . .  14
      6.3.  Leaking Information in Headers  . . . . . . . . . . . . .  14
-     6.4.  Poisoning Storage . . . . . . . . . . . . . . . . . . . .  14
+     6.4.  Poisoning Storage . . . . . . . . . . . . . . . . . . . .  15
      6.5.  Sizing and Timing Attacks . . . . . . . . . . . . . . . .  15
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  15
      7.1.  The "aesgcm128" HTTP Content Encoding . . . . . . . . . .  15
      7.2.  Encryption Header Fields  . . . . . . . . . . . . . . . .  15
      7.3.  The HTTP Encryption Parameter Registry  . . . . . . . . .  16
        7.3.1.  keyid . . . . . . . . . . . . . . . . . . . . . . . .  16
-       7.3.2.  salt  . . . . . . . . . . . . . . . . . . . . . . . .  16
+       7.3.2.  salt  . . . . . . . . . . . . . . . . . . . . . . . .  17
        7.3.3.  rs  . . . . . . . . . . . . . . . . . . . . . . . . .  17
      7.4.  The HTTP Crypto-Key Parameter Registry  . . . . . . . . .  17
        7.4.1.  keyid . . . . . . . . . . . . . . . . . . . . . . . .  17
-       7.4.2.  aesgcm128 . . . . . . . . . . . . . . . . . . . . . .  17
+       7.4.2.  aesgcm128 . . . . . . . . . . . . . . . . . . . . . .  18
        7.4.3.  dh  . . . . . . . . . . . . . . . . . . . . . . . . .  18
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  18
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .  18
      8.2.  Informative References  . . . . . . . . . . . . . . . . .  19
    Appendix A.  JWE Mapping  . . . . . . . . . . . . . . . . . . . .  20
+
+
+
+Thomson                   Expires July 2, 2016                  [Page 2]
+
+Internet-Draft           HTTP encryption coding            December 2015
+
+
    Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  21
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  21
 
@@ -106,13 +122,6 @@ Table of Contents
    It is sometimes desirable to encrypt the contents of a HTTP message
    (request or response) so that when the payload is stored (e.g., with
    a HTTP PUT), only someone with the appropriate key can read it.
-
-
-
-Thomson                   Expires July 2, 2016                  [Page 2]
-
-Internet-Draft           HTTP encryption coding            December 2015
-
 
    For example, it might be necessary to store a file on a server
    without exposing its contents to that server.  Furthermore, that same
@@ -151,6 +160,16 @@ Internet-Draft           HTTP encryption coding            December 2015
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
    document are to be interpreted as described in [RFC2119].
 
+
+
+
+
+
+Thomson                   Expires July 2, 2016                  [Page 3]
+
+Internet-Draft           HTTP encryption coding            December 2015
+
+
 2.  The "aesgcm128" HTTP Content Encoding
 
    The "aesgcm128" HTTP content-coding indicates that a payload has been
@@ -161,15 +180,6 @@ Internet-Draft           HTTP encryption coding            December 2015
 
    When this content-coding is in use, the Encryption header field
    (Section 3) describes how encryption has been applied.  The Crypto-
-
-
-
-
-Thomson                   Expires July 2, 2016                  [Page 3]
-
-Internet-Draft           HTTP encryption coding            December 2015
-
-
    Key header field (Section 4) can be included to describe how the
    content encryption key is derived or retrieved.
 
@@ -208,6 +218,14 @@ Internet-Draft           HTTP encryption coding            December 2015
    input plaintext.  Therefore, the length of each enciphered record
    other than the last is equal to the value of the "rs" parameter plus
    16 octets.  A receiver MUST fail to decrypt if the final record
+
+
+
+Thomson                   Expires July 2, 2016                  [Page 4]
+
+Internet-Draft           HTTP encryption coding            December 2015
+
+
    ciphertext is 16 octets or less in size.  Valid records always
    contain at least one byte of padding and a 16 octet authentication
    tag.
@@ -218,13 +236,6 @@ Internet-Draft           HTTP encryption coding            December 2015
    MUST fail to decrypt if any padding octet other than the first is
    non-zero, or a record has more padding than the record size can
    accommodate.
-
-
-
-Thomson                   Expires July 2, 2016                  [Page 4]
-
-Internet-Draft           HTTP encryption coding            December 2015
-
 
    The nonce for each record is a 96-bit value constructed from the
    record sequence number and the input keying material.  Nonce
@@ -263,6 +274,14 @@ Internet-Draft           HTTP encryption coding            December 2015
 
    If the payload is encrypted more than once (as reflected by having
    multiple content-codings that imply encryption), each application of
+
+
+
+Thomson                   Expires July 2, 2016                  [Page 5]
+
+Internet-Draft           HTTP encryption coding            December 2015
+
+
    the content encoding is reflected in the Encryption header field, in
    the order in which they were applied.
 
@@ -274,13 +293,6 @@ Internet-Draft           HTTP encryption coding            December 2015
    Alternatively, the Encryption header field MAY be omitted if the
    sender intends for the recipient to acquire the header field by other
    means.
-
-
-
-Thomson                   Expires July 2, 2016                  [Page 5]
-
-Internet-Draft           HTTP encryption coding            December 2015
-
 
    Servers processing PUT requests MUST persist the value of the
    Encryption header field, unless they remove the content-coding by
@@ -317,6 +329,15 @@ Internet-Draft           HTTP encryption coding            December 2015
    In order to allow the reuse of keying material for multiple different
    HTTP messages, a content encryption key is derived for each message.
    The content encryption key is derived from the decoded value of the
+
+
+
+
+Thomson                   Expires July 2, 2016                  [Page 6]
+
+Internet-Draft           HTTP encryption coding            December 2015
+
+
    "salt" parameter using the HMAC-based key derivation function (HKDF)
    described in [RFC5869] using the SHA-256 hash algorithm [FIPS180-4].
 
@@ -328,15 +349,6 @@ Internet-Draft           HTTP encryption coding            December 2015
 
 
       PRK = HMAC-SHA-256(salt, IKM)
-
-
-
-
-
-Thomson                   Expires July 2, 2016                  [Page 6]
-
-Internet-Draft           HTTP encryption coding            December 2015
-
 
    The info parameter to HKDF is set to the ASCII-encoded string
    "Content-Encoding: aesgcm128", a single zero octet and an optional
@@ -375,6 +387,13 @@ Internet-Draft           HTTP encryption coding            December 2015
 
       nonce_info = "Content-Encoding: nonce" || 0x00 || context
 
+
+
+Thomson                   Expires July 2, 2016                  [Page 7]
+
+Internet-Draft           HTTP encryption coding            December 2015
+
+
    The context for nonce derivation SHOULD be the same as is used for
    content encryption key derivation.
 
@@ -384,14 +403,6 @@ Internet-Draft           HTTP encryption coding            December 2015
    at zero.
 
    Thus, the final nonce for each record is a 12 octet value:
-
-
-
-
-
-Thomson                   Expires July 2, 2016                  [Page 7]
-
-Internet-Draft           HTTP encryption coding            December 2015
 
 
       NONCE = HMAC-SHA-256(PRK, nonce_info || 0x01) XOR SEQ
@@ -430,6 +441,15 @@ Internet-Draft           HTTP encryption coding            December 2015
    only for the current HTTP message unless additional information
    indicates a greater scope.
 
+
+
+
+
+Thomson                   Expires July 2, 2016                  [Page 8]
+
+Internet-Draft           HTTP encryption coding            December 2015
+
+
    Note that different methods for determining input keying material
    will produce different amounts of data.  The HKDF process ensures
    that the final content encryption key is the necessary size.
@@ -441,15 +461,6 @@ Internet-Draft           HTTP encryption coding            December 2015
 
    The "aesgcm128" parameter is decoded and used as the input keying
    material for the "aesgcm128" content encoding.  The "aesgcm128"
-
-
-
-
-Thomson                   Expires July 2, 2016                  [Page 8]
-
-Internet-Draft           HTTP encryption coding            December 2015
-
-
    parameter MUST decode to at least 16 octets in order to be used as
    input keying material for "aesgcm128" content encoding.
 
@@ -488,6 +499,13 @@ Internet-Draft           HTTP encryption coding            December 2015
    to generate a shared secret using the designated Diffie-Hellman
    process.
 
+
+
+Thomson                   Expires July 2, 2016                  [Page 9]
+
+Internet-Draft           HTTP encryption coding            December 2015
+
+
    The context for content encryption key and nonce derivation (see
    Section 3.2) is set to include the means by which the keys were
    derived.  The context is formed from the concatenation of group
@@ -496,14 +514,6 @@ Internet-Draft           HTTP encryption coding            December 2015
    key of the sender, and the public key of the sender.  The public keys
    are encoded into octets as defined for the group when determining the
    context string.
-
-
-
-
-
-Thomson                   Expires July 2, 2016                  [Page 9]
-
-Internet-Draft           HTTP encryption coding            December 2015
 
 
       context = label || 0x00 ||
@@ -543,6 +553,15 @@ Internet-Draft           HTTP encryption coding            December 2015
    underlying SHA-256 HMAC function):
 
 
+
+
+
+
+Thomson                   Expires July 2, 2016                 [Page 10]
+
+Internet-Draft           HTTP encryption coding            December 2015
+
+
       auth_info = "Content-Encoding: auth" || 0x00
       IKM = HKDF(authentication, raw_key, auth_info, 32)
 
@@ -552,14 +571,6 @@ Internet-Draft           HTTP encryption coding            December 2015
 
    Note that in the absence of an authentication secret, the input
    keying material is simply the raw keying material:
-
-
-
-
-
-Thomson                   Expires July 2, 2016                 [Page 10]
-
-Internet-Draft           HTTP encryption coding            December 2015
 
 
       IKM = raw_key
@@ -596,6 +607,17 @@ Internet-Draft           HTTP encryption coding            December 2015
 
    [encrypted payload]
 
+
+
+
+
+
+
+Thomson                   Expires July 2, 2016                 [Page 11]
+
+Internet-Draft           HTTP encryption coding            December 2015
+
+
 5.3.  Encryption with More Than One Key
 
 
@@ -610,13 +632,6 @@ Internet-Draft           HTTP encryption coding            December 2015
                salt="bDMSGoc2uobK_IhavSHsHA"; rs=1200
 
    [encrypted payload]
-
-
-
-Thomson                   Expires July 2, 2016                 [Page 11]
-
-Internet-Draft           HTTP encryption coding            December 2015
-
 
    Here, a PUT request has been encrypted twice with different input
    keying material; decrypting twice is necessary to read the content.
@@ -651,6 +666,14 @@ Internet-Draft           HTTP encryption coding            December 2015
 
    G6j_sfKg0qebO62yXpTCayN2KV24QitNiTvLgcFiEj0
 
+
+
+
+Thomson                   Expires July 2, 2016                 [Page 12]
+
+Internet-Draft           HTTP encryption coding            December 2015
+
+
    This example shows the same string, "I am the walrus", encrypted
    using ECDH over the P-256 curve [FIPS186], which is identified with
    the label "P-256" encoded in ASCII.  The content body is shown here
@@ -662,16 +685,6 @@ Internet-Draft           HTTP encryption coding            December 2015
    above.  The keys shown below use uncompressed points [X9.62] encoded
    using URL-safe base64.  Line wrapping is added for presentation
    purposes only.
-
-
-
-
-
-
-
-Thomson                   Expires July 2, 2016                 [Page 12]
-
-Internet-Draft           HTTP encryption coding            December 2015
 
 
       Receiver:
@@ -709,6 +722,14 @@ Internet-Draft           HTTP encryption coding            December 2015
    material and salt are reused - this could expose the plaintext and
    the authentication key, nullifying the protection offered by
    encryption.  Thus, if the same input keying material is reused, then
+
+
+
+Thomson                   Expires July 2, 2016                 [Page 13]
+
+Internet-Draft           HTTP encryption coding            December 2015
+
+
    the salt parameter MUST be unique each time.  This ensures that the
    content encryption key is not reused.  An implementation SHOULD
    generate a random salt parameter for every message; a counter could
@@ -719,16 +740,6 @@ Internet-Draft           HTTP encryption coding            December 2015
    This mechanism only provides content origin authentication.  The
    authentication tag only ensures that an entity with access to the
    content encryption key produced the encrypted data.
-
-
-
-
-
-
-Thomson                   Expires July 2, 2016                 [Page 13]
-
-Internet-Draft           HTTP encryption coding            December 2015
-
 
    Any entity with the content encryption key can therefore produce
    content that will be accepted as valid.  This includes all recipients
@@ -767,6 +778,14 @@ Internet-Draft           HTTP encryption coding            December 2015
 
    3.  If it is considered sensitive information and it is not possible
        to convey it elsewhere, encapsulate the HTTP message using the
+
+
+
+Thomson                   Expires July 2, 2016                 [Page 14]
+
+Internet-Draft           HTTP encryption coding            December 2015
+
+
        application/http media type (Section 8.3.2 of [RFC7230]),
        encrypting that as the payload of the "outer" message.
 
@@ -775,16 +794,6 @@ Internet-Draft           HTTP encryption coding            December 2015
    This mechanism only offers encryption of content; it does not perform
    authentication or authorization, which still needs to be performed
    (e.g., by HTTP authentication [RFC7235]).
-
-
-
-
-
-
-Thomson                   Expires July 2, 2016                 [Page 14]
-
-Internet-Draft           HTTP encryption coding            December 2015
-
 
    This is especially relevant when a HTTP PUT request is accepted by a
    server; if the request is unauthenticated, it becomes possible for a
@@ -825,6 +834,14 @@ Internet-Draft           HTTP encryption coding            December 2015
 
    o  Protocol: HTTP
 
+
+
+
+Thomson                   Expires July 2, 2016                 [Page 15]
+
+Internet-Draft           HTTP encryption coding            December 2015
+
+
    o  Status: Standard
 
    o  Reference: this specification
@@ -833,14 +850,6 @@ Internet-Draft           HTTP encryption coding            December 2015
 
    This memo registers the "Crypto-Key" HTTP header field in the
    Permanent Message Header Registry, as detailed in Section 4.
-
-
-
-
-Thomson                   Expires July 2, 2016                 [Page 15]
-
-Internet-Draft           HTTP encryption coding            December 2015
-
 
    o  Field name: Crypto-Key
 
@@ -880,15 +889,6 @@ Internet-Draft           HTTP encryption coding            December 2015
 
    o  Reference: this document
 
-7.3.2.  salt
-
-   o  Parameter Name: salt
-
-   o  Purpose: Provide a source of entropy for derivation of a content
-      encryption key.  This value is mandatory.
-
-   o  Reference: this document
-
 
 
 
@@ -897,6 +897,15 @@ Thomson                   Expires July 2, 2016                 [Page 16]
 
 Internet-Draft           HTTP encryption coding            December 2015
 
+
+7.3.2.  salt
+
+   o  Parameter Name: salt
+
+   o  Purpose: Provide a source of entropy for derivation of a content
+      encryption key.  This value is mandatory.
+
+   o  Reference: this document
 
 7.3.3.  rs
 
@@ -934,15 +943,6 @@ Internet-Draft           HTTP encryption coding            December 2015
 
    o  Reference: this document
 
-7.4.2.  aesgcm128
-
-   o  Parameter Name: aesgcm128
-
-   o  Purpose: Provide an explicit input keying material value for the
-      aesgcm128 content encoding.
-
-   o  Reference: this document
-
 
 
 
@@ -953,6 +953,15 @@ Thomson                   Expires July 2, 2016                 [Page 17]
 
 Internet-Draft           HTTP encryption coding            December 2015
 
+
+7.4.2.  aesgcm128
+
+   o  Parameter Name: aesgcm128
+
+   o  Purpose: Provide an explicit input keying material value for the
+      aesgcm128 content encoding.
+
+   o  Reference: this document
 
 7.4.3.  dh
 
@@ -992,15 +1001,6 @@ Internet-Draft           HTTP encryption coding            December 2015
               Encodings", RFC 4648, DOI 10.17487/RFC4648, October 2006,
               <http://www.rfc-editor.org/info/rfc4648>.
 
-   [RFC5116]  McGrew, D., "An Interface and Algorithms for Authenticated
-              Encryption", RFC 5116, DOI 10.17487/RFC5116, January 2008,
-              <http://www.rfc-editor.org/info/rfc5116>.
-
-   [RFC5869]  Krawczyk, H. and P. Eronen, "HMAC-based Extract-and-Expand
-              Key Derivation Function (HKDF)", RFC 5869,
-              DOI 10.17487/RFC5869, May 2010,
-              <http://www.rfc-editor.org/info/rfc5869>.
-
 
 
 
@@ -1009,6 +1009,15 @@ Thomson                   Expires July 2, 2016                 [Page 18]
 
 Internet-Draft           HTTP encryption coding            December 2015
 
+
+   [RFC5116]  McGrew, D., "An Interface and Algorithms for Authenticated
+              Encryption", RFC 5116, DOI 10.17487/RFC5116, January 2008,
+              <http://www.rfc-editor.org/info/rfc5116>.
+
+   [RFC5869]  Krawczyk, H. and P. Eronen, "HMAC-based Extract-and-Expand
+              Key Derivation Function (HKDF)", RFC 5869,
+              DOI 10.17487/RFC5869, May 2010,
+              <http://www.rfc-editor.org/info/rfc5869>.
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
@@ -1050,6 +1059,13 @@ Internet-Draft           HTTP encryption coding            December 2015
               RFC 7233, DOI 10.17487/RFC7233, June 2014,
               <http://www.rfc-editor.org/info/rfc7233>.
 
+
+
+Thomson                   Expires July 2, 2016                 [Page 19]
+
+Internet-Draft           HTTP encryption coding            December 2015
+
+
    [RFC7235]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Authentication", RFC 7235,
               DOI 10.17487/RFC7235, June 2014,
@@ -1058,13 +1074,6 @@ Internet-Draft           HTTP encryption coding            December 2015
    [RFC7516]  Jones, M. and J. Hildebrand, "JSON Web Encryption (JWE)",
               RFC 7516, DOI 10.17487/RFC7516, May 2015,
               <http://www.rfc-editor.org/info/rfc7516>.
-
-
-
-Thomson                   Expires July 2, 2016                 [Page 19]
-
-Internet-Draft           HTTP encryption coding            December 2015
-
 
    [RFC7540]  Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
               Transfer Protocol Version 2 (HTTP/2)", RFC 7540,
@@ -1106,21 +1115,19 @@ Appendix A.  JWE Mapping
       encoding.  The "." separator is omitted, since the length of these
       fields is known.
 
-   Thus, the example in Section 5.4 can be rendered using the JWE
-   Compact Serialization as:
-
-
-   eyAiYWxnIjogImRpciIsICJlbmMiOiAiQTEyOEdDTSIgfQ..AAAAAAAAAAAAAAAA.
-   LwTC-fwdKh8de0smD2jfzA.eh1vURhu65M2lxhctbbntA
-
-
-
 
 
 Thomson                   Expires July 2, 2016                 [Page 20]
 
 Internet-Draft           HTTP encryption coding            December 2015
 
+
+   Thus, the example in Section 5.4 can be rendered using the JWE
+   Compact Serialization as:
+
+
+   eyAiYWxnIjogImRpciIsICJlbmMiOiAiQTEyOEdDTSIgfQ..AAAAAAAAAAAAAAAA.
+   LwTC-fwdKh8de0smD2jfzA.eh1vURhu65M2lxhctbbntA
 
    Where the first line represents the fixed JWE Protected Header, JWE
    Encrypted Key, and JWE Initialization Vector, all of which are
@@ -1141,13 +1148,6 @@ Author's Address
    Mozilla
 
    Email: martin.thomson@gmail.com
-
-
-
-
-
-
-
 
 
 

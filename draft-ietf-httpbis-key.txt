@@ -30,7 +30,12 @@ Abstract
 
 Note to Readers
 
-   The issues list for this draft can be found at
+   Discussion of this draft takes place on the HTTP working group
+   mailing list (ietf-http-wg@w3.org), which is archived at
+   https://lists.w3.org/Archives/Public/ietf-http-wg/ .
+
+   Working Group information can be found at http://httpwg.github.io/ ;
+   source code and issues list for this draft can be found at
    https://github.com/httpwg/http-extensions/labels/key .
 
 Status of This Memo
@@ -45,11 +50,6 @@ Status of This Memo
 
    Internet-Drafts are draft documents valid for a maximum of six months
    and may be updated, replaced, or obsoleted by other documents at any
-   time.  It is inappropriate to use Internet-Drafts as reference
-   material or to cite them other than as "work in progress."
-
-   This Internet-Draft will expire on July 2, 2016.
-
 
 
 
@@ -57,6 +57,11 @@ Fielding & Nottingham     Expires July 2, 2016                  [Page 1]
 
 Internet-Draft                     Key                     December 2015
 
+
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on July 2, 2016.
 
 Copyright Notice
 
@@ -75,7 +80,7 @@ Copyright Notice
 
 Table of Contents
 
-   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
      1.1.  Examples  . . . . . . . . . . . . . . . . . . . . . . . .   3
      1.2.  Notational Conventions  . . . . . . . . . . . . . . . . .   4
    2.  The "Key" Response Header Field . . . . . . . . . . . . . . .   4
@@ -101,11 +106,6 @@ Table of Contents
      B.1.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .  16
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  16
 
-1.  Introduction
-
-   In HTTP caching [RFC7234], the Vary response header field effectively
-   modifies the key used to store and access a response to include
-
 
 
 
@@ -114,6 +114,10 @@ Fielding & Nottingham     Expires July 2, 2016                  [Page 2]
 Internet-Draft                     Key                     December 2015
 
 
+1.  Introduction
+
+   In HTTP caching [RFC7234], the Vary response header field effectively
+   modifies the key used to store and access a response to include
    information from the request's headers.  This "secondary cache key"
    allows proactive content negotiation [RFC7231] to work with caches.
 
@@ -159,16 +163,14 @@ Internet-Draft                     Key                     December 2015
    A more complex example:
 
 
-     Key: user-agent;substr=MSIE;Substr="mobile", Cookie;param="ID"
-
-
-
 
 
 Fielding & Nottingham     Expires July 2, 2016                  [Page 3]
 
 Internet-Draft                     Key                     December 2015
 
+
+     Key: user-agent;substr=MSIE;Substr="mobile", Cookie;param="ID"
 
    indicates that the selected response depends on the presence of two
    strings in the User-Agent request header field, as well as the value
@@ -217,13 +219,14 @@ Internet-Draft                     Key                     December 2015
    and parameter values can be double-quoted strings (potentially with
    "\"-escaped characters inside).
 
-   The following header fields have the same effect:
-
 
 
 Fielding & Nottingham     Expires July 2, 2016                  [Page 4]
 
 Internet-Draft                     Key                     December 2015
+
+
+   The following header fields have the same effect:
 
 
      Vary: Accept-Encoding, Cookie
@@ -271,15 +274,17 @@ Internet-Draft                     Key                     December 2015
      Vary: *
      Key: Cookie;param="ID"
 
-   Except when Vary: * is used, the set of headers used in Key SHOULD
-   reflect the same request header fields as Vary does, even if they
-   don't have parameters.  For example,
 
 
 
 Fielding & Nottingham     Expires July 2, 2016                  [Page 5]
 
 Internet-Draft                     Key                     December 2015
+
+
+   Except when Vary: * is used, the set of headers used in Key SHOULD
+   reflect the same request header fields as Vary does, even if they
+   don't have parameters.  For example,
 
 
      Vary: Accept-Encoding, User-Agent
@@ -323,12 +328,7 @@ Internet-Draft                     Key                     December 2015
        most recently seen response header list for the resource as
        "header_list".
    3)  Let "secondary_key" be an empty string.
-   4)  Create "key_list" by splitting "key_value" on "," characters,
-       excepting "," characters within quoted strings, as per [RFC7230]
-       Section 3.2.6..
-   5)  For "key_item" in "key_list":
 
-       1)  Remove any leading and trailing WSP from "key_item".
 
 
 
@@ -338,6 +338,12 @@ Fielding & Nottingham     Expires July 2, 2016                  [Page 6]
 Internet-Draft                     Key                     December 2015
 
 
+   4)  Create "key_list" by splitting "key_value" on "," characters,
+       excepting "," characters within quoted strings, as per [RFC7230]
+       Section 3.2.6..
+   5)  For "key_item" in "key_list":
+
+       1)  Remove any leading and trailing WSP from "key_item".
        2)  If "key_item" does not contain a ";" character, fail
            parameter processing (Section 2.2.2) and skip to the next
            "key_item".
@@ -380,12 +386,6 @@ Internet-Draft                     Key                     December 2015
                with the "param_value", and append the result to
                "secondary_key".  If parameter processing fails
                Section 2.2.2, skip to the next "key_item".
-           8)  Append a separator character (e.g., NULL) to
-               "secondary_key".
-   6)  Return "secondary_key".
-
-   Note that this specification does not require that exact algorithm to
-   be implemented.  However, implementations' observable behavior MUST
 
 
 
@@ -394,6 +394,12 @@ Fielding & Nottingham     Expires July 2, 2016                  [Page 7]
 Internet-Draft                     Key                     December 2015
 
 
+           8)  Append a separator character (e.g., NULL) to
+               "secondary_key".
+   6)  Return "secondary_key".
+
+   Note that this specification does not require that exact algorithm to
+   be implemented.  However, implementations' observable behavior MUST
    be identical to running it.  This includes parameter processing
    algorithms; implementations MAY use different internal artefacts for
    secondary cache keys, as long as the results are the same.
@@ -436,12 +442,6 @@ Internet-Draft                     Key                     December 2015
    happens, Key processing needs to fail safely, so that the correct
    behavior is observed.
 
-   When this happens, implementations MUST either behave as if the Key
-   header was not present, or assure that the nominated header fields
-   being compared match, as per [RFC7234], Section 4.1.
-
-
-
 
 
 
@@ -449,6 +449,10 @@ Fielding & Nottingham     Expires July 2, 2016                  [Page 8]
 
 Internet-Draft                     Key                     December 2015
 
+
+   When this happens, implementations MUST either behave as if the Key
+   header was not present, or assure that the nominated header fields
+   being compared match, as per [RFC7234], Section 4.1.
 
 2.3.  Key Parameters
 
@@ -495,16 +499,16 @@ Internet-Draft                     Key                     December 2015
    considered the same (because, divided by 5, they all result in 0):
 
 
-   Bar: 1
-   Bar: 3 , 42
-   Bar: 4, 1
-
 
 
 Fielding & Nottingham     Expires July 2, 2016                  [Page 9]
 
 Internet-Draft                     Key                     December 2015
 
+
+   Bar: 1
+   Bar: 3 , 42
+   Bar: 4, 1
 
    whereas these would be considered to be in a different group
    (because, divided by 5, they all result in 2);
@@ -549,11 +553,7 @@ Internet-Draft                     Key                     December 2015
 
    Key: Foo;partition=20:30:40
 
-   indicates that the "Foo" header's field value should be divided into
-   four segments:
 
-   o  less than 20
-   o  20 to less than 30
 
 
 
@@ -562,6 +562,11 @@ Fielding & Nottingham     Expires July 2, 2016                 [Page 10]
 Internet-Draft                     Key                     December 2015
 
 
+   indicates that the "Foo" header's field value should be divided into
+   four segments:
+
+   o  less than 20
+   o  20 to less than 30
    o  30 to less than 40
    o  forty or greater
 
@@ -607,15 +612,15 @@ Internet-Draft                     Key                     December 2015
    For example, the Key:
 
 
-   Key: Baz;match="charlie"
-
-   Would return "1" for the following header field values:
-
-
 
 Fielding & Nottingham     Expires July 2, 2016                 [Page 11]
 
 Internet-Draft                     Key                     December 2015
+
+
+   Key: Baz;match="charlie"
+
+   Would return "1" for the following header field values:
 
 
    Baz: charlie
@@ -661,17 +666,15 @@ Internet-Draft                     Key                     December 2015
 
    Key: Abc;substr=bennet
 
-   Would return "1" for the following header field values:
-
-
-
-
 
 
 
 Fielding & Nottingham     Expires July 2, 2016                 [Page 12]
 
 Internet-Draft                     Key                     December 2015
+
+
+   Would return "1" for the following header field values:
 
 
    Abc: bennet
@@ -719,9 +722,6 @@ Internet-Draft                     Key                     December 2015
            skip to the next "header_item".
        2)  Let "item_name" be the string occurring before the first "="
            character in "header_item".
-       3)  If "item_name" does not case-insensitively match
-           "parameter_value", skip to the next "header_item".
-
 
 
 
@@ -730,6 +730,8 @@ Fielding & Nottingham     Expires July 2, 2016                 [Page 13]
 Internet-Draft                     Key                     December 2015
 
 
+       3)  If "item_name" does not case-insensitively match
+           "parameter_value", skip to the next "header_item".
        4)  Return the string occurring after the first "=" character in
            "header_item".
    5)  Return the empty string.
@@ -773,8 +775,6 @@ Internet-Draft                     Key                     December 2015
 
    This specification makes the following entries in the HTTP Key
    Parameter Registry:
-
-
 
 
 
