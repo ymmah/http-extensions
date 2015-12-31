@@ -430,7 +430,7 @@ Internet-Draft          HTTP Alternative Services          December 2015
    parameter     = token "=" ( token / quoted-string )
 
    The field value consists either of a list of values, each of which
-   indicating one alternative service, or the keyword "clear".
+   indicates one alternative service, or the keyword "clear".
 
    A field value containing the special value "clear" indicates that the
    origin requests all alternatives for that origin to be invalidated
