@@ -364,8 +364,8 @@ Internet-Draft          HTTP Alternative Services          December 2015
 
    By their nature, alternative services are OPTIONAL: clients do not
    need to use them.  However, it is advantageous for clients to behave
-   in a predictable way when they are used by servers (e.g., for load
-   balancing).
+   in a predictable way when alternative services are used by servers
+   (e.g., for load balancing).
 
    Therefore, if a client becomes aware of an alternative service, the
    client SHOULD use that alternative service for all requests to the
