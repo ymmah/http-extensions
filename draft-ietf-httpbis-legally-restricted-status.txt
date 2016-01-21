@@ -4,8 +4,8 @@
 
 HTTP Working Group                                               T. Bray
 Internet-Draft                                                Textuality
-Intended status: Standards Track                       December 31, 2015
-Expires: July 3, 2016
+Intended status: Standards Track                        January 21, 2016
+Expires: July 24, 2016
 
 
              An HTTP Status Code to Report Legal Obstacles
@@ -43,19 +43,19 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on July 3, 2016.
+   This Internet-Draft will expire on July 24, 2016.
 
 Copyright Notice
 
-   Copyright (c) 2015 IETF Trust and the persons identified as the
+   Copyright (c) 2016 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
 
 
 
-Bray                      Expires July 3, 2016                  [Page 1]
+Bray                      Expires July 24, 2016                 [Page 1]
 
-Internet-Draft               HTTP-status-451               December 2015
+Internet-Draft               HTTP-status-451                January 2016
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Bray                      Expires July 3, 2016                  [Page 2]
+Bray                      Expires July 24, 2016                 [Page 2]
 
-Internet-Draft               HTTP-status-451               December 2015
+Internet-Draft               HTTP-status-451                January 2016
 
 
 3.  451 Unavailable For Legal Reasons
@@ -165,9 +165,9 @@ Internet-Draft               HTTP-status-451               December 2015
 
 
 
-Bray                      Expires July 3, 2016                  [Page 3]
+Bray                      Expires July 24, 2016                 [Page 3]
 
-Internet-Draft               HTTP-status-451               December 2015
+Internet-Draft               HTTP-status-451                January 2016
 
 
    access path which could choose to deny access, for example ISPs,
@@ -221,9 +221,9 @@ Internet-Draft               HTTP-status-451               December 2015
 
 
 
-Bray                      Expires July 3, 2016                  [Page 4]
+Bray                      Expires July 24, 2016                 [Page 4]
 
-Internet-Draft               HTTP-status-451               December 2015
+Internet-Draft               HTTP-status-451                January 2016
 
 
 7.  References
@@ -277,4 +277,4 @@ Author's Address
 
 
 
-Bray                      Expires July 3, 2016                  [Page 5]
+Bray                      Expires July 24, 2016                 [Page 5]

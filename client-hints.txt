@@ -4,8 +4,8 @@
 
 HTTP Working Group                                           I. Grigorik
 Internet-Draft                                                    Google
-Intended status: Standards Track                       December 31, 2015
-Expires: July 3, 2016
+Intended status: Standards Track                        January 21, 2016
+Expires: July 24, 2016
 
 
                            HTTP Client Hints
@@ -49,18 +49,18 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on July 3, 2016.
+   This Internet-Draft will expire on July 24, 2016.
 
 
 
-Grigorik                  Expires July 3, 2016                  [Page 1]
+Grigorik                  Expires July 24, 2016                 [Page 1]
 
-Internet-Draft              HTTP Client Hints              December 2015
+Internet-Draft              HTTP Client Hints               January 2016
 
 
 Copyright Notice
 
-   Copyright (c) 2015 IETF Trust and the persons identified as the
+   Copyright (c) 2016 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Grigorik                  Expires July 3, 2016                  [Page 2]
+Grigorik                  Expires July 24, 2016                 [Page 2]
 
-Internet-Draft              HTTP Client Hints              December 2015
+Internet-Draft              HTTP Client Hints               January 2016
 
 
    However, even once this infrastructure is deployed, UA sniffing has
@@ -165,9 +165,9 @@ Internet-Draft              HTTP Client Hints              December 2015
 
 
 
-Grigorik                  Expires July 3, 2016                  [Page 3]
+Grigorik                  Expires July 24, 2016                 [Page 3]
 
-Internet-Draft              HTTP Client Hints              December 2015
+Internet-Draft              HTTP Client Hints               January 2016
 
 
    This document defines a selection of Client Hint request header
@@ -221,9 +221,9 @@ Internet-Draft              HTTP Client Hints              December 2015
 
 
 
-Grigorik                  Expires July 3, 2016                  [Page 4]
+Grigorik                  Expires July 24, 2016                 [Page 4]
 
-Internet-Draft              HTTP Client Hints              December 2015
+Internet-Draft              HTTP Client Hints               January 2016
 
 
 2.2.2.  Interaction with Caches
@@ -277,9 +277,9 @@ Internet-Draft              HTTP Client Hints              December 2015
 
 
 
-Grigorik                  Expires July 3, 2016                  [Page 5]
+Grigorik                  Expires July 24, 2016                 [Page 5]
 
-Internet-Draft              HTTP Client Hints              December 2015
+Internet-Draft              HTTP Client Hints               January 2016
 
 
 3.  The DPR Client Hint
@@ -333,9 +333,9 @@ Internet-Draft              HTTP Client Hints              December 2015
 
 
 
-Grigorik                  Expires July 3, 2016                  [Page 6]
+Grigorik                  Expires July 24, 2016                 [Page 6]
 
-Internet-Draft              HTTP Client Hints              December 2015
+Internet-Draft              HTTP Client Hints               January 2016
 
 
    If the resource width is not known at the time of the request or the
@@ -389,9 +389,9 @@ Internet-Draft              HTTP Client Hints              December 2015
 
 
 
-Grigorik                  Expires July 3, 2016                  [Page 7]
+Grigorik                  Expires July 24, 2016                 [Page 7]
 
-Internet-Draft              HTTP Client Hints              December 2015
+Internet-Draft              HTTP Client Hints               January 2016
 
 
 8.  Examples
@@ -445,9 +445,9 @@ Internet-Draft              HTTP Client Hints              December 2015
 
 
 
-Grigorik                  Expires July 3, 2016                  [Page 8]
+Grigorik                  Expires July 24, 2016                 [Page 8]
 
-Internet-Draft              HTTP Client Hints              December 2015
+Internet-Draft              HTTP Client Hints               January 2016
 
 
    However, implementors should consider the privacy implications of
@@ -501,9 +501,9 @@ Internet-Draft              HTTP Client Hints              December 2015
 
 
 
-Grigorik                  Expires July 3, 2016                  [Page 9]
+Grigorik                  Expires July 24, 2016                 [Page 9]
 
-Internet-Draft              HTTP Client Hints              December 2015
+Internet-Draft              HTTP Client Hints               January 2016
 
 
    o  Header field name: Accept-CH
@@ -557,9 +557,9 @@ Internet-Draft              HTTP Client Hints              December 2015
 
 
 
-Grigorik                  Expires July 3, 2016                 [Page 10]
+Grigorik                  Expires July 24, 2016                [Page 10]
 
-Internet-Draft              HTTP Client Hints              December 2015
+Internet-Draft              HTTP Client Hints               January 2016
 
 
 Author's Address
@@ -613,4 +613,4 @@ Author's Address
 
 
 
-Grigorik                  Expires July 3, 2016                 [Page 11]
+Grigorik                  Expires July 24, 2016                [Page 11]

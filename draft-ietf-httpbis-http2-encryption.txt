@@ -5,8 +5,8 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Experimental                                 M. Thomson
-Expires: July 3, 2016                                            Mozilla
-                                                       December 31, 2015
+Expires: July 24, 2016                                           Mozilla
+                                                        January 21, 2016
 
 
                     Opportunistic Security for HTTP
@@ -43,19 +43,19 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on July 3, 2016.
+   This Internet-Draft will expire on July 24, 2016.
 
 Copyright Notice
 
-   Copyright (c) 2015 IETF Trust and the persons identified as the
+   Copyright (c) 2016 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
 
 
 
-Nottingham & Thomson      Expires July 3, 2016                  [Page 1]
+Nottingham & Thomson      Expires July 24, 2016                 [Page 1]
 
-Internet-Draft         Opportunistic HTTP Security         December 2015
+Internet-Draft         Opportunistic HTTP Security          January 2016
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -76,14 +76,14 @@ Table of Contents
    2.  Using HTTP URIs over TLS  . . . . . . . . . . . . . . . . . .   3
    3.  Server Authentication . . . . . . . . . . . . . . . . . . . .   4
    4.  Interaction with "https" URIs . . . . . . . . . . . . . . . .   4
-   5.  Requiring Use of TLS  . . . . . . . . . . . . . . . . . . . .   5
+   5.  Requiring Use of TLS  . . . . . . . . . . . . . . . . . . . .   4
      5.1.  The HTTP-TLS Header Field . . . . . . . . . . . . . . . .   5
-     5.2.  Operational Considerations  . . . . . . . . . . . . . . .   7
+     5.2.  Operational Considerations  . . . . . . . . . . . . . . .   6
    6.  Security Considerations . . . . . . . . . . . . . . . . . . .   7
      6.1.  Security Indicators . . . . . . . . . . . . . . . . . . .   7
      6.2.  Downgrade Attacks . . . . . . . . . . . . . . . . . . . .   7
-     6.3.  Privacy Considerations  . . . . . . . . . . . . . . . . .   8
-     6.4.  Confusion Regarding Request Scheme  . . . . . . . . . . .   8
+     6.3.  Privacy Considerations  . . . . . . . . . . . . . . . . .   7
+     6.4.  Confusion Regarding Request Scheme  . . . . . . . . . . .   7
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   8
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .   8
      7.2.  Informative References  . . . . . . . . . . . . . . . . .   9
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Nottingham & Thomson      Expires July 3, 2016                  [Page 2]
+Nottingham & Thomson      Expires July 24, 2016                 [Page 2]
 
-Internet-Draft         Opportunistic HTTP Security         December 2015
+Internet-Draft         Opportunistic HTTP Security          January 2016
 
 
    Normally, users will not be able to tell that it is in use (i.e.,
@@ -165,9 +165,9 @@ Internet-Draft         Opportunistic HTTP Security         December 2015
 
 
 
-Nottingham & Thomson      Expires July 3, 2016                  [Page 3]
+Nottingham & Thomson      Expires July 24, 2016                 [Page 3]
 
-Internet-Draft         Opportunistic HTTP Security         December 2015
+Internet-Draft         Opportunistic HTTP Security          January 2016
 
 
    request before they expire, in order minimize the delays that might
@@ -175,32 +175,22 @@ Internet-Draft         Opportunistic HTTP Security         December 2015
 
 3.  Server Authentication
 
-   By their nature, "http" URIs do not require cryptographically strong
-   server authentication; that is only implied by "https" URIs.
-   Furthermore, doing so (as per [RFC2818]) creates a number of
-   operational challenges.  For these reasons, server authentication is
-   not mandatory for "http" URIs when using the mechanism described in
-   this specification.
+   [I-D.ietf-httpbis-alt-svc] requires that an alternative service only
+   be used when it is strongly authenticated as the origin.
 
-   When connecting to an alternative service for an "http" URI, clients
-   are not required to perform the server authentication procedure
-   described in Section 3.1 of [RFC2818].  The server certificate, if
-   one is proffered by the alternative service, is not necessarily
-   checked for validity, expiration, issuance by a trusted certificate
-   authority or matched against the name in the URI.  Therefore, the
-   alternative service can provide any certificate, or even select TLS
-   cipher suites that do not include authentication.
+   For the purposes of this specification, there are two ways to achieve
+   this:
 
-   A client MAY perform additional checks on the offered certificate if
-   the server does not select an unauthenticated TLS cipher suite.  This
-   document doesn't define any such checks, though clients could be
-   configured with a policy that defines what is acceptable.
+   1.  Using TLS with a certificate that validates as per [RFC2818], or
 
-   As stipulated by [I-D.ietf-httpbis-alt-svc], clients MUST NOT use
-   alternative services with a host other than the origin's, unless the
-   alternative service itself is strongly authenticated (as the origin's
-   host); for example, using TLS with a certificate that validates as
-   per [RFC2818].
+   2.  Using an alternative service with a hostname that is character-
+       for-character identical to that of the origin.
+
+   The latter approach allows deployment without the use of valid
+   certificates, to encourage deployment of opportunistic security.
+   Therefore, in these cases the alternative service can provide any
+   certificate, or even select TLS cipher suites that do not include
+   authentication.
 
 4.  Interaction with "https" URIs
 
@@ -219,13 +209,6 @@ Internet-Draft         Opportunistic HTTP Security         December 2015
    authentication (for instance, the purely anonymous TLS cipher
    suites), cannot be used for "https" URIs.
 
-
-
-Nottingham & Thomson      Expires July 3, 2016                  [Page 4]
-
-Internet-Draft         Opportunistic HTTP Security         December 2015
-
-
 5.  Requiring Use of TLS
 
    Editors' Note: this is a very rough take on an approach that would
@@ -235,6 +218,13 @@ Internet-Draft         Opportunistic HTTP Security         December 2015
 
    The mechanism described in this specification is trivial to mount an
    active attack against, for two reasons:
+
+
+
+Nottingham & Thomson      Expires July 24, 2016                 [Page 4]
+
+Internet-Draft         Opportunistic HTTP Security          January 2016
+
 
    o  A client that doesn't perform authentication is an easy victim of
       server impersonation, through man-in-the-middle attacks.
@@ -273,15 +263,6 @@ Internet-Draft         Opportunistic HTTP Security         December 2015
    For example:
 
 
-
-
-
-
-Nottingham & Thomson      Expires July 3, 2016                  [Page 5]
-
-Internet-Draft         Opportunistic HTTP Security         December 2015
-
-
    GET /index.html HTTP/1.1
    Host: example.com
 
@@ -292,6 +273,14 @@ Internet-Draft         Opportunistic HTTP Security         December 2015
    Age: 30
    Date: Thu, 1 May 2014 16:20:09 GMT
    HTTP-TLS: ma=3600
+
+
+
+
+Nottingham & Thomson      Expires July 24, 2016                 [Page 5]
+
+Internet-Draft         Opportunistic HTTP Security          January 2016
+
 
    This header field creates a commitment from the origin [RFC6454] of
    the associated resource (in the example, "http://example.com").  For
@@ -327,17 +316,6 @@ Internet-Draft         Opportunistic HTTP Security         December 2015
    is an active commitment, clients MAY instead ignore advertisements
    for unsecured alternatives services.
 
-
-
-
-
-
-
-Nottingham & Thomson      Expires July 3, 2016                  [Page 6]
-
-Internet-Draft         Opportunistic HTTP Security         December 2015
-
-
 5.2.  Operational Considerations
 
    To avoid situations where a persisted value of "HTTP-TLS" causes a
@@ -351,6 +329,14 @@ Internet-Draft         Opportunistic HTTP Security         December 2015
    client MAY use key pinning [RFC7469] or any other mechanism that
    would otherwise be restricted to use with "https" URIs, provided that
    the mechanism can be restricted to a single HTTP origin.
+
+
+
+
+Nottingham & Thomson      Expires July 24, 2016                 [Page 6]
+
+Internet-Draft         Opportunistic HTTP Security          January 2016
+
 
 6.  Security Considerations
 
@@ -382,18 +368,6 @@ Internet-Draft         Opportunistic HTTP Security         December 2015
    attacker present; a continuously present active attacker can either
    prevent the client from ever using TLS, or offer its own certificate.
 
-
-
-
-
-
-
-
-Nottingham & Thomson      Expires July 3, 2016                  [Page 7]
-
-Internet-Draft         Opportunistic HTTP Security         December 2015
-
-
 6.3.  Privacy Considerations
 
    Cached alternative services can be used to track clients over time;
@@ -411,6 +385,14 @@ Internet-Draft         Opportunistic HTTP Security         December 2015
    indication of the URI scheme.
 
    HTTP/1.1 MUST NOT be used for opportunistically secured requests.
+
+
+
+
+Nottingham & Thomson      Expires July 24, 2016                 [Page 7]
+
+Internet-Draft         Opportunistic HTTP Security          January 2016
+
 
    Some HTTP/1.1 implementations use ambient signals to determine if a
    request is for an "https" resource.  For example, implementations
@@ -442,14 +424,6 @@ Internet-Draft         Opportunistic HTTP Security         December 2015
               DOI 10.17487/RFC5246, August 2008,
               <http://www.rfc-editor.org/info/rfc5246>.
 
-
-
-
-Nottingham & Thomson      Expires July 3, 2016                  [Page 8]
-
-Internet-Draft         Opportunistic HTTP Security         December 2015
-
-
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
               DOI 10.17487/RFC6454, December 2011,
               <http://www.rfc-editor.org/info/rfc6454>.
@@ -467,6 +441,14 @@ Internet-Draft         Opportunistic HTTP Security         December 2015
    [RFC7469]  Evans, C., Palmer, C., and R. Sleevi, "Public Key Pinning
               Extension for HTTP", RFC 7469, DOI 10.17487/RFC7469, April
               2015, <http://www.rfc-editor.org/info/rfc7469>.
+
+
+
+
+Nottingham & Thomson      Expires July 24, 2016                 [Page 8]
+
+Internet-Draft         Opportunistic HTTP Security          January 2016
+
 
    [RFC7540]  Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
               Transfer Protocol Version 2 (HTTP/2)", RFC 7540,
@@ -497,15 +479,6 @@ Authors' Addresses
    URI:   http://www.mnot.net/
 
 
-
-
-
-
-Nottingham & Thomson      Expires July 3, 2016                  [Page 9]
-
-Internet-Draft         Opportunistic HTTP Security         December 2015
-
-
    Martin Thomson
    Mozilla
 
@@ -528,33 +501,4 @@ Internet-Draft         Opportunistic HTTP Security         December 2015
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Nottingham & Thomson      Expires July 3, 2016                 [Page 10]
+Nottingham & Thomson      Expires July 24, 2016                 [Page 9]
