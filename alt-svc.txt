@@ -5,10 +5,10 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft                                                    Akamai
 Intended status: Standards Track                              P. McManus
-Expires: July 24, 2016                                           Mozilla
+Expires: July 27, 2016                                           Mozilla
                                                               J. Reschke
                                                               greenbytes
-                                                        January 21, 2016
+                                                        January 24, 2016
 
 
                        HTTP Alternative Services
@@ -48,12 +48,12 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on July 24, 2016.
+   This Internet-Draft will expire on July 27, 2016.
 
 
 
 
-Nottingham, et al.        Expires July 24, 2016                 [Page 1]
+Nottingham, et al.        Expires July 27, 2016                 [Page 1]
 
 Internet-Draft          HTTP Alternative Services           January 2016
 
@@ -97,36 +97,36 @@ Table of Contents
    9.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
      9.1.  Changing Ports  . . . . . . . . . . . . . . . . . . . . .  15
      9.2.  Changing Hosts  . . . . . . . . . . . . . . . . . . . . .  16
-     9.3.  Changing Protocols  . . . . . . . . . . . . . . . . . . .  16
+     9.3.  Changing Protocols  . . . . . . . . . . . . . . . . . . .  17
      9.4.  Tracking Clients Using Alternative Services . . . . . . .  17
      9.5.  Confusion Regarding Request Scheme  . . . . . . . . . . .  17
    10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  18
      10.1.  Normative References . . . . . . . . . . . . . . . . . .  18
      10.2.  Informative References . . . . . . . . . . . . . . . . .  19
    Appendix A.  Change Log (to be removed by RFC Editor before
-                publication) . . . . . . . . . . . . . . . . . . . .  20
-     A.1.  Since draft-nottingham-httpbis-alt-svc-05 . . . . . . . .  20
+                publication) . . . . . . . . . . . . . . . . . . . .  21
+     A.1.  Since draft-nottingham-httpbis-alt-svc-05 . . . . . . . .  21
 
 
 
-Nottingham, et al.        Expires July 24, 2016                 [Page 2]
+Nottingham, et al.        Expires July 27, 2016                 [Page 2]
 
 Internet-Draft          HTTP Alternative Services           January 2016
 
 
-     A.2.  Since draft-ietf-httpbis-alt-svc-00 . . . . . . . . . . .  20
-     A.3.  Since draft-ietf-httpbis-alt-svc-01 . . . . . . . . . . .  20
-     A.4.  Since draft-ietf-httpbis-alt-svc-02 . . . . . . . . . . .  20
-     A.5.  Since draft-ietf-httpbis-alt-svc-03 . . . . . . . . . . .  20
-     A.6.  Since draft-ietf-httpbis-alt-svc-04 . . . . . . . . . . .  21
-     A.7.  Since draft-ietf-httpbis-alt-svc-05 . . . . . . . . . . .  21
-     A.8.  Since draft-ietf-httpbis-alt-svc-06 . . . . . . . . . . .  21
-     A.9.  Since draft-ietf-httpbis-alt-svc-07 . . . . . . . . . . .  21
-     A.10. Since draft-ietf-httpbis-alt-svc-08 . . . . . . . . . . .  22
-     A.11. Since draft-ietf-httpbis-alt-svc-09 . . . . . . . . . . .  23
-     A.12. Since draft-ietf-httpbis-alt-svc-10 . . . . . . . . . . .  23
-   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  23
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  24
+     A.2.  Since draft-ietf-httpbis-alt-svc-00 . . . . . . . . . . .  21
+     A.3.  Since draft-ietf-httpbis-alt-svc-01 . . . . . . . . . . .  21
+     A.4.  Since draft-ietf-httpbis-alt-svc-02 . . . . . . . . . . .  21
+     A.5.  Since draft-ietf-httpbis-alt-svc-03 . . . . . . . . . . .  21
+     A.6.  Since draft-ietf-httpbis-alt-svc-04 . . . . . . . . . . .  22
+     A.7.  Since draft-ietf-httpbis-alt-svc-05 . . . . . . . . . . .  22
+     A.8.  Since draft-ietf-httpbis-alt-svc-06 . . . . . . . . . . .  22
+     A.9.  Since draft-ietf-httpbis-alt-svc-07 . . . . . . . . . . .  22
+     A.10. Since draft-ietf-httpbis-alt-svc-08 . . . . . . . . . . .  23
+     A.11. Since draft-ietf-httpbis-alt-svc-09 . . . . . . . . . . .  24
+     A.12. Since draft-ietf-httpbis-alt-svc-10 . . . . . . . . . . .  24
+   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  24
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  25
 
 1.  Introduction
 
@@ -165,7 +165,7 @@ Internet-Draft          HTTP Alternative Services           January 2016
 
 
 
-Nottingham, et al.        Expires July 24, 2016                 [Page 3]
+Nottingham, et al.        Expires July 27, 2016                 [Page 3]
 
 Internet-Draft          HTTP Alternative Services           January 2016
 
@@ -221,7 +221,7 @@ Internet-Draft          HTTP Alternative Services           January 2016
 
 
 
-Nottingham, et al.        Expires July 24, 2016                 [Page 4]
+Nottingham, et al.        Expires July 27, 2016                 [Page 4]
 
 Internet-Draft          HTTP Alternative Services           January 2016
 
@@ -277,7 +277,7 @@ Internet-Draft          HTTP Alternative Services           January 2016
 
 
 
-Nottingham, et al.        Expires July 24, 2016                 [Page 5]
+Nottingham, et al.        Expires July 27, 2016                 [Page 5]
 
 Internet-Draft          HTTP Alternative Services           January 2016
 
@@ -299,19 +299,19 @@ Internet-Draft          HTTP Alternative Services           January 2016
 
 2.1.  Host Authentication
 
-   Clients MUST have reasonable assurances that the alternative service
-   is under control of and valid for the whole origin.  This mitigates
-   the attack described in Section 9.2.  One way to achieve this is for
-   the alternative to use TLS with a certificate that is valid for the
-   origin.
+   Clients MUST NOT use alternative services with a host that is
+   different from the origin's without strong server authentication;
+   this mitigates the attack described in Section 9.2.  One way to
+   achieve this is for the alternative to use TLS with a certificate
+   that is valid for that origin.
 
    For example, if the origin's host is "www.example.com" and an
    alternative is offered on "other.example.com" with the "h2" protocol,
    and the certificate offered is valid for "www.example.com", the
    client can use the alternative.  However, if "other.example.com" is
    offered with the "h2c" protocol, the client cannot use it, because
-   there is no mechanism in that protocol to establish the relationship
-   between the origin and the alternative.
+   there is no mechanism in that protocol to establish strong server
+   authentication.
 
 2.2.  Alternative Service Caching
 
@@ -333,7 +333,7 @@ Internet-Draft          HTTP Alternative Services           January 2016
 
 
 
-Nottingham, et al.        Expires July 24, 2016                 [Page 6]
+Nottingham, et al.        Expires July 27, 2016                 [Page 6]
 
 Internet-Draft          HTTP Alternative Services           January 2016
 
@@ -389,7 +389,7 @@ Internet-Draft          HTTP Alternative Services           January 2016
 
 
 
-Nottingham, et al.        Expires July 24, 2016                 [Page 7]
+Nottingham, et al.        Expires July 27, 2016                 [Page 7]
 
 Internet-Draft          HTTP Alternative Services           January 2016
 
@@ -445,7 +445,7 @@ Internet-Draft          HTTP Alternative Services           January 2016
 
 
 
-Nottingham, et al.        Expires July 24, 2016                 [Page 8]
+Nottingham, et al.        Expires July 27, 2016                 [Page 8]
 
 Internet-Draft          HTTP Alternative Services           January 2016
 
@@ -501,7 +501,7 @@ Internet-Draft          HTTP Alternative Services           January 2016
 
 
 
-Nottingham, et al.        Expires July 24, 2016                 [Page 9]
+Nottingham, et al.        Expires July 27, 2016                 [Page 9]
 
 Internet-Draft          HTTP Alternative Services           January 2016
 
@@ -557,7 +557,7 @@ Internet-Draft          HTTP Alternative Services           January 2016
 
 
 
-Nottingham, et al.        Expires July 24, 2016                [Page 10]
+Nottingham, et al.        Expires July 27, 2016                [Page 10]
 
 Internet-Draft          HTTP Alternative Services           January 2016
 
@@ -613,7 +613,7 @@ Internet-Draft          HTTP Alternative Services           January 2016
 
 
 
-Nottingham, et al.        Expires July 24, 2016                [Page 11]
+Nottingham, et al.        Expires July 27, 2016                [Page 11]
 
 Internet-Draft          HTTP Alternative Services           January 2016
 
@@ -669,7 +669,7 @@ Internet-Draft          HTTP Alternative Services           January 2016
 
 
 
-Nottingham, et al.        Expires July 24, 2016                [Page 12]
+Nottingham, et al.        Expires July 27, 2016                [Page 12]
 
 Internet-Draft          HTTP Alternative Services           January 2016
 
@@ -725,7 +725,7 @@ Internet-Draft          HTTP Alternative Services           January 2016
 
 
 
-Nottingham, et al.        Expires July 24, 2016                [Page 13]
+Nottingham, et al.        Expires July 27, 2016                [Page 13]
 
 Internet-Draft          HTTP Alternative Services           January 2016
 
@@ -781,7 +781,7 @@ Internet-Draft          HTTP Alternative Services           January 2016
 
 
 
-Nottingham, et al.        Expires July 24, 2016                [Page 14]
+Nottingham, et al.        Expires July 27, 2016                [Page 14]
 
 Internet-Draft          HTTP Alternative Services           January 2016
 
@@ -832,19 +832,26 @@ Internet-Draft          HTTP Alternative Services           January 2016
    under the attacker's control, they can thus masquerade as the HTTP
    server.
 
-   This risk is mitigated by the requirements in Section 2.1.
+   On servers, this risk can be reduced by restricting the ability to
+   advertise alternative services, and restricting who can open a port
 
 
 
-
-Nottingham, et al.        Expires July 24, 2016                [Page 15]
+Nottingham, et al.        Expires July 27, 2016                [Page 15]
 
 Internet-Draft          HTTP Alternative Services           January 2016
 
 
-   On servers, this risk can also be reduced by restricting the ability
-   to advertise alternative services, and restricting who can open a
-   port for listening on that host.
+   for listening on that host.  Clients can reduce this risk by imposing
+   stronger requirements (e.g. strong authentication) when moving from
+   System Ports to User or Dynamic Ports, or from User Ports to Dynamic
+   Ports, as defined in Section 6 of [RFC6335].
+
+   It is always valid for a client to ignore an alternative service
+   advertisement which does not meet its implementation-specific
+   security requirements.  Servers can increase the likelihood of
+   clients using the alternative service by providing strong
+   authentication even when not required.
 
 9.2.  Changing Hosts
 
@@ -859,16 +866,16 @@ Internet-Draft          HTTP Alternative Services           January 2016
    in Section 9.1) or remotely (e.g., by an intermediary as a man-in-
    the-middle attack).
 
-   This is the reason for the requirement in Section 2.1 that clients
-   have reasonable assurances that the alternative service is under
-   control of and valid for the whole origin; i.e., presenting a
+   This is the reason for the requirement in Section 2.1 that any
+   alternative service with a host different from the origin's be
+   strongly authenticated with the origin's identity; i.e., presenting a
    certificate for the origin proves that the alternative service is
    authorized to serve traffic for the origin.
 
-   Note that this assurance is only as strong as the method used to
-   authenticate the alternative service.  In particular, when TLS
-   authentication is used to do so, there are well-known exploits to
-   make an attacker's certificate appear as legitimate.
+   However, this authorization is only as strong as the method used to
+   authenticate the alternative service.  In particular, there are well-
+   known exploits to make an attacker's certificate appear as
+   legitimate.
 
    Alternative services could be used to persist such an attack; for
    example, an intermediary could man-in-the-middle TLS-protected
@@ -883,20 +890,20 @@ Internet-Draft          HTTP Alternative Services           January 2016
    other requirements around which certificates are acceptable for
    alternative services.
 
+
+
+
+Nottingham, et al.        Expires July 27, 2016                [Page 16]
+
+Internet-Draft          HTTP Alternative Services           January 2016
+
+
 9.3.  Changing Protocols
 
    When the ALPN protocol is changed due to the use of an alternative
    service, the security properties of the new connection to the origin
    can be different from that of the "normal" connection to the origin,
    because the protocol identifier itself implies this.
-
-
-
-
-Nottingham, et al.        Expires July 24, 2016                [Page 16]
-
-Internet-Draft          HTTP Alternative Services           January 2016
-
 
    For example, if an "https://" URI has a protocol advertised that does
    not use some form of end-to-end encryption (most likely, TLS), it
@@ -939,21 +946,20 @@ Internet-Draft          HTTP Alternative Services           January 2016
    connection to be migrated to a different protocol and port, these
    applications can become confused about the security properties of a
    given connection, sending information (e.g., cookies, content) that
+
+
+
+Nottingham, et al.        Expires July 27, 2016                [Page 17]
+
+Internet-Draft          HTTP Alternative Services           January 2016
+
+
    is intended for a secure context (e.g., an "https://" URI) to a
    client that is not treating it as one.
 
    This risk can be mitigated in servers by using the URI scheme
    explicitly carried by the protocol (e.g., ":scheme" in HTTP/2 or the
    "absolute form" of the request target in HTTP/1.1) as an indication
-
-
-
-
-Nottingham, et al.        Expires July 24, 2016                [Page 17]
-
-Internet-Draft          HTTP Alternative Services           January 2016
-
-
    of security context, instead of other connection properties
    ([RFC7540], Section 8.1.2.3 and [RFC7230], Section 5.3.2).
 
@@ -996,19 +1002,17 @@ Internet-Draft          HTTP Alternative Services           January 2016
               Extension Definitions", RFC 6066, DOI 10.17487/RFC6066,
               January 2011, <http://www.rfc-editor.org/info/rfc6066>.
 
-   [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
-              DOI 10.17487/RFC6454, December 2011,
-              <http://www.rfc-editor.org/info/rfc6454>.
 
 
 
-
-
-
-Nottingham, et al.        Expires July 24, 2016                [Page 18]
+Nottingham, et al.        Expires July 27, 2016                [Page 18]
 
 Internet-Draft          HTTP Alternative Services           January 2016
 
+
+   [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
+              DOI 10.17487/RFC6454, December 2011,
+              <http://www.rfc-editor.org/info/rfc6454>.
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
@@ -1045,6 +1049,23 @@ Internet-Draft          HTTP Alternative Services           January 2016
               DOI 10.17487/RFC5246, August 2008,
               <http://www.rfc-editor.org/info/rfc5246>.
 
+   [RFC6335]  Cotton, M., Eggert, L., Touch, J., Westerlund, M., and S.
+              Cheshire, "Internet Assigned Numbers Authority (IANA)
+              Procedures for the Management of the Service Name and
+              Transport Protocol Port Number Registry", RFC 6335,
+              DOI 10.17487/RFC6335, August 2011,
+              <http://www.rfc-editor.org/info/rfc6335>.
+
+
+
+
+
+
+Nottingham, et al.        Expires July 27, 2016                [Page 19]
+
+Internet-Draft          HTTP Alternative Services           January 2016
+
+
    [RFC7469]  Evans, C., Palmer, C., and R. Sleevi, "Public Key Pinning
               Extension for HTTP", RFC 7469, DOI 10.17487/RFC7469, April
               2015, <http://www.rfc-editor.org/info/rfc7469>.
@@ -1061,7 +1082,42 @@ Internet-Draft          HTTP Alternative Services           January 2016
 
 
 
-Nottingham, et al.        Expires July 24, 2016                [Page 19]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Nottingham, et al.        Expires July 27, 2016                [Page 20]
 
 Internet-Draft          HTTP Alternative Services           January 2016
 
@@ -1117,7 +1173,7 @@ A.5.  Since draft-ietf-httpbis-alt-svc-03
 
 
 
-Nottingham, et al.        Expires July 24, 2016                [Page 20]
+Nottingham, et al.        Expires July 27, 2016                [Page 21]
 
 Internet-Draft          HTTP Alternative Services           January 2016
 
@@ -1173,7 +1229,7 @@ A.9.  Since draft-ietf-httpbis-alt-svc-07
 
 
 
-Nottingham, et al.        Expires July 24, 2016                [Page 21]
+Nottingham, et al.        Expires July 27, 2016                [Page 22]
 
 Internet-Draft          HTTP Alternative Services           January 2016
 
@@ -1229,7 +1285,7 @@ A.10.  Since draft-ietf-httpbis-alt-svc-08
 
 
 
-Nottingham, et al.        Expires July 24, 2016                [Page 22]
+Nottingham, et al.        Expires July 27, 2016                [Page 23]
 
 Internet-Draft          HTTP Alternative Services           January 2016
 
@@ -1285,7 +1341,7 @@ Appendix B.  Acknowledgements
 
 
 
-Nottingham, et al.        Expires July 24, 2016                [Page 23]
+Nottingham, et al.        Expires July 27, 2016                [Page 24]
 
 Internet-Draft          HTTP Alternative Services           January 2016
 
@@ -1341,4 +1397,4 @@ Authors' Addresses
 
 
 
-Nottingham, et al.        Expires July 24, 2016                [Page 24]
+Nottingham, et al.        Expires July 27, 2016                [Page 25]
