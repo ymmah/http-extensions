@@ -922,8 +922,10 @@ Internet-Draft          HTTP Alternative Services          February 2016
    tracking could follow users across multiple networks, when the
    "persist" flag is used.
 
-   Clients concerned by the additional fingerprinting can choose to
-   ignore alternative service advertisements.
+   Clients that wish to prevent requests from being correlated (such as
+   those that offer modes aimed at providing improved privacy) can
+   decide not to use alternative services for multiple requests that
+   would not otherwise be allowed to be correlated.
 
    In a user agent, any alternative service information MUST be removed
    when origin-specific data is cleared (for instance, when cookies are
@@ -944,8 +946,6 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
    Since one of the uses of Alternative Services is to allow a
    connection to be migrated to a different protocol and port, these
-   applications can become confused about the security properties of a
-   given connection, sending information (e.g., cookies, content) that
 
 
 
@@ -954,6 +954,8 @@ Nottingham, et al.       Expires August 5, 2016                [Page 17]
 Internet-Draft          HTTP Alternative Services          February 2016
 
 
+   applications can become confused about the security properties of a
+   given connection, sending information (e.g., cookies, content) that
    is intended for a secure context (e.g., an "https://" URI) to a
    client that is not treating it as one.
 
@@ -998,9 +1000,7 @@ Internet-Draft          HTTP Alternative Services          February 2016
               RFC 5890, DOI 10.17487/RFC5890, August 2010,
               <http://www.rfc-editor.org/info/rfc5890>.
 
-   [RFC6066]  Eastlake, D., "Transport Layer Security (TLS) Extensions:
-              Extension Definitions", RFC 6066, DOI 10.17487/RFC6066,
-              January 2011, <http://www.rfc-editor.org/info/rfc6066>.
+
 
 
 
@@ -1009,6 +1009,10 @@ Nottingham, et al.       Expires August 5, 2016                [Page 18]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
+
+   [RFC6066]  Eastlake, D., "Transport Layer Security (TLS) Extensions:
+              Extension Definitions", RFC 6066, DOI 10.17487/RFC6066,
+              January 2011, <http://www.rfc-editor.org/info/rfc6066>.
 
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
               DOI 10.17487/RFC6454, December 2011,
@@ -1049,12 +1053,8 @@ Internet-Draft          HTTP Alternative Services          February 2016
               DOI 10.17487/RFC5246, August 2008,
               <http://www.rfc-editor.org/info/rfc5246>.
 
-   [RFC6335]  Cotton, M., Eggert, L., Touch, J., Westerlund, M., and S.
-              Cheshire, "Internet Assigned Numbers Authority (IANA)
-              Procedures for the Management of the Service Name and
-              Transport Protocol Port Number Registry", RFC 6335,
-              DOI 10.17487/RFC6335, August 2011,
-              <http://www.rfc-editor.org/info/rfc6335>.
+
+
 
 
 
@@ -1066,16 +1066,16 @@ Nottingham, et al.       Expires August 5, 2016                [Page 19]
 Internet-Draft          HTTP Alternative Services          February 2016
 
 
+   [RFC6335]  Cotton, M., Eggert, L., Touch, J., Westerlund, M., and S.
+              Cheshire, "Internet Assigned Numbers Authority (IANA)
+              Procedures for the Management of the Service Name and
+              Transport Protocol Port Number Registry", RFC 6335,
+              DOI 10.17487/RFC6335, August 2011,
+              <http://www.rfc-editor.org/info/rfc6335>.
+
    [RFC7469]  Evans, C., Palmer, C., and R. Sleevi, "Public Key Pinning
               Extension for HTTP", RFC 7469, DOI 10.17487/RFC7469, April
               2015, <http://www.rfc-editor.org/info/rfc7469>.
-
-
-
-
-
-
-
 
 
 
