@@ -5,8 +5,8 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Experimental                                 M. Thomson
-Expires: July 27, 2016                                           Mozilla
-                                                        January 24, 2016
+Expires: August 5, 2016                                          Mozilla
+                                                        February 2, 2016
 
 
                     Opportunistic Security for HTTP
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on July 27, 2016.
+   This Internet-Draft will expire on August 5, 2016.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Nottingham & Thomson      Expires July 27, 2016                 [Page 1]
+Nottingham & Thomson     Expires August 5, 2016                 [Page 1]
 
-Internet-Draft         Opportunistic HTTP Security          January 2016
+Internet-Draft         Opportunistic HTTP Security         February 2016
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Nottingham & Thomson      Expires July 27, 2016                 [Page 2]
+Nottingham & Thomson     Expires August 5, 2016                 [Page 2]
 
-Internet-Draft         Opportunistic HTTP Security          January 2016
+Internet-Draft         Opportunistic HTTP Security         February 2016
 
 
    Normally, users will not be able to tell that it is in use (i.e.,
@@ -165,9 +165,9 @@ Internet-Draft         Opportunistic HTTP Security          January 2016
 
 
 
-Nottingham & Thomson      Expires July 27, 2016                 [Page 3]
+Nottingham & Thomson     Expires August 5, 2016                 [Page 3]
 
-Internet-Draft         Opportunistic HTTP Security          January 2016
+Internet-Draft         Opportunistic HTTP Security         February 2016
 
 
    request before they expire, in order minimize the delays that might
@@ -221,9 +221,9 @@ Internet-Draft         Opportunistic HTTP Security          January 2016
 
 
 
-Nottingham & Thomson      Expires July 27, 2016                 [Page 4]
+Nottingham & Thomson     Expires August 5, 2016                 [Page 4]
 
-Internet-Draft         Opportunistic HTTP Security          January 2016
+Internet-Draft         Opportunistic HTTP Security         February 2016
 
 
 5.  Requiring Use of TLS
@@ -277,9 +277,9 @@ Internet-Draft         Opportunistic HTTP Security          January 2016
 
 
 
-Nottingham & Thomson      Expires July 27, 2016                 [Page 5]
+Nottingham & Thomson     Expires August 5, 2016                 [Page 5]
 
-Internet-Draft         Opportunistic HTTP Security          January 2016
+Internet-Draft         Opportunistic HTTP Security         February 2016
 
 
    GET /index.html HTTP/1.1
@@ -333,9 +333,9 @@ Internet-Draft         Opportunistic HTTP Security          January 2016
 
 
 
-Nottingham & Thomson      Expires July 27, 2016                 [Page 6]
+Nottingham & Thomson     Expires August 5, 2016                 [Page 6]
 
-Internet-Draft         Opportunistic HTTP Security          January 2016
+Internet-Draft         Opportunistic HTTP Security         February 2016
 
 
 5.2.  Operational Considerations
@@ -389,9 +389,9 @@ Internet-Draft         Opportunistic HTTP Security          January 2016
 
 
 
-Nottingham & Thomson      Expires July 27, 2016                 [Page 7]
+Nottingham & Thomson     Expires August 5, 2016                 [Page 7]
 
-Internet-Draft         Opportunistic HTTP Security          January 2016
+Internet-Draft         Opportunistic HTTP Security         February 2016
 
 
 6.3.  Privacy Considerations
@@ -445,9 +445,9 @@ Internet-Draft         Opportunistic HTTP Security          January 2016
 
 
 
-Nottingham & Thomson      Expires July 27, 2016                 [Page 8]
+Nottingham & Thomson     Expires August 5, 2016                 [Page 8]
 
-Internet-Draft         Opportunistic HTTP Security          January 2016
+Internet-Draft         Opportunistic HTTP Security         February 2016
 
 
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
@@ -501,9 +501,9 @@ Authors' Addresses
 
 
 
-Nottingham & Thomson      Expires July 27, 2016                 [Page 9]
+Nottingham & Thomson     Expires August 5, 2016                 [Page 9]
 
-Internet-Draft         Opportunistic HTTP Security          January 2016
+Internet-Draft         Opportunistic HTTP Security         February 2016
 
 
    Martin Thomson
@@ -557,4 +557,4 @@ Internet-Draft         Opportunistic HTTP Security          January 2016
 
 
 
-Nottingham & Thomson      Expires July 27, 2016                [Page 10]
+Nottingham & Thomson     Expires August 5, 2016                [Page 10]
