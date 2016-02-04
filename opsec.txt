@@ -252,7 +252,7 @@ Internet-Draft         Opportunistic HTTP Security         February 2016
    defined in Section 7 of [RFC7230]:
 
 
-   HTTP-TLS     = 1#parameter
+       HTTP-TLS     = 1#parameter
 
    When it appears in a HTTP response from a strongly authenticated
    alternative service, this header field indicates that the
@@ -263,16 +263,16 @@ Internet-Draft         Opportunistic HTTP Security         February 2016
    For example:
 
 
-   GET /index.html HTTP/1.1
-   Host: example.com
+       GET /index.html HTTP/1.1
+       Host: example.com
 
 
-   HTTP/1.1 200 OK
-   Content-Type: text/html
-   Cache-Control: max-age=600
-   Age: 30
-   Date: Thu, 1 May 2014 16:20:09 GMT
-   HTTP-TLS: ma=3600
+       HTTP/1.1 200 OK
+       Content-Type: text/html
+       Cache-Control: max-age=600
+       Age: 30
+       Date: Thu, 1 May 2014 16:20:09 GMT
+       HTTP-TLS: ma=3600
 
 
 
@@ -299,7 +299,7 @@ Internet-Draft         Opportunistic HTTP Security         February 2016
    [RFC7234] for details of determining response age.
 
 
-   ma-parameter     = delta-seconds
+       ma-parameter     = delta-seconds
 
    The commitment made by the "HTTP-TLS" header field applies only to
    the origin of the resource that generates the "HTTP-TLS" header

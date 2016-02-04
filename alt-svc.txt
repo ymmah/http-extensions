@@ -1045,16 +1045,16 @@ Internet-Draft          HTTP Alternative Services          February 2016
               DOI 10.17487/RFC5246, August 2008,
               <http://www.rfc-editor.org/info/rfc5246>.
 
-   [RFC6335]  Cotton, M., Eggert, L., Touch, J., Westerlund, M., and S.
-              Cheshire, "Internet Assigned Numbers Authority (IANA)
-              Procedures for the Management of the Service Name and
-              Transport Protocol Port Number Registry", RFC 6335,
-              DOI 10.17487/RFC6335, August 2011,
-              <http://www.rfc-editor.org/info/rfc6335>.
-
    [RFC7469]  Evans, C., Palmer, C., and R. Sleevi, "Public Key Pinning
               Extension for HTTP", RFC 7469, DOI 10.17487/RFC7469, April
               2015, <http://www.rfc-editor.org/info/rfc7469>.
+
+
+
+
+
+
+
 
 
 
@@ -1273,15 +1273,15 @@ A.12.  Since draft-ietf-httpbis-alt-svc-10
 
 A.13.  Since draft-ietf-httpbis-alt-svc-11
 
-   None yet.
+   Security considerations wrt system ports (<https://github.com/httpwg/
+   http-extensions/issues/139>).
 
 Appendix B.  Acknowledgements
 
    Thanks to Adam Langley, Bence Beky, Eliot Lear, Erik Nygren, Guy
    Podjarny, Herve Ruellan, Lucas Pardue, Martin Thomson, Matthew
    Kerwin, Mike Bishop, Paul Hoffman, Richard Barnes, Richard Bradbury,
-   Stephen Farrell, Stephen Ludin, and Will Chan for their feedback and
-   suggestions.
+
 
 
 
@@ -1289,6 +1289,9 @@ Nottingham, et al.       Expires August 7, 2016                [Page 23]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
+
+   Stephen Farrell, Stephen Ludin, and Will Chan for their feedback and
+   suggestions.
 
    The Alt-Svc header field was influenced by the design of the
    Alternate-Protocol header field in SPDY.
@@ -1314,9 +1317,6 @@ Authors' Addresses
 
    EMail: julian.reschke@greenbytes.de
    URI:   https://greenbytes.de/tech/webdav/
-
-
-
 
 
 
