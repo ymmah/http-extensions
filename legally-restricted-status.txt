@@ -4,8 +4,8 @@
 
 HTTP Working Group                                               T. Bray
 Internet-Draft                                                Textuality
-Intended status: Standards Track                        February 4, 2016
-Expires: August 7, 2016
+Intended status: Standards Track                        February 5, 2016
+Expires: August 8, 2016
 
 
              An HTTP Status Code to Report Legal Obstacles
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 7, 2016.
+   This Internet-Draft will expire on August 8, 2016.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Bray                     Expires August 7, 2016                 [Page 1]
+Bray                     Expires August 8, 2016                 [Page 1]
 
 Internet-Draft               HTTP-status-451               February 2016
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Bray                     Expires August 7, 2016                 [Page 2]
+Bray                     Expires August 8, 2016                 [Page 2]
 
 Internet-Draft               HTTP-status-451               February 2016
 
@@ -165,7 +165,7 @@ Internet-Draft               HTTP-status-451               February 2016
 
 
 
-Bray                     Expires August 7, 2016                 [Page 3]
+Bray                     Expires August 8, 2016                 [Page 3]
 
 Internet-Draft               HTTP-status-451               February 2016
 
@@ -221,7 +221,7 @@ Internet-Draft               HTTP-status-451               February 2016
 
 
 
-Bray                     Expires August 7, 2016                 [Page 4]
+Bray                     Expires August 8, 2016                 [Page 4]
 
 Internet-Draft               HTTP-status-451               February 2016
 
@@ -277,4 +277,4 @@ Author's Address
 
 
 
-Bray                     Expires August 7, 2016                 [Page 5]
+Bray                     Expires August 8, 2016                 [Page 5]

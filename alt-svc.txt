@@ -5,10 +5,10 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft                                                    Akamai
 Intended status: Standards Track                              P. McManus
-Expires: August 7, 2016                                          Mozilla
+Expires: August 8, 2016                                          Mozilla
                                                               J. Reschke
                                                               greenbytes
-                                                        February 4, 2016
+                                                        February 5, 2016
 
 
                        HTTP Alternative Services
@@ -48,12 +48,12 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 7, 2016.
+   This Internet-Draft will expire on August 8, 2016.
 
 
 
 
-Nottingham, et al.       Expires August 7, 2016                 [Page 1]
+Nottingham, et al.       Expires August 8, 2016                 [Page 1]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Nottingham, et al.       Expires August 7, 2016                 [Page 2]
+Nottingham, et al.       Expires August 8, 2016                 [Page 2]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
@@ -165,7 +165,7 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
 
 
-Nottingham, et al.       Expires August 7, 2016                 [Page 3]
+Nottingham, et al.       Expires August 8, 2016                 [Page 3]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
@@ -221,7 +221,7 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
 
 
-Nottingham, et al.       Expires August 7, 2016                 [Page 4]
+Nottingham, et al.       Expires August 8, 2016                 [Page 4]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
@@ -277,7 +277,7 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
 
 
-Nottingham, et al.       Expires August 7, 2016                 [Page 5]
+Nottingham, et al.       Expires August 8, 2016                 [Page 5]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
@@ -333,7 +333,7 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
 
 
-Nottingham, et al.       Expires August 7, 2016                 [Page 6]
+Nottingham, et al.       Expires August 8, 2016                 [Page 6]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
@@ -389,7 +389,7 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
 
 
-Nottingham, et al.       Expires August 7, 2016                 [Page 7]
+Nottingham, et al.       Expires August 8, 2016                 [Page 7]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
@@ -445,7 +445,7 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
 
 
-Nottingham, et al.       Expires August 7, 2016                 [Page 8]
+Nottingham, et al.       Expires August 8, 2016                 [Page 8]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
@@ -501,7 +501,7 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
 
 
-Nottingham, et al.       Expires August 7, 2016                 [Page 9]
+Nottingham, et al.       Expires August 8, 2016                 [Page 9]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
@@ -557,7 +557,7 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
 
 
-Nottingham, et al.       Expires August 7, 2016                [Page 10]
+Nottingham, et al.       Expires August 8, 2016                [Page 10]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
@@ -603,7 +603,7 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
    Alt-Svc: h2=":443"; ma=2592000; persist=1
 
-   This specification only a defines a single value for "persist".
+   This specification only defines a single value for "persist".
    Clients MUST ignore "persist" parameters with values other than "1".
 
    See Section 2.2 for general requirements on caching alternative
@@ -613,7 +613,7 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
 
 
-Nottingham, et al.       Expires August 7, 2016                [Page 11]
+Nottingham, et al.       Expires August 8, 2016                [Page 11]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
@@ -669,7 +669,7 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
 
 
-Nottingham, et al.       Expires August 7, 2016                [Page 12]
+Nottingham, et al.       Expires August 8, 2016                [Page 12]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
@@ -725,7 +725,7 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
 
 
-Nottingham, et al.       Expires August 7, 2016                [Page 13]
+Nottingham, et al.       Expires August 8, 2016                [Page 13]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
@@ -781,7 +781,7 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
 
 
-Nottingham, et al.       Expires August 7, 2016                [Page 14]
+Nottingham, et al.       Expires August 8, 2016                [Page 14]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
@@ -837,7 +837,7 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
 
 
-Nottingham, et al.       Expires August 7, 2016                [Page 15]
+Nottingham, et al.       Expires August 8, 2016                [Page 15]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
@@ -893,7 +893,7 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
 
 
-Nottingham, et al.       Expires August 7, 2016                [Page 16]
+Nottingham, et al.       Expires August 8, 2016                [Page 16]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
@@ -949,7 +949,7 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
 
 
-Nottingham, et al.       Expires August 7, 2016                [Page 17]
+Nottingham, et al.       Expires August 8, 2016                [Page 17]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
@@ -1005,7 +1005,7 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
 
 
-Nottingham, et al.       Expires August 7, 2016                [Page 18]
+Nottingham, et al.       Expires August 8, 2016                [Page 18]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
@@ -1061,7 +1061,7 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
 
 
-Nottingham, et al.       Expires August 7, 2016                [Page 19]
+Nottingham, et al.       Expires August 8, 2016                [Page 19]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
@@ -1117,7 +1117,7 @@ A.5.  Since draft-ietf-httpbis-alt-svc-03
 
 
 
-Nottingham, et al.       Expires August 7, 2016                [Page 20]
+Nottingham, et al.       Expires August 8, 2016                [Page 20]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
@@ -1173,7 +1173,7 @@ A.9.  Since draft-ietf-httpbis-alt-svc-07
 
 
 
-Nottingham, et al.       Expires August 7, 2016                [Page 21]
+Nottingham, et al.       Expires August 8, 2016                [Page 21]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
@@ -1229,7 +1229,7 @@ A.10.  Since draft-ietf-httpbis-alt-svc-08
 
 
 
-Nottingham, et al.       Expires August 7, 2016                [Page 22]
+Nottingham, et al.       Expires August 8, 2016                [Page 22]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
@@ -1285,7 +1285,7 @@ Appendix B.  Acknowledgements
 
 
 
-Nottingham, et al.       Expires August 7, 2016                [Page 23]
+Nottingham, et al.       Expires August 8, 2016                [Page 23]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
@@ -1341,4 +1341,4 @@ Authors' Addresses
 
 
 
-Nottingham, et al.       Expires August 7, 2016                [Page 24]
+Nottingham, et al.       Expires August 8, 2016                [Page 24]
