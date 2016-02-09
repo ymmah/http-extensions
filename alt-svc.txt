@@ -86,18 +86,18 @@ Table of Contents
      3.1.  Caching Alt-Svc Header Field Values . . . . . . . . . . .  10
    4.  The ALTSVC HTTP/2 Frame . . . . . . . . . . . . . . . . . . .  12
    5.  The Alt-Used HTTP Header Field  . . . . . . . . . . . . . . .  13
-   6.  The 421 Misdirected Request HTTP Status Code  . . . . . . . .  13
+   6.  The 421 Misdirected Request HTTP Status Code  . . . . . . . .  14
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  14
      7.1.  Header Field Registrations  . . . . . . . . . . . . . . .  14
      7.2.  The ALTSVC HTTP/2 Frame Type  . . . . . . . . . . . . . .  14
-     7.3.  Alt-Svc Parameter Registry  . . . . . . . . . . . . . . .  14
+     7.3.  Alt-Svc Parameter Registry  . . . . . . . . . . . . . . .  15
        7.3.1.  Procedure . . . . . . . . . . . . . . . . . . . . . .  15
        7.3.2.  Registrations . . . . . . . . . . . . . . . . . . . .  15
    8.  Internationalization Considerations . . . . . . . . . . . . .  15
    9.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
      9.1.  Changing Ports  . . . . . . . . . . . . . . . . . . . . .  15
      9.2.  Changing Hosts  . . . . . . . . . . . . . . . . . . . . .  16
-     9.3.  Changing Protocols  . . . . . . . . . . . . . . . . . . .  16
+     9.3.  Changing Protocols  . . . . . . . . . . . . . . . . . . .  17
      9.4.  Tracking Clients Using Alternative Services . . . . . . .  17
      9.5.  Confusion Regarding Request Scheme  . . . . . . . . . . .  17
    10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  18
@@ -126,7 +126,8 @@ Internet-Draft          HTTP Alternative Services          February 2016
      A.11. Since draft-ietf-httpbis-alt-svc-09 . . . . . . . . . . .  23
      A.12. Since draft-ietf-httpbis-alt-svc-10 . . . . . . . . . . .  23
      A.13. Since draft-ietf-httpbis-alt-svc-11 . . . . . . . . . . .  23
-   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  23
+     A.14. Since draft-ietf-httpbis-alt-svc-11 . . . . . . . . . . .  23
+   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  24
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  24
 
 1.  Introduction
@@ -160,8 +161,7 @@ Internet-Draft          HTTP Alternative Services          February 2016
    of interacting with it on the network.  It defines a general
    framework for this in Section 2, along with specific mechanisms for
    advertising their existence using HTTP header fields (Section 3) or
-   HTTP/2 frames (Section 4), plus a way to indicate that an alternative
-   service was used (Section 5).
+
 
 
 
@@ -169,6 +169,9 @@ Nottingham, et al.       Expires August 12, 2016                [Page 3]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
+
+   HTTP/2 frames (Section 4), plus a way to indicate that an alternative
+   service was used (Section 5).
 
    It also endorses the status code 421 (Misdirected Request)
    (Section 6) that origin servers (or their nominated alternatives) can
@@ -215,9 +218,6 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
    ("h2", "new.example.com", "81")
 
-   By their nature, alternative services are explicitly at the
-   granularity of an origin; i.e., they cannot be selectively applied to
-   resources within an origin.
 
 
 
@@ -225,6 +225,10 @@ Nottingham, et al.       Expires August 12, 2016                [Page 4]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
+
+   By their nature, alternative services are explicitly at the
+   granularity of an origin; i.e., they cannot be selectively applied to
+   resources within an origin.
 
    Alternative services do not replace or change the origin for any
    given resource; in general, they are not visible to the software
@@ -270,10 +274,6 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
    The ALPN protocol name is used to identify the application protocol
    or suite of protocols used by the alternative service.  Note that for
-   the purpose of this specification, an ALPN protocol name implicitly
-   includes TLS in the suite of protocols it identifies, unless
-   specified otherwise in its definition.  In particular, the ALPN name
-
 
 
 
@@ -282,6 +282,9 @@ Nottingham, et al.       Expires August 12, 2016                [Page 5]
 Internet-Draft          HTTP Alternative Services          February 2016
 
 
+   the purpose of this specification, an ALPN protocol name implicitly
+   includes TLS in the suite of protocols it identifies, unless
+   specified otherwise in its definition.  In particular, the ALPN name
    "http/1.1", registered by Section 6 of [RFC7301], identifies HTTP/1.1
    over TLS.
 
@@ -326,9 +329,6 @@ Internet-Draft          HTTP Alternative Services          February 2016
    Clients with existing connections to an alternative service do not
    need to stop using it when its freshness lifetime ends; i.e., the
    caching mechanism is intended for limiting how long an alternative
-   service can be used for establishing new connections, not limiting
-   the use of existing ones.
-
 
 
 
@@ -337,6 +337,9 @@ Nottingham, et al.       Expires August 12, 2016                [Page 6]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
+
+   service can be used for establishing new connections, not limiting
+   the use of existing ones.
 
    Alternative services are fully authoritative for the origin in
    question, including the ability to clear or update cached alternative
@@ -382,9 +385,6 @@ Internet-Draft          HTTP Alternative Services          February 2016
    advertise multiple alternative services to notify clients of support
    for multiple versions of HTTP.
 
-   A client configured to use a proxy for a given request SHOULD NOT
-   directly connect to an alternative service for this request, but
-   instead route it through that proxy.
 
 
 
@@ -393,6 +393,10 @@ Nottingham, et al.       Expires August 12, 2016                [Page 7]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
+
+   A client configured to use a proxy for a given request SHOULD NOT
+   directly connect to an alternative service for this request, but
+   instead route it through that proxy.
 
    When a client uses an alternative service for a request, it can
    indicate this to the server using the Alt-Used header field
@@ -437,11 +441,7 @@ Internet-Draft          HTTP Alternative Services          February 2016
    (including those specified in the same response, in case of an
    invalid reply containing both "clear" and alternative services).
 
-   ALPN protocol names are octet sequences with no additional
-   constraints on format.  Octets not allowed in tokens ([RFC7230],
-   Section 3.2.6) MUST be percent-encoded as per Section 2.1 of
-   [RFC3986].  Consequently, the octet representing the percent
-   character "%" (hex 25) MUST be percent-encoded as well.
+
 
 
 
@@ -449,6 +449,12 @@ Nottingham, et al.       Expires August 12, 2016                [Page 8]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
+
+   ALPN protocol names are octet sequences with no additional
+   constraints on format.  Octets not allowed in tokens ([RFC7230],
+   Section 3.2.6) MUST be percent-encoded as per Section 2.1 of
+   [RFC3986].  Consequently, the octet representing the percent
+   character "%" (hex 25) MUST be percent-encoded as well.
 
    In order to have precisely one way to represent any ALPN protocol
    name, the following additional constraints apply:
@@ -492,12 +498,6 @@ Internet-Draft          HTTP Alternative Services          February 2016
    | x%y                | x%25y       | "%" needs escaping  |
    +--------------------+-------------+---------------------+
 
-   Alt-Svc MAY occur in any HTTP response message, regardless of the
-   status code.  Note that recipients of Alt-Svc are free to ignore the
-   header field (and indeed need to in some situations; see Sections 2.1
-   and 6).
-
-
 
 
 
@@ -505,6 +505,11 @@ Nottingham, et al.       Expires August 12, 2016                [Page 9]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
+
+   Alt-Svc MAY occur in any HTTP response message, regardless of the
+   status code.  Note that recipients of Alt-Svc are free to ignore the
+   header field (and indeed need to in some situations; see Sections 2.1
+   and 6).
 
    The Alt-Svc field value can have multiple values:
 
@@ -550,17 +555,16 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
    ma = delta-seconds; see [RFC7234], Section 1.2.1
 
-   The delta-seconds value indicates the number of seconds since the
-   response was generated the alternative service is considered fresh
-   for.
-
-
 
 
 Nottingham, et al.       Expires August 12, 2016               [Page 10]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
+
+   The delta-seconds value indicates the number of seconds since the
+   response was generated the alternative service is considered fresh
+   for.
 
    Alt-Svc: h2=":443"; ma=3600
 
@@ -606,10 +610,6 @@ Internet-Draft          HTTP Alternative Services          February 2016
    This specification only defines a single value for "persist".
    Clients MUST ignore "persist" parameters with values other than "1".
 
-   See Section 2.2 for general requirements on caching alternative
-   services.
-
-
 
 
 
@@ -617,6 +617,9 @@ Nottingham, et al.       Expires August 12, 2016               [Page 11]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
+
+   See Section 2.2 for general requirements on caching alternative
+   services.
 
 4.  The ALTSVC HTTP/2 Frame
 
@@ -662,9 +665,6 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
    The ALTSVC frame does not define any flags.
 
-   The ALTSVC frame is intended for receipt by clients; a server that
-   receives an ALTSVC frame can safely ignore it.
-
 
 
 
@@ -673,6 +673,9 @@ Nottingham, et al.       Expires August 12, 2016               [Page 12]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
+
+   The ALTSVC frame is intended for receipt by clients; a server that
+   receives an ALTSVC frame can safely ignore it.
 
    An ALTSVC frame on stream 0 with empty (length 0) "Origin"
    information is invalid and MUST be ignored.  An ALTSVC frame on a
@@ -715,13 +718,10 @@ Internet-Draft          HTTP Alternative Services          February 2016
      Host: origin.example.com
      Alt-Used: alternate.example.net
 
-6.  The 421 Misdirected Request HTTP Status Code
 
-   The 421 (Misdirected Request) status code is defined in Section 9.1.2
-   of [RFC7540] to indicate that the current server instance is not
-   authoritative for the requested resource.  This can be used to
-   indicate that an alternative service is not authoritative; see
-   Section 2).
+
+
+
 
 
 
@@ -729,6 +729,14 @@ Nottingham, et al.       Expires August 12, 2016               [Page 13]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
+
+6.  The 421 Misdirected Request HTTP Status Code
+
+   The 421 (Misdirected Request) status code is defined in Section 9.1.2
+   of [RFC7540] to indicate that the current server instance is not
+   authoritative for the requested resource.  This can be used to
+   indicate that an alternative service is not authoritative; see
+   Section 2).
 
    Clients receiving 421 (Misdirected Request) from an alternative
    service MUST remove the corresponding entry from its alternative
@@ -770,14 +778,6 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
       Code: 0xa
 
-      Specification: Section 4 of this document
-
-7.3.  Alt-Svc Parameter Registry
-
-   The HTTP Alt-Svc Parameter Registry defines the name space for
-   parameters.  It will be created and maintained at (the suggested URI)
-   <http://www.iana.org/assignments/http-alt-svc-parameters>.
-
 
 
 
@@ -785,6 +785,14 @@ Nottingham, et al.       Expires August 12, 2016               [Page 14]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
+
+      Specification: Section 4 of this document
+
+7.3.  Alt-Svc Parameter Registry
+
+   The HTTP Alt-Svc Parameter Registry defines the name space for
+   parameters.  It will be created and maintained at (the suggested URI)
+   <http://www.iana.org/assignments/http-alt-svc-parameters>.
 
 7.3.1.  Procedure
 
@@ -826,14 +834,6 @@ Internet-Draft          HTTP Alternative Services          February 2016
    to be able to control some personal pages available on a shared port,
    and also to accept to requests on less-privileged ports.
 
-   For example, an attacker that can add HTTP response header fields to
-   some pages can redirect traffic for an entire origin to a different
-   port on the same host using the Alt-Svc header field; if that port is
-   under the attacker's control, they can thus masquerade as the HTTP
-   server.
-
-   This risk is mitigated by the requirements in Section 2.1.
-
 
 
 
@@ -841,6 +841,14 @@ Nottingham, et al.       Expires August 12, 2016               [Page 15]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
+
+   For example, an attacker that can add HTTP response header fields to
+   some pages can redirect traffic for an entire origin to a different
+   port on the same host using the Alt-Svc header field; if that port is
+   under the attacker's control, they can thus masquerade as the HTTP
+   server.
+
+   This risk is mitigated by the requirements in Section 2.1.
 
    On servers, this risk can also be reduced by restricting the ability
    to advertise alternative services, and restricting who can open a
@@ -883,20 +891,19 @@ Internet-Draft          HTTP Alternative Services          February 2016
    other requirements around which certificates are acceptable for
    alternative services.
 
-9.3.  Changing Protocols
-
-   When the ALPN protocol is changed due to the use of an alternative
-   service, the security properties of the new connection to the origin
-   can be different from that of the "normal" connection to the origin,
-   because the protocol identifier itself implies this.
-
-
 
 
 Nottingham, et al.       Expires August 12, 2016               [Page 16]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
+
+9.3.  Changing Protocols
+
+   When the ALPN protocol is changed due to the use of an alternative
+   service, the security properties of the new connection to the origin
+   can be different from that of the "normal" connection to the origin,
+   because the protocol identifier itself implies this.
 
    For example, if an "https://" URI has a protocol advertised that does
    not use some form of end-to-end encryption (most likely, TLS), it
@@ -939,13 +946,6 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
    Since one of the uses of Alternative Services is to allow a
    connection to be migrated to a different protocol and port, these
-   applications can become confused about the security properties of a
-   given connection, sending information (e.g., cookies, content) that
-   is intended for a secure context (e.g., an "https://" URI) to a
-   client that is not treating it as one.
-
-   This risk can be mitigated in servers by using the URI scheme
-   explicitly carried by the protocol (e.g., ":scheme" in HTTP/2 or the
 
 
 
@@ -954,6 +954,13 @@ Nottingham, et al.       Expires August 12, 2016               [Page 17]
 Internet-Draft          HTTP Alternative Services          February 2016
 
 
+   applications can become confused about the security properties of a
+   given connection, sending information (e.g., cookies, content) that
+   is intended for a secure context (e.g., an "https://" URI) to a
+   client that is not treating it as one.
+
+   This risk can be mitigated in servers by using the URI scheme
+   explicitly carried by the protocol (e.g., ":scheme" in HTTP/2 or the
    "absolute form" of the request target in HTTP/1.1) as an indication
    of security context, instead of other connection properties
    ([RFC7540], Section 8.1.2.3 and [RFC7230], Section 5.3.2).
@@ -993,13 +1000,6 @@ Internet-Draft          HTTP Alternative Services          February 2016
               RFC 5890, DOI 10.17487/RFC5890, August 2010,
               <http://www.rfc-editor.org/info/rfc5890>.
 
-   [RFC6066]  Eastlake, D., "Transport Layer Security (TLS) Extensions:
-              Extension Definitions", RFC 6066, DOI 10.17487/RFC6066,
-              January 2011, <http://www.rfc-editor.org/info/rfc6066>.
-
-   [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
-              DOI 10.17487/RFC6454, December 2011,
-              <http://www.rfc-editor.org/info/rfc6454>.
 
 
 
@@ -1009,6 +1009,14 @@ Nottingham, et al.       Expires August 12, 2016               [Page 18]
 
 Internet-Draft          HTTP Alternative Services          February 2016
 
+
+   [RFC6066]  Eastlake, D., "Transport Layer Security (TLS) Extensions:
+              Extension Definitions", RFC 6066, DOI 10.17487/RFC6066,
+              January 2011, <http://www.rfc-editor.org/info/rfc6066>.
+
+   [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
+              DOI 10.17487/RFC6454, December 2011,
+              <http://www.rfc-editor.org/info/rfc6454>.
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
@@ -1048,14 +1056,6 @@ Internet-Draft          HTTP Alternative Services          February 2016
    [RFC7469]  Evans, C., Palmer, C., and R. Sleevi, "Public Key Pinning
               Extension for HTTP", RFC 7469, DOI 10.17487/RFC7469, April
               2015, <http://www.rfc-editor.org/info/rfc7469>.
-
-
-
-
-
-
-
-
 
 
 
@@ -1276,11 +1276,11 @@ A.13.  Since draft-ietf-httpbis-alt-svc-11
    Security considerations wrt system ports (<https://github.com/httpwg/
    http-extensions/issues/139>).
 
-Appendix B.  Acknowledgements
+A.14.  Since draft-ietf-httpbis-alt-svc-11
 
-   Thanks to Adam Langley, Bence Beky, Eliot Lear, Erik Nygren, Guy
-   Podjarny, Herve Ruellan, Lucas Pardue, Martin Thomson, Matthew
-   Kerwin, Mike Bishop, Paul Hoffman, Richard Barnes, Richard Bradbury,
+   None yet.
+
+
 
 
 
@@ -1290,6 +1290,11 @@ Nottingham, et al.       Expires August 12, 2016               [Page 23]
 Internet-Draft          HTTP Alternative Services          February 2016
 
 
+Appendix B.  Acknowledgements
+
+   Thanks to Adam Langley, Bence Beky, Eliot Lear, Erik Nygren, Guy
+   Podjarny, Herve Ruellan, Lucas Pardue, Martin Thomson, Matthew
+   Kerwin, Mike Bishop, Paul Hoffman, Richard Barnes, Richard Bradbury,
    Stephen Farrell, Stephen Ludin, and Will Chan for their feedback and
    suggestions.
 
@@ -1317,11 +1322,6 @@ Authors' Addresses
 
    EMail: julian.reschke@greenbytes.de
    URI:   https://greenbytes.de/tech/webdav/
-
-
-
-
-
 
 
 
