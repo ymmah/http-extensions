@@ -1278,8 +1278,8 @@ A.13.  Since draft-ietf-httpbis-alt-svc-11
 
 A.14.  Since draft-ietf-httpbis-alt-svc-12
 
-   None yet.
-
+   Editorial changes triggered by <https://lists.w3.org/Archives/Public/
+   ietf-http-wg/2016JanMar/0243.html>.
 
 
 
@@ -1292,11 +1292,11 @@ Internet-Draft          HTTP Alternative Services          February 2016
 
 Appendix B.  Acknowledgements
 
-   Thanks to Adam Langley, Bence Beky, Eliot Lear, Erik Nygren, Guy
-   Podjarny, Herve Ruellan, Lucas Pardue, Martin Thomson, Matthew
-   Kerwin, Mike Bishop, Paul Hoffman, Richard Barnes, Richard Bradbury,
-   Stephen Farrell, Stephen Ludin, Chris Lonvick, and Will Chan for
-   their feedback and suggestions.
+   Thanks to Adam Langley, Bence Beky, Chris Lonvick, Eliot Lear, Erik
+   Nygren, Guy Podjarny, Herve Ruellan, Lucas Pardue, Martin Thomson,
+   Matthew Kerwin, Mike Bishop, Paul Hoffman, Richard Barnes, Richard
+   Bradbury, Stephen Farrell, Stephen Ludin, and Will Chan for their
+   feedback and suggestions.
 
    The Alt-Svc header field was influenced by the design of the
    Alternate-Protocol header field in SPDY.
