@@ -859,6 +859,11 @@ Internet-Draft                     Key                     February 2016
 
 5.2.  Informative References
 
+   [RFC5226]  Narten, T. and H. Alvestrand, "Guidelines for Writing an
+              IANA Considerations Section in RFCs", BCP 26, RFC 5226,
+              DOI 10.17487/RFC5226, May 2008,
+              <http://www.rfc-editor.org/info/rfc5226>.
+
    [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
               DOI 10.17487/RFC6265, April 2011,
               <http://www.rfc-editor.org/info/rfc6265>.
@@ -883,6 +888,16 @@ Authors' Addresses
    URI:   http://roy.gbiv.com/
 
 
+
+
+
+
+
+Fielding & Nottingham    Expires August 26, 2016               [Page 16]
+
+Internet-Draft                     Key                     February 2016
+
+
    Mark Nottingham
 
    Email: mnot@mnot.net
@@ -893,4 +908,45 @@ Authors' Addresses
 
 
 
-Fielding & Nottingham    Expires August 26, 2016               [Page 16]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fielding & Nottingham    Expires August 26, 2016               [Page 17]
