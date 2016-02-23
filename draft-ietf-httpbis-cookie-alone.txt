@@ -66,10 +66,10 @@ Table of Contents
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Terminology and notation  . . . . . . . . . . . . . . . . . .   2
    3.  Recommendations . . . . . . . . . . . . . . . . . . . . . . .   2
-   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
+   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   3
    5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   4
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   4
-     5.2.  Informative References  . . . . . . . . . . . . . . . . .   5
+     5.2.  Informative References  . . . . . . . . . . . . . . . . .   4
    Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .   5
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   5
 
@@ -116,7 +116,6 @@ Internet-Draft         Leave Secure Cookies Alone          February 2016
 
            and the cookie's "secure-only-flag" is "true", then abort
            these steps and ignore the newly created cookie entirely.
-
    2.  Before step 11, execute the following step:
 
        1.  If the newly created cookie's "secure-only-flag" is not set,
@@ -128,9 +127,7 @@ Internet-Draft         Leave Secure Cookies Alone          February 2016
 
            1.  Their "name" matches the "name" of the newly created
                cookie.
-
            2.  Their "secure-only-flag" is set.
-
            3.  Their "domain" domain-matches the "domain" of the newly
                created cookie, or vice-versa.
 
@@ -142,34 +139,21 @@ Internet-Draft         Leave Secure Cookies Alone          February 2016
            Note: This allows "secure" pages to override "secure" cookies
            with non-secure variants.  Perhaps we should restrict that as
            well?
-
    3.  In order to ensure that a non-secure site can never cause a
        "secure" cookie to be evisted, adjust the "remove excess cookies"
        priority order at the bottom of Section 5.3 to be the following:
 
        1.  Expired cookies.
-
        2.  Cookies whose "secure-only-flag" is not set and which share a
            "domain" field with more than a predetermined number of other
            cookies.
-
        3.  Cookies that share a "domain" field with more than a
            predetermined number of other cookies.
-
        4.  All cookies.
 
        Note that the eviction algorithm specified here is triggered only
        after insertion of a cookie which causes the user agent to exceed
        some predetermined upper bound.  Conforming user agents MUST
-
-
-
-
-West                     Expires August 26, 2016                [Page 3]
-
-Internet-Draft         Leave Secure Cookies Alone          February 2016
-
-
        ensure that inserting a non-secure cookie does not cause a secure
        cookie to be removed.
 
@@ -178,6 +162,14 @@ Internet-Draft         Leave Secure Cookies Alone          February 2016
    This specification increases a site's confidence that secure cookies
    it sets will remain unmodified by insecure pages on hosts which it
    domain-matches.  Ideally, sites would use HSTS as described in
+
+
+
+West                     Expires August 26, 2016                [Page 3]
+
+Internet-Draft         Leave Secure Cookies Alone          February 2016
+
+
    [RFC6797] to defend more robustly against the dangers of non-secure
    transport in general, but until adoption of that protection becomes
    ubiquitous, this deprecation this document recommends will mitigate a
@@ -214,6 +206,14 @@ Internet-Draft         Leave Secure Cookies Alone          February 2016
               DOI 10.17487/RFC6265, April 2011,
               <http://www.rfc-editor.org/info/rfc6265>.
 
+5.2.  Informative References
+
+   [COOKIE-INTEGRITY]
+              Zheng, X., Jiang, J., Liang, J., Duan, H., Chen, S., Wan,
+              T., and N. Weaver, "Cookies Lack Integrity: Real-World
+              Implications", August 2015,
+              <https://www.usenix.org/conference/usenixsecurity15/
+              technical-sessions/presentation/zheng>.
 
 
 
@@ -226,18 +226,10 @@ West                     Expires August 26, 2016                [Page 4]
 Internet-Draft         Leave Secure Cookies Alone          February 2016
 
 
-5.2.  Informative References
-
-   [COOKIE-INTEGRITY]
-              Zheng, X., Jiang, J., Liang, J., Duan, H., Chen, S., Wan,
-              T., and N. Weaver, "Cookies Lack Integrity: Real-World
-              Implications", n.d.,
-              <https://www.usenix.org/system/files/conference/
-              usenixsecurity15/sec15-paper-zheng.pdf>.
-
    [COOKIE-PREFIXES]
-              West, M., "Cookie Prefixes", n.d.,
-              <https://tools.ietf.org/html/draft-west-cookie-prefixes>.
+              West, M., "Cookie Prefixes", 2016,
+              <https://tools.ietf.org/html/draft-ietf-httpbis-cookie-
+              prefixes>.
 
    [HSTS-PRELOADING]
               "HSTS Preload Submission", n.d.,
@@ -261,6 +253,14 @@ Author's Address
 
    Email: mkwst@google.com
    URI:   https://mikewest.org/
+
+
+
+
+
+
+
+
 
 
 

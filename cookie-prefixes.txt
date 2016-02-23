@@ -72,12 +72,12 @@ Table of Contents
    5.  Aesthetic Considerations  . . . . . . . . . . . . . . . . . .   4
      5.1.  Not pretty. . . . . . . . . . . . . . . . . . . . . . . .   4
      5.2.  Why "__"? . . . . . . . . . . . . . . . . . . . . . . . .   4
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
      6.1.  Secure Origins Only . . . . . . . . . . . . . . . . . . .   5
      6.2.  Limitations . . . . . . . . . . . . . . . . . . . . . . .   5
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   5
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .   6
+     7.2.  Informative References  . . . . . . . . . . . . . . . . .   5
    Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .   6
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   6
 
@@ -123,7 +123,6 @@ Internet-Draft               Cookie Prefixes               February 2016
    If a cookie's name begins with "__Secure-", the cookie MUST be:
 
    1.  Set with a "Secure" attribute
-
    2.  Set from a URI whose "scheme" is considered "secure" by the user
        agent.
 
@@ -144,15 +143,12 @@ Internet-Draft               Cookie Prefixes               February 2016
    If a cookie's name begins with "__Host-", the cookie MUST be:
 
    1.  Set with a "Secure" attribute
-
    2.  Set from a URI whose "scheme" is considered "secure" by the user
        agent.
-
    3.  Sent only to the host which set the cookie.  That is, a cookie
        named "__Host-cookie1" set from "https://example.com" MUST NOT
        contain a "Domain" attribute (and will therefore be sent only to
        "example.com", and not to "subdomain.example.com").
-
    4.  Sent to every request for a host.  That is, a cookie named
        "__Host-cookie1" MUST contain a "Path" attribute with a value of
        "/".
@@ -160,7 +156,11 @@ Internet-Draft               Cookie Prefixes               February 2016
    The following cookies would always be rejected:
 
 
-
+   Set-Cookie: __Host-SID=12345
+   Set-Cookie: __Host-SID=12345; Secure
+   Set-Cookie: __Host-SID=12345; Domain=example.com
+   Set-Cookie: __Host-SID=12345; Domain=example.com; Path=/
+   Set-Cookie: __Host-SID=12345; Secure; Domain=example.com; Path=/
 
 
 
@@ -169,12 +169,6 @@ West                     Expires August 26, 2016                [Page 3]
 
 Internet-Draft               Cookie Prefixes               February 2016
 
-
-   Set-Cookie: __Host-SID=12345
-   Set-Cookie: __Host-SID=12345; Secure
-   Set-Cookie: __Host-SID=12345; Domain=example.com
-   Set-Cookie: __Host-SID=12345; Domain=example.com; Path=/
-   Set-Cookie: __Host-SID=12345; Secure; Domain=example.com; Path=/
 
    While the following would be accepted if set from a secure origin
    (e.g.  "https://example.com/"), and rejected otherwise:
@@ -195,16 +189,13 @@ Internet-Draft               Cookie Prefixes               February 2016
        unless both of the following conditions are true:
 
        *  The cookie's "secure-only-flag" is "true"
-
        *  "request-uri"'s "scheme" component denotes a "secure" protocol
           (as determined by the user agent)
-
    2.  If the "cookie-name" begins with the string "__Host-", abort
        these steps and ignore the cookie entirely unless the following
        conditions are true:
 
        *  The cookie's "host-only-flag" is "true"
-
        *  The cookie's "path" is "/"
 
 5.  Aesthetic Considerations
@@ -218,6 +209,15 @@ Internet-Draft               Cookie Prefixes               February 2016
    We started with "$", but ran into issues with servers that had
    implemented [RFC2109]-style cookies. "__" is a prefix used for a
    number of well-known cookies in the wild (notably Google Analytics's
+   "__ut*" cookies, and CloudFlare's "__cfduid"), and so is unlikely to
+   produce such compatibility issues, while being uncommon enough to
+   mitigate the risk of collisions.
+
+6.  Security Considerations
+
+
+
+
 
 
 
@@ -225,12 +225,6 @@ West                     Expires August 26, 2016                [Page 4]
 
 Internet-Draft               Cookie Prefixes               February 2016
 
-
-   "__ut*" cookies, and CloudFlare's "__cfduid"), and so is unlikely to
-   produce such compatibility issues, while being uncommon enough to
-   mitigate the risk of collisions.
-
-6.  Security Considerations
 
 6.1.  Secure Origins Only
 
@@ -274,6 +268,12 @@ Internet-Draft               Cookie Prefixes               February 2016
               DOI 10.17487/RFC6265, April 2011,
               <http://www.rfc-editor.org/info/rfc6265>.
 
+7.2.  Informative References
+
+   [DEPRECATING-HTTP]
+              Barnes, R., "Deprecating Non-Secure HTTP", April 2015,
+              <https://blog.mozilla.org/security/2015/04/30/deprecating-
+              non-secure-http/>.
 
 
 
@@ -282,21 +282,15 @@ West                     Expires August 26, 2016                [Page 5]
 Internet-Draft               Cookie Prefixes               February 2016
 
 
-7.2.  Informative References
-
-   [DEPRECATING-HTTP]
-              Barnes, R., "Deprecating Non-Secure HTTP", n.d.,
-              <https://blog.mozilla.org/security/2015/04/30/deprecating-
-              non-secure-http/>.
-
    [Lawrence2015]
               Lawrence, E., "Duct Tape and Baling Wire -- Cookie
-              Prefixes", n.d., <http://textslashplain.com/2015/10/09/
+              Prefixes", October 2015,
+              <http://textslashplain.com/2015/10/09/
               duct-tape-and-baling-wirecookie-prefixes/>.
 
    [POWERFUL-FEATURES]
               Palmer, C., "Prefer Secure Origins for Powerful New
-              Features", n.d., <https://www.chromium.org/Home/chromium-
+              Features", 2015, <https://www.chromium.org/Home/chromium-
               security/prefer-secure-origins-for-powerful-new-features>.
 
    [RFC2109]  Kristol, D. and L. Montulli, "HTTP State Management
@@ -304,7 +298,7 @@ Internet-Draft               Cookie Prefixes               February 2016
               <http://www.rfc-editor.org/info/rfc2109>.
 
    [SECURE-CONTEXTS]
-              West, M., "Secure Contexts", n.d., <https://w3c.github.io/
+              West, M., "Secure Contexts", 2016, <https://w3c.github.io/
               webappsec-secure-contexts/>.
 
 Appendix A.  Acknowledgements
@@ -323,6 +317,12 @@ Author's Address
 
    Email: mkwst@google.com
    URI:   https://mikewest.org/
+
+
+
+
+
+
 
 
 
