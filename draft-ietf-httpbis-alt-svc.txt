@@ -1346,6 +1346,9 @@ Nottingham, et al.       Expires August 29, 2016               [Page 24]
 Internet-Draft          HTTP Alternative Services          February 2016
 
 
+   Reasonable Assurances and H2C (<https://github.com/httpwg/http-
+   extensions/issues/148>).
+
 Appendix B.  Acknowledgements
 
    Thanks to Adam Langley, Bence Beky, Chris Lonvick, Eliot Lear, Erik
@@ -1378,9 +1381,6 @@ Authors' Addresses
 
    EMail: julian.reschke@greenbytes.de
    URI:   https://greenbytes.de/tech/webdav/
-
-
-
 
 
 
