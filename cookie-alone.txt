@@ -4,9 +4,9 @@
 
 HTTP Working Group                                               M. West
 Internet-Draft                                               Google, Inc
-Updates: 6265 (if approved)                            February 25, 2016
+Updates: 6265 (if approved)                            February 26, 2016
 Intended status: Standards Track
-Expires: August 28, 2016
+Expires: August 29, 2016
 
 
    Deprecate modification of 'secure' cookies from non-secure origins
@@ -19,16 +19,6 @@ Abstract
    cookies whose 'secure' flag is set.  This deprecation improves the
    isolation between HTTP and HTTPS origins, and reduces the risk of
    malicious interference.
-
-Note to Readers
-
-   Discussion of this draft takes place on the HTTP working group
-   mailing list (ietf-http-wg@w3.org), which is archived at
-   https://lists.w3.org/Archives/Public/ietf-http-wg/ .
-
-   Working Group information can be found at http://httpwg.github.io/ ;
-   source code and issues list for this draft can be found at
-   https://github.com/httpwg/http-extensions/labels/cookie-alone .
 
 Status of This Memo
 
@@ -45,18 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 28, 2016.
-
-
-
-
-
-
-
-West                     Expires August 28, 2016                [Page 1]
-
-Internet-Draft         Leave Secure Cookies Alone          February 2016
-
+   This Internet-Draft will expire on August 29, 2016.
 
 Copyright Notice
 
@@ -70,6 +49,15 @@ Copyright Notice
    carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
    include Simplified BSD License text as described in Section 4.e of
+
+
+
+
+West                     Expires August 29, 2016                [Page 1]
+
+Internet-Draft         Leave Secure Cookies Alone          February 2016
+
+
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
@@ -77,11 +65,11 @@ Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Terminology and notation  . . . . . . . . . . . . . . . . . .   2
-   3.  Recommendations . . . . . . . . . . . . . . . . . . . . . . .   3
-   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
+   3.  Recommendations . . . . . . . . . . . . . . . . . . . . . . .   2
+   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   3
    5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   4
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   4
-     5.2.  Informative References  . . . . . . . . . . . . . . . . .   5
+     5.2.  Informative References  . . . . . . . . . . . . . . . . .   4
    Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .   5
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   5
 
@@ -106,14 +94,6 @@ Table of Contents
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
    document are to be interpreted as described in [RFC2119].
 
-
-
-
-West                     Expires August 28, 2016                [Page 2]
-
-Internet-Draft         Leave Secure Cookies Alone          February 2016
-
-
    The "scheme" component of a URI is defined in Section 3 of [RFC3986].
 
 3.  Recommendations
@@ -125,6 +105,15 @@ Internet-Draft         Leave Secure Cookies Alone          February 2016
 
        1.  If the "scheme" component of the "request-uri" does not
            denote a "secure" protocol (as defined by the user agent),
+
+
+
+
+West                     Expires August 29, 2016                [Page 2]
+
+Internet-Draft         Leave Secure Cookies Alone          February 2016
+
+
            and the cookie's "secure-only-flag" is "true", then abort
            these steps and ignore the newly created cookie entirely.
    2.  Before step 11, execute the following step:
@@ -162,14 +151,6 @@ Internet-Draft         Leave Secure Cookies Alone          February 2016
            predetermined number of other cookies.
        4.  All cookies.
 
-
-
-
-West                     Expires August 28, 2016                [Page 3]
-
-Internet-Draft         Leave Secure Cookies Alone          February 2016
-
-
        Note that the eviction algorithm specified here is triggered only
        after insertion of a cookie which causes the user agent to exceed
        some predetermined upper bound.  Conforming user agents MUST
@@ -181,6 +162,14 @@ Internet-Draft         Leave Secure Cookies Alone          February 2016
    This specification increases a site's confidence that secure cookies
    it sets will remain unmodified by insecure pages on hosts which it
    domain-matches.  Ideally, sites would use HSTS as described in
+
+
+
+West                     Expires August 29, 2016                [Page 3]
+
+Internet-Draft         Leave Secure Cookies Alone          February 2016
+
+
    [RFC6797] to defend more robustly against the dangers of non-secure
    transport in general, but until adoption of that protection becomes
    ubiquitous, this deprecation this document recommends will mitigate a
@@ -217,15 +206,6 @@ Internet-Draft         Leave Secure Cookies Alone          February 2016
               DOI 10.17487/RFC6265, April 2011,
               <http://www.rfc-editor.org/info/rfc6265>.
 
-
-
-
-
-West                     Expires August 28, 2016                [Page 4]
-
-Internet-Draft         Leave Secure Cookies Alone          February 2016
-
-
 5.2.  Informative References
 
    [COOKIE-INTEGRITY]
@@ -234,6 +214,17 @@ Internet-Draft         Leave Secure Cookies Alone          February 2016
               Implications", August 2015,
               <https://www.usenix.org/conference/usenixsecurity15/
               technical-sessions/presentation/zheng>.
+
+
+
+
+
+
+
+West                     Expires August 29, 2016                [Page 4]
+
+Internet-Draft         Leave Secure Cookies Alone          February 2016
+
 
    [COOKIE-PREFIXES]
               West, M., "Cookie Prefixes", 2016,
@@ -277,4 +268,13 @@ Author's Address
 
 
 
-West                     Expires August 28, 2016                [Page 5]
+
+
+
+
+
+
+
+
+
+West                     Expires August 29, 2016                [Page 5]
