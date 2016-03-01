@@ -21,16 +21,6 @@ Abstract
    syntax, and limits the ways in which cookies may be abused in a
    conforming user agent.
 
-Note to Readers
-
-   Discussion of this draft takes place on the HTTP working group
-   mailing list (ietf-http-wg@w3.org), which is archived at
-   https://lists.w3.org/Archives/Public/ietf-http-wg/ .
-
-   Working Group information can be found at http://httpwg.github.io/ ;
-   source code and issues list for this draft can be found at
-   https://github.com/httpwg/http-extensions/labels/cookie-prefixes .
-
 Status of This Memo
 
    This Internet-Draft is submitted in full conformance with the
@@ -48,16 +38,6 @@ Status of This Memo
 
    This Internet-Draft will expire on September 2, 2016.
 
-
-
-
-
-
-West                    Expires September 2, 2016               [Page 1]
-
-Internet-Draft               Cookie Prefixes                  March 2016
-
-
 Copyright Notice
 
    Copyright (c) 2016 IETF Trust and the persons identified as the
@@ -70,26 +50,34 @@ Copyright Notice
    carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
    include Simplified BSD License text as described in Section 4.e of
+
+
+
+West                    Expires September 2, 2016               [Page 1]
+
+Internet-Draft               Cookie Prefixes                  March 2016
+
+
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
-   2.  Terminology and notation  . . . . . . . . . . . . . . . . . .   3
+   2.  Terminology and notation  . . . . . . . . . . . . . . . . . .   2
    3.  Prefixes  . . . . . . . . . . . . . . . . . . . . . . . . . .   3
      3.1.  The "__Secure-" prefix  . . . . . . . . . . . . . . . . .   3
      3.2.  The "__Host-" prefix  . . . . . . . . . . . . . . . . . .   3
    4.  User Agent Requirements . . . . . . . . . . . . . . . . . . .   4
    5.  Aesthetic Considerations  . . . . . . . . . . . . . . . . . .   4
      5.1.  Not pretty. . . . . . . . . . . . . . . . . . . . . . . .   4
-     5.2.  Why "__"? . . . . . . . . . . . . . . . . . . . . . . . .   5
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
+     5.2.  Why "__"? . . . . . . . . . . . . . . . . . . . . . . . .   4
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
      6.1.  Secure Origins Only . . . . . . . . . . . . . . . . . . .   5
      6.2.  Limitations . . . . . . . . . . . . . . . . . . . . . . .   5
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   5
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .   6
+     7.2.  Informative References  . . . . . . . . . . . . . . . . .   5
    Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .   6
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   6
 
@@ -105,15 +93,6 @@ Table of Contents
    We can't alter the syntax of the "Cookie" request header, as that
    would likely break a number of implementations.  This rules out
    sending a cookie's flags along with the cookie directly, but we can
-
-
-
-
-West                    Expires September 2, 2016               [Page 2]
-
-Internet-Draft               Cookie Prefixes                  March 2016
-
-
    smuggle information along with the cookie if we reserve certain name
    prefixes for cookies with certain properties.
 
@@ -126,6 +105,14 @@ Internet-Draft               Cookie Prefixes                  March 2016
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
    document are to be interpreted as described in [RFC2119].
+
+
+
+
+West                    Expires September 2, 2016               [Page 2]
+
+Internet-Draft               Cookie Prefixes                  March 2016
+
 
    The "scheme" component of a URI is defined in Section 3 of [RFC3986].
 
@@ -162,14 +149,6 @@ Internet-Draft               Cookie Prefixes                  March 2016
        named "__Host-cookie1" set from "https://example.com" MUST NOT
        contain a "Domain" attribute (and will therefore be sent only to
        "example.com", and not to "subdomain.example.com").
-
-
-
-West                    Expires September 2, 2016               [Page 3]
-
-Internet-Draft               Cookie Prefixes                  March 2016
-
-
    4.  Sent to every request for a host.  That is, a cookie named
        "__Host-cookie1" MUST contain a "Path" attribute with a value of
        "/".
@@ -182,6 +161,14 @@ Internet-Draft               Cookie Prefixes                  March 2016
    Set-Cookie: __Host-SID=12345; Domain=example.com
    Set-Cookie: __Host-SID=12345; Domain=example.com; Path=/
    Set-Cookie: __Host-SID=12345; Secure; Domain=example.com; Path=/
+
+
+
+
+West                    Expires September 2, 2016               [Page 3]
+
+Internet-Draft               Cookie Prefixes                  March 2016
+
 
    While the following would be accepted if set from a secure origin
    (e.g.  "https://example.com/"), and rejected otherwise:
@@ -217,15 +204,6 @@ Internet-Draft               Cookie Prefixes                  March 2016
 
    Prefixes are ugly. :(
 
-
-
-
-
-West                    Expires September 2, 2016               [Page 4]
-
-Internet-Draft               Cookie Prefixes                  March 2016
-
-
 5.2.  Why "__"?
 
    We started with "$", but ran into issues with servers that had
@@ -236,6 +214,17 @@ Internet-Draft               Cookie Prefixes                  March 2016
    mitigate the risk of collisions.
 
 6.  Security Considerations
+
+
+
+
+
+
+
+West                    Expires September 2, 2016               [Page 4]
+
+Internet-Draft               Cookie Prefixes                  March 2016
+
 
 6.1.  Secure Origins Only
 
@@ -275,13 +264,6 @@ Internet-Draft               Cookie Prefixes                  March 2016
               RFC 3986, DOI 10.17487/RFC3986, January 2005,
               <http://www.rfc-editor.org/info/rfc3986>.
 
-
-
-West                    Expires September 2, 2016               [Page 5]
-
-Internet-Draft               Cookie Prefixes                  March 2016
-
-
    [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
               DOI 10.17487/RFC6265, April 2011,
               <http://www.rfc-editor.org/info/rfc6265>.
@@ -292,6 +274,13 @@ Internet-Draft               Cookie Prefixes                  March 2016
               Barnes, R., "Deprecating Non-Secure HTTP", April 2015,
               <https://blog.mozilla.org/security/2015/04/30/deprecating-
               non-secure-http/>.
+
+
+
+West                    Expires September 2, 2016               [Page 5]
+
+Internet-Draft               Cookie Prefixes                  March 2016
+
 
    [Lawrence2015]
               Lawrence, E., "Duct Tape and Baling Wire -- Cookie
@@ -328,6 +317,17 @@ Author's Address
 
    Email: mkwst@google.com
    URI:   https://mikewest.org/
+
+
+
+
+
+
+
+
+
+
+
 
 
 
