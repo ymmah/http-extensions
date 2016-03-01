@@ -86,7 +86,7 @@ Table of Contents
        3.2.1.  Definition  . . . . . . . . . . . . . . . . . . . . .   4
        3.2.2.  Historical Notes  . . . . . . . . . . . . . . . . . .   6
        3.2.3.  Examples  . . . . . . . . . . . . . . . . . . . . . .   7
-     3.3.  Language Specification in Encoded Words . . . . . . . . .   7
+     3.3.  Language Specification in Encoded Words . . . . . . . . .   8
    4.  Guidelines for Usage in HTTP Header Field Definitions . . . .   8
      4.1.  When to Use the Extension . . . . . . . . . . . . . . . .   8
      4.2.  Error Handling  . . . . . . . . . . . . . . . . . . . . .   9
@@ -359,7 +359,8 @@ Internet-Draft      Charset/Language Encoding in HTTP         March 2016
 
      foo: bar; title="US-$ rates"
 
-   Extended notation, using the Unicode character U+00A3 (POUND SIGN):
+   Extended notation, using the Unicode character U+00A3 ("GBP", POUND
+   SIGN):
 
      foo: bar; title*=utf-8'en'%C2%A3%20rates
 
@@ -368,8 +369,8 @@ Internet-Draft      Charset/Language Encoding in HTTP         March 2016
    percent-encoded.  Also, note that the space character was encoded as
    %20, as it is not contained in attr-char.
 
-   Extended notation, using the Unicode characters U+00A3 (POUND SIGN)
-   and U+20AC (EURO SIGN):
+   Extended notation, using the Unicode characters U+00A3 ("GBP", POUND
+   SIGN) and U+20AC ("EUR", EURO SIGN):
 
      foo: bar; title*=UTF-8''%c2%a3%20and%20%e2%82%ac%20rates
 
@@ -381,11 +382,10 @@ Internet-Draft      Charset/Language Encoding in HTTP         March 2016
    so recipients must understand both, and that the language information
    is optional, while the character encoding is not.
 
-3.3.  Language Specification in Encoded Words
 
-   Section 5 of [RFC2231] extends the encoding defined in [RFC2047] to
-   also support language specification in encoded words.  RFC 2616, the
-   now-obsolete HTTP/1.1 specification, did refer to RFC 2047
+
+
+
 
 
 
@@ -394,6 +394,11 @@ Reschke                 Expires September 2, 2016               [Page 7]
 Internet-Draft      Charset/Language Encoding in HTTP         March 2016
 
 
+3.3.  Language Specification in Encoded Words
+
+   Section 5 of [RFC2231] extends the encoding defined in [RFC2047] to
+   also support language specification in encoded words.  RFC 2616, the
+   now-obsolete HTTP/1.1 specification, did refer to RFC 2047
    ([RFC2616], Section 2.2).  However, it wasn't clear to which header
    field it applied.  Consequently, the current revision of the HTTP/1.1
    specification has deprecated use of the encoding forms defined in RFC
@@ -436,12 +441,7 @@ Internet-Draft      Charset/Language Encoding in HTTP         March 2016
 
    Section 4.2 of [RFC2277] requires that protocol elements containing
    human-readable text are able to carry language information.  Thus,
-   the ext-value production ought to be always used when the parameter
-   value is of textual nature and its language is known.
 
-   Furthermore, the extension ought to also be used whenever the
-   parameter value needs to carry characters not present in the US-ASCII
-   ([USASCII]) coded character set (note that it would be unacceptable
 
 
 
@@ -450,6 +450,12 @@ Reschke                 Expires September 2, 2016               [Page 8]
 Internet-Draft      Charset/Language Encoding in HTTP         March 2016
 
 
+   the ext-value production ought to be always used when the parameter
+   value is of textual nature and its language is known.
+
+   Furthermore, the extension ought to also be used whenever the
+   parameter value needs to carry characters not present in the US-ASCII
+   ([USASCII]) coded character set (note that it would be unacceptable
    to define a new parameter that would be restricted to a subset of the
    Unicode character set).
 
@@ -492,12 +498,6 @@ Internet-Draft      Charset/Language Encoding in HTTP         March 2016
    possible to transport multiple language variants for a single
    parameter, and such use might allow spoofing attacks, where different
    language versions of the same parameter are not equivalent.  Whether
-   this attack is useful as an attack depends on the parameter
-   specified.
-
-
-
-
 
 
 
@@ -505,6 +505,9 @@ Reschke                 Expires September 2, 2016               [Page 9]
 
 Internet-Draft      Charset/Language Encoding in HTTP         March 2016
 
+
+   this attack is useful as an attack depends on the parameter
+   specified.
 
 6.  IANA Considerations
 
@@ -551,9 +554,6 @@ Internet-Draft      Charset/Language Encoding in HTTP         March 2016
               Protocol (HTTP/1.1): Message Syntax and Routing",
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
               <http://www.rfc-editor.org/info/rfc7230>.
-
-
-
 
 
 
@@ -765,7 +765,8 @@ C.8.  Since draft-reschke-rfc5987bis-06
 
 C.9.  Since draft-ietf-httpbis-rfc5987bis-00
 
-   None yet.
+   Editorial changes; introducing non-ASCII characters into author's
+   address, acknowledgements, and examples.
 
 Appendix D.  Acknowledgements
 
@@ -774,7 +775,6 @@ Appendix D.  Acknowledgements
    to Chris Newman for pointing out an RFC 2231 incompatibility, and to
    Benjamin Carlyle, Roar Lauritzsen, Eric Lawrence, and James Manger
    for implementer's feedback.
-
 
 
 
