@@ -305,9 +305,8 @@ Internet-Draft          HTTP Alternative Services             March 2016
 
    For the purposes of this document, "reasonable assurances" can be
    established through use of a TLS-based protocol with the certificate
-   checks defined in [RFC2818].  Other means of establishing them MUST
-   be documented in an RFC that updates this specification.  Clients MAY
-   impose additional criteria for establishing reasonable assurances.
+   checks defined in [RFC2818].  Clients MAY impose additional criteria
+   for establishing reasonable assurances.
 
    For example, if the origin's host is "www.example.com" and an
    alternative is offered on "other.example.com" with the "h2" protocol,
@@ -330,6 +329,7 @@ Internet-Draft          HTTP Alternative Services             March 2016
 
    Clients with existing connections to an alternative service do not
    need to stop using it when its freshness lifetime ends; the caching
+   mechanism is intended for limiting how long an alternative service
 
 
 
@@ -338,7 +338,6 @@ Nottingham, et al.      Expires September 2, 2016               [Page 6]
 Internet-Draft          HTTP Alternative Services             March 2016
 
 
-   mechanism is intended for limiting how long an alternative service
    can be used for establishing new connections, not limiting the use of
    existing ones.
 
@@ -385,6 +384,7 @@ Internet-Draft          HTTP Alternative Services             March 2016
    security properties in mind.  For example, an origin might advertise
    multiple alternative services to notify clients of support for
    multiple versions of HTTP.
+
 
 
 
