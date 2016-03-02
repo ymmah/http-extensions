@@ -881,14 +881,14 @@ B.1.  Since -00
    o  Issue 104 (Support "Or" operator) closed with no action.
    o  Issue 107 (Whitespace requirement) addressed by allowing
       whitespace around parameters.
+   o  Issue 106 (Policy for Key parameter registry) closed with no
+      action.
 
 Authors' Addresses
 
-   Roy T. Fielding
-   Adobe Systems Incorporated
 
-   Email: fielding@gbiv.com
-   URI:   http://roy.gbiv.com/
+
+
 
 
 
@@ -898,17 +898,17 @@ Fielding & Nottingham   Expires September 3, 2016              [Page 16]
 Internet-Draft                     Key                        March 2016
 
 
+   Roy T. Fielding
+   Adobe Systems Incorporated
+
+   Email: fielding@gbiv.com
+   URI:   http://roy.gbiv.com/
+
+
    Mark Nottingham
 
    Email: mnot@mnot.net
    URI:   https://www.mnot.net/
-
-
-
-
-
-
-
 
 
 
