@@ -5,10 +5,10 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft                                                    Akamai
 Intended status: Standards Track                              P. McManus
-Expires: September 9, 2016                                       Mozilla
+Expires: September 10, 2016                                      Mozilla
                                                               J. Reschke
                                                               greenbytes
-                                                           March 8, 2016
+                                                           March 9, 2016
 
 
                        HTTP Alternative Services
@@ -48,12 +48,12 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 9, 2016.
+   This Internet-Draft will expire on September 10, 2016.
 
 
 
 
-Nottingham, et al.      Expires September 9, 2016               [Page 1]
+Nottingham, et al.     Expires September 10, 2016               [Page 1]
 
 Internet-Draft          HTTP Alternative Services             March 2016
 
@@ -83,33 +83,33 @@ Table of Contents
      2.3.  Requiring Server Name Indication  . . . . . . . . . . . .   7
      2.4.  Using Alternative Services  . . . . . . . . . . . . . . .   7
    3.  The Alt-Svc HTTP Header Field . . . . . . . . . . . . . . . .   8
-     3.1.  Caching Alt-Svc Header Field Values . . . . . . . . . . .  10
+     3.1.  Caching Alt-Svc Header Field Values . . . . . . . . . . .  11
    4.  The ALTSVC HTTP/2 Frame . . . . . . . . . . . . . . . . . . .  12
    5.  The Alt-Used HTTP Header Field  . . . . . . . . . . . . . . .  13
    6.  The 421 Misdirected Request HTTP Status Code  . . . . . . . .  14
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  14
      7.1.  Header Field Registrations  . . . . . . . . . . . . . . .  14
-     7.2.  The ALTSVC HTTP/2 Frame Type  . . . . . . . . . . . . . .  14
+     7.2.  The ALTSVC HTTP/2 Frame Type  . . . . . . . . . . . . . .  15
      7.3.  Alt-Svc Parameter Registry  . . . . . . . . . . . . . . .  15
        7.3.1.  Procedure . . . . . . . . . . . . . . . . . . . . . .  15
        7.3.2.  Registrations . . . . . . . . . . . . . . . . . . . .  15
    8.  Internationalization Considerations . . . . . . . . . . . . .  15
-   9.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
-     9.1.  Changing Ports  . . . . . . . . . . . . . . . . . . . . .  15
+   9.  Security Considerations . . . . . . . . . . . . . . . . . . .  16
+     9.1.  Changing Ports  . . . . . . . . . . . . . . . . . . . . .  16
      9.2.  Changing Hosts  . . . . . . . . . . . . . . . . . . . . .  16
      9.3.  Changing Protocols  . . . . . . . . . . . . . . . . . . .  17
      9.4.  Tracking Clients Using Alternative Services . . . . . . .  17
      9.5.  Confusion Regarding Request Scheme  . . . . . . . . . . .  17
    10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  18
      10.1.  Normative References . . . . . . . . . . . . . . . . . .  18
-     10.2.  Informative References . . . . . . . . . . . . . . . . .  19
+     10.2.  Informative References . . . . . . . . . . . . . . . . .  20
    Appendix A.  Change Log (to be removed by RFC Editor before
                 publication) . . . . . . . . . . . . . . . . . . . .  21
      A.1.  Since draft-nottingham-httpbis-alt-svc-05 . . . . . . . .  21
 
 
 
-Nottingham, et al.      Expires September 9, 2016               [Page 2]
+Nottingham, et al.     Expires September 10, 2016               [Page 2]
 
 Internet-Draft          HTTP Alternative Services             March 2016
 
@@ -127,6 +127,8 @@ Internet-Draft          HTTP Alternative Services             March 2016
      A.12. Since draft-ietf-httpbis-alt-svc-10 . . . . . . . . . . .  24
      A.13. Since draft-ietf-httpbis-alt-svc-11 . . . . . . . . . . .  24
      A.14. Since draft-ietf-httpbis-alt-svc-12 . . . . . . . . . . .  24
+     A.15. Since draft-ietf-httpbis-alt-svc-13 . . . . . . . . . . .  25
+     A.16. Since draft-ietf-httpbis-alt-svc-14 . . . . . . . . . . .  25
    Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  25
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  25
 
@@ -159,16 +161,17 @@ Internet-Draft          HTTP Alternative Services             March 2016
    of interacting with it on the network.  It defines a general
    framework for this in Section 2, along with specific mechanisms for
    advertising their existence using HTTP header fields (Section 3) or
-   HTTP/2 frames (Section 4), plus a way to indicate that an alternative
-   service was used (Section 5).
 
 
 
 
-Nottingham, et al.      Expires September 9, 2016               [Page 3]
+Nottingham, et al.     Expires September 10, 2016               [Page 3]
 
 Internet-Draft          HTTP Alternative Services             March 2016
 
+
+   HTTP/2 frames (Section 4), plus a way to indicate that an alternative
+   service was used (Section 5).
 
    It also endorses the status code 421 (Misdirected Request)
    (Section 6) that origin servers or their nominated alternatives can
@@ -215,16 +218,17 @@ Internet-Draft          HTTP Alternative Services             March 2016
 
    ("h2", "new.example.com", "81")
 
-   By their nature, alternative services are explicitly at the
-   granularity of an origin; they cannot be selectively applied to
-   resources within an origin.
 
 
 
-Nottingham, et al.      Expires September 9, 2016               [Page 4]
+Nottingham, et al.     Expires September 10, 2016               [Page 4]
 
 Internet-Draft          HTTP Alternative Services             March 2016
 
+
+   By their nature, alternative services are explicitly at the
+   granularity of an origin; they cannot be selectively applied to
+   resources within an origin.
 
    Alternative services do not replace or change the origin for any
    given resource; in general, they are not visible to the software
@@ -270,18 +274,17 @@ Internet-Draft          HTTP Alternative Services             March 2016
 
    The ALPN protocol name is used to identify the application protocol
    or suite of protocols used by the alternative service.  Note that for
-   the purpose of this specification, an ALPN protocol name implicitly
-   includes TLS in the suite of protocols it identifies, unless
-   specified otherwise in its definition.  In particular, the ALPN name
 
 
 
-
-Nottingham, et al.      Expires September 9, 2016               [Page 5]
+Nottingham, et al.     Expires September 10, 2016               [Page 5]
 
 Internet-Draft          HTTP Alternative Services             March 2016
 
 
+   the purpose of this specification, an ALPN protocol name implicitly
+   includes TLS in the suite of protocols it identifies, unless
+   specified otherwise in its definition.  In particular, the ALPN name
    "http/1.1", registered by Section 6 of [RFC7301], identifies HTTP/1.1
    over TLS.
 
@@ -327,17 +330,17 @@ Internet-Draft          HTTP Alternative Services             March 2016
    origin at any time when it is considered fresh; see Section 2.4 for
    specific recommendations.
 
-   Clients with existing connections to an alternative service do not
-   need to stop using it when its freshness lifetime ends; the caching
-   mechanism is intended for limiting how long an alternative service
 
 
 
-Nottingham, et al.      Expires September 9, 2016               [Page 6]
+Nottingham, et al.     Expires September 10, 2016               [Page 6]
 
 Internet-Draft          HTTP Alternative Services             March 2016
 
 
+   Clients with existing connections to an alternative service do not
+   need to stop using it when its freshness lifetime ends; the caching
+   mechanism is intended for limiting how long an alternative service
    can be used for establishing new connections, not limiting the use of
    existing ones.
 
@@ -382,17 +385,17 @@ Internet-Draft          HTTP Alternative Services             March 2016
    If a client becomes aware of multiple alternative services, it
    chooses the most suitable according to its own criteria, keeping
    security properties in mind.  For example, an origin might advertise
-   multiple alternative services to notify clients of support for
-   multiple versions of HTTP.
 
 
 
 
-
-Nottingham, et al.      Expires September 9, 2016               [Page 7]
+Nottingham, et al.     Expires September 10, 2016               [Page 7]
 
 Internet-Draft          HTTP Alternative Services             March 2016
 
+
+   multiple alternative services to notify clients of support for
+   multiple versions of HTTP.
 
    A client configured to use a proxy for a given request SHOULD NOT
    directly connect to an alternative service for this request, but
@@ -438,17 +441,17 @@ Internet-Draft          HTTP Alternative Services             March 2016
 
    A field value containing the special value "clear" indicates that the
    origin requests all alternatives for that origin to be invalidated
-   (including those specified in the same response, in case of an
-   invalid reply containing both "clear" and alternative services).
 
 
 
 
-
-Nottingham, et al.      Expires September 9, 2016               [Page 8]
+Nottingham, et al.     Expires September 10, 2016               [Page 8]
 
 Internet-Draft          HTTP Alternative Services             March 2016
 
+
+   (including those specified in the same response, in case of an
+   invalid reply containing both "clear" and alternative services).
 
    ALPN protocol names are octet sequences with no additional
    constraints on format.  Octets not allowed in tokens ([RFC7230],
@@ -486,6 +489,23 @@ Internet-Draft          HTTP Alternative Services             March 2016
    running on port 80.  Note that the "quoted-string" syntax needs to be
    used because ":" is not an allowed character in "token".
 
+
+
+
+
+
+
+
+
+
+
+
+
+Nottingham, et al.     Expires September 10, 2016               [Page 9]
+
+Internet-Draft          HTTP Alternative Services             March 2016
+
+
    Examples for protocol name escaping:
 
    +--------------------+-------------+---------------------+
@@ -497,14 +517,6 @@ Internet-Draft          HTTP Alternative Services             March 2016
    +--------------------+-------------+---------------------+
    | x%y                | x%25y       | "%" needs escaping  |
    +--------------------+-------------+---------------------+
-
-
-
-
-Nottingham, et al.      Expires September 9, 2016               [Page 9]
-
-Internet-Draft          HTTP Alternative Services             March 2016
-
 
    Alt-Svc MAY occur in any HTTP response message, regardless of the
    status code.  Note that recipients of Alt-Svc can ignore the header
@@ -542,6 +554,14 @@ Internet-Draft          HTTP Alternative Services             March 2016
    New parameters can be defined in extension specifications (see
    Section 7.3 for registration details).
 
+
+
+
+Nottingham, et al.     Expires September 10, 2016              [Page 10]
+
+Internet-Draft          HTTP Alternative Services             March 2016
+
+
    Note that all field elements that allow "quoted-string" syntax MUST
    be processed as per Section 3.2.6 of [RFC7230].
 
@@ -554,13 +574,6 @@ Internet-Draft          HTTP Alternative Services             March 2016
    Syntax:
 
    ma = delta-seconds; see [RFC7234], Section 1.2.1
-
-
-
-Nottingham, et al.      Expires September 9, 2016              [Page 10]
-
-Internet-Draft          HTTP Alternative Services             March 2016
-
 
    The delta-seconds value indicates the number of seconds since the
    response was generated the alternative service is considered fresh
@@ -596,6 +609,15 @@ Internet-Draft          HTTP Alternative Services             March 2016
    client detects a network change.  Alternative services that are
    intended to be longer-lived (such as those that are not specific to
    the client access network) can carry the "persist" parameter with a
+
+
+
+
+Nottingham, et al.     Expires September 10, 2016              [Page 11]
+
+Internet-Draft          HTTP Alternative Services             March 2016
+
+
    value "1" as a hint that the service is potentially useful beyond a
    network configuration change.
 
@@ -609,14 +631,6 @@ Internet-Draft          HTTP Alternative Services             March 2016
 
    This specification only defines a single value for "persist".
    Clients MUST ignore "persist" parameters with values other than "1".
-
-
-
-
-Nottingham, et al.      Expires September 9, 2016              [Page 11]
-
-Internet-Draft          HTTP Alternative Services             March 2016
-
 
    See Section 2.2 for general requirements on caching alternative
    services.
@@ -652,6 +666,14 @@ Internet-Draft          HTTP Alternative Services             March 2016
 
    The ALTSVC frame contains the following fields:
 
+
+
+
+Nottingham, et al.     Expires September 10, 2016              [Page 12]
+
+Internet-Draft          HTTP Alternative Services             March 2016
+
+
    Origin-Len:  An unsigned, 16-bit integer indicating the length, in
       octets, of the Origin field.
 
@@ -665,14 +687,6 @@ Internet-Draft          HTTP Alternative Services             March 2016
       defined in Section 3 (ABNF production "Alt-Svc").
 
    The ALTSVC frame does not define any flags.
-
-
-
-
-Nottingham, et al.      Expires September 9, 2016              [Page 12]
-
-Internet-Draft          HTTP Alternative Services             March 2016
-
 
    The ALTSVC frame is intended for receipt by clients.  A device acting
    as a server MUST ignore it.
@@ -709,6 +723,13 @@ Internet-Draft          HTTP Alternative Services             March 2016
    traffic, since introducing this information after a protocol is in
    use has proven to be problematic.
 
+
+
+Nottingham, et al.     Expires September 10, 2016              [Page 13]
+
+Internet-Draft          HTTP Alternative Services             March 2016
+
+
    When using an alternative service, clients SHOULD include an Alt-Used
    header field in all requests.
 
@@ -717,18 +738,6 @@ Internet-Draft          HTTP Alternative Services             March 2016
      GET /thing HTTP/1.1
      Host: origin.example.com
      Alt-Used: alternate.example.net
-
-
-
-
-
-
-
-
-Nottingham, et al.      Expires September 9, 2016              [Page 13]
-
-Internet-Draft          HTTP Alternative Services             March 2016
-
 
 6.  The 421 Misdirected Request HTTP Status Code
 
@@ -769,6 +778,14 @@ Internet-Draft          HTTP Alternative Services             March 2016
    The change controller is: "IETF (iesg@ietf.org) - Internet
    Engineering Task Force".
 
+
+
+
+Nottingham, et al.     Expires September 10, 2016              [Page 14]
+
+Internet-Draft          HTTP Alternative Services             March 2016
+
+
 7.2.  The ALTSVC HTTP/2 Frame Type
 
    This document registers the ALTSVC frame type in the HTTP/2 Frame
@@ -777,14 +794,6 @@ Internet-Draft          HTTP Alternative Services             March 2016
       Frame Type: ALTSVC
 
       Code: 0xa
-
-
-
-
-Nottingham, et al.      Expires September 9, 2016              [Page 14]
-
-Internet-Draft          HTTP Alternative Services             March 2016
-
 
       Specification: Section 4 of this document
 
@@ -823,6 +832,16 @@ Internet-Draft          HTTP Alternative Services             March 2016
    field (Section 3) or the HTTP/2 frame (Section 4) MUST be expressed
    using A-labels ([RFC5890], Section 2.3.2.1).
 
+
+
+
+
+
+Nottingham, et al.     Expires September 10, 2016              [Page 15]
+
+Internet-Draft          HTTP Alternative Services             March 2016
+
+
 9.  Security Considerations
 
 9.1.  Changing Ports
@@ -833,14 +852,6 @@ Internet-Draft          HTTP Alternative Services             March 2016
    able to hijack an origin.  On certain servers, it is normal for users
    to be able to control some personal pages available on a shared port,
    and also to accept to requests on less-privileged ports.
-
-
-
-
-Nottingham, et al.      Expires September 9, 2016              [Page 15]
-
-Internet-Draft          HTTP Alternative Services             March 2016
-
 
    For example, an attacker that can add HTTP response header fields to
    some pages can redirect traffic for an entire origin to a different
@@ -878,6 +889,15 @@ Internet-Draft          HTTP Alternative Services             March 2016
    authentication is used to do so, there are well-known exploits to
    make an attacker's certificate appear as legitimate.
 
+
+
+
+
+Nottingham, et al.     Expires September 10, 2016              [Page 16]
+
+Internet-Draft          HTTP Alternative Services             March 2016
+
+
    Alternative services could be used to persist such an attack.  For
    example, an intermediary could man-in-the-middle TLS-protected
    communication to a target, and then direct all traffic to an
@@ -890,13 +910,6 @@ Internet-Draft          HTTP Alternative Services             March 2016
    connections to the origin.  Implementations might also choose to add
    other requirements around which certificates are acceptable for
    alternative services.
-
-
-
-Nottingham, et al.      Expires September 9, 2016              [Page 16]
-
-Internet-Draft          HTTP Alternative Services             March 2016
-
 
 9.3.  Changing Protocols
 
@@ -932,6 +945,15 @@ Internet-Draft          HTTP Alternative Services             March 2016
 
    Some server-side HTTP applications make assumptions about security
    based upon connection context; for example, equating being served
+
+
+
+
+Nottingham, et al.     Expires September 10, 2016              [Page 17]
+
+Internet-Draft          HTTP Alternative Services             March 2016
+
+
    upon port 443 with the use of an "https://" URI and the various
    security properties that implies.
 
@@ -945,15 +967,6 @@ Internet-Draft          HTTP Alternative Services             March 2016
    connection to be migrated to a different protocol and port, these
    applications can become confused about the security properties of a
    given connection, sending information (for example, cookies and
-
-
-
-
-Nottingham, et al.      Expires September 9, 2016              [Page 17]
-
-Internet-Draft          HTTP Alternative Services             March 2016
-
-
    content) that is intended for a secure context (such as an "https://"
    URI) to a client that is not treating it as one.
 
@@ -987,6 +1000,16 @@ Internet-Draft          HTTP Alternative Services             March 2016
               RFC 3986, DOI 10.17487/RFC3986, January 2005,
               <http://www.rfc-editor.org/info/rfc3986>.
 
+
+
+
+
+
+Nottingham, et al.     Expires September 10, 2016              [Page 18]
+
+Internet-Draft          HTTP Alternative Services             March 2016
+
+
    [RFC5226]  Narten, T. and H. Alvestrand, "Guidelines for Writing an
               IANA Considerations Section in RFCs", BCP 26, RFC 5226,
               DOI 10.17487/RFC5226, May 2008,
@@ -1001,14 +1024,6 @@ Internet-Draft          HTTP Alternative Services             March 2016
               Applications (IDNA): Definitions and Document Framework",
               RFC 5890, DOI 10.17487/RFC5890, August 2010,
               <http://www.rfc-editor.org/info/rfc5890>.
-
-
-
-
-Nottingham, et al.      Expires September 9, 2016              [Page 18]
-
-Internet-Draft          HTTP Alternative Services             March 2016
-
 
    [RFC6066]  Eastlake, D., "Transport Layer Security (TLS) Extensions:
               Extension Definitions", RFC 6066, DOI 10.17487/RFC6066,
@@ -1042,6 +1057,15 @@ Internet-Draft          HTTP Alternative Services             March 2016
               DOI 10.17487/RFC7540, May 2015,
               <http://www.rfc-editor.org/info/rfc7540>.
 
+
+
+
+
+Nottingham, et al.     Expires September 10, 2016              [Page 19]
+
+Internet-Draft          HTTP Alternative Services             March 2016
+
+
 10.2.  Informative References
 
    [BCP90]    Klyne, G., Nottingham, M., and J. Mogul, "Registration
@@ -1056,15 +1080,6 @@ Internet-Draft          HTTP Alternative Services             March 2016
    [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
               DOI 10.17487/RFC6265, April 2011,
               <http://www.rfc-editor.org/info/rfc6265>.
-
-
-
-
-
-Nottingham, et al.      Expires September 9, 2016              [Page 19]
-
-Internet-Draft          HTTP Alternative Services             March 2016
-
 
    [RFC7469]  Evans, C., Palmer, C., and R. Sleevi, "Public Key Pinning
               Extension for HTTP", RFC 7469, DOI 10.17487/RFC7469, April
@@ -1102,22 +1117,7 @@ Internet-Draft          HTTP Alternative Services             March 2016
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Nottingham, et al.      Expires September 9, 2016              [Page 20]
+Nottingham, et al.     Expires September 10, 2016              [Page 20]
 
 Internet-Draft          HTTP Alternative Services             March 2016
 
@@ -1173,7 +1173,7 @@ A.5.  Since draft-ietf-httpbis-alt-svc-03
 
 
 
-Nottingham, et al.      Expires September 9, 2016              [Page 21]
+Nottingham, et al.     Expires September 10, 2016              [Page 21]
 
 Internet-Draft          HTTP Alternative Services             March 2016
 
@@ -1229,7 +1229,7 @@ A.9.  Since draft-ietf-httpbis-alt-svc-07
 
 
 
-Nottingham, et al.      Expires September 9, 2016              [Page 22]
+Nottingham, et al.     Expires September 10, 2016              [Page 22]
 
 Internet-Draft          HTTP Alternative Services             March 2016
 
@@ -1285,7 +1285,7 @@ A.10.  Since draft-ietf-httpbis-alt-svc-08
 
 
 
-Nottingham, et al.      Expires September 9, 2016              [Page 23]
+Nottingham, et al.     Expires September 10, 2016              [Page 23]
 
 Internet-Draft          HTTP Alternative Services             March 2016
 
@@ -1341,13 +1341,23 @@ A.14.  Since draft-ietf-httpbis-alt-svc-12
 
 
 
-Nottingham, et al.      Expires September 9, 2016              [Page 24]
+Nottingham, et al.     Expires September 10, 2016              [Page 24]
 
 Internet-Draft          HTTP Alternative Services             March 2016
 
 
    Reasonable Assurances and H2C (<https://github.com/httpwg/http-
    extensions/issues/148>).
+
+A.15.  Since draft-ietf-httpbis-alt-svc-13
+
+   Editorial improvements.  Also relaxed the requirements for
+   "reasonable assurances" (see <https://github.com/httpwg/http-
+   extensions/issues/148>).
+
+A.16.  Since draft-ietf-httpbis-alt-svc-14
+
+   None yet.
 
 Appendix B.  Acknowledgements
 
@@ -1387,14 +1397,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-
-
-
-
-Nottingham, et al.      Expires September 9, 2016              [Page 25]
+Nottingham, et al.     Expires September 10, 2016              [Page 25]
