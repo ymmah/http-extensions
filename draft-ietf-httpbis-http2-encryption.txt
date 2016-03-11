@@ -75,20 +75,20 @@ Table of Contents
      1.2.  Notational Conventions  . . . . . . . . . . . . . . . . .   3
    2.  Using HTTP URIs over TLS  . . . . . . . . . . . . . . . . . .   3
    3.  Server Authentication . . . . . . . . . . . . . . . . . . . .   4
-     3.1.  The "http-opportunistic" well-known URI . . . . . . . . .   4
    4.  Interaction with "https" URIs . . . . . . . . . . . . . . . .   5
    5.  Requiring Use of TLS  . . . . . . . . . . . . . . . . . . . .   5
      5.1.  Opportunistic Commitment  . . . . . . . . . . . . . . . .   6
      5.2.  Operational Considerations  . . . . . . . . . . . . . . .   7
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   7
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .   7
-     7.1.  Security Indicators . . . . . . . . . . . . . . . . . . .   7
-     7.2.  Downgrade Attacks . . . . . . . . . . . . . . . . . . . .   7
-     7.3.  Privacy Considerations  . . . . . . . . . . . . . . . . .   8
-     7.4.  Confusion Regarding Request Scheme  . . . . . . . . . . .   8
-   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   8
-     8.1.  Normative References  . . . . . . . . . . . . . . . . . .   8
-     8.2.  Informative References  . . . . . . . . . . . . . . . . .   9
+   6.  The "http-opportunistic" well-known URI . . . . . . . . . . .   7
+   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   7
+   8.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
+     8.1.  Security Indicators . . . . . . . . . . . . . . . . . . .   8
+     8.2.  Downgrade Attacks . . . . . . . . . . . . . . . . . . . .   8
+     8.3.  Privacy Considerations  . . . . . . . . . . . . . . . . .   8
+     8.4.  Confusion Regarding Request Scheme  . . . . . . . . . . .   8
+   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
+     9.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
+     9.2.  Informative References  . . . . . . . . . . . . . . . . .  10
    Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .  10
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  10
 
@@ -183,48 +183,23 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
    be used when there are "reasonable assurances" that it is under
    control of and valid for the whole origin.
 
-   For the purposes of this specification, there are two ways to achieve
-   this:
+   As defined in that specification, one way of establishing this is
+   using a TLS-based protocol with the certificate checks defined in
+   [RFC2818].  Clients MAY impose additional criteria for establishing
+   reasonable assurances.
 
-   1.  Using TLS with a certificate that validates as per [RFC2818], or
+   For the purposes of this specification, an additional way of
+   establishing reasonable assurances is available when the alternative
+   is on the same host as the origin, using the "http-opportunistic"
+   well-known URI defined in Section 6.
 
-   2.  Confirming that both the origin and the alternative service
-       support this specification by interacting with the "http-
-       opportunistic" well-known URI (see Section 3.1).
+   This allows deployment without the use of valid certificates, to
+   encourage deployment of opportunistic security.  When it is in use,
+   the alternative service can provide any certificate, or even select
+   TLS cipher suites that do not include authentication.
 
-   The latter approach allows deployment without the use of valid
-   certificates, to encourage deployment of opportunistic security.
-   When it is in use, the alternative service can provide any
-   certificate, or even select TLS cipher suites that do not include
-   authentication.
-
-3.1.  The "http-opportunistic" well-known URI
-
-   To establish reasonable assurances that an origin allows an
-   alternative service on the same host as it when the alternative does
-   not have a valid certificate (as per Section 3), an client can fetch
-   the "http-opportunistic" well-known URI [RFC5785] from the origin.
-
-   A client MAY consider there to be reasonable assurances when:
-
-   o  It has obtained a 200 (OK) response for the well-known URI from
-      the origin, or refreshed one in cache [RFC7234], and
-
-   o  That response has the media type "application/json", and
-
-   o  That response's payload, when parsed as JSON [RFC7159], contains a
-      root object with a member "origins" whose value is a list of
-      strings, one of which is a case-insensitive character-for-
-      character match for the origin in question, serialised into
-      Unicode as per [RFC6454], Section 6.1, and
-
-
-
-
-Nottingham & Thomson   Expires September 12, 2016               [Page 4]
-
-Internet-Draft         Opportunistic HTTP Security            March 2016
-
+   When the client has a valid http-opportunistic response for an
+   origin, it MAY consider there to be reasonable assurances when:
 
    o  The origin and alternative service's hostnames are the same when
       compared in a case-insensitive fashion, and
@@ -236,6 +211,21 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
    alternative service also on "www.example.com":
 
 
+
+
+
+
+
+
+
+
+
+
+Nottingham & Thomson   Expires September 12, 2016               [Page 4]
+
+Internet-Draft         Opportunistic HTTP Security            March 2016
+
+
    GET /.well-known/http-opportunistic HTTP/1.1
    Host: www.example.com
 
@@ -244,8 +234,13 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
    Connection: close
 
    {
-     "origins": ["http://example.com:80", "http://www.example.com/:81"]
+     "origins": ["http://example.com", "http://www.example.com:81"]
    }
+
+   Note that this mechanism is only defined to establish reasonable
+   assurances for the purposes of this specification; it does not apply
+   to other uses of alternative services unless they explicitly invoke
+   it.
 
 4.  Interaction with "https" URIs
 
@@ -266,14 +261,19 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
 
 5.  Requiring Use of TLS
 
-   The mechanism described in this specification is trivial to mount an
-   active attack against, for two reasons:
+   Even when the alternative service is strongly authenticated,
+   opportunistically upgrading cleartext HTTP connections to use TLS is
+   subject to active attacks.  In particular:
 
-   o  A client that doesn't perform authentication is an easy victim of
-      server impersonation, through man-in-the-middle attacks.
+   o  Because the original HTTP connection is in cleartext, it is
+      vulnerable to man-in-the-middle attacks, and
 
+   o  By default, if clients cannot reach the alternative service, they
+      will fall back to using the original cleartext origin.
 
-
+   Given that the primary goal of this specification is to prevent
+   passive attacks, these are not critical failings (especially
+   considering the alternative - HTTP over cleartext).  However, a
 
 
 
@@ -282,31 +282,25 @@ Nottingham & Thomson   Expires September 12, 2016               [Page 5]
 Internet-Draft         Opportunistic HTTP Security            March 2016
 
 
-   o  A client that is willing to use HTTP over cleartext to resolve the
-      resource will do so if access to any TLS-enabled alternative
-      services is blocked for any reason.
-
-   Given that the primary goal of this specification is to prevent
-   passive attacks, these are not critical failings (especially
-   considering the alternative - HTTP over cleartext).  However, a
    modest form of protection against active attacks can be provided for
    clients on subsequent connections.
 
-   When an alternative service is able to commit to providing service
-   for a particular origin over TLS for a bounded period of time,
-   clients can choose to rely upon its availability, failing when it
-   cannot be contacted.  Effectively, this makes the choice to use a
-   secured protocol "sticky".
+   When an origin is able to commit to providing service for a
+   particular origin over TLS for a bounded period of time, clients can
+   choose to rely upon its availability, failing when it cannot be
+   contacted.  Effectively, this makes the choice to use a secured
+   protocol "sticky".
 
 5.1.  Opportunistic Commitment
 
-   A alternative service can commit to providing a secured alternative
-   by including a "commit" member in the http-opportunistic well-known
-   resource.  This field includes an interval in seconds.
+   An insecure origin can commit to providing a secured alternative by
+   including a "commit" member in the http-opportunistic well-known
+   resource (see Section 6), whose value is a number representing an
+   interval in seconds.
 
 
    {
-     "origins": ["http://example.com:80", "http://www.example.com/:81"],
+     "origins": ["http://example.com", "http://www.example.com:81"],
      "commit": 86400
    }
 
@@ -318,18 +312,24 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
    impose other checks in addition to this minimum set.  For instance, a
    client might choose to apply key pinning [RFC7469].
 
-   Once the "commit" member is provided and strongly authenticated, a
-   client can assume that the opportunistically secured alternative will
-   remain available for that number of seconds past the current time,
-   less the current age of the resource (current_age as defined in
-   Section 4.2.3 of [RFC7234]).  A client SHOULD NOT fall back to
-   cleartext protocols prior to that interval elapsing.  Note however
-   that relying on a commitment creates some potential operational
-   hazards (see Section 5.2).
+   If a client is able to obtain a valid http-opportunistic resource (as
+   per Section 6) containing a "commit" member and a strongly
+   authenticated alternative service is available, it can assume that
+   such an alternative will remain available for the indicated number of
+   seconds past the current time, less the current age of the http-
+   opportunistic response (as defined in Section 4.2.3 of [RFC7234]).  A
+   client SHOULD NOT fall back to cleartext protocols prior to that
+   interval elapsing.  Note however that relying on a commitment creates
+   some potential operational hazards (see Section 5.2).
 
-   A commitment MUST be ignored if the alternative cannot be
-   authenticated; otherwise, an attacker could create a persistent
-   denial of service by falsifying a commitment.
+   A commitment only applies to the origin of the http-opportunistic
+   well-known resource that was retrieved; all origins listed in the
+   "origins" member need to independently discovered and validated.
+
+   Note that the commitment is not bound to a particular alternative
+   service.  Clients can and SHOULD use alternative services that they
+   become aware of.  However, once a valid and authenticated commitment
+   has been received, clients SHOULD NOT use an unauthenticated
 
 
 
@@ -338,14 +338,6 @@ Nottingham & Thomson   Expires September 12, 2016               [Page 6]
 Internet-Draft         Opportunistic HTTP Security            March 2016
 
 
-   A commitment only applies to the origin of the well-known http-
-   opportunistic resource that was retrieved; all origins listed in the
-   "origins" member need to independently discovered and validated.
-
-   Note that the commitment is not bound to a particular alternative
-   service.  Clients can and SHOULD use alternative services that they
-   become aware of.  However, once a valid and authenticated commitment
-   has been received, clients SHOULD NOT use an unauthenticated
    alternative service.  Where there is an active commitment, clients
    SHOULD ignore advertisements for unsecured alternative services.
 
@@ -359,7 +351,30 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
    limit on persistence - might increase as a commitment is renewed
    multiple times.
 
-6.  IANA Considerations
+6.  The "http-opportunistic" well-known URI
+
+   This specification defines the "http-opportunistic" well-known URI
+   [RFC5785].  An origin is said to have a valid http-opportunistic
+   resource when:
+
+   o  The client has obtained a 200 (OK) response for the well-known URI
+      from the origin, or refreshed one in cache [RFC7234], and
+
+   o  That response has the media type "application/json", and
+
+   o  That response's payload, when parsed as JSON [RFC7159], contains
+      an object as the root.
+
+   o  The "origins" member of the root object has a value of a list of
+      strings, one of which is a case-insensitive character-for-
+      character match for the origin in question, serialised into
+      Unicode as per [RFC6454], Section 6.1, and
+
+   This specification defines one additional, optional member of the
+   root object, "commit" in Section 5.  Unrecognised members MUST be
+   ignored.
+
+7.  IANA Considerations
 
    This specification registers a Well-known URI [RFC5785]:
 
@@ -371,21 +386,6 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
 
    o  Related Information:
 
-7.  Security Considerations
-
-7.1.  Security Indicators
-
-   User Agents MUST NOT provide any special security indicia when an
-   "http" resource is acquired using TLS.  In particular, indicators
-   that might suggest the same level of security as "https" MUST NOT be
-   used (e.g., a "lock device").
-
-7.2.  Downgrade Attacks
-
-   A downgrade attack against the negotiation for TLS is possible.  With
-   commitment Section 5, this is limited to occasions where clients have
-   no prior information (see Section 7.3), or when persisted commitments
-   have expired.
 
 
 
@@ -393,6 +393,22 @@ Nottingham & Thomson   Expires September 12, 2016               [Page 7]
 
 Internet-Draft         Opportunistic HTTP Security            March 2016
 
+
+8.  Security Considerations
+
+8.1.  Security Indicators
+
+   User Agents MUST NOT provide any special security indicia when an
+   "http" resource is acquired using TLS.  In particular, indicators
+   that might suggest the same level of security as "https" MUST NOT be
+   used (e.g., a "lock device").
+
+8.2.  Downgrade Attacks
+
+   A downgrade attack against the negotiation for TLS is possible.  With
+   commitment Section 5, this is limited to occasions where clients have
+   no prior information (see Section 8.3), or when persisted commitments
+   have expired.
 
    For example, because the "Alt-Svc" header field
    [I-D.ietf-httpbis-alt-svc] likely appears in an unauthenticated and
@@ -409,7 +425,7 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
    present active attacker can either prevent the client from ever using
    TLS, or offer its own certificate.
 
-7.3.  Privacy Considerations
+8.3.  Privacy Considerations
 
    Cached alternative services can be used to track clients over time;
    e.g., using a user-specific hostname.  Clearing the cache reduces the
@@ -417,7 +433,7 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
    cached alternative service information when clearing other origin-
    based state (i.e., cookies).
 
-7.4.  Confusion Regarding Request Scheme
+8.4.  Confusion Regarding Request Scheme
 
    Many existing HTTP/1.1 implementations use the presence or absence of
    TLS in the stack to determine whether requests are for "http" or
@@ -427,6 +443,13 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
 
    HTTP/1.1 MUST NOT be used for opportunistically secured requests.
 
+
+
+Nottingham & Thomson   Expires September 12, 2016               [Page 8]
+
+Internet-Draft         Opportunistic HTTP Security            March 2016
+
+
    Some HTTP/1.1 implementations use ambient signals to determine if a
    request is for an "https" resource.  For example, implementations
    might look for TLS on the stack or a port number of 443.  An
@@ -434,21 +457,14 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
    SHOULD suppress these signals if there is any potential for
    confusion.
 
-8.  References
+9.  References
 
-8.1.  Normative References
+9.1.  Normative References
 
    [I-D.ietf-httpbis-alt-svc]
               mnot, m., McManus, P., and J. Reschke, "HTTP Alternative
               Services", draft-ietf-httpbis-alt-svc-12 (work in
               progress), February 2016.
-
-
-
-Nottingham & Thomson   Expires September 12, 2016               [Page 8]
-
-Internet-Draft         Opportunistic HTTP Security            March 2016
-
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -482,6 +498,14 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
               <http://www.rfc-editor.org/info/rfc7230>.
 
+
+
+
+Nottingham & Thomson   Expires September 12, 2016               [Page 9]
+
+Internet-Draft         Opportunistic HTTP Security            March 2016
+
+
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
               RFC 7234, DOI 10.17487/RFC7234, June 2014,
@@ -492,19 +516,11 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
               DOI 10.17487/RFC7540, May 2015,
               <http://www.rfc-editor.org/info/rfc7540>.
 
-8.2.  Informative References
+9.2.  Informative References
 
    [RFC7258]  Farrell, S. and H. Tschofenig, "Pervasive Monitoring Is an
               Attack", BCP 188, RFC 7258, DOI 10.17487/RFC7258, May
               2014, <http://www.rfc-editor.org/info/rfc7258>.
-
-
-
-
-Nottingham & Thomson   Expires September 12, 2016               [Page 9]
-
-Internet-Draft         Opportunistic HTTP Security            March 2016
-
 
    [RFC7435]  Dukhovni, V., "Opportunistic Security: Some Protection
               Most of the Time", RFC 7435, DOI 10.17487/RFC7435,
@@ -532,22 +548,6 @@ Authors' Addresses
    Mozilla
 
    Email: martin.thomson@gmail.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
