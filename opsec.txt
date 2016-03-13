@@ -5,8 +5,8 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Experimental                                 M. Thomson
-Expires: September 12, 2016                                      Mozilla
-                                                          March 11, 2016
+Expires: September 14, 2016                                      Mozilla
+                                                          March 13, 2016
 
 
                     Opportunistic Security for HTTP
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 12, 2016.
+   This Internet-Draft will expire on September 14, 2016.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Nottingham & Thomson   Expires September 12, 2016               [Page 1]
+Nottingham & Thomson   Expires September 14, 2016               [Page 1]
 
 Internet-Draft         Opportunistic HTTP Security            March 2016
 
@@ -78,20 +78,19 @@ Table of Contents
    4.  Interaction with "https" URIs . . . . . . . . . . . . . . . .   5
    5.  Requiring Use of TLS  . . . . . . . . . . . . . . . . . . . .   5
      5.1.  Opportunistic Commitment  . . . . . . . . . . . . . . . .   6
-     5.2.  Client Handling of A Commitment . . . . . . . . . . . . .   6
-     5.3.  Operational Considerations  . . . . . . . . . . . . . . .   7
+     5.2.  Operational Considerations  . . . . . . . . . . . . . . .   7
    6.  The "http-opportunistic" well-known URI . . . . . . . . . . .   7
-   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   8
+   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   7
    8.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
      8.1.  Security Indicators . . . . . . . . . . . . . . . . . . .   8
      8.2.  Downgrade Attacks . . . . . . . . . . . . . . . . . . . .   8
-     8.3.  Privacy Considerations  . . . . . . . . . . . . . . . . .   9
-     8.4.  Confusion Regarding Request Scheme  . . . . . . . . . . .   9
+     8.3.  Privacy Considerations  . . . . . . . . . . . . . . . . .   8
+     8.4.  Confusion Regarding Request Scheme  . . . . . . . . . . .   8
    9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
      9.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
      9.2.  Informative References  . . . . . . . . . . . . . . . . .  10
-   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .  11
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  11
+   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .  10
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  10
 
 1.  Introduction
 
@@ -109,7 +108,8 @@ Table of Contents
 
 
 
-Nottingham & Thomson   Expires September 12, 2016               [Page 2]
+
+Nottingham & Thomson   Expires September 14, 2016               [Page 2]
 
 Internet-Draft         Opportunistic HTTP Security            March 2016
 
@@ -165,7 +165,7 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
 
 
 
-Nottingham & Thomson   Expires September 12, 2016               [Page 3]
+Nottingham & Thomson   Expires September 14, 2016               [Page 3]
 
 Internet-Draft         Opportunistic HTTP Security            March 2016
 
@@ -207,7 +207,7 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
    o  The chosen alternative service returns the same response as above.
 
    For example, this request/response pair would constitute reasonable
-   assurances for the origin "http://www.example.com:80" for any
+   assurances for the origin "http://www.example.com" for any
    alternative service also on "www.example.com":
 
 
@@ -221,7 +221,7 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
 
 
 
-Nottingham & Thomson   Expires September 12, 2016               [Page 4]
+Nottingham & Thomson   Expires September 14, 2016               [Page 4]
 
 Internet-Draft         Opportunistic HTTP Security            March 2016
 
@@ -277,7 +277,7 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
 
 
 
-Nottingham & Thomson   Expires September 12, 2016               [Page 5]
+Nottingham & Thomson   Expires September 14, 2016               [Page 5]
 
 Internet-Draft         Opportunistic HTTP Security            March 2016
 
@@ -293,14 +293,9 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
 
 5.1.  Opportunistic Commitment
 
-   An origin can reduce the risk of attacks on opportunistically secured
-   connections by committing to provide an secured, authenticated
-   alternative service.  This is done by including the optional "commit"
-   member in the http-opportunistic well-known resource (see Section 6).
-   This feature is optional due to the requirement for server
-   authentication and the potential risk entailed (see Section 5.3).
-
-   The value of the "commit" member is the duration of the commitment
+   An insecure origin can commit to providing a secured alternative by
+   including a "commit" member in the http-opportunistic well-known
+   resource (see Section 6), whose value is a number representing an
    interval in seconds.
 
 
@@ -309,71 +304,52 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
      "commit": 86400
    }
 
-   Including "commit" creates a commitment to provide a secured
-   alternative service for the advertised period.  Clients that receive
-   this commitment can assume that a secured alternative service will be
-   available for the indicated period.  Clients might however choose to
-   limit this time (see Section 5.3).
-
-5.2.  Client Handling of A Commitment
-
    The value of the "commit" member MUST be ignored unless the
-   alternative service can be strongly authenticated.  The same
-   requirements that apply to "https://" resources SHOULD be applied to
-   authenticating the alternative.  Minimum authentication requirements
-   for HTTP over TLS are described in Section 2.1 of
-   [I-D.ietf-httpbis-alt-svc] and Section 3.1 of [RFC2818].  As noted in
-   [I-D.ietf-httpbis-alt-svc], clients can impose other checks in
-   addition to this minimum set.  For instance, a client might choose to
-   apply key pinning [RFC7469].
+   alternative service can be strongly authenticated.  Minimum
+   authentication requirements for HTTP over TLS are described in
+   Section 2.1 of [I-D.ietf-httpbis-alt-svc] and Section 3.1 of
+   [RFC2818].  As noted in [I-D.ietf-httpbis-alt-svc], clients can
+   impose other checks in addition to this minimum set.  For instance, a
+   client might choose to apply key pinning [RFC7469].
 
-   A client that receives a commitment and that successfully
-   authenticates the alternative service can assume that a secured
-   alternative will remain available for the commitment interval.  The
+   If a client is able to obtain a valid http-opportunistic resource (as
+   per Section 6) containing a "commit" member and a strongly
+   authenticated alternative service is available, it can assume that
+   such an alternative will remain available for the indicated number of
+   seconds past the current time, less the current age of the http-
+   opportunistic response (as defined in Section 4.2.3 of [RFC7234]).  A
+   client SHOULD NOT fall back to cleartext protocols prior to that
+   interval elapsing.  Note however that relying on a commitment creates
+   some potential operational hazards (see Section 5.2).
+
+   A commitment only applies to the origin of the http-opportunistic
+   well-known resource that was retrieved; all origins listed in the
+   "origins" member need to independently discovered and validated.
+
+   Note that the commitment is not bound to a particular alternative
+   service.  Clients can and SHOULD use alternative services that they
+   become aware of.  However, once a valid and authenticated commitment
+   has been received, clients SHOULD NOT use an unauthenticated
 
 
 
-Nottingham & Thomson   Expires September 12, 2016               [Page 6]
+Nottingham & Thomson   Expires September 14, 2016               [Page 6]
 
 Internet-Draft         Opportunistic HTTP Security            March 2016
 
 
-   commitment interval starts when the commitment is received and
-   authenticated and runs for a number of seconds equal to value of the
-   "commit" member, less the current age of the http-opportunistic
-   response (as defined in Section 4.2.3 of [RFC7234].  A client SHOULD
-   avoid sending requests via cleartext protocols or to unauthenticated
-   alternative services for the duration of the commitment interval,
-   except to discover new potential alternatives.
+   alternative service.  Where there is an active commitment, clients
+   SHOULD ignore advertisements for unsecured alternative services.
 
-   A commitment only applies to the origin of the http-opportunistic
-   well-known resource that was retrieved; other origins listed in the
-   "origins" member MUST be independently discovered and authenticated.
+5.2.  Operational Considerations
 
-   A commitment is not bound to a particular alternative service.
-   Clients are able to use alternative services that they become aware
-   of.  However, once a valid and authenticated commitment has been
-   received, clients SHOULD NOT use an unauthenticated alternative
-   service.  Where there is an active commitment, clients SHOULD ignore
-   advertisements for unsecured alternative services.  A client MAY send
-   requests to an unauthenticated origin in an attempt to discover
-   potential alternative services, but these requests SHOULD be entirely
-   generic and avoid including credentials.
-
-5.3.  Operational Considerations
-
-   Errors in configuration of commitments has the potential to render
-   even the unsecured origin inaccessible for the duration of a
-   commitment.  Initial deployments are encouraged to use short duration
-   commitments so that errors can be detected without causing the origin
-   to become inaccessible to clients for extended periods.
-
-   To avoid situations where a commitment causes errors, clients MAY
-   limit the time over which a commitment is respected for a given
-   origin.  A lower limit might be appropriate for initial commitments;
-   the certainty that a site has set a correct value - and the
-   corresponding limit on persistence - might increase as a commitment
-   is renewed multiple times.
+   To avoid situations where a commitment to use authenticated TLS
+   causes a client to be unable to contact a site, clients MAY limit the
+   time over which a commitment is respected for a given origin.  A
+   lower limit might be appropriate for initial commitments; the
+   certainty that a site has set a correct value - and the corresponding
+   limit on persistence - might increase as a commitment is renewed
+   multiple times.
 
 6.  The "http-opportunistic" well-known URI
 
@@ -385,14 +361,6 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
       from the origin, or refreshed one in cache [RFC7234], and
 
    o  That response has the media type "application/json", and
-
-
-
-
-Nottingham & Thomson   Expires September 12, 2016               [Page 7]
-
-Internet-Draft         Opportunistic HTTP Security            March 2016
-
 
    o  That response's payload, when parsed as JSON [RFC7159], contains
       an object as the root.
@@ -418,6 +386,14 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
 
    o  Related Information:
 
+
+
+
+Nottingham & Thomson   Expires September 14, 2016               [Page 7]
+
+Internet-Draft         Opportunistic HTTP Security            March 2016
+
+
 8.  Security Considerations
 
 8.1.  Security Indicators
@@ -440,15 +416,6 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
    In its simplest form, an attacker that wants the connection to remain
    in the clear need only strip the "Alt-Svc" header field from
    responses.
-
-
-
-
-
-Nottingham & Thomson   Expires September 12, 2016               [Page 8]
-
-Internet-Draft         Opportunistic HTTP Security            March 2016
-
 
    Downgrade attacks can be partially mitigated using the "commit"
    member of the http-opportunistic well-known resource, because when it
@@ -476,6 +443,13 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
 
    HTTP/1.1 MUST NOT be used for opportunistically secured requests.
 
+
+
+Nottingham & Thomson   Expires September 14, 2016               [Page 8]
+
+Internet-Draft         Opportunistic HTTP Security            March 2016
+
+
    Some HTTP/1.1 implementations use ambient signals to determine if a
    request is for an "https" resource.  For example, implementations
    might look for TLS on the stack or a port number of 443.  An
@@ -496,15 +470,6 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <http://www.rfc-editor.org/info/rfc2119>.
-
-
-
-
-
-Nottingham & Thomson   Expires September 12, 2016               [Page 9]
-
-Internet-Draft         Opportunistic HTTP Security            March 2016
-
 
    [RFC2818]  Rescorla, E., "HTTP Over TLS", RFC 2818,
               DOI 10.17487/RFC2818, May 2000,
@@ -533,6 +498,14 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
               <http://www.rfc-editor.org/info/rfc7230>.
 
+
+
+
+Nottingham & Thomson   Expires September 14, 2016               [Page 9]
+
+Internet-Draft         Opportunistic HTTP Security            March 2016
+
+
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
               RFC 7234, DOI 10.17487/RFC7234, June 2014,
@@ -552,15 +525,6 @@ Internet-Draft         Opportunistic HTTP Security            March 2016
    [RFC7435]  Dukhovni, V., "Opportunistic Security: Some Protection
               Most of the Time", RFC 7435, DOI 10.17487/RFC7435,
               December 2014, <http://www.rfc-editor.org/info/rfc7435>.
-
-
-
-
-
-Nottingham & Thomson   Expires September 12, 2016              [Page 10]
-
-Internet-Draft         Opportunistic HTTP Security            March 2016
-
 
    [RFC7469]  Evans, C., Palmer, C., and R. Sleevi, "Public Key Pinning
               Extension for HTTP", RFC 7469, DOI 10.17487/RFC7469, April
@@ -593,24 +557,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Nottingham & Thomson   Expires September 12, 2016              [Page 11]
+Nottingham & Thomson   Expires September 14, 2016              [Page 10]
