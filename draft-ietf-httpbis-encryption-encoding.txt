@@ -160,7 +160,7 @@ Internet-Draft           HTTP encryption coding               March 2016
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
    document are to be interpreted as described in [RFC2119].
 
-
+   Base64url encoding is defined in Section 2 of [RFC7515].
 
 
 
@@ -310,14 +310,14 @@ Internet-Draft           HTTP encryption coding               March 2016
       an Crypto-Key header field is needed to derive the content
       encryption key.
 
-   salt:  The "salt" parameter contains a base64 URL-encoded octets that
-      is used as salt in deriving a unique content encryption key (see
-      Section 3.2).  The "salt" parameter MUST be present, and MUST be
-      exactly 16 octets long when decoded.  The "salt" parameter MUST
-      NOT be reused for two different payload bodies that have the same
-      input keying material; generating a random salt for every
-      application of the content encoding ensures that content
-      encryption key reuse is highly unlikely.
+   salt:  The "salt" parameter contains a base64url-encoded octets
+      [RFC7515] that is used as salt in deriving a unique content
+      encryption key (see Section 3.2).  The "salt" parameter MUST be
+      present, and MUST be exactly 16 octets long when decoded.  The
+      "salt" parameter MUST NOT be reused for two different payload
+      bodies that have the same input keying material; generating a
+      random salt for every application of the content encoding ensures
+      that content encryption key reuse is highly unlikely.
 
    rs:  The "rs" parameter contains a positive decimal integer that
       describes the record size in octets.  This value MUST be greater
@@ -422,8 +422,8 @@ Internet-Draft           HTTP encryption coding               March 2016
    keyid:  The "keyid" parameter corresponds to the "keyid" parameter in
       the Encryption header field.
 
-   aesgcm:  The "aesgcm" parameter contains the URL-safe base64
-      [RFC4648] octets of the input keying material.
+   aesgcm:  The "aesgcm" parameter contains the base64url-encoded octets
+      [RFC7515] of the input keying material.
 
    dh:  The "dh" parameter contains an ephemeral Diffie-Hellman share.
       This form of the header field can be used to encrypt content for a
@@ -650,8 +650,8 @@ Internet-Draft           HTTP encryption coding               March 2016
 
    This example shows the string "I am the walrus" encrypted using an
    directly provided value for the input keying material.  The content
-   body contains a single record only and is shown here encoded in URL-
-   safe base64 for presentation reasons only.
+   body contains a single record only and use base64url encoding
+   [RFC7515] for presentation reasons.
 
 5.5.  Diffie-Hellman Encryption
 
@@ -677,14 +677,14 @@ Internet-Draft           HTTP encryption coding               March 2016
    This example shows the same string, "I am the walrus", encrypted
    using ECDH over the P-256 curve [FIPS186], which is identified with
    the label "P-256" encoded in ASCII.  The content body is shown here
-   encoded in URL-safe base64 for presentation reasons only.
+   encoded in URL-safe base64url for presentation reasons only.
 
    The receiver (in this case, the HTTP client) uses a key pair that is
    identified by the string "dhkey" and the sender (the server) uses a
    key pair for which the public share is included in the "dh" parameter
    above.  The keys shown below use uncompressed points [X9.62] encoded
-   using URL-safe base64.  Line wrapping is added for presentation
-   purposes only.
+   using base64url.  Line wrapping is added for presentation purposes
+   only.
 
 
       Receiver:
@@ -997,9 +997,9 @@ Internet-Draft           HTTP encryption coding               March 2016
               DOI 10.17487/RFC4492, May 2006,
               <http://www.rfc-editor.org/info/rfc4492>.
 
-   [RFC4648]  Josefsson, S., "The Base16, Base32, and Base64 Data
-              Encodings", RFC 4648, DOI 10.17487/RFC4648, October 2006,
-              <http://www.rfc-editor.org/info/rfc4648>.
+   [RFC5116]  McGrew, D., "An Interface and Algorithms for Authenticated
+              Encryption", RFC 5116, DOI 10.17487/RFC5116, January 2008,
+              <http://www.rfc-editor.org/info/rfc5116>.
 
 
 
@@ -1009,10 +1009,6 @@ Thomson                Expires September 18, 2016              [Page 18]
 
 Internet-Draft           HTTP encryption coding               March 2016
 
-
-   [RFC5116]  McGrew, D., "An Interface and Algorithms for Authenticated
-              Encryption", RFC 5116, DOI 10.17487/RFC5116, January 2008,
-              <http://www.rfc-editor.org/info/rfc5116>.
 
    [RFC5869]  Krawczyk, H. and P. Eronen, "HMAC-based Extract-and-Expand
               Key Derivation Function (HKDF)", RFC 5869,
@@ -1028,6 +1024,10 @@ Internet-Draft           HTTP encryption coding               March 2016
               Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
               DOI 10.17487/RFC7231, June 2014,
               <http://www.rfc-editor.org/info/rfc7231>.
+
+   [RFC7515]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web
+              Signature (JWS)", RFC 7515, DOI 10.17487/RFC7515, May
+              2015, <http://www.rfc-editor.org/info/rfc7515>.
 
 8.2.  Informative References
 
