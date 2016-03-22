@@ -4,8 +4,8 @@
 
 HTTP Working Group                                           I. Grigorik
 Internet-Draft                                                    Google
-Intended status: Standards Track                          March 21, 2016
-Expires: September 22, 2016
+Intended status: Standards Track                          March 22, 2016
+Expires: September 23, 2016
 
 
                            HTTP Client Hints
@@ -49,11 +49,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 22, 2016.
+   This Internet-Draft will expire on September 23, 2016.
 
 
 
-Grigorik               Expires September 22, 2016               [Page 1]
+Grigorik               Expires September 23, 2016               [Page 1]
 
 Internet-Draft              HTTP Client Hints                 March 2016
 
@@ -77,7 +77,7 @@ Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
      1.1.  Notational Conventions  . . . . . . . . . . . . . . . . .   3
-   2.  Client Hint Request Header Fields . . . . . . . . . . . . . .   3
+   2.  Client Hint Request Header Fields . . . . . . . . . . . . . .   4
      2.1.  Sending Client Hints  . . . . . . . . . . . . . . . . . .   4
      2.2.  Server Processing of Client Hints . . . . . . . . . . . .   4
        2.2.1.  Advertising Support for Client Hints  . . . . . . . .   4
@@ -89,15 +89,31 @@ Table of Contents
    6.  The Downlink Client Hint  . . . . . . . . . . . . . . . . . .   7
    7.  The Save-Data Hint  . . . . . . . . . . . . . . . . . . . . .   7
    8.  Examples  . . . . . . . . . . . . . . . . . . . . . . . . . .   8
-   9.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
+   9.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
    10. IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
-   11. Normative References  . . . . . . . . . . . . . . . . . . . .  10
+     10.1.  Accept-CH  . . . . . . . . . . . . . . . . . . . . . . .   9
+     10.2.  Content-DPR  . . . . . . . . . . . . . . . . . . . . . .   9
+     10.3.  Downlink . . . . . . . . . . . . . . . . . . . . . . . .  10
+     10.4.  DPR  . . . . . . . . . . . . . . . . . . . . . . . . . .  10
+     10.5.  Save-Data  . . . . . . . . . . . . . . . . . . . . . . .  10
+     10.6.  Viewport-Width . . . . . . . . . . . . . . . . . . . . .  10
+     10.7.  Width  . . . . . . . . . . . . . . . . . . . . . . . . .  10
+   11. Normative References  . . . . . . . . . . . . . . . . . . . .  11
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  11
 
 1.  Introduction
 
    There are thousands of different devices accessing the web, each with
    different device capabilities and preference information.  These
+
+
+
+
+Grigorik               Expires September 23, 2016               [Page 2]
+
+Internet-Draft              HTTP Client Hints                 March 2016
+
+
    device capabilities include hardware and software characteristics, as
    well as dynamic user and client preferences.
 
@@ -105,15 +121,6 @@ Table of Contents
    (UA) detection against an established database of client signatures.
    However, this technique requires acquiring such a database,
    integrating it into the serving path, and keeping it up to date.
-
-
-
-
-Grigorik               Expires September 22, 2016               [Page 2]
-
-Internet-Draft              HTTP Client Hints                 March 2016
-
-
    However, even once this infrastructure is deployed, UA sniffing has
    numerous limitations:
 
@@ -152,6 +159,17 @@ Internet-Draft              HTTP Client Hints                 March 2016
    the OWS, field-name and quoted-string rules from [RFC7230]; and the
    parameter rule from [RFC7231].
 
+
+
+
+
+
+
+Grigorik               Expires September 23, 2016               [Page 3]
+
+Internet-Draft              HTTP Client Hints                 March 2016
+
+
 2.  Client Hint Request Header Fields
 
    A Client Hint request header field is a HTTP header field that is
@@ -159,16 +177,6 @@ Internet-Draft              HTTP Client Hints                 March 2016
    by the server to select an appropriate response.  Each one conveys a
    list of client preferences that the server can use to adapt and
    optimize the response.
-
-
-
-
-
-
-Grigorik               Expires September 22, 2016               [Page 3]
-
-Internet-Draft              HTTP Client Hints                 March 2016
-
 
    This document defines a selection of Client Hint request header
    fields, and can be referenced by other specifications wishing to use
@@ -212,19 +220,18 @@ Internet-Draft              HTTP Client Hints                 March 2016
    For example:
 
 
+
+Grigorik               Expires September 23, 2016               [Page 4]
+
+Internet-Draft              HTTP Client Hints                 March 2016
+
+
      Accept-CH: DPR, Width, Viewport-Width, Downlink
 
    When a client receives Accept-CH, it SHOULD append the Client Hint
    headers that match the advertised field-values.  For example, based
    on Accept-CH example above, the client would append DPR, Width,
    Viewport-Width, and Downlink headers to all subsequent requests.
-
-
-
-Grigorik               Expires September 22, 2016               [Page 4]
-
-Internet-Draft              HTTP Client Hints                 March 2016
-
 
 2.2.2.  Interaction with Caches
 
@@ -268,19 +275,17 @@ Internet-Draft              HTTP Client Hints                 March 2016
 
      Key: Downlink;partition=0.5:1.0:3.0:5.0:10
 
+
+
+Grigorik               Expires September 23, 2016               [Page 5]
+
+Internet-Draft              HTTP Client Hints                 March 2016
+
+
    Above example indicates that the cache key should be based on the
    (Mbps) value of the Downlink header with six segments: less than 0.5,
    0.5 to less than 1.0, 1.0 to less than 3.0, 3.0 to less than 5.0, 5.0
    to less than 10; 10 or higher.
-
-
-
-
-
-Grigorik               Expires September 22, 2016               [Page 5]
-
-Internet-Draft              HTTP Client Hints                 March 2016
-
 
 3.  The DPR Client Hint
 
@@ -324,19 +329,20 @@ Internet-Draft              HTTP Client Hints                 March 2016
 
    The "Width" header field is a number that, in requests, indicates the
    resource width in physical px (i.e. intrinsic size of an image).  The
+
+
+
+
+Grigorik               Expires September 23, 2016               [Page 6]
+
+Internet-Draft              HTTP Client Hints                 March 2016
+
+
    provided physical px value is a number rounded to the largest
    smallest following integer (i.e. ceiling value).
 
 
      Width = 1*DIGIT
-
-
-
-
-Grigorik               Expires September 22, 2016               [Page 6]
-
-Internet-Draft              HTTP Client Hints                 March 2016
-
 
    If the resource width is not known at the time of the request or the
    resource does not have a display width, the Width header field may be
@@ -361,7 +367,7 @@ Internet-Draft              HTTP Client Hints                 March 2016
    The "Downlink" header field is a number that, in requests, indicates
    the client's maximum downlink speed in megabits per second (Mbps), as
    defined by the "downlinkMax" attribute in the W3C Network Information
-   API.
+   API ([NETINFO]).
 
 
      Downlink = 1*DIGIT [ "." 1*DIGIT ]
@@ -380,19 +386,16 @@ Internet-Draft              HTTP Client Hints                 March 2016
 
    The token is a signal indicating explicit user opt-in into a reduced
    data usage mode on the client, and when communicated to origins
-   allows them to deliver alternate content honoring such preference -
-   e.g. smaller image and video resources, alternate markup, and so on.
 
 
 
-
-
-
-
-Grigorik               Expires September 22, 2016               [Page 7]
+Grigorik               Expires September 23, 2016               [Page 7]
 
 Internet-Draft              HTTP Client Hints                 March 2016
 
+
+   allows them to deliver alternate content honoring such preference -
+   e.g. smaller image and video resources, alternate markup, and so on.
 
 8.  Examples
 
@@ -435,6 +438,18 @@ Internet-Draft              HTTP Client Hints                 March 2016
    optimized resource - for example, an alternate image asset,
    stylesheet, HTML document, media stream, and so on.
 
+
+
+
+
+
+
+
+Grigorik               Expires September 23, 2016               [Page 8]
+
+Internet-Draft              HTTP Client Hints                 March 2016
+
+
 9.  Security Considerations
 
    Client Hints defined in this specification do not expose any new
@@ -442,13 +457,6 @@ Internet-Draft              HTTP Client Hints                 March 2016
    available to, and may be communicated by, the application at runtime
    via JavaScript - e.g. viewport and image display width, device pixel
    ratio, and so on.
-
-
-
-Grigorik               Expires September 22, 2016               [Page 8]
-
-Internet-Draft              HTTP Client Hints                 March 2016
-
 
    However, implementors should consider the privacy implications of
    various methods to enable delivery of Client Hints - see "Sending
@@ -468,30 +476,17 @@ Internet-Draft              HTTP Client Hints                 March 2016
    HTTP request fields, "Content-DPR" HTTP response field, and registers
    them in the Permanent Message Header Fields registry.
 
-   o  Header field name: DPR
+10.1.  Accept-CH
+
+   o  Header field name: Accept-CH
    o  Applicable protocol: HTTP
    o  Status: standard
    o  Author/Change controller: IETF
    o  Specification document(s): [this document]
    o  Related information: for Client Hints
-   o  Header field name: Width
-   o  Applicable protocol: HTTP
-   o  Status: standard
-   o  Author/Change controller: IETF
-   o  Specification document(s): [this document]
-   o  Related information: for Client Hints
-   o  Header field name: Viewport-Width
-   o  Applicable protocol: HTTP
-   o  Status: standard
-   o  Author/Change controller: IETF
-   o  Specification document(s): [this document]
-   o  Related information: for Client Hints
-   o  Header field name: Downlink
-   o  Applicable protocol: HTTP
-   o  Status: standard
-   o  Author/Change controller: IETF
-   o  Specification document(s): [this document]
-   o  Related information: for Client Hints
+
+10.2.  Content-DPR
+
    o  Header field name: Content-DPR
    o  Applicable protocol: HTTP
    o  Status: standard
@@ -501,17 +496,36 @@ Internet-Draft              HTTP Client Hints                 March 2016
 
 
 
-Grigorik               Expires September 22, 2016               [Page 9]
+
+
+
+
+
+Grigorik               Expires September 23, 2016               [Page 9]
 
 Internet-Draft              HTTP Client Hints                 March 2016
 
 
-   o  Header field name: Accept-CH
+10.3.  Downlink
+
+   o  Header field name: Downlink
    o  Applicable protocol: HTTP
    o  Status: standard
    o  Author/Change controller: IETF
    o  Specification document(s): [this document]
    o  Related information: for Client Hints
+
+10.4.  DPR
+
+   o  Header field name: DPR
+   o  Applicable protocol: HTTP
+   o  Status: standard
+   o  Author/Change controller: IETF
+   o  Specification document(s): [this document]
+   o  Related information: for Client Hints
+
+10.5.  Save-Data
+
    o  Header field name: Save-Data
    o  Applicable protocol: HTTP
    o  Status: standard
@@ -519,12 +533,45 @@ Internet-Draft              HTTP Client Hints                 March 2016
    o  Specification document(s): [this document]
    o  Related information: for Client Hints
 
+10.6.  Viewport-Width
+
+   o  Header field name: Viewport-Width
+   o  Applicable protocol: HTTP
+   o  Status: standard
+   o  Author/Change controller: IETF
+   o  Specification document(s): [this document]
+   o  Related information: for Client Hints
+
+10.7.  Width
+
+   o  Header field name: Width
+   o  Applicable protocol: HTTP
+   o  Status: standard
+   o  Author/Change controller: IETF
+   o  Specification document(s): [this document]
+   o  Related information: for Client Hints
+
+
+
+
+
+
+
+Grigorik               Expires September 23, 2016              [Page 10]
+
+Internet-Draft              HTTP Client Hints                 March 2016
+
+
 11.  Normative References
 
    [I-D.ietf-httpbis-key]
               Fielding, R. and m. mnot, "The Key HTTP Response Header
               Field", draft-ietf-httpbis-key-01 (work in progress),
               March 2016.
+
+   [NETINFO]  Caceres, M., Moreno, F., and I. Grigorik, "Network
+              Information API", December 2015, <https://w3c.github.io/
+              netinfo/>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -551,17 +598,6 @@ Internet-Draft              HTTP Client Hints                 March 2016
               RFC 7234, DOI 10.17487/RFC7234, June 2014,
               <http://www.rfc-editor.org/info/rfc7234>.
 
-
-
-
-
-
-
-Grigorik               Expires September 22, 2016              [Page 10]
-
-Internet-Draft              HTTP Client Hints                 March 2016
-
-
 Author's Address
 
    Ilya Grigorik
@@ -577,40 +613,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Grigorik               Expires September 22, 2016              [Page 11]
+Grigorik               Expires September 23, 2016              [Page 11]
