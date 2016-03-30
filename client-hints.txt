@@ -341,17 +341,17 @@ Internet-Draft              HTTP Client Hints                 March 2016
 4.  The Width Client Hint
 
    The "Width" request header field is a number that indicates the
-   resource width in physical px (i.e. intrinsic size of an image).  The
-   provided physical px value is a number rounded to the largest
-   smallest following integer (i.e. ceiling value).
+   desired resource width in physical px (i.e. intrinsic size of an
+   image).  The provided physical px value is a number rounded to the
+   largest smallest following integer (i.e. ceiling value).
 
 
      Width = 1*DIGIT
 
-   If the resource width is not known at the time of the request or the
-   resource does not have a display width, the Width header field can be
-   omitted.  If Width occurs in a message more than once, the last value
-   overrides all previous occurrences.
+   If the desired resource width is not known at the time of the request
+   or the resource does not have a display width, the Width header field
+   can be omitted.  If Width occurs in a message more than once, the
+   last value overrides all previous occurrences.
 
 5.  The Viewport-Width Client Hint
 
