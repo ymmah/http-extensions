@@ -198,12 +198,12 @@ Internet-Draft              HTTP Client Hints                 March 2016
    which hints were used and whether the selected response is
    appropriate for a later request.
 
-   Further, depending on the used hint, the server MAY also need to emit
-   additional response header fields to confirm the property of the
-   response, such that the client can adjust its processing.  For
-   example, this specification defines "Content-DPR" response header
-   field that MUST be returned by the server when the "DPR" hint is used
-   to select the response.
+   Further, depending on the used hint, the server can emit additional
+   response header fields to confirm the property of the response, such
+   that the client can adjust its processing.  For example, this
+   specification defines "Content-DPR" response header field that MUST
+   be returned by the server when the "DPR" hint is used to select the
+   response.
 
 2.2.1.  Advertising Support for Client Hints
 
