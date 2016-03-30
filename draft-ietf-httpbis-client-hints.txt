@@ -482,7 +482,7 @@ Internet-Draft              HTTP Client Hints                 March 2016
    o  Applicable protocol: HTTP
    o  Status: standard
    o  Author/Change controller: IETF
-   o  Specification document(s): [this document]
+   o  Specification document(s): Section 2.2.1
    o  Related information: for Client Hints
 
 10.2.  Content-DPR
@@ -491,7 +491,7 @@ Internet-Draft              HTTP Client Hints                 March 2016
    o  Applicable protocol: HTTP
    o  Status: standard
    o  Author/Change controller: IETF
-   o  Specification document(s): [this document]
+   o  Specification document(s): Section 3.1 of this document
    o  Related information: for Client Hints
 
 
@@ -512,7 +512,7 @@ Internet-Draft              HTTP Client Hints                 March 2016
    o  Applicable protocol: HTTP
    o  Status: standard
    o  Author/Change controller: IETF
-   o  Specification document(s): [this document]
+   o  Specification document(s): Section 6 of this document
    o  Related information: for Client Hints
 
 10.4.  DPR
@@ -521,7 +521,7 @@ Internet-Draft              HTTP Client Hints                 March 2016
    o  Applicable protocol: HTTP
    o  Status: standard
    o  Author/Change controller: IETF
-   o  Specification document(s): [this document]
+   o  Specification document(s): Section 3 of this document
    o  Related information: for Client Hints
 
 10.5.  Save-Data
@@ -530,7 +530,7 @@ Internet-Draft              HTTP Client Hints                 March 2016
    o  Applicable protocol: HTTP
    o  Status: standard
    o  Author/Change controller: IETF
-   o  Specification document(s): [this document]
+   o  Specification document(s): Section 7 of this document
    o  Related information: for Client Hints
 
 10.6.  Viewport-Width
@@ -539,7 +539,7 @@ Internet-Draft              HTTP Client Hints                 March 2016
    o  Applicable protocol: HTTP
    o  Status: standard
    o  Author/Change controller: IETF
-   o  Specification document(s): [this document]
+   o  Specification document(s): Section 5 of this document
    o  Related information: for Client Hints
 
 10.7.  Width
@@ -548,7 +548,7 @@ Internet-Draft              HTTP Client Hints                 March 2016
    o  Applicable protocol: HTTP
    o  Status: standard
    o  Author/Change controller: IETF
-   o  Specification document(s): [this document]
+   o  Specification document(s): Section 4 of this document
    o  Related information: for Client Hints
 
 
