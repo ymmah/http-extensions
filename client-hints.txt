@@ -84,10 +84,10 @@ Table of Contents
        2.2.2.  Interaction with Caches . . . . . . . . . . . . . . .   5
    3.  The DPR Client Hint . . . . . . . . . . . . . . . . . . . . .   6
      3.1.  Confirming Selected DPR . . . . . . . . . . . . . . . . .   6
-   4.  The Width Client Hint . . . . . . . . . . . . . . . . . . . .   7
+   4.  The Width Client Hint . . . . . . . . . . . . . . . . . . . .   6
    5.  The Viewport-Width Client Hint  . . . . . . . . . . . . . . .   7
    6.  The Downlink Client Hint  . . . . . . . . . . . . . . . . . .   7
-   7.  The Save-Data Hint  . . . . . . . . . . . . . . . . . . . . .   8
+   7.  The Save-Data Hint  . . . . . . . . . . . . . . . . . . . . .   7
    8.  Examples  . . . . . . . . . . . . . . . . . . . . . . . . . .   8
    9.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
    10. IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
@@ -178,10 +178,6 @@ Internet-Draft              HTTP Client Hints                 March 2016
    list of client preferences that the server can use to adapt and
    optimize the response.
 
-   This document defines a selection of Client Hint request header
-   fields, and can be referenced by other specifications wishing to use
-   the same syntax and processing model.
-
 2.1.  Sending Client Hints
 
    Clients control which Client Hint headers and their respective header
@@ -218,6 +214,10 @@ Internet-Draft              HTTP Client Hints                 March 2016
 
      Accept-CH = #token
 
+   For example:
+
+
+     Accept-CH: DPR, Width, Viewport-Width, Downlink
 
 
 
@@ -225,11 +225,6 @@ Grigorik                 Expires October 1, 2016                [Page 4]
 
 Internet-Draft              HTTP Client Hints                 March 2016
 
-
-   For example:
-
-
-     Accept-CH: DPR, Width, Viewport-Width, Downlink
 
    When a client receives Accept-CH, it SHOULD append the Client Hint
    header fields that match the advertised field-values.  For example,
@@ -272,7 +267,12 @@ Internet-Draft              HTTP Client Hints                 March 2016
 
      Key: Width;div=320
 
+   Above example indicates that the cache key should be based on the
+   value of the Width header field and be partitioned into groups of
+   320: 0-320, 320-640, and so on.
 
+
+     Key: Downlink;partition=0.5:1.0:3.0:5.0:10
 
 
 
@@ -281,13 +281,6 @@ Grigorik                 Expires October 1, 2016                [Page 5]
 
 Internet-Draft              HTTP Client Hints                 March 2016
 
-
-   Above example indicates that the cache key should be based on the
-   value of the Width header field and be partitioned into groups of
-   320: 0-320, 320-640, and so on.
-
-
-     Key: Downlink;partition=0.5:1.0:3.0:5.0:10
 
    Above example indicates that the cache key should be based on the
    (Mbps) value of the Downlink header field with six segments: less
@@ -329,6 +322,13 @@ Internet-Draft              HTTP Client Hints                 March 2016
    can be derived from the resource itself once it is decoded by the
    client.
 
+   If Content-DPR occurs in a message more than once, the last value
+   overrides all previous occurrences.
+
+4.  The Width Client Hint
+
+   The "Width" header field is a number that, in requests, indicates the
+   resource width in physical px (i.e. intrinsic size of an image).  The
 
 
 
@@ -338,13 +338,6 @@ Grigorik                 Expires October 1, 2016                [Page 6]
 Internet-Draft              HTTP Client Hints                 March 2016
 
 
-   If Content-DPR occurs in a message more than once, the last value
-   overrides all previous occurrences.
-
-4.  The Width Client Hint
-
-   The "Width" header field is a number that, in requests, indicates the
-   resource width in physical px (i.e. intrinsic size of an image).  The
    provided physical px value is a number rounded to the largest
    smallest following integer (i.e. ceiling value).
 
@@ -382,18 +375,6 @@ Internet-Draft              HTTP Client Hints                 March 2016
    If Downlink occurs in a message more than once, the minimum value
    should be used to override other occurrences.
 
-
-
-
-
-
-
-
-Grigorik                 Expires October 1, 2016                [Page 7]
-
-Internet-Draft              HTTP Client Hints                 March 2016
-
-
 7.  The Save-Data Hint
 
    The "Save-Data" header field is a token that, in requests, indicates
@@ -405,6 +386,14 @@ Internet-Draft              HTTP Client Hints                 March 2016
 
    The token is a signal indicating explicit user opt-in into a reduced
    data usage mode on the client, and when communicated to origins
+
+
+
+Grigorik                 Expires October 1, 2016                [Page 7]
+
+Internet-Draft              HTTP Client Hints                 March 2016
+
+
    allows them to deliver alternate content honoring such preference -
    e.g. smaller image and video resources, alternate markup, and so on.
 
@@ -443,19 +432,23 @@ Internet-Draft              HTTP Client Hints                 March 2016
    the maximum downlink speed advertised in the request header fields:
 
 
-
-
-Grigorik                 Expires October 1, 2016                [Page 8]
-
-Internet-Draft              HTTP Client Hints                 March 2016
-
-
      Downlink: 0.384
 
    The server knows that the client's maximum downlink speed is
    0.384Mbps (GPRS EDGE), and it may use this information to select an
    optimized resource - for example, an alternate image asset,
    stylesheet, HTML document, media stream, and so on.
+
+
+
+
+
+
+
+Grigorik                 Expires October 1, 2016                [Page 8]
+
+Internet-Draft              HTTP Client Hints                 March 2016
+
 
 9.  Security Considerations
 
@@ -498,6 +491,13 @@ Internet-Draft              HTTP Client Hints                 March 2016
    o  Applicable protocol: HTTP
    o  Status: standard
    o  Author/Change controller: IETF
+   o  Specification document(s): [this document]
+   o  Related information: for Client Hints
+
+
+
+
+
 
 
 
@@ -505,9 +505,6 @@ Grigorik                 Expires October 1, 2016                [Page 9]
 
 Internet-Draft              HTTP Client Hints                 March 2016
 
-
-   o  Specification document(s): [this document]
-   o  Related information: for Client Hints
 
 10.3.  Downlink
 
@@ -553,6 +550,9 @@ Internet-Draft              HTTP Client Hints                 March 2016
    o  Author/Change controller: IETF
    o  Specification document(s): [this document]
    o  Related information: for Client Hints
+
+
+
 
 
 
