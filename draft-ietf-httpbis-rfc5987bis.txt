@@ -4,9 +4,9 @@
 
 HTTP Working Group                                            J. Reschke
 Internet-Draft                                                greenbytes
-Obsoletes: 5987 (if approved)                             March 31, 2016
+Obsoletes: 5987 (if approved)                              April 1, 2016
 Intended status: Standards Track
-Expires: October 2, 2016
+Expires: October 3, 2016
 
 
     Indicating Character Encoding and Language for HTTP Header Field
@@ -53,12 +53,12 @@ Status of This Memo
 
 
 
-Reschke                  Expires October 2, 2016                [Page 1]
+Reschke                  Expires October 3, 2016                [Page 1]
 
-Internet-Draft      Charset/Language Encoding in HTTP         March 2016
+Internet-Draft      Charset/Language Encoding in HTTP         April 2016
 
 
-   This Internet-Draft will expire on October 2, 2016.
+   This Internet-Draft will expire on October 3, 2016.
 
 Copyright Notice
 
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Reschke                  Expires October 2, 2016                [Page 2]
+Reschke                  Expires October 3, 2016                [Page 2]
 
-Internet-Draft      Charset/Language Encoding in HTTP         March 2016
+Internet-Draft      Charset/Language Encoding in HTTP         April 2016
 
 
      C.8.  Since draft-reschke-rfc5987bis-06 . . . . . . . . . . . .  14
@@ -165,9 +165,9 @@ Internet-Draft      Charset/Language Encoding in HTTP         March 2016
 
 
 
-Reschke                  Expires October 2, 2016                [Page 3]
+Reschke                  Expires October 3, 2016                [Page 3]
 
-Internet-Draft      Charset/Language Encoding in HTTP         March 2016
+Internet-Draft      Charset/Language Encoding in HTTP         April 2016
 
 
 3.  Comparison to RFC 2231 and Definition of the Encoding
@@ -221,9 +221,9 @@ Internet-Draft      Charset/Language Encoding in HTTP         March 2016
 
 
 
-Reschke                  Expires October 2, 2016                [Page 4]
+Reschke                  Expires October 3, 2016                [Page 4]
 
-Internet-Draft      Charset/Language Encoding in HTTP         March 2016
+Internet-Draft      Charset/Language Encoding in HTTP         April 2016
 
 
      attribute     = token
@@ -277,9 +277,9 @@ Internet-Draft      Charset/Language Encoding in HTTP         March 2016
 
 
 
-Reschke                  Expires October 2, 2016                [Page 5]
+Reschke                  Expires October 3, 2016                [Page 5]
 
-Internet-Draft      Charset/Language Encoding in HTTP         March 2016
+Internet-Draft      Charset/Language Encoding in HTTP         April 2016
 
 
    Extended parameters are those where the left-hand side of the
@@ -333,9 +333,9 @@ Internet-Draft      Charset/Language Encoding in HTTP         March 2016
 
 
 
-Reschke                  Expires October 2, 2016                [Page 6]
+Reschke                  Expires October 3, 2016                [Page 6]
 
-Internet-Draft      Charset/Language Encoding in HTTP         March 2016
+Internet-Draft      Charset/Language Encoding in HTTP         April 2016
 
 
    For backwards compatibility with RFC 2231, the encoding defined by
@@ -389,9 +389,9 @@ Internet-Draft      Charset/Language Encoding in HTTP         March 2016
 
 
 
-Reschke                  Expires October 2, 2016                [Page 7]
+Reschke                  Expires October 3, 2016                [Page 7]
 
-Internet-Draft      Charset/Language Encoding in HTTP         March 2016
+Internet-Draft      Charset/Language Encoding in HTTP         April 2016
 
 
 3.3.  Language Specification in Encoded Words
@@ -445,9 +445,9 @@ Internet-Draft      Charset/Language Encoding in HTTP         March 2016
 
 
 
-Reschke                  Expires October 2, 2016                [Page 8]
+Reschke                  Expires October 3, 2016                [Page 8]
 
-Internet-Draft      Charset/Language Encoding in HTTP         March 2016
+Internet-Draft      Charset/Language Encoding in HTTP         April 2016
 
 
    the ext-value production ought to be always used when the parameter
@@ -501,9 +501,9 @@ Internet-Draft      Charset/Language Encoding in HTTP         March 2016
 
 
 
-Reschke                  Expires October 2, 2016                [Page 9]
+Reschke                  Expires October 3, 2016                [Page 9]
 
-Internet-Draft      Charset/Language Encoding in HTTP         March 2016
+Internet-Draft      Charset/Language Encoding in HTTP         April 2016
 
 
    this attack is useful as an attack depends on the parameter
@@ -557,9 +557,9 @@ Internet-Draft      Charset/Language Encoding in HTTP         March 2016
 
 
 
-Reschke                  Expires October 2, 2016               [Page 10]
+Reschke                  Expires October 3, 2016               [Page 10]
 
-Internet-Draft      Charset/Language Encoding in HTTP         March 2016
+Internet-Draft      Charset/Language Encoding in HTTP         April 2016
 
 
    [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
@@ -613,9 +613,9 @@ Internet-Draft      Charset/Language Encoding in HTTP         March 2016
 
 
 
-Reschke                  Expires October 2, 2016               [Page 11]
+Reschke                  Expires October 3, 2016               [Page 11]
 
-Internet-Draft      Charset/Language Encoding in HTTP         March 2016
+Internet-Draft      Charset/Language Encoding in HTTP         April 2016
 
 
    [RFC5988]  Nottingham, M., "Web Linking", RFC 5988,
@@ -669,9 +669,9 @@ Internet-Draft      Charset/Language Encoding in HTTP         March 2016
 
 
 
-Reschke                  Expires October 2, 2016               [Page 12]
+Reschke                  Expires October 3, 2016               [Page 12]
 
-Internet-Draft      Charset/Language Encoding in HTTP         March 2016
+Internet-Draft      Charset/Language Encoding in HTTP         April 2016
 
 
 Appendix A.  Changes from RFC 5987
@@ -725,9 +725,9 @@ C.1.  Since RFC5987
 
 
 
-Reschke                  Expires October 2, 2016               [Page 13]
+Reschke                  Expires October 3, 2016               [Page 13]
 
-Internet-Draft      Charset/Language Encoding in HTTP         March 2016
+Internet-Draft      Charset/Language Encoding in HTTP         April 2016
 
 
 C.2.  Since draft-reschke-rfc5987bis-00
@@ -781,9 +781,9 @@ Appendix D.  Acknowledgements
 
 
 
-Reschke                  Expires October 2, 2016               [Page 14]
+Reschke                  Expires October 3, 2016               [Page 14]
 
-Internet-Draft      Charset/Language Encoding in HTTP         March 2016
+Internet-Draft      Charset/Language Encoding in HTTP         April 2016
 
 
 Author's Address
@@ -837,4 +837,4 @@ Author's Address
 
 
 
-Reschke                  Expires October 2, 2016               [Page 15]
+Reschke                  Expires October 3, 2016               [Page 15]
