@@ -765,8 +765,8 @@ Internet-Draft          HTTP Alternative Services             April 2016
    headers/>.
 
    This document defines the following HTTP header fields, so their
-   associated registry entries shall be added according to the permanent
-   registrations below (see [BCP90]):
+   associated registry entries have been added according to the
+   permanent registrations below (see [BCP90]):
 
    +-------------------+----------+----------+------------+
    | Header Field Name | Protocol | Status   | Reference  |
@@ -775,7 +775,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
    | Alt-Used          | http     | standard | Section 5  |
    +-------------------+----------+----------+------------+
 
-   The change controller is: "IETF (iesg@ietf.org) - Internet
+   The change controller is: "IETF (iesg@ietf.org) -- Internet
    Engineering Task Force".
 
 
@@ -788,8 +788,8 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 7.2.  The ALTSVC HTTP/2 Frame Type
 
-   This document registers the ALTSVC frame type in the HTTP/2 Frame
-   Types registry ([RFC7540], Section 11.2).
+   This document registers the ALTSVC frame type in the "HTTP/2 Frame
+   Type" registry ([RFC7540], Section 11.2).
 
       Frame Type: ALTSVC
 
@@ -799,9 +799,10 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 7.3.  Alt-Svc Parameter Registry
 
-   The HTTP Alt-Svc Parameter Registry defines the name space for
-   parameters.  It will be created and maintained at (the suggested URI)
-   <http://www.iana.org/assignments/http-alt-svc-parameters>.
+   The "Hypertext Transfer Protocol (HTTP) Alt-Svc Parameter Registry"
+   defines the name space for parameters.  It has been created and will
+   be maintained at <http://www.iana.org/assignments/http-alt-svc-
+   parameters>.
 
 7.3.1.  Procedure
 
@@ -816,8 +817,8 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 7.3.2.  Registrations
 
-   The HTTP Alt-Svc Parameter Registry is to be populated with the
-   registrations below:
+   The "Hypertext Transfer Protocol (HTTP) Alt-Svc Parameter Registry"
+   has been populated with the registrations below:
 
    +-------------------+--------------+
    | Alt-Svc Parameter | Reference    |
@@ -831,7 +832,6 @@ Internet-Draft          HTTP Alternative Services             April 2016
    An internationalized domain name that appears in either the header
    field (Section 3) or the HTTP/2 frame (Section 4) MUST be expressed
    using A-labels ([RFC5890], Section 2.3.2.1).
-
 
 
 
