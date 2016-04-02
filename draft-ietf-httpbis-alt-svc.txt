@@ -86,7 +86,7 @@ Table of Contents
      3.1.  Caching Alt-Svc Header Field Values . . . . . . . . . . .  11
    4.  The ALTSVC HTTP/2 Frame . . . . . . . . . . . . . . . . . . .  12
    5.  The Alt-Used HTTP Header Field  . . . . . . . . . . . . . . .  13
-   6.  The 421 Misdirected Request HTTP Status Code  . . . . . . . .  14
+   6.  The 421 (Misdirected Request) HTTP Status Code  . . . . . . .  14
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  14
      7.1.  Header Field Registrations  . . . . . . . . . . . . . . .  14
      7.2.  The ALTSVC HTTP/2 Frame Type  . . . . . . . . . . . . . .  15
@@ -99,7 +99,7 @@ Table of Contents
      9.2.  Changing Hosts  . . . . . . . . . . . . . . . . . . . . .  16
      9.3.  Changing Protocols  . . . . . . . . . . . . . . . . . . .  17
      9.4.  Tracking Clients Using Alternative Services . . . . . . .  17
-     9.5.  Confusion Regarding Request Scheme  . . . . . . . . . . .  17
+     9.5.  Confusion regarding Request Scheme  . . . . . . . . . . .  17
    10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  18
      10.1.  Normative References . . . . . . . . . . . . . . . . . .  18
      10.2.  Informative References . . . . . . . . . . . . . . . . .  20
@@ -739,7 +739,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
      Host: origin.example.com
      Alt-Used: alternate.example.net
 
-6.  The 421 Misdirected Request HTTP Status Code
+6.  The 421 (Misdirected Request) HTTP Status Code
 
    The 421 (Misdirected Request) status code is defined in Section 9.1.2
    of [RFC7540] to indicate that the current server instance is not
@@ -941,7 +941,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
    when origin-specific data is cleared (typically, when cookies
    [RFC6265] are cleared).
 
-9.5.  Confusion Regarding Request Scheme
+9.5.  Confusion regarding Request Scheme
 
    Some server-side HTTP applications make assumptions about security
    based upon connection context; for example, equating being served
