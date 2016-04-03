@@ -594,7 +594,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
    indicates that an alternative service is available and usable for the
    next 60 seconds.  However, the response has already been cached for
-   30 seconds (as per the Age header field value); therefore the
+   30 seconds (as per the Age header field value); therefore, the
    alternative service is only fresh for the 30 seconds from when this
    response was received, minus estimated transit time.
 
