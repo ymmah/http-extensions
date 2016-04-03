@@ -1357,7 +1357,8 @@ A.15.  Since draft-ietf-httpbis-alt-svc-13
 
 A.16.  Since draft-ietf-httpbis-alt-svc-14
 
-   None yet.
+   Editorial changes made during RFC Editor's AUTH48 stage
+   (<https://github.com/httpwg/http-extensions/issues/165>).
 
 Appendix B.  Acknowledgements
 
@@ -1391,7 +1392,6 @@ Authors' Addresses
 
    EMail: julian.reschke@greenbytes.de
    URI:   https://greenbytes.de/tech/webdav/
-
 
 
 
