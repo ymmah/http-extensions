@@ -569,7 +569,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
    When an alternative service is advertised using Alt-Svc, it is
    considered fresh for 24 hours from generation of the message.  This
-   can be modified with the 'ma' (max-age) parameter.
+   can be modified with the "ma" (max-age) parameter.
 
    Syntax:
 
