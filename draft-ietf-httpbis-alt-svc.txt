@@ -5,10 +5,10 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft                                                    Akamai
 Intended status: Standards Track                              P. McManus
-Expires: October 4, 2016                                         Mozilla
+Expires: October 5, 2016                                         Mozilla
                                                               J. Reschke
                                                               greenbytes
-                                                           April 2, 2016
+                                                           April 3, 2016
 
 
                        HTTP Alternative Services
@@ -48,12 +48,12 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 4, 2016.
+   This Internet-Draft will expire on October 5, 2016.
 
 
 
 
-Nottingham, et al.       Expires October 4, 2016                [Page 1]
+Nottingham, et al.       Expires October 5, 2016                [Page 1]
 
 Internet-Draft          HTTP Alternative Services             April 2016
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Nottingham, et al.       Expires October 4, 2016                [Page 2]
+Nottingham, et al.       Expires October 5, 2016                [Page 2]
 
 Internet-Draft          HTTP Alternative Services             April 2016
 
@@ -165,7 +165,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 
 
-Nottingham, et al.       Expires October 4, 2016                [Page 3]
+Nottingham, et al.       Expires October 5, 2016                [Page 3]
 
 Internet-Draft          HTTP Alternative Services             April 2016
 
@@ -221,7 +221,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 
 
-Nottingham, et al.       Expires October 4, 2016                [Page 4]
+Nottingham, et al.       Expires October 5, 2016                [Page 4]
 
 Internet-Draft          HTTP Alternative Services             April 2016
 
@@ -250,7 +250,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
    host, port, and protocol that they are using to fetch resources, but
    these changes MUST NOT be propagated to the application that is using
    HTTP; from that standpoint, the URI being accessed and all
-   information derived from it (scheme, host, port) are the same as
+   information derived from it (scheme, host, and port) are the same as
    before.
 
    Importantly, this includes its security context; in particular, when
@@ -277,7 +277,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 
 
-Nottingham, et al.       Expires October 4, 2016                [Page 5]
+Nottingham, et al.       Expires October 5, 2016                [Page 5]
 
 Internet-Draft          HTTP Alternative Services             April 2016
 
@@ -288,9 +288,8 @@ Internet-Draft          HTTP Alternative Services             April 2016
    "http/1.1", registered by Section 6 of [RFC7301], identifies HTTP/1.1
    over TLS.
 
-   Additionally, each alternative service MUST have:
-
-   o  A freshness lifetime, expressed in seconds; see Section 2.2
+   Additionally, each alternative service MUST have a freshness
+   lifetime, expressed in seconds (see Section 2.2).
 
    There are many ways that a client could discover the alternative
    service(s) associated with an origin.  This document describes two
@@ -333,7 +332,8 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 
 
-Nottingham, et al.       Expires October 4, 2016                [Page 6]
+
+Nottingham, et al.       Expires October 5, 2016                [Page 6]
 
 Internet-Draft          HTTP Alternative Services             April 2016
 
@@ -352,9 +352,9 @@ Internet-Draft          HTTP Alternative Services             April 2016
    When alternative services are used to send a client to the most
    optimal server, a change in network configuration can result in
    cached values becoming suboptimal.  Therefore, clients SHOULD remove
-   from cache all alternative services that lack the "persist" flag with
-   the value "1" when they detect such a change, when information about
-   network state is available.
+   from the cache all alternative services that lack the "persist" flag
+   with the value "1" when they detect such a change, when information
+   about network state is available.
 
 2.3.  Requiring Server Name Indication
 
@@ -371,7 +371,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
    By their nature, alternative services are OPTIONAL: clients do not
    need to use them.  However, it is advantageous for clients to behave
    in a predictable way when alternative services are used by servers,
-   to aid purposes like load balancing.
+   to aid in purposes like load balancing.
 
    Therefore, if a client supporting this specification becomes aware of
    an alternative service, the client SHOULD use that alternative
@@ -389,7 +389,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 
 
-Nottingham, et al.       Expires October 4, 2016                [Page 7]
+Nottingham, et al.       Expires October 5, 2016                [Page 7]
 
 Internet-Draft          HTTP Alternative Services             April 2016
 
@@ -445,7 +445,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 
 
-Nottingham, et al.       Expires October 4, 2016                [Page 8]
+Nottingham, et al.       Expires October 5, 2016                [Page 8]
 
 Internet-Draft          HTTP Alternative Services             April 2016
 
@@ -501,7 +501,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 
 
-Nottingham, et al.       Expires October 4, 2016                [Page 9]
+Nottingham, et al.       Expires October 5, 2016                [Page 9]
 
 Internet-Draft          HTTP Alternative Services             April 2016
 
@@ -557,7 +557,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 
 
-Nottingham, et al.       Expires October 4, 2016               [Page 10]
+Nottingham, et al.       Expires October 5, 2016               [Page 10]
 
 Internet-Draft          HTTP Alternative Services             April 2016
 
@@ -576,13 +576,13 @@ Internet-Draft          HTTP Alternative Services             April 2016
    ma = delta-seconds; see [RFC7234], Section 1.2.1
 
    The delta-seconds value indicates the number of seconds since the
-   response was generated the alternative service is considered fresh
-   for.
+   response was generated for which the alternative service is
+   considered fresh.
 
    Alt-Svc: h2=":443"; ma=3600
 
-   See Section 4.2.3 of [RFC7234] for details of determining response
-   age.
+   See Section 4.2.3 of [RFC7234] for details on determining the
+   response age.
 
    For example, a response:
 
@@ -613,7 +613,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 
 
-Nottingham, et al.       Expires October 4, 2016               [Page 11]
+Nottingham, et al.       Expires October 5, 2016               [Page 11]
 
 Internet-Draft          HTTP Alternative Services             April 2016
 
@@ -669,7 +669,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 
 
-Nottingham, et al.       Expires October 4, 2016               [Page 12]
+Nottingham, et al.       Expires October 5, 2016               [Page 12]
 
 Internet-Draft          HTTP Alternative Services             April 2016
 
@@ -678,8 +678,8 @@ Internet-Draft          HTTP Alternative Services             April 2016
       octets, of the Origin field.
 
    Origin:  An OPTIONAL sequence of characters containing the ASCII
-      serialization of an origin ([RFC6454], Section 6.2) that the
-      alternative service is applicable to.
+      serialization of an origin ([RFC6454], Section 6.2) to which the
+      alternative service is applicable.
 
    Alt-Svc-Field-Value:  A sequence of octets (length determined by
       subtracting the length of all preceding fields from the frame
@@ -710,9 +710,9 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 5.  The Alt-Used HTTP Header Field
 
-   The Alt-Used header field is used in requests to indicate the
-   identity of the alternative service in use, just as the Host header
-   field (Section 5.4 of [RFC7230]) identifies the host and port of the
+   The Alt-Used header field is used in requests to identify the
+   alternative service in use, just as the Host header field
+   (Section 5.4 of [RFC7230]) identifies the host and port of the
    origin.
 
    Alt-Used     = uri-host [ ":" port ]
@@ -725,7 +725,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 
 
-Nottingham, et al.       Expires October 4, 2016               [Page 13]
+Nottingham, et al.       Expires October 5, 2016               [Page 13]
 
 Internet-Draft          HTTP Alternative Services             April 2016
 
@@ -781,7 +781,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 
 
-Nottingham, et al.       Expires October 4, 2016               [Page 14]
+Nottingham, et al.       Expires October 5, 2016               [Page 14]
 
 Internet-Draft          HTTP Alternative Services             April 2016
 
@@ -837,7 +837,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 
 
-Nottingham, et al.       Expires October 4, 2016               [Page 15]
+Nottingham, et al.       Expires October 5, 2016               [Page 15]
 
 Internet-Draft          HTTP Alternative Services             April 2016
 
@@ -893,7 +893,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 
 
-Nottingham, et al.       Expires October 4, 2016               [Page 16]
+Nottingham, et al.       Expires October 5, 2016               [Page 16]
 
 Internet-Draft          HTTP Alternative Services             April 2016
 
@@ -949,7 +949,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 
 
-Nottingham, et al.       Expires October 4, 2016               [Page 17]
+Nottingham, et al.       Expires October 5, 2016               [Page 17]
 
 Internet-Draft          HTTP Alternative Services             April 2016
 
@@ -1005,7 +1005,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 
 
-Nottingham, et al.       Expires October 4, 2016               [Page 18]
+Nottingham, et al.       Expires October 5, 2016               [Page 18]
 
 Internet-Draft          HTTP Alternative Services             April 2016
 
@@ -1061,7 +1061,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 
 
-Nottingham, et al.       Expires October 4, 2016               [Page 19]
+Nottingham, et al.       Expires October 5, 2016               [Page 19]
 
 Internet-Draft          HTTP Alternative Services             April 2016
 
@@ -1117,7 +1117,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 
 
-Nottingham, et al.       Expires October 4, 2016               [Page 20]
+Nottingham, et al.       Expires October 5, 2016               [Page 20]
 
 Internet-Draft          HTTP Alternative Services             April 2016
 
@@ -1173,7 +1173,7 @@ A.5.  Since draft-ietf-httpbis-alt-svc-03
 
 
 
-Nottingham, et al.       Expires October 4, 2016               [Page 21]
+Nottingham, et al.       Expires October 5, 2016               [Page 21]
 
 Internet-Draft          HTTP Alternative Services             April 2016
 
@@ -1229,7 +1229,7 @@ A.9.  Since draft-ietf-httpbis-alt-svc-07
 
 
 
-Nottingham, et al.       Expires October 4, 2016               [Page 22]
+Nottingham, et al.       Expires October 5, 2016               [Page 22]
 
 Internet-Draft          HTTP Alternative Services             April 2016
 
@@ -1285,7 +1285,7 @@ A.10.  Since draft-ietf-httpbis-alt-svc-08
 
 
 
-Nottingham, et al.       Expires October 4, 2016               [Page 23]
+Nottingham, et al.       Expires October 5, 2016               [Page 23]
 
 Internet-Draft          HTTP Alternative Services             April 2016
 
@@ -1341,7 +1341,7 @@ A.14.  Since draft-ietf-httpbis-alt-svc-12
 
 
 
-Nottingham, et al.       Expires October 4, 2016               [Page 24]
+Nottingham, et al.       Expires October 5, 2016               [Page 24]
 
 Internet-Draft          HTTP Alternative Services             April 2016
 
@@ -1397,4 +1397,4 @@ Authors' Addresses
 
 
 
-Nottingham, et al.       Expires October 4, 2016               [Page 25]
+Nottingham, et al.       Expires October 5, 2016               [Page 25]
