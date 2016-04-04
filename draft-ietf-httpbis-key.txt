@@ -104,8 +104,8 @@ Table of Contents
    Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .  16
    Appendix B.  Changes  . . . . . . . . . . . . . . . . . . . . . .  16
      B.1.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .  16
+     B.2.  Since -01 . . . . . . . . . . . . . . . . . . . . . . . .  17
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  17
-
 
 
 
@@ -898,6 +898,10 @@ Fielding & Nottingham    Expires October 6, 2016               [Page 16]
 Internet-Draft                     Key                        April 2016
 
 
+B.2.  Since -01
+
+   None yet.
+
 Authors' Addresses
 
    Roy T. Fielding
@@ -911,10 +915,6 @@ Authors' Addresses
 
    Email: mnot@mnot.net
    URI:   https://www.mnot.net/
-
-
-
-
 
 
 
