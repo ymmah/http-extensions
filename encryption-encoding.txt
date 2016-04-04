@@ -1101,6 +1101,10 @@ Internet-Draft           HTTP encryption coding               April 2016
               "Digital Signature Standard (DSS)", NIST PUB 186-4 , July
               2013.
 
+   [RFC4648]  Josefsson, S., "The Base16, Base32, and Base64 Data
+              Encodings", RFC 4648, DOI 10.17487/RFC4648, October 2006,
+              <http://www.rfc-editor.org/info/rfc4648>.
+
    [RFC4880]  Callas, J., Donnerhacke, L., Finney, H., Shaw, D., and R.
               Thayer, "OpenPGP Message Format", RFC 4880,
               DOI 10.17487/RFC4880, November 2007,
@@ -1110,10 +1114,6 @@ Internet-Draft           HTTP encryption coding               April 2016
               IANA Considerations Section in RFCs", BCP 26, RFC 5226,
               DOI 10.17487/RFC5226, May 2008,
               <http://www.rfc-editor.org/info/rfc5226>.
-
-
-
-
 
 
 
