@@ -98,14 +98,14 @@ Table of Contents
    This document describes a use of HTTP Alternative Services
    [I-D.ietf-httpbis-alt-svc] to decouple the URI scheme from the use
    and configuration of underlying encryption, allowing a "http" URI
-   [RFC7230] to be accessed using Transport Layer Security (TLS)
-   [RFC5246] opportunistically.
+   [RFC7230] to be accessed using TLS [RFC5246] opportunistically.
 
    Serving "https" URIs require acquiring and configuring a valid
    certificate, which means that some deployments find supporting TLS
    difficult.  This document describes a usage model whereby sites can
    serve "http" URIs over TLS without being required to support strong
    server authentication.
+
 
 
 
@@ -120,8 +120,8 @@ Internet-Draft         Opportunistic HTTP Security            April 2016
    Normally, users will not be able to tell that it is in use (i.e.,
    there will be no "lock icon").
 
-   A mechanism for partially mitigating active attacks is described in
-   Section 5.
+   By its nature, this technique is vulnerable to active attacks.  A
+   mechanism for partially mitigating them is described in Section 5.
 
 1.1.  Goals and Non-Goals
 
@@ -185,8 +185,8 @@ Internet-Draft         Opportunistic HTTP Security            April 2016
 
    As defined in that specification, one way of establishing this is
    using a TLS-based protocol with the certificate checks defined in
-   [RFC2818].  Clients are permitted to impose additional criteria for
-   establishing reasonable assurances.
+   [RFC2818].  Clients MAY impose additional criteria for establishing
+   reasonable assurances.
 
    For the purposes of this specification, an additional way of
    establishing reasonable assurances is available when the alternative
@@ -198,10 +198,8 @@ Internet-Draft         Opportunistic HTTP Security            April 2016
    the alternative service can provide any certificate, or even select
    TLS cipher suites that do not include authentication.
 
-   A client acquires an http-opportunistic response by making a GET
-   request to the "http-opportunistic" well-known URI.  When the client
-   has a valid http-opportunistic response for an origin, it MAY
-   consider there to be reasonable assurances when:
+   When the client has a valid http-opportunistic response for an
+   origin, it MAY consider there to be reasonable assurances when:
 
    o  The origin and alternative service's hostnames are the same when
       compared in a case-insensitive fashion, and
@@ -211,6 +209,8 @@ Internet-Draft         Opportunistic HTTP Security            April 2016
    For example, this request/response pair would constitute reasonable
    assurances for the origin "http://www.example.com" for any
    alternative service also on "www.example.com":
+
+
 
 
 
@@ -253,11 +253,11 @@ Internet-Draft         Opportunistic HTTP Security            April 2016
    server cannot be used for "https" URIs until the server certificate
    is successfully authenticated.  Section 3.1 of [RFC2818] describes
    the basic mechanism, though the authentication considerations in
-   Section 2.1 of [I-D.ietf-httpbis-alt-svc] also apply.
+   [I-D.ietf-httpbis-alt-svc] also apply.
 
    Connections that are established without any means of server
-   authentication (for instance, the purely anonymous TLS cipher suites)
-   cannot be used for "https" URIs.
+   authentication (for instance, the purely anonymous TLS cipher
+   suites), cannot be used for "https" URIs.
 
 5.  Requiring Use of TLS
 
@@ -294,7 +294,7 @@ Internet-Draft         Opportunistic HTTP Security            April 2016
 5.1.  Opportunistic Commitment
 
    An origin can reduce the risk of attacks on opportunistically secured
-   connections by committing to provide a secured, authenticated
+   connections by committing to provide an secured, authenticated
    alternative service.  This is done by including the optional "commit"
    member in the http-opportunistic well-known resource (see Section 6).
    This feature is optional due to the requirement for server
@@ -400,7 +400,7 @@ Internet-Draft         Opportunistic HTTP Security            April 2016
    o  The "origins" member of the root object has a value of an array of
       strings, one of which is a case-insensitive character-for-
       character match for the origin in question, serialised into
-      Unicode as per Section 6.1 of [RFC6454].
+      Unicode as per [RFC6454], Section 6.1, and
 
    This specification defines one additional, optional member of the
    root object, "commit" in Section 5.  Unrecognised members MUST be
@@ -408,13 +408,13 @@ Internet-Draft         Opportunistic HTTP Security            April 2016
 
 7.  IANA Considerations
 
-   This specification registers a Well-Known URI [RFC5785]:
+   This specification registers a Well-known URI [RFC5785]:
 
    o  URI Suffix: http-opportunistic
 
    o  Change Controller: IETF
 
-   o  Specification Document(s): Section 6 of [this specification]
+   o  Specification Document(s): [this specification]
 
    o  Related Information:
 
@@ -430,9 +430,9 @@ Internet-Draft         Opportunistic HTTP Security            April 2016
 8.2.  Downgrade Attacks
 
    A downgrade attack against the negotiation for TLS is possible.  With
-   commitment (see Section 5), this is limited to occasions where
-   clients have no prior information (see Section 8.3), or when
-   persisted commitments have expired.
+   commitment Section 5, this is limited to occasions where clients have
+   no prior information (see Section 8.3), or when persisted commitments
+   have expired.
 
    For example, because the "Alt-Svc" header field
    [I-D.ietf-httpbis-alt-svc] likely appears in an unauthenticated and
@@ -468,17 +468,20 @@ Internet-Draft         Opportunistic HTTP Security            April 2016
 
 8.4.  Confusion Regarding Request Scheme
 
+   Many existing HTTP/1.1 implementations use the presence or absence of
+   TLS in the stack to determine whether requests are for "http" or
+   "https" resources.  This is necessary in many cases because the most
+   common form of an HTTP/1.1 request does not carry an explicit
+   indication of the URI scheme.
+
+   HTTP/1.1 MUST NOT be used for opportunistically secured requests.
+
    Some HTTP/1.1 implementations use ambient signals to determine if a
    request is for an "https" resource.  For example, implementations
-   might look for TLS on the stack or a port number of 443.  This is
-   necessary in many cases because the most common form of an HTTP/1.1
-   request does not carry an explicit indication of the URI scheme.  An
-   implementation that is serving an opportunistically secured request
-   SHOULD suppress these signals for "http" resources.
-
-   HTTP/1.1 MUST NOT be used to serve opportunistically secured
-   requests.  HTTP/1.1 can be used to discover an opportunistically
-   secured alternative service.
+   might look for TLS on the stack or a port number of 443.  An
+   implementation that supports opportunistically secured requests
+   SHOULD suppress these signals if there is any potential for
+   confusion.
 
 9.  References
 
@@ -494,9 +497,6 @@ Internet-Draft         Opportunistic HTTP Security            April 2016
               DOI 10.17487/RFC2119, March 1997,
               <http://www.rfc-editor.org/info/rfc2119>.
 
-   [RFC2818]  Rescorla, E., "HTTP Over TLS", RFC 2818,
-              DOI 10.17487/RFC2818, May 2000,
-              <http://www.rfc-editor.org/info/rfc2818>.
 
 
 
@@ -505,6 +505,10 @@ Nottingham & Thomson     Expires October 6, 2016                [Page 9]
 
 Internet-Draft         Opportunistic HTTP Security            April 2016
 
+
+   [RFC2818]  Rescorla, E., "HTTP Over TLS", RFC 2818,
+              DOI 10.17487/RFC2818, May 2000,
+              <http://www.rfc-editor.org/info/rfc2818>.
 
    [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
               (TLS) Protocol Version 1.2", RFC 5246,
@@ -549,10 +553,6 @@ Internet-Draft         Opportunistic HTTP Security            April 2016
               Most of the Time", RFC 7435, DOI 10.17487/RFC7435,
               December 2014, <http://www.rfc-editor.org/info/rfc7435>.
 
-   [RFC7469]  Evans, C., Palmer, C., and R. Sleevi, "Public Key Pinning
-              Extension for HTTP", RFC 7469, DOI 10.17487/RFC7469, April
-              2015, <http://www.rfc-editor.org/info/rfc7469>.
-
 
 
 
@@ -562,12 +562,16 @@ Nottingham & Thomson     Expires October 6, 2016               [Page 10]
 Internet-Draft         Opportunistic HTTP Security            April 2016
 
 
+   [RFC7469]  Evans, C., Palmer, C., and R. Sleevi, "Public Key Pinning
+              Extension for HTTP", RFC 7469, DOI 10.17487/RFC7469, April
+              2015, <http://www.rfc-editor.org/info/rfc7469>.
+
 Appendix A.  Acknowledgements
 
    Thanks to Patrick McManus, Eliot Lear, Stephen Farrell, Guy Podjarny,
    Stephen Ludin, Erik Nygren, Paul Hoffman, Adam Langley, Eric
-   Rescorla, Julian Reschke, Kari Hurtta, and Richard Barnes for their
-   feedback and suggestions.
+   Rescorla, Kari Hurtta, and Richard Barnes for their feedback and
+   suggestions.
 
 Authors' Addresses
 
@@ -581,10 +585,6 @@ Authors' Addresses
    Mozilla
 
    Email: martin.thomson@gmail.com
-
-
-
-
 
 
 
