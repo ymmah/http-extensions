@@ -243,8 +243,8 @@ Internet-Draft          HTTP Alternative Services             April 2016
    Furthermore, it is important to note that the first member of an
    alternative service tuple is different from the "scheme" component of
    an origin; it is more specific, identifying not only the major
-   version of the protocol being used, but potentially communication
-   options for that protocol.
+   version of the protocol being used, but potentially the communication
+   options for that protocol as well.
 
    This means that clients using an alternative service can change the
    host, port, and protocol that they are using to fetch resources, but
