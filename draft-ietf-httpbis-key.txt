@@ -5,7 +5,7 @@
 HTTP Working Group                                           R. Fielding
 Internet-Draft                                Adobe Systems Incorporated
 Intended status: Standards Track                           M. Nottingham
-Expires: October 6, 2016                                   April 4, 2016
+Expires: October 7, 2016                                   April 5, 2016
 
 
                    The Key HTTP Response Header Field
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Fielding & Nottingham    Expires October 6, 2016                [Page 1]
+Fielding & Nottingham    Expires October 7, 2016                [Page 1]
 
 Internet-Draft                     Key                        April 2016
 
@@ -61,7 +61,7 @@ Internet-Draft                     Key                        April 2016
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 6, 2016.
+   This Internet-Draft will expire on October 7, 2016.
 
 Copyright Notice
 
@@ -87,7 +87,7 @@ Table of Contents
      2.1.  Relationship with Vary  . . . . . . . . . . . . . . . . .   5
      2.2.  Calculating a Secondary Cache Key . . . . . . . . . . . .   6
        2.2.1.  Creating a Header Field Value . . . . . . . . . . . .   8
-       2.2.2.  Failing Parameter Processing  . . . . . . . . . . . .   9
+       2.2.2.  Failing Parameter Processing  . . . . . . . . . . . .   8
      2.3.  Key Parameters  . . . . . . . . . . . . . . . . . . . . .   9
        2.3.1.  div . . . . . . . . . . . . . . . . . . . . . . . . .   9
        2.3.2.  partition . . . . . . . . . . . . . . . . . . . . . .  10
@@ -96,7 +96,7 @@ Table of Contents
        2.3.5.  param . . . . . . . . . . . . . . . . . . . . . . . .  13
    3.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  14
      3.1.  Procedure . . . . . . . . . . . . . . . . . . . . . . . .  14
-     3.2.  Registrations . . . . . . . . . . . . . . . . . . . . . .  15
+     3.2.  Registrations . . . . . . . . . . . . . . . . . . . . . .  14
    4.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
    5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .  15
@@ -104,12 +104,12 @@ Table of Contents
    Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .  16
    Appendix B.  Changes  . . . . . . . . . . . . . . . . . . . . . .  16
      B.1.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .  16
-     B.2.  Since -01 . . . . . . . . . . . . . . . . . . . . . . . .  17
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  17
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  16
 
 
 
-Fielding & Nottingham    Expires October 6, 2016                [Page 2]
+
+Fielding & Nottingham    Expires October 7, 2016                [Page 2]
 
 Internet-Draft                     Key                        April 2016
 
@@ -165,7 +165,7 @@ Internet-Draft                     Key                        April 2016
 
 
 
-Fielding & Nottingham    Expires October 6, 2016                [Page 3]
+Fielding & Nottingham    Expires October 7, 2016                [Page 3]
 
 Internet-Draft                     Key                        April 2016
 
@@ -221,7 +221,7 @@ Internet-Draft                     Key                        April 2016
 
 
 
-Fielding & Nottingham    Expires October 6, 2016                [Page 4]
+Fielding & Nottingham    Expires October 7, 2016                [Page 4]
 
 Internet-Draft                     Key                        April 2016
 
@@ -277,7 +277,7 @@ Internet-Draft                     Key                        April 2016
 
 
 
-Fielding & Nottingham    Expires October 6, 2016                [Page 5]
+Fielding & Nottingham    Expires October 7, 2016                [Page 5]
 
 Internet-Draft                     Key                        April 2016
 
@@ -304,7 +304,7 @@ Internet-Draft                     Key                        April 2016
 
    However, each of these can have zero to many key parameters that
    change how the response selection process (as defined in [RFC7234],
-   Section 4.3) works.
+   Section 4.3)) works.
 
    In particular, when a cache fully implements this specification, it
    creates a secondary cache key for every request by following the
@@ -333,14 +333,14 @@ Internet-Draft                     Key                        April 2016
 
 
 
-Fielding & Nottingham    Expires October 6, 2016                [Page 6]
+Fielding & Nottingham    Expires October 7, 2016                [Page 6]
 
 Internet-Draft                     Key                        April 2016
 
 
    4)  Create "key_list" by splitting "key_value" on "," characters,
-       excepting "," characters within quoted strings, as per [RFC7230],
-       Section 3.2.6.
+       excepting "," characters within quoted strings, as per [RFC7230]
+       Section 3.2.6..
    5)  For "key_item" in "key_list":
 
        1)  Remove any leading and trailing WSP from "key_item".
@@ -357,7 +357,7 @@ Internet-Draft                     Key                        April 2016
            in "key_item", removing any WSP between them.
        6)  Create "param_list" by splitting "parameters" on ";"
            characters, excepting ";" characters within quoted strings,
-           as per [RFC7230], Section 3.2.6.
+           as per [RFC7230] Section 3.2.6.
        7)  For "parameter" in "param_list":
 
            1)  If "parameter" does not contain a "=", fail parameter
@@ -379,25 +379,23 @@ Internet-Draft                     Key                        April 2016
                1)  Remove the first and last characters of
                    "param_value".
                2)  Replace quoted-pairs within "param_value" with the
-                   octet following the backslash, as per [RFC7230],
+                   octet following the backslash, as per [RFC7230]
                    Section 3.2.6.
            7)  If "param_value" does not conform to the syntax defined
                for it by the parameter definition, fail parameter
-               processing (Section 2.2.2) and skip to the next
-               "key_item".
+               processing Section 2.2.2 and skip to the next "key_item".
+           8)  Run the identified processing algorithm on "field_value"
+               with the "param_value", and append the result to
 
 
 
-
-Fielding & Nottingham    Expires October 6, 2016                [Page 7]
+Fielding & Nottingham    Expires October 7, 2016                [Page 7]
 
 Internet-Draft                     Key                        April 2016
 
 
-           8)  Run the identified processing algorithm on "field_value"
-               with the "param_value", and append the result to
                "secondary_key".  If parameter processing fails
-               (Section 2.2.2), skip to the next "key_item".
+               Section 2.2.2, skip to the next "key_item".
            9)  Append a separator character (e.g., NULL) to
                "secondary_key".
    6)  Return "secondary_key".
@@ -439,21 +437,19 @@ Internet-Draft                     Key                        April 2016
    4)  Return the concatenation of "target_field_values", separating
        each with "," characters.
 
-
-
-
-
-
-
-Fielding & Nottingham    Expires October 6, 2016                [Page 8]
-
-Internet-Draft                     Key                        April 2016
-
-
 2.2.2.  Failing Parameter Processing
 
    In some cases, a key parameter cannot determine a secondary cache key
    corresponding to its nominated header field value.  When this
+
+
+
+
+Fielding & Nottingham    Expires October 7, 2016                [Page 8]
+
+Internet-Draft                     Key                        April 2016
+
+
    happens, Key processing needs to fail safely, so that the correct
    behavior is observed.
 
@@ -486,7 +482,7 @@ Internet-Draft                     Key                        April 2016
    these steps (or their equivalent):
 
    1)  If "parameter_value" is "0", fail parameter processing
-       (Section 2.2.2).
+       Section 2.2.2.
    2)  If "header_value" is the empty string, return "none".
    3)  If "header_value" contains a ",", remove it and all subsequent
        characters.
@@ -499,14 +495,16 @@ Internet-Draft                     Key                        April 2016
    For example, the Key:
 
 
+   Key: Bar;div=5
 
 
-Fielding & Nottingham    Expires October 6, 2016                [Page 9]
+
+
+
+Fielding & Nottingham    Expires October 7, 2016                [Page 9]
 
 Internet-Draft                     Key                        April 2016
 
-
-   Key: Bar;div=5
 
    indicates that the "Bar" header's field value should be partitioned
    into groups of 5.  Thus, the following field values would be
@@ -555,14 +553,13 @@ Internet-Draft                     Key                        April 2016
        2)  Increment "segment_id" by 1.
    8)  Return "segment_id".
 
+   For example, the Key:
 
 
-Fielding & Nottingham    Expires October 6, 2016               [Page 10]
+
+Fielding & Nottingham    Expires October 7, 2016               [Page 10]
 
 Internet-Draft                     Key                        April 2016
-
-
-   For example, the Key:
 
 
    Key: Foo;partition=20:30:40
@@ -610,17 +607,16 @@ Internet-Draft                     Key                        April 2016
    3)  For each "header_item" in "header_list":
 
        1)  Remove leading and trailing WSP characters in "header_item".
-
-
-
-Fielding & Nottingham    Expires October 6, 2016               [Page 11]
-
-Internet-Draft                     Key                        April 2016
-
-
        2)  If the value of "header_item" is character-for-character
            identical to "parameter_value", return "1".
    4)  Return "0".
+
+
+
+Fielding & Nottingham    Expires October 7, 2016               [Page 11]
+
+Internet-Draft                     Key                        April 2016
+
 
    For example, the Key:
 
@@ -666,17 +662,16 @@ Internet-Draft                     Key                        April 2016
        1)  Remove leading and trailing WSP characters in "header_item".
        2)  If the value of "parameter_value" is character-for-character
            present as a substring of "header_value", return "1".
-
-
-
-Fielding & Nottingham    Expires October 6, 2016               [Page 12]
-
-Internet-Draft                     Key                        April 2016
-
-
    4)  Return "0".
 
    For example, the Key:
+
+
+
+
+Fielding & Nottingham    Expires October 7, 2016               [Page 12]
+
+Internet-Draft                     Key                        April 2016
 
 
    Key: Abc;substr=bennet
@@ -722,19 +717,19 @@ Internet-Draft                     Key                        April 2016
        2)  For each "header_item_tmp2" in "header_list_tmp2":
 
            1)  Remove leading and trailing WSP from "header_item_tmp2".
-
-
-
-Fielding & Nottingham    Expires October 6, 2016               [Page 13]
-
-Internet-Draft                     Key                        April 2016
-
-
            2)  Append "header_item_tmp2" to header_list.
    4)  For each "header_item" in "header_list":
 
        1)  If the "=" character does not occur within "header_item",
            skip to the next "header_item".
+
+
+
+Fielding & Nottingham    Expires October 7, 2016               [Page 13]
+
+Internet-Draft                     Key                        April 2016
+
+
        2)  Let "item_name" be the string occurring before the first "="
            character in "header_item".
        3)  If "item_name" does not case-insensitively match
@@ -778,18 +773,18 @@ Internet-Draft                     Key                        April 2016
    Section 4.1 of [RFC5226]) and MUST conform to the purpose of content
    coding defined in this section.
 
-
-
-
-Fielding & Nottingham    Expires October 6, 2016               [Page 14]
-
-Internet-Draft                     Key                        April 2016
-
-
 3.2.  Registrations
 
    This specification makes the following entries in the HTTP Key
    Parameter Registry:
+
+
+
+
+Fielding & Nottingham    Expires October 7, 2016               [Page 14]
+
+Internet-Draft                     Key                        April 2016
+
 
                     +----------------+---------------+
                     | Parameter Name | Reference     |
@@ -835,17 +830,17 @@ Internet-Draft                     Key                        April 2016
               DOI 10.17487/RFC2119, March 1997,
               <http://www.rfc-editor.org/info/rfc2119>.
 
-
-
-Fielding & Nottingham    Expires October 6, 2016               [Page 15]
-
-Internet-Draft                     Key                        April 2016
-
-
    [RFC5234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
               Specifications: ABNF", STD 68, RFC 5234,
               DOI 10.17487/RFC5234, January 2008,
               <http://www.rfc-editor.org/info/rfc5234>.
+
+
+
+Fielding & Nottingham    Expires October 7, 2016               [Page 15]
+
+Internet-Draft                     Key                        April 2016
+
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
@@ -889,20 +884,19 @@ B.1.  Since -00
    o  Issue 106 (Policy for Key parameter registry) closed with no
       action.
 
+Authors' Addresses
 
 
 
 
-Fielding & Nottingham    Expires October 6, 2016               [Page 16]
+
+
+
+
+Fielding & Nottingham    Expires October 7, 2016               [Page 16]
 
 Internet-Draft                     Key                        April 2016
 
-
-B.2.  Since -01
-
-   None yet.
-
-Authors' Addresses
 
    Roy T. Fielding
    Adobe Systems Incorporated
@@ -949,4 +943,10 @@ Authors' Addresses
 
 
 
-Fielding & Nottingham    Expires October 6, 2016               [Page 17]
+
+
+
+
+
+
+Fielding & Nottingham    Expires October 7, 2016               [Page 17]
