@@ -86,7 +86,7 @@ Table of Contents
      3.1.  Caching Alt-Svc Header Field Values . . . . . . . . . . .  11
    4.  The ALTSVC HTTP/2 Frame . . . . . . . . . . . . . . . . . . .  12
    5.  The Alt-Used HTTP Header Field  . . . . . . . . . . . . . . .  13
-   6.  The 421 Misdirected Request HTTP Status Code  . . . . . . . .  14
+   6.  The 421 (Misdirected Request) HTTP Status Code  . . . . . . .  14
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  14
      7.1.  Header Field Registrations  . . . . . . . . . . . . . . .  14
      7.2.  The ALTSVC HTTP/2 Frame Type  . . . . . . . . . . . . . .  15
@@ -99,7 +99,7 @@ Table of Contents
      9.2.  Changing Hosts  . . . . . . . . . . . . . . . . . . . . .  16
      9.3.  Changing Protocols  . . . . . . . . . . . . . . . . . . .  17
      9.4.  Tracking Clients Using Alternative Services . . . . . . .  17
-     9.5.  Confusion Regarding Request Scheme  . . . . . . . . . . .  17
+     9.5.  Confusion regarding Request Scheme  . . . . . . . . . . .  17
    10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  18
      10.1.  Normative References . . . . . . . . . . . . . . . . . .  18
      10.2.  Informative References . . . . . . . . . . . . . . . . .  20
@@ -200,7 +200,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
    This specification defines a new concept in HTTP, the "Alternative
    Service".  When an origin [RFC6454] has resources that are accessible
-   through a different protocol / host / port combination, it is said to
+   through a different protocol/host/port combination, it is said to
    have an alternative service available.
 
    An alternative service can be used to interact with the resources on
@@ -243,14 +243,14 @@ Internet-Draft          HTTP Alternative Services             April 2016
    Furthermore, it is important to note that the first member of an
    alternative service tuple is different from the "scheme" component of
    an origin; it is more specific, identifying not only the major
-   version of the protocol being used, but potentially communication
-   options for that protocol.
+   version of the protocol being used, but potentially the communication
+   options for that protocol as well.
 
    This means that clients using an alternative service can change the
-   host, port and protocol that they are using to fetch resources, but
+   host, port, and protocol that they are using to fetch resources, but
    these changes MUST NOT be propagated to the application that is using
    HTTP; from that standpoint, the URI being accessed and all
-   information derived from it (scheme, host, port) are the same as
+   information derived from it (scheme, host, and port) are the same as
    before.
 
    Importantly, this includes its security context; in particular, when
@@ -288,9 +288,8 @@ Internet-Draft          HTTP Alternative Services             April 2016
    "http/1.1", registered by Section 6 of [RFC7301], identifies HTTP/1.1
    over TLS.
 
-   Additionally, each alternative service MUST have:
-
-   o  A freshness lifetime, expressed in seconds; see Section 2.2
+   Additionally, each alternative service MUST have a freshness
+   lifetime, expressed in seconds (see Section 2.2).
 
    There are many ways that a client could discover the alternative
    service(s) associated with an origin.  This document describes two
@@ -333,6 +332,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 
 
+
 Nottingham, et al.       Expires October 7, 2016                [Page 6]
 
 Internet-Draft          HTTP Alternative Services             April 2016
@@ -371,7 +371,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
    By their nature, alternative services are OPTIONAL: clients do not
    need to use them.  However, it is advantageous for clients to behave
    in a predictable way when alternative services are used by servers,
-   to aid purposes like load balancing.
+   to aid in purposes like load balancing.
 
    Therefore, if a client supporting this specification becomes aware of
    an alternative service, the client SHOULD use that alternative
@@ -408,7 +408,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
    The client does not need to block requests on any existing
    connection; it can be used until the alternative connection is
    established.  However, if the security properties of the existing
-   connection are weak (for example, cleartext HTTP/1.1) then it might
+   connection are weak (for example, cleartext HTTP/1.1), then it might
    make sense to block until the new connection is fully available in
    order to avoid information leakage.
 
@@ -533,8 +533,8 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
    The value(s) advertised by Alt-Svc can be used by clients to open a
    new connection to an alternative service.  Subsequent requests can
-   start using this new connection immediately, or can continue using
-   the existing connection while the new connection is created.
+   start using this new connection immediately or can continue using the
+   existing connection while the new connection is created.
 
    When using HTTP/2 ([RFC7540]), servers SHOULD instead send an ALTSVC
    frame (Section 4).  A single ALTSVC frame can be sent for a
@@ -569,20 +569,20 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
    When an alternative service is advertised using Alt-Svc, it is
    considered fresh for 24 hours from generation of the message.  This
-   can be modified with the 'ma' (max-age) parameter.
+   can be modified with the "ma" (max-age) parameter.
 
    Syntax:
 
    ma = delta-seconds; see [RFC7234], Section 1.2.1
 
    The delta-seconds value indicates the number of seconds since the
-   response was generated the alternative service is considered fresh
-   for.
+   response was generated for which the alternative service is
+   considered fresh.
 
    Alt-Svc: h2=":443"; ma=3600
 
-   See Section 4.2.3 of [RFC7234] for details of determining response
-   age.
+   See Section 4.2.3 of [RFC7234] for details on determining the
+   response age.
 
    For example, a response:
 
@@ -594,7 +594,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
    indicates that an alternative service is available and usable for the
    next 60 seconds.  However, the response has already been cached for
-   30 seconds (as per the Age header field value), so therefore the
+   30 seconds (as per the Age header field value); therefore, the
    alternative service is only fresh for the 30 seconds from when this
    response was received, minus estimated transit time.
 
@@ -607,7 +607,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
    By default, cached alternative services will be cleared when the
    client detects a network change.  Alternative services that are
-   intended to be longer-lived (such as those that are not specific to
+   intended to be longer lived (such as those that are not specific to
    the client access network) can carry the "persist" parameter with a
 
 
@@ -678,8 +678,8 @@ Internet-Draft          HTTP Alternative Services             April 2016
       octets, of the Origin field.
 
    Origin:  An OPTIONAL sequence of characters containing the ASCII
-      serialization of an origin ([RFC6454], Section 6.2) that the
-      alternative service is applicable to.
+      serialization of an origin ([RFC6454], Section 6.2) to which the
+      alternative service is applicable.
 
    Alt-Svc-Field-Value:  A sequence of octets (length determined by
       subtracting the length of all preceding fields from the frame
@@ -710,9 +710,9 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 5.  The Alt-Used HTTP Header Field
 
-   The Alt-Used header field is used in requests to indicate the
-   identity of the alternative service in use, just as the Host header
-   field (Section 5.4 of [RFC7230]) identifies the host and port of the
+   The Alt-Used header field is used in requests to identify the
+   alternative service in use, just as the Host header field
+   (Section 5.4 of [RFC7230]) identifies the host and port of the
    origin.
 
    Alt-Used     = uri-host [ ":" port ]
@@ -739,7 +739,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
      Host: origin.example.com
      Alt-Used: alternate.example.net
 
-6.  The 421 Misdirected Request HTTP Status Code
+6.  The 421 (Misdirected Request) HTTP Status Code
 
    The 421 (Misdirected Request) status code is defined in Section 9.1.2
    of [RFC7540] to indicate that the current server instance is not
@@ -765,8 +765,8 @@ Internet-Draft          HTTP Alternative Services             April 2016
    headers/>.
 
    This document defines the following HTTP header fields, so their
-   associated registry entries shall be added according to the permanent
-   registrations below (see [BCP90]):
+   associated registry entries have been added according to the
+   permanent registrations below (see [BCP90]):
 
    +-------------------+----------+----------+------------+
    | Header Field Name | Protocol | Status   | Reference  |
@@ -775,7 +775,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
    | Alt-Used          | http     | standard | Section 5  |
    +-------------------+----------+----------+------------+
 
-   The change controller is: "IETF (iesg@ietf.org) - Internet
+   The change controller is: "IETF (iesg@ietf.org) -- Internet
    Engineering Task Force".
 
 
@@ -788,8 +788,8 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 7.2.  The ALTSVC HTTP/2 Frame Type
 
-   This document registers the ALTSVC frame type in the HTTP/2 Frame
-   Types registry ([RFC7540], Section 11.2).
+   This document registers the ALTSVC frame type in the "HTTP/2 Frame
+   Type" registry ([RFC7540], Section 11.2).
 
       Frame Type: ALTSVC
 
@@ -799,9 +799,10 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 7.3.  Alt-Svc Parameter Registry
 
-   The HTTP Alt-Svc Parameter Registry defines the name space for
-   parameters.  It will be created and maintained at (the suggested URI)
-   <http://www.iana.org/assignments/http-alt-svc-parameters>.
+   The "Hypertext Transfer Protocol (HTTP) Alt-Svc Parameter Registry"
+   defines the name space for parameters.  It has been created and will
+   be maintained at <http://www.iana.org/assignments/http-alt-svc-
+   parameters>.
 
 7.3.1.  Procedure
 
@@ -816,8 +817,8 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 7.3.2.  Registrations
 
-   The HTTP Alt-Svc Parameter Registry is to be populated with the
-   registrations below:
+   The "Hypertext Transfer Protocol (HTTP) Alt-Svc Parameter Registry"
+   has been populated with the registrations below:
 
    +-------------------+--------------+
    | Alt-Svc Parameter | Reference    |
@@ -836,7 +837,6 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 
 
-
 Nottingham, et al.       Expires October 7, 2016               [Page 15]
 
 Internet-Draft          HTTP Alternative Services             April 2016
@@ -847,11 +847,11 @@ Internet-Draft          HTTP Alternative Services             April 2016
 9.1.  Changing Ports
 
    Using an alternative service implies accessing an origin's resources
-   on an alternative port, at a minimum.  An attacker that can inject
-   alternative services and listen at the advertised port is therefore
+   on an alternative port, at a minimum.  Therefore, an attacker that
+   can inject alternative services and listen at the advertised port is
    able to hijack an origin.  On certain servers, it is normal for users
-   to be able to control some personal pages available on a shared port,
-   and also to accept to requests on less-privileged ports.
+   to be able to control some personal pages available on a shared port
+   and also to accept requests on less-privileged ports.
 
    For example, an attacker that can add HTTP response header fields to
    some pages can redirect traffic for an entire origin to a different
@@ -867,9 +867,9 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
 9.2.  Changing Hosts
 
-   When the host is changed due to the use of an alternative service, it
-   presents an opportunity for attackers to hijack communication to an
-   origin.
+   When the host is changed due to the use of an alternative service,
+   this presents an opportunity for attackers to hijack communication to
+   an origin.
 
    For example, if an attacker can convince a user agent to send all
    traffic for "innocent.example.org" to "evil.example.com" by
@@ -900,8 +900,8 @@ Internet-Draft          HTTP Alternative Services             April 2016
 
    Alternative services could be used to persist such an attack.  For
    example, an intermediary could man-in-the-middle TLS-protected
-   communication to a target, and then direct all traffic to an
-   alternative service with a large freshness lifetime, so that the user
+   communication to a target and then direct all traffic to an
+   alternative service with a large freshness lifetime so that the user
    agent still directs traffic to the attacker even when not using the
    intermediary.
 
@@ -919,11 +919,11 @@ Internet-Draft          HTTP Alternative Services             April 2016
    because the protocol identifier itself implies this.
 
    For example, if an "https://" URI has a protocol advertised that does
-   not use some form of end-to-end encryption (most likely, TLS), it
+   not use some form of end-to-end encryption (most likely, TLS), this
    violates the expectations for security that the URI scheme implies.
-   Therefore, clients cannot blindly use alternative services, but
-   instead evaluate the option(s) presented to assure that security
-   requirements and expectations of specifications, implementations and
+   Therefore, clients cannot use alternative services blindly, but
+   instead evaluate the option(s) presented to ensure that security
+   requirements and expectations of specifications, implementations, and
    end users are met.
 
 9.4.  Tracking Clients Using Alternative Services
@@ -941,7 +941,7 @@ Internet-Draft          HTTP Alternative Services             April 2016
    when origin-specific data is cleared (typically, when cookies
    [RFC6265] are cleared).
 
-9.5.  Confusion Regarding Request Scheme
+9.5.  Confusion regarding Request Scheme
 
    Some server-side HTTP applications make assumptions about security
    based upon connection context; for example, equating being served
@@ -1357,7 +1357,8 @@ A.15.  Since draft-ietf-httpbis-alt-svc-13
 
 A.16.  Since draft-ietf-httpbis-alt-svc-14
 
-   None yet.
+   Editorial changes made during RFC Editor's AUTH48 stage
+   (<https://github.com/httpwg/http-extensions/issues/165>).
 
 Appendix B.  Acknowledgements
 
@@ -1391,7 +1392,6 @@ Authors' Addresses
 
    EMail: julian.reschke@greenbytes.de
    URI:   https://greenbytes.de/tech/webdav/
-
 
 
 
