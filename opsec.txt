@@ -183,10 +183,9 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
    there are "reasonable assurances" that it is under control of and
    valid for the whole origin.
 
-   As defined in that specification, one way of establishing this is
-   using a TLS-based protocol with the certificate checks defined in
-   [RFC2818].  Clients are permitted to impose additional criteria for
-   establishing reasonable assurances.
+   As defined in that specification, a client can establish reasonable
+   assurances when using a TLS-based protocol with the certificate
+   checks defined in [RFC2818].
 
    For the purposes of this specification, an additional way of
    establishing reasonable assurances is available when the alternative
@@ -198,23 +197,24 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
    the alternative service can provide any certificate, or even select
    TLS cipher suites that do not include authentication.
 
-   A client acquires an http-opportunistic response by making a GET
-   request to the "http-opportunistic" well-known URI.  When the client
-   has a valid http-opportunistic response for an origin, it MAY
-   consider there to be reasonable assurances when:
+   When a client has a valid http-opportunistic response for an origin
+   (as per Section 6), it MAY consider there to be reasonable assurances
+   as long as:
 
    o  The origin and alternative service's hostnames are the same when
       compared in a case-insensitive fashion, and
 
-   o  The chosen alternative service returns the same response as above.
+   o  The member of the "origins" object in the http-opportunistic
+      response that matches the origin has an array of numbers as a
+      value, one of which matches the port of the alternative service in
+      question, and
+
+   o  The chosen alternative service returns the same representation as
+      the origin did for the http-opportunistic resource.
 
    For example, this request/response pair would constitute reasonable
-   assurances for the origin "http://www.example.com" for any
-   alternative service also on "www.example.com":
-
-
-
-
+   assurances for the origin "http://www.example.com" for an alternative
+   service on port 443 or 8000 of the host "www.example.com":
 
 
 
@@ -234,7 +234,7 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
    Connection: close
 
    {
-     "origins": ["http://www.example.com", "http://example.com:81"]
+     "origins": {"http://www.example.com": [443, 8000]}
    }
 
    Note that this mechanism is only defined to establish reasonable
@@ -296,7 +296,7 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
    An origin can reduce the risk of attacks on opportunistically secured
    connections by committing to provide a secured, authenticated
    alternative service.  This is done by including the optional "commit"
-   member in the http-opportunistic well-known resource (see Section 6).
+   member in the http-opportunistic well-known response (see Section 6).
    This feature is optional due to the requirement for server
    authentication and the potential risk entailed (see Section 5.3).
 
@@ -304,10 +304,10 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
    indicating the duration of the commitment interval in seconds.
 
 
-   {
-     "origins": ["http://example.com", "http://www.example.com:81"],
-     "commit": 86400
-   }
+{
+  "origins": {"http://example.com": [], "http://www.example.com:81": [8000]},
+  "commit": 86400
+}
 
    Including "commit" creates a commitment to provide a secured
    alternative service for the advertised period.  Clients that receive
@@ -377,8 +377,8 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
 6.  The "http-opportunistic" well-known URI
 
    This specification defines the "http-opportunistic" well-known URI
-   [RFC5785].  An origin is said to have a valid http-opportunistic
-   resource when:
+   [RFC5785].  A client is said to have a valid http-opportunistic
+   response for a given origin when:
 
    o  The client has obtained a 200 (OK) response for the well-known URI
       from the origin, or refreshed one in cache [RFC7234], and
@@ -397,10 +397,12 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
    o  That response's payload, when parsed as JSON [RFC7159], contains
       an object as the root.
 
-   o  The "origins" member of the root object has a value of an array of
-      strings, one of which is a case-insensitive character-for-
-      character match for the origin in question, serialised into
-      Unicode as per Section 6.1 of [RFC6454].
+   o  The root object contains an "origins" member, whose value is a
+      object.
+
+   o  One of the "origins" object's members has a name that is a case-
+      insensitive character-for-character match for the origin in
+      question, serialised into Unicode as per Section 6.1 of [RFC6454].
 
    This specification defines one additional, optional member of the
    root object, "commit" in Section 5.  Unrecognised members MUST be
@@ -440,8 +442,6 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
    that wants the connection to remain in the clear need only strip the
    "Alt-Svc" header field from responses.
 
-   Downgrade attacks can be partially mitigated using the "commit"
-   member of the http-opportunistic well-known resource, because when it
 
 
 
@@ -450,6 +450,8 @@ Nottingham & Thomson    Expires November 13, 2016               [Page 8]
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
+   Downgrade attacks can be partially mitigated using the "commit"
+   member of the http-opportunistic well-known resource, because when it
    is used, a client can avoid using cleartext to contact a supporting
    server.  However, this only works when a previous connection has been
    established without an active attacker present; a continuously
@@ -494,9 +496,7 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
               DOI 10.17487/RFC2119, March 1997,
               <http://www.rfc-editor.org/info/rfc2119>.
 
-   [RFC2818]  Rescorla, E., "HTTP Over TLS", RFC 2818,
-              DOI 10.17487/RFC2818, May 2000,
-              <http://www.rfc-editor.org/info/rfc2818>.
+
 
 
 
@@ -505,6 +505,10 @@ Nottingham & Thomson    Expires November 13, 2016               [Page 9]
 
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
+
+   [RFC2818]  Rescorla, E., "HTTP Over TLS", RFC 2818,
+              DOI 10.17487/RFC2818, May 2000,
+              <http://www.rfc-editor.org/info/rfc2818>.
 
    [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
               (TLS) Protocol Version 1.2", RFC 5246,
@@ -549,10 +553,6 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
               Attack", BCP 188, RFC 7258, DOI 10.17487/RFC7258, May
               2014, <http://www.rfc-editor.org/info/rfc7258>.
 
-   [RFC7435]  Dukhovni, V., "Opportunistic Security: Some Protection
-              Most of the Time", RFC 7435, DOI 10.17487/RFC7435,
-              December 2014, <http://www.rfc-editor.org/info/rfc7435>.
-
 
 
 
@@ -561,6 +561,10 @@ Nottingham & Thomson    Expires November 13, 2016              [Page 10]
 
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
+
+   [RFC7435]  Dukhovni, V., "Opportunistic Security: Some Protection
+              Most of the Time", RFC 7435, DOI 10.17487/RFC7435,
+              December 2014, <http://www.rfc-editor.org/info/rfc7435>.
 
    [RFC7469]  Evans, C., Palmer, C., and R. Sleevi, "Public Key Pinning
               Extension for HTTP", RFC 7469, DOI 10.17487/RFC7469, April
@@ -585,10 +589,6 @@ Authors' Addresses
    Mozilla
 
    Email: martin.thomson@gmail.com
-
-
-
-
 
 
 
