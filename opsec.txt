@@ -5,8 +5,8 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Experimental                                 M. Thomson
-Expires: November 13, 2016                                       Mozilla
-                                                            May 12, 2016
+Expires: November 14, 2016                                       Mozilla
+                                                            May 13, 2016
 
 
                     Opportunistic Security for HTTP
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on November 13, 2016.
+   This Internet-Draft will expire on November 14, 2016.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Nottingham & Thomson    Expires November 13, 2016               [Page 1]
+Nottingham & Thomson    Expires November 14, 2016               [Page 1]
 
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Nottingham & Thomson    Expires November 13, 2016               [Page 2]
+Nottingham & Thomson    Expires November 14, 2016               [Page 2]
 
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
@@ -165,7 +165,7 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
 
-Nottingham & Thomson    Expires November 13, 2016               [Page 3]
+Nottingham & Thomson    Expires November 14, 2016               [Page 3]
 
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
@@ -221,7 +221,7 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
 
-Nottingham & Thomson    Expires November 13, 2016               [Page 4]
+Nottingham & Thomson    Expires November 14, 2016               [Page 4]
 
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
@@ -277,7 +277,7 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
 
-Nottingham & Thomson    Expires November 13, 2016               [Page 5]
+Nottingham & Thomson    Expires November 14, 2016               [Page 5]
 
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
@@ -304,10 +304,13 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
    indicating the duration of the commitment interval in seconds.
 
 
-{
-  "origins": {"http://example.com": [], "http://www.example.com:81": [8000]},
-  "commit": 86400
-}
+   {
+     "origins": {
+       "http://example.com": [],
+       "http://www.example.com:81": [8000]
+     },
+     "commit": 86400
+   }
 
    Including "commit" creates a commitment to provide a secured
    alternative service for the advertised period.  Clients that receive
@@ -326,18 +329,19 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
    clients can impose other checks in addition to this minimum set.  For
    instance, a client might choose to apply key pinning [RFC7469].
 
-   A client that receives a commitment and that successfully
-   authenticates the alternative service can assume that a secured
-   alternative will remain available for the commitment interval.  The
-   commitment interval starts when the commitment is received and
 
 
 
-Nottingham & Thomson    Expires November 13, 2016               [Page 6]
+
+Nottingham & Thomson    Expires November 14, 2016               [Page 6]
 
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
+   A client that receives a commitment and that successfully
+   authenticates the alternative service can assume that a secured
+   alternative will remain available for the commitment interval.  The
+   commitment interval starts when the commitment is received and
    authenticated and runs for a number of seconds equal to value of the
    "commit" member, less the current age of the http-opportunistic
    response (as defined in Section 4.2.3 of [RFC7234]).  A client SHOULD
@@ -383,16 +387,14 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
    o  The client has obtained a 200 (OK) response for the well-known URI
       from the origin, or refreshed one in cache [RFC7234], and
 
-   o  That response has the media type "application/json", and
 
 
-
-
-
-Nottingham & Thomson    Expires November 13, 2016               [Page 7]
+Nottingham & Thomson    Expires November 14, 2016               [Page 7]
 
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
+
+   o  That response has the media type "application/json", and
 
    o  That response's payload, when parsed as JSON [RFC7159], contains
       an object as the root.
@@ -439,16 +441,17 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
    For example, because the "Alt-Svc" header field [RFC7838] likely
    appears in an unauthenticated and unencrypted channel, it is subject
    to downgrade by network attackers.  In its simplest form, an attacker
-   that wants the connection to remain in the clear need only strip the
-   "Alt-Svc" header field from responses.
 
 
 
 
-Nottingham & Thomson    Expires November 13, 2016               [Page 8]
+Nottingham & Thomson    Expires November 14, 2016               [Page 8]
 
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
+
+   that wants the connection to remain in the clear need only strip the
+   "Alt-Svc" header field from responses.
 
    Downgrade attacks can be partially mitigated using the "commit"
    member of the http-opportunistic well-known resource, because when it
@@ -498,10 +501,7 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
 
-
-
-
-Nottingham & Thomson    Expires November 13, 2016               [Page 9]
+Nottingham & Thomson    Expires November 14, 2016               [Page 9]
 
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
@@ -557,7 +557,7 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
 
-Nottingham & Thomson    Expires November 13, 2016              [Page 10]
+Nottingham & Thomson    Expires November 14, 2016              [Page 10]
 
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
@@ -613,4 +613,4 @@ Authors' Addresses
 
 
 
-Nottingham & Thomson    Expires November 13, 2016              [Page 11]
+Nottingham & Thomson    Expires November 14, 2016              [Page 11]
