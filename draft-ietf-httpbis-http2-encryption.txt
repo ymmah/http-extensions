@@ -587,10 +587,12 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
 
 Appendix A.  Acknowledgements
 
-   Thanks to Patrick McManus, Eliot Lear, Stephen Farrell, Guy Podjarny,
-   Stephen Ludin, Erik Nygren, Paul Hoffman, Adam Langley, Eric
-   Rescorla, Julian Reschke, Kari Hurtta, and Richard Barnes for their
-   feedback and suggestions.
+   Mike Bishop contributed significant text to this document.
+
+   Thanks to Patrick McManus, Stefan Eissing, Eliot Lear, Stephen
+   Farrell, Guy Podjarny, Stephen Ludin, Erik Nygren, Paul Hoffman, Adam
+   Langley, Eric Rescorla, Julian Reschke, Kari Hurtta, and Richard
+   Barnes for their feedback and suggestions.
 
 Authors' Addresses
 
@@ -604,8 +606,6 @@ Authors' Addresses
    Mozilla
 
    Email: martin.thomson@gmail.com
-
-
 
 
 
