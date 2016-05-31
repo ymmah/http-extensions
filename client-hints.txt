@@ -394,12 +394,16 @@ Grigorik                Expires December 2, 2016                [Page 7]
 Internet-Draft              HTTP Client Hints                   May 2016
 
 
-     Save-Data = "on"
+     Save-Data : sd-token *( ";" [sd-token] )
+     sd-token = token
 
-   The token is a signal indicating explicit user opt-in into a reduced
-   data usage mode on the client, and when communicated to origins
-   allows them to deliver alternate content honoring such preference -
-   e.g. smaller image and video resources, alternate markup, and so on.
+   This document defines the "on" sd-token value, which is used as a
+   signal indicating explicit user opt-in into a reduced data usage mode
+   on the client, and when communicated to origins allows them to
+   deliver alternate content honoring such preference - e.g. smaller
+   image and video resources, alternate markup, and so on.  New token
+   and extension token values can only be defined by revisions of this
+   specification.
 
 8.  Examples
 
@@ -438,10 +442,6 @@ Internet-Draft              HTTP Client Hints                   May 2016
 
      Downlink: 0.384
 
-   The server knows that the client's maximum downlink speed is
-   0.384Mbps (GPRS EDGE), and it can use this information to select an
-   optimized resource - for example, an alternate image asset,
-   stylesheet, HTML document, media stream, and so on.
 
 
 
@@ -449,6 +449,11 @@ Grigorik                Expires December 2, 2016                [Page 8]
 
 Internet-Draft              HTTP Client Hints                   May 2016
 
+
+   The server knows that the client's maximum downlink speed is
+   0.384Mbps (GPRS EDGE), and it can use this information to select an
+   optimized resource - for example, an alternate image asset,
+   stylesheet, HTML document, media stream, and so on.
 
 9.  Security Considerations
 
@@ -493,11 +498,6 @@ Internet-Draft              HTTP Client Hints                   May 2016
    o  Author/Change controller: IETF
    o  Specification document(s): Section 3.1 of this document
    o  Related information: for Client Hints
-
-
-
-
-
 
 
 
