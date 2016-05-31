@@ -5,8 +5,8 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Experimental                                 M. Thomson
-Expires: November 28, 2016                                       Mozilla
-                                                            May 27, 2016
+Expires: December 2, 2016                                        Mozilla
+                                                            May 31, 2016
 
 
                     Opportunistic Security for HTTP
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on November 28, 2016.
+   This Internet-Draft will expire on December 2, 2016.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Nottingham & Thomson    Expires November 28, 2016               [Page 1]
+Nottingham & Thomson    Expires December 2, 2016                [Page 1]
 
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
@@ -87,9 +87,10 @@ Table of Contents
      8.2.  Downgrade Attacks . . . . . . . . . . . . . . . . . . . .   8
      8.3.  Privacy Considerations  . . . . . . . . . . . . . . . . .   9
      8.4.  Confusion Regarding Request Scheme  . . . . . . . . . . .   9
-   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
-     9.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
-     9.2.  Informative References  . . . . . . . . . . . . . . . . .  10
+     8.5.  Server Controls . . . . . . . . . . . . . . . . . . . . .   9
+   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
+     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
+     9.2.  Informative References  . . . . . . . . . . . . . . . . .  11
    Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .  11
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  11
 
@@ -108,8 +109,7 @@ Table of Contents
 
 
 
-
-Nottingham & Thomson    Expires November 28, 2016               [Page 2]
+Nottingham & Thomson    Expires December 2, 2016                [Page 2]
 
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
@@ -165,7 +165,7 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
 
-Nottingham & Thomson    Expires November 28, 2016               [Page 3]
+Nottingham & Thomson    Expires December 2, 2016                [Page 3]
 
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
@@ -221,7 +221,7 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
 
-Nottingham & Thomson    Expires November 28, 2016               [Page 4]
+Nottingham & Thomson    Expires December 2, 2016                [Page 4]
 
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
@@ -277,7 +277,7 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
 
-Nottingham & Thomson    Expires November 28, 2016               [Page 5]
+Nottingham & Thomson    Expires December 2, 2016                [Page 5]
 
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
@@ -333,7 +333,7 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
 
-Nottingham & Thomson    Expires November 28, 2016               [Page 6]
+Nottingham & Thomson    Expires December 2, 2016                [Page 6]
 
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
@@ -389,7 +389,7 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
 
-Nottingham & Thomson    Expires November 28, 2016               [Page 7]
+Nottingham & Thomson    Expires December 2, 2016                [Page 7]
 
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
@@ -445,7 +445,7 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
 
-Nottingham & Thomson    Expires November 28, 2016               [Page 8]
+Nottingham & Thomson    Expires December 2, 2016                [Page 8]
 
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
@@ -490,6 +490,22 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
    Therefore, servers need to carefully examine the use of such signals
    before deploying this specification.
 
+8.5.  Server Controls
+
+   Because this specification allows "reasonable assurances" to be
+   established by the content of a well-known URI, servers SHOULD take
+   suitable measures to assure that its content remains under their
+   control.  Likewise, because the Alt-Svc header field is used to
+   describe policies across an entire origin, servers SHOULD NOT permit
+   user content to set or modify the value of this header.
+
+
+
+Nottingham & Thomson    Expires December 2, 2016                [Page 9]
+
+Internet-Draft         Opportunistic HTTP Security              May 2016
+
+
 9.  References
 
 9.1.  Normative References
@@ -498,13 +514,6 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <http://www.rfc-editor.org/info/rfc2119>.
-
-
-
-Nottingham & Thomson    Expires November 28, 2016               [Page 9]
-
-Internet-Draft         Opportunistic HTTP Security              May 2016
-
 
    [RFC2818]  Rescorla, E., "HTTP Over TLS", RFC 2818,
               DOI 10.17487/RFC2818, May 2000,
@@ -543,6 +552,16 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
               DOI 10.17487/RFC7540, May 2015,
               <http://www.rfc-editor.org/info/rfc7540>.
 
+
+
+
+
+
+Nottingham & Thomson    Expires December 2, 2016               [Page 10]
+
+Internet-Draft         Opportunistic HTTP Security              May 2016
+
+
    [RFC7838]  Nottingham, M., McManus, P., and J. Reschke, "HTTP
               Alternative Services", RFC 7838, DOI 10.17487/RFC7838,
               April 2016, <http://www.rfc-editor.org/info/rfc7838>.
@@ -552,15 +571,6 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
    [RFC7258]  Farrell, S. and H. Tschofenig, "Pervasive Monitoring Is an
               Attack", BCP 188, RFC 7258, DOI 10.17487/RFC7258, May
               2014, <http://www.rfc-editor.org/info/rfc7258>.
-
-
-
-
-
-Nottingham & Thomson    Expires November 28, 2016              [Page 10]
-
-Internet-Draft         Opportunistic HTTP Security              May 2016
-
 
    [RFC7435]  Dukhovni, V., "Opportunistic Security: Some Protection
               Most of the Time", RFC 7435, DOI 10.17487/RFC7435,
@@ -603,14 +613,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-
-
-
-
-Nottingham & Thomson    Expires November 28, 2016              [Page 11]
+Nottingham & Thomson    Expires December 2, 2016               [Page 11]
