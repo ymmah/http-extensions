@@ -204,10 +204,9 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
    o  The origin and alternative service's hostnames are the same when
       compared in a case-insensitive fashion, and
 
-   o  The member of the "origins" object in the http-opportunistic
-      response that matches the origin has an array of numbers as a
-      value, one of which matches the port of the alternative service in
-      question, and
+   o  The origin object of the http-opportunistic response has a `tls-
+      ports' member, whose value is an array of numbers, one of which
+      matches the port of the alternative service in question, and
 
    o  The chosen alternative service returns the same representation as
       the origin did for the http-opportunistic resource.
@@ -215,6 +214,7 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
    For example, this request/response pair would constitute reasonable
    assurances for the origin "http://www.example.com" for an alternative
    service on port 443 or 8000 of the host "www.example.com":
+
 
 
 
@@ -234,7 +234,9 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
    Connection: close
 
    {
-     "origins": {"http://www.example.com": [443, 8000]}
+     "http://www.example.com": {
+       "tls-ports": [443, 8000]
+     }
    }
 
    Note that this mechanism is only defined to establish reasonable
@@ -271,9 +273,7 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
    o  By default, if clients cannot reach the alternative service, they
       will fall back to using the original cleartext origin.
 
-   Given that the primary goal of this specification is to prevent
-   passive attacks, these are not critical failings (especially
-   considering the alternative - HTTP over cleartext).  However, a
+
 
 
 
@@ -282,6 +282,9 @@ Nottingham & Thomson    Expires December 2, 2016                [Page 5]
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
+   Given that the primary goal of this specification is to prevent
+   passive attacks, these are not critical failings (especially
+   considering the alternative - HTTP over cleartext).  However, a
    modest form of protection against active attacks can be provided for
    clients on subsequent connections.
 
@@ -295,24 +298,26 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
 
    An origin can reduce the risk of attacks on opportunistically secured
    connections by committing to provide a secured, authenticated
-   alternative service.  This is done by including the optional "commit"
-   member in the http-opportunistic well-known response (see Section 6).
+   alternative service.  This is done by including the optional "tls-
+   commit" member in the origin object of the http-opportunistic well-
+   known response (see Section 6).
+
    This feature is optional due to the requirement for server
    authentication and the potential risk entailed (see Section 5.3).
 
-   The value of the "commit" member is a number ([RFC7159], Section 6)
-   indicating the duration of the commitment interval in seconds.
+   The value of the "tls-commit" member is a number ([RFC7159],
+   Section 6) indicating the duration of the commitment interval in
+   seconds.
 
 
    {
-     "origins": {
-       "http://example.com": [],
-       "http://www.example.com:81": [8000]
-     },
-     "commit": 86400
+     "http://www.example.com": {
+       "tls-ports": [443,8080],
+       "tls-commit": 3600
+     }
    }
 
-   Including "commit" creates a commitment to provide a secured
+   Including "tls-commit" creates a commitment to provide a secured
    alternative service for the advertised period.  Clients that receive
    this commitment can assume that a secured alternative service will be
    available for the indicated period.  Clients might however choose to
@@ -320,16 +325,11 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
 
 5.2.  Client Handling of A Commitment
 
-   The value of the "commit" member MUST be ignored unless the
+   The value of the "tls-commit" member MUST be ignored unless the
    alternative service can be strongly authenticated.  The same
    authentication requirements that apply to "https://" resources SHOULD
    be applied to authenticating the alternative.  Minimum authentication
    requirements for HTTP over TLS are described in Section 2.1 of
-   [RFC7838] and Section 3.1 of [RFC2818].  As noted in [RFC7838],
-   clients can impose other checks in addition to this minimum set.  For
-   instance, a client might choose to apply key pinning [RFC7469].
-
-
 
 
 
@@ -338,20 +338,20 @@ Nottingham & Thomson    Expires December 2, 2016                [Page 6]
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
+   [RFC7838] and Section 3.1 of [RFC2818].  As noted in [RFC7838],
+   clients can impose other checks in addition to this minimum set.  For
+   instance, a client might choose to apply key pinning [RFC7469].
+
    A client that receives a commitment and that successfully
    authenticates the alternative service can assume that a secured
    alternative will remain available for the commitment interval.  The
    commitment interval starts when the commitment is received and
    authenticated and runs for a number of seconds equal to value of the
-   "commit" member, less the current age of the http-opportunistic
+   "tls-commit" member, less the current age of the http-opportunistic
    response (as defined in Section 4.2.3 of [RFC7234]).  A client SHOULD
    avoid sending requests via cleartext protocols or to unauthenticated
    alternative services for the duration of the commitment interval,
    except to discover new potential alternatives.
-
-   A commitment only applies to the origin of the http-opportunistic
-   well-known resource that was retrieved; other origins listed in the
-   "origins" member MUST be independently discovered and authenticated.
 
    A commitment is not bound to a particular alternative service.
    Clients are able to use alternative services that they become aware
@@ -384,8 +384,8 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
    [RFC5785].  A client is said to have a valid http-opportunistic
    response for a given origin when:
 
-   o  The client has obtained a 200 (OK) response for the well-known URI
-      from the origin, or refreshed one in cache [RFC7234], and
+
+
 
 
 
@@ -394,21 +394,19 @@ Nottingham & Thomson    Expires December 2, 2016                [Page 7]
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
+   o  The client has obtained a 200 (OK) response for the well-known URI
+      from the origin, and it is fresh [RFC7234] (potentially through
+      revalidation [RFC7232]), and
+
    o  That response has the media type "application/json", and
 
    o  That response's payload, when parsed as JSON [RFC7159], contains
       an object as the root.
 
-   o  The root object contains an "origins" member, whose value is a
-      object.
-
-   o  One of the "origins" object's members has a name that is a case-
-      insensitive character-for-character match for the origin in
-      question, serialised into Unicode as per Section 6.1 of [RFC6454].
-
-   This specification defines one additional, optional member of the
-   root object, "commit" in Section 5.  Unrecognised members MUST be
-   ignored.
+   o  The root object contains a member whose name is a case-insensitive
+      character-for-character match for the origin in question,
+      serialised into Unicode as per Section 6.1 of [RFC6454], and whose
+      value is an object (hereafter, the "origin object").
 
 7.  IANA Considerations
 
@@ -441,6 +439,8 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
    For example, because the "Alt-Svc" header field [RFC7838] likely
    appears in an unauthenticated and unencrypted channel, it is subject
    to downgrade by network attackers.  In its simplest form, an attacker
+   that wants the connection to remain in the clear need only strip the
+   "Alt-Svc" header field from responses.
 
 
 
@@ -450,10 +450,7 @@ Nottingham & Thomson    Expires December 2, 2016                [Page 8]
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
-   that wants the connection to remain in the clear need only strip the
-   "Alt-Svc" header field from responses.
-
-   Downgrade attacks can be partially mitigated using the "commit"
+   Downgrade attacks can be partially mitigated using the "tls-commit"
    member of the http-opportunistic well-known resource, because when it
    is used, a client can avoid using cleartext to contact a supporting
    server.  However, this only works when a previous connection has been
@@ -501,6 +498,9 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
 
+
+
+
 Nottingham & Thomson    Expires December 2, 2016                [Page 9]
 
 Internet-Draft         Opportunistic HTTP Security              May 2016
@@ -542,15 +542,15 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
               <http://www.rfc-editor.org/info/rfc7230>.
 
+   [RFC7232]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
+              Protocol (HTTP/1.1): Conditional Requests", RFC 7232,
+              DOI 10.17487/RFC7232, June 2014,
+              <http://www.rfc-editor.org/info/rfc7232>.
+
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
               RFC 7234, DOI 10.17487/RFC7234, June 2014,
               <http://www.rfc-editor.org/info/rfc7234>.
-
-   [RFC7540]  Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
-              Transfer Protocol Version 2 (HTTP/2)", RFC 7540,
-              DOI 10.17487/RFC7540, May 2015,
-              <http://www.rfc-editor.org/info/rfc7540>.
 
 
 
@@ -561,6 +561,11 @@ Nottingham & Thomson    Expires December 2, 2016               [Page 10]
 
 Internet-Draft         Opportunistic HTTP Security              May 2016
 
+
+   [RFC7540]  Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
+              Transfer Protocol Version 2 (HTTP/2)", RFC 7540,
+              DOI 10.17487/RFC7540, May 2015,
+              <http://www.rfc-editor.org/info/rfc7540>.
 
    [RFC7838]  Nottingham, M., McManus, P., and J. Reschke, "HTTP
               Alternative Services", RFC 7838, DOI 10.17487/RFC7838,
@@ -599,11 +604,6 @@ Authors' Addresses
    Mozilla
 
    Email: martin.thomson@gmail.com
-
-
-
-
-
 
 
 
