@@ -101,10 +101,10 @@ Table of Contents
    11. References  . . . . . . . . . . . . . . . . . . . . . . . . .  11
      11.1.  Normative References . . . . . . . . . . . . . . . . . .  11
      11.2.  Informative References . . . . . . . . . . . . . . . . .  12
+   Appendix A.  Changes  . . . . . . . . . . . . . . . . . . . . . .  12
+     A.1.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .  12
+     A.2.  Since -01 . . . . . . . . . . . . . . . . . . . . . . . .  12
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  12
-
-
-
 
 
 
@@ -631,6 +631,19 @@ Internet-Draft              HTTP Client Hints                   May 2016
               DOI 10.17487/RFC6265, April 2011,
               <http://www.rfc-editor.org/info/rfc6265>.
 
+Appendix A.  Changes
+
+A.1.  Since -00
+
+   o  Issue 168 (make Save-Data extensible) updated ABNF.
+   o  Issue 163 (CH review feedback) editorial feedback from httpwg
+      list.
+   o  Issue 153 (NetInfo API citation) added normative reference.
+
+A.2.  Since -01
+
+   None yet.
+
 Author's Address
 
    Ilya Grigorik
@@ -638,19 +651,6 @@ Author's Address
 
    Email: ilya@igvita.com
    URI:   https://www.igvita.com/
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
