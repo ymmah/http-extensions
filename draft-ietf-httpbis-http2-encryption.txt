@@ -5,8 +5,8 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Experimental                                 M. Thomson
-Expires: December 2, 2016                                        Mozilla
-                                                            May 31, 2016
+Expires: December 3, 2016                                        Mozilla
+                                                            June 1, 2016
 
 
                     Opportunistic Security for HTTP
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 2, 2016.
+   This Internet-Draft will expire on December 3, 2016.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Nottingham & Thomson    Expires December 2, 2016                [Page 1]
+Nottingham & Thomson    Expires December 3, 2016                [Page 1]
 
-Internet-Draft         Opportunistic HTTP Security              May 2016
+Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Nottingham & Thomson    Expires December 2, 2016                [Page 2]
+Nottingham & Thomson    Expires December 3, 2016                [Page 2]
 
-Internet-Draft         Opportunistic HTTP Security              May 2016
+Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
    Opportunistic Security [RFC7435] does not provide the same guarantees
@@ -165,9 +165,9 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
 
-Nottingham & Thomson    Expires December 2, 2016                [Page 3]
+Nottingham & Thomson    Expires December 3, 2016                [Page 3]
 
-Internet-Draft         Opportunistic HTTP Security              May 2016
+Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
    A client can also explicitly probe for an alternative service
@@ -221,9 +221,9 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
 
-Nottingham & Thomson    Expires December 2, 2016                [Page 4]
+Nottingham & Thomson    Expires December 3, 2016                [Page 4]
 
-Internet-Draft         Opportunistic HTTP Security              May 2016
+Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
    GET /.well-known/http-opportunistic HTTP/1.1
@@ -277,9 +277,9 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
 
-Nottingham & Thomson    Expires December 2, 2016                [Page 5]
+Nottingham & Thomson    Expires December 3, 2016                [Page 5]
 
-Internet-Draft         Opportunistic HTTP Security              May 2016
+Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
    Given that the primary goal of this specification is to prevent
@@ -333,9 +333,9 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
 
-Nottingham & Thomson    Expires December 2, 2016                [Page 6]
+Nottingham & Thomson    Expires December 3, 2016                [Page 6]
 
-Internet-Draft         Opportunistic HTTP Security              May 2016
+Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
    [RFC7838] and Section 3.1 of [RFC2818].  As noted in [RFC7838],
@@ -389,9 +389,9 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
 
-Nottingham & Thomson    Expires December 2, 2016                [Page 7]
+Nottingham & Thomson    Expires December 3, 2016                [Page 7]
 
-Internet-Draft         Opportunistic HTTP Security              May 2016
+Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
    o  The client has obtained a 200 (OK) response for the well-known URI
@@ -445,9 +445,9 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
 
-Nottingham & Thomson    Expires December 2, 2016                [Page 8]
+Nottingham & Thomson    Expires December 3, 2016                [Page 8]
 
-Internet-Draft         Opportunistic HTTP Security              May 2016
+Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
    Downgrade attacks can be partially mitigated using the "tls-commit"
@@ -501,9 +501,9 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
 
-Nottingham & Thomson    Expires December 2, 2016                [Page 9]
+Nottingham & Thomson    Expires December 3, 2016                [Page 9]
 
-Internet-Draft         Opportunistic HTTP Security              May 2016
+Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
 9.  References
@@ -557,9 +557,9 @@ Internet-Draft         Opportunistic HTTP Security              May 2016
 
 
 
-Nottingham & Thomson    Expires December 2, 2016               [Page 10]
+Nottingham & Thomson    Expires December 3, 2016               [Page 10]
 
-Internet-Draft         Opportunistic HTTP Security              May 2016
+Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
    [RFC7540]  Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
@@ -613,4 +613,4 @@ Authors' Addresses
 
 
 
-Nottingham & Thomson    Expires December 2, 2016               [Page 11]
+Nottingham & Thomson    Expires December 3, 2016               [Page 11]

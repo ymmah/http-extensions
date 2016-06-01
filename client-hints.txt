@@ -4,8 +4,8 @@
 
 HTTP Working Group                                           I. Grigorik
 Internet-Draft                                                    Google
-Intended status: Standards Track                            May 31, 2016
-Expires: December 2, 2016
+Intended status: Standards Track                            June 1, 2016
+Expires: December 3, 2016
 
 
                            HTTP Client Hints
@@ -49,13 +49,13 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 2, 2016.
+   This Internet-Draft will expire on December 3, 2016.
 
 
 
-Grigorik                Expires December 2, 2016                [Page 1]
+Grigorik                Expires December 3, 2016                [Page 1]
 
-Internet-Draft              HTTP Client Hints                   May 2016
+Internet-Draft              HTTP Client Hints                  June 2016
 
 
 Copyright Notice
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Grigorik                Expires December 2, 2016                [Page 2]
+Grigorik                Expires December 3, 2016                [Page 2]
 
-Internet-Draft              HTTP Client Hints                   May 2016
+Internet-Draft              HTTP Client Hints                  June 2016
 
 
 1.  Introduction
@@ -160,14 +160,14 @@ Internet-Draft              HTTP Client Hints                   May 2016
    This document uses the Augmented Backus-Naur Form (ABNF) notation of
    [RFC5234] with the list rule extension defined in [RFC7230],
    Appendix B.  It includes by reference the DIGIT rule from [RFC5234];
-   the OWS, field-name and quoted-string rules from [RFC7230]; and the
-   parameter rule from [RFC7231].
+   the OWS and field-name rules from [RFC7230].
 
 
 
-Grigorik                Expires December 2, 2016                [Page 3]
+
+Grigorik                Expires December 3, 2016                [Page 3]
 
-Internet-Draft              HTTP Client Hints                   May 2016
+Internet-Draft              HTTP Client Hints                  June 2016
 
 
 2.  Client Hint Request Header Fields
@@ -212,7 +212,7 @@ Internet-Draft              HTTP Client Hints                   May 2016
    attribute ([W3C.REC-html5-20141028]).
 
 
-     Accept-CH = #token
+     Accept-CH = #field-name
 
    For example:
 
@@ -221,9 +221,9 @@ Internet-Draft              HTTP Client Hints                   May 2016
 
 
 
-Grigorik                Expires December 2, 2016                [Page 4]
+Grigorik                Expires December 3, 2016                [Page 4]
 
-Internet-Draft              HTTP Client Hints                   May 2016
+Internet-Draft              HTTP Client Hints                  June 2016
 
 
    When a client receives Accept-CH, it SHOULD append the Client Hint
@@ -277,9 +277,9 @@ Internet-Draft              HTTP Client Hints                   May 2016
 
 
 
-Grigorik                Expires December 2, 2016                [Page 5]
+Grigorik                Expires December 3, 2016                [Page 5]
 
-Internet-Draft              HTTP Client Hints                   May 2016
+Internet-Draft              HTTP Client Hints                  June 2016
 
 
    Above example indicates that the cache key needs to include the
@@ -333,9 +333,9 @@ Internet-Draft              HTTP Client Hints                   May 2016
 
 
 
-Grigorik                Expires December 2, 2016                [Page 6]
+Grigorik                Expires December 3, 2016                [Page 6]
 
-Internet-Draft              HTTP Client Hints                   May 2016
+Internet-Draft              HTTP Client Hints                  June 2016
 
 
 4.  The Width Client Hint
@@ -389,9 +389,9 @@ Internet-Draft              HTTP Client Hints                   May 2016
 
 
 
-Grigorik                Expires December 2, 2016                [Page 7]
+Grigorik                Expires December 3, 2016                [Page 7]
 
-Internet-Draft              HTTP Client Hints                   May 2016
+Internet-Draft              HTTP Client Hints                  June 2016
 
 
      Save-Data : sd-token *( ";" [sd-token] )
@@ -445,9 +445,9 @@ Internet-Draft              HTTP Client Hints                   May 2016
 
 
 
-Grigorik                Expires December 2, 2016                [Page 8]
+Grigorik                Expires December 3, 2016                [Page 8]
 
-Internet-Draft              HTTP Client Hints                   May 2016
+Internet-Draft              HTTP Client Hints                  June 2016
 
 
    The server knows that the client's maximum downlink speed is
@@ -501,9 +501,9 @@ Internet-Draft              HTTP Client Hints                   May 2016
 
 
 
-Grigorik                Expires December 2, 2016                [Page 9]
+Grigorik                Expires December 3, 2016                [Page 9]
 
-Internet-Draft              HTTP Client Hints                   May 2016
+Internet-Draft              HTTP Client Hints                  June 2016
 
 
 10.3.  Downlink
@@ -557,9 +557,9 @@ Internet-Draft              HTTP Client Hints                   May 2016
 
 
 
-Grigorik                Expires December 2, 2016               [Page 10]
+Grigorik                Expires December 3, 2016               [Page 10]
 
-Internet-Draft              HTTP Client Hints                   May 2016
+Internet-Draft              HTTP Client Hints                  June 2016
 
 
 11.  References
@@ -613,9 +613,9 @@ Internet-Draft              HTTP Client Hints                   May 2016
 
 
 
-Grigorik                Expires December 2, 2016               [Page 11]
+Grigorik                Expires December 3, 2016               [Page 11]
 
-Internet-Draft              HTTP Client Hints                   May 2016
+Internet-Draft              HTTP Client Hints                  June 2016
 
 
    [W3C.REC-html5-20141028]
@@ -669,4 +669,4 @@ Author's Address
 
 
 
-Grigorik                Expires December 2, 2016               [Page 12]
+Grigorik                Expires December 3, 2016               [Page 12]

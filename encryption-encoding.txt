@@ -4,8 +4,8 @@
 
 HTTP Working Group                                            M. Thomson
 Internet-Draft                                                   Mozilla
-Intended status: Standards Track                            May 31, 2016
-Expires: December 2, 2016
+Intended status: Standards Track                            June 1, 2016
+Expires: December 3, 2016
 
 
                   Encrypted Content-Encoding for HTTP
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 2, 2016.
+   This Internet-Draft will expire on December 3, 2016.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Thomson                 Expires December 2, 2016                [Page 1]
+Thomson                 Expires December 3, 2016                [Page 1]
 
-Internet-Draft           HTTP encryption coding                 May 2016
+Internet-Draft           HTTP encryption coding                June 2016
 
 
    (http://trustee.ietf.org/license-info) in effect on the date of
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Thomson                 Expires December 2, 2016                [Page 2]
+Thomson                 Expires December 3, 2016                [Page 2]
 
-Internet-Draft           HTTP encryption coding                 May 2016
+Internet-Draft           HTTP encryption coding                June 2016
 
 
      8.2.  Informative References  . . . . . . . . . . . . . . . . .  20
@@ -165,9 +165,9 @@ Internet-Draft           HTTP encryption coding                 May 2016
 
 
 
-Thomson                 Expires December 2, 2016                [Page 3]
+Thomson                 Expires December 3, 2016                [Page 3]
 
-Internet-Draft           HTTP encryption coding                 May 2016
+Internet-Draft           HTTP encryption coding                June 2016
 
 
    Base64url encoding is defined in Section 2 of [RFC7515].
@@ -221,9 +221,9 @@ Internet-Draft           HTTP encryption coding                 May 2016
 
 
 
-Thomson                 Expires December 2, 2016                [Page 4]
+Thomson                 Expires December 3, 2016                [Page 4]
 
-Internet-Draft           HTTP encryption coding                 May 2016
+Internet-Draft           HTTP encryption coding                June 2016
 
 
    other than the last is equal to the value of the "rs" parameter plus
@@ -277,9 +277,9 @@ Internet-Draft           HTTP encryption coding                 May 2016
 
 
 
-Thomson                 Expires December 2, 2016                [Page 5]
+Thomson                 Expires December 3, 2016                [Page 5]
 
-Internet-Draft           HTTP encryption coding                 May 2016
+Internet-Draft           HTTP encryption coding                June 2016
 
 
    If the payload is encrypted more than once (as reflected by having
@@ -333,9 +333,9 @@ Internet-Draft           HTTP encryption coding                 May 2016
 
 
 
-Thomson                 Expires December 2, 2016                [Page 6]
+Thomson                 Expires December 3, 2016                [Page 6]
 
-Internet-Draft           HTTP encryption coding                 May 2016
+Internet-Draft           HTTP encryption coding                June 2016
 
 
 3.2.  Content Encryption Key Derivation
@@ -389,9 +389,9 @@ Internet-Draft           HTTP encryption coding                 May 2016
 
 
 
-Thomson                 Expires December 2, 2016                [Page 7]
+Thomson                 Expires December 3, 2016                [Page 7]
 
-Internet-Draft           HTTP encryption coding                 May 2016
+Internet-Draft           HTTP encryption coding                June 2016
 
 
    The length (L) parameter is 12 octets.  The info parameter for the
@@ -445,9 +445,9 @@ Internet-Draft           HTTP encryption coding                 May 2016
 
 
 
-Thomson                 Expires December 2, 2016                [Page 8]
+Thomson                 Expires December 3, 2016                [Page 8]
 
-Internet-Draft           HTTP encryption coding                 May 2016
+Internet-Draft           HTTP encryption coding                June 2016
 
 
    Crypto-Key header field.  The method for key derivation depends on
@@ -501,9 +501,9 @@ Internet-Draft           HTTP encryption coding                 May 2016
 
 
 
-Thomson                 Expires December 2, 2016                [Page 9]
+Thomson                 Expires December 3, 2016                [Page 9]
 
-Internet-Draft           HTTP encryption coding                 May 2016
+Internet-Draft           HTTP encryption coding                June 2016
 
 
    In addition to identifying which content-encoding this input keying
@@ -557,9 +557,9 @@ Internet-Draft           HTTP encryption coding                 May 2016
 
 
 
-Thomson                 Expires December 2, 2016               [Page 10]
+Thomson                 Expires December 3, 2016               [Page 10]
 
-Internet-Draft           HTTP encryption coding                 May 2016
+Internet-Draft           HTTP encryption coding                June 2016
 
 
    The authentication secret is used as the "salt" parameter to HKDF,
@@ -613,9 +613,9 @@ Internet-Draft           HTTP encryption coding                 May 2016
 
 
 
-Thomson                 Expires December 2, 2016               [Page 11]
+Thomson                 Expires December 3, 2016               [Page 11]
 
-Internet-Draft           HTTP encryption coding                 May 2016
+Internet-Draft           HTTP encryption coding                June 2016
 
 
 5.2.  Encryption and Compression
@@ -669,9 +669,9 @@ Internet-Draft           HTTP encryption coding                 May 2016
 
 
 
-Thomson                 Expires December 2, 2016               [Page 12]
+Thomson                 Expires December 3, 2016               [Page 12]
 
-Internet-Draft           HTTP encryption coding                 May 2016
+Internet-Draft           HTTP encryption coding                June 2016
 
 
    HTTP/1.1 200 OK
@@ -725,9 +725,9 @@ Internet-Draft           HTTP encryption coding                 May 2016
 
 
 
-Thomson                 Expires December 2, 2016               [Page 13]
+Thomson                 Expires December 3, 2016               [Page 13]
 
-Internet-Draft           HTTP encryption coding                 May 2016
+Internet-Draft           HTTP encryption coding                June 2016
 
 
    using base64url.  Line wrapping is added for presentation purposes
@@ -781,9 +781,9 @@ Internet-Draft           HTTP encryption coding                 May 2016
 
 
 
-Thomson                 Expires December 2, 2016               [Page 14]
+Thomson                 Expires December 3, 2016               [Page 14]
 
-Internet-Draft           HTTP encryption coding                 May 2016
+Internet-Draft           HTTP encryption coding                June 2016
 
 
 6.1.  Key and Nonce Reuse
@@ -837,9 +837,9 @@ Internet-Draft           HTTP encryption coding                 May 2016
 
 
 
-Thomson                 Expires December 2, 2016               [Page 15]
+Thomson                 Expires December 3, 2016               [Page 15]
 
-Internet-Draft           HTTP encryption coding                 May 2016
+Internet-Draft           HTTP encryption coding                June 2016
 
 
    1.  Determine that it is not an issue.  For example, if it is
@@ -893,9 +893,9 @@ Internet-Draft           HTTP encryption coding                 May 2016
 
 
 
-Thomson                 Expires December 2, 2016               [Page 16]
+Thomson                 Expires December 3, 2016               [Page 16]
 
-Internet-Draft           HTTP encryption coding                 May 2016
+Internet-Draft           HTTP encryption coding                June 2016
 
 
    o  Description: AES-GCM encryption with a 128-bit content encryption
@@ -949,9 +949,9 @@ Internet-Draft           HTTP encryption coding                 May 2016
 
 
 
-Thomson                 Expires December 2, 2016               [Page 17]
+Thomson                 Expires December 3, 2016               [Page 17]
 
-Internet-Draft           HTTP encryption coding                 May 2016
+Internet-Draft           HTTP encryption coding                June 2016
 
 
    o  Reference: A reference to a specification that defines the
@@ -1005,9 +1005,9 @@ Internet-Draft           HTTP encryption coding                 May 2016
 
 
 
-Thomson                 Expires December 2, 2016               [Page 18]
+Thomson                 Expires December 3, 2016               [Page 18]
 
-Internet-Draft           HTTP encryption coding                 May 2016
+Internet-Draft           HTTP encryption coding                June 2016
 
 
    The initial contents of this registry are:
@@ -1061,9 +1061,9 @@ Internet-Draft           HTTP encryption coding                 May 2016
 
 
 
-Thomson                 Expires December 2, 2016               [Page 19]
+Thomson                 Expires December 3, 2016               [Page 19]
 
-Internet-Draft           HTTP encryption coding                 May 2016
+Internet-Draft           HTTP encryption coding                June 2016
 
 
    [RFC4492]  Blake-Wilson, S., Bolyard, N., Gupta, V., Hawk, C., and B.
@@ -1117,9 +1117,9 @@ Internet-Draft           HTTP encryption coding                 May 2016
 
 
 
-Thomson                 Expires December 2, 2016               [Page 20]
+Thomson                 Expires December 3, 2016               [Page 20]
 
-Internet-Draft           HTTP encryption coding                 May 2016
+Internet-Draft           HTTP encryption coding                June 2016
 
 
    [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
@@ -1173,9 +1173,9 @@ Appendix A.  JWE Mapping
 
 
 
-Thomson                 Expires December 2, 2016               [Page 21]
+Thomson                 Expires December 3, 2016               [Page 21]
 
-Internet-Draft           HTTP encryption coding                 May 2016
+Internet-Draft           HTTP encryption coding                June 2016
 
 
       transmitted, it is instead implied by the value of the Content-
@@ -1229,9 +1229,9 @@ Appendix B.  Intermediate Values for Encryption
 
 
 
-Thomson                 Expires December 2, 2016               [Page 22]
+Thomson                 Expires December 3, 2016               [Page 22]
 
-Internet-Draft           HTTP encryption coding                 May 2016
+Internet-Draft           HTTP encryption coding                June 2016
 
 
    Note that knowledge of just one of the private keys is necessary.
@@ -1285,4 +1285,4 @@ Author's Address
 
 
 
-Thomson                 Expires December 2, 2016               [Page 23]
+Thomson                 Expires December 3, 2016               [Page 23]
