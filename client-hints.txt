@@ -343,7 +343,7 @@ Internet-Draft              HTTP Client Hints                  June 2016
    The "Width" request header field is a number that indicates the
    desired resource width in physical px (i.e. intrinsic size of an
    image).  The provided physical px value is a number rounded to the
-   largest smallest following integer (i.e. ceiling value).
+   smallest following integer (i.e. ceiling value).
 
 
      Width = 1*DIGIT
@@ -357,8 +357,8 @@ Internet-Draft              HTTP Client Hints                  June 2016
 
    The "Viewport-Width" request header field is a number that indicates
    the layout viewport width in CSS px.  The provided CSS px value is a
-   number rounded to the largest smallest following integer (i.e.
-   ceiling value).
+   number rounded to the smallest following integer (i.e. ceiling
+   value).
 
 
      Viewport-Width = 1*DIGIT
