@@ -381,9 +381,9 @@ Internet-Draft              HTTP Client Hints                  June 2016
 
 7.  The Save-Data Client Hint
 
-   The "Save-Data" request header field is a token that indicates
-   client's preference for reduced data usage, due to high transfer
-   costs, slow connection speeds, or other reasons.
+   The "Save-Data" request header field is one or more tokens that
+   indicate client's preference for reduced data usage, due to high
+   transfer costs, slow connection speeds, or other reasons.
 
 
 
@@ -394,7 +394,7 @@ Grigorik                Expires December 3, 2016                [Page 7]
 Internet-Draft              HTTP Client Hints                  June 2016
 
 
-     Save-Data : sd-token *( ";" [sd-token] )
+     Save-Data = sd-token *( OWS ";" OWS [sd-token] )
      sd-token = token
 
    This document defines the "on" sd-token value, which is used as a
