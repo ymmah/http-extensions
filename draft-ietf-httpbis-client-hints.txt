@@ -4,8 +4,8 @@
 
 HTTP Working Group                                           I. Grigorik
 Internet-Draft                                                    Google
-Intended status: Standards Track                            June 1, 2016
-Expires: December 3, 2016
+Intended status: Standards Track                            June 2, 2016
+Expires: December 4, 2016
 
 
                            HTTP Client Hints
@@ -49,11 +49,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 3, 2016.
+   This Internet-Draft will expire on December 4, 2016.
 
 
 
-Grigorik                Expires December 3, 2016                [Page 1]
+Grigorik                Expires December 4, 2016                [Page 1]
 
 Internet-Draft              HTTP Client Hints                  June 2016
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Grigorik                Expires December 3, 2016                [Page 2]
+Grigorik                Expires December 4, 2016                [Page 2]
 
 Internet-Draft              HTTP Client Hints                  June 2016
 
@@ -160,12 +160,12 @@ Internet-Draft              HTTP Client Hints                  June 2016
    This document uses the Augmented Backus-Naur Form (ABNF) notation of
    [RFC5234] with the list rule extension defined in [RFC7230],
    Appendix B.  It includes by reference the DIGIT rule from [RFC5234];
-   the OWS and field-name rules from [RFC7230].
+   the OWS, field-name and quoted-string rules from [RFC7230]; and the
+   parameter rule from [RFC7231].
 
 
 
-
-Grigorik                Expires December 3, 2016                [Page 3]
+Grigorik                Expires December 4, 2016                [Page 3]
 
 Internet-Draft              HTTP Client Hints                  June 2016
 
@@ -212,7 +212,7 @@ Internet-Draft              HTTP Client Hints                  June 2016
    attribute ([W3C.REC-html5-20141028]).
 
 
-     Accept-CH = #field-name
+     Accept-CH = #token
 
    For example:
 
@@ -221,7 +221,7 @@ Internet-Draft              HTTP Client Hints                  June 2016
 
 
 
-Grigorik                Expires December 3, 2016                [Page 4]
+Grigorik                Expires December 4, 2016                [Page 4]
 
 Internet-Draft              HTTP Client Hints                  June 2016
 
@@ -277,7 +277,7 @@ Internet-Draft              HTTP Client Hints                  June 2016
 
 
 
-Grigorik                Expires December 3, 2016                [Page 5]
+Grigorik                Expires December 4, 2016                [Page 5]
 
 Internet-Draft              HTTP Client Hints                  June 2016
 
@@ -333,7 +333,7 @@ Internet-Draft              HTTP Client Hints                  June 2016
 
 
 
-Grigorik                Expires December 3, 2016                [Page 6]
+Grigorik                Expires December 4, 2016                [Page 6]
 
 Internet-Draft              HTTP Client Hints                  June 2016
 
@@ -343,7 +343,7 @@ Internet-Draft              HTTP Client Hints                  June 2016
    The "Width" request header field is a number that indicates the
    desired resource width in physical px (i.e. intrinsic size of an
    image).  The provided physical px value is a number rounded to the
-   smallest following integer (i.e. ceiling value).
+   largest smallest following integer (i.e. ceiling value).
 
 
      Width = 1*DIGIT
@@ -357,8 +357,8 @@ Internet-Draft              HTTP Client Hints                  June 2016
 
    The "Viewport-Width" request header field is a number that indicates
    the layout viewport width in CSS px.  The provided CSS px value is a
-   number rounded to the smallest following integer (i.e. ceiling
-   value).
+   number rounded to the largest smallest following integer (i.e.
+   ceiling value).
 
 
      Viewport-Width = 1*DIGIT
@@ -381,20 +381,20 @@ Internet-Draft              HTTP Client Hints                  June 2016
 
 7.  The Save-Data Client Hint
 
-   The "Save-Data" request header field is one or more tokens that
-   indicate client's preference for reduced data usage, due to high
-   transfer costs, slow connection speeds, or other reasons.
+   The "Save-Data" request header field is a token that indicates
+   client's preference for reduced data usage, due to high transfer
+   costs, slow connection speeds, or other reasons.
 
 
 
 
 
-Grigorik                Expires December 3, 2016                [Page 7]
+Grigorik                Expires December 4, 2016                [Page 7]
 
 Internet-Draft              HTTP Client Hints                  June 2016
 
 
-     Save-Data = sd-token *( OWS ";" OWS [sd-token] )
+     Save-Data : sd-token *( ";" [sd-token] )
      sd-token = token
 
    This document defines the "on" sd-token value, which is used as a
@@ -445,7 +445,7 @@ Internet-Draft              HTTP Client Hints                  June 2016
 
 
 
-Grigorik                Expires December 3, 2016                [Page 8]
+Grigorik                Expires December 4, 2016                [Page 8]
 
 Internet-Draft              HTTP Client Hints                  June 2016
 
@@ -501,7 +501,7 @@ Internet-Draft              HTTP Client Hints                  June 2016
 
 
 
-Grigorik                Expires December 3, 2016                [Page 9]
+Grigorik                Expires December 4, 2016                [Page 9]
 
 Internet-Draft              HTTP Client Hints                  June 2016
 
@@ -557,7 +557,7 @@ Internet-Draft              HTTP Client Hints                  June 2016
 
 
 
-Grigorik                Expires December 3, 2016               [Page 10]
+Grigorik                Expires December 4, 2016               [Page 10]
 
 Internet-Draft              HTTP Client Hints                  June 2016
 
@@ -613,7 +613,7 @@ Internet-Draft              HTTP Client Hints                  June 2016
 
 
 
-Grigorik                Expires December 3, 2016               [Page 11]
+Grigorik                Expires December 4, 2016               [Page 11]
 
 Internet-Draft              HTTP Client Hints                  June 2016
 
@@ -669,4 +669,4 @@ Author's Address
 
 
 
-Grigorik                Expires December 3, 2016               [Page 12]
+Grigorik                Expires December 4, 2016               [Page 12]
