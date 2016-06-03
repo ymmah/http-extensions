@@ -5,8 +5,8 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Experimental                                 M. Thomson
-Expires: December 4, 2016                                        Mozilla
-                                                            June 2, 2016
+Expires: December 5, 2016                                        Mozilla
+                                                            June 3, 2016
 
 
                     Opportunistic Security for HTTP
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 4, 2016.
+   This Internet-Draft will expire on December 5, 2016.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Nottingham & Thomson    Expires December 4, 2016                [Page 1]
+Nottingham & Thomson    Expires December 5, 2016                [Page 1]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
@@ -80,7 +80,7 @@ Table of Contents
      5.1.  Opportunistic Commitment  . . . . . . . . . . . . . . . .   6
      5.2.  Client Handling of A Commitment . . . . . . . . . . . . .   6
      5.3.  Operational Considerations  . . . . . . . . . . . . . . .   7
-   6.  The "http-opportunistic" well-known URI . . . . . . . . . . .   7
+   6.  The "http-opportunistic" well-known URI . . . . . . . . . . .   8
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   8
    8.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
      8.1.  Security Indicators . . . . . . . . . . . . . . . . . . .   8
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Nottingham & Thomson    Expires December 4, 2016                [Page 2]
+Nottingham & Thomson    Expires December 5, 2016                [Page 2]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
@@ -165,7 +165,7 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
 
-Nottingham & Thomson    Expires December 4, 2016                [Page 3]
+Nottingham & Thomson    Expires December 5, 2016                [Page 3]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
@@ -221,7 +221,7 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
 
-Nottingham & Thomson    Expires December 4, 2016                [Page 4]
+Nottingham & Thomson    Expires December 5, 2016                [Page 4]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
@@ -277,7 +277,7 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
 
-Nottingham & Thomson    Expires December 4, 2016                [Page 5]
+Nottingham & Thomson    Expires December 5, 2016                [Page 5]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
@@ -333,7 +333,7 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
 
-Nottingham & Thomson    Expires December 4, 2016                [Page 6]
+Nottingham & Thomson    Expires December 5, 2016                [Page 6]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
@@ -359,12 +359,14 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    A commitment is not bound to a particular alternative service.
    Clients are able to use alternative services that they become aware
    of.  However, once a valid and authenticated commitment has been
-   received, clients SHOULD NOT use an unauthenticated alternative
-   service.  Where there is an active commitment, clients SHOULD ignore
-   advertisements for unsecured alternative services.  A client MAY send
-   requests to an unauthenticated origin in an attempt to discover
-   potential alternative services, but these requests SHOULD be entirely
-   generic and avoid including credentials.
+   received, clients SHOULD NOT use an alternative service without both
+   reasonable assurances (see Section 3) and strong authentication.
+   Where there is an active commitment, clients SHOULD ignore
+   advertisements for unsecured alternative services.
+
+   A client MAY send requests to an unauthenticated origin in an attempt
+   to discover potential alternative services, but these requests SHOULD
+   be entirely generic and avoid including credentials.
 
 5.3.  Operational Considerations
 
@@ -381,18 +383,22 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    corresponding limit on persistence - might increase as a commitment
    is renewed multiple times.
 
+
+
+
+
+
+
+Nottingham & Thomson    Expires December 5, 2016                [Page 7]
+
+Internet-Draft         Opportunistic HTTP Security             June 2016
+
+
 6.  The "http-opportunistic" well-known URI
 
    This specification defines the "http-opportunistic" well-known URI
    [RFC5785].  A client is said to have a valid http-opportunistic
    response for a given origin when:
-
-
-
-Nottingham & Thomson    Expires December 4, 2016                [Page 7]
-
-Internet-Draft         Opportunistic HTTP Security             June 2016
-
 
    o  The client has obtained a 200 (OK) response for the well-known URI
       from the origin, and it is fresh [RFC7234] (potentially through
@@ -436,19 +442,19 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    clients have no prior information (see Section 8.3), or when
    persisted commitments have expired.
 
+
+
+
+Nottingham & Thomson    Expires December 5, 2016                [Page 8]
+
+Internet-Draft         Opportunistic HTTP Security             June 2016
+
+
    For example, because the "Alt-Svc" header field [RFC7838] likely
    appears in an unauthenticated and unencrypted channel, it is subject
    to downgrade by network attackers.  In its simplest form, an attacker
    that wants the connection to remain in the clear need only strip the
    "Alt-Svc" header field from responses.
-
-
-
-
-Nottingham & Thomson    Expires December 4, 2016                [Page 8]
-
-Internet-Draft         Opportunistic HTTP Security             June 2016
-
 
    Downgrade attacks can be partially mitigated using the "tls-commit"
    member of the http-opportunistic well-known resource, because when it
@@ -492,19 +498,17 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    Because this specification allows "reasonable assurances" to be
    established by the content of a well-known URI, servers SHOULD take
    suitable measures to assure that its content remains under their
-   control.  Likewise, because the Alt-Svc header field is used to
-   describe policies across an entire origin, servers SHOULD NOT permit
-   user content to set or modify the value of this header.
 
 
 
-
-
-
-Nottingham & Thomson    Expires December 4, 2016                [Page 9]
+Nottingham & Thomson    Expires December 5, 2016                [Page 9]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
+
+   control.  Likewise, because the Alt-Svc header field is used to
+   describe policies across an entire origin, servers SHOULD NOT permit
+   user content to set or modify the value of this header.
 
 9.  References
 
@@ -547,20 +551,21 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
               DOI 10.17487/RFC7232, June 2014,
               <http://www.rfc-editor.org/info/rfc7232>.
 
+
+
+
+
+
+
+Nottingham & Thomson    Expires December 5, 2016               [Page 10]
+
+Internet-Draft         Opportunistic HTTP Security             June 2016
+
+
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
               RFC 7234, DOI 10.17487/RFC7234, June 2014,
               <http://www.rfc-editor.org/info/rfc7234>.
-
-
-
-
-
-
-Nottingham & Thomson    Expires December 4, 2016               [Page 10]
-
-Internet-Draft         Opportunistic HTTP Security             June 2016
-
 
    [RFC7540]  Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
               Transfer Protocol Version 2 (HTTP/2)", RFC 7540,
@@ -602,6 +607,17 @@ Authors' Addresses
    URI:   http://www.mnot.net/
 
 
+
+
+
+
+
+
+Nottingham & Thomson    Expires December 5, 2016               [Page 11]
+
+Internet-Draft         Opportunistic HTTP Security             June 2016
+
+
    Martin Thomson
    Mozilla
 
@@ -613,4 +629,44 @@ Authors' Addresses
 
 
 
-Nottingham & Thomson    Expires December 4, 2016               [Page 11]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Nottingham & Thomson    Expires December 5, 2016               [Page 12]
