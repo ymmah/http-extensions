@@ -115,14 +115,14 @@ Internet-Draft      Charset/Language Encoding in HTTP          June 2016
 
 
      C.10. Since draft-ietf-httpbis-rfc5987bis-01  . . . . . . . . .  14
-   Appendix D.  Acknowledgements . . . . . . . . . . . . . . . . . .  14
+   Appendix D.  Acknowledgements . . . . . . . . . . . . . . . . . .  15
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  15
 
 1.  Introduction
 
    By default, header field values in HTTP messages ([RFC7230]) cannot
    directly carry characters outside the US-ASCII coded character set
-   ([USASCII]).  RFC 2231 ([RFC2231]) defines an encoding mechanism for
+   ([RFC0020]).  RFC 2231 ([RFC2231]) defines an encoding mechanism for
    use in MIME headers.  This document specifies an encoding suitable
    for use in HTTP header fields that is compatible with a profile of
    the encoding defined in RFC 2231.
@@ -439,7 +439,7 @@ Internet-Draft      Charset/Language Encoding in HTTP          June 2016
 
    Furthermore, the extension ought to also be used whenever the
    parameter value needs to carry characters not present in the US-ASCII
-   ([USASCII]) coded character set (note that it would be unacceptable
+   ([RFC0020]) coded character set (note that it would be unacceptable
    to define a new parameter that would be restricted to a subset of the
    Unicode character set).
 
@@ -510,6 +510,10 @@ Internet-Draft      Charset/Language Encoding in HTTP          June 2016
 
 7.1.  Normative References
 
+   [RFC0020]  Cerf, V., "ASCII format for network interchange", STD 80,
+              RFC 20, DOI 10.17487/RFC0020, October 1969,
+              <http://www.rfc-editor.org/info/rfc20>.
+
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
@@ -548,10 +552,6 @@ Internet-Draft      Charset/Language Encoding in HTTP          June 2016
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
               <http://www.rfc-editor.org/info/rfc7230>.
 
-   [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
-              Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
-              DOI 10.17487/RFC7231, June 2014,
-              <http://www.rfc-editor.org/info/rfc7231>.
 
 
 
@@ -562,9 +562,10 @@ Reschke                 Expires December 5, 2016               [Page 10]
 Internet-Draft      Charset/Language Encoding in HTTP          June 2016
 
 
-   [USASCII]  American National Standards Institute, "Coded Character
-              Set -- 7-bit American Standard Code for Information
-              Interchange", ANSI X3.4, 1986.
+   [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
+              Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
+              DOI 10.17487/RFC7231, June 2014,
+              <http://www.rfc-editor.org/info/rfc7231>.
 
 7.2.  Informative References
 
@@ -608,7 +609,6 @@ Internet-Draft      Charset/Language Encoding in HTTP          June 2016
    [RFC5988]  Nottingham, M., "Web Linking", RFC 5988,
               DOI 10.17487/RFC5988, October 2010,
               <http://www.rfc-editor.org/info/rfc5988>.
-
 
 
 
@@ -772,11 +772,11 @@ C.10.  Since draft-ietf-httpbis-rfc5987bis-01
 
    Removed mention of RFC 2616 from Abstract and Introduction.
 
-Appendix D.  Acknowledgements
+   Reference RFC 20 for US-ASCII.
 
-   Thanks to Martin Duerst and Frank Ellermann for help figuring out
-   ABNF details, to Graham Klyne and Alexey Melnikov for general review,
-   to Chris Newman for pointing out an RFC 2231 incompatibility, and to
+
+
+
 
 
 
@@ -786,6 +786,11 @@ Reschke                 Expires December 5, 2016               [Page 14]
 Internet-Draft      Charset/Language Encoding in HTTP          June 2016
 
 
+Appendix D.  Acknowledgements
+
+   Thanks to Martin Duerst and Frank Ellermann for help figuring out
+   ABNF details, to Graham Klyne and Alexey Melnikov for general review,
+   to Chris Newman for pointing out an RFC 2231 incompatibility, and to
    Benjamin Carlyle, Roar Lauritzsen, Eric Lawrence, and James Manger
    for implementer's feedback.
 
@@ -799,11 +804,6 @@ Author's Address
 
    EMail: julian.reschke@greenbytes.de
    URI:   http://greenbytes.de/tech/webdav/
-
-
-
-
-
 
 
 
