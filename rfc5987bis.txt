@@ -4,9 +4,9 @@
 
 HTTP Working Group                                            J. Reschke
 Internet-Draft                                                greenbytes
-Obsoletes: 5987 (if approved)                               June 3, 2016
+Obsoletes: 5987 (if approved)                               June 5, 2016
 Intended status: Standards Track
-Expires: December 5, 2016
+Expires: December 7, 2016
 
 
     Indicating Character Encoding and Language for HTTP Header Field
@@ -15,13 +15,12 @@ Expires: December 5, 2016
 
 Abstract
 
-   By default, message header field parameters in Hypertext Transfer
-   Protocol (HTTP) messages cannot carry characters outside the ISO-
-   8859-1 character set.  RFC 2231 defines an encoding mechanism for use
-   in Multipurpose Internet Mail Extensions (MIME) headers.  This
-   document specifies an encoding suitable for use in HTTP header fields
-   that is compatible with a profile of the encoding defined in RFC
-   2231.
+   By default, header field values in Hypertext Transfer Protocol (HTTP)
+   messages cannot directly carry characters outside the US-ASCII coded
+   character set.  RFC 2231 defines an encoding mechanism for use in
+   Multipurpose Internet Mail Extensions (MIME) headers.  This document
+   specifies an encoding suitable for use in HTTP header fields that is
+   compatible with a profile of the encoding defined in RFC 2231.
 
 Editorial Note (To be removed by RFC Editor before publication)
 
@@ -50,15 +49,14 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
+   This Internet-Draft will expire on December 7, 2016.
 
 
 
-Reschke                 Expires December 5, 2016                [Page 1]
+Reschke                 Expires December 7, 2016                [Page 1]
 
 Internet-Draft      Charset/Language Encoding in HTTP          June 2016
 
-
-   This Internet-Draft will expire on December 5, 2016.
 
 Copyright Notice
 
@@ -79,19 +77,19 @@ Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
    2.  Notational Conventions  . . . . . . . . . . . . . . . . . . .   3
-   3.  Comparison to RFC 2231 and Definition of the Encoding . . . .   4
+   3.  Comparison to RFC 2231 and Definition of the Encoding . . . .   3
      3.1.  Parameter Continuations . . . . . . . . . . . . . . . . .   4
      3.2.  Parameter Value Character Encoding and Language
            Information . . . . . . . . . . . . . . . . . . . . . . .   4
        3.2.1.  Definition  . . . . . . . . . . . . . . . . . . . . .   4
        3.2.2.  Historical Notes  . . . . . . . . . . . . . . . . . .   6
        3.2.3.  Examples  . . . . . . . . . . . . . . . . . . . . . .   7
-     3.3.  Language Specification in Encoded Words . . . . . . . . .   8
+     3.3.  Language Specification in Encoded Words . . . . . . . . .   7
    4.  Guidelines for Usage in HTTP Header Field Definitions . . . .   8
      4.1.  When to Use the Extension . . . . . . . . . . . . . . . .   8
      4.2.  Error Handling  . . . . . . . . . . . . . . . . . . . . .   9
    5.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  10
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
      7.2.  Informative References  . . . . . . . . . . . . . . . . .  11
@@ -106,27 +104,28 @@ Table of Contents
      C.5.  Since draft-reschke-rfc5987bis-03 . . . . . . . . . . . .  14
      C.6.  Since draft-reschke-rfc5987bis-04 . . . . . . . . . . . .  14
      C.7.  Since draft-reschke-rfc5987bis-05 . . . . . . . . . . . .  14
+     C.8.  Since draft-reschke-rfc5987bis-06 . . . . . . . . . . . .  14
+     C.9.  Since draft-ietf-httpbis-rfc5987bis-00  . . . . . . . . .  14
 
 
 
-Reschke                 Expires December 5, 2016                [Page 2]
+Reschke                 Expires December 7, 2016                [Page 2]
 
 Internet-Draft      Charset/Language Encoding in HTTP          June 2016
 
 
-     C.8.  Since draft-reschke-rfc5987bis-06 . . . . . . . . . . . .  14
-     C.9.  Since draft-ietf-httpbis-rfc5987bis-00  . . . . . . . . .  14
-   Appendix D.  Acknowledgements . . . . . . . . . . . . . . . . . .  14
+     C.10. Since draft-ietf-httpbis-rfc5987bis-01  . . . . . . . . .  14
+   Appendix D.  Acknowledgements . . . . . . . . . . . . . . . . . .  15
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  15
 
 1.  Introduction
 
-   By default, message header field parameters in HTTP ([RFC2616])
-   messages cannot carry characters outside the ISO-8859-1 coded
-   character set ([ISO-8859-1]).  RFC 2231 ([RFC2231]) defines an
-   encoding mechanism for use in MIME headers.  This document specifies
-   an encoding suitable for use in HTTP header fields that is compatible
-   with a profile of the encoding defined in RFC 2231.
+   By default, header field values in HTTP messages ([RFC7230]) cannot
+   directly carry characters outside the US-ASCII coded character set
+   ([RFC0020]).  RFC 2231 ([RFC2231]) defines an encoding mechanism for
+   use in MIME headers.  This document specifies an encoding suitable
+   for use in HTTP header fields that is compatible with a profile of
+   the encoding defined in RFC 2231.
 
    This document obsoletes [RFC5987] and moves it to "historic" status;
    the changes are summarized in Appendix A.
@@ -158,22 +157,18 @@ Internet-Draft      Charset/Language Encoding in HTTP          June 2016
    Note that this differs from RFC 2231, which uses the term "character
    set" for "character encoding scheme".
 
-
-
-
-
-
-
-
-Reschke                 Expires December 5, 2016                [Page 3]
-
-Internet-Draft      Charset/Language Encoding in HTTP          June 2016
-
-
 3.  Comparison to RFC 2231 and Definition of the Encoding
 
    RFC 2231 defines several extensions to MIME.  The sections below
    discuss if and how they apply to HTTP header fields.
+
+
+
+
+Reschke                 Expires December 7, 2016                [Page 3]
+
+Internet-Draft      Charset/Language Encoding in HTTP          June 2016
+
 
    In short:
 
@@ -217,20 +212,19 @@ Internet-Draft      Charset/Language Encoding in HTTP          June 2016
 
      parameter     = attribute LWSP "=" LWSP value
 
-
-
-
-
-Reschke                 Expires December 5, 2016                [Page 4]
-
-Internet-Draft      Charset/Language Encoding in HTTP          June 2016
-
-
      attribute     = token
      value         = token / quoted-string
 
      quoted-string = <quoted-string, see [RFC7230], Section 3.2.6>
      token         = <token, see [RFC7230], Section 3.2.6>
+
+
+
+
+Reschke                 Expires December 7, 2016                [Page 4]
+
+Internet-Draft      Charset/Language Encoding in HTTP          June 2016
+
 
    In order to include character encoding and language information, this
    specification modifies the RFC 2616 grammar to be:
@@ -274,20 +268,20 @@ Internet-Draft      Charset/Language Encoding in HTTP          June 2016
    previously defined in Section 3.6 of [RFC2616], or an extended
    parameter (ext-parameter).
 
-
-
-
-Reschke                 Expires December 5, 2016                [Page 5]
-
-Internet-Draft      Charset/Language Encoding in HTTP          June 2016
-
-
    Extended parameters are those where the left-hand side of the
    assignment ends with an asterisk character.
 
    The value part of an extended parameter (ext-value) is a token that
    consists of three parts: the REQUIRED character encoding name
    (charset), the OPTIONAL language information (language), and a
+
+
+
+Reschke                 Expires December 7, 2016                [Page 5]
+
+Internet-Draft      Charset/Language Encoding in HTTP          June 2016
+
+
    character sequence representing the actual value (value-chars),
    separated by single quote characters.  Note that both character
    encoding names and language tags are restricted to the US-ASCII coded
@@ -331,23 +325,25 @@ Internet-Draft      Charset/Language Encoding in HTTP          June 2016
    character encoding names using that character have been registered at
    the time of this writing.
 
-
-
-Reschke                 Expires December 5, 2016                [Page 6]
-
-Internet-Draft      Charset/Language Encoding in HTTP          June 2016
-
-
    For backwards compatibility with RFC 2231, the encoding defined by
    this specification deviates from common parameter syntax in that the
    quoted-string notation is not allowed.  Implementations using generic
    parser components might not be able to detect the use of quoted-
+
+
+
+
+Reschke                 Expires December 7, 2016                [Page 6]
+
+Internet-Draft      Charset/Language Encoding in HTTP          June 2016
+
+
    string notation and thus might accept that format, although invalid,
    as well.
 
-   [RFC5987] did require support for ISO-8859-1, too; for compatibility
-   with legacy code, recipients are encouraged to support this encoding
-   as well.
+   [RFC5987] did require support for ISO-8859-1 ([ISO-8859-1]), too; for
+   compatibility with legacy code, recipients are encouraged to support
+   this encoding as well.
 
 3.2.3.  Examples
 
@@ -382,18 +378,6 @@ Internet-Draft      Charset/Language Encoding in HTTP          June 2016
    so recipients must understand both, and that the language information
    is optional, while the character encoding is not.
 
-
-
-
-
-
-
-
-Reschke                 Expires December 5, 2016                [Page 7]
-
-Internet-Draft      Charset/Language Encoding in HTTP          June 2016
-
-
 3.3.  Language Specification in Encoded Words
 
    Section 5 of [RFC2231] extends the encoding defined in [RFC2047] to
@@ -401,6 +385,15 @@ Internet-Draft      Charset/Language Encoding in HTTP          June 2016
    now-obsolete HTTP/1.1 specification, did refer to RFC 2047
    ([RFC2616], Section 2.2).  However, it wasn't clear to which header
    field it applied.  Consequently, the current revision of the HTTP/1.1
+
+
+
+
+Reschke                 Expires December 7, 2016                [Page 7]
+
+Internet-Draft      Charset/Language Encoding in HTTP          June 2016
+
+
    specification has deprecated use of the encoding forms defined in RFC
    2047 (see Section 3.2.4 of [RFC7230]).
 
@@ -441,23 +434,21 @@ Internet-Draft      Charset/Language Encoding in HTTP          June 2016
 
    Section 4.2 of [RFC2277] requires that protocol elements containing
    human-readable text are able to carry language information.  Thus,
-
-
-
-
-Reschke                 Expires December 5, 2016                [Page 8]
-
-Internet-Draft      Charset/Language Encoding in HTTP          June 2016
-
-
    the ext-value production ought to be always used when the parameter
    value is of textual nature and its language is known.
 
    Furthermore, the extension ought to also be used whenever the
    parameter value needs to carry characters not present in the US-ASCII
-   ([USASCII]) coded character set (note that it would be unacceptable
+   ([RFC0020]) coded character set (note that it would be unacceptable
    to define a new parameter that would be restricted to a subset of the
    Unicode character set).
+
+
+
+Reschke                 Expires December 7, 2016                [Page 8]
+
+Internet-Draft      Charset/Language Encoding in HTTP          June 2016
+
 
 4.2.  Error Handling
 
@@ -498,14 +489,6 @@ Internet-Draft      Charset/Language Encoding in HTTP          June 2016
    possible to transport multiple language variants for a single
    parameter, and such use might allow spoofing attacks, where different
    language versions of the same parameter are not equivalent.  Whether
-
-
-
-Reschke                 Expires December 5, 2016                [Page 9]
-
-Internet-Draft      Charset/Language Encoding in HTTP          June 2016
-
-
    this attack is useful as an attack depends on the parameter
    specified.
 
@@ -513,9 +496,23 @@ Internet-Draft      Charset/Language Encoding in HTTP          June 2016
 
    There are no IANA Considerations related to this specification.
 
+
+
+
+
+
+Reschke                 Expires December 7, 2016                [Page 9]
+
+Internet-Draft      Charset/Language Encoding in HTTP          June 2016
+
+
 7.  References
 
 7.1.  Normative References
+
+   [RFC0020]  Cerf, V., "ASCII format for network interchange", STD 80,
+              RFC 20, DOI 10.17487/RFC0020, October 1969,
+              <http://www.rfc-editor.org/info/rfc20>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -557,7 +554,10 @@ Internet-Draft      Charset/Language Encoding in HTTP          June 2016
 
 
 
-Reschke                 Expires December 5, 2016               [Page 10]
+
+
+
+Reschke                 Expires December 7, 2016               [Page 10]
 
 Internet-Draft      Charset/Language Encoding in HTTP          June 2016
 
@@ -566,10 +566,6 @@ Internet-Draft      Charset/Language Encoding in HTTP          June 2016
               Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
               DOI 10.17487/RFC7231, June 2014,
               <http://www.rfc-editor.org/info/rfc7231>.
-
-   [USASCII]  American National Standards Institute, "Coded Character
-              Set -- 7-bit American Standard Code for Information
-              Interchange", ANSI X3.4, 1986.
 
 7.2.  Informative References
 
@@ -610,17 +606,17 @@ Internet-Draft      Charset/Language Encoding in HTTP          June 2016
               Parameters", RFC 5987, DOI 10.17487/RFC5987, August 2010,
               <http://www.rfc-editor.org/info/rfc5987>.
 
-
-
-
-Reschke                 Expires December 5, 2016               [Page 11]
-
-Internet-Draft      Charset/Language Encoding in HTTP          June 2016
-
-
    [RFC5988]  Nottingham, M., "Web Linking", RFC 5988,
               DOI 10.17487/RFC5988, October 2010,
               <http://www.rfc-editor.org/info/rfc5988>.
+
+
+
+
+Reschke                 Expires December 7, 2016               [Page 11]
+
+Internet-Draft      Charset/Language Encoding in HTTP          June 2016
+
 
    [RFC6266]  Reschke, J., "Use of the Content-Disposition Header Field
               in the Hypertext Transfer Protocol (HTTP)", RFC 6266,
@@ -669,7 +665,11 @@ Internet-Draft      Charset/Language Encoding in HTTP          June 2016
 
 
 
-Reschke                 Expires December 5, 2016               [Page 12]
+
+
+
+
+Reschke                 Expires December 7, 2016               [Page 12]
 
 Internet-Draft      Charset/Language Encoding in HTTP          June 2016
 
@@ -725,7 +725,7 @@ C.1.  Since RFC5987
 
 
 
-Reschke                 Expires December 5, 2016               [Page 13]
+Reschke                 Expires December 7, 2016               [Page 13]
 
 Internet-Draft      Charset/Language Encoding in HTTP          June 2016
 
@@ -768,6 +768,24 @@ C.9.  Since draft-ietf-httpbis-rfc5987bis-00
    Editorial changes; introducing non-ASCII characters into author's
    address, acknowledgements, and examples.
 
+C.10.  Since draft-ietf-httpbis-rfc5987bis-01
+
+   Removed mention of RFC 2616 from Abstract and Introduction.
+
+   Reference RFC 20 for US-ASCII.
+
+
+
+
+
+
+
+
+Reschke                 Expires December 7, 2016               [Page 14]
+
+Internet-Draft      Charset/Language Encoding in HTTP          June 2016
+
+
 Appendix D.  Acknowledgements
 
    Thanks to Martin Duerst and Frank Ellermann for help figuring out
@@ -775,16 +793,6 @@ Appendix D.  Acknowledgements
    to Chris Newman for pointing out an RFC 2231 incompatibility, and to
    Benjamin Carlyle, Roar Lauritzsen, Eric Lawrence, and James Manger
    for implementer's feedback.
-
-
-
-
-
-
-Reschke                 Expires December 5, 2016               [Page 14]
-
-Internet-Draft      Charset/Language Encoding in HTTP          June 2016
-
 
 Author's Address
 
@@ -829,12 +837,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-Reschke                 Expires December 5, 2016               [Page 15]
+Reschke                 Expires December 7, 2016               [Page 15]
