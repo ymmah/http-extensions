@@ -20,6 +20,16 @@ Abstract
    mitigate the risk of cross-origin information leakage, and provides
    some protection against cross-site request forgery attacks.
 
+Note to Readers
+
+   Discussion of this draft takes place on the HTTP working group
+   mailing list (ietf-http-wg@w3.org), which is archived at
+   https://lists.w3.org/Archives/Public/ietf-http-wg/ .
+
+   Working Group information can be found at http://httpwg.github.io/ ;
+   source code and issues list for this draft can be found at
+   https://github.com/httpwg/http-extensions/labels/cookie-same-site .
+
 Status of This Memo
 
    This Internet-Draft is submitted in full conformance with the
@@ -37,6 +47,17 @@ Status of This Memo
 
    This Internet-Draft will expire on December 8, 2016.
 
+
+
+
+
+
+
+West & Goodwin          Expires December 8, 2016                [Page 1]
+
+Internet-Draft              Same-Site Cookies                  June 2016
+
+
 Copyright Notice
 
    Copyright (c) 2016 IETF Trust and the persons identified as the
@@ -49,46 +70,49 @@ Copyright Notice
    carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
    include Simplified BSD License text as described in Section 4.e of
-
-
-
-
-West & Goodwin          Expires December 8, 2016                [Page 1]
-
-Internet-Draft              Same-Site Cookies                  June 2016
-
-
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
 Table of Contents
 
-   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
      1.1.  Goals . . . . . . . . . . . . . . . . . . . . . . . . . .   3
-     1.2.  Examples  . . . . . . . . . . . . . . . . . . . . . . . .   3
+     1.2.  Examples  . . . . . . . . . . . . . . . . . . . . . . . .   4
    2.  Terminology and notation  . . . . . . . . . . . . . . . . . .   4
-     2.1.  "Same-site" and "cross-site" Requests . . . . . . . . . .   4
+     2.1.  "Same-site" and "cross-site" Requests . . . . . . . . . .   5
        2.1.1.  Document-based requests . . . . . . . . . . . . . . .   5
        2.1.2.  Worker-based requests . . . . . . . . . . . . . . . .   6
-   3.  Server Requirements . . . . . . . . . . . . . . . . . . . . .   7
-     3.1.  Grammar . . . . . . . . . . . . . . . . . . . . . . . . .   7
+   3.  Server Requirements . . . . . . . . . . . . . . . . . . . . .   8
+     3.1.  Grammar . . . . . . . . . . . . . . . . . . . . . . . . .   8
      3.2.  Semantics of the "SameSite" Attribute (Non-Normative) . .   8
    4.  User Agent Requirements . . . . . . . . . . . . . . . . . . .   8
      4.1.  The "SameSite" attribute  . . . . . . . . . . . . . . . .   8
-       4.1.1.  "Strict" and "Lax" enforcement  . . . . . . . . . . .   8
+       4.1.1.  "Strict" and "Lax" enforcement  . . . . . . . . . . .   9
      4.2.  Monkey-patching the Storage Model . . . . . . . . . . . .   9
      4.3.  Monkey-patching the "Cookie" header . . . . . . . . . . .  10
    5.  Authoring Considerations  . . . . . . . . . . . . . . . . . .  10
-     5.1.  Defense in depth  . . . . . . . . . . . . . . . . . . . .  10
+     5.1.  Defense in depth  . . . . . . . . . . . . . . . . . . . .  11
      5.2.  Top-level Navigations . . . . . . . . . . . . . . . . . .  11
      5.3.  Mashups and Widgets . . . . . . . . . . . . . . . . . . .  11
-   6.  Privacy Considerations  . . . . . . . . . . . . . . . . . . .  11
-     6.1.  Server-controlled . . . . . . . . . . . . . . . . . . . .  11
+   6.  Privacy Considerations  . . . . . . . . . . . . . . . . . . .  12
+     6.1.  Server-controlled . . . . . . . . . . . . . . . . . . . .  12
      6.2.  Pervasive Monitoring  . . . . . . . . . . . . . . . . . .  12
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  12
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .  12
      7.2.  Informative References  . . . . . . . . . . . . . . . . .  13
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  14
+
+
+
+
+
+
+
+
+West & Goodwin          Expires December 8, 2016                [Page 2]
+
+Internet-Draft              Same-Site Cookies                  June 2016
+
 
 1.  Introduction
 
@@ -106,14 +130,6 @@ Table of Contents
 
    Note that the mechanism outlined here is backwards compatible with
    the existing cookie syntax.  Servers may serve these cookies to all
-
-
-
-West & Goodwin          Expires December 8, 2016                [Page 2]
-
-Internet-Draft              Same-Site Cookies                  June 2016
-
-
    user agents; those that do not support the "SameSite" attribute will
    simply store a cookie which is attached to all relevant requests,
    just as they do today.
@@ -146,6 +162,14 @@ Internet-Draft              Same-Site Cookies                  June 2016
        regulatory purposes, as cookies which are not delivered with
        cross-site requests cannot be directly used for tracking
        purposes.  It may be valuable for an origin to assert that its
+
+
+
+West & Goodwin          Expires December 8, 2016                [Page 3]
+
+Internet-Draft              Same-Site Cookies                  June 2016
+
+
        cookies should not be sent along with cross-site requests in
        order to limit its exposure to non-technical risk.
 
@@ -161,14 +185,6 @@ Internet-Draft              Same-Site Cookies                  June 2016
    Subsequent requests from that user agent can be expected to contain
    the following header field if and only if both the requested resource
    and the resource in the top-level browsing context match the cookie.
-
-
-
-
-West & Goodwin          Expires December 8, 2016                [Page 3]
-
-Internet-Draft              Same-Site Cookies                  June 2016
-
 
 2.  Terminology and notation
 
@@ -202,6 +218,14 @@ Internet-Draft              Same-Site Cookies                  June 2016
    The term "public suffix" is defined in a note in Section 5.3 of
    [RFC6265] as "a domain that is controlled by a public registry".  For
    example, "example.com"'s public suffix is "com".  User agents SHOULD
+
+
+
+West & Goodwin          Expires December 8, 2016                [Page 4]
+
+Internet-Draft              Same-Site Cookies                  June 2016
+
+
    use an up-to-date public suffix list, such as the one maintained by
    Mozilla at [PSL].
 
@@ -218,14 +242,6 @@ Internet-Draft              Same-Site Cookies                  June 2016
    A request is "same-site" if its target's URI's origin's registrable
    domain is an exact match for the request's initiator's "site for
    cookies", and "cross-site" otherwise.  To be more precise, for a
-
-
-
-West & Goodwin          Expires December 8, 2016                [Page 4]
-
-Internet-Draft              Same-Site Cookies                  June 2016
-
-
    given request ("request"), the following algorithm returns "same-
    site" or "cross-site":
 
@@ -258,6 +274,14 @@ Internet-Draft              Same-Site Cookies                  June 2016
    need to audit the origins of each of a document's ancestor browsing
    contexts' active documents in order to account for the "multiple-
    nested scenarios" described in Section 4 of [RFC7034].  These
+
+
+
+West & Goodwin          Expires December 8, 2016                [Page 5]
+
+Internet-Draft              Same-Site Cookies                  June 2016
+
+
    document's "site for cookies" is the top-level site if and only if
    the document and each of its ancestor documents' origins have the
    same registrable domain as the top-level site.  Otherwise its "site
@@ -273,14 +297,6 @@ Internet-Draft              Same-Site Cookies                  June 2016
    2.  Let "top-origin" be the origin of "top-document"'s URI if "top-
        document"'s sandboxed origin browsing context flag is set, and
        "top-document"'s origin otherwise.
-
-
-
-
-West & Goodwin          Expires December 8, 2016                [Page 5]
-
-Internet-Draft              Same-Site Cookies                  June 2016
-
 
    3.  Let "documents" be a list containing "document" and each of
        "document"'s ancestor browsing contexts' active documents.
@@ -310,6 +326,18 @@ Internet-Draft              Same-Site Cookies                  June 2016
    we'll need to take the worker's script's URI into account when
    determining their status.
 
+
+
+
+
+
+
+
+West & Goodwin          Expires December 8, 2016                [Page 6]
+
+Internet-Draft              Same-Site Cookies                  June 2016
+
+
 2.1.2.1.  Dedicated and Shared Workers
 
    Dedicated workers are simple, as each dedicated worker is bound to
@@ -330,13 +358,6 @@ Internet-Draft              Same-Site Cookies                  June 2016
    1.  Let "site" be "worker"'s origin's host's registrable domain.
 
    2.  For each "document" in "worker"'s Documents:
-
-
-
-West & Goodwin          Expires December 8, 2016                [Page 6]
-
-Internet-Draft              Same-Site Cookies                  June 2016
-
 
        1.  Let "document-site" be "document"'s "site for cookies" (as
            defined in Section 2.1.1).
@@ -366,6 +387,13 @@ Internet-Draft              Same-Site Cookies                  June 2016
    returns its "site for cookies" (either a registrable domain, or the
    empty string):
 
+
+
+West & Goodwin          Expires December 8, 2016                [Page 7]
+
+Internet-Draft              Same-Site Cookies                  June 2016
+
+
    1.  Return "worker"'s origin's host's registrable domain.
 
 3.  Server Requirements
@@ -385,14 +413,6 @@ Internet-Draft              Same-Site Cookies                  June 2016
                     samesite-av / extension-av
    samesite-av    = "SameSite" / "SameSite=" samesite-value
    samesite-value = "Strict" / "Lax"
-
-
-
-
-West & Goodwin          Expires December 8, 2016                [Page 7]
-
-Internet-Draft              Same-Site Cookies                  June 2016
-
 
 3.2.  Semantics of the "SameSite" Attribute (Non-Normative)
 
@@ -422,6 +442,14 @@ Internet-Draft              Same-Site Cookies                  June 2016
    The following attribute definition should be considered part of the
    the "Set-Cookie" algorithm as described in Section 5.2 of [RFC6265]:
 
+
+
+
+West & Goodwin          Expires December 8, 2016                [Page 8]
+
+Internet-Draft              Same-Site Cookies                  June 2016
+
+
    If the "attribute-name" case-insensitively matches the string
    "SameSite", the user agent MUST process the "cookie-av" as follows:
 
@@ -442,14 +470,6 @@ Internet-Draft              Same-Site Cookies                  June 2016
    compatible with existing session management systems.  In the
    interests of providing a drop-in mechanism that mitigates the risk of
    CSRF attacks, developers may set the "SameSite" attribute in a "Lax"
-
-
-
-West & Goodwin          Expires December 8, 2016                [Page 8]
-
-Internet-Draft              Same-Site Cookies                  June 2016
-
-
    enforcement mode that carves out an exception which sends same-site
    cookies along with cross-site requests if and only if they are top-
    level navigations which use a "safe" (in the [RFC7231] sense) HTTP
@@ -479,6 +499,13 @@ Internet-Draft              Same-Site Cookies                  June 2016
 
    Alter Section 5.3 of [RFC6265] as follows:
 
+
+
+West & Goodwin          Expires December 8, 2016                [Page 9]
+
+Internet-Draft              Same-Site Cookies                  June 2016
+
+
    1.  Add "samesite-flag" to the list of fields stored for each cookie.
        This field's value is one of "None", "Strict", or "Lax".
 
@@ -494,17 +521,6 @@ Internet-Draft              Same-Site Cookies                  June 2016
            cookies" is not an exact match for "request-uri"'s host's
            registrable domain, then abort these steps and ignore the
            newly created cookie entirely.
-
-
-
-
-
-
-
-West & Goodwin          Expires December 8, 2016                [Page 9]
-
-Internet-Draft              Same-Site Cookies                  June 2016
-
 
 4.3.  Monkey-patching the "Cookie" header
 
@@ -534,6 +550,18 @@ Internet-Draft              Same-Site Cookies                  June 2016
 
 5.  Authoring Considerations
 
+
+
+
+
+
+
+
+West & Goodwin          Expires December 8, 2016               [Page 10]
+
+Internet-Draft              Same-Site Cookies                  June 2016
+
+
 5.1.  Defense in depth
 
    "SameSite" cookies offer a robust defense against CSRF attack when
@@ -550,17 +578,6 @@ Internet-Draft              Same-Site Cookies                  June 2016
    Additionally, client-side techniques such as those described in
    [app-isolation] may also prove effective against CSRF, and are
    certainly worth exploring in combination with "SameSite" cookies.
-
-
-
-
-
-
-
-West & Goodwin          Expires December 8, 2016               [Page 10]
-
-Internet-Draft              Same-Site Cookies                  June 2016
-
 
 5.2.  Top-level Navigations
 
@@ -593,6 +610,14 @@ Internet-Draft              Same-Site Cookies                  June 2016
    The "SameSite" attribute is inappropriate for some important use-
    cases.  In particular, note that content intended for embedding in a
    cross-site contexts (social networking widgets or commenting
+
+
+
+West & Goodwin          Expires December 8, 2016               [Page 11]
+
+Internet-Draft              Same-Site Cookies                  June 2016
+
+
    services, for instance) will not have access to such cookies.  Cross-
    site cookies may be required in order to provide seamless
    functionality that relies on a user's state.
@@ -610,14 +635,6 @@ Internet-Draft              Same-Site Cookies                  June 2016
    The attribute is set by the server, and serves to mitigate the risk
    of certain kinds of attacks that the server is worried about.  The
    user is not involved in this decision.  Moreover, a number of side-
-
-
-
-West & Goodwin          Expires December 8, 2016               [Page 11]
-
-Internet-Draft              Same-Site Cookies                  June 2016
-
-
    channels exist which could allow a server to link distinct requests
    even in the absence of cookies.  Connection and/or socket pooling,
    Token Binding, and Channel ID all offer explicit methods of
@@ -650,6 +667,13 @@ Internet-Draft              Same-Site Cookies                  June 2016
    [PSL]      "Public Suffix List", n.d., <https://publicsuffix.org/
               list/>.
 
+
+
+West & Goodwin          Expires December 8, 2016               [Page 12]
+
+Internet-Draft              Same-Site Cookies                  June 2016
+
+
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
@@ -664,15 +688,6 @@ Internet-Draft              Same-Site Cookies                  June 2016
               Specifications: ABNF", STD 68, RFC 5234,
               DOI 10.17487/RFC5234, January 2008,
               <http://www.rfc-editor.org/info/rfc5234>.
-
-
-
-
-
-West & Goodwin          Expires December 8, 2016               [Page 12]
-
-Internet-Draft              Same-Site Cookies                  June 2016
-
 
    [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
               DOI 10.17487/RFC6265, April 2011,
@@ -704,6 +719,17 @@ Internet-Draft              Same-Site Cookies                  June 2016
               <http://www.collinjackson.com/research/papers/
               appisolation.pdf>.
 
+
+
+
+
+
+
+West & Goodwin          Expires December 8, 2016               [Page 13]
+
+Internet-Draft              Same-Site Cookies                  June 2016
+
+
    [pixel-perfect]
               Stone, P., "Pixel Perfect Timing Attacks with HTML5",
               n.d., <http://www.contextis.com/documents/2/
@@ -723,13 +749,6 @@ Internet-Draft              Same-Site Cookies                  June 2016
               <http://people.mozilla.org/~mgoodwin/SameDomain/
               samedomain-latest.txt>.
 
-
-
-West & Goodwin          Expires December 8, 2016               [Page 13]
-
-Internet-Draft              Same-Site Cookies                  June 2016
-
-
    [secure-contexts]
               West, M., "Secure Contexts", n.d., <https://w3c.github.io/
               webappsec-secure-contexts/>.
@@ -748,25 +767,6 @@ Authors' Addresses
 
    Email: mgoodwin@mozilla.com
    URI:   https://www.computerist.org/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
