@@ -4,8 +4,8 @@
 
 HTTP Working Group                                           I. Grigorik
 Internet-Draft                                                    Google
-Intended status: Standards Track                            June 6, 2016
-Expires: December 8, 2016
+Intended status: Standards Track                            June 7, 2016
+Expires: December 9, 2016
 
 
                            HTTP Client Hints
@@ -49,11 +49,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 8, 2016.
+   This Internet-Draft will expire on December 9, 2016.
 
 
 
-Grigorik                Expires December 8, 2016                [Page 1]
+Grigorik                Expires December 9, 2016                [Page 1]
 
 Internet-Draft              HTTP Client Hints                  June 2016
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Grigorik                Expires December 8, 2016                [Page 2]
+Grigorik                Expires December 9, 2016                [Page 2]
 
 Internet-Draft              HTTP Client Hints                  June 2016
 
@@ -165,7 +165,7 @@ Internet-Draft              HTTP Client Hints                  June 2016
 
 
 
-Grigorik                Expires December 8, 2016                [Page 3]
+Grigorik                Expires December 9, 2016                [Page 3]
 
 Internet-Draft              HTTP Client Hints                  June 2016
 
@@ -221,7 +221,7 @@ Internet-Draft              HTTP Client Hints                  June 2016
 
 
 
-Grigorik                Expires December 8, 2016                [Page 4]
+Grigorik                Expires December 9, 2016                [Page 4]
 
 Internet-Draft              HTTP Client Hints                  June 2016
 
@@ -277,7 +277,7 @@ Internet-Draft              HTTP Client Hints                  June 2016
 
 
 
-Grigorik                Expires December 8, 2016                [Page 5]
+Grigorik                Expires December 9, 2016                [Page 5]
 
 Internet-Draft              HTTP Client Hints                  June 2016
 
@@ -333,7 +333,7 @@ Internet-Draft              HTTP Client Hints                  June 2016
 
 
 
-Grigorik                Expires December 8, 2016                [Page 6]
+Grigorik                Expires December 9, 2016                [Page 6]
 
 Internet-Draft              HTTP Client Hints                  June 2016
 
@@ -389,7 +389,7 @@ Internet-Draft              HTTP Client Hints                  June 2016
 
 
 
-Grigorik                Expires December 8, 2016                [Page 7]
+Grigorik                Expires December 9, 2016                [Page 7]
 
 Internet-Draft              HTTP Client Hints                  June 2016
 
@@ -445,7 +445,7 @@ Internet-Draft              HTTP Client Hints                  June 2016
 
 
 
-Grigorik                Expires December 8, 2016                [Page 8]
+Grigorik                Expires December 9, 2016                [Page 8]
 
 Internet-Draft              HTTP Client Hints                  June 2016
 
@@ -501,7 +501,7 @@ Internet-Draft              HTTP Client Hints                  June 2016
 
 
 
-Grigorik                Expires December 8, 2016                [Page 9]
+Grigorik                Expires December 9, 2016                [Page 9]
 
 Internet-Draft              HTTP Client Hints                  June 2016
 
@@ -557,7 +557,7 @@ Internet-Draft              HTTP Client Hints                  June 2016
 
 
 
-Grigorik                Expires December 8, 2016               [Page 10]
+Grigorik                Expires December 9, 2016               [Page 10]
 
 Internet-Draft              HTTP Client Hints                  June 2016
 
@@ -613,7 +613,7 @@ Internet-Draft              HTTP Client Hints                  June 2016
 
 
 
-Grigorik                Expires December 8, 2016               [Page 11]
+Grigorik                Expires December 9, 2016               [Page 11]
 
 Internet-Draft              HTTP Client Hints                  June 2016
 
@@ -669,4 +669,4 @@ Author's Address
 
 
 
-Grigorik                Expires December 8, 2016               [Page 12]
+Grigorik                Expires December 9, 2016               [Page 12]
