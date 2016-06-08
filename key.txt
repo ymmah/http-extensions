@@ -463,12 +463,9 @@ Internet-Draft                     Key                         June 2016
    happens, Key processing needs to fail safely, so that the correct
    behavior is observed.
 
-   When this happens, implementations MUST either behave as if the whole
-   Key header field was not present (i.e., abort processing of Key,
-   ignoring it entirely and falling back to Vary), or assure that the
-   nominated header fields being compared match, as per [RFC7234],
-   Section 4.1 (i.e., treat the failing portion of the Key header as
-   falling back to Vary, but continuing to process the rest).
+   When this happens, implementations MUST either behave as if the Key
+   header was not present, or assure that the nominated header fields
+   being compared match, as per [RFC7234], Section 4.1.
 
 2.3.  Key Parameters
 
@@ -497,6 +494,9 @@ Internet-Draft                     Key                         June 2016
    1)  If "parameter_value" is "0", fail parameter processing
        (Section 2.2.2).
    2)  If "header_value" is the empty string, return "none".
+   3)  If "header_value" contains a ",", remove it and all subsequent
+       characters.
+   4)  Remove all WSP characters from "header_value".
 
 
 
@@ -506,9 +506,6 @@ Fielding & Nottingham   Expires December 10, 2016               [Page 9]
 Internet-Draft                     Key                         June 2016
 
 
-   3)  If "header_value" contains a ",", remove it and all subsequent
-       characters.
-   4)  Remove all WSP characters from "header_value".
    5)  If "header_value" does not match the div ABNF rule, fail
        parameter processing (Section 2.2.2).
    6)  Return the quotient of "header_value" / "parameter_value"
@@ -554,6 +551,9 @@ Internet-Draft                     Key                         June 2016
    2)  If "header_value" contains a ",", remove it and all subsequent
        characters.
    3)  Remove all WSP characters from "header_value".
+   4)  If "header_value" does not match the segment ABNF rule, fail
+       parameter processing (Section 2.2.2).
+   5)  Let "segment_id" be 0.
 
 
 
@@ -562,9 +562,6 @@ Fielding & Nottingham   Expires December 10, 2016              [Page 10]
 Internet-Draft                     Key                         June 2016
 
 
-   4)  If "header_value" does not match the segment ABNF rule, fail
-       parameter processing (Section 2.2.2).
-   5)  Let "segment_id" be 0.
    6)  Create a list "segment_list" by splitting "parameter_value" on
        ":" characters.
    7)  For each "segment_value" in "segment_list":
@@ -611,14 +608,15 @@ Internet-Draft                     Key                         June 2016
    Its value's syntax is:
 
 
+   match  = ( token / quoted-string )
+
+
 
 
 Fielding & Nottingham   Expires December 10, 2016              [Page 11]
 
 Internet-Draft                     Key                         June 2016
 
-
-   match  = ( token / quoted-string )
 
    To process a set of header fields against a match parameter, follow
    these steps (or their equivalent):
@@ -666,6 +664,8 @@ Internet-Draft                     Key                         June 2016
 
    substr  = ( token / quoted-string )
 
+   To process a set of header fields against a substr parameter, follow
+   these steps (or their equivalent):
 
 
 
@@ -673,9 +673,6 @@ Fielding & Nottingham   Expires December 10, 2016              [Page 12]
 
 Internet-Draft                     Key                         June 2016
 
-
-   To process a set of header fields against a substr parameter, follow
-   these steps (or their equivalent):
 
    1)  If "header_value" is the empty string, return "none".
    2)  Create "header_list" by splitting "header_value" on ","
@@ -723,6 +720,9 @@ Internet-Draft                     Key                         June 2016
    To process a list of header fields against a param parameter, follow
    these steps (or their equivalent):
 
+   1)  Let "header_list" be an empty list.
+
+
 
 
 Fielding & Nottingham   Expires December 10, 2016              [Page 13]
@@ -730,7 +730,6 @@ Fielding & Nottingham   Expires December 10, 2016              [Page 13]
 Internet-Draft                     Key                         June 2016
 
 
-   1)  Let "header_list" be an empty list.
    2)  Create "header_list_tmp1" by splitting header_value on ","
        characters.
    3)  For each "header_item_tmp1" in "header_list_tmp1":
@@ -776,6 +775,7 @@ Internet-Draft                     Key                         June 2016
    This specification defines the HTTP Key Parameter Registry,
    maintained at http://www.iana.org/assignments/http-parameters/http-
    parameters.xhtml#key .
+
 
 
 
