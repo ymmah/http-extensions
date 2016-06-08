@@ -305,13 +305,12 @@ Internet-Draft           HTTP encryption coding                June 2016
    The following parameters are used in determining the content
    encryption key that is used for encryption:
 
-   keyid:  The "keyid" parameter contains a sequence of octets that
-      identifies the keying material that is used.  When the Crypto-Key
-      header field is used, the "keyid" identifies a matching value in
-      that field.  The "keyid" parameter MUST be used if keying material
-      included in an Crypto-Key header field is needed to derive the
-      content encryption key.  The "keyid" parameter can also be used to
-      identify keys in an application-specific fashion.
+   keyid:  The "keyid" parameter contains a string that identifies the
+      keying material that is used.  The "keyid" parameter SHOULD be
+      included, unless key identification is guaranteed by other means.
+      The "keyid" parameter MUST be used if keying material included in
+      an Crypto-Key header field is needed to derive the content
+      encryption key.
 
    salt:  The "salt" parameter contains a base64url-encoded octets
       [RFC7515] that is used as salt in deriving a unique content
@@ -326,6 +325,7 @@ Internet-Draft           HTTP encryption coding                June 2016
       describes the record size in octets.  This value MUST be greater
       than 1.  If the "rs" parameter is absent, the record size defaults
       to 4096 octets.
+
 
 
 
@@ -599,7 +599,7 @@ Internet-Draft           HTTP encryption coding                June 2016
    Content-Type: application/octet-stream
    Content-Encoding: aesgcm
    Connection: close
-   Encryption: keyid="bob/keys/123";
+   Encryption: keyid="http://example.org/bob/keys/123";
                salt="XZwpw6o37R-6qoZjw6KwAw"
 
    [encrypted payload]
@@ -629,7 +629,7 @@ Internet-Draft           HTTP encryption coding                June 2016
    Content-Type: text/html
    Content-Encoding: gzip, aesgcm
    Transfer-Encoding: chunked
-   Encryption: keyid="me@example.com";
+   Encryption: keyid="mailto:me@example.com";
                salt="m2hJ_NttRtFyUiMRPwfpHA"
 
    [encrypted payload]
@@ -648,7 +648,7 @@ Internet-Draft           HTTP encryption coding                June 2016
    Content-Length: 1235
    Encryption: keyid="mailto:me@example.com";
                salt="NfzOeuV5USPRA-n_9s1Lag",
-               keyid="bob/keys/123";
+               keyid="http://example.org/bob/keys/123";
                salt="bDMSGoc2uobK_IhavSHsHA"; rs=1200
 
    [encrypted payload]
