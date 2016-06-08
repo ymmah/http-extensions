@@ -310,8 +310,8 @@ Internet-Draft           HTTP encryption coding                June 2016
       header field is used, the "keyid" identifies a matching value in
       that field.  The "keyid" parameter MUST be used if keying material
       included in an Crypto-Key header field is needed to derive the
-      content encryption key.  It can also be used to identify keys in
-      an application-specific fashion.
+      content encryption key.  The "keyid" parameter can also be used to
+      identify keys in an application-specific fashion.
 
    salt:  The "salt" parameter contains a base64url-encoded octets
       [RFC7515] that is used as salt in deriving a unique content
