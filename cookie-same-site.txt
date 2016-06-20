@@ -100,9 +100,9 @@ Table of Contents
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  12
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .  12
      7.2.  Informative References  . . . . . . . . . . . . . . . . .  13
-   Appendix A.  Changes since draft-ietf-httpbis-cookie-same-site-00  14
-   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  14
+   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .  14
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  14
+
 
 
 
@@ -730,11 +730,7 @@ West & Goodwin          Expires December 22, 2016              [Page 13]
 Internet-Draft              Same-Site Cookies                  June 2016
 
 
-Appendix A.  Changes since draft-ietf-httpbis-cookie-same-site-00
-
-   None.  Yet.
-
-Appendix B.  Acknowledgements
+Appendix A.  Acknowledgements
 
    The same-site cookie concept documented here is indebited to Mark
    Goodwin's and Joe Walker's [samedomain-cookies].  Michal Zalewski,
@@ -755,6 +751,10 @@ Authors' Addresses
 
    Email: mgoodwin@mozilla.com
    URI:   https://www.computerist.org/
+
+
+
+
 
 
 
