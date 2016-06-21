@@ -76,13 +76,13 @@ Table of Contents
    2.  Using HTTP URIs over TLS  . . . . . . . . . . . . . . . . . .   3
    3.  Server Authentication . . . . . . . . . . . . . . . . . . . .   4
    4.  Interaction with "https" URIs . . . . . . . . . . . . . . . .   5
-   5.  Requiring Use of TLS  . . . . . . . . . . . . . . . . . . . .   5
+   5.  Requiring Use of TLS  . . . . . . . . . . . . . . . . . . . .   6
      5.1.  Opportunistic Commitment  . . . . . . . . . . . . . . . .   6
      5.2.  Client Handling of A Commitment . . . . . . . . . . . . .   7
      5.3.  Operational Considerations  . . . . . . . . . . . . . . .   7
    6.  The "http-opportunistic" well-known URI . . . . . . . . . . .   8
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   8
-   8.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
+   8.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
      8.1.  Security Indicators . . . . . . . . . . . . . . . . . . .   9
      8.2.  Downgrade Attacks . . . . . . . . . . . . . . . . . . . .   9
      8.3.  Privacy Considerations  . . . . . . . . . . . . . . . . .   9
@@ -267,11 +267,11 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    authentication (for instance, the purely anonymous TLS cipher suites)
    cannot be used for "https" URIs.
 
-5.  Requiring Use of TLS
-
-   Even when the alternative service is strongly authenticated,
-   opportunistically upgrading cleartext HTTP connections to use TLS is
-   subject to active attacks.  In particular:
+   Because of the risk of server confusion about individual requests'
+   schemes (see Section 8.4), clients MUST NOT mix "https" and "http"
+   requests on the same connection unless the http-opportunistic
+   response's origin object Section 6 has a "mixed-scheme" member whose
+   value is "true".
 
 
 
@@ -281,6 +281,12 @@ Nottingham & Thomson    Expires December 23, 2016               [Page 5]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
+
+5.  Requiring Use of TLS
+
+   Even when the alternative service is strongly authenticated,
+   opportunistically upgrading cleartext HTTP connections to use TLS is
+   subject to active attacks.  In particular:
 
    o  Because the original HTTP connection is in cleartext, it is
       vulnerable to man-in-the-middle attacks, and
@@ -324,12 +330,6 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
      }
    }
 
-   Including "tls-commit" creates a commitment to provide a secured
-   alternative service for the advertised period.  Clients that receive
-   this commitment can assume that a secured alternative service will be
-   available for the origin object lifetime.  Clients might however
-   choose to limit this time (see Section 5.3).
-
 
 
 
@@ -337,6 +337,12 @@ Nottingham & Thomson    Expires December 23, 2016               [Page 6]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
+
+   Including "tls-commit" creates a commitment to provide a secured
+   alternative service for the advertised period.  Clients that receive
+   this commitment can assume that a secured alternative service will be
+   available for the origin object lifetime.  Clients might however
+   choose to limit this time (see Section 5.3).
 
 5.2.  Client Handling of A Commitment
 
@@ -380,12 +386,6 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    To avoid situations where a commitment causes errors, clients MAY
    limit the time over which a commitment is respected for a given
    origin.  A lower limit might be appropriate for initial commitments;
-   the certainty that a site has set a correct value - and the
-   corresponding limit on persistence - might increase as a commitment
-   is renewed multiple times.
-
-
-
 
 
 
@@ -393,6 +393,10 @@ Nottingham & Thomson    Expires December 23, 2016               [Page 7]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
+
+   the certainty that a site has set a correct value - and the
+   corresponding limit on persistence - might increase as a commitment
+   is renewed multiple times.
 
 6.  The "http-opportunistic" well-known URI
 
@@ -436,10 +440,6 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
 
    o  Related Information:
 
-8.  Security Considerations
-
-
-
 
 
 
@@ -449,6 +449,8 @@ Nottingham & Thomson    Expires December 23, 2016               [Page 8]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
+
+8.  Security Considerations
 
 8.1.  Security Indicators
 
@@ -495,8 +497,6 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    This might be due to limitations in the protocol (the most common
    HTTP/1.1 request form does not carry an explicit indication of the
    URI scheme), or it may be because how the server and application are
-   implemented (often, they are two separate entities, with a variety of
-   possible interfaces between them).
 
 
 
@@ -505,6 +505,9 @@ Nottingham & Thomson    Expires December 23, 2016               [Page 9]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
+
+   implemented (often, they are two separate entities, with a variety of
+   possible interfaces between them).
 
    Any security decisions based upon this information could be misled by
    the deployment of this specification, because it violates the
@@ -551,9 +554,6 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
               DOI 10.17487/RFC6454, December 2011,
               <http://www.rfc-editor.org/info/rfc6454>.
 
-   [RFC7159]  Bray, T., Ed., "The JavaScript Object Notation (JSON) Data
-              Interchange Format", RFC 7159, DOI 10.17487/RFC7159, March
-              2014, <http://www.rfc-editor.org/info/rfc7159>.
 
 
 
@@ -561,6 +561,10 @@ Nottingham & Thomson    Expires December 23, 2016              [Page 10]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
+
+   [RFC7159]  Bray, T., Ed., "The JavaScript Object Notation (JSON) Data
+              Interchange Format", RFC 7159, DOI 10.17487/RFC7159, March
+              2014, <http://www.rfc-editor.org/info/rfc7159>.
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
@@ -606,10 +610,6 @@ Appendix A.  Acknowledgements
 
    Thanks to Patrick McManus, Stefan Eissing, Eliot Lear, Stephen
    Farrell, Guy Podjarny, Stephen Ludin, Erik Nygren, Paul Hoffman, Adam
-   Langley, Eric Rescorla, Julian Reschke, Kari Hurtta, and Richard
-   Barnes for their feedback and suggestions.
-
-
 
 
 
@@ -617,6 +617,9 @@ Nottingham & Thomson    Expires December 23, 2016              [Page 11]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
+
+   Langley, Eric Rescorla, Julian Reschke, Kari Hurtta, and Richard
+   Barnes for their feedback and suggestions.
 
 Authors' Addresses
 
@@ -630,9 +633,6 @@ Authors' Addresses
    Mozilla
 
    Email: martin.thomson@gmail.com
-
-
-
 
 
 
