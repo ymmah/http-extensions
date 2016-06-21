@@ -83,7 +83,7 @@ Table of Contents
    6.  The "http-opportunistic" well-known URI . . . . . . . . . . .   8
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   8
    8.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
-     8.1.  Security Indicators . . . . . . . . . . . . . . . . . . .   8
+     8.1.  Security Indicators . . . . . . . . . . . . . . . . . . .   9
      8.2.  Downgrade Attacks . . . . . . . . . . . . . . . . . . . .   9
      8.3.  Privacy Considerations  . . . . . . . . . . . . . . . . .   9
      8.4.  Confusion Regarding Request Scheme  . . . . . . . . . . .   9
@@ -92,7 +92,7 @@ Table of Contents
      9.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
      9.2.  Informative References  . . . . . . . . . . . . . . . . .  11
    Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .  11
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  11
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  12
 
 1.  Introduction
 
@@ -240,7 +240,8 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
 
    {
      "http://www.example.com": {
-       "tls-ports": [443, 8000]
+       "tls-ports": [443, 8000],
+       "lifetime": 2592000
      }
    }
 
@@ -272,8 +273,7 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    opportunistically upgrading cleartext HTTP connections to use TLS is
    subject to active attacks.  In particular:
 
-   o  Because the original HTTP connection is in cleartext, it is
-      vulnerable to man-in-the-middle attacks, and
+
 
 
 
@@ -281,6 +281,9 @@ Nottingham & Thomson    Expires December 23, 2016               [Page 5]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
+
+   o  Because the original HTTP connection is in cleartext, it is
+      vulnerable to man-in-the-middle attacks, and
 
    o  By default, if clients cannot reach the alternative service, they
       will fall back to using the original cleartext origin.
@@ -308,27 +311,24 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    This feature is optional due to the requirement for server
    authentication and the potential risk entailed (see Section 5.3).
 
-   The value of the "tls-commit" member is a number ([RFC7159],
-   Section 6) indicating the duration of the commitment interval in
-   seconds.
+   When the value of the "tls-commit" member is "true" ([RFC7159],
+   Section 3), it indicates that the origin makes such a commitment for
+   the duration of the origin object lifetime.
 
 
    {
      "http://www.example.com": {
        "tls-ports": [443,8080],
-       "tls-commit": 3600
+       "tls-commit": true,
+       "lifetime": 3600
      }
    }
 
    Including "tls-commit" creates a commitment to provide a secured
    alternative service for the advertised period.  Clients that receive
    this commitment can assume that a secured alternative service will be
-   available for the indicated period.  Clients might however choose to
-   limit this time (see Section 5.3).
-
-
-
-
+   available for the origin object lifetime.  Clients might however
+   choose to limit this time (see Section 5.3).
 
 
 
@@ -351,17 +351,11 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
 
    A client that receives a commitment and that successfully
    authenticates the alternative service can assume that a secured
-   alternative will remain available for the commitment interval.  The
-   commitment interval starts when the commitment is received and
-   authenticated and runs for a number of seconds equal to value of the
-   "tls-commit" member, less the current age of the http-opportunistic
-   response (as defined in Section 4.2.3 of [RFC7234]).  Note that the
-   commitment interval MAY exceed the freshness lifetime of the "http-
-   opportunistic" resource.
+   alternative will remain available for the origin object lifetime.
 
    A client SHOULD avoid sending requests via cleartext protocols or to
-   unauthenticated alternative services for the duration of the
-   commitment interval, except to discover new potential alternatives.
+   unauthenticated alternative services for the duration of the origin
+   object lifetime, except to discover new potential alternatives.
 
    A commitment is not bound to a particular alternative service.
    Clients are able to use alternative services that they become aware
@@ -386,6 +380,12 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    To avoid situations where a commitment causes errors, clients MAY
    limit the time over which a commitment is respected for a given
    origin.  A lower limit might be appropriate for initial commitments;
+   the certainty that a site has set a correct value - and the
+   corresponding limit on persistence - might increase as a commitment
+   is renewed multiple times.
+
+
+
 
 
 
@@ -393,10 +393,6 @@ Nottingham & Thomson    Expires December 23, 2016               [Page 7]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
-
-   the certainty that a site has set a correct value - and the
-   corresponding limit on persistence - might increase as a commitment
-   is renewed multiple times.
 
 6.  The "http-opportunistic" well-known URI
 
@@ -411,12 +407,22 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    o  That response has the media type "application/json", and
 
    o  That response's payload, when parsed as JSON [RFC7159], contains
-      an object as the root.
+      an object as the root, and
 
    o  The root object contains a member whose name is a case-insensitive
       character-for-character match for the origin in question,
       serialised into Unicode as per Section 6.1 of [RFC6454], and whose
-      value is an object (hereafter, the "origin object").
+      value is an object (hereafter, the "origin object"),
+
+   o  The origin object has a "lifetime" member, whose value is a number
+      indicating the number of seconds which the origin object is valid
+      for (hereafter, the "origin object lifetime"), and
+
+   o  The origin object lifetime is greater than the "current_age" (as
+      per [RFC7234], Section 4.2.3).
+
+   Note that origin object lifetime might differ from the freshness
+   lifetime of the response.
 
 7.  IANA Considerations
 
@@ -432,12 +438,6 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
 
 8.  Security Considerations
 
-8.1.  Security Indicators
-
-   User Agents MUST NOT provide any special security indicia when an
-   "http" resource is acquired using TLS.  In particular, indicators
-   that might suggest the same level of security as "https" MUST NOT be
-   used (e.g., a "lock device").
 
 
 
@@ -449,6 +449,13 @@ Nottingham & Thomson    Expires December 23, 2016               [Page 8]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
+
+8.1.  Security Indicators
+
+   User Agents MUST NOT provide any special security indicia when an
+   "http" resource is acquired using TLS.  In particular, indicators
+   that might suggest the same level of security as "https" MUST NOT be
+   used (e.g., a "lock device").
 
 8.2.  Downgrade Attacks
 
@@ -491,13 +498,6 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    implemented (often, they are two separate entities, with a variety of
    possible interfaces between them).
 
-   Any security decisions based upon this information could be misled by
-   the deployment of this specification, because it violates the
-   assumption that the use of TLS (or port 443) means that the client is
-   accessing a HTTPS URI, and operating in the security context implied
-   by HTTPS.
-
-
 
 
 
@@ -505,6 +505,12 @@ Nottingham & Thomson    Expires December 23, 2016               [Page 9]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
+
+   Any security decisions based upon this information could be misled by
+   the deployment of this specification, because it violates the
+   assumption that the use of TLS (or port 443) means that the client is
+   accessing a HTTPS URI, and operating in the security context implied
+   by HTTPS.
 
    Therefore, servers need to carefully examine the use of such signals
    before deploying this specification.
@@ -549,18 +555,17 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
               Interchange Format", RFC 7159, DOI 10.17487/RFC7159, March
               2014, <http://www.rfc-editor.org/info/rfc7159>.
 
-   [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
-              Protocol (HTTP/1.1): Message Syntax and Routing",
-              RFC 7230, DOI 10.17487/RFC7230, June 2014,
-              <http://www.rfc-editor.org/info/rfc7230>.
-
-
 
 
 Nottingham & Thomson    Expires December 23, 2016              [Page 10]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
+
+   [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
+              Protocol (HTTP/1.1): Message Syntax and Routing",
+              RFC 7230, DOI 10.17487/RFC7230, June 2014,
+              <http://www.rfc-editor.org/info/rfc7230>.
 
    [RFC7232]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Conditional Requests", RFC 7232,
@@ -604,12 +609,7 @@ Appendix A.  Acknowledgements
    Langley, Eric Rescorla, Julian Reschke, Kari Hurtta, and Richard
    Barnes for their feedback and suggestions.
 
-Authors' Addresses
 
-   Mark Nottingham
-
-   Email: mnot@mnot.net
-   URI:   https://www.mnot.net/
 
 
 
@@ -618,18 +618,18 @@ Nottingham & Thomson    Expires December 23, 2016              [Page 11]
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
+Authors' Addresses
+
+   Mark Nottingham
+
+   Email: mnot@mnot.net
+   URI:   https://www.mnot.net/
+
+
    Martin Thomson
    Mozilla
 
    Email: martin.thomson@gmail.com
-
-
-
-
-
-
-
-
 
 
 
