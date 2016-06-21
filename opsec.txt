@@ -5,8 +5,8 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Experimental                                 M. Thomson
-Expires: December 22, 2016                                       Mozilla
-                                                           June 20, 2016
+Expires: December 23, 2016                                       Mozilla
+                                                           June 21, 2016
 
 
                     Opportunistic Security for HTTP
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 22, 2016.
+   This Internet-Draft will expire on December 23, 2016.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Nottingham & Thomson    Expires December 22, 2016               [Page 1]
+Nottingham & Thomson    Expires December 23, 2016               [Page 1]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Nottingham & Thomson    Expires December 22, 2016               [Page 2]
+Nottingham & Thomson    Expires December 23, 2016               [Page 2]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
@@ -165,7 +165,7 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
 
-Nottingham & Thomson    Expires December 22, 2016               [Page 3]
+Nottingham & Thomson    Expires December 23, 2016               [Page 3]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
@@ -221,7 +221,7 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
 
-Nottingham & Thomson    Expires December 22, 2016               [Page 4]
+Nottingham & Thomson    Expires December 23, 2016               [Page 4]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
@@ -277,7 +277,7 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
 
-Nottingham & Thomson    Expires December 22, 2016               [Page 5]
+Nottingham & Thomson    Expires December 23, 2016               [Page 5]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
@@ -333,7 +333,7 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
 
-Nottingham & Thomson    Expires December 22, 2016               [Page 6]
+Nottingham & Thomson    Expires December 23, 2016               [Page 6]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
@@ -366,12 +366,14 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    A commitment is not bound to a particular alternative service.
    Clients are able to use alternative services that they become aware
    of.  However, once a valid and authenticated commitment has been
-   received, clients SHOULD NOT use an unauthenticated alternative
-   service.  Where there is an active commitment, clients SHOULD ignore
-   advertisements for unsecured alternative services.  A client MAY send
-   requests to an unauthenticated origin in an attempt to discover
-   potential alternative services, but these requests SHOULD be entirely
-   generic and avoid including credentials.
+   received, clients SHOULD NOT use an alternative service without both
+   reasonable assurances (see Section 3) and strong authentication.
+   Where there is an active commitment, clients SHOULD ignore
+   advertisements for unsecured alternative services.
+
+   A client MAY send requests to an unauthenticated origin in an attempt
+   to discover potential alternative services, but these requests SHOULD
+   be entirely generic and avoid including credentials.
 
 5.3.  Operational Considerations
 
@@ -384,16 +386,15 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    To avoid situations where a commitment causes errors, clients MAY
    limit the time over which a commitment is respected for a given
    origin.  A lower limit might be appropriate for initial commitments;
-   the certainty that a site has set a correct value - and the
 
 
 
-
-Nottingham & Thomson    Expires December 22, 2016               [Page 7]
+Nottingham & Thomson    Expires December 23, 2016               [Page 7]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
+   the certainty that a site has set a correct value - and the
    corresponding limit on persistence - might increase as a commitment
    is renewed multiple times.
 
@@ -444,8 +445,7 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
 
-
-Nottingham & Thomson    Expires December 22, 2016               [Page 8]
+Nottingham & Thomson    Expires December 23, 2016               [Page 8]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
@@ -501,7 +501,7 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
 
-Nottingham & Thomson    Expires December 22, 2016               [Page 9]
+Nottingham & Thomson    Expires December 23, 2016               [Page 9]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
@@ -557,7 +557,7 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
 
-Nottingham & Thomson    Expires December 22, 2016              [Page 10]
+Nottingham & Thomson    Expires December 23, 2016              [Page 10]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
@@ -613,7 +613,7 @@ Authors' Addresses
 
 
 
-Nottingham & Thomson    Expires December 22, 2016              [Page 11]
+Nottingham & Thomson    Expires December 23, 2016              [Page 11]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
@@ -669,4 +669,4 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
 
-Nottingham & Thomson    Expires December 22, 2016              [Page 12]
+Nottingham & Thomson    Expires December 23, 2016              [Page 12]
