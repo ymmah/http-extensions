@@ -268,12 +268,12 @@ Internet-Draft           HTTP encryption coding                June 2016
    how those content encoding(s) can be removed.
 
    The "Encryption" header field uses the extended ABNF syntax defined
-   in Section 1.2 of [RFC7230] and the "parameter" rule from [RFC7231]
+   in Section 1.2 of [RFC7230] and the "parameter" and "OWS" rules from
+   [RFC7231].
 
 
      Encryption = #encryption_params
-     encryption_params = [ parameter *( ";" parameter ) ]
-
+     encryption_params = [ parameter *( OWS ";" OWS parameter ) ]
 
 
 
@@ -420,11 +420,12 @@ Internet-Draft           HTTP encryption coding                June 2016
    material used in the Encryption header field.
 
    The Crypto-Key header field uses the extended ABNF syntax defined in
-   Section 1.2 of [RFC7230] and the "parameter" rule from [RFC7231].
+   Section 1.2 of [RFC7230] and the "parameter" and "OWS" rules from
+   [RFC7231].
 
 
      Crypto-Key = #crypto_key_params
-     crypto_key_params = [ parameter *( ";" parameter ) ]
+     crypto_key_params = [ parameter *( OWS ";" OWS parameter ) ]
 
    keyid:  The "keyid" parameter corresponds to the "keyid" parameter in
       the Encryption header field.
@@ -441,7 +442,6 @@ Internet-Draft           HTTP encryption coding                June 2016
 
    The input keying material used by the key derivation (see
    Section 3.2) can be determined based on the information in the
-
 
 
 
