@@ -297,12 +297,11 @@ Internet-Draft           HTTP encryption coding                June 2016
    how those content encoding(s) can be removed.
 
    The "Encryption" header field uses the extended ABNF syntax defined
-   in Section 1.2 of [RFC7230] and the "parameter" and "OWS" rules from
-   [RFC7231].
+   in Section 1.2 of [RFC7230] and the "parameter" rule from [RFC7231]
 
 
      Encryption = #encryption_params
-     encryption_params = [ parameter *( OWS ";" OWS parameter ) ]
+     encryption_params = [ parameter *( ";" parameter ) ]
 
    If the payload is encrypted more than once (as reflected by having
    multiple content-codings that imply encryption), each application of
@@ -321,15 +320,16 @@ Internet-Draft           HTTP encryption coding                June 2016
    The following parameters are used in determining the content
    encryption key that is used for encryption:
 
-   keyid:  The "keyid" parameter identifies the keying material that is
-      used.  When the Crypto-Key header field is used, the "keyid"
-      identifies a matching value in that field.  The "keyid" parameter
-      MUST be used if keying material included in an Crypto-Key header
-      field is needed to derive the content encryption key.  The "keyid"
-      parameter can also be used to identify keys in an application-
-      specific fashion.
+   keyid:  The "keyid" parameter contains a string that identifies the
+      keying material that is used.  The "keyid" parameter SHOULD be
+      included, unless key identification is guaranteed by other means.
+      The "keyid" parameter MUST be used if keying material included in
+      an Crypto-Key header field is needed to derive the content
+      encryption key.
 
-
+   salt:  The "salt" parameter contains a base64url-encoded octets
+      [RFC7515] that is used as salt in deriving a unique content
+      encryption key (see Section 3.2).  The "salt" parameter MUST be
 
 
 
@@ -338,9 +338,6 @@ Thomson                 Expires December 26, 2016               [Page 6]
 Internet-Draft           HTTP encryption coding                June 2016
 
 
-   salt:  The "salt" parameter contains a base64url-encoded octets
-      [RFC7515] that is used as salt in deriving a unique content
-      encryption key (see Section 3.2).  The "salt" parameter MUST be
       present, and MUST be exactly 16 octets long when decoded.  The
       "salt" parameter MUST NOT be reused for two different payload
       bodies that have the same input keying material; generating a
@@ -386,16 +383,15 @@ Internet-Draft           HTTP encryption coding                June 2016
 
    AEAD_AES_128_GCM requires a 16 octet (128 bit) content encryption key
    (CEK), so the length (L) parameter to HKDF is 16.  The second step of
+   HKDF can therefore be simplified to the first 16 octets of a single
+   HMAC:
+
 
 
 
 Thomson                 Expires December 26, 2016               [Page 7]
 
 Internet-Draft           HTTP encryption coding                June 2016
-
-
-   HKDF can therefore be simplified to the first 16 octets of a single
-   HMAC:
 
 
       CEK = HMAC-SHA-256(PRK, cek_info || 0x01)
@@ -440,8 +436,12 @@ Internet-Draft           HTTP encryption coding                June 2016
    material used in the Encryption header field.
 
    The Crypto-Key header field uses the extended ABNF syntax defined in
-   Section 1.2 of [RFC7230] and the "parameter" and "OWS" rules from
-   [RFC7231].
+   Section 1.2 of [RFC7230] and the "parameter" rule from [RFC7231].
+
+
+     Crypto-Key = #crypto_key_params
+     crypto_key_params = [ parameter *( ";" parameter ) ]
+
 
 
 
@@ -449,9 +449,6 @@ Thomson                 Expires December 26, 2016               [Page 8]
 
 Internet-Draft           HTTP encryption coding                June 2016
 
-
-     Crypto-Key = #crypto_key_params
-     crypto_key_params = [ parameter *( OWS ";" OWS parameter ) ]
 
    keyid:  The "keyid" parameter corresponds to the "keyid" parameter in
       the Encryption header field.
@@ -499,6 +496,9 @@ Internet-Draft           HTTP encryption coding                June 2016
    either modp (or finite field) Diffie-Hellman [DH] or elliptic curve
    Diffie-Hellman (ECDH) [RFC4492].
 
+   This share is combined with other information at the recipient to
+   determine the HKDF input keying material.  In order for the exchange
+
 
 
 Thomson                 Expires December 26, 2016               [Page 9]
@@ -506,8 +506,6 @@ Thomson                 Expires December 26, 2016               [Page 9]
 Internet-Draft           HTTP encryption coding                June 2016
 
 
-   This share is combined with other information at the recipient to
-   determine the HKDF input keying material.  In order for the exchange
    to be successful, the following information MUST be established out
    of band:
 
@@ -554,6 +552,8 @@ Internet-Draft           HTTP encryption coding                June 2016
    for Diffie-Hellman (label, group parameters, or curves and point
    format) that are used, or describe how those parameters are
    negotiated between sender and receiver.
+
+
 
 
 
@@ -625,7 +625,7 @@ Internet-Draft           HTTP encryption coding                June 2016
    Content-Type: application/octet-stream
    Content-Encoding: aesgcm
    Connection: close
-   Encryption: keyid="bob/keys/123";
+   Encryption: keyid="http://example.org/bob/keys/123";
                salt="XZwpw6o37R-6qoZjw6KwAw"
 
    [encrypted payload]
@@ -647,7 +647,7 @@ Internet-Draft           HTTP encryption coding                June 2016
    Content-Type: text/html
    Content-Encoding: gzip, aesgcm
    Transfer-Encoding: chunked
-   Encryption: keyid="me@example.com";
+   Encryption: keyid="mailto:me@example.com";
                salt="m2hJ_NttRtFyUiMRPwfpHA"
 
    [encrypted payload]
@@ -681,7 +681,7 @@ Internet-Draft           HTTP encryption coding                June 2016
    Content-Length: 1235
    Encryption: keyid="mailto:me@example.com";
                salt="NfzOeuV5USPRA-n_9s1Lag",
-               keyid="bob/keys/123";
+               keyid="http://example.org/bob/keys/123";
                salt="bDMSGoc2uobK_IhavSHsHA"; rs=1200
 
    [encrypted payload]
@@ -936,7 +936,7 @@ Internet-Draft           HTTP encryption coding                June 2016
 
 7.1.  The "aesgcm" HTTP Content Encoding
 
-   This memo registers the "aesgcm" HTTP content-coding in the HTTP
+   This memo registers the "encrypted" HTTP content-coding in the HTTP
    Content Codings Registry, as detailed in Section 2.
 
    o  Name: aesgcm
