@@ -92,6 +92,7 @@ Table of Contents
      A.2.  Since draft-reschke-http-jfv-01 . . . . . . . . . . . . .  11
      A.3.  Since draft-reschke-http-jfv-02 . . . . . . . . . . . . .  11
      A.4.  Since draft-reschke-http-jfv-03 . . . . . . . . . . . . .  11
+     A.5.  Since draft-reschke-http-jfv-04 . . . . . . . . . . . . .  11
    Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  11
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  11
 
@@ -104,7 +105,6 @@ Table of Contents
       known header fields do use a similarly looking syntax, but it is
       hard to write generic parsing code that will both correctly handle
       valid field values but also reject invalid ones.
-
 
 
 
@@ -586,6 +586,10 @@ A.4.  Since draft-reschke-http-jfv-03
 
    Mention relation to KEY header field.
 
+A.5.  Since draft-reschke-http-jfv-04
+
+   Change to HTTP Working Group draft.
+
 Appendix B.  Acknowledgements
 
    Thanks go to the Hypertext Transfer Protocol Working Group
@@ -601,10 +605,6 @@ Author's Address
 
    EMail: julian.reschke@greenbytes.de
    URI:   http://greenbytes.de/tech/webdav/
-
-
-
-
 
 
 
