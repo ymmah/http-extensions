@@ -4,8 +4,8 @@
 
 HTTP Working Group                                            J. Reschke
 Internet-Draft                                                greenbytes
-Intended status: Standards Track                           June 24, 2016
-Expires: December 26, 2016
+Intended status: Standards Track                           June 26, 2016
+Expires: December 28, 2016
 
 
               A JSON Encoding for HTTP Header Field Values
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 26, 2016.
+   This Internet-Draft will expire on December 28, 2016.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Reschke                 Expires December 26, 2016               [Page 1]
+Reschke                 Expires December 28, 2016               [Page 1]
 
 Internet-Draft     JSON Encoding for HTTP Field Values         June 2016
 
@@ -92,7 +92,6 @@ Table of Contents
      A.2.  Since draft-reschke-http-jfv-01 . . . . . . . . . . . . .  11
      A.3.  Since draft-reschke-http-jfv-02 . . . . . . . . . . . . .  11
      A.4.  Since draft-reschke-http-jfv-03 . . . . . . . . . . . . .  11
-     A.5.  Since draft-reschke-http-jfv-04 . . . . . . . . . . . . .  11
    Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  11
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  11
 
@@ -109,7 +108,8 @@ Table of Contents
 
 
 
-Reschke                 Expires December 26, 2016               [Page 2]
+
+Reschke                 Expires December 28, 2016               [Page 2]
 
 Internet-Draft     JSON Encoding for HTTP Field Values         June 2016
 
@@ -165,7 +165,7 @@ Internet-Draft     JSON Encoding for HTTP Field Values         June 2016
 
 
 
-Reschke                 Expires December 26, 2016               [Page 3]
+Reschke                 Expires December 28, 2016               [Page 3]
 
 Internet-Draft     JSON Encoding for HTTP Field Values         June 2016
 
@@ -221,7 +221,7 @@ Internet-Draft     JSON Encoding for HTTP Field Values         June 2016
 
 
 
-Reschke                 Expires December 26, 2016               [Page 4]
+Reschke                 Expires December 28, 2016               [Page 4]
 
 Internet-Draft     JSON Encoding for HTTP Field Values         June 2016
 
@@ -277,7 +277,7 @@ Internet-Draft     JSON Encoding for HTTP Field Values         June 2016
 
 
 
-Reschke                 Expires December 26, 2016               [Page 5]
+Reschke                 Expires December 28, 2016               [Page 5]
 
 Internet-Draft     JSON Encoding for HTTP Field Values         June 2016
 
@@ -333,7 +333,7 @@ Internet-Draft     JSON Encoding for HTTP Field Values         June 2016
 
 
 
-Reschke                 Expires December 26, 2016               [Page 6]
+Reschke                 Expires December 28, 2016               [Page 6]
 
 Internet-Draft     JSON Encoding for HTTP Field Values         June 2016
 
@@ -389,7 +389,7 @@ Internet-Draft     JSON Encoding for HTTP Field Values         June 2016
 
 
 
-Reschke                 Expires December 26, 2016               [Page 7]
+Reschke                 Expires December 28, 2016               [Page 7]
 
 Internet-Draft     JSON Encoding for HTTP Field Values         June 2016
 
@@ -445,7 +445,7 @@ Internet-Draft     JSON Encoding for HTTP Field Values         June 2016
 
 
 
-Reschke                 Expires December 26, 2016               [Page 8]
+Reschke                 Expires December 28, 2016               [Page 8]
 
 Internet-Draft     JSON Encoding for HTTP Field Values         June 2016
 
@@ -501,7 +501,7 @@ Internet-Draft     JSON Encoding for HTTP Field Values         June 2016
 
 
 
-Reschke                 Expires December 26, 2016               [Page 9]
+Reschke                 Expires December 28, 2016               [Page 9]
 
 Internet-Draft     JSON Encoding for HTTP Field Values         June 2016
 
@@ -557,7 +557,7 @@ Internet-Draft     JSON Encoding for HTTP Field Values         June 2016
 
 
 
-Reschke                 Expires December 26, 2016              [Page 10]
+Reschke                 Expires December 28, 2016              [Page 10]
 
 Internet-Draft     JSON Encoding for HTTP Field Values         June 2016
 
@@ -586,10 +586,6 @@ A.4.  Since draft-reschke-http-jfv-03
 
    Mention relation to KEY header field.
 
-A.5.  Since draft-reschke-http-jfv-04
-
-   Change to HTTP Working Group draft.
-
 Appendix B.  Acknowledgements
 
    Thanks go to the Hypertext Transfer Protocol Working Group
@@ -613,4 +609,8 @@ Author's Address
 
 
 
-Reschke                 Expires December 26, 2016              [Page 11]
+
+
+
+
+Reschke                 Expires December 28, 2016              [Page 11]
