@@ -4,9 +4,9 @@
 
 HTTP Working Group                                               M. West
 Internet-Draft                                               Google, Inc
-Updates: 6265 (if approved)                                June 26, 2016
+Updates: 6265 (if approved)                                June 27, 2016
 Intended status: Standards Track
-Expires: December 28, 2016
+Expires: December 29, 2016
 
 
    Deprecate modification of 'secure' cookies from non-secure origins
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 28, 2016.
+   This Internet-Draft will expire on December 29, 2016.
 
 
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-West                    Expires December 28, 2016               [Page 1]
+West                    Expires December 29, 2016               [Page 1]
 
 Internet-Draft         Leave Secure Cookies Alone              June 2016
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-West                    Expires December 28, 2016               [Page 2]
+West                    Expires December 29, 2016               [Page 2]
 
 Internet-Draft         Leave Secure Cookies Alone              June 2016
 
@@ -165,7 +165,7 @@ Internet-Draft         Leave Secure Cookies Alone              June 2016
 
 
 
-West                    Expires December 28, 2016               [Page 3]
+West                    Expires December 29, 2016               [Page 3]
 
 Internet-Draft         Leave Secure Cookies Alone              June 2016
 
@@ -221,7 +221,7 @@ Internet-Draft         Leave Secure Cookies Alone              June 2016
 
 
 
-West                    Expires December 28, 2016               [Page 4]
+West                    Expires December 29, 2016               [Page 4]
 
 Internet-Draft         Leave Secure Cookies Alone              June 2016
 
@@ -277,4 +277,4 @@ Author's Address
 
 
 
-West                    Expires December 28, 2016               [Page 5]
+West                    Expires December 29, 2016               [Page 5]
