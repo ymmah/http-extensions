@@ -5,8 +5,8 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Experimental                                 M. Thomson
-Expires: December 29, 2016                                       Mozilla
-                                                           June 27, 2016
+Expires: January 1, 2017                                         Mozilla
+                                                           June 30, 2016
 
 
                     Opportunistic Security for HTTP
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 29, 2016.
+   This Internet-Draft will expire on January 1, 2017.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Nottingham & Thomson    Expires December 29, 2016               [Page 1]
+Nottingham & Thomson     Expires January 1, 2017                [Page 1]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
@@ -79,19 +79,19 @@ Table of Contents
    5.  Requiring Use of TLS  . . . . . . . . . . . . . . . . . . . .   6
      5.1.  Opportunistic Commitment  . . . . . . . . . . . . . . . .   6
      5.2.  Client Handling of A Commitment . . . . . . . . . . . . .   7
-     5.3.  Operational Considerations  . . . . . . . . . . . . . . .   7
+     5.3.  Operational Considerations  . . . . . . . . . . . . . . .   8
    6.  The "http-opportunistic" well-known URI . . . . . . . . . . .   8
-   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   8
+   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
    8.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
      8.1.  Security Indicators . . . . . . . . . . . . . . . . . . .   9
      8.2.  Downgrade Attacks . . . . . . . . . . . . . . . . . . . .   9
      8.3.  Privacy Considerations  . . . . . . . . . . . . . . . . .   9
-     8.4.  Confusion Regarding Request Scheme  . . . . . . . . . . .   9
+     8.4.  Confusion Regarding Request Scheme  . . . . . . . . . . .  10
      8.5.  Server Controls . . . . . . . . . . . . . . . . . . . . .  10
    9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
      9.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
      9.2.  Informative References  . . . . . . . . . . . . . . . . .  11
-   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .  11
+   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .  12
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  12
 
 1.  Introduction
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Nottingham & Thomson    Expires December 29, 2016               [Page 2]
+Nottingham & Thomson     Expires January 1, 2017                [Page 2]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
@@ -165,7 +165,7 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
 
-Nottingham & Thomson    Expires December 29, 2016               [Page 3]
+Nottingham & Thomson     Expires January 1, 2017                [Page 3]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
@@ -221,7 +221,7 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
 
-Nottingham & Thomson    Expires December 29, 2016               [Page 4]
+Nottingham & Thomson     Expires January 1, 2017                [Page 4]
 
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
@@ -245,6 +245,13 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
      }
    }
 
+   The JSON format for the http-opportunistic resource makes it possible
+   to include multiple values for the same origin.  Variations in case
+   allow for duplicate keys that a JSON parser will treat as different.
+   Duplicated keys might not be detected by a client (see Section 4 of
+   [RFC7159]).  A client SHOULD NOT use origin objects if multiple keys
+   match, though it MAY use any origin object with a matching key.
+
    Note that this mechanism is only defined to establish reasonable
    assurances for the purposes of this specification; it does not apply
    to other uses of alternative services unless they explicitly invoke
@@ -267,20 +274,19 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    authentication (for instance, the purely anonymous TLS cipher suites)
    cannot be used for "https" URIs.
 
+
+
+
+Nottingham & Thomson     Expires January 1, 2017                [Page 5]
+
+Internet-Draft         Opportunistic HTTP Security             June 2016
+
+
    Because of the risk of server confusion about individual requests'
    schemes (see Section 8.4), clients MUST NOT mix "https" and "http"
    requests on the same connection unless the http-opportunistic
    response's origin object Section 6 has a "mixed-scheme" member whose
    value is "true".
-
-
-
-
-
-Nottingham & Thomson    Expires December 29, 2016               [Page 5]
-
-Internet-Draft         Opportunistic HTTP Security             June 2016
-
 
 5.  Requiring Use of TLS
 
@@ -322,6 +328,16 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    the duration of the origin object lifetime.
 
 
+
+
+
+
+
+Nottingham & Thomson     Expires January 1, 2017                [Page 6]
+
+Internet-Draft         Opportunistic HTTP Security             June 2016
+
+
    {
      "http://www.example.com": {
        "tls-ports": [443,8080],
@@ -329,14 +345,6 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
        "lifetime": 3600
      }
    }
-
-
-
-
-Nottingham & Thomson    Expires December 29, 2016               [Page 6]
-
-Internet-Draft         Opportunistic HTTP Security             June 2016
-
 
    Including "tls-commit" creates a commitment to provide a secured
    alternative service for the advertised period.  Clients that receive
@@ -375,6 +383,17 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    to discover potential alternative services, but these requests SHOULD
    be entirely generic and avoid including credentials.
 
+
+
+
+
+
+
+Nottingham & Thomson     Expires January 1, 2017                [Page 7]
+
+Internet-Draft         Opportunistic HTTP Security             June 2016
+
+
 5.3.  Operational Considerations
 
    Errors in configuration of commitments has the potential to render
@@ -386,14 +405,6 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    To avoid situations where a commitment causes errors, clients MAY
    limit the time over which a commitment is respected for a given
    origin.  A lower limit might be appropriate for initial commitments;
-
-
-
-Nottingham & Thomson    Expires December 29, 2016               [Page 7]
-
-Internet-Draft         Opportunistic HTTP Security             June 2016
-
-
    the certainty that a site has set a correct value - and the
    corresponding limit on persistence - might increase as a commitment
    is renewed multiple times.
@@ -428,6 +439,17 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    Note that origin object lifetime might differ from the freshness
    lifetime of the response.
 
+
+
+
+
+
+
+Nottingham & Thomson     Expires January 1, 2017                [Page 8]
+
+Internet-Draft         Opportunistic HTTP Security             June 2016
+
+
 7.  IANA Considerations
 
    This specification registers a Well-Known URI [RFC5785]:
@@ -439,16 +461,6 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    o  Specification Document(s): Section 6 of [this specification]
 
    o  Related Information:
-
-
-
-
-
-
-Nottingham & Thomson    Expires December 29, 2016               [Page 8]
-
-Internet-Draft         Opportunistic HTTP Security             June 2016
-
 
 8.  Security Considerations
 
@@ -485,6 +497,15 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    Cached alternative services can be used to track clients over time;
    e.g., using a user-specific hostname.  Clearing the cache reduces the
    ability of servers to track clients; therefore clients MUST clear
+
+
+
+
+Nottingham & Thomson     Expires January 1, 2017                [Page 9]
+
+Internet-Draft         Opportunistic HTTP Security             June 2016
+
+
    cached alternative service information when clearing other origin-
    based state (i.e., cookies).
 
@@ -497,15 +518,6 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    This might be due to limitations in the protocol (the most common
    HTTP/1.1 request form does not carry an explicit indication of the
    URI scheme), or it may be because how the server and application are
-
-
-
-
-Nottingham & Thomson    Expires December 29, 2016               [Page 9]
-
-Internet-Draft         Opportunistic HTTP Security             June 2016
-
-
    implemented (often, they are two separate entities, with a variety of
    possible interfaces between them).
 
@@ -540,6 +552,16 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
               DOI 10.17487/RFC2818, May 2000,
               <http://www.rfc-editor.org/info/rfc2818>.
 
+
+
+
+
+
+Nottingham & Thomson     Expires January 1, 2017               [Page 10]
+
+Internet-Draft         Opportunistic HTTP Security             June 2016
+
+
    [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
               (TLS) Protocol Version 1.2", RFC 5246,
               DOI 10.17487/RFC5246, August 2008,
@@ -553,14 +575,6 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
               DOI 10.17487/RFC6454, December 2011,
               <http://www.rfc-editor.org/info/rfc6454>.
-
-
-
-
-Nottingham & Thomson    Expires December 29, 2016              [Page 10]
-
-Internet-Draft         Opportunistic HTTP Security             June 2016
-
 
    [RFC7159]  Bray, T., Ed., "The JavaScript Object Notation (JSON) Data
               Interchange Format", RFC 7159, DOI 10.17487/RFC7159, March
@@ -596,6 +610,14 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
               Attack", BCP 188, RFC 7258, DOI 10.17487/RFC7258, May
               2014, <http://www.rfc-editor.org/info/rfc7258>.
 
+
+
+
+Nottingham & Thomson     Expires January 1, 2017               [Page 11]
+
+Internet-Draft         Opportunistic HTTP Security             June 2016
+
+
    [RFC7435]  Dukhovni, V., "Opportunistic Security: Some Protection
               Most of the Time", RFC 7435, DOI 10.17487/RFC7435,
               December 2014, <http://www.rfc-editor.org/info/rfc7435>.
@@ -610,14 +632,6 @@ Appendix A.  Acknowledgements
 
    Thanks to Patrick McManus, Stefan Eissing, Eliot Lear, Stephen
    Farrell, Guy Podjarny, Stephen Ludin, Erik Nygren, Paul Hoffman, Adam
-
-
-
-Nottingham & Thomson    Expires December 29, 2016              [Page 11]
-
-Internet-Draft         Opportunistic HTTP Security             June 2016
-
-
    Langley, Eric Rescorla, Julian Reschke, Kari Hurtta, and Richard
    Barnes for their feedback and suggestions.
 
@@ -655,18 +669,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Nottingham & Thomson    Expires December 29, 2016              [Page 12]
+Nottingham & Thomson     Expires January 1, 2017               [Page 12]
