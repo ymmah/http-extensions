@@ -324,11 +324,11 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
 
    {
      "http://www.example.com": {
+       "tls-ports": [443,8080],
        "tls-commit": true,
        "lifetime": 3600
      }
    }
-
 
 
 
@@ -343,10 +343,6 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    this commitment can assume that a secured alternative service will be
    available for the origin object lifetime.  Clients might however
    choose to limit this time (see Section 5.3).
-
-   The "tls-ports" member is ignored when the "tls-commit" member is
-   provided.  A server that is able to strongly authenticate can run on
-   any port.
 
 5.2.  Client Handling of A Commitment
 
@@ -387,6 +383,10 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    commitments so that errors can be detected without causing the origin
    to become inaccessible to clients for extended periods.
 
+   To avoid situations where a commitment causes errors, clients MAY
+   limit the time over which a commitment is respected for a given
+   origin.  A lower limit might be appropriate for initial commitments;
+
 
 
 Nottingham & Thomson     Expires January 1, 2017                [Page 7]
@@ -394,9 +394,6 @@ Nottingham & Thomson     Expires January 1, 2017                [Page 7]
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
-   To avoid situations where a commitment causes errors, clients MAY
-   limit the time over which a commitment is respected for a given
-   origin.  A lower limit might be appropriate for initial commitments;
    the certainty that a site has set a correct value - and the
    corresponding limit on persistence - might increase as a commitment
    is renewed multiple times.
@@ -442,6 +439,9 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    o  Specification Document(s): Section 6 of [this specification]
 
    o  Related Information:
+
+
+
 
 
 
