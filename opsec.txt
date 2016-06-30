@@ -172,10 +172,10 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
 
    A client can also explicitly probe for an alternative service
    advertisement by sending a request that bears little or no sensitive
-   information.  A GET request to the "http-opportunistic" resource is
-   optimal for this purpose.  Likewise, clients with existing
-   alternative services information could make such a request before
-   they expire, in order minimize the delays that might be incurred.
+   information, such as one with the OPTIONS method.  Likewise, clients
+   with existing alternative services information could make such a
+   request before they expire, in order minimize the delays that might
+   be incurred.
 
    Client certificates are not meaningful for URLs with the "http"
    scheme, and therefore clients creating new TLS connections to
@@ -324,11 +324,11 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
 
    {
      "http://www.example.com": {
-       "tls-ports": [443,8080],
        "tls-commit": true,
        "lifetime": 3600
      }
    }
+
 
 
 
@@ -343,6 +343,10 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    this commitment can assume that a secured alternative service will be
    available for the origin object lifetime.  Clients might however
    choose to limit this time (see Section 5.3).
+
+   The "tls-ports" member is ignored when the "tls-commit" member is
+   provided.  A server that is able to strongly authenticate can run on
+   any port.
 
 5.2.  Client Handling of A Commitment
 
@@ -383,10 +387,6 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    commitments so that errors can be detected without causing the origin
    to become inaccessible to clients for extended periods.
 
-   To avoid situations where a commitment causes errors, clients MAY
-   limit the origin object lifetime to limit the duration of commitment
-   for that given origin.  A lower limit might be appropriate for
-
 
 
 Nottingham & Thomson     Expires January 1, 2017                [Page 7]
@@ -394,9 +394,12 @@ Nottingham & Thomson     Expires January 1, 2017                [Page 7]
 Internet-Draft         Opportunistic HTTP Security             June 2016
 
 
-   initial commitments; the certainty that a site has set a correct
-   value - and the corresponding limit on persistence - might increase
-   as a commitment is renewed multiple times.
+   To avoid situations where a commitment causes errors, clients MAY
+   limit the time over which a commitment is respected for a given
+   origin.  A lower limit might be appropriate for initial commitments;
+   the certainty that a site has set a correct value - and the
+   corresponding limit on persistence - might increase as a commitment
+   is renewed multiple times.
 
 6.  The "http-opportunistic" well-known URI
 
@@ -439,9 +442,6 @@ Internet-Draft         Opportunistic HTTP Security             June 2016
    o  Specification Document(s): Section 6 of [this specification]
 
    o  Related Information:
-
-
-
 
 
 
