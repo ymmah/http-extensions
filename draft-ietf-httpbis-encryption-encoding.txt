@@ -4,8 +4,8 @@
 
 HTTP Working Group                                            M. Thomson
 Internet-Draft                                                   Mozilla
-Intended status: Standards Track                           June 30, 2016
-Expires: January 1, 2017
+Intended status: Standards Track                            July 6, 2016
+Expires: January 7, 2017
 
 
                   Encrypted Content-Encoding for HTTP
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 1, 2017.
+   This Internet-Draft will expire on January 7, 2017.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Thomson                  Expires January 1, 2017                [Page 1]
+Thomson                  Expires January 7, 2017                [Page 1]
 
-Internet-Draft           HTTP encryption coding                June 2016
+Internet-Draft           HTTP encryption coding                July 2016
 
 
    (http://trustee.ietf.org/license-info) in effect on the date of
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Thomson                  Expires January 1, 2017                [Page 2]
+Thomson                  Expires January 7, 2017                [Page 2]
 
-Internet-Draft           HTTP encryption coding                June 2016
+Internet-Draft           HTTP encryption coding                July 2016
 
 
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .  20
@@ -165,9 +165,9 @@ Internet-Draft           HTTP encryption coding                June 2016
 
 
 
-Thomson                  Expires January 1, 2017                [Page 3]
+Thomson                  Expires January 7, 2017                [Page 3]
 
-Internet-Draft           HTTP encryption coding                June 2016
+Internet-Draft           HTTP encryption coding                July 2016
 
 
 1.1.  Notational Conventions
@@ -221,9 +221,9 @@ Internet-Draft           HTTP encryption coding                June 2016
 
 
 
-Thomson                  Expires January 1, 2017                [Page 4]
+Thomson                  Expires January 7, 2017                [Page 4]
 
-Internet-Draft           HTTP encryption coding                June 2016
+Internet-Draft           HTTP encryption coding                July 2016
 
 
    The record size determines the length of each portion of plaintext
@@ -277,9 +277,9 @@ Internet-Draft           HTTP encryption coding                June 2016
 
 
 
-Thomson                  Expires January 1, 2017                [Page 5]
+Thomson                  Expires January 7, 2017                [Page 5]
 
-Internet-Draft           HTTP encryption coding                June 2016
+Internet-Draft           HTTP encryption coding                July 2016
 
 
    ciphertext is needed.  Applications that depend on being able to pad
@@ -333,9 +333,9 @@ Internet-Draft           HTTP encryption coding                June 2016
 
 
 
-Thomson                  Expires January 1, 2017                [Page 6]
+Thomson                  Expires January 7, 2017                [Page 6]
 
-Internet-Draft           HTTP encryption coding                June 2016
+Internet-Draft           HTTP encryption coding                July 2016
 
 
    salt:  The "salt" parameter contains a base64url-encoded octets
@@ -389,9 +389,9 @@ Internet-Draft           HTTP encryption coding                June 2016
 
 
 
-Thomson                  Expires January 1, 2017                [Page 7]
+Thomson                  Expires January 7, 2017                [Page 7]
 
-Internet-Draft           HTTP encryption coding                June 2016
+Internet-Draft           HTTP encryption coding                July 2016
 
 
    HKDF can therefore be simplified to the first 16 octets of a single
@@ -445,9 +445,9 @@ Internet-Draft           HTTP encryption coding                June 2016
 
 
 
-Thomson                  Expires January 1, 2017                [Page 8]
+Thomson                  Expires January 7, 2017                [Page 8]
 
-Internet-Draft           HTTP encryption coding                June 2016
+Internet-Draft           HTTP encryption coding                July 2016
 
 
      Crypto-Key = #crypto_key_params
@@ -501,9 +501,9 @@ Internet-Draft           HTTP encryption coding                June 2016
 
 
 
-Thomson                  Expires January 1, 2017                [Page 9]
+Thomson                  Expires January 7, 2017                [Page 9]
 
-Internet-Draft           HTTP encryption coding                June 2016
+Internet-Draft           HTTP encryption coding                July 2016
 
 
    This share is combined with other information at the recipient to
@@ -557,9 +557,9 @@ Internet-Draft           HTTP encryption coding                June 2016
 
 
 
-Thomson                  Expires January 1, 2017               [Page 10]
+Thomson                  Expires January 7, 2017               [Page 10]
 
-Internet-Draft           HTTP encryption coding                June 2016
+Internet-Draft           HTTP encryption coding                July 2016
 
 
 4.3.  Pre-shared Authentication Secrets
@@ -613,9 +613,9 @@ Internet-Draft           HTTP encryption coding                June 2016
 
 
 
-Thomson                  Expires January 1, 2017               [Page 11]
+Thomson                  Expires January 7, 2017               [Page 11]
 
-Internet-Draft           HTTP encryption coding                June 2016
+Internet-Draft           HTTP encryption coding                July 2016
 
 
 5.1.  Successful GET Response
@@ -669,9 +669,9 @@ Internet-Draft           HTTP encryption coding                June 2016
 
 
 
-Thomson                  Expires January 1, 2017               [Page 12]
+Thomson                  Expires January 7, 2017               [Page 12]
 
-Internet-Draft           HTTP encryption coding                June 2016
+Internet-Draft           HTTP encryption coding                July 2016
 
 
    PUT /thing HTTP/1.1
@@ -725,9 +725,9 @@ Internet-Draft           HTTP encryption coding                June 2016
 
 
 
-Thomson                  Expires January 1, 2017               [Page 13]
+Thomson                  Expires January 7, 2017               [Page 13]
 
-Internet-Draft           HTTP encryption coding                June 2016
+Internet-Draft           HTTP encryption coding                July 2016
 
 
 5.6.  Diffie-Hellman Encryption
@@ -781,9 +781,9 @@ Internet-Draft           HTTP encryption coding                June 2016
 
 
 
-Thomson                  Expires January 1, 2017               [Page 14]
+Thomson                  Expires January 7, 2017               [Page 14]
 
-Internet-Draft           HTTP encryption coding                June 2016
+Internet-Draft           HTTP encryption coding                July 2016
 
 
    HTTP/1.1 200 OK
@@ -837,9 +837,9 @@ Internet-Draft           HTTP encryption coding                June 2016
 
 
 
-Thomson                  Expires January 1, 2017               [Page 15]
+Thomson                  Expires January 7, 2017               [Page 15]
 
-Internet-Draft           HTTP encryption coding                June 2016
+Internet-Draft           HTTP encryption coding                July 2016
 
 
 6.2.  Data Encryption Limits
@@ -893,9 +893,9 @@ Internet-Draft           HTTP encryption coding                June 2016
 
 
 
-Thomson                  Expires January 1, 2017               [Page 16]
+Thomson                  Expires January 7, 2017               [Page 16]
 
-Internet-Draft           HTTP encryption coding                June 2016
+Internet-Draft           HTTP encryption coding                July 2016
 
 
    2.  If it is considered sensitive information and it is possible to
@@ -949,9 +949,9 @@ Internet-Draft           HTTP encryption coding                June 2016
 
 
 
-Thomson                  Expires January 1, 2017               [Page 17]
+Thomson                  Expires January 7, 2017               [Page 17]
 
-Internet-Draft           HTTP encryption coding                June 2016
+Internet-Draft           HTTP encryption coding                July 2016
 
 
 7.2.  Encryption Header Fields
@@ -1005,9 +1005,9 @@ Internet-Draft           HTTP encryption coding                June 2016
 
 
 
-Thomson                  Expires January 1, 2017               [Page 18]
+Thomson                  Expires January 7, 2017               [Page 18]
 
-Internet-Draft           HTTP encryption coding                June 2016
+Internet-Draft           HTTP encryption coding                July 2016
 
 
 7.3.1.  keyid
@@ -1061,9 +1061,9 @@ Internet-Draft           HTTP encryption coding                June 2016
 
 
 
-Thomson                  Expires January 1, 2017               [Page 19]
+Thomson                  Expires January 7, 2017               [Page 19]
 
-Internet-Draft           HTTP encryption coding                June 2016
+Internet-Draft           HTTP encryption coding                July 2016
 
 
 7.4.1.  keyid
@@ -1117,9 +1117,9 @@ Internet-Draft           HTTP encryption coding                June 2016
 
 
 
-Thomson                  Expires January 1, 2017               [Page 20]
+Thomson                  Expires January 7, 2017               [Page 20]
 
-Internet-Draft           HTTP encryption coding                June 2016
+Internet-Draft           HTTP encryption coding                July 2016
 
 
    [RFC4492]  Blake-Wilson, S., Bolyard, N., Gupta, V., Hawk, C., and B.
@@ -1173,9 +1173,9 @@ Internet-Draft           HTTP encryption coding                June 2016
 
 
 
-Thomson                  Expires January 1, 2017               [Page 21]
+Thomson                  Expires January 7, 2017               [Page 21]
 
-Internet-Draft           HTTP encryption coding                June 2016
+Internet-Draft           HTTP encryption coding                July 2016
 
 
    [RFC5226]  Narten, T. and H. Alvestrand, "Guidelines for Writing an
@@ -1229,9 +1229,9 @@ Appendix A.  JWE Mapping
 
 
 
-Thomson                  Expires January 1, 2017               [Page 22]
+Thomson                  Expires January 7, 2017               [Page 22]
 
-Internet-Draft           HTTP encryption coding                June 2016
+Internet-Draft           HTTP encryption coding                July 2016
 
 
    o  The JWE Protected Header is fixed to a value { "alg": "dir",
@@ -1285,9 +1285,9 @@ Appendix B.  Intermediate Values for Encryption
 
 
 
-Thomson                  Expires January 1, 2017               [Page 23]
+Thomson                  Expires January 7, 2017               [Page 23]
 
-Internet-Draft           HTTP encryption coding                June 2016
+Internet-Draft           HTTP encryption coding                July 2016
 
 
    Salt:  lngarbyKfMoi9Z75xYXmkg
@@ -1341,9 +1341,9 @@ Author's Address
 
 
 
-Thomson                  Expires January 1, 2017               [Page 24]
+Thomson                  Expires January 7, 2017               [Page 24]
 
-Internet-Draft           HTTP encryption coding                June 2016
+Internet-Draft           HTTP encryption coding                July 2016
 
 
    Martin Thomson
@@ -1397,4 +1397,4 @@ Internet-Draft           HTTP encryption coding                June 2016
 
 
 
-Thomson                  Expires January 1, 2017               [Page 25]
+Thomson                  Expires January 7, 2017               [Page 25]
