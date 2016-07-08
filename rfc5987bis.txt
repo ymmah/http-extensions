@@ -254,26 +254,26 @@ Internet-Draft      Charset/Language Encoding in HTTP          July 2016
                    ; token except ( "*" / "'" / "%" )
 
    The value part of an extended parameter (ext-value) is a token that
-   consists of three parts: the REQUIRED character encoding name
-   (charset), the OPTIONAL language information (language), and a
-   character sequence representing the actual value (value-chars),
-   separated by single quote characters.  Note that both character
-   encoding names and language tags are restricted to the US-ASCII coded
-   character set, and are matched case-insensitively (see [RFC2978],
-   Section 2.3 and [RFC5646], Section 2.1.1).
+   consists of three parts:
+
+   1.  the REQUIRED character encoding name (charset),
+
+   2.  the OPTIONAL language information (language), and
+
+   3.  a character sequence representing the actual value (value-chars),
+       separated by single quote characters.
+
+   Note that both character encoding names and language tags are
+   restricted to the US-ASCII coded character set, and are matched case-
+   insensitively (see [RFC2978], Section 2.3 and [RFC5646],
+   Section 2.1.1).
 
    Inside the value part, characters not contained in attr-char are
    encoded into an octet sequence using the specified character
    encoding.  That octet sequence is then percent-encoded as specified
    in Section 2.1 of [RFC3986].
 
-   Producers MUST use the "UTF-8" ([RFC3629]) character encoding.
-   Extension character encodings (mime-charset) are reserved for future
-   use.
 
-      Note: recipients should be prepared to handle encoding errors,
-      such as malformed or incomplete percent escape sequences, or non-
-      decodable octet sequences, in a robust manner.  This specification
 
 
 
@@ -282,6 +282,13 @@ Reschke                  Expires January 9, 2017                [Page 5]
 Internet-Draft      Charset/Language Encoding in HTTP          July 2016
 
 
+   Producers MUST use the "UTF-8" ([RFC3629]) character encoding.
+   Extension character encodings (mime-charset) are reserved for future
+   use.
+
+      Note: recipients should be prepared to handle encoding errors,
+      such as malformed or incomplete percent escape sequences, or non-
+      decodable octet sequences, in a robust manner.  This specification
       does not mandate any specific behavior, for instance, the
       following strategies are all acceptable:
 
@@ -324,19 +331,16 @@ Internet-Draft      Charset/Language Encoding in HTTP          July 2016
 
      foo: bar; title=Economy
 
-   Non-extended notation, using "quoted-string":
-
-     foo: bar; title="US-$ rates"
-
-
-
-
 
 
 Reschke                  Expires January 9, 2017                [Page 6]
 
 Internet-Draft      Charset/Language Encoding in HTTP          July 2016
 
+
+   Non-extended notation, using "quoted-string":
+
+     foo: bar; title="US-$ rates"
 
    Extended notation, using the Unicode character U+00A3 ("GBP", POUND
    SIGN):
@@ -380,10 +384,6 @@ Internet-Draft      Charset/Language Encoding in HTTP          July 2016
    this is to normatively reference this specification, and to include
    the ext-value production into the ABNF for specific header field
    parameters.
-
-
-
-
 
 
 
