@@ -89,7 +89,7 @@ Table of Contents
      4.1.  When to Use the Extension . . . . . . . . . . . . . . . .   8
      4.2.  Error Handling  . . . . . . . . . . . . . . . . . . . . .   9
    5.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  10
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
      7.2.  Informative References  . . . . . . . . . . . . . . . . .  11
@@ -411,7 +411,11 @@ Internet-Draft      Charset/Language Encoding in HTTP          July 2016
      foo-header  = "foo" LWSP ":" LWSP token ";" LWSP title-param
      title-param = "title" LWSP "=" LWSP value
                  / "title*" LWSP "=" LWSP ext-value
-     ext-value   = <see RFC 5987, Section 3.2>
+     ext-value   = <see draft-ietf-httpbis-rfc5987bis, Section 3.2>
+
+   [[pub: Upon publication as RFC, the string "draft-ietf-httpbis-
+   rfc5987bis" needs to be replaced with the RFC name, and this comment
+   needs to be removed.]]
 
       Note: The Parameter Value Continuation feature defined in
       Section 3 of [RFC2231] makes it impossible to have multiple
@@ -437,11 +441,7 @@ Internet-Draft      Charset/Language Encoding in HTTP          July 2016
    the ext-value production ought to be always used when the parameter
    value is of textual nature and its language is known.
 
-   Furthermore, the extension ought to also be used whenever the
-   parameter value needs to carry characters not present in the US-ASCII
-   ([RFC0020]) coded character set (note that it would be unacceptable
-   to define a new parameter that would be restricted to a subset of the
-   Unicode character set).
+
 
 
 
@@ -449,6 +449,12 @@ Reschke                  Expires January 9, 2017                [Page 8]
 
 Internet-Draft      Charset/Language Encoding in HTTP          July 2016
 
+
+   Furthermore, the extension ought to also be used whenever the
+   parameter value needs to carry characters not present in the US-ASCII
+   ([RFC0020]) coded character set (note that it would be unacceptable
+   to define a new parameter that would be restricted to a subset of the
+   Unicode character set).
 
 4.2.  Error Handling
 
@@ -492,12 +498,6 @@ Internet-Draft      Charset/Language Encoding in HTTP          July 2016
    this attack is useful as an attack depends on the parameter
    specified.
 
-6.  IANA Considerations
-
-   There are no IANA Considerations related to this specification.
-
-
-
 
 
 
@@ -505,6 +505,10 @@ Reschke                  Expires January 9, 2017                [Page 9]
 
 Internet-Draft      Charset/Language Encoding in HTTP          July 2016
 
+
+6.  IANA Considerations
+
+   There are no IANA Considerations related to this specification.
 
 7.  References
 
@@ -547,10 +551,6 @@ Internet-Draft      Charset/Language Encoding in HTTP          July 2016
               Languages", BCP 47, RFC 5646, DOI 10.17487/RFC5646,
               September 2009, <http://www.rfc-editor.org/info/rfc5646>.
 
-   [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
-              Protocol (HTTP/1.1): Message Syntax and Routing",
-              RFC 7230, DOI 10.17487/RFC7230, June 2014,
-              <http://www.rfc-editor.org/info/rfc7230>.
 
 
 
@@ -561,6 +561,11 @@ Reschke                  Expires January 9, 2017               [Page 10]
 
 Internet-Draft      Charset/Language Encoding in HTTP          July 2016
 
+
+   [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
+              Protocol (HTTP/1.1): Message Syntax and Routing",
+              RFC 7230, DOI 10.17487/RFC7230, June 2014,
+              <http://www.rfc-editor.org/info/rfc7230>.
 
    [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
@@ -606,17 +611,16 @@ Internet-Draft      Charset/Language Encoding in HTTP          July 2016
               Parameters", RFC 5987, DOI 10.17487/RFC5987, August 2010,
               <http://www.rfc-editor.org/info/rfc5987>.
 
-   [RFC5988]  Nottingham, M., "Web Linking", RFC 5988,
-              DOI 10.17487/RFC5988, October 2010,
-              <http://www.rfc-editor.org/info/rfc5988>.
-
-
 
 
 Reschke                  Expires January 9, 2017               [Page 11]
 
 Internet-Draft      Charset/Language Encoding in HTTP          July 2016
 
+
+   [RFC5988]  Nottingham, M., "Web Linking", RFC 5988,
+              DOI 10.17487/RFC5988, October 2010,
+              <http://www.rfc-editor.org/info/rfc5988>.
 
    [RFC6266]  Reschke, J., "Use of the Content-Disposition Header Field
               in the Hypertext Transfer Protocol (HTTP)", RFC 6266,
@@ -627,10 +631,6 @@ Internet-Draft      Charset/Language Encoding in HTTP          July 2016
               Internationalization in the IETF", BCP 166, RFC 6365,
               DOI 10.17487/RFC6365, September 2011,
               <http://www.rfc-editor.org/info/rfc6365>.
-
-
-
-
 
 
 
