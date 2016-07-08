@@ -9,7 +9,7 @@ Expires: January 9, 2017                                    July 8, 2016
 
 
                         Cache Digests for HTTP/2
-                     draft-ietf-cache-digest-latest
+                 draft-ietf-httpbis-cache-digest-latest
 
 Abstract
 
