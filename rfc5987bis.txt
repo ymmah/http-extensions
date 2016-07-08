@@ -77,7 +77,7 @@ Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
    2.  Notational Conventions  . . . . . . . . . . . . . . . . . . .   3
-   3.  Comparison to RFC 2231 and Definition of the Encoding . . . .   3
+   3.  Comparison to RFC 2231 and Definition of the Encoding . . . .   4
      3.1.  Parameter Continuations . . . . . . . . . . . . . . . . .   4
      3.2.  Parameter Value Character Encoding and Language
            Information . . . . . . . . . . . . . . . . . . . . . . .   4
@@ -115,6 +115,7 @@ Internet-Draft      Charset/Language Encoding in HTTP          July 2016
 
 
      C.10. Since draft-ietf-httpbis-rfc5987bis-01  . . . . . . . . .  13
+     C.11. Since draft-ietf-httpbis-rfc5987bis-02  . . . . . . . . .  14
    Appendix D.  Acknowledgements . . . . . . . . . . . . . . . . . .  14
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  14
 
@@ -157,10 +158,9 @@ Internet-Draft      Charset/Language Encoding in HTTP          July 2016
    Note that this differs from RFC 2231, which uses the term "character
    set" for "character encoding scheme".
 
-3.  Comparison to RFC 2231 and Definition of the Encoding
 
-   RFC 2231 defines several extensions to MIME.  The sections below
-   discuss if and how they apply to HTTP header fields.
+
+
 
 
 
@@ -169,6 +169,11 @@ Reschke                  Expires January 9, 2017                [Page 3]
 
 Internet-Draft      Charset/Language Encoding in HTTP          July 2016
 
+
+3.  Comparison to RFC 2231 and Definition of the Encoding
+
+   RFC 2231 defines several extensions to MIME.  The sections below
+   discuss if and how they apply to HTTP header fields.
 
    In short:
 
@@ -213,11 +218,6 @@ Internet-Draft      Charset/Language Encoding in HTTP          July 2016
    specified in the definition of the header field using this extension
    (see Section 4).
 
-   The ABNF for extended parameter values is specified below:
-
-
-
-
 
 
 
@@ -225,6 +225,8 @@ Reschke                  Expires January 9, 2017                [Page 4]
 
 Internet-Draft      Charset/Language Encoding in HTTP          July 2016
 
+
+   The ABNF for extended parameter values is specified below:
 
      ext-value     = charset  "'" [ language ] "'" value-chars
                    ; like RFC 2231's <extended-initial-value>
@@ -272,8 +274,6 @@ Internet-Draft      Charset/Language Encoding in HTTP          July 2016
    encoded into an octet sequence using the specified character
    encoding.  That octet sequence is then percent-encoded as specified
    in Section 2.1 of [RFC3986].
-
-
 
 
 
@@ -733,6 +733,10 @@ Internet-Draft      Charset/Language Encoding in HTTP          July 2016
    Do not attempt to define a generic parameter ABNF; just concentrate
    on the parameter value syntax.
 
+C.11.  Since draft-ietf-httpbis-rfc5987bis-02
+
+   None yet.
+
 Appendix D.  Acknowledgements
 
    Thanks to Martin Duerst and Frank Ellermann for help figuring out
@@ -751,10 +755,6 @@ Author's Address
 
    EMail: julian.reschke@greenbytes.de
    URI:   http://greenbytes.de/tech/webdav/
-
-
-
-
 
 
 
