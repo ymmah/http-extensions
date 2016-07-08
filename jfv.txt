@@ -95,6 +95,7 @@ Table of Contents
      A.4.  Since draft-reschke-http-jfv-03 . . . . . . . . . . . . .  12
      A.5.  Since draft-reschke-http-jfv-04 . . . . . . . . . . . . .  12
      A.6.  Since draft-ietf-httpbis-jfv-00 . . . . . . . . . . . . .  12
+     A.7.  Since draft-ietf-httpbis-jfv-01 . . . . . . . . . . . . .  12
    Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  12
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  12
 
@@ -105,7 +106,6 @@ Table of Contents
 
    o  There is no common syntax for complex field values.  Several well-
       known header fields do use a similarly looking syntax, but it is
-
 
 
 
@@ -652,16 +652,16 @@ A.6.  Since draft-ietf-httpbis-jfv-00
    showing a potential way to optimize the format when default values
    apply.
 
+A.7.  Since draft-ietf-httpbis-jfv-01
+
+   None yet.
+
 Appendix B.  Acknowledgements
 
    Thanks go to the Hypertext Transfer Protocol Working Group
    participants.
 
 Author's Address
-
-
-
-
 
 
 
