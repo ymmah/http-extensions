@@ -4,9 +4,9 @@
 
 HTTP Working Group                                               M. West
 Internet-Draft                                               Google, Inc
-Updates: 6265 (if approved)                                July 11, 2016
+Updates: 6265 (if approved)                               August 2, 2016
 Intended status: Standards Track
-Expires: January 12, 2017
+Expires: February 3, 2017
 
 
    Deprecate modification of 'secure' cookies from non-secure origins
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 12, 2017.
+   This Internet-Draft will expire on February 3, 2017.
 
 
 
@@ -53,9 +53,9 @@ Status of This Memo
 
 
 
-West                    Expires January 12, 2017                [Page 1]
+West                    Expires February 3, 2017                [Page 1]
 
-Internet-Draft         Leave Secure Cookies Alone              July 2016
+Internet-Draft         Leave Secure Cookies Alone            August 2016
 
 
 Copyright Notice
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-West                    Expires January 12, 2017                [Page 2]
+West                    Expires February 3, 2017                [Page 2]
 
-Internet-Draft         Leave Secure Cookies Alone              July 2016
+Internet-Draft         Leave Secure Cookies Alone            August 2016
 
 
    The "scheme" component of a URI is defined in Section 3 of [RFC3986].
@@ -165,9 +165,9 @@ Internet-Draft         Leave Secure Cookies Alone              July 2016
 
 
 
-West                    Expires January 12, 2017                [Page 3]
+West                    Expires February 3, 2017                [Page 3]
 
-Internet-Draft         Leave Secure Cookies Alone              July 2016
+Internet-Draft         Leave Secure Cookies Alone            August 2016
 
 
        Note that the eviction algorithm specified here is triggered only
@@ -221,9 +221,9 @@ Internet-Draft         Leave Secure Cookies Alone              July 2016
 
 
 
-West                    Expires January 12, 2017                [Page 4]
+West                    Expires February 3, 2017                [Page 4]
 
-Internet-Draft         Leave Secure Cookies Alone              July 2016
+Internet-Draft         Leave Secure Cookies Alone            August 2016
 
 
 5.2.  Informative References
@@ -277,4 +277,4 @@ Author's Address
 
 
 
-West                    Expires January 12, 2017                [Page 5]
+West                    Expires February 3, 2017                [Page 5]
