@@ -5,7 +5,7 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft                                                 E. Nygren
 Intended status: Standards Track                                  Akamai
-Expires: February 17, 2017                               August 16, 2016
+Expires: February 19, 2017                               August 18, 2016
 
 
                         The ORIGIN HTTP/2 Frame
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on February 17, 2017.
+   This Internet-Draft will expire on February 19, 2017.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Nottingham & Nygren     Expires February 17, 2017               [Page 1]
+Nottingham & Nygren     Expires February 19, 2017               [Page 1]
 
 Internet-Draft                ORIGIN Frames                  August 2016
 
@@ -71,23 +71,25 @@ Table of Contents
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
      1.1.  Notational Conventions  . . . . . . . . . . . . . . . . .   2
    2.  The ORIGIN HTTP/2 Frame . . . . . . . . . . . . . . . . . . .   2
-   3.  Security Considerations . . . . . . . . . . . . . . . . . . .   3
-   4.  Normative References  . . . . . . . . . . . . . . . . . . . .   4
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   4
+     2.1.  The Origin Set  . . . . . . . . . . . . . . . . . . . . .   3
+     2.2.  Processing ORIGIN Frames  . . . . . . . . . . . . . . . .   4
+   3.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
+   4.  Normative References  . . . . . . . . . . . . . . . . . . . .   5
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   5
 
 1.  Introduction
 
    HTTP/2 [RFC7540] allows clients to coalesce different origins
    [RFC6454] onto the same connection when certain conditions are met.
-   In some cases, the server is not authoritative for a coalesced
-   origin, so the 421 (Misdirected Request) status code ([RFC7540],
-   Section 9.1.2) was defined.
+   However, in certain cases, a connection is is not usable for a
+   coalesced origin, so the 421 (Misdirected Request) status code
+   ([RFC7540], Section 9.1.2) was defined.
 
    Using a status code in this manner allows clients to recover from
    misdirected requests, but at the penalty of adding latency.  To
    address that, this specification defines a new HTTP/2 frame type,
    "ORIGIN", to allow servers to indicate what origins a connection is
-   authoritative for.
+   usable for.
 
 1.1.  Notational Conventions
 
@@ -97,43 +99,27 @@ Table of Contents
 
 2.  The ORIGIN HTTP/2 Frame
 
-   The ORIGIN HTTP/2 frame ([RFC7540], Section 4) indicates what
-   origin(s) [RFC6454] the sender considers this connection
-   authoritative for (in the sense of [RFC7540], Section 10.1).
-
-   The ORIGIN frame is a non-critical extension to HTTP/2.  Endpoints
-   that do not support this frame can safely ignore it.
-
-   It MUST occur on stream 0; an ORIGIN frame on any other stream is
-   invalid and MUST be ignored.
-
-
-
-Nottingham & Nygren     Expires February 17, 2017               [Page 2]
-
-Internet-Draft                ORIGIN Frames                  August 2016
-
-
-   When received by a client, it can be used to inform HTTP/2 connection
-   coalescing (see [RFC7540], Section 9.1.1), but does not relax the
-   requirement there that the server is authoritative.
-
-   If multiple ORIGIN frames are received on the same connection, only
-   the most recent is to be considered current.
-
-   Once an ORIGIN frame has been received and processed, clients that
-   implement this specification SHOULD NOT use that connection for a
-   given origin if it did not appear within the current ORIGIN frame.
+   The ORIGIN HTTP/2 frame ([RFC7540], Section 4) allows a server to
+   indicate what origin(s) [RFC6454] the server would like the client to
+   consider as members of the Origin Set (Section 2.1) for the
+   connection it occurs within.
 
    The ORIGIN frame type is 0xb (decimal 11).
+
+
+
+
+Nottingham & Nygren     Expires February 19, 2017               [Page 2]
+
+Internet-Draft                ORIGIN Frames                  August 2016
 
 
    +-------------------------------+-------------------------------+
    |         Origin-Len (16)       | Origin? (*)                 ...
    +-------------------------------+-------------------------------+
 
-   The ORIGIN frame contains the following fields, sets of which may be
-   repeated within the frame to indicate multiple origins:
+   The ORIGIN frame's payload contains the following fields, sets of
+   which may be repeated within the frame to indicate multiple origins:
 
    Origin-Len:  An unsigned, 16-bit integer indicating the length, in
       octets, of the Origin field.
@@ -142,14 +128,89 @@ Internet-Draft                ORIGIN Frames                  August 2016
       serialization of an origin ([RFC6454], Section 6.2) that the
       sender believes this connection is authoritative for.
 
-   The ORIGIN frame does not define any flags.  It can contain one or
-   more Origin-Len/Origin pairs.
+   The ORIGIN frame defines the following flags:
 
-   The ORIGIN frame is processed hop-by-hop.  An intermediary MUST NOT
-   forward ORIGIN frames.
+   o  CLEAR (0x1): indicates that the Origin Set MUST be reset to an
+      empty set before processing the contents of the frame it occurs
+      upon.
 
-   Clients configured to use a proxy MUST ignore any ORIGIN frames
-   received from it.
+   o  REMOVE (0x2): indicates that the origin(s) carried in the payload
+      must be removed from the Origin Set, if present; if not present,
+      it/they have no effect.
+
+2.1.  The Origin Set
+
+   The set of origins (as per [RFC6454]) that a given connection might
+   be used for is known in this specification as the Origin Set.
+
+   When a connection is first established, its Origin Set is defined to
+   be those origins that the client would normally consider the
+   connection authoritative for; see [RFC7540], Section 10.1.
+
+   The ORIGIN frame allows the server to modify the Origin Set. In
+   particular:
+
+   1.  A server can add to its members by sending an ORIGIN frame
+       (without any flags set);
+
+   2.  A server can prune one or more origins from it by sending an
+       ORIGIN frame with the REMOVE flag set;
+
+   3.  A server can remove all its members and then add zero or more
+       members by sending an ORIGIN frame with the CLEAR flag set and a
+       payload containing the new origins.
+
+   Note that adding to the Origin Set (cases 1 and 3 above) does not
+   imply that the connection is authoritative for the added origins (in
+
+
+
+Nottingham & Nygren     Expires February 19, 2017               [Page 3]
+
+Internet-Draft                ORIGIN Frames                  August 2016
+
+
+   the sense of [RFC7540], Section 10.1) on its own; this MUST be
+   established by some other mechanism.
+
+   Conversely, a client that implements this specification MUST NOT use
+   a connection for a given origin when that origin does not appear in
+   that connection's Origin Set, regardless of whether or not the
+   connection is authoritative for that origin.
+
+2.2.  Processing ORIGIN Frames
+
+   The ORIGIN frame is a non-critical extension to HTTP/2.  Endpoints
+   that do not support this frame can safely ignore it upon receipt.
+
+   When received by a client, it can be used to inform HTTP/2 connection
+   coalescing (see Section 2.1), but does not relax the requirement
+   there that the server is authoritative.
+
+   It MUST occur on stream 0; an ORIGIN frame on any other stream is
+   invalid and MUST be ignored.  The ORIGIN frame is processed hop-by-
+   hop.  An intermediary MUST NOT forward ORIGIN frames.  Clients
+   configured to use a proxy MUST ignore any ORIGIN frames received from
+   it.
+
+   The following algorithm illustrates how a client can handle received
+   origin frames:
+
+   1.  If the client is configured to be a proxy, ignore the frame and
+       stop processing.
+
+   2.  If the frame occurs upon any stream except stream 0, ignore the
+       frame and stop processing.
+
+   3.  If the CLEAR flag is set, remove all members from the Origin Set.
+
+   4.  For each Origin field "origin_raw" in the frame payload: a.
+       Parse "origin_raw" as an ASCII serialization of an origin
+       ([RFC6454], Section 6.2) and let the result be "parsed_origin".
+       b.  If the REMOVE flag is set, remove any member of the Origin
+       Set that is the same as "parsed_origin" (as per [RFC6454],
+       Section 5), and continue to the next "parsed_origin".  c.
+       Otherwise, add "parsed_origin" to the Origin Set.
 
 3.  Security Considerations
 
@@ -160,12 +221,7 @@ Internet-Draft                ORIGIN Frames                  August 2016
 
 
 
-
-
-
-
-
-Nottingham & Nygren     Expires February 17, 2017               [Page 3]
+Nottingham & Nygren     Expires February 19, 2017               [Page 4]
 
 Internet-Draft                ORIGIN Frames                  August 2016
 
@@ -221,4 +277,4 @@ Authors' Addresses
 
 
 
-Nottingham & Nygren     Expires February 17, 2017               [Page 4]
+Nottingham & Nygren     Expires February 19, 2017               [Page 5]
