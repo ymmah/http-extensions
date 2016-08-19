@@ -255,7 +255,7 @@ Authors' Addresses
    Akamai
 
    Email: mnot@mnot.net
-   URI:   http://www.mnot.net/
+   URI:   https://www.mnot.net/
 
 
    Erik Nygren
