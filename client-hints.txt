@@ -4,7 +4,7 @@
 
 HTTP Working Group                                           I. Grigorik
 Internet-Draft                                                    Google
-Intended status: Standards Track                         August 19, 2016
+Intended status: Experimental                            August 19, 2016
 Expires: February 20, 2017
 
 
@@ -466,20 +466,21 @@ Internet-Draft              HTTP Client Hints                August 2016
    Client Hints defined in this specification do not expose any new
    information about the user's environment beyond what is already
    available to, and can be communicated by, the application at runtime
-   via JavaScript - e.g. viewport and image display width, device pixel
-   ratio, and so on.
+   via JavaScript and CSS.  For example, the application can obtain
+   viewport width, image display width, and device pixel ratio via
+   JavaScript, or through the use of CSS media queries and unique
+   resource URLs even if JavaScript is disabled.
 
-   However, implementors should consider the privacy implications of
-   various methods to enable delivery of Client Hints - see "Sending
-   Client Hints" section.  For example, sending Client Hints on all
-   requests can make information about the user's environment available
-   to origins that otherwise did not have access to this data (e.g.
-   origins hosting non-script resources), which might or not be the
-   desired outcome.  The implementors can provide mechanisms to control
-   such behavior via explicit opt-in, or other mechanisms.  Similarly,
-   the implementors should consider how and whether delivery of Client
-   Hints is affected when the user is in "incognito" or similar privacy
-   mode.
+   Implementors should consider the privacy implications of various
+   methods to enable delivery of Client Hints--see "Sending Client
+   Hints" section.  For example, sending Client Hints on all requests
+   can make information about the user's environment available to
+   origins that otherwise did not have access to this data (e.g. origins
+   hosting non-script resources), which might or not be the desired
+   outcome.  The implementors can provide mechanisms to control such
+   behavior via explicit opt-in, or other mechanisms.  Similarly, the
+   implementors should consider how and whether delivery of Client Hints
+   is affected when the user is in "incognito" or similar privacy mode.
 
 10.  IANA Considerations
 
@@ -495,7 +496,6 @@ Internet-Draft              HTTP Client Hints                August 2016
    o  Author/Change controller: IETF
    o  Specification document(s): Section 2.2.1
    o  Related information: for Client Hints
-
 
 
 
@@ -580,11 +580,6 @@ Internet-Draft              HTTP Client Hints                August 2016
               W3C Recommendation REC-CSS2-20110607, June 2011,
               <http://www.w3.org/TR/2011/REC-CSS2-20110607>.
 
-   [I-D.ietf-httpbis-key]
-              Fielding, R. and M. Nottingham, "The Key HTTP Response
-              Header Field", draft-ietf-httpbis-key-01 (work in
-              progress), March 2016.
-
    [NETINFO]  Caceres, M., Moreno, F., and I. Grigorik, "Network
               Information API", December 2015, <https://w3c.github.io/
               netinfo/>.
@@ -609,6 +604,11 @@ Internet-Draft              HTTP Client Hints                August 2016
               DOI 10.17487/RFC7231, June 2014,
               <http://www.rfc-editor.org/info/rfc7231>.
 
+   [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
+              Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
+              RFC 7234, DOI 10.17487/RFC7234, June 2014,
+              <http://www.rfc-editor.org/info/rfc7234>.
+
 
 
 
@@ -617,11 +617,6 @@ Grigorik                Expires February 20, 2017              [Page 11]
 
 Internet-Draft              HTTP Client Hints                August 2016
 
-
-   [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
-              Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
-              RFC 7234, DOI 10.17487/RFC7234, June 2014,
-              <http://www.rfc-editor.org/info/rfc7234>.
 
    [W3C.CR-css-values-3-20150611]
               Atkins, T. and E. Etemad, "CSS Values and Units Module
@@ -637,6 +632,11 @@ Internet-Draft              HTTP Client Hints                August 2016
               <http://www.w3.org/TR/2014/REC-html5-20141028>.
 
 11.2.  Informative References
+
+   [I-D.ietf-httpbis-key]
+              Fielding, R. and M. Nottingham, "The Key HTTP Response
+              Header Field", draft-ietf-httpbis-key-01 (work in
+              progress), March 2016.
 
    [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
               DOI 10.17487/RFC6265, April 2011,
