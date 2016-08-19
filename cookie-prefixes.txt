@@ -4,9 +4,9 @@
 
 HTTP Working Group                                               M. West
 Internet-Draft                                               Google, Inc
-Updates: 6265 (if approved)                              August 18, 2016
+Updates: 6265 (if approved)                              August 19, 2016
 Intended status: Standards Track
-Expires: February 19, 2017
+Expires: February 20, 2017
 
 
                             Cookie Prefixes
@@ -46,14 +46,14 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on February 19, 2017.
+   This Internet-Draft will expire on February 20, 2017.
 
 
 
 
 
 
-West                    Expires February 19, 2017               [Page 1]
+West                    Expires February 20, 2017               [Page 1]
 
 Internet-Draft               Cookie Prefixes                 August 2016
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-West                    Expires February 19, 2017               [Page 2]
+West                    Expires February 20, 2017               [Page 2]
 
 Internet-Draft               Cookie Prefixes                 August 2016
 
@@ -165,7 +165,7 @@ Internet-Draft               Cookie Prefixes                 August 2016
 
 
 
-West                    Expires February 19, 2017               [Page 3]
+West                    Expires February 20, 2017               [Page 3]
 
 Internet-Draft               Cookie Prefixes                 August 2016
 
@@ -221,7 +221,7 @@ Internet-Draft               Cookie Prefixes                 August 2016
 
 
 
-West                    Expires February 19, 2017               [Page 4]
+West                    Expires February 20, 2017               [Page 4]
 
 Internet-Draft               Cookie Prefixes                 August 2016
 
@@ -277,7 +277,7 @@ Internet-Draft               Cookie Prefixes                 August 2016
 
 
 
-West                    Expires February 19, 2017               [Page 5]
+West                    Expires February 20, 2017               [Page 5]
 
 Internet-Draft               Cookie Prefixes                 August 2016
 
@@ -333,4 +333,4 @@ Author's Address
 
 
 
-West                    Expires February 19, 2017               [Page 6]
+West                    Expires February 20, 2017               [Page 6]

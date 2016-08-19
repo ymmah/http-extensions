@@ -5,7 +5,7 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft                                                 E. Nygren
 Intended status: Standards Track                                  Akamai
-Expires: February 19, 2017                               August 18, 2016
+Expires: February 20, 2017                               August 19, 2016
 
 
                         The ORIGIN HTTP/2 Frame
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on February 19, 2017.
+   This Internet-Draft will expire on February 20, 2017.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Nottingham & Nygren     Expires February 19, 2017               [Page 1]
+Nottingham & Nygren     Expires February 20, 2017               [Page 1]
 
 Internet-Draft                ORIGIN Frames                  August 2016
 
@@ -73,7 +73,7 @@ Table of Contents
    2.  The ORIGIN HTTP/2 Frame . . . . . . . . . . . . . . . . . . .   2
      2.1.  The Origin Set  . . . . . . . . . . . . . . . . . . . . .   3
      2.2.  Processing ORIGIN Frames  . . . . . . . . . . . . . . . .   4
-   3.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
+   3.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
    4.  Normative References  . . . . . . . . . . . . . . . . . . . .   5
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   5
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Nottingham & Nygren     Expires February 19, 2017               [Page 2]
+Nottingham & Nygren     Expires February 20, 2017               [Page 2]
 
 Internet-Draft                ORIGIN Frames                  August 2016
 
@@ -126,7 +126,7 @@ Internet-Draft                ORIGIN Frames                  August 2016
 
    Origin:  An optional sequence of characters containing the ASCII
       serialization of an origin ([RFC6454], Section 6.2) that the
-      sender believes this connection is authoritative for.
+      sender believes this connection is or could be authoritative for.
 
    The ORIGIN frame defines the following flags:
 
@@ -160,22 +160,22 @@ Internet-Draft                ORIGIN Frames                  August 2016
        members by sending an ORIGIN frame with the CLEAR flag set and a
        payload containing the new origins.
 
-   Note that adding to the Origin Set (cases 1 and 3 above) does not
-   imply that the connection is authoritative for the added origins (in
+   Adding to the Origin Set (cases 1 and 3 above) does not imply that
+   the connection is authoritative for the added origins (in the sense
 
 
 
-Nottingham & Nygren     Expires February 19, 2017               [Page 3]
+Nottingham & Nygren     Expires February 20, 2017               [Page 3]
 
 Internet-Draft                ORIGIN Frames                  August 2016
 
 
-   the sense of [RFC7540], Section 10.1) on its own; this MUST be
-   established by some other mechanism.
+   of [RFC7540], Section 10.1) on its own; this MUST be established by
+   some other mechanism.
 
-   Conversely, a client that implements this specification MUST NOT use
-   a connection for a given origin when that origin does not appear in
-   that connection's Origin Set, regardless of whether or not the
+   A client that implements this specification MUST NOT use a connection
+   for a given origin unless that origin appears in the Origin Set for
+   the connection, regardless of whether or not it believes that the
    connection is authoritative for that origin.
 
 2.2.  Processing ORIGIN Frames
@@ -187,16 +187,17 @@ Internet-Draft                ORIGIN Frames                  August 2016
    coalescing (see Section 2.1), but does not relax the requirement
    there that the server is authoritative.
 
-   It MUST occur on stream 0; an ORIGIN frame on any other stream is
-   invalid and MUST be ignored.  The ORIGIN frame is processed hop-by-
-   hop.  An intermediary MUST NOT forward ORIGIN frames.  Clients
-   configured to use a proxy MUST ignore any ORIGIN frames received from
-   it.
+   The origin frame MUST be sent on stream 0; an ORIGIN frame on any
+   other stream is invalid and MUST be ignored.
+
+   The ORIGIN frame is processed hop-by-hop.  An intermediary MUST NOT
+   forward ORIGIN frames.  Clients configured to use a proxy MUST ignore
+   any ORIGIN frames received from it.
 
    The following algorithm illustrates how a client can handle received
    origin frames:
 
-   1.  If the client is configured to be a proxy, ignore the frame and
+   1.  If the client is configured to use a proxy, ignore the frame and
        stop processing.
 
    2.  If the frame occurs upon any stream except stream 0, ignore the
@@ -204,13 +205,26 @@ Internet-Draft                ORIGIN Frames                  August 2016
 
    3.  If the CLEAR flag is set, remove all members from the Origin Set.
 
-   4.  For each Origin field "origin_raw" in the frame payload: a.
-       Parse "origin_raw" as an ASCII serialization of an origin
-       ([RFC6454], Section 6.2) and let the result be "parsed_origin".
-       b.  If the REMOVE flag is set, remove any member of the Origin
-       Set that is the same as "parsed_origin" (as per [RFC6454],
-       Section 5), and continue to the next "parsed_origin".  c.
-       Otherwise, add "parsed_origin" to the Origin Set.
+   4.  For each Origin field "origin_raw" in the frame payload:
+
+       1.  Parse "origin_raw" as an ASCII serialization of an origin
+           ([RFC6454], Section 6.2) and let the result be
+           "parsed_origin".
+
+       2.  If the REMOVE flag is set, remove any member of the Origin
+           Set that is the same as "parsed_origin" (as per [RFC6454],
+           Section 5), and continue to the next "parsed_origin".
+
+       3.  Otherwise, add "parsed_origin" to the Origin Set.
+
+
+
+
+
+Nottingham & Nygren     Expires February 20, 2017               [Page 4]
+
+Internet-Draft                ORIGIN Frames                  August 2016
+
 
 3.  Security Considerations
 
@@ -218,13 +232,6 @@ Internet-Draft                ORIGIN Frames                  August 2016
    vulnerable to a large number of attacks; hence the reinforcement that
    this specification does not relax the requirement for server
    authority in [RFC7540], Section 10.1.
-
-
-
-Nottingham & Nygren     Expires February 19, 2017               [Page 4]
-
-Internet-Draft                ORIGIN Frames                  August 2016
-
 
 4.  Normative References
 
@@ -270,11 +277,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-
-Nottingham & Nygren     Expires February 19, 2017               [Page 5]
+Nottingham & Nygren     Expires February 20, 2017               [Page 5]
