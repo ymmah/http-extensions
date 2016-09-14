@@ -4,8 +4,8 @@
 
 HTTP Working Group                                           I. Grigorik
 Internet-Draft                                                    Google
-Intended status: Experimental                            August 19, 2016
-Expires: February 20, 2017
+Intended status: Experimental                         September 14, 2016
+Expires: March 18, 2017
 
 
                            HTTP Client Hints
@@ -49,13 +49,13 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on February 20, 2017.
+   This Internet-Draft will expire on March 18, 2017.
 
 
 
-Grigorik                Expires February 20, 2017               [Page 1]
+Grigorik                 Expires March 18, 2017                 [Page 1]
 
-Internet-Draft              HTTP Client Hints                August 2016
+Internet-Draft              HTTP Client Hints             September 2016
 
 
 Copyright Notice
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Grigorik                Expires February 20, 2017               [Page 2]
+Grigorik                 Expires March 18, 2017                 [Page 2]
 
-Internet-Draft              HTTP Client Hints                August 2016
+Internet-Draft              HTTP Client Hints             September 2016
 
 
 1.  Introduction
@@ -165,9 +165,9 @@ Internet-Draft              HTTP Client Hints                August 2016
 
 
 
-Grigorik                Expires February 20, 2017               [Page 3]
+Grigorik                 Expires March 18, 2017                 [Page 3]
 
-Internet-Draft              HTTP Client Hints                August 2016
+Internet-Draft              HTTP Client Hints             September 2016
 
 
 2.  Client Hint Request Header Fields
@@ -221,9 +221,9 @@ Internet-Draft              HTTP Client Hints                August 2016
 
 
 
-Grigorik                Expires February 20, 2017               [Page 4]
+Grigorik                 Expires March 18, 2017                 [Page 4]
 
-Internet-Draft              HTTP Client Hints                August 2016
+Internet-Draft              HTTP Client Hints             September 2016
 
 
      Accept-CH: DPR, Width, Viewport-Width, Downlink
@@ -277,9 +277,9 @@ Internet-Draft              HTTP Client Hints                August 2016
 
 
 
-Grigorik                Expires February 20, 2017               [Page 5]
+Grigorik                 Expires March 18, 2017                 [Page 5]
 
-Internet-Draft              HTTP Client Hints                August 2016
+Internet-Draft              HTTP Client Hints             September 2016
 
 
    Above example indicates that the cache key needs to include the value
@@ -333,9 +333,9 @@ Internet-Draft              HTTP Client Hints                August 2016
 
 
 
-Grigorik                Expires February 20, 2017               [Page 6]
+Grigorik                 Expires March 18, 2017                 [Page 6]
 
-Internet-Draft              HTTP Client Hints                August 2016
+Internet-Draft              HTTP Client Hints             September 2016
 
 
    can be derived from the resource itself once it is decoded by the
@@ -389,9 +389,9 @@ Internet-Draft              HTTP Client Hints                August 2016
 
 
 
-Grigorik                Expires February 20, 2017               [Page 7]
+Grigorik                 Expires March 18, 2017                 [Page 7]
 
-Internet-Draft              HTTP Client Hints                August 2016
+Internet-Draft              HTTP Client Hints             September 2016
 
 
 7.  The Save-Data Client Hint
@@ -445,9 +445,9 @@ Internet-Draft              HTTP Client Hints                August 2016
 
 
 
-Grigorik                Expires February 20, 2017               [Page 8]
+Grigorik                 Expires March 18, 2017                 [Page 8]
 
-Internet-Draft              HTTP Client Hints                August 2016
+Internet-Draft              HTTP Client Hints             September 2016
 
 
    Alternatively, the server could select an alternate resource based on
@@ -472,15 +472,15 @@ Internet-Draft              HTTP Client Hints                August 2016
    resource URLs even if JavaScript is disabled.
 
    Implementors should consider the privacy implications of various
-   methods to enable delivery of Client Hints--see "Sending Client
-   Hints" section.  For example, sending Client Hints on all requests
-   can make information about the user's environment available to
-   origins that otherwise did not have access to this data (e.g. origins
-   hosting non-script resources), which might or not be the desired
-   outcome.  The implementors can provide mechanisms to control such
-   behavior via explicit opt-in, or other mechanisms.  Similarly, the
-   implementors should consider how and whether delivery of Client Hints
-   is affected when the user is in "incognito" or similar privacy mode.
+   methods to enable delivery of Client Hints-see "Sending Client Hints"
+   section.  For example, sending Client Hints on all requests can make
+   information about the user's environment available to origins that
+   otherwise did not have access to this data (e.g. origins hosting non-
+   script resources), which might or not be the desired outcome.  The
+   implementors can provide mechanisms to control such behavior via
+   explicit opt-in, or other mechanisms.  Similarly, the implementors
+   should consider how and whether delivery of Client Hints is affected
+   when the user is in "incognito" or similar privacy mode.
 
 10.  IANA Considerations
 
@@ -501,9 +501,9 @@ Internet-Draft              HTTP Client Hints                August 2016
 
 
 
-Grigorik                Expires February 20, 2017               [Page 9]
+Grigorik                 Expires March 18, 2017                 [Page 9]
 
-Internet-Draft              HTTP Client Hints                August 2016
+Internet-Draft              HTTP Client Hints             September 2016
 
 
 10.2.  Content-DPR
@@ -557,9 +557,9 @@ Internet-Draft              HTTP Client Hints                August 2016
 
 
 
-Grigorik                Expires February 20, 2017              [Page 10]
+Grigorik                 Expires March 18, 2017                [Page 10]
 
-Internet-Draft              HTTP Client Hints                August 2016
+Internet-Draft              HTTP Client Hints             September 2016
 
 
 10.7.  Width
@@ -613,9 +613,9 @@ Internet-Draft              HTTP Client Hints                August 2016
 
 
 
-Grigorik                Expires February 20, 2017              [Page 11]
+Grigorik                 Expires March 18, 2017                [Page 11]
 
-Internet-Draft              HTTP Client Hints                August 2016
+Internet-Draft              HTTP Client Hints             September 2016
 
 
    [W3C.CR-css-values-3-20150611]
@@ -669,4 +669,4 @@ Author's Address
 
 
 
-Grigorik                Expires February 20, 2017              [Page 12]
+Grigorik                 Expires March 18, 2017                [Page 12]
