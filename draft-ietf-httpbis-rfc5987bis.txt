@@ -4,9 +4,9 @@
 
 HTTP Working Group                                            J. Reschke
 Internet-Draft                                                greenbytes
-Obsoletes: 5987 (if approved)                         September 14, 2016
+Obsoletes: 5987 (if approved)                         September 27, 2016
 Intended status: Standards Track
-Expires: March 18, 2017
+Expires: March 31, 2017
 
 
     Indicating Character Encoding and Language for HTTP Header Field
@@ -49,11 +49,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on March 18, 2017.
+   This Internet-Draft will expire on March 31, 2017.
 
 
 
-Reschke                  Expires March 18, 2017                 [Page 1]
+Reschke                  Expires March 31, 2017                 [Page 1]
 
 Internet-Draft      Charset/Language Encoding in HTTP     September 2016
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Reschke                  Expires March 18, 2017                 [Page 2]
+Reschke                  Expires March 31, 2017                 [Page 2]
 
 Internet-Draft      Charset/Language Encoding in HTTP     September 2016
 
@@ -165,7 +165,7 @@ Internet-Draft      Charset/Language Encoding in HTTP     September 2016
 
 
 
-Reschke                  Expires March 18, 2017                 [Page 3]
+Reschke                  Expires March 31, 2017                 [Page 3]
 
 Internet-Draft      Charset/Language Encoding in HTTP     September 2016
 
@@ -221,7 +221,7 @@ Internet-Draft      Charset/Language Encoding in HTTP     September 2016
 
 
 
-Reschke                  Expires March 18, 2017                 [Page 4]
+Reschke                  Expires March 31, 2017                 [Page 4]
 
 Internet-Draft      Charset/Language Encoding in HTTP     September 2016
 
@@ -277,7 +277,7 @@ Internet-Draft      Charset/Language Encoding in HTTP     September 2016
 
 
 
-Reschke                  Expires March 18, 2017                 [Page 5]
+Reschke                  Expires March 31, 2017                 [Page 5]
 
 Internet-Draft      Charset/Language Encoding in HTTP     September 2016
 
@@ -333,7 +333,7 @@ Internet-Draft      Charset/Language Encoding in HTTP     September 2016
 
 
 
-Reschke                  Expires March 18, 2017                 [Page 6]
+Reschke                  Expires March 31, 2017                 [Page 6]
 
 Internet-Draft      Charset/Language Encoding in HTTP     September 2016
 
@@ -389,7 +389,7 @@ Internet-Draft      Charset/Language Encoding in HTTP     September 2016
 
 
 
-Reschke                  Expires March 18, 2017                 [Page 7]
+Reschke                  Expires March 31, 2017                 [Page 7]
 
 Internet-Draft      Charset/Language Encoding in HTTP     September 2016
 
@@ -445,7 +445,7 @@ Internet-Draft      Charset/Language Encoding in HTTP     September 2016
 
 
 
-Reschke                  Expires March 18, 2017                 [Page 8]
+Reschke                  Expires March 31, 2017                 [Page 8]
 
 Internet-Draft      Charset/Language Encoding in HTTP     September 2016
 
@@ -501,7 +501,7 @@ Internet-Draft      Charset/Language Encoding in HTTP     September 2016
 
 
 
-Reschke                  Expires March 18, 2017                 [Page 9]
+Reschke                  Expires March 31, 2017                 [Page 9]
 
 Internet-Draft      Charset/Language Encoding in HTTP     September 2016
 
@@ -557,7 +557,7 @@ Internet-Draft      Charset/Language Encoding in HTTP     September 2016
 
 
 
-Reschke                  Expires March 18, 2017                [Page 10]
+Reschke                  Expires March 31, 2017                [Page 10]
 
 Internet-Draft      Charset/Language Encoding in HTTP     September 2016
 
@@ -613,7 +613,7 @@ Internet-Draft      Charset/Language Encoding in HTTP     September 2016
 
 
 
-Reschke                  Expires March 18, 2017                [Page 11]
+Reschke                  Expires March 31, 2017                [Page 11]
 
 Internet-Draft      Charset/Language Encoding in HTTP     September 2016
 
@@ -669,7 +669,7 @@ Appendix B.  Implementation Report
 
 
 
-Reschke                  Expires March 18, 2017                [Page 12]
+Reschke                  Expires March 31, 2017                [Page 12]
 
 Internet-Draft      Charset/Language Encoding in HTTP     September 2016
 
@@ -725,7 +725,7 @@ C.9.  Since draft-ietf-httpbis-rfc5987bis-00
 
 
 
-Reschke                  Expires March 18, 2017                [Page 13]
+Reschke                  Expires March 31, 2017                [Page 13]
 
 Internet-Draft      Charset/Language Encoding in HTTP     September 2016
 
@@ -781,4 +781,4 @@ Author's Address
 
 
 
-Reschke                  Expires March 18, 2017                [Page 14]
+Reschke                  Expires March 31, 2017                [Page 14]
