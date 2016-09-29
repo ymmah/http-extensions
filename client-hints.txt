@@ -4,8 +4,8 @@
 
 HTTP Working Group                                           I. Grigorik
 Internet-Draft                                                    Google
-Intended status: Experimental                         September 28, 2016
-Expires: April 1, 2017
+Intended status: Experimental                         September 29, 2016
+Expires: April 2, 2017
 
 
                            HTTP Client Hints
@@ -49,11 +49,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 1, 2017.
+   This Internet-Draft will expire on April 2, 2017.
 
 
 
-Grigorik                  Expires April 1, 2017                 [Page 1]
+Grigorik                  Expires April 2, 2017                 [Page 1]
 
 Internet-Draft              HTTP Client Hints             September 2016
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Grigorik                  Expires April 1, 2017                 [Page 2]
+Grigorik                  Expires April 2, 2017                 [Page 2]
 
 Internet-Draft              HTTP Client Hints             September 2016
 
@@ -165,7 +165,7 @@ Internet-Draft              HTTP Client Hints             September 2016
 
 
 
-Grigorik                  Expires April 1, 2017                 [Page 3]
+Grigorik                  Expires April 2, 2017                 [Page 3]
 
 Internet-Draft              HTTP Client Hints             September 2016
 
@@ -221,7 +221,7 @@ Internet-Draft              HTTP Client Hints             September 2016
 
 
 
-Grigorik                  Expires April 1, 2017                 [Page 4]
+Grigorik                  Expires April 2, 2017                 [Page 4]
 
 Internet-Draft              HTTP Client Hints             September 2016
 
@@ -277,7 +277,7 @@ Internet-Draft              HTTP Client Hints             September 2016
 
 
 
-Grigorik                  Expires April 1, 2017                 [Page 5]
+Grigorik                  Expires April 2, 2017                 [Page 5]
 
 Internet-Draft              HTTP Client Hints             September 2016
 
@@ -333,7 +333,7 @@ Internet-Draft              HTTP Client Hints             September 2016
 
 
 
-Grigorik                  Expires April 1, 2017                 [Page 6]
+Grigorik                  Expires April 2, 2017                 [Page 6]
 
 Internet-Draft              HTTP Client Hints             September 2016
 
@@ -389,7 +389,7 @@ Internet-Draft              HTTP Client Hints             September 2016
 
 
 
-Grigorik                  Expires April 1, 2017                 [Page 7]
+Grigorik                  Expires April 2, 2017                 [Page 7]
 
 Internet-Draft              HTTP Client Hints             September 2016
 
@@ -445,7 +445,7 @@ Internet-Draft              HTTP Client Hints             September 2016
 
 
 
-Grigorik                  Expires April 1, 2017                 [Page 8]
+Grigorik                  Expires April 2, 2017                 [Page 8]
 
 Internet-Draft              HTTP Client Hints             September 2016
 
@@ -501,7 +501,7 @@ Internet-Draft              HTTP Client Hints             September 2016
 
 
 
-Grigorik                  Expires April 1, 2017                 [Page 9]
+Grigorik                  Expires April 2, 2017                 [Page 9]
 
 Internet-Draft              HTTP Client Hints             September 2016
 
@@ -557,7 +557,7 @@ Internet-Draft              HTTP Client Hints             September 2016
 
 
 
-Grigorik                  Expires April 1, 2017                [Page 10]
+Grigorik                  Expires April 2, 2017                [Page 10]
 
 Internet-Draft              HTTP Client Hints             September 2016
 
@@ -613,7 +613,7 @@ Internet-Draft              HTTP Client Hints             September 2016
 
 
 
-Grigorik                  Expires April 1, 2017                [Page 11]
+Grigorik                  Expires April 2, 2017                [Page 11]
 
 Internet-Draft              HTTP Client Hints             September 2016
 
@@ -626,7 +626,7 @@ Internet-Draft              HTTP Client Hints             September 2016
 
    [W3C.REC-html5-20141028]
               Hickson, I., Berjon, R., Faulkner, S., Leithead, T.,
-              Navara, E., O&#039;Connor, E., and S. Pfeiffer, "HTML5",
+              Navara, E., O&#039;Connor, T., and S. Pfeiffer, "HTML5",
               World Wide Web Consortium Recommendation REC-
               html5-20141028, October 2014,
               <http://www.w3.org/TR/2014/REC-html5-20141028>.
@@ -669,4 +669,4 @@ Author's Address
 
 
 
-Grigorik                  Expires April 1, 2017                [Page 12]
+Grigorik                  Expires April 2, 2017                [Page 12]
