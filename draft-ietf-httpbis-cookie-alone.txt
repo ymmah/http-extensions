@@ -10,7 +10,7 @@ Expires: April 7, 2017
 
 
    Deprecate modification of 'secure' cookies from non-secure origins
-                   draft-ietf-httpbis-cookie-alone-00
+                 draft-ietf-httpbis-cookie-alone-latest
 
 Abstract
 
@@ -76,14 +76,16 @@ Copyright Notice
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
-   2.  Terminology and notation  . . . . . . . . . . . . . . . . . .   2
+   2.  Terminology and notation  . . . . . . . . . . . . . . . . . .   3
    3.  Recommendations . . . . . . . . . . . . . . . . . . . . . . .   3
    4.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
    5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   4
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   4
      5.2.  Informative References  . . . . . . . . . . . . . . . . .   5
    Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .   5
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   5
+   Appendix B.  Changes  . . . . . . . . . . . . . . . . . . . . . .   5
+     B.1.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .   6
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   6
 
 1.  Introduction
 
@@ -100,11 +102,9 @@ Table of Contents
    non-secure origins' ability to write cookies with a 'secure' flag,
    and their ability to overwrite cookies whose 'secure' flag is set.
 
-2.  Terminology and notation
 
-   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-   document are to be interpreted as described in [RFC2119].
+
+
 
 
 
@@ -113,6 +113,12 @@ West                      Expires April 7, 2017                 [Page 2]
 
 Internet-Draft         Leave Secure Cookies Alone           October 2016
 
+
+2.  Terminology and notation
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in [RFC2119].
 
    The "scheme" component of a URI is defined in Section 3 of [RFC3986].
 
@@ -141,15 +147,29 @@ Internet-Draft         Leave Secure Cookies Alone           October 2016
            2.  Their "secure-only-flag" is set.
            3.  Their "domain" domain-matches the "domain" of the newly
                created cookie, or vice-versa.
+           4.  The "path" of the newly created cookie path-matches the
+               "path" of the existing cookie.
 
-           Note: This comparison intentionally ignores the "path"
-           component.  The intent is to allow the "secure" flag to
-           supercede the "path" restrictions to protect sites against
-           cookie fixing attacks.
+           Note: The "path" comparison is not symmetric, ensuring only
+           that a newly-created non-secure cookie does not overlay an
+           existing secure cookie, providing some mitigation against
+           cookie fixing attacks.  That is, given an existing secure
+           cookie named "a" with a "path" of "/login", a non-secure
+           cookie named "a" could be set for a "path" of "/" or "/foo",
+           but not for a "path" of "/login" or "/login/en".
 
            Note: This allows "secure" pages to override "secure" cookies
            with non-secure variants.  Perhaps we should restrict that as
            well?
+
+
+
+
+West                      Expires April 7, 2017                 [Page 3]
+
+Internet-Draft         Leave Secure Cookies Alone           October 2016
+
+
    3.  In order to ensure that a non-secure site can never cause a
        "secure" cookie to be evicted, adjust the "remove excess cookies"
        priority order at the bottom of Section 5.3 to be the following:
@@ -161,14 +181,6 @@ Internet-Draft         Leave Secure Cookies Alone           October 2016
        3.  Cookies that share a "domain" field with more than a
            predetermined number of other cookies.
        4.  All cookies.
-
-
-
-
-West                      Expires April 7, 2017                 [Page 3]
-
-Internet-Draft         Leave Secure Cookies Alone           October 2016
-
 
        Note that the eviction algorithm specified here is triggered only
        after insertion of a cookie which causes the user agent to exceed
@@ -203,6 +215,17 @@ Internet-Draft         Leave Secure Cookies Alone           October 2016
 
 5.1.  Normative References
 
+
+
+
+
+
+
+West                      Expires April 7, 2017                 [Page 4]
+
+Internet-Draft         Leave Secure Cookies Alone           October 2016
+
+
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
@@ -216,15 +239,6 @@ Internet-Draft         Leave Secure Cookies Alone           October 2016
    [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
               DOI 10.17487/RFC6265, April 2011,
               <http://www.rfc-editor.org/info/rfc6265>.
-
-
-
-
-
-West                      Expires April 7, 2017                 [Page 4]
-
-Internet-Draft         Leave Secure Cookies Alone           October 2016
-
 
 5.2.  Informative References
 
@@ -255,6 +269,27 @@ Appendix A.  Acknowledgements
    proposal.  [COOKIE-INTEGRITY] was a useful exploration of the issues
    [RFC6265] described.
 
+Appendix B.  Changes
+
+
+
+
+
+
+
+West                      Expires April 7, 2017                 [Page 5]
+
+Internet-Draft         Leave Secure Cookies Alone           October 2016
+
+
+B.1.  Since -00
+
+   o  Issue 223 addressed by adding a path-match constraint to the
+      storage algorithm for non-secure cookies.  This ensures that non-
+      secure cookies cannot overlay secure cookies for a given path, but
+      allows secure and non-secure cookies with the same name to exist
+      on distinct paths.
+
 Author's Address
 
    Mike West
@@ -277,4 +312,25 @@ Author's Address
 
 
 
-West                      Expires April 7, 2017                 [Page 5]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+West                      Expires April 7, 2017                 [Page 6]

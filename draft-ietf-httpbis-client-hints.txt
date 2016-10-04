@@ -636,7 +636,7 @@ Internet-Draft              HTTP Client Hints               October 2016
 
    [W3C.REC-html5-20141028]
               Hickson, I., Berjon, R., Faulkner, S., Leithead, T.,
-              Navara, E., O&#039;Connor, E., and S. Pfeiffer, "HTML5",
+              Navara, E., O&#039;Connor, T., and S. Pfeiffer, "HTML5",
               World Wide Web Consortium Recommendation REC-
               html5-20141028, October 2014,
               <http://www.w3.org/TR/2014/REC-html5-20141028>.

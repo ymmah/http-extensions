@@ -96,7 +96,7 @@ Table of Contents
    Appendix A.  Changes from RFC 5987  . . . . . . . . . . . . . . .  12
    Appendix B.  Implementation Report  . . . . . . . . . . . . . . .  12
    Appendix C.  Change Log (to be removed by RFC Editor before
-                publication) . . . . . . . . . . . . . . . . . . . .  12
+                publication) . . . . . . . . . . . . . . . . . . . .  13
      C.1.  Since RFC5987 . . . . . . . . . . . . . . . . . . . . . .  13
      C.2.  Since draft-reschke-rfc5987bis-00 . . . . . . . . . . . .  13
      C.3.  Since draft-reschke-rfc5987bis-01 . . . . . . . . . . . .  13
@@ -114,7 +114,7 @@ Reschke                   Expires April 7, 2017                 [Page 2]
 Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
 
-     C.10. Since draft-ietf-httpbis-rfc5987bis-01  . . . . . . . . .  13
+     C.10. Since draft-ietf-httpbis-rfc5987bis-01  . . . . . . . . .  14
      C.11. Since draft-ietf-httpbis-rfc5987bis-02  . . . . . . . . .  14
    Appendix D.  Acknowledgements . . . . . . . . . . . . . . . . . .  14
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  14
@@ -463,10 +463,6 @@ Internet-Draft      Charset/Language Encoding in HTTP       October 2016
    recipients understanding this specification -- the latter obviously
    ought to prefer the new syntax over the old one.
 
-      Note: at the time of this writing, many implementations failed to
-      ignore the form they do not understand, or prioritize the ASCII
-      form although the extended syntax was present.
-
 5.  Security Considerations
 
    The format described in this document makes it possible to transport
@@ -498,6 +494,10 @@ Internet-Draft      Charset/Language Encoding in HTTP       October 2016
               RFC 20, DOI 10.17487/RFC0020, October 1969,
               <http://www.rfc-editor.org/info/rfc20>.
 
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <http://www.rfc-editor.org/info/rfc2119>.
 
 
 
@@ -505,11 +505,6 @@ Reschke                   Expires April 7, 2017                 [Page 9]
 
 Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
-
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <http://www.rfc-editor.org/info/rfc2119>.
 
    [RFC2978]  Freed, N. and J. Postel, "IANA Charset Registration
               Procedures", BCP 19, RFC 2978, DOI 10.17487/RFC2978,
@@ -554,6 +549,11 @@ Internet-Draft      Charset/Language Encoding in HTTP       October 2016
               character sets -- Part 1: Latin alphabet No. 1", ISO/
               IEC 8859-1:1998, 1998.
 
+   [RFC2045]  Freed, N. and N. Borenstein, "Multipurpose Internet Mail
+              Extensions (MIME) Part One: Format of Internet Message
+              Bodies", RFC 2045, DOI 10.17487/RFC2045, November 1996,
+              <http://www.rfc-editor.org/info/rfc2045>.
+
 
 
 
@@ -561,11 +561,6 @@ Reschke                   Expires April 7, 2017                [Page 10]
 
 Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
-
-   [RFC2045]  Freed, N. and N. Borenstein, "Multipurpose Internet Mail
-              Extensions (MIME) Part One: Format of Internet Message
-              Bodies", RFC 2045, DOI 10.17487/RFC2045, November 1996,
-              <http://www.rfc-editor.org/info/rfc2045>.
 
    [RFC2047]  Moore, K., "MIME (Multipurpose Internet Mail Extensions)
               Part Three: Message Header Extensions for Non-ASCII Text",
@@ -613,6 +608,11 @@ Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
 
 
+
+
+
+
+
 Reschke                   Expires April 7, 2017                [Page 11]
 
 Internet-Draft      Charset/Language Encoding in HTTP       October 2016
@@ -631,6 +631,9 @@ Appendix A.  Changes from RFC 5987
       ABNF anymore (it turned out that there really isn't a generic
       definition of parameters in HTTP; for instance, there are subtle
       differences with respect to whitespace handling).
+
+   o  A note about defects in error handling in current implementations
+      was removed, as it wasn't accurate anymore.
 
 Appendix B.  Implementation Report
 
@@ -661,9 +664,6 @@ Appendix B.  Implementation Report
    User Agent except Firefox supported the "title*" parameter (starting
    with release 15).
 
-Appendix C.  Change Log (to be removed by RFC Editor before publication)
-
-
 
 
 
@@ -673,6 +673,8 @@ Reschke                   Expires April 7, 2017                [Page 12]
 
 Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
+
+Appendix C.  Change Log (to be removed by RFC Editor before publication)
 
 C.1.  Since RFC5987
 
@@ -717,11 +719,9 @@ C.9.  Since draft-ietf-httpbis-rfc5987bis-00
    Editorial changes; introducing non-ASCII characters into author's
    address, acknowledgements, and examples.
 
-C.10.  Since draft-ietf-httpbis-rfc5987bis-01
 
-   Removed mention of RFC 2616 from Abstract and Introduction.
 
-   Reference RFC 20 for US-ASCII.
+
 
 
 
@@ -729,6 +729,12 @@ Reschke                   Expires April 7, 2017                [Page 13]
 
 Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
+
+C.10.  Since draft-ietf-httpbis-rfc5987bis-01
+
+   Removed mention of RFC 2616 from Abstract and Introduction.
+
+   Reference RFC 20 for US-ASCII.
 
    Do not attempt to define a generic parameter ABNF; just concentrate
    on the parameter value syntax.
@@ -755,12 +761,6 @@ Author's Address
 
    EMail: julian.reschke@greenbytes.de
    URI:   http://greenbytes.de/tech/webdav/
-
-
-
-
-
-
 
 
 
