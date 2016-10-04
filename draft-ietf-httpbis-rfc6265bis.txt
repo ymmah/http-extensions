@@ -4,8 +4,8 @@
 
 HTTP Working Group                                               M. West
 Internet-Draft                                               Google, Inc
-Intended status: Standards Track                      September 30, 2016
-Expires: April 3, 2017
+Intended status: Standards Track                         October 4, 2016
+Expires: April 7, 2017
 
 
                     HTTP State Management Mechanism
@@ -36,7 +36,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 3, 2017.
+   This Internet-Draft will expire on April 7, 2017.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-West                      Expires April 3, 2017                 [Page 1]
+West                      Expires April 7, 2017                 [Page 1]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
    the Trust Legal Provisions and are provided without warranty as
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-West                      Expires April 3, 2017                 [Page 2]
+West                      Expires April 7, 2017                 [Page 2]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
      8.6.  Weak Integrity  . . . . . . . . . . . . . . . . . . . . .  31
@@ -165,9 +165,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                 [Page 3]
+West                      Expires April 7, 2017                 [Page 3]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
    servers that do not conform to the well-behaved profile defined in
@@ -221,9 +221,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                 [Page 4]
+West                      Expires April 7, 2017                 [Page 4]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
    specification are intended to be easy to understand and are not
@@ -277,9 +277,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                 [Page 5]
+West                      Expires April 7, 2017                 [Page 5]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 3.  Overview
@@ -333,9 +333,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                 [Page 6]
+West                      Expires April 7, 2017                 [Page 6]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
    agent to return the cookie to every path and every subdomain of
@@ -389,9 +389,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                 [Page 7]
+West                      Expires April 7, 2017                 [Page 7]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
    in removing the cookie only if the Path and the Domain attribute in
@@ -445,9 +445,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                 [Page 8]
+West                      Expires April 7, 2017                 [Page 8]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
    set-cookie-header = "Set-Cookie:" SP set-cookie-string
@@ -501,9 +501,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                 [Page 9]
+West                      Expires April 7, 2017                 [Page 9]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
    same set-cookie-string.  (See Section 5.3 for how user agents handle
@@ -557,9 +557,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                [Page 10]
+West                      Expires April 7, 2017                [Page 10]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 4.1.2.1.  The Expires Attribute
@@ -613,9 +613,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                [Page 11]
+West                      Expires April 7, 2017                [Page 11]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
    foo.example.com, but the user agent will not accept a cookie with a
@@ -669,9 +669,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                [Page 12]
+West                      Expires April 7, 2017                [Page 12]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
    Note that the HttpOnly attribute is independent of the Secure
@@ -725,9 +725,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                [Page 13]
+West                      Expires April 7, 2017                [Page 13]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
    A user agent could enforce more restrictions than those specified
@@ -781,9 +781,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                [Page 14]
+West                      Expires April 7, 2017                [Page 14]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
            month flag and set the day-of-month-value to the number
@@ -837,9 +837,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                [Page 15]
+West                      Expires April 7, 2017                [Page 15]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
    3.  Concatenate the resulting labels, separated by a %x2E (".")
@@ -893,9 +893,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                [Page 16]
+West                      Expires April 7, 2017                [Page 16]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 5.2.  The Set-Cookie Header
@@ -949,9 +949,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                [Page 17]
+West                      Expires April 7, 2017                [Page 17]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
    The user agent MUST use an algorithm equivalent to the following
@@ -1005,9 +1005,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                [Page 18]
+West                      Expires April 7, 2017                [Page 18]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
    1.  Let the expiry-time be the result of parsing the attribute-value
@@ -1061,9 +1061,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                [Page 19]
+West                      Expires April 7, 2017                [Page 19]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
    4.  Append an attribute to the cookie-attribute-list with an
@@ -1117,9 +1117,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                [Page 20]
+West                      Expires April 7, 2017                [Page 20]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
    2.   Create a new cookie with name cookie-name, value cookie-value.
@@ -1173,9 +1173,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                [Page 21]
+West                      Expires April 7, 2017                [Page 21]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
         NOTE: A "public suffix" is a domain that is controlled by a
@@ -1229,9 +1229,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                [Page 22]
+West                      Expires April 7, 2017                [Page 22]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
         2.  If the newly created cookie was received from a "non-HTTP"
@@ -1285,9 +1285,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                [Page 23]
+West                      Expires April 7, 2017                [Page 23]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
    If the user agent does attach a Cookie header field to an HTTP
@@ -1341,9 +1341,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                [Page 24]
+West                      Expires April 7, 2017                [Page 24]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
    4.  Serialize the cookie-list into a cookie-string by processing each
@@ -1397,9 +1397,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                [Page 25]
+West                      Expires April 7, 2017                [Page 25]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
    Instead of providing string-based APIs to cookies, platforms would be
@@ -1453,9 +1453,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                [Page 26]
+West                      Expires April 7, 2017                [Page 26]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
    However, this document does not endorse any particular third-party
@@ -1509,9 +1509,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                [Page 27]
+West                      Expires April 7, 2017                [Page 27]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 8.  Security Considerations
@@ -1565,9 +1565,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                [Page 28]
+West                      Expires April 7, 2017                [Page 28]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 8.3.  Clear Text
@@ -1621,9 +1621,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                [Page 29]
+West                      Expires April 7, 2017                [Page 29]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
    Using session identifier cookies limits the damage an attacker can
@@ -1677,9 +1677,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                [Page 30]
+West                      Expires April 7, 2017                [Page 30]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 8.6.  Weak Integrity
@@ -1733,9 +1733,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                [Page 31]
+West                      Expires April 7, 2017                [Page 31]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 9.  IANA Considerations
@@ -1789,9 +1789,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                [Page 32]
+West                      Expires April 7, 2017                [Page 32]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
    [RFC1123]  Braden, R., Ed., "Requirements for Internet Hosts -
@@ -1845,9 +1845,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                [Page 33]
+West                      Expires April 7, 2017                [Page 33]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
    [CSRF]     Barth, A., Jackson, C., and J. Mitchell, "Robust Defenses
@@ -1901,9 +1901,9 @@ Internet-Draft       HTTP State Management Mechanism      September 2016
 
 
 
-West                      Expires April 3, 2017                [Page 34]
+West                      Expires April 7, 2017                [Page 34]
 
-Internet-Draft       HTTP State Management Mechanism      September 2016
+Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 Appendix A.  Acknowledgements
@@ -1957,4 +1957,4 @@ Author's Address
 
 
 
-West                      Expires April 3, 2017                [Page 35]
+West                      Expires April 7, 2017                [Page 35]

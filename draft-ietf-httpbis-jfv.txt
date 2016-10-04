@@ -4,8 +4,8 @@
 
 HTTP Working Group                                            J. Reschke
 Internet-Draft                                                greenbytes
-Intended status: Standards Track                      September 30, 2016
-Expires: April 3, 2017
+Intended status: Standards Track                         October 4, 2016
+Expires: April 7, 2017
 
 
               A JSON Encoding for HTTP Header Field Values
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 3, 2017.
+   This Internet-Draft will expire on April 7, 2017.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Reschke                   Expires April 3, 2017                 [Page 1]
+Reschke                   Expires April 7, 2017                 [Page 1]
 
-Internet-Draft     JSON Encoding for HTTP Field Values    September 2016
+Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Reschke                   Expires April 3, 2017                 [Page 2]
+Reschke                   Expires April 7, 2017                 [Page 2]
 
-Internet-Draft     JSON Encoding for HTTP Field Values    September 2016
+Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
 
 
       hard to write generic parsing code that will both correctly handle
@@ -165,9 +165,9 @@ Internet-Draft     JSON Encoding for HTTP Field Values    September 2016
 
 
 
-Reschke                   Expires April 3, 2017                 [Page 3]
+Reschke                   Expires April 7, 2017                 [Page 3]
 
-Internet-Draft     JSON Encoding for HTTP Field Values    September 2016
+Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
 
 
    while leaving out the "begin-array" ('[') and "end-array" (']')
@@ -221,9 +221,9 @@ Internet-Draft     JSON Encoding for HTTP Field Values    September 2016
 
 
 
-Reschke                   Expires April 3, 2017                 [Page 4]
+Reschke                   Expires April 7, 2017                 [Page 4]
 
-Internet-Draft     JSON Encoding for HTTP Field Values    September 2016
+Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
 
 
 4.  Recipient Requirements
@@ -277,9 +277,9 @@ Internet-Draft     JSON Encoding for HTTP Field Values    September 2016
 
 
 
-Reschke                   Expires April 3, 2017                 [Page 5]
+Reschke                   Expires April 7, 2017                 [Page 5]
 
-Internet-Draft     JSON Encoding for HTTP Field Values    September 2016
+Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
 
 
    o  restrict all numbers to be non-negative integers without
@@ -333,9 +333,9 @@ Internet-Draft     JSON Encoding for HTTP Field Values    September 2016
 
 
 
-Reschke                   Expires April 3, 2017                 [Page 6]
+Reschke                   Expires April 7, 2017                 [Page 6]
 
-Internet-Draft     JSON Encoding for HTTP Field Values    September 2016
+Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
 
 
 6.3.  WWW-Authenticate
@@ -389,9 +389,9 @@ Internet-Draft     JSON Encoding for HTTP Field Values    September 2016
 
 
 
-Reschke                   Expires April 3, 2017                 [Page 7]
+Reschke                   Expires April 7, 2017                 [Page 7]
 
-Internet-Draft     JSON Encoding for HTTP Field Values    September 2016
+Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
 
 
       Accept-Encoding = #( codings [ weight ] )
@@ -445,9 +445,9 @@ Internet-Draft     JSON Encoding for HTTP Field Values    September 2016
 
 
 
-Reschke                   Expires April 3, 2017                 [Page 8]
+Reschke                   Expires April 7, 2017                 [Page 8]
 
-Internet-Draft     JSON Encoding for HTTP Field Values    September 2016
+Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
 
 
    would be mapped to a member whose name is given by the string
@@ -501,9 +501,9 @@ Internet-Draft     JSON Encoding for HTTP Field Values    September 2016
 
 
 
-Reschke                   Expires April 3, 2017                 [Page 9]
+Reschke                   Expires April 7, 2017                 [Page 9]
 
-Internet-Draft     JSON Encoding for HTTP Field Values    September 2016
+Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
 
 
    Future specifications of HTTP might change to allow non-ASCII
@@ -557,9 +557,9 @@ Internet-Draft     JSON Encoding for HTTP Field Values    September 2016
 
 
 
-Reschke                   Expires April 3, 2017                [Page 10]
+Reschke                   Expires April 7, 2017                [Page 10]
 
-Internet-Draft     JSON Encoding for HTTP Field Values    September 2016
+Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
 
 
 11.2.  Informative References
@@ -613,9 +613,9 @@ Internet-Draft     JSON Encoding for HTTP Field Values    September 2016
 
 
 
-Reschke                   Expires April 3, 2017                [Page 11]
+Reschke                   Expires April 7, 2017                [Page 11]
 
-Internet-Draft     JSON Encoding for HTTP Field Values    September 2016
+Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
 
 
 Appendix A.  Change Log (to be removed by RFC Editor before publication)
@@ -669,9 +669,9 @@ Author's Address
 
 
 
-Reschke                   Expires April 3, 2017                [Page 12]
+Reschke                   Expires April 7, 2017                [Page 12]
 
-Internet-Draft     JSON Encoding for HTTP Field Values    September 2016
+Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
 
 
    Julian F. Reschke
@@ -725,4 +725,4 @@ Internet-Draft     JSON Encoding for HTTP Field Values    September 2016
 
 
 
-Reschke                   Expires April 3, 2017                [Page 13]
+Reschke                   Expires April 7, 2017                [Page 13]

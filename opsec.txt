@@ -5,8 +5,8 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Experimental                                 M. Thomson
-Expires: April 3, 2017                                           Mozilla
-                                                      September 30, 2016
+Expires: April 7, 2017                                           Mozilla
+                                                         October 4, 2016
 
 
                     Opportunistic Security for HTTP
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 3, 2017.
+   This Internet-Draft will expire on April 7, 2017.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Nottingham & Thomson      Expires April 3, 2017                 [Page 1]
+Nottingham & Thomson      Expires April 7, 2017                 [Page 1]
 
-Internet-Draft         Opportunistic HTTP Security        September 2016
+Internet-Draft         Opportunistic HTTP Security          October 2016
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Nottingham & Thomson      Expires April 3, 2017                 [Page 2]
+Nottingham & Thomson      Expires April 7, 2017                 [Page 2]
 
-Internet-Draft         Opportunistic HTTP Security        September 2016
+Internet-Draft         Opportunistic HTTP Security          October 2016
 
 
    Normally, users will not be able to tell that it is in use (i.e.,
@@ -165,9 +165,9 @@ Internet-Draft         Opportunistic HTTP Security        September 2016
 
 
 
-Nottingham & Thomson      Expires April 3, 2017                 [Page 3]
+Nottingham & Thomson      Expires April 7, 2017                 [Page 3]
 
-Internet-Draft         Opportunistic HTTP Security        September 2016
+Internet-Draft         Opportunistic HTTP Security          October 2016
 
 
    present them.  Established connections with client certificates MAY
@@ -194,9 +194,6 @@ Internet-Draft         Opportunistic HTTP Security        September 2016
    (as per Section 3), it MAY consider there to be reasonable assurances
    as long as:
 
-   o  The origin and alternative service's hostnames are the same when
-      compared in a case-insensitive fashion, and
-
    o  The origin object of the http-opportunistic response has a `tls-
       ports' member, whose value is an array of numbers, one of which
       matches the port of the alternative service in question, and
@@ -221,9 +218,12 @@ Internet-Draft         Opportunistic HTTP Security        September 2016
 
 
 
-Nottingham & Thomson      Expires April 3, 2017                 [Page 4]
+
+
+
+Nottingham & Thomson      Expires April 7, 2017                 [Page 4]
 
-Internet-Draft         Opportunistic HTTP Security        September 2016
+Internet-Draft         Opportunistic HTTP Security          October 2016
 
 
    GET /.well-known/http-opportunistic HTTP/1.1
@@ -277,9 +277,9 @@ Internet-Draft         Opportunistic HTTP Security        September 2016
 
 
 
-Nottingham & Thomson      Expires April 3, 2017                 [Page 5]
+Nottingham & Thomson      Expires April 7, 2017                 [Page 5]
 
-Internet-Draft         Opportunistic HTTP Security        September 2016
+Internet-Draft         Opportunistic HTTP Security          October 2016
 
 
       serialised into Unicode as per Section 6.1 of [RFC6454], and whose
@@ -333,9 +333,9 @@ Internet-Draft         Opportunistic HTTP Security        September 2016
 
 
 
-Nottingham & Thomson      Expires April 3, 2017                 [Page 6]
+Nottingham & Thomson      Expires April 7, 2017                 [Page 6]
 
-Internet-Draft         Opportunistic HTTP Security        September 2016
+Internet-Draft         Opportunistic HTTP Security          October 2016
 
 
 5.3.  Privacy Considerations
@@ -389,9 +389,9 @@ Internet-Draft         Opportunistic HTTP Security        September 2016
 
 
 
-Nottingham & Thomson      Expires April 3, 2017                 [Page 7]
+Nottingham & Thomson      Expires April 7, 2017                 [Page 7]
 
-Internet-Draft         Opportunistic HTTP Security        September 2016
+Internet-Draft         Opportunistic HTTP Security          October 2016
 
 
    [RFC2818]  Rescorla, E., "HTTP Over TLS", RFC 2818,
@@ -445,9 +445,9 @@ Internet-Draft         Opportunistic HTTP Security        September 2016
 
 
 
-Nottingham & Thomson      Expires April 3, 2017                 [Page 8]
+Nottingham & Thomson      Expires April 7, 2017                 [Page 8]
 
-Internet-Draft         Opportunistic HTTP Security        September 2016
+Internet-Draft         Opportunistic HTTP Security          October 2016
 
 
 6.2.  Informative References
@@ -501,4 +501,4 @@ Authors' Addresses
 
 
 
-Nottingham & Thomson      Expires April 3, 2017                 [Page 9]
+Nottingham & Thomson      Expires April 7, 2017                 [Page 9]

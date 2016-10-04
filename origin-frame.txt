@@ -5,7 +5,7 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft                                                 E. Nygren
 Intended status: Standards Track                                  Akamai
-Expires: April 3, 2017                                September 30, 2016
+Expires: April 7, 2017                                   October 4, 2016
 
 
                         The ORIGIN HTTP/2 Frame
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 3, 2017.
+   This Internet-Draft will expire on April 7, 2017.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Nottingham & Nygren       Expires April 3, 2017                 [Page 1]
+Nottingham & Nygren       Expires April 7, 2017                 [Page 1]
 
-Internet-Draft                ORIGIN Frames               September 2016
+Internet-Draft                ORIGIN Frames                 October 2016
 
 
    (http://trustee.ietf.org/license-info) in effect on the date of
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Nottingham & Nygren       Expires April 3, 2017                 [Page 2]
+Nottingham & Nygren       Expires April 7, 2017                 [Page 2]
 
-Internet-Draft                ORIGIN Frames               September 2016
+Internet-Draft                ORIGIN Frames                 October 2016
 
 
    +-------------------------------+-------------------------------+
@@ -165,9 +165,9 @@ Internet-Draft                ORIGIN Frames               September 2016
 
 
 
-Nottingham & Nygren       Expires April 3, 2017                 [Page 3]
+Nottingham & Nygren       Expires April 7, 2017                 [Page 3]
 
-Internet-Draft                ORIGIN Frames               September 2016
+Internet-Draft                ORIGIN Frames                 October 2016
 
 
    of [RFC7540], Section 10.1) on its own; this MUST be established by
@@ -221,9 +221,9 @@ Internet-Draft                ORIGIN Frames               September 2016
 
 
 
-Nottingham & Nygren       Expires April 3, 2017                 [Page 4]
+Nottingham & Nygren       Expires April 7, 2017                 [Page 4]
 
-Internet-Draft                ORIGIN Frames               September 2016
+Internet-Draft                ORIGIN Frames                 October 2016
 
 
 3.  Security Considerations
@@ -277,4 +277,4 @@ Authors' Addresses
 
 
 
-Nottingham & Nygren       Expires April 3, 2017                 [Page 5]
+Nottingham & Nygren       Expires April 7, 2017                 [Page 5]
