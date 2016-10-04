@@ -472,15 +472,15 @@ Internet-Draft              HTTP Client Hints               October 2016
    resource URLs even if JavaScript is disabled.
 
    Implementors should consider the privacy implications of various
-   methods to enable delivery of Client Hints - see "Sending Client
-   Hints" section.  For example, sending Client Hints on all requests
-   can make information about the user's environment available to
-   origins that otherwise did not have access to this data (e.g. origins
-   hosting non-script resources), which might or not be the desired
-   outcome.  The implementors can provide mechanisms to control such
-   behavior via explicit opt-in, or other mechanisms.  Similarly, the
-   implementors should consider how and whether delivery of Client Hints
-   is affected when the user is in "incognito" or similar privacy mode.
+   methods to enable delivery of Client Hints-see "Sending Client Hints"
+   section.  For example, sending Client Hints on all requests can make
+   information about the user's environment available to origins that
+   otherwise did not have access to this data (e.g. origins hosting non-
+   script resources), which might or not be the desired outcome.  The
+   implementors can provide mechanisms to control such behavior via
+   explicit opt-in, or other mechanisms.  Similarly, the implementors
+   should consider how and whether delivery of Client Hints is affected
+   when the user is in "incognito" or similar privacy mode.
 
 10.  IANA Considerations
 
