@@ -91,12 +91,12 @@ Table of Contents
    8.  Examples  . . . . . . . . . . . . . . . . . . . . . . . . . .   8
    9.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
    10. IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
-     10.1.  Accept-CH  . . . . . . . . . . . . . . . . . . . . . . .   9
+     10.1.  Accept-CH  . . . . . . . . . . . . . . . . . . . . . . .  10
      10.2.  Content-DPR  . . . . . . . . . . . . . . . . . . . . . .  10
      10.3.  Downlink . . . . . . . . . . . . . . . . . . . . . . . .  10
      10.4.  DPR  . . . . . . . . . . . . . . . . . . . . . . . . . .  10
      10.5.  Save-Data  . . . . . . . . . . . . . . . . . . . . . . .  10
-     10.6.  Viewport-Width . . . . . . . . . . . . . . . . . . . . .  10
+     10.6.  Viewport-Width . . . . . . . . . . . . . . . . . . . . .  11
      10.7.  Width  . . . . . . . . . . . . . . . . . . . . . . . . .  11
    11. References  . . . . . . . . . . . . . . . . . . . . . . . . .  11
      11.1.  Normative References . . . . . . . . . . . . . . . . . .  11
@@ -104,8 +104,8 @@ Table of Contents
    Appendix A.  Changes  . . . . . . . . . . . . . . . . . . . . . .  12
      A.1.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .  12
      A.2.  Since -01 . . . . . . . . . . . . . . . . . . . . . . . .  12
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  12
-
+     A.3.  Since -02 . . . . . . . . . . . . . . . . . . . . . . . .  13
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  13
 
 
 
@@ -463,30 +463,48 @@ Internet-Draft              HTTP Client Hints               October 2016
 
 9.  Security Considerations
 
-   Client Hints defined in this specification do not expose any new
+   Client Hints defined in this specification do not expose new
    information about the user's environment beyond what is already
    available to, and can be communicated by, the application at runtime
    via JavaScript and CSS.  For example, the application can obtain
    viewport width, image display width, and device pixel ratio via
    JavaScript, or through the use of CSS media queries and unique
-   resource URLs even if JavaScript is disabled.
+   resource URLs even if JavaScript is disabled.  However, implementors
+   should consider the privacy implications of various methods to enable
+   delivery of Client Hints - see "Sending Client Hints" section.
 
-   Implementors should consider the privacy implications of various
-   methods to enable delivery of Client Hints - see "Sending Client
-   Hints" section.  For example, sending Client Hints on all requests
-   can make information about the user's environment available to
-   origins that otherwise did not have access to this data (e.g. origins
-   hosting non-script resources), which might or not be the desired
-   outcome.  The implementors can provide mechanisms to control such
-   behavior via explicit opt-in, or other mechanisms.  Similarly, the
-   implementors should consider how and whether delivery of Client Hints
-   is affected when the user is in "incognito" or similar privacy mode.
+   For example, sending Client Hints on all requests can make
+   information about the user's environment available to origins that
+   otherwise did not have access to this data, which may or may not be
+   the desired outcome - e.g. this may enable an image optimization
+   service to deliver a tailored asset, and it may reveal same
+   information about the user to other origins that may not have had
+   access to it before.  Similarly, sending highly granular data, such
+   as image and viewport width may help identify users across multiple
+   requests.  Restricting such field values to an enumerated range,
+   where the user agent advertises a threshold value that is close but
+   is not an exact representation of the current value, might reduce
+   such fingerprinting risks.
+
+   The implementers can provide mechanisms and policies to control how
+   and when such hints are advertised: require origin opt-in and
+   restrict delivery to same origin subrequests; limit delivery to
+   requests that already carry indentifying information (e.g. cookies);
+   modify delivery policy when in an "incognito" or a similar privacy
+   mode; enable user configuration and opt in, and so on.
 
 10.  IANA Considerations
 
    This document defines the "Accept-CH", "DPR", "Width", and "Downlink"
    HTTP request fields, "Content-DPR" HTTP response field, and registers
    them in the Permanent Message Header Fields registry.
+
+
+
+Grigorik                  Expires April 7, 2017                 [Page 9]
+
+Internet-Draft              HTTP Client Hints               October 2016
+
 
 10.1.  Accept-CH
 
@@ -496,15 +514,6 @@ Internet-Draft              HTTP Client Hints               October 2016
    o  Author/Change controller: IETF
    o  Specification document(s): Section 2.2.1
    o  Related information: for Client Hints
-
-
-
-
-
-Grigorik                  Expires April 7, 2017                 [Page 9]
-
-Internet-Draft              HTTP Client Hints               October 2016
-
 
 10.2.  Content-DPR
 
@@ -542,15 +551,6 @@ Internet-Draft              HTTP Client Hints               October 2016
    o  Specification document(s): Section 7 of this document
    o  Related information: for Client Hints
 
-10.6.  Viewport-Width
-
-   o  Header field name: Viewport-Width
-   o  Applicable protocol: HTTP
-   o  Status: standard
-   o  Author/Change controller: IETF
-   o  Specification document(s): Section 5 of this document
-   o  Related information: for Client Hints
-
 
 
 
@@ -561,6 +561,15 @@ Grigorik                  Expires April 7, 2017                [Page 10]
 
 Internet-Draft              HTTP Client Hints               October 2016
 
+
+10.6.  Viewport-Width
+
+   o  Header field name: Viewport-Width
+   o  Applicable protocol: HTTP
+   o  Status: standard
+   o  Author/Change controller: IETF
+   o  Specification document(s): Section 5 of this document
+   o  Related information: for Client Hints
 
 10.7.  Width
 
@@ -599,15 +608,6 @@ Internet-Draft              HTTP Client Hints               October 2016
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
               <http://www.rfc-editor.org/info/rfc7230>.
 
-   [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
-              Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
-              DOI 10.17487/RFC7231, June 2014,
-              <http://www.rfc-editor.org/info/rfc7231>.
-
-   [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
-              Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
-              RFC 7234, DOI 10.17487/RFC7234, June 2014,
-              <http://www.rfc-editor.org/info/rfc7234>.
 
 
 
@@ -618,6 +618,16 @@ Grigorik                  Expires April 7, 2017                [Page 11]
 Internet-Draft              HTTP Client Hints               October 2016
 
 
+   [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
+              Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
+              DOI 10.17487/RFC7231, June 2014,
+              <http://www.rfc-editor.org/info/rfc7231>.
+
+   [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
+              Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
+              RFC 7234, DOI 10.17487/RFC7234, June 2014,
+              <http://www.rfc-editor.org/info/rfc7234>.
+
    [W3C.CR-css-values-3-20150611]
               Atkins, T. and E. Etemad, "CSS Values and Units Module
               Level 3", World Wide Web Consortium CR CR-css-values-
@@ -626,7 +636,7 @@ Internet-Draft              HTTP Client Hints               October 2016
 
    [W3C.REC-html5-20141028]
               Hickson, I., Berjon, R., Faulkner, S., Leithead, T.,
-              Navara, E., O&#039;Connor, T., and S. Pfeiffer, "HTML5",
+              Navara, E., O&#039;Connor, E., and S. Pfeiffer, "HTML5",
               World Wide Web Consortium Recommendation REC-
               html5-20141028, October 2014,
               <http://www.w3.org/TR/2014/REC-html5-20141028>.
@@ -653,6 +663,21 @@ A.1.  Since -00
 
 A.2.  Since -01
 
+   o  Issue 200: Moved Key reference to informative.
+   o  Issue 215: Extended passive fingerprinting and mitigation
+      considerations.
+
+
+
+Grigorik                  Expires April 7, 2017                [Page 12]
+
+Internet-Draft              HTTP Client Hints               October 2016
+
+
+   o  Changed document status to experimental.
+
+A.3.  Since -02
+
    None yet.
 
 Author's Address
@@ -669,4 +694,35 @@ Author's Address
 
 
 
-Grigorik                  Expires April 7, 2017                [Page 12]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Grigorik                  Expires April 7, 2017                [Page 13]
