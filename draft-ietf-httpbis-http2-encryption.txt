@@ -183,10 +183,9 @@ Internet-Draft         Opportunistic HTTP Security          October 2016
 
    It is possible that the server might become confused about whether
    requests' URLs have a "http" or "https" scheme, for various reasons;
-   see Section 4.4.  To assure that the alternative service has opted
-   into serving "http" URLs over TLS, clients are required to check the
-   "http-opportunistic" well-known URI defined in Section 2.3 before
-   directing "http" requests to it.
+   see Section 4.4.  To ensure that the alternative service has opted
+   into serving "http" URLs over TLS, clients are required to perform
+   additional checks before directing "http" requests to it.
 
    Clients MUST NOT send "http" requests over a connection with the "h2"
    protocol identifier, unless they have obtained a valid http-
@@ -206,6 +205,7 @@ Internet-Draft         Opportunistic HTTP Security          October 2016
    For example, this request/response pair would allow reqeusts for the
    origin "http://www.example.com" to be sent to an alternative service
    on port 443 or 8000 of the host "www.example.com":
+
 
 
 
