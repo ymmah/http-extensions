@@ -4,8 +4,8 @@
 
 HTTP Working Group                                               M. West
 Internet-Draft                                               Google, Inc
-Intended status: Standards Track                         October 4, 2016
-Expires: April 7, 2017
+Intended status: Standards Track                         October 5, 2016
+Expires: April 8, 2017
 
 
                     HTTP State Management Mechanism
@@ -36,7 +36,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 7, 2017.
+   This Internet-Draft will expire on April 8, 2017.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-West                      Expires April 7, 2017                 [Page 1]
+West                      Expires April 8, 2017                 [Page 1]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-West                      Expires April 7, 2017                 [Page 2]
+West                      Expires April 8, 2017                 [Page 2]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -165,7 +165,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                 [Page 3]
+West                      Expires April 8, 2017                 [Page 3]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -221,7 +221,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                 [Page 4]
+West                      Expires April 8, 2017                 [Page 4]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -277,7 +277,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                 [Page 5]
+West                      Expires April 8, 2017                 [Page 5]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -333,7 +333,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                 [Page 6]
+West                      Expires April 8, 2017                 [Page 6]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -389,7 +389,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                 [Page 7]
+West                      Expires April 8, 2017                 [Page 7]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -445,7 +445,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                 [Page 8]
+West                      Expires April 8, 2017                 [Page 8]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -501,7 +501,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                 [Page 9]
+West                      Expires April 8, 2017                 [Page 9]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -557,7 +557,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                [Page 10]
+West                      Expires April 8, 2017                [Page 10]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -613,7 +613,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                [Page 11]
+West                      Expires April 8, 2017                [Page 11]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -669,7 +669,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                [Page 12]
+West                      Expires April 8, 2017                [Page 12]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -725,7 +725,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                [Page 13]
+West                      Expires April 8, 2017                [Page 13]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -781,7 +781,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                [Page 14]
+West                      Expires April 8, 2017                [Page 14]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -837,7 +837,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                [Page 15]
+West                      Expires April 8, 2017                [Page 15]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -893,7 +893,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                [Page 16]
+West                      Expires April 8, 2017                [Page 16]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -949,7 +949,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                [Page 17]
+West                      Expires April 8, 2017                [Page 17]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -1005,7 +1005,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                [Page 18]
+West                      Expires April 8, 2017                [Page 18]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -1061,7 +1061,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                [Page 19]
+West                      Expires April 8, 2017                [Page 19]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -1117,7 +1117,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                [Page 20]
+West                      Expires April 8, 2017                [Page 20]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -1173,7 +1173,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                [Page 21]
+West                      Expires April 8, 2017                [Page 21]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -1229,7 +1229,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                [Page 22]
+West                      Expires April 8, 2017                [Page 22]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -1285,7 +1285,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                [Page 23]
+West                      Expires April 8, 2017                [Page 23]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -1341,7 +1341,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                [Page 24]
+West                      Expires April 8, 2017                [Page 24]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -1397,7 +1397,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                [Page 25]
+West                      Expires April 8, 2017                [Page 25]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -1453,7 +1453,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                [Page 26]
+West                      Expires April 8, 2017                [Page 26]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -1509,7 +1509,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                [Page 27]
+West                      Expires April 8, 2017                [Page 27]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -1565,7 +1565,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                [Page 28]
+West                      Expires April 8, 2017                [Page 28]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -1621,7 +1621,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                [Page 29]
+West                      Expires April 8, 2017                [Page 29]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -1677,7 +1677,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                [Page 30]
+West                      Expires April 8, 2017                [Page 30]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -1733,7 +1733,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                [Page 31]
+West                      Expires April 8, 2017                [Page 31]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -1789,7 +1789,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                [Page 32]
+West                      Expires April 8, 2017                [Page 32]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -1845,7 +1845,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                [Page 33]
+West                      Expires April 8, 2017                [Page 33]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -1901,7 +1901,7 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
 
-West                      Expires April 7, 2017                [Page 34]
+West                      Expires April 8, 2017                [Page 34]
 
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
@@ -1957,4 +1957,4 @@ Author's Address
 
 
 
-West                      Expires April 7, 2017                [Page 35]
+West                      Expires April 8, 2017                [Page 35]
