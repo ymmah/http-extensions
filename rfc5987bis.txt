@@ -137,7 +137,7 @@ Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
       Note: this encoding does not apply to message payloads transmitted
       over HTTP, such as when using the media type "multipart/form-data"
-      ([RFC2388]).
+      ([RFC7578]).
 
 2.  Notational Conventions
 
@@ -576,10 +576,6 @@ Internet-Draft      Charset/Language Encoding in HTTP       October 2016
               Languages", BCP 18, RFC 2277, DOI 10.17487/RFC2277,
               January 1998, <http://www.rfc-editor.org/info/rfc2277>.
 
-   [RFC2388]  Masinter, L., "Returning Values from Forms: multipart/
-              form-data", RFC 2388, DOI 10.17487/RFC2388, August 1998,
-              <http://www.rfc-editor.org/info/rfc2388>.
-
    [RFC2616]  Fielding, R., Gettys, J., Mogul, J., Frystyk, H.,
               Masinter, L., Leach, P., and T. Berners-Lee, "Hypertext
               Transfer Protocol -- HTTP/1.1", RFC 2616,
@@ -604,6 +600,10 @@ Internet-Draft      Charset/Language Encoding in HTTP       October 2016
               Internationalization in the IETF", BCP 166, RFC 6365,
               DOI 10.17487/RFC6365, September 2011,
               <http://www.rfc-editor.org/info/rfc6365>.
+
+   [RFC7578]  Masinter, L., "Returning Values from Forms: multipart/
+              form-data", RFC 7578, DOI 10.17487/RFC7578, July 2015,
+              <http://www.rfc-editor.org/info/rfc7578>.
 
 
 
@@ -741,7 +741,7 @@ C.10.  Since draft-ietf-httpbis-rfc5987bis-01
 
 C.11.  Since draft-ietf-httpbis-rfc5987bis-02
 
-   None yet.
+   RFC 2388 -> RFC 7578.
 
 Appendix D.  Acknowledgements
 
