@@ -471,7 +471,7 @@ Internet-Draft              HTTP Client Hints               October 2016
    JavaScript, or through the use of CSS media queries and unique
    resource URLs even if JavaScript is disabled.  However, implementors
    should consider the privacy implications of various methods to enable
-   delivery of Client Hints - see "Sending Client Hints" section.
+   delivery of Client Hints - see Section 2.1.
 
    For example, sending Client Hints on all requests can make
    information about the user's environment available to origins that
@@ -512,7 +512,7 @@ Internet-Draft              HTTP Client Hints               October 2016
    o  Applicable protocol: HTTP
    o  Status: standard
    o  Author/Change controller: IETF
-   o  Specification document(s): Section 2.2.1 of this document
+   o  Specification document(s): Section 2.2.1
    o  Related information: for Client Hints
 
 10.2.  Content-DPR
