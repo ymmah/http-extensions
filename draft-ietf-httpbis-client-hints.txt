@@ -471,7 +471,7 @@ Internet-Draft              HTTP Client Hints               October 2016
    JavaScript, or through the use of CSS media queries and unique
    resource URLs even if JavaScript is disabled.  However, implementors
    should consider the privacy implications of various methods to enable
-   delivery of Client Hints - see Section 2.1.
+   delivery of Client Hints - see "Sending Client Hints" section.
 
    For example, sending Client Hints on all requests can make
    information about the user's environment available to origins that
@@ -590,8 +590,7 @@ Internet-Draft              HTTP Client Hints               October 2016
               <http://www.w3.org/TR/2011/REC-CSS2-20110607>.
 
    [NETINFO]  Caceres, M., Moreno, F., and I. Grigorik, "Network
-              Information API", December 2015, <https://w3c.github.io/
-              netinfo/>.
+              Information API", n.d., <https://w3c.github.io/netinfo/>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -607,6 +606,7 @@ Internet-Draft              HTTP Client Hints               October 2016
               Protocol (HTTP/1.1): Message Syntax and Routing",
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
               <http://www.rfc-editor.org/info/rfc7230>.
+
 
 
 
