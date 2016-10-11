@@ -4,8 +4,9 @@
 
 HTTP Working Group                                              A. Barth
 Internet-Draft                                                   M. West
-Intended status: Standards Track                             Google, Inc
-Expires: April 14, 2017                                 October 11, 2016
+Obsoletes: 6265 (if approved)                                Google, Inc
+Intended status: Standards Track                        October 11, 2016
+Expires: April 14, 2017
 
 
                     HTTP State Management Mechanism
@@ -47,7 +48,6 @@ Status of This Memo
    material or to cite them other than as "work in progress."
 
    This Internet-Draft will expire on April 14, 2017.
-
 
 
 
