@@ -118,6 +118,7 @@ Internet-Draft      Charset/Language Encoding in HTTP       October 2016
      C.9.  Since draft-ietf-httpbis-rfc5987bis-00  . . . . . . . . .  15
      C.10. Since draft-ietf-httpbis-rfc5987bis-01  . . . . . . . . .  15
      C.11. Since draft-ietf-httpbis-rfc5987bis-02  . . . . . . . . .  15
+     C.12. Since draft-ietf-httpbis-rfc5987bis-03  . . . . . . . . .  15
    Appendix D.  Acknowledgements . . . . . . . . . . . . . . . . . .  15
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  15
 
@@ -160,7 +161,6 @@ Internet-Draft      Charset/Language Encoding in HTTP       October 2016
       Note: this encoding does not apply to message payloads transmitted
       over HTTP, such as when using the media type "multipart/form-data"
       ([RFC7578]).
-
 
 
 
@@ -809,6 +809,10 @@ C.11.  Since draft-ietf-httpbis-rfc5987bis-02
 
    Mention RFC 7616 in implementation report.
 
+C.12.  Since draft-ietf-httpbis-rfc5987bis-03
+
+   None yet.
+
 Appendix D.  Acknowledgements
 
    Thanks to Martin Duerst and Frank Ellermann for help figuring out
@@ -827,10 +831,6 @@ Author's Address
 
    EMail: julian.reschke@greenbytes.de
    URI:   http://greenbytes.de/tech/webdav/
-
-
-
-
 
 
 
