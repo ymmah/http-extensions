@@ -854,10 +854,11 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
       the domain string and the string will have been canonicalized to
       lower case at this point.)
    o  All of the following conditions hold:
-   o  The domain string is a suffix of the string.
-   o  The last character of the string that is not included in the
-      domain string is a %x2E (".") character.
-   o  The string is a host name (i.e., not an IP address).
+
+      *  The domain string is a suffix of the string.
+      *  The last character of the string that is not included in the
+         domain string is a %x2E (".") character.
+      *  The string is a host name (i.e., not an IP address).
 
 5.1.4.  Paths and Path-Match
 
@@ -887,7 +888,6 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
    o  The cookie-path is a prefix of the request-path, and the first
       character of the request-path that is not included in the cookie-
       path is a %x2F ("/") character.
-
 
 
 
@@ -1908,7 +1908,10 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 Appendix A.  Changes since draft-ietf-httpbis-rfc6265bis-00
 
-   o  None (yet).
+   o  Fixes to formatting caused by mistakes in the initial port to
+      Markdown:
+
+      *  https://github.com/httpwg/http-extensions/issues/243
 
 Appendix B.  Acknowledgements
 
@@ -1929,9 +1932,6 @@ Authors' Addresses
 
    Email: mkwst@google.com
    URI:   https://mikewest.org/
-
-
-
 
 
 
