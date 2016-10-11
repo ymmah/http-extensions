@@ -681,6 +681,9 @@ Appendix A.  Changes from RFC 5987
    o  The document title was changed to "Indicating Character Encoding
       and Language for HTTP Header Field Parameters".
 
+   o  The introduction was rewritten to better explain the issues around
+      non-ASCII characters in field values.
+
    o  The requirement to support the "ISO-8859-1" encoding was removed.
 
    o  The document does not attempt to re-define a generic "parameter"
@@ -719,9 +722,6 @@ Appendix B.  Implementation Report
    specified in [RFC5988].  At the time of this writing, no shipping
    User Agent except Firefox supported the "title*" parameter (starting
    with release 15).
-
-
-
 
 
 
