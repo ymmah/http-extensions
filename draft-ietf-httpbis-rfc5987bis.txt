@@ -115,7 +115,7 @@ Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
 
      C.8.  Since draft-reschke-rfc5987bis-06 . . . . . . . . . . . .  14
-     C.9.  Since draft-ietf-httpbis-rfc5987bis-00  . . . . . . . . .  14
+     C.9.  Since draft-ietf-httpbis-rfc5987bis-00  . . . . . . . . .  15
      C.10. Since draft-ietf-httpbis-rfc5987bis-01  . . . . . . . . .  15
      C.11. Since draft-ietf-httpbis-rfc5987bis-02  . . . . . . . . .  15
    Appendix D.  Acknowledgements . . . . . . . . . . . . . . . . . .  15
@@ -636,6 +636,11 @@ Internet-Draft      Charset/Language Encoding in HTTP       October 2016
               form-data", RFC 7578, DOI 10.17487/RFC7578, July 2015,
               <http://www.rfc-editor.org/info/rfc7578>.
 
+   [RFC7616]  Shekh-Yusef, R., Ed., Ahrens, D., and S. Bremer, "HTTP
+              Digest Access Authentication", RFC 7616,
+              DOI 10.17487/RFC7616, September 2015,
+              <http://www.rfc-editor.org/info/rfc7616>.
+
    [XMLHttpRequest]
               van Kesteren, A., Aubourg, J., Song, J., and H. Steen,
               "XMLHttpRequest Level 1", W3C Working Draft WD-
@@ -644,11 +649,6 @@ Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
               Latest version available at <http://www.w3.org/TR/
               XMLHttpRequest/>.
-
-
-
-
-
 
 
 
@@ -699,6 +699,9 @@ Appendix B.  Implementation Report
    The encoding defined in this document currently is used for two
    different HTTP header fields:
 
+   o  "Authorization" (as used in HTTP Digest Authentication, defined in
+      [RFC7616]),
+
    o  "Content-Disposition", defined in [RFC6266], and
 
    o  "Link", defined in [RFC5988].
@@ -718,10 +721,7 @@ Appendix B.  Implementation Report
    acknowledges that UTF-8 is sufficient for expressing all code points,
    and removes the requirement to support ISO-8859-1.
 
-   The "Link" header field, on the other hand, was only recently
-   specified in [RFC5988].  At the time of this writing, no shipping
-   User Agent except Firefox supported the "title*" parameter (starting
-   with release 15).
+
 
 
 
@@ -729,6 +729,15 @@ Reschke                  Expires April 14, 2017                [Page 13]
 
 Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
+
+   The "Link" header field, on the other hand, was more recently
+   specified in [RFC5988].  At the time of this writing, no User Agent
+   except Firefox supported the "title*" parameter (starting with
+   release 15).
+
+   Section 3.4 of [RFC7616] defines the "username*" parameter for use in
+   HTTP Digest Authentication.  At the time of writing, no User Agent
+   implemented this extension.
 
 Appendix C.  Change Log (to be removed by RFC Editor before publication)
 
@@ -770,21 +779,17 @@ C.8.  Since draft-reschke-rfc5987bis-06
 
    Started work on update with respect to RFC 723x.
 
-C.9.  Since draft-ietf-httpbis-rfc5987bis-00
-
-   Editorial changes; introducing non-ASCII characters into author's
-   address, acknowledgements, and examples.
-
-
-
-
-
 
 
 Reschke                  Expires April 14, 2017                [Page 14]
 
 Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
+
+C.9.  Since draft-ietf-httpbis-rfc5987bis-00
+
+   Editorial changes; introducing non-ASCII characters into author's
+   address, acknowledgements, and examples.
 
 C.10.  Since draft-ietf-httpbis-rfc5987bis-01
 
@@ -801,6 +806,8 @@ C.11.  Since draft-ietf-httpbis-rfc5987bis-02
 
    Expand on the motivation (see <https://github.com/httpwg/http-
    extensions/issues/213>).
+
+   Mention RFC 7616 in implementation report.
 
 Appendix D.  Acknowledgements
 
@@ -820,13 +827,6 @@ Author's Address
 
    EMail: julian.reschke@greenbytes.de
    URI:   http://greenbytes.de/tech/webdav/
-
-
-
-
-
-
-
 
 
 
