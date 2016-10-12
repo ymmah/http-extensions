@@ -4,9 +4,9 @@
 
 HTTP Working Group                                            J. Reschke
 Internet-Draft                                                greenbytes
-Obsoletes: 5987 (if approved)                           October 11, 2016
+Obsoletes: 5987 (if approved)                           October 12, 2016
 Intended status: Standards Track
-Expires: April 14, 2017
+Expires: April 15, 2017
 
 
     Indicating Character Encoding and Language for HTTP Header Field
@@ -53,12 +53,12 @@ Status of This Memo
 
 
 
-Reschke                  Expires April 14, 2017                 [Page 1]
+Reschke                  Expires April 15, 2017                 [Page 1]
 
 Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
 
-   This Internet-Draft will expire on April 14, 2017.
+   This Internet-Draft will expire on April 15, 2017.
 
 Copyright Notice
 
@@ -109,16 +109,15 @@ Table of Contents
 
 
 
-Reschke                  Expires April 14, 2017                 [Page 2]
+Reschke                  Expires April 15, 2017                 [Page 2]
 
 Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
 
      C.8.  Since draft-reschke-rfc5987bis-06 . . . . . . . . . . . .  14
-     C.9.  Since draft-ietf-httpbis-rfc5987bis-00  . . . . . . . . .  15
+     C.9.  Since draft-ietf-httpbis-rfc5987bis-00  . . . . . . . . .  14
      C.10. Since draft-ietf-httpbis-rfc5987bis-01  . . . . . . . . .  15
      C.11. Since draft-ietf-httpbis-rfc5987bis-02  . . . . . . . . .  15
-     C.12. Since draft-ietf-httpbis-rfc5987bis-03  . . . . . . . . .  15
    Appendix D.  Acknowledgements . . . . . . . . . . . . . . . . . .  15
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  15
 
@@ -165,7 +164,8 @@ Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
 
 
-Reschke                  Expires April 14, 2017                 [Page 3]
+
+Reschke                  Expires April 15, 2017                 [Page 3]
 
 Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
@@ -221,7 +221,7 @@ Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
 
 
-Reschke                  Expires April 14, 2017                 [Page 4]
+Reschke                  Expires April 15, 2017                 [Page 4]
 
 Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
@@ -277,7 +277,7 @@ Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
 
 
-Reschke                  Expires April 14, 2017                 [Page 5]
+Reschke                  Expires April 15, 2017                 [Page 5]
 
 Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
@@ -333,7 +333,7 @@ Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
 
 
-Reschke                  Expires April 14, 2017                 [Page 6]
+Reschke                  Expires April 15, 2017                 [Page 6]
 
 Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
@@ -389,7 +389,7 @@ Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
 
 
-Reschke                  Expires April 14, 2017                 [Page 7]
+Reschke                  Expires April 15, 2017                 [Page 7]
 
 Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
@@ -445,7 +445,7 @@ Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
 
 
-Reschke                  Expires April 14, 2017                 [Page 8]
+Reschke                  Expires April 15, 2017                 [Page 8]
 
 Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
@@ -501,7 +501,7 @@ Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
 
 
-Reschke                  Expires April 14, 2017                 [Page 9]
+Reschke                  Expires April 15, 2017                 [Page 9]
 
 Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
@@ -557,7 +557,7 @@ Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
 
 
-Reschke                  Expires April 14, 2017                [Page 10]
+Reschke                  Expires April 15, 2017                [Page 10]
 
 Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
@@ -613,7 +613,7 @@ Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
 
 
-Reschke                  Expires April 14, 2017                [Page 11]
+Reschke                  Expires April 15, 2017                [Page 11]
 
 Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
@@ -635,11 +635,6 @@ Internet-Draft      Charset/Language Encoding in HTTP       October 2016
    [RFC7578]  Masinter, L., "Returning Values from Forms: multipart/
               form-data", RFC 7578, DOI 10.17487/RFC7578, July 2015,
               <http://www.rfc-editor.org/info/rfc7578>.
-
-   [RFC7616]  Shekh-Yusef, R., Ed., Ahrens, D., and S. Bremer, "HTTP
-              Digest Access Authentication", RFC 7616,
-              DOI 10.17487/RFC7616, September 2015,
-              <http://www.rfc-editor.org/info/rfc7616>.
 
    [XMLHttpRequest]
               van Kesteren, A., Aubourg, J., Song, J., and H. Steen,
@@ -669,7 +664,12 @@ Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
 
 
-Reschke                  Expires April 14, 2017                [Page 12]
+
+
+
+
+
+Reschke                  Expires April 15, 2017                [Page 12]
 
 Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
@@ -680,9 +680,6 @@ Appendix A.  Changes from RFC 5987
 
    o  The document title was changed to "Indicating Character Encoding
       and Language for HTTP Header Field Parameters".
-
-   o  The introduction was rewritten to better explain the issues around
-      non-ASCII characters in field values.
 
    o  The requirement to support the "ISO-8859-1" encoding was removed.
 
@@ -698,9 +695,6 @@ Appendix B.  Implementation Report
 
    The encoding defined in this document currently is used for two
    different HTTP header fields:
-
-   o  "Authorization" (as used in HTTP Digest Authentication, defined in
-      [RFC7616]),
 
    o  "Content-Disposition", defined in [RFC6266], and
 
@@ -721,23 +715,20 @@ Appendix B.  Implementation Report
    acknowledges that UTF-8 is sufficient for expressing all code points,
    and removes the requirement to support ISO-8859-1.
 
+   The "Link" header field, on the other hand, was only recently
+   specified in [RFC5988].  At the time of this writing, no shipping
+   User Agent except Firefox supported the "title*" parameter (starting
+   with release 15).
 
 
 
 
-Reschke                  Expires April 14, 2017                [Page 13]
+
+
+Reschke                  Expires April 15, 2017                [Page 13]
 
 Internet-Draft      Charset/Language Encoding in HTTP       October 2016
 
-
-   The "Link" header field, on the other hand, was more recently
-   specified in [RFC5988].  At the time of this writing, no User Agent
-   except Firefox supported the "title*" parameter (starting with
-   release 15).
-
-   Section 3.4 of [RFC7616] defines the "username*" parameter for use in
-   HTTP Digest Authentication.  At the time of writing, no User Agent
-   implemented this extension.
 
 Appendix C.  Change Log (to be removed by RFC Editor before publication)
 
@@ -779,17 +770,21 @@ C.8.  Since draft-reschke-rfc5987bis-06
 
    Started work on update with respect to RFC 723x.
 
-
-
-Reschke                  Expires April 14, 2017                [Page 14]
-
-Internet-Draft      Charset/Language Encoding in HTTP       October 2016
-
-
 C.9.  Since draft-ietf-httpbis-rfc5987bis-00
 
    Editorial changes; introducing non-ASCII characters into author's
    address, acknowledgements, and examples.
+
+
+
+
+
+
+
+Reschke                  Expires April 15, 2017                [Page 14]
+
+Internet-Draft      Charset/Language Encoding in HTTP       October 2016
+
 
 C.10.  Since draft-ietf-httpbis-rfc5987bis-01
 
@@ -806,12 +801,6 @@ C.11.  Since draft-ietf-httpbis-rfc5987bis-02
 
    Expand on the motivation (see <https://github.com/httpwg/http-
    extensions/issues/213>).
-
-   Mention RFC 7616 in implementation report.
-
-C.12.  Since draft-ietf-httpbis-rfc5987bis-03
-
-   None yet.
 
 Appendix D.  Acknowledgements
 
@@ -837,4 +826,15 @@ Author's Address
 
 
 
-Reschke                  Expires April 14, 2017                [Page 15]
+
+
+
+
+
+
+
+
+
+
+
+Reschke                  Expires April 15, 2017                [Page 15]
