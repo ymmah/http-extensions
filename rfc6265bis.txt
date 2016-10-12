@@ -4,8 +4,9 @@
 
 HTTP Working Group                                              A. Barth
 Internet-Draft                                                   M. West
-Intended status: Standards Track                             Google, Inc
-Expires: April 15, 2017                                 October 12, 2016
+Obsoletes: 6265 (if approved)                                Google, Inc
+Intended status: Standards Track                        October 12, 2016
+Expires: April 15, 2017
 
 
                     HTTP State Management Mechanism
@@ -20,6 +21,16 @@ Abstract
    cookies have many historical infelicities that degrade their security
    and privacy, the Cookie and Set-Cookie header fields are widely used
    on the Internet.  This document obsoletes RFC 2965.
+
+Note to Readers
+
+   Discussion of this draft takes place on the HTTP working group
+   mailing list (ietf-http-wg@w3.org), which is archived at
+   https://lists.w3.org/Archives/Public/ietf-http-wg/ .
+
+   Working Group information can be found at http://httpwg.github.io/ ;
+   source code and issues list for this draft can be found at
+   https://github.com/httpwg/http-extensions/labels/6265bis .
 
 Status of This Memo
 
@@ -38,6 +49,15 @@ Status of This Memo
 
    This Internet-Draft will expire on April 15, 2017.
 
+
+
+
+
+Barth & West             Expires April 15, 2017                 [Page 1]
+
+Internet-Draft       HTTP State Management Mechanism        October 2016
+
+
 Copyright Notice
 
    Copyright (c) 2016 IETF Trust and the persons identified as the
@@ -50,14 +70,6 @@ Copyright Notice
    carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
    include Simplified BSD License text as described in Section 4.e of
-
-
-
-Barth & West             Expires April 15, 2017                 [Page 1]
-
-Internet-Draft       HTTP State Management Mechanism        October 2016
-
-
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
@@ -65,7 +77,7 @@ Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
    2.  Conventions . . . . . . . . . . . . . . . . . . . . . . . . .   4
-     2.1.  Conformance Criteria  . . . . . . . . . . . . . . . . . .   4
+     2.1.  Conformance Criteria  . . . . . . . . . . . . . . . . . .   5
      2.2.  Syntax Notation . . . . . . . . . . . . . . . . . . . . .   5
      2.3.  Terminology . . . . . . . . . . . . . . . . . . . . . . .   5
    3.  Overview  . . . . . . . . . . . . . . . . . . . . . . . . . .   6
@@ -94,6 +106,14 @@ Table of Contents
      5.4.  The Cookie Header . . . . . . . . . . . . . . . . . . . .  23
    6.  Implementation Considerations . . . . . . . . . . . . . . . .  25
      6.1.  Limits  . . . . . . . . . . . . . . . . . . . . . . . . .  25
+
+
+
+Barth & West             Expires April 15, 2017                 [Page 2]
+
+Internet-Draft       HTTP State Management Mechanism        October 2016
+
+
      6.2.  Application Programming Interfaces  . . . . . . . . . . .  25
      6.3.  IDNA Dependency and Migration . . . . . . . . . . . . . .  26
    7.  Privacy Considerations  . . . . . . . . . . . . . . . . . . .  26
@@ -106,14 +126,6 @@ Table of Contents
      8.3.  Clear Text  . . . . . . . . . . . . . . . . . . . . . . .  29
      8.4.  Session Identifiers . . . . . . . . . . . . . . . . . . .  29
      8.5.  Weak Confidentiality  . . . . . . . . . . . . . . . . . .  30
-
-
-
-Barth & West             Expires April 15, 2017                 [Page 2]
-
-Internet-Draft       HTTP State Management Mechanism        October 2016
-
-
      8.6.  Weak Integrity  . . . . . . . . . . . . . . . . . . . . .  31
      8.7.  Reliance on DNS . . . . . . . . . . . . . . . . . . . . .  31
    9.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  32
@@ -124,7 +136,8 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
    10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  32
      10.1.  Normative References . . . . . . . . . . . . . . . . . .  32
      10.2.  Informative References . . . . . . . . . . . . . . . . .  33
-   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .  35
+   Appendix A.  Changes since draft-ietf-httpbis-rfc6265bis-00 . . .  35
+   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  35
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  35
 
 1.  Introduction
@@ -149,6 +162,14 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
    attribute does not provide integrity in the presence of an active
    network attacker.  Similarly, cookies for a given host are shared
    across all the ports on that host, even though the usual "same-origin
+
+
+
+Barth & West             Expires April 15, 2017                 [Page 3]
+
+Internet-Draft       HTTP State Management Mechanism        October 2016
+
+
    policy" used by web browsers isolates content retrieved via different
    ports.
 
@@ -161,15 +182,6 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
    User agents MUST implement the more liberal processing rules defined
    in Section 5, in order to maximize interoperability with existing
-
-
-
-
-Barth & West             Expires April 15, 2017                 [Page 3]
-
-Internet-Draft       HTTP State Management Mechanism        October 2016
-
-
    servers that do not conform to the well-behaved profile defined in
    Section 4.
 
@@ -203,6 +215,17 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
 2.  Conventions
 
+
+
+
+
+
+
+Barth & West             Expires April 15, 2017                 [Page 4]
+
+Internet-Draft       HTTP State Management Mechanism        October 2016
+
+
 2.1.  Conformance Criteria
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
@@ -217,15 +240,6 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
    Conformance requirements phrased as algorithms or specific steps can
    be implemented in any manner, so long as the end result is
    equivalent.  In particular, the algorithms defined in this
-
-
-
-
-Barth & West             Expires April 15, 2017                 [Page 4]
-
-Internet-Draft       HTTP State Management Mechanism        October 2016
-
-
    specification are intended to be easy to understand and are not
    intended to be performant.
 
@@ -259,6 +273,15 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
    server" have the same meaning as in the HTTP/1.1 specification
    ([RFC2616], Section 1.3).
 
+
+
+
+
+Barth & West             Expires April 15, 2017                 [Page 5]
+
+Internet-Draft       HTTP State Management Mechanism        October 2016
+
+
    The request-host is the name of the host, as known by the user agent,
    to which the user agent is sending an HTTP request or from which it
    is receiving an HTTP response (i.e., the name of the host to which it
@@ -271,16 +294,6 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
    collation defined in [RFC4790].
 
    The term string means a sequence of non-NUL octets.
-
-
-
-
-
-
-Barth & West             Expires April 15, 2017                 [Page 5]
-
-Internet-Draft       HTTP State Management Mechanism        October 2016
-
 
 3.  Overview
 
@@ -316,6 +329,15 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
    string in an HTTP response that the user agent will return in future
    HTTP requests that are within the scope of the cookie.  For example,
    the server can send the user agent a "session identifier" named SID
+
+
+
+
+Barth & West             Expires April 15, 2017                 [Page 6]
+
+Internet-Draft       HTTP State Management Mechanism        October 2016
+
+
    with the value 31d4d96e407aad42.  The user agent then returns the
    session identifier in subsequent requests.
 
@@ -330,14 +352,6 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
    The server can alter the default scope of the cookie using the Path
    and Domain attributes.  For example, the server can instruct the user
-
-
-
-Barth & West             Expires April 15, 2017                 [Page 6]
-
-Internet-Draft       HTTP State Management Mechanism        October 2016
-
-
    agent to return the cookie to every path and every subdomain of
    example.com.
 
@@ -372,6 +386,14 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
    persist the cookie over multiple "sessions" (e.g., user agent
    restarts), the server can specify an expiration date in the Expires
    attribute.  Note that the user agent might delete the cookie before
+
+
+
+Barth & West             Expires April 15, 2017                 [Page 7]
+
+Internet-Draft       HTTP State Management Mechanism        October 2016
+
+
    the expiration date if the user agent's cookie store exceeds its
    quota or if the user manually deletes the server's cookie.
 
@@ -386,14 +408,6 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
 
    Finally, to remove a cookie, the server returns a Set-Cookie header
    with an expiration date in the past.  The server will be successful
-
-
-
-Barth & West             Expires April 15, 2017                 [Page 7]
-
-Internet-Draft       HTTP State Management Mechanism        October 2016
-
-
    in removing the cookie only if the Path and the Domain attribute in
    the Set-Cookie header match the values used when the cookie was
    created.
@@ -424,20 +438,6 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
    a name-value-pair, followed by zero or more attribute-value pairs.
    Servers SHOULD NOT send Set-Cookie headers that fail to conform to
    the following grammar:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -854,10 +854,11 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
       the domain string and the string will have been canonicalized to
       lower case at this point.)
    o  All of the following conditions hold:
-   o  The domain string is a suffix of the string.
-   o  The last character of the string that is not included in the
-      domain string is a %x2E (".") character.
-   o  The string is a host name (i.e., not an IP address).
+
+      *  The domain string is a suffix of the string.
+      *  The last character of the string that is not included in the
+         domain string is a %x2E (".") character.
+      *  The string is a host name (i.e., not an IP address).
 
 5.1.4.  Paths and Path-Match
 
@@ -887,7 +888,6 @@ Internet-Draft       HTTP State Management Mechanism        October 2016
    o  The cookie-path is a prefix of the request-path, and the first
       character of the request-path that is not included in the cookie-
       path is a %x2F ("/") character.
-
 
 
 
@@ -1906,7 +1906,14 @@ Barth & West             Expires April 15, 2017                [Page 34]
 Internet-Draft       HTTP State Management Mechanism        October 2016
 
 
-Appendix A.  Acknowledgements
+Appendix A.  Changes since draft-ietf-httpbis-rfc6265bis-00
+
+   o  Fixes to formatting caused by mistakes in the initial port to
+      Markdown:
+
+      *  https://github.com/httpwg/http-extensions/issues/243
+
+Appendix B.  Acknowledgements
 
    This document is a minor update of RFC 6265, adding small features,
    and aligning the specification with the reality of today's
@@ -1925,13 +1932,6 @@ Authors' Addresses
 
    Email: mkwst@google.com
    URI:   https://mikewest.org/
-
-
-
-
-
-
-
 
 
 
