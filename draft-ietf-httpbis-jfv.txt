@@ -70,7 +70,7 @@ Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
 
 Table of Contents
 
-   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
    2.  Data Model and Format . . . . . . . . . . . . . . . . . . . .   3
    3.  Sender Requirements . . . . . . . . . . . . . . . . . . . . .   4
    4.  Recipient Requirements  . . . . . . . . . . . . . . . . . . .   5
@@ -79,33 +79,33 @@ Table of Contents
      6.1.  Content-Length  . . . . . . . . . . . . . . . . . . . . .   5
      6.2.  Content-Disposition . . . . . . . . . . . . . . . . . . .   6
      6.3.  WWW-Authenticate  . . . . . . . . . . . . . . . . . . . .   7
-     6.4.  Accept-Encoding . . . . . . . . . . . . . . . . . . . . .   7
+     6.4.  Accept-Encoding . . . . . . . . . . . . . . . . . . . . .   8
    7.  Discussion  . . . . . . . . . . . . . . . . . . . . . . . . .   9
    8.  Deployment Considerations . . . . . . . . . . . . . . . . . .   9
-   9.  Internationalization Considerations . . . . . . . . . . . . .   9
-   10. Security Considerations . . . . . . . . . . . . . . . . . . .  10
-   11. References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
-     11.1.  Normative References . . . . . . . . . . . . . . . . . .  10
-     11.2.  Informative References . . . . . . . . . . . . . . . . .  11
+   9.  Interoperability Considerations . . . . . . . . . . . . . . .   9
+     9.1.  Encoding and Characters . . . . . . . . . . . . . . . . .  10
+     9.2.  Numbers . . . . . . . . . . . . . . . . . . . . . . . . .  10
+     9.3.  Object Constraints  . . . . . . . . . . . . . . . . . . .  10
+   10. Internationalization Considerations . . . . . . . . . . . . .  10
+   11. Security Considerations . . . . . . . . . . . . . . . . . . .  10
+   12. References  . . . . . . . . . . . . . . . . . . . . . . . . .  11
+     12.1.  Normative References . . . . . . . . . . . . . . . . . .  11
+     12.2.  Informative References . . . . . . . . . . . . . . . . .  11
    Appendix A.  Change Log (to be removed by RFC Editor before
-                publication) . . . . . . . . . . . . . . . . . . . .  12
-     A.1.  Since draft-reschke-http-jfv-00 . . . . . . . . . . . . .  12
-     A.2.  Since draft-reschke-http-jfv-01 . . . . . . . . . . . . .  12
-     A.3.  Since draft-reschke-http-jfv-02 . . . . . . . . . . . . .  12
-     A.4.  Since draft-reschke-http-jfv-03 . . . . . . . . . . . . .  12
-     A.5.  Since draft-reschke-http-jfv-04 . . . . . . . . . . . . .  12
-     A.6.  Since draft-ietf-httpbis-jfv-00 . . . . . . . . . . . . .  12
-     A.7.  Since draft-ietf-httpbis-jfv-01 . . . . . . . . . . . . .  12
-   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  12
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  12
+                publication) . . . . . . . . . . . . . . . . . . . .  13
+     A.1.  Since draft-reschke-http-jfv-00 . . . . . . . . . . . . .  13
+     A.2.  Since draft-reschke-http-jfv-01 . . . . . . . . . . . . .  13
+     A.3.  Since draft-reschke-http-jfv-02 . . . . . . . . . . . . .  13
+     A.4.  Since draft-reschke-http-jfv-03 . . . . . . . . . . . . .  13
+     A.5.  Since draft-reschke-http-jfv-04 . . . . . . . . . . . . .  13
+     A.6.  Since draft-ietf-httpbis-jfv-00 . . . . . . . . . . . . .  13
+     A.7.  Since draft-ietf-httpbis-jfv-01 . . . . . . . . . . . . .  13
+   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  13
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  14
 
-1.  Introduction
 
-   Defining syntax for new HTTP header fields ([RFC7230], Section 3.2)
-   is non-trivial.  Among the commonly encountered problems are:
 
-   o  There is no common syntax for complex field values.  Several well-
-      known header fields do use a similarly looking syntax, but it is
+
 
 
 
@@ -114,6 +114,13 @@ Reschke                  Expires April 23, 2017                 [Page 2]
 Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
 
 
+1.  Introduction
+
+   Defining syntax for new HTTP header fields ([RFC7230], Section 3.2)
+   is non-trivial.  Among the commonly encountered problems are:
+
+   o  There is no common syntax for complex field values.  Several well-
+      known header fields do use a similarly looking syntax, but it is
       hard to write generic parsing code that will both correctly handle
       valid field values but also reject invalid ones.
 
@@ -154,14 +161,7 @@ Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
    format (Section 5 of [RFC7159]).  Thus, the basic data model used
    here is the JSON array.
 
-   Header field definitions that need only a single value can restrict
-   themselves to arrays of length 1, and are encouraged to define error
-   handling in case more values are received (such as "first wins",
-   "last wins", or "abort with fatal error message").
 
-   JSON arrays are mapped to field values by creating a sequence of
-   serialized member elements, separated by commas and optionally
-   whitespace.  This is equivalent to using the full JSON array format,
 
 
 
@@ -170,6 +170,14 @@ Reschke                  Expires April 23, 2017                 [Page 3]
 Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
 
 
+   Header field definitions that need only a single value can restrict
+   themselves to arrays of length 1, and are encouraged to define error
+   handling in case more values are received (such as "first wins",
+   "last wins", or "abort with fatal error message").
+
+   JSON arrays are mapped to field values by creating a sequence of
+   serialized member elements, separated by commas and optionally
+   whitespace.  This is equivalent to using the full JSON array format,
    while leaving out the "begin-array" ('[') and "end-array" (']')
    delimiters.
 
@@ -211,6 +219,13 @@ Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
    2.  stripping all JSON control characters (CR, HTAB, LF), or
        replacing them by space ("SP") characters,
 
+
+
+Reschke                  Expires April 23, 2017                 [Page 4]
+
+Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
+
+
    3.  replacing all remaining non-VSPACE characters by the equivalent
        backslash-escape sequence ([RFC7159], Section 7).
 
@@ -218,13 +233,6 @@ Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
    by combining them using comma (%x2C) plus optional SP as delimiter,
    and encoding the resulting string into an octet sequence using the
    US-ASCII character encoding scheme ([RFC0020]).
-
-
-
-Reschke                  Expires April 23, 2017                 [Page 4]
-
-Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
-
 
 4.  Recipient Requirements
 
@@ -267,6 +275,13 @@ Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
    However, in practice multiple instances do occur, and the definition
    of the header field does indeed discuss how to handle these cases.
 
+
+
+Reschke                  Expires April 23, 2017                 [Page 5]
+
+Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
+
+
    If Content-Length was defined using the JSON format discussed here,
    the ABNF would be something like:
 
@@ -274,13 +289,6 @@ Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
                     ; number: [RFC7159], Section 6
 
    ...and the prose definition would:
-
-
-
-Reschke                  Expires April 23, 2017                 [Page 5]
-
-Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
-
 
    o  restrict all numbers to be non-negative integers without
       fractions, and
@@ -321,14 +329,6 @@ Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
    defined in [RFC5987], representing a filename starting with the
    Unicode character U+20AC (EURO SIGN), followed by " rates".  If the
    definition of Content-Disposition would have used the format proposed
-   here, the workaround involving the "parameter*" syntax would not have
-   been needed at all.
-
-   The JSON representation of this value could then be:
-
-     { "attachment": { "filename" : "\u20AC rates" } }
-
-
 
 
 
@@ -337,6 +337,13 @@ Reschke                  Expires April 23, 2017                 [Page 6]
 
 Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
 
+
+   here, the workaround involving the "parameter*" syntax would not have
+   been needed at all.
+
+   The JSON representation of this value could then be:
+
+     { "attachment": { "filename" : "\u20AC rates" } }
 
 6.3.  WWW-Authenticate
 
@@ -377,6 +384,16 @@ Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
 
    ...which would translate to a header field value of:
 
+
+
+
+
+
+Reschke                  Expires April 23, 2017                 [Page 7]
+
+Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
+
+
      { "Newauth" : { "realm": "apps", "type" : 1,
                      "title": "Login to \"apps\"" }},
      { "Basic" : { "realm": "simple"}}
@@ -386,13 +403,6 @@ Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
    The Accept-Encoding header field value is defined in Section 5.3.4 of
    [RFC7231] as a list of codings, each of which allowing a weight
    parameter 'q':
-
-
-
-Reschke                  Expires April 23, 2017                 [Page 7]
-
-Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
-
 
       Accept-Encoding = #( codings [ weight ] )
       codings         = content-coding / "identity" / "*"
@@ -433,6 +443,13 @@ Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
 
      {"gzip": {}}, {"identity": {"q": 0.5}}, {"*": {"q": 0}}
 
+
+
+Reschke                  Expires April 23, 2017                 [Page 8]
+
+Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
+
+
    In this example, the part about "gzip" appears unnecessarily verbose,
    as the value is just an empty object.  A simpler notation would
    collapse members like these to string literals:
@@ -441,15 +458,6 @@ Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
 
    If this is desirable, the header field definition could allow both
    string literals and objects, and define that a mere string literal
-
-
-
-
-Reschke                  Expires April 23, 2017                 [Page 8]
-
-Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
-
-
    would be mapped to a member whose name is given by the string
    literal, and the value is an empty object.
 
@@ -485,7 +493,43 @@ Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
    over double quotes not being used for HTTP's quoted-string syntax
    (Section 3.2.6 of [RFC7230]).
 
-9.  Internationalization Considerations
+9.  Interoperability Considerations
+
+   The "I-JSON Message Format" specification ([RFC7493]) addresses known
+   JSON interoperability pain points.  This specification borrows from
+   the requirements made over there:
+
+
+
+Reschke                  Expires April 23, 2017                 [Page 9]
+
+Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
+
+
+9.1.  Encoding and Characters
+
+   This specification requires that field values use only US-ASCII
+   characters, and thus by definition use a subset of UTF-8 (Section 2.1
+   of [RFC7493]).
+
+9.2.  Numbers
+
+   Be aware of the issues around number precision, as discussed in
+   Section 2.2 of [RFC7493].
+
+9.3.  Object Constraints
+
+   As described in Section 4 of [RFC7159], JSON parser implementations
+   differ in the handling of duplicate object names.  Therefore, senders
+   MUST NOT use duplicate object names, and recipients SHOULD either
+   treat field values with duplicate names as invalid (consistent with
+   [RFC7493], Section 2.3) or use the lexically last value (consistent
+   with [ECMA-262], Section 24.3.1.1).
+
+   Furthermore, ordering of object members is not significant and can
+   not be relied upon.
+
+10.  Internationalization Considerations
 
    In HTTP/1.1, header field values are represented by octet sequences,
    usually used to transmit ASCII characters, with restrictions on the
@@ -497,21 +541,12 @@ Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
    JSON escape sequences, thereby solving the HTTP header field
    internationalization problem.
 
-
-
-
-
-Reschke                  Expires April 23, 2017                 [Page 9]
-
-Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
-
-
    Future specifications of HTTP might change to allow non-ASCII
    characters natively.  In that case, header fields using the syntax
    defined by this specification would have a simple migration path (by
    just stopping to require escaping of non-ASCII characters).
 
-10.  Security Considerations
+11.  Security Considerations
 
    Using JSON-shaped field values is believed to not introduce any new
    threads beyond those described in Section 12 of [RFC7159], namely the
@@ -519,15 +554,20 @@ Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
 
    Other than that, any syntax that makes extensions easy can be used to
    smuggle information through field values; however, this concern is
+
+
+
+Reschke                  Expires April 23, 2017                [Page 10]
+
+Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
+
+
    shared with other widely used formats, such as those using parameters
    in the form of name/value pairs.
 
-   [[jsondupl: Talk about the risks introduced by JSON parsers not
-   rejecting duplicate keys.]]
+12.  References
 
-11.  References
-
-11.1.  Normative References
+12.1.  Normative References
 
    [RFC0020]  Cerf, V., "ASCII format for network interchange", STD 80,
               RFC 20, DOI 10.17487/RFC0020, October 1969,
@@ -552,23 +592,31 @@ Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
               DOI 10.17487/RFC7231, June 2014,
               <http://www.rfc-editor.org/info/rfc7231>.
 
+   [RFC7493]  Bray, T., Ed., "The I-JSON Message Format", RFC 7493,
+              DOI 10.17487/RFC7493, March 2015,
+              <http://www.rfc-editor.org/info/rfc7493>.
 
+12.2.  Informative References
 
-
-
-
-Reschke                  Expires April 23, 2017                [Page 10]
-
-Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
-
-
-11.2.  Informative References
+   [ECMA-262]
+              Ecma International, "ECMA-262 6th Edition, The ECMAScript
+              2015 Language Specification", Standard ECMA-262, June
+              2015, <http://www.ecma-international.org/ecma-262/6.0/>.
 
    [ISO-8859-1]
               International Organization for Standardization,
               "Information technology -- 8-bit single-byte coded graphic
               character sets -- Part 1: Latin alphabet No. 1", ISO/
               IEC 8859-1:1998, 1998.
+
+
+
+
+
+Reschke                  Expires April 23, 2017                [Page 11]
+
+Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
+
 
    [KEY]      Fielding, R. and M. Nottingham, "The Key HTTP Response
               Header Field", draft-ietf-httpbis-key-01 (work in
@@ -613,7 +661,15 @@ Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
 
 
 
-Reschke                  Expires April 23, 2017                [Page 11]
+
+
+
+
+
+
+
+
+Reschke                  Expires April 23, 2017                [Page 12]
 
 Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
 
@@ -654,14 +710,14 @@ A.6.  Since draft-ietf-httpbis-jfv-00
 
 A.7.  Since draft-ietf-httpbis-jfv-01
 
-   None yet.
+   Add interop discussion, building on I-JSON and ECMA-262 (see
+   <https://github.com/httpwg/http-extensions/issues/225>).
 
 Appendix B.  Acknowledgements
 
    Thanks go to the Hypertext Transfer Protocol Working Group
    participants.
 
-Author's Address
 
 
 
@@ -669,10 +725,12 @@ Author's Address
 
 
 
-Reschke                  Expires April 23, 2017                [Page 12]
+Reschke                  Expires April 23, 2017                [Page 13]
 
 Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
 
+
+Author's Address
 
    Julian F. Reschke
    greenbytes GmbH
@@ -723,6 +781,4 @@ Internet-Draft     JSON Encoding for HTTP Field Values      October 2016
 
 
 
-
-
-Reschke                  Expires April 23, 2017                [Page 13]
+Reschke                  Expires April 23, 2017                [Page 14]
