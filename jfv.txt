@@ -100,9 +100,9 @@ Table of Contents
      A.5.  Since draft-reschke-http-jfv-04 . . . . . . . . . . . . .  13
      A.6.  Since draft-ietf-httpbis-jfv-00 . . . . . . . . . . . . .  13
      A.7.  Since draft-ietf-httpbis-jfv-01 . . . . . . . . . . . . .  13
+     A.8.  Since draft-ietf-httpbis-jfv-02 . . . . . . . . . . . . .  13
    Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  13
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  14
-
 
 
 
@@ -713,14 +713,14 @@ A.7.  Since draft-ietf-httpbis-jfv-01
    Add interop discussion, building on I-JSON and ECMA-262 (see
    <https://github.com/httpwg/http-extensions/issues/225>).
 
+A.8.  Since draft-ietf-httpbis-jfv-02
+
+   None yet.
+
 Appendix B.  Acknowledgements
 
    Thanks go to the Hypertext Transfer Protocol Working Group
    participants.
-
-
-
-
 
 
 
