@@ -84,7 +84,7 @@ Table of Contents
      5.3.  Content Integrity . . . . . . . . . . . . . . . . . . . .  10
      5.4.  Leaking Information in Headers  . . . . . . . . . . . . .  11
      5.5.  Poisoning Storage . . . . . . . . . . . . . . . . . . . .  11
-     5.6.  Sizing and Timing Attacks . . . . . . . . . . . . . . . .  11
+     5.6.  Sizing and Timing Attacks . . . . . . . . . . . . . . . .  12
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  12
      6.1.  The "aes128gcm" HTTP Content Coding . . . . . . . . . . .  12
      6.2.  Crypto-Key Header Field . . . . . . . . . . . . . . . . .  12
@@ -264,9 +264,9 @@ Internet-Draft           HTTP encryption coding             October 2016
    is placed in the body of a message ahead of the sequence of records.
 
 
-   +-----------+--------+-----------+------------+
-   | salt (16) | rs (4) | idlen (1) | id (idlen) |
-   +-----------+--------+-----------+------------+
+   +-----------+--------+-----------+---------------+
+   | salt (16) | rs (4) | idlen (1) | keyid (idlen) |
+   +-----------+--------+-----------+---------------+
 
    salt:  The "salt" parameter comprises the first 16 octets of the
       "aes128gcm" content coding header.  The same "salt" parameter
@@ -284,9 +284,9 @@ Internet-Draft           HTTP encryption coding             October 2016
 
    rs:  The "rs" or record size parameter contains an unsigned 32-bit
       integer in network byte order that describes the record size in
-      octets.  Note that it is therefore impossible to exceed the 2^36-1
-      limit on plaintext input to AEAD_AES_128_GCM.  Values smaller than
-      3 are invalid.
+      octets.  Note that it is therefore impossible to exceed the
+      2^36-31 limit on plaintext input to AEAD_AES_128_GCM.  Values
+      smaller than 3 are invalid.
 
    keyid:  The "keyid" parameter can be used to identify the keying
       material that is used.  When the Crypto-Key header field is used,
@@ -372,7 +372,7 @@ Internet-Draft           HTTP encryption coding             October 2016
 3.  Crypto-Key Header Field
 
    A Crypto-Key header field can be used to describe the input keying
-   material used in the Encryption header field.
+   material used by the "aes128gcm" content coding.
 
    Ordinarily, this header field will not appear in the same message as
    the encrypted content.  Including the encryption key with the
@@ -527,17 +527,20 @@ Internet-Draft           HTTP encryption coding             October 2016
 5.2.  Data Encryption Limits
 
    There are limits to the data that AEAD_AES_128_GCM can encipher.  The
-   maximum record size is 2^36-31 [RFC5116].  In order to preserve a
-   2^-40 probability of indistinguishability under chosen plaintext
-   attack (IND-CPA), the total amount of plaintext that can be
-   enciphered MUST be less than 2^44.5 blocks [AEBounds].
+   maximum value for the record size is limited by the size of the "rs"
+   field in the header (see Section 2.1), which ensures that the 2^36-31
+   limit for a single application of AEAD_AES_128_GCM is not reached
+   [RFC5116].  In order to preserve a 2^-40 probability of
+   indistinguishability under chosen plaintext attack (IND-CPA), the
+   total amount of plaintext that can be enciphered MUST be less than
+   2^44.5 blocks of 16 octets [AEBounds].
 
    If rs is a multiple of 16 octets, this means 398 terabytes can be
    encrypted safely, including padding.  However, if the record size is
-   a multiple of 16 octets, the total amount of data that can be safely
-   encrypted is reduced.  The worst case is a record size of 3 octets,
-   for which at most 74 terabytes of plaintext can be encrypted, of
-   which at least two-thirds is padding.
+   not a multiple of 16 octets, the total amount of data that can be
+   safely encrypted is reduced proportionally.  The worst case is a
+   record size of 3 octets, for which at most 74 terabytes of plaintext
+   can be encrypted, of which at least two-thirds is padding.
 
 5.3.  Content Integrity
 
@@ -551,9 +554,6 @@ Internet-Draft           HTTP encryption coding             October 2016
 
    Furthermore, any entity that is able to modify both the Encryption
    header field and the HTTP message body can replace the contents.
-   Without the content encryption key or the input keying material,
-   modifications to or replacement of parts of a payload body are not
-   possible.
 
 
 
@@ -561,6 +561,10 @@ Thomson                    Expires May 3, 2017                 [Page 10]
 
 Internet-Draft           HTTP encryption coding             October 2016
 
+
+   Without the content encryption key or the input keying material,
+   modifications to or replacement of parts of a payload body are not
+   possible.
 
 5.4.  Leaking Information in Headers
 
@@ -602,14 +606,10 @@ Internet-Draft           HTTP encryption coding             October 2016
    server; if the request is unauthenticated, it becomes possible for a
    third party to deny service and/or poison the store.
 
-5.6.  Sizing and Timing Attacks
 
-   Applications using this mechanism need to be aware that the size of
-   encrypted messages, as well as their timing, HTTP methods, URIs and
-   so on, may leak sensitive information.
 
-   This risk can be mitigated through the use of the padding that this
-   mechanism provides.  Alternatively, splitting up content into
+
+
 
 
 
@@ -618,6 +618,14 @@ Thomson                    Expires May 3, 2017                 [Page 11]
 Internet-Draft           HTTP encryption coding             October 2016
 
 
+5.6.  Sizing and Timing Attacks
+
+   Applications using this mechanism need to be aware that the size of
+   encrypted messages, as well as their timing, HTTP methods, URIs and
+   so on, may leak sensitive information.
+
+   This risk can be mitigated through the use of the padding that this
+   mechanism provides.  Alternatively, splitting up content into
    segments and storing the separately might reduce exposure.  HTTP/2
    [RFC7540] combined with TLS [RFC5246] might be used to hide the size
    of individual messages.
@@ -659,20 +667,19 @@ Internet-Draft           HTTP encryption coding             October 2016
    Crypto-Key Parameters" operates under an "Specification Required"
    policy [RFC5226].
 
-   Entries in this registry are expected to include the following
-   information:
-
-   o  Parameter Name: The name of the parameter.
-
-   o  Purpose: A brief description of the purpose of the parameter.
-
-
 
 
 Thomson                    Expires May 3, 2017                 [Page 12]
 
 Internet-Draft           HTTP encryption coding             October 2016
 
+
+   Entries in this registry are expected to include the following
+   information:
+
+   o  Parameter Name: The name of the parameter.
+
+   o  Purpose: A brief description of the purpose of the parameter.
 
    o  Reference: A reference to a specification that defines the
       semantics of the parameter.
@@ -715,13 +722,6 @@ Internet-Draft           HTTP encryption coding             October 2016
               Encryption", RFC 5116, DOI 10.17487/RFC5116, January 2008,
               <http://www.rfc-editor.org/info/rfc5116>.
 
-   [RFC5226]  Narten, T. and H. Alvestrand, "Guidelines for Writing an
-              IANA Considerations Section in RFCs", BCP 26, RFC 5226,
-              DOI 10.17487/RFC5226, May 2008,
-              <http://www.rfc-editor.org/info/rfc5226>.
-
-
-
 
 
 
@@ -729,6 +729,11 @@ Thomson                    Expires May 3, 2017                 [Page 13]
 
 Internet-Draft           HTTP encryption coding             October 2016
 
+
+   [RFC5226]  Narten, T. and H. Alvestrand, "Guidelines for Writing an
+              IANA Considerations Section in RFCs", BCP 26, RFC 5226,
+              DOI 10.17487/RFC5226, May 2008,
+              <http://www.rfc-editor.org/info/rfc5226>.
 
    [RFC5869]  Krawczyk, H. and P. Eronen, "HMAC-based Extract-and-Expand
               Key Derivation Function (HKDF)", RFC 5869,
@@ -770,11 +775,6 @@ Internet-Draft           HTTP encryption coding             October 2016
               RFC 5652, DOI 10.17487/RFC5652, September 2009,
               <http://www.rfc-editor.org/info/rfc5652>.
 
-   [RFC7233]  Fielding, R., Ed., Lafon, Y., Ed., and J. Reschke, Ed.,
-              "Hypertext Transfer Protocol (HTTP/1.1): Range Requests",
-              RFC 7233, DOI 10.17487/RFC7233, June 2014,
-              <http://www.rfc-editor.org/info/rfc7233>.
-
 
 
 
@@ -785,6 +785,11 @@ Thomson                    Expires May 3, 2017                 [Page 14]
 
 Internet-Draft           HTTP encryption coding             October 2016
 
+
+   [RFC7233]  Fielding, R., Ed., Lafon, Y., Ed., and J. Reschke, Ed.,
+              "Hypertext Transfer Protocol (HTTP/1.1): Range Requests",
+              RFC 7233, DOI 10.17487/RFC7233, June 2014,
+              <http://www.rfc-editor.org/info/rfc7233>.
 
    [RFC7235]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Authentication", RFC 7235,
@@ -828,11 +833,6 @@ Appendix A.  JWE Mapping
       zero, and a value derived from the input keying material (see
       Section 2.3).  This value is also not transmitted.
 
-   o  The final value is the concatenated JWE Ciphertext and the JWE
-      Authentication Tag, both expressed without base64url encoding.
-      The "." separator is omitted, since the length of these fields is
-      known.
-
 
 
 
@@ -841,6 +841,11 @@ Thomson                    Expires May 3, 2017                 [Page 15]
 
 Internet-Draft           HTTP encryption coding             October 2016
 
+
+   o  The final value is the concatenated JWE Ciphertext and the JWE
+      Authentication Tag, both expressed without base64url encoding.
+      The "." separator is omitted, since the length of these fields is
+      known.
 
    Thus, the example in Section 4.1 can be rendered using the JWE
    Compact Serialization as:
@@ -868,11 +873,6 @@ Author's Address
    Mozilla
 
    Email: martin.thomson@gmail.com
-
-
-
-
-
 
 
 
