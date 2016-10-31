@@ -144,7 +144,9 @@ Internet-Draft         Opportunistic HTTP Security          October 2016
    An origin server that supports the resolution of "http" URIs can
    indicate support for this specification by providing an alternative
    service advertisement [RFC7838] for a protocol identifier that uses
-   TLS, such as "h2" [RFC7540], or "http/1.1" [RFC7301].
+   TLS, such as "h2" [RFC7540], or "http/1.1" [RFC7301].  Note that
+   HTTP/1.1 requests MUST use the absolute form (see Section 5.3.2 of
+   [RFC7230]).
 
    A client that receives such an advertisement MAY make future requests
    intended for the associated origin ([RFC6454]) to the identified
@@ -160,8 +162,6 @@ Internet-Draft         Opportunistic HTTP Security          October 2016
    A client can also explicitly probe for an alternative service
    advertisement by sending a request that bears little or no sensitive
    information, such as one with the OPTIONS method.  Likewise, clients
-   with existing alternative services information could make such a
-
 
 
 
@@ -170,6 +170,7 @@ Nottingham & Thomson       Expires May 4, 2017                  [Page 3]
 Internet-Draft         Opportunistic HTTP Security          October 2016
 
 
+   with existing alternative services information could make such a
    request before they expire, in order minimize the delays that might
    be incurred.
 
@@ -216,7 +217,6 @@ Internet-Draft         Opportunistic HTTP Security          October 2016
    When using alternative services, requests for resources identified by
    both "http" and "https" URIs might use the same connection, because
    HTTP/2 permits requests for multiple origins on the same connection.
-
 
 
 
