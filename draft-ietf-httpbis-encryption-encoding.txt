@@ -454,10 +454,9 @@ Internet-Draft           HTTP encryption coding            November 2016
    Content-Type: application/octet-stream
    Content-Length: 33
    Content-Encoding: aes128gcm
-   Crypto-Key: aes128gcm=B33e_VeFrOyIHwFTIfmesA
+   Crypto-Key: aes128gcm=6Aqf1aDH8lSxLyCpoCnAqg
 
-   9Y1iaZMzICC05DO3y8dWiAAAopoAzpM9l8LHdpDaO9C-UvT4kttTI_edSsHv1o5b
-   lWZ5mBYL
+   lVIUs_H0A2a8-6dhmzY57H4K4uRFCF6tIIPRO9vrOL6B
 
    Note that the media type has been changed to "application/octet-
    stream" to avoid exposing information about the content.
@@ -478,8 +477,8 @@ Internet-Draft           HTTP encryption coding            November 2016
    Content-Encoding: aes128gcm
    Crypto-Key: keyid="a1"; aes128gcm="BO3ZVPxUlnLORbVGMpbT1Q"
 
-   _lgOPHdbKmIaLnZC7_8huQAAAAoCYTGkQWUSYylMKzMduBHDCFDwL2oODx8nkh0n
-   uOTNrh48DaWSm02DiQPzQAOGe6xRAeBj588hH6jQRTh_szFRS2Nwx9Aeuiic
+   iBmR5fjBCUvicKLSt1L1GQAAAAoCYTGZvfb0yACNxTo090xk6m_6GwMiLv4AxGSS
+   _BFGyZS_2z_cOxSHLfuPsAQiId243MTE8B_5Vg-R5OPTNbiV3PlHJcjGONoI
 
 5.  Security Considerations
 
@@ -494,6 +493,7 @@ Internet-Draft           HTTP encryption coding            November 2016
    might be exposed by the time it takes to perform a given operation.
    The requirements for a good implementation of cryptographic
    algorithms can change over time.
+
 
 
 
@@ -842,8 +842,8 @@ Thomson                    Expires May 5, 2017                 [Page 15]
 Internet-Draft           HTTP encryption coding            November 2016
 
 
-   o  The final value is the concatenated header, JWE Ciphertext, and
-      JWE Authentication Tag, all expressed without base64url encoding.
+   o  The final value is the concatenated JWE Ciphertext and the JWE
+      Authentication Tag, both expressed without base64url encoding.
       The "." separator is omitted, since the length of these fields is
       known.
 
@@ -852,7 +852,7 @@ Internet-Draft           HTTP encryption coding            November 2016
 
 
    eyAiYWxnIjogImRpciIsICJlbmMiOiAiQTEyOEdDTSIgfQ..31iQYc1v4a36EgyJ.
-   AM6TPZfCx3aQ2jvQvlL0-JLb.21Mj951Kwe_WjluVZnmYFgs
+   VDeU0XxaJkOJDAxPl7h9JD4.VfDeN0aKz-z36T3WWULsBQ
 
    Where the first line represents the fixed JWE Protected Header, an
    empty JWE Encrypted Key, and the algorithmically-determined JWE
@@ -864,9 +864,9 @@ Appendix B.  Acknowledgements
    Mark Nottingham was an original author of this document.
 
    The following people provided valuable input: Richard Barnes, David
-   Benjamin, Peter Beverloo, JR Conlin, Mike Jones, Stephen Farrell,
-   Adam Langley, John Mattsson, Julian Reschke, Eric Rescorla, Jim
-   Schaad, and Magnus Westerlund.
+   Benjamin, Peter Beverloo, Mike Jones, Stephen Farrell, Adam Langley,
+   John Mattsson, Julian Reschke, Eric Rescorla, Jim Schaad, and Magnus
+   Westerlund.
 
 Author's Address
 
