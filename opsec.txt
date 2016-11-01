@@ -75,10 +75,10 @@ Table of Contents
      1.2.  Notational Conventions  . . . . . . . . . . . . . . . . .   3
    2.  Using HTTP URIs over TLS  . . . . . . . . . . . . . . . . . .   3
      2.1.  Alternative Server Opt-In . . . . . . . . . . . . . . . .   4
-     2.2.  Interaction with "https" URIs . . . . . . . . . . . . . .   4
+     2.2.  Interaction with "https" URIs . . . . . . . . . . . . . .   5
      2.3.  The "http-opportunistic" well-known URI . . . . . . . . .   5
    3.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
-   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
+   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
      4.1.  Security Indicators . . . . . . . . . . . . . . . . . . .   6
      4.2.  Downgrade Attacks . . . . . . . . . . . . . . . . . . . .   6
      4.3.  Privacy Considerations  . . . . . . . . . . . . . . . . .   6
@@ -144,9 +144,16 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
    An origin server that supports the resolution of "http" URIs can
    indicate support for this specification by providing an alternative
    service advertisement [RFC7838] for a protocol identifier that uses
-   TLS, such as "h2" [RFC7540], or "http/1.1" [RFC7301].  Note that
-   HTTP/1.1 requests MUST use the absolute form (see Section 5.3.2 of
-   [RFC7230]).
+   TLS, such as "h2" [RFC7540], or "http/1.1" [RFC7301].
+
+   Requests for "http" resources using TLS MUST include the scheme in
+   the request.  HTTP/2 requires this and provides the ":scheme" pseudo-
+   header field for this purpose.  HTTP/1.1 provides no such field, and
+   even prohibits the use of the absolute form for requests that are
+   sent directly to an origin server (see Section 5.3.1 of [RFC7230]).
+   This document overrides that requirement for requests with the "http"
+   scheme that are sent over TLS; these requests MUST be made using the
+   absolute form as though the server were a proxy.
 
    A client that receives such an advertisement MAY make future requests
    intended for the associated origin ([RFC6454]) to the identified
@@ -155,13 +162,6 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
 
    A client that places the importance of protection against passive
    attacks over performance might choose to withhold requests until an
-   encrypted connection is available.  However, if such a connection
-   cannot be successfully established, the client can resume its use of
-   the cleartext connection.
-
-   A client can also explicitly probe for an alternative service
-   advertisement by sending a request that bears little or no sensitive
-   information, such as one with the OPTIONS method.  Likewise, clients
 
 
 
@@ -170,6 +170,13 @@ Nottingham & Thomson       Expires May 5, 2017                  [Page 3]
 Internet-Draft         Opportunistic HTTP Security         November 2016
 
 
+   encrypted connection is available.  However, if such a connection
+   cannot be successfully established, the client can resume its use of
+   the cleartext connection.
+
+   A client can also explicitly probe for an alternative service
+   advertisement by sending a request that bears little or no sensitive
+   information, such as one with the OPTIONS method.  Likewise, clients
    with existing alternative services information could make such a
    request before they expire, in order minimize the delays that might
    be incurred.
@@ -212,19 +219,18 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
 
    [ "http://www.example.com", "http://example.com" ]
 
-2.2.  Interaction with "https" URIs
-
-   When using alternative services, requests for resources identified by
-   both "http" and "https" URIs might use the same connection, because
-   HTTP/2 permits requests for multiple origins on the same connection.
-
-
 
 
 Nottingham & Thomson       Expires May 5, 2017                  [Page 4]
 
 Internet-Draft         Opportunistic HTTP Security         November 2016
 
+
+2.2.  Interaction with "https" URIs
+
+   When using alternative services, requests for resources identified by
+   both "http" and "https" URIs might use the same connection, because
+   HTTP/2 permits requests for multiple origins on the same connection.
 
    Because of the potential for server confusion about the scheme of
    requests (see Section 4.4), clients MUST NOT send "http" requests on
@@ -268,12 +274,6 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
 
    o  Related Information:
 
-4.  Security Considerations
-
-
-
-
-
 
 
 
@@ -281,6 +281,8 @@ Nottingham & Thomson       Expires May 5, 2017                  [Page 5]
 
 Internet-Draft         Opportunistic HTTP Security         November 2016
 
+
+4.  Security Considerations
 
 4.1.  Security Indicators
 
@@ -327,8 +329,6 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
 
    Therefore, servers need to carefully examine the use of such signals
    before deploying this specification.
-
-
 
 
 
