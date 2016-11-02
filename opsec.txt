@@ -78,7 +78,7 @@ Table of Contents
      2.2.  Interaction with "https" URIs . . . . . . . . . . . . . .   4
      2.3.  The "http-opportunistic" well-known URI . . . . . . . . .   5
    3.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
-   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
+   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
      4.1.  Security Indicators . . . . . . . . . . . . . . . . . . .   6
      4.2.  Downgrade Attacks . . . . . . . . . . . . . . . . . . . .   6
      4.3.  Privacy Considerations  . . . . . . . . . . . . . . . . .   6
@@ -256,6 +256,10 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
    A client MAY treat an "http-opportunistic" resource as invalid if the
    contains values that are not strings.
 
+   This document does not define semantics for "http-opportunistic"
+   resources on an "https" origin, nor does it define semantics if the
+   resource includes "https" origins.
+
 3.  IANA Considerations
 
    This specification registers a Well-Known URI [RFC5785]:
@@ -268,10 +272,6 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
 
    o  Related Information:
 
-4.  Security Considerations
-
-
-
 
 
 
@@ -281,6 +281,8 @@ Nottingham & Thomson       Expires May 6, 2017                  [Page 5]
 
 Internet-Draft         Opportunistic HTTP Security         November 2016
 
+
+4.  Security Considerations
 
 4.1.  Security Indicators
 
@@ -327,8 +329,6 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
 
    Therefore, servers need to carefully examine the use of such signals
    before deploying this specification.
-
-
 
 
 
