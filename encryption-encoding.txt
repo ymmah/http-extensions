@@ -88,7 +88,7 @@ Table of Contents
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  12
      6.1.  The "aes128gcm" HTTP Content Coding . . . . . . . . . . .  12
      6.2.  Crypto-Key Header Field . . . . . . . . . . . . . . . . .  12
-     6.3.  The HTTP Crypto-Key Parameter Registry  . . . . . . . . .  12
+     6.3.  The HTTP Crypto-Key Parameter Registry  . . . . . . . . .  13
        6.3.1.  keyid . . . . . . . . . . . . . . . . . . . . . . . .  13
        6.3.2.  aes128gcm . . . . . . . . . . . . . . . . . . . . . .  13
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  13
@@ -434,13 +434,13 @@ Internet-Draft           HTTP encryption coding            November 2016
 4.1.  Encryption of a Response
 
    Here, a successful HTTP GET response has been encrypted using input
-   keying material that is identified by the string "a1".
+   keying material that is identified by an empty string (that is, the
+   "keyid" field is zero octets in length).
 
    The encrypted data in this example is the UTF-8 encoded string "I am
    the walrus".  The input keying material is included in the Crypto-Key
    header field.  The content body contains a single record only and is
    shown here using base64url encoding for presentation reasons.
-
 
 
 
@@ -464,13 +464,22 @@ Internet-Draft           HTTP encryption coding            November 2016
    Alternatively (and equivalently), the Content-Type header field can
    be omitted.
 
+   Intermediate values for this example (all shown in base64):
+
+
+   salt (from header) = sJvlboCWzB5jr8hI_q9cOQ
+   PRK = MLAQxt_DHjM15cdlyU1oUnjq7TFlzToGTkdRmvvxVBw
+   CEK = v31u7VGV3soO3wNaMaIdhg
+   NONCE = XOaygzko98zjUFTJ
+   plaintext = AABJIGFtIHRoZSB3YWxydXM
+
 4.2.  Encryption with Multiple Records
 
    This example shows the same encrypted message, but split into records
-   of 10 octets each.  The first record includes a single additional
-   octet of padding, which causes the end of the content to align with a
-   record boundary, forcing the creation of a third record that contains
-   only padding.
+   of 10 octets each (that is, the "rs" field in the header is 10).  The
+   first record includes a single additional octet of padding, which
+   causes the end of the content to align with a record boundary,
+   forcing the creation of a third record that contains only padding.
 
 
    HTTP/1.1 200 OK
@@ -488,15 +497,6 @@ Internet-Draft           HTTP encryption coding            November 2016
    and receivers.  Defining key management is part of composing this
    mechanism into a larger application, protocol, or framework.
 
-   Implementation of cryptography - and key management in particular -
-   can be difficult.  For instance, implementations need to account for
-   the potential for exposing keying material on side channels, such as
-   might be exposed by the time it takes to perform a given operation.
-   The requirements for a good implementation of cryptographic
-   algorithms can change over time.
-
-
-
 
 
 
@@ -505,6 +505,13 @@ Thomson                    Expires May 6, 2017                  [Page 9]
 
 Internet-Draft           HTTP encryption coding            November 2016
 
+
+   Implementation of cryptography - and key management in particular -
+   can be difficult.  For instance, implementations need to account for
+   the potential for exposing keying material on side channels, such as
+   might be exposed by the time it takes to perform a given operation.
+   The requirements for a good implementation of cryptographic
+   algorithms can change over time.
 
 5.1.  Key and Nonce Reuse
 
@@ -548,13 +555,6 @@ Internet-Draft           HTTP encryption coding            November 2016
    authentication tag only ensures that an entity with access to the
    content encryption key produced the encrypted data.
 
-   Any entity with the content encryption key can therefore produce
-   content that will be accepted as valid.  This includes all recipients
-   of the same HTTP message.
-
-   Furthermore, any entity that is able to modify both the Encryption
-   header field and the HTTP message body can replace the contents.
-
 
 
 Thomson                    Expires May 6, 2017                 [Page 10]
@@ -562,6 +562,12 @@ Thomson                    Expires May 6, 2017                 [Page 10]
 Internet-Draft           HTTP encryption coding            November 2016
 
 
+   Any entity with the content encryption key can therefore produce
+   content that will be accepted as valid.  This includes all recipients
+   of the same HTTP message.
+
+   Furthermore, any entity that is able to modify both the Encryption
+   header field and the HTTP message body can replace the contents.
    Without the content encryption key or the input keying material,
    modifications to or replacement of parts of a payload body are not
    possible.
@@ -602,12 +608,6 @@ Internet-Draft           HTTP encryption coding            November 2016
    authentication or authorization, which still needs to be performed
    (e.g., by HTTP authentication [RFC7235]).
 
-   This is especially relevant when a HTTP PUT request is accepted by a
-   server; if the request is unauthenticated, it becomes possible for a
-   third party to deny service and/or poison the store.
-
-
-
 
 
 
@@ -617,6 +617,10 @@ Thomson                    Expires May 6, 2017                 [Page 11]
 
 Internet-Draft           HTTP encryption coding            November 2016
 
+
+   This is especially relevant when a HTTP PUT request is accepted by a
+   server; if the request is unauthenticated, it becomes possible for a
+   third party to deny service and/or poison the store.
 
 5.6.  Sizing and Timing Attacks
 
@@ -659,13 +663,9 @@ Internet-Draft           HTTP encryption coding            November 2016
 
    o  Notes:
 
-6.3.  The HTTP Crypto-Key Parameter Registry
 
-   This memo establishes a registry for parameters used by the "Crypto-
-   Key" header field under the "Hypertext Transfer Protocol (HTTP)
-   Parameters" grouping.  The "Hypertext Transfer Protocol (HTTP)
-   Crypto-Key Parameters" operates under an "Specification Required"
-   policy [RFC5226].
+
+
 
 
 
@@ -673,6 +673,14 @@ Thomson                    Expires May 6, 2017                 [Page 12]
 
 Internet-Draft           HTTP encryption coding            November 2016
 
+
+6.3.  The HTTP Crypto-Key Parameter Registry
+
+   This memo establishes a registry for parameters used by the "Crypto-
+   Key" header field under the "Hypertext Transfer Protocol (HTTP)
+   Parameters" grouping.  The "Hypertext Transfer Protocol (HTTP)
+   Crypto-Key Parameters" operates under an "Specification Required"
+   policy [RFC5226].
 
    Entries in this registry are expected to include the following
    information:
@@ -713,14 +721,6 @@ Internet-Draft           HTTP encryption coding            November 2016
               <http://csrc.nist.gov/publications/fips/fips180-4/
               fips-180-4.pdf>.
 
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <http://www.rfc-editor.org/info/rfc2119>.
-
-   [RFC5116]  McGrew, D., "An Interface and Algorithms for Authenticated
-              Encryption", RFC 5116, DOI 10.17487/RFC5116, January 2008,
-              <http://www.rfc-editor.org/info/rfc5116>.
 
 
 
@@ -729,6 +729,15 @@ Thomson                    Expires May 6, 2017                 [Page 13]
 
 Internet-Draft           HTTP encryption coding            November 2016
 
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <http://www.rfc-editor.org/info/rfc2119>.
+
+   [RFC5116]  McGrew, D., "An Interface and Algorithms for Authenticated
+              Encryption", RFC 5116, DOI 10.17487/RFC5116, January 2008,
+              <http://www.rfc-editor.org/info/rfc5116>.
 
    [RFC5226]  Narten, T. and H. Alvestrand, "Guidelines for Writing an
               IANA Considerations Section in RFCs", BCP 26, RFC 5226,
@@ -766,15 +775,6 @@ Internet-Draft           HTTP encryption coding            November 2016
               DOI 10.17487/RFC4880, November 2007,
               <http://www.rfc-editor.org/info/rfc4880>.
 
-   [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
-              (TLS) Protocol Version 1.2", RFC 5246,
-              DOI 10.17487/RFC5246, August 2008,
-              <http://www.rfc-editor.org/info/rfc5246>.
-
-   [RFC5652]  Housley, R., "Cryptographic Message Syntax (CMS)", STD 70,
-              RFC 5652, DOI 10.17487/RFC5652, September 2009,
-              <http://www.rfc-editor.org/info/rfc5652>.
-
 
 
 
@@ -785,6 +785,15 @@ Thomson                    Expires May 6, 2017                 [Page 14]
 
 Internet-Draft           HTTP encryption coding            November 2016
 
+
+   [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
+              (TLS) Protocol Version 1.2", RFC 5246,
+              DOI 10.17487/RFC5246, August 2008,
+              <http://www.rfc-editor.org/info/rfc5246>.
+
+   [RFC5652]  Housley, R., "Cryptographic Message Syntax (CMS)", STD 70,
+              RFC 5652, DOI 10.17487/RFC5652, September 2009,
+              <http://www.rfc-editor.org/info/rfc5652>.
 
    [RFC7233]  Fielding, R., Ed., Lafon, Y., Ed., and J. Reschke, Ed.,
               "Hypertext Transfer Protocol (HTTP/1.1): Range Requests",
@@ -825,15 +834,6 @@ Appendix A.  JWE Mapping
       transmitted, it is instead implied by the value of the Content-
       Encoding header field.
 
-   o  The JWE Encrypted Key is empty, as stipulated by the direct
-      encryption algorithm.
-
-   o  The JWE Initialization Vector ("iv") for each record is set to the
-      exclusive or of the 96-bit record sequence number, starting at
-      zero, and a value derived from the input keying material (see
-      Section 2.3).  This value is also not transmitted.
-
-
 
 
 
@@ -841,6 +841,14 @@ Thomson                    Expires May 6, 2017                 [Page 15]
 
 Internet-Draft           HTTP encryption coding            November 2016
 
+
+   o  The JWE Encrypted Key is empty, as stipulated by the direct
+      encryption algorithm.
+
+   o  The JWE Initialization Vector ("iv") for each record is set to the
+      exclusive or of the 96-bit record sequence number, starting at
+      zero, and a value derived from the input keying material (see
+      Section 2.3).  This value is also not transmitted.
 
    o  The final value is the concatenated JWE Ciphertext and the JWE
       Authentication Tag, both expressed without base64url encoding.
@@ -874,14 +882,6 @@ Author's Address
    Mozilla
 
    Email: martin.thomson@gmail.com
-
-
-
-
-
-
-
-
 
 
 
