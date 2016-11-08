@@ -5,8 +5,8 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Experimental                                 M. Thomson
-Expires: May 7, 2017                                             Mozilla
-                                                        November 3, 2016
+Expires: May 12, 2017                                            Mozilla
+                                                        November 8, 2016
 
 
                     Opportunistic Security for HTTP
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 7, 2017.
+   This Internet-Draft will expire on May 12, 2017.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Nottingham & Thomson       Expires May 7, 2017                  [Page 1]
+Nottingham & Thomson      Expires May 12, 2017                  [Page 1]
 
 Internet-Draft         Opportunistic HTTP Security         November 2016
 
@@ -75,10 +75,10 @@ Table of Contents
      1.2.  Notational Conventions  . . . . . . . . . . . . . . . . .   3
    2.  Using HTTP URIs over TLS  . . . . . . . . . . . . . . . . . .   3
      2.1.  Alternative Server Opt-In . . . . . . . . . . . . . . . .   4
-     2.2.  Interaction with "https" URIs . . . . . . . . . . . . . .   5
+     2.2.  Interaction with "https" URIs . . . . . . . . . . . . . .   4
      2.3.  The "http-opportunistic" well-known URI . . . . . . . . .   5
-   3.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
-   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
+   3.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
+   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
      4.1.  Security Indicators . . . . . . . . . . . . . . . . . . .   6
      4.2.  Downgrade Attacks . . . . . . . . . . . . . . . . . . . .   6
      4.3.  Privacy Considerations  . . . . . . . . . . . . . . . . .   6
@@ -87,7 +87,7 @@ Table of Contents
    5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   7
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   7
      5.2.  Informative References  . . . . . . . . . . . . . . . . .   8
-   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .   9
+   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .   8
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   9
 
 1.  Introduction
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Nottingham & Thomson       Expires May 7, 2017                  [Page 2]
+Nottingham & Thomson      Expires May 12, 2017                  [Page 2]
 
 Internet-Draft         Opportunistic HTTP Security         November 2016
 
@@ -144,14 +144,12 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
    An origin server that supports the resolution of "http" URIs can
    indicate support for this specification by providing an alternative
    service advertisement [RFC7838] for a protocol identifier that uses
-   TLS, such as "h2" [RFC7540].  Such a protocol MUST include an
-   explicit indication of the scheme of the resource.  This excludes
-   HTTP/1.1; HTTP/1.1 clients are forbidden from including the absolute
-   form of a URI in requests to origin servers (see Section 5.3.1 of
+   TLS, such as "h2" [RFC7540], or "http/1.1" [RFC7301].  Note that
+   HTTP/1.1 requests MUST use the absolute form (see Section 5.3.2 of
    [RFC7230]).
 
    A client that receives such an advertisement MAY make future requests
-   intended for the associated origin [RFC6454] to the identified
+   intended for the associated origin ([RFC6454]) to the identified
    service (as specified by [RFC7838]), provided that the alternative
    service opts in as described in Section 2.1.
 
@@ -161,18 +159,17 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
    cannot be successfully established, the client can resume its use of
    the cleartext connection.
 
+   A client can also explicitly probe for an alternative service
+   advertisement by sending a request that bears little or no sensitive
+   information, such as one with the OPTIONS method.  Likewise, clients
 
 
 
-
-Nottingham & Thomson       Expires May 7, 2017                  [Page 3]
+Nottingham & Thomson      Expires May 12, 2017                  [Page 3]
 
 Internet-Draft         Opportunistic HTTP Security         November 2016
 
 
-   A client can also explicitly probe for an alternative service
-   advertisement by sending a request that bears little or no sensitive
-   information, such as one with the OPTIONS method.  Likewise, clients
    with existing alternative services information could make such a
    request before they expire, in order minimize the delays that might
    be incurred.
@@ -206,39 +203,13 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
    secured connection:
 
 
+   GET http://example.com/.well-known/http-opportunistic HTTP/1.1
+   Host: example.com
 
+   HTTP/1.1 200 OK
+   Content-Type: application/json
+   Connection: close
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-Nottingham & Thomson       Expires May 7, 2017                  [Page 4]
-
-Internet-Draft         Opportunistic HTTP Security         November 2016
-
-
-   HEADERS
-     + END_STREAM
-     + END_HEADERS
-       :method = GET
-       :scheme = http
-       :path = /.well-known/http-opportunistic
-       host: example.com
-
-   HEADERS
-       :status = 200
-       content-type = application/json
-   DATA
-     + END_STREAM
    [ "http://www.example.com", "http://example.com" ]
 
 2.2.  Interaction with "https" URIs
@@ -246,6 +217,14 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
    When using alternative services, requests for resources identified by
    both "http" and "https" URIs might use the same connection, because
    HTTP/2 permits requests for multiple origins on the same connection.
+
+
+
+
+Nottingham & Thomson      Expires May 12, 2017                  [Page 4]
+
+Internet-Draft         Opportunistic HTTP Security         November 2016
+
 
    Because of the potential for server confusion about the scheme of
    requests (see Section 4.4), clients MUST NOT send "http" requests on
@@ -274,14 +253,6 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
       for-character match for the origin in question, serialised into
       Unicode as per Section 6.1 of [RFC6454].
 
-
-
-
-Nottingham & Thomson       Expires May 7, 2017                  [Page 5]
-
-Internet-Draft         Opportunistic HTTP Security         November 2016
-
-
    A client MAY treat an "http-opportunistic" resource as invalid if the
    contains values that are not strings.
 
@@ -298,6 +269,18 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
    o  Related Information:
 
 4.  Security Considerations
+
+
+
+
+
+
+
+
+Nottingham & Thomson      Expires May 12, 2017                  [Page 5]
+
+Internet-Draft         Opportunistic HTTP Security         November 2016
+
 
 4.1.  Security Indicators
 
@@ -330,18 +313,9 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
    to determine if a request is for an "https" resource; for example,
    they might look for TLS on the stack, or a server port number of 443.
 
-
-
-
-Nottingham & Thomson       Expires May 7, 2017                  [Page 6]
-
-Internet-Draft         Opportunistic HTTP Security         November 2016
-
-
-   This might be due to expected limitations in the protocol (the most
-   common HTTP/1.1 request form does not carry an explicit indication of
-   the URI scheme and the resource might have been developed assuming
-   HTTP/1.1), or it may be because how the server and application are
+   This might be due to limitations in the protocol (the most common
+   HTTP/1.1 request form does not carry an explicit indication of the
+   URI scheme), or it may be because how the server and application are
    implemented (often, they are two separate entities, with a variety of
    possible interfaces between them).
 
@@ -353,6 +327,16 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
 
    Therefore, servers need to carefully examine the use of such signals
    before deploying this specification.
+
+
+
+
+
+
+Nottingham & Thomson      Expires May 12, 2017                  [Page 6]
+
+Internet-Draft         Opportunistic HTTP Security         November 2016
+
 
 4.5.  Server Controls
 
@@ -387,13 +371,6 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
               DOI 10.17487/RFC5785, April 2010,
               <http://www.rfc-editor.org/info/rfc5785>.
 
-
-
-Nottingham & Thomson       Expires May 7, 2017                  [Page 7]
-
-Internet-Draft         Opportunistic HTTP Security         November 2016
-
-
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
               DOI 10.17487/RFC6454, December 2011,
               <http://www.rfc-editor.org/info/rfc6454>.
@@ -406,6 +383,16 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
               Protocol (HTTP/1.1): Message Syntax and Routing",
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
               <http://www.rfc-editor.org/info/rfc7230>.
+
+
+
+
+
+
+Nottingham & Thomson      Expires May 12, 2017                  [Page 7]
+
+Internet-Draft         Opportunistic HTTP Security         November 2016
+
 
    [RFC7232]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Conditional Requests", RFC 7232,
@@ -432,6 +419,11 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
               Attack", BCP 188, RFC 7258, DOI 10.17487/RFC7258, May
               2014, <http://www.rfc-editor.org/info/rfc7258>.
 
+   [RFC7301]  Friedl, S., Popov, A., Langley, A., and E. Stephan,
+              "Transport Layer Security (TLS) Application-Layer Protocol
+              Negotiation Extension", RFC 7301, DOI 10.17487/RFC7301,
+              July 2014, <http://www.rfc-editor.org/info/rfc7301>.
+
    [RFC7435]  Dukhovni, V., "Opportunistic Security: Some Protection
               Most of the Time", RFC 7435, DOI 10.17487/RFC7435,
               December 2014, <http://www.rfc-editor.org/info/rfc7435>.
@@ -439,16 +431,6 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
    [RFC7469]  Evans, C., Palmer, C., and R. Sleevi, "Public Key Pinning
               Extension for HTTP", RFC 7469, DOI 10.17487/RFC7469, April
               2015, <http://www.rfc-editor.org/info/rfc7469>.
-
-
-
-
-
-
-Nottingham & Thomson       Expires May 7, 2017                  [Page 8]
-
-Internet-Draft         Opportunistic HTTP Security         November 2016
-
 
    [W3C.CR-mixed-content-20160802]
               West, M., "Mixed Content", World Wide Web Consortium CR
@@ -458,6 +440,15 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
 Appendix A.  Acknowledgements
 
    Mike Bishop contributed significant text to this document.
+
+
+
+
+
+Nottingham & Thomson      Expires May 12, 2017                  [Page 8]
+
+Internet-Draft         Opportunistic HTTP Security         November 2016
+
 
    Thanks to Patrick McManus, Stefan Eissing, Eliot Lear, Stephen
    Farrell, Guy Podjarny, Stephen Ludin, Erik Nygren, Paul Hoffman, Adam
@@ -501,4 +492,13 @@ Authors' Addresses
 
 
 
-Nottingham & Thomson       Expires May 7, 2017                  [Page 9]
+
+
+
+
+
+
+
+
+
+Nottingham & Thomson      Expires May 12, 2017                  [Page 9]
