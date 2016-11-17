@@ -816,6 +816,8 @@ C.12.  Since draft-ietf-httpbis-rfc5987bis-03
    Fixed <https://github.com/httpwg/http-extensions/issues/266>: use of
    now undefined term "parmname".
 
+   Include WG into Acknowledgements for this revision.
+
 Appendix D.  Acknowledgements
 
    Thanks to Martin Duerst and Frank Ellermann for help figuring out
@@ -824,7 +826,21 @@ Appendix D.  Acknowledgements
    Benjamin Carlyle, Roar Lauritzsen, Eric Lawrence, and James Manger
    for implementer's feedback.
 
+   Furthermore thanks to the members of the IETF HTTP Working Group for
+   the feedback specific to this update of RFC 5987.
+
 Author's Address
+
+
+
+
+
+
+
+Reschke                   Expires May 21, 2017                 [Page 15]
+
+Internet-Draft      Charset/Language Encoding in HTTP      November 2016
+
 
    Julian F. Reschke
    greenbytes GmbH
@@ -837,4 +853,44 @@ Author's Address
 
 
 
-Reschke                   Expires May 21, 2017                 [Page 15]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Reschke                   Expires May 21, 2017                 [Page 16]
