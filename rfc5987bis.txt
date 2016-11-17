@@ -433,7 +433,7 @@ Internet-Draft      Charset/Language Encoding in HTTP      November 2016
       case for compatibility with RFC 2231.
 
       Note: This specification does not automatically assign a new
-      interpretration to parameter names ending in an asterisk.  As
+      interpretation to parameter names ending in an asterisk.  As
       pointed out above, it's up to the specification for the non-
       extended parameter to "opt in" to the syntax defined here.  That
       being said, some existing implementations are known to
