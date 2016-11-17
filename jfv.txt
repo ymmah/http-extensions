@@ -415,13 +415,13 @@ Internet-Draft     JSON Encoding for HTTP Field Values     November 2016
               <http://www.rfc-editor.org/info/rfc7235>.
 
    [XMLHttpRequest]
-              van Kesteren, A., Aubourg, J., Song, J., and H. Steen,
-              "XMLHttpRequest Level 1", W3C Working Draft WD-
-              XMLHttpRequest-20140130, January 2014,
-              <http://www.w3.org/TR/2014/WD-XMLHttpRequest-20140130/>.
+              WhatWG, "XMLHttpRequest", <https://xhr.spec.whatwg.org/>.
 
-              Latest version available at <http://www.w3.org/TR/
-              XMLHttpRequest/>.
+
+
+
+
+
 
 
 
@@ -734,6 +734,8 @@ C.8.  Since draft-ietf-httpbis-jfv-02
 
    Move non-essential parts into appendix.
 
+   Updated XHR reference.
+
 Appendix D.  Acknowledgements
 
    Thanks go to the Hypertext Transfer Protocol Working Group
@@ -749,8 +751,6 @@ Author's Address
 
    EMail: julian.reschke@greenbytes.de
    URI:   http://greenbytes.de/tech/webdav/
-
-
 
 
 
