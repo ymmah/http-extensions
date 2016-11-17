@@ -4,9 +4,9 @@
 
 HTTP Working Group                                            J. Reschke
 Internet-Draft                                                greenbytes
-Obsoletes: 5987 (if approved)                          November 14, 2016
+Obsoletes: 5987 (if approved)                          November 17, 2016
 Intended status: Standards Track
-Expires: May 18, 2017
+Expires: May 21, 2017
 
 
     Indicating Character Encoding and Language for HTTP Header Field
@@ -53,12 +53,12 @@ Status of This Memo
 
 
 
-Reschke                   Expires May 18, 2017                  [Page 1]
+Reschke                   Expires May 21, 2017                  [Page 1]
 
 Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 
 
-   This Internet-Draft will expire on May 18, 2017.
+   This Internet-Draft will expire on May 21, 2017.
 
 Copyright Notice
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Reschke                   Expires May 18, 2017                  [Page 2]
+Reschke                   Expires May 21, 2017                  [Page 2]
 
 Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 
@@ -165,7 +165,7 @@ Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 
 
 
-Reschke                   Expires May 18, 2017                  [Page 3]
+Reschke                   Expires May 21, 2017                  [Page 3]
 
 Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 
@@ -221,7 +221,7 @@ Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 
 
 
-Reschke                   Expires May 18, 2017                  [Page 4]
+Reschke                   Expires May 21, 2017                  [Page 4]
 
 Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 
@@ -277,7 +277,7 @@ Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 
 
 
-Reschke                   Expires May 18, 2017                  [Page 5]
+Reschke                   Expires May 21, 2017                  [Page 5]
 
 Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 
@@ -333,7 +333,7 @@ Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 
 
 
-Reschke                   Expires May 18, 2017                  [Page 6]
+Reschke                   Expires May 21, 2017                  [Page 6]
 
 Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 
@@ -389,7 +389,7 @@ Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 
 
 
-Reschke                   Expires May 18, 2017                  [Page 7]
+Reschke                   Expires May 21, 2017                  [Page 7]
 
 Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 
@@ -427,10 +427,10 @@ Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 
       Note: The Parameter Value Continuation feature defined in
       Section 3 of [RFC2231] makes it impossible to have multiple
-      instances of extended parameters with identical parmname
-      components, as the processing of continuations would become
-      ambiguous.  Thus, specifications using this extension are advised
-      to disallow this case for compatibility with RFC 2231.
+      instances of extended parameters with identical names, as the
+      processing of continuations would become ambiguous.  Thus,
+      specifications using this extension are advised to disallow this
+      case for compatibility with RFC 2231.
 
       Note: This specification does not automatically assign a new
       interpretration to parameter names ending in an asterisk.  As
@@ -445,7 +445,7 @@ Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 
 
 
-Reschke                   Expires May 18, 2017                  [Page 8]
+Reschke                   Expires May 21, 2017                  [Page 8]
 
 Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 
@@ -466,11 +466,11 @@ Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 4.2.  Error Handling
 
    Header field specifications need to define whether multiple instances
-   of parameters with identical parmname components are allowed, and how
-   they should be processed.  This specification suggests that a
-   parameter using the extended syntax takes precedence.  This would
-   allow producers to use both formats without breaking recipients that
-   do not understand the extended syntax yet.
+   of parameters with identical names are allowed, and how they should
+   be processed.  This specification suggests that a parameter using the
+   extended syntax takes precedence.  This would allow producers to use
+   both formats without breaking recipients that do not understand the
+   extended syntax yet.
 
    Example:
 
@@ -501,7 +501,7 @@ Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 
 
 
-Reschke                   Expires May 18, 2017                  [Page 9]
+Reschke                   Expires May 21, 2017                  [Page 9]
 
 Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 
@@ -557,7 +557,7 @@ Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 
 
 
-Reschke                   Expires May 18, 2017                 [Page 10]
+Reschke                   Expires May 21, 2017                 [Page 10]
 
 Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 
@@ -613,7 +613,7 @@ Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 
 
 
-Reschke                   Expires May 18, 2017                 [Page 11]
+Reschke                   Expires May 21, 2017                 [Page 11]
 
 Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 
@@ -669,7 +669,7 @@ Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 
 
 
-Reschke                   Expires May 18, 2017                 [Page 12]
+Reschke                   Expires May 21, 2017                 [Page 12]
 
 Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 
@@ -725,7 +725,7 @@ Appendix B.  Implementation Report
 
 
 
-Reschke                   Expires May 18, 2017                 [Page 13]
+Reschke                   Expires May 21, 2017                 [Page 13]
 
 Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 
@@ -781,7 +781,7 @@ C.8.  Since draft-reschke-rfc5987bis-06
 
 
 
-Reschke                   Expires May 18, 2017                 [Page 14]
+Reschke                   Expires May 21, 2017                 [Page 14]
 
 Internet-Draft      Charset/Language Encoding in HTTP      November 2016
 
@@ -813,6 +813,9 @@ C.12.  Since draft-ietf-httpbis-rfc5987bis-03
 
    Fixed one editorial issue.  Updated XHR reference.
 
+   Fixed <https://github.com/httpwg/http-extensions/issues/266>: use of
+   now undefined term "parmname".
+
 Appendix D.  Acknowledgements
 
    Thanks to Martin Duerst and Frank Ellermann for help figuring out
@@ -834,7 +837,4 @@ Author's Address
 
 
 
-
-
-
-Reschke                   Expires May 18, 2017                 [Page 15]
+Reschke                   Expires May 21, 2017                 [Page 15]
