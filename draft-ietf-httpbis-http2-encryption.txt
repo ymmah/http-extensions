@@ -82,7 +82,7 @@ Table of Contents
      4.1.  Security Indicators . . . . . . . . . . . . . . . . . . .   6
      4.2.  Downgrade Attacks . . . . . . . . . . . . . . . . . . . .   6
      4.3.  Privacy Considerations  . . . . . . . . . . . . . . . . .   6
-     4.4.  Confusion Regarding Request Scheme  . . . . . . . . . . .   6
+     4.4.  Confusion Regarding Request Scheme  . . . . . . . . . . .   7
      4.5.  Server Controls . . . . . . . . . . . . . . . . . . . . .   7
    5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   7
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   7
@@ -243,8 +243,17 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
 
 2.2.  Interaction with "https" URIs
 
-   Clients MUST NOT send "http" requests and "https" requests on the
-   same connection.
+   When using alternative services, requests for resources identified by
+   both "http" and "https" URIs might use the same connection, because
+   HTTP/2 permits requests for multiple origins on the same connection.
+
+   Because of the potential for server confusion about the scheme of
+   requests (see Section 4.4), clients MUST NOT send "http" requests on
+   a connection prior to successfully retrieving a valid http-
+   opportunistic resource that contains the origin (see Section 2.3).
+   The primary purpose of this check is to provide a client with some
+   assurance that a server understands this specification and has taken
+   steps to avoid being confused about request scheme.
 
 2.3.  The "http-opportunistic" well-known URI
 
@@ -265,15 +274,6 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
       for-character match for the origin in question, serialised into
       Unicode as per Section 6.1 of [RFC6454].
 
-   A client MAY treat an "http-opportunistic" resource as invalid if the
-   contains values that are not strings.
-
-   This document does not define semantics for "http-opportunistic"
-   resources on an "https" origin, nor does it define semantics if the
-   resource includes "https" origins.
-
-
-
 
 
 
@@ -281,6 +281,13 @@ Nottingham & Thomson      Expires May 25, 2017                  [Page 5]
 
 Internet-Draft         Opportunistic HTTP Security         November 2016
 
+
+   A client MAY treat an "http-opportunistic" resource as invalid if the
+   contains values that are not strings.
+
+   This document does not define semantics for "http-opportunistic"
+   resources on an "https" origin, nor does it define semantics if the
+   resource includes "https" origins.
 
 3.  IANA Considerations
 
@@ -321,6 +328,16 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
    cached alternative service information when clearing other origin-
    based state (i.e., cookies).
 
+
+
+
+
+
+Nottingham & Thomson      Expires May 25, 2017                  [Page 6]
+
+Internet-Draft         Opportunistic HTTP Security         November 2016
+
+
 4.4.  Confusion Regarding Request Scheme
 
    HTTP implementations and applications sometimes use ambient signals
@@ -330,14 +347,6 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
    This might be due to expected limitations in the protocol (the most
    common HTTP/1.1 request form does not carry an explicit indication of
    the URI scheme and the resource might have been developed assuming
-
-
-
-Nottingham & Thomson      Expires May 25, 2017                  [Page 6]
-
-Internet-Draft         Opportunistic HTTP Security         November 2016
-
-
    HTTP/1.1), or it may be because how the server and application are
    implemented (often, they are two separate entities, with a variety of
    possible interfaces between them).
@@ -374,15 +383,6 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
               DOI 10.17487/RFC2818, May 2000,
               <http://www.rfc-editor.org/info/rfc2818>.
 
-   [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
-              (TLS) Protocol Version 1.2", RFC 5246,
-              DOI 10.17487/RFC5246, August 2008,
-              <http://www.rfc-editor.org/info/rfc5246>.
-
-   [RFC5785]  Nottingham, M. and E. Hammer-Lahav, "Defining Well-Known
-              Uniform Resource Identifiers (URIs)", RFC 5785,
-              DOI 10.17487/RFC5785, April 2010,
-              <http://www.rfc-editor.org/info/rfc5785>.
 
 
 
@@ -393,6 +393,16 @@ Nottingham & Thomson      Expires May 25, 2017                  [Page 7]
 
 Internet-Draft         Opportunistic HTTP Security         November 2016
 
+
+   [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
+              (TLS) Protocol Version 1.2", RFC 5246,
+              DOI 10.17487/RFC5246, August 2008,
+              <http://www.rfc-editor.org/info/rfc5246>.
+
+   [RFC5785]  Nottingham, M. and E. Hammer-Lahav, "Defining Well-Known
+              Uniform Resource Identifiers (URIs)", RFC 5785,
+              DOI 10.17487/RFC5785, April 2010,
+              <http://www.rfc-editor.org/info/rfc5785>.
 
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
               DOI 10.17487/RFC6454, December 2011,
@@ -432,16 +442,6 @@ Internet-Draft         Opportunistic HTTP Security         November 2016
               Attack", BCP 188, RFC 7258, DOI 10.17487/RFC7258, May
               2014, <http://www.rfc-editor.org/info/rfc7258>.
 
-   [RFC7435]  Dukhovni, V., "Opportunistic Security: Some Protection
-              Most of the Time", RFC 7435, DOI 10.17487/RFC7435,
-              December 2014, <http://www.rfc-editor.org/info/rfc7435>.
-
-   [RFC7469]  Evans, C., Palmer, C., and R. Sleevi, "Public Key Pinning
-              Extension for HTTP", RFC 7469, DOI 10.17487/RFC7469, April
-              2015, <http://www.rfc-editor.org/info/rfc7469>.
-
-
-
 
 
 
@@ -449,6 +449,14 @@ Nottingham & Thomson      Expires May 25, 2017                  [Page 8]
 
 Internet-Draft         Opportunistic HTTP Security         November 2016
 
+
+   [RFC7435]  Dukhovni, V., "Opportunistic Security: Some Protection
+              Most of the Time", RFC 7435, DOI 10.17487/RFC7435,
+              December 2014, <http://www.rfc-editor.org/info/rfc7435>.
+
+   [RFC7469]  Evans, C., Palmer, C., and R. Sleevi, "Public Key Pinning
+              Extension for HTTP", RFC 7469, DOI 10.17487/RFC7469, April
+              2015, <http://www.rfc-editor.org/info/rfc7469>.
 
    [W3C.CR-mixed-content-20160802]
               West, M., "Mixed Content", World Wide Web Consortium CR
@@ -476,14 +484,6 @@ Authors' Addresses
    Mozilla
 
    Email: martin.thomson@gmail.com
-
-
-
-
-
-
-
-
 
 
 
