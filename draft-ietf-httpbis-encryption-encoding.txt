@@ -87,16 +87,16 @@ Table of Contents
      5.6.  Sizing and Timing Attacks . . . . . . . . . . . . . . . .  12
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  12
      6.1.  The "aes128gcm" HTTP Content Coding . . . . . . . . . . .  12
-     6.2.  Crypto-Key Header Field . . . . . . . . . . . . . . . . .  12
+     6.2.  Crypto-Key Header Field . . . . . . . . . . . . . . . . .  13
      6.3.  The HTTP Crypto-Key Parameter Registry  . . . . . . . . .  13
        6.3.1.  keyid . . . . . . . . . . . . . . . . . . . . . . . .  13
        6.3.2.  aes128gcm . . . . . . . . . . . . . . . . . . . . . .  13
-   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  13
-     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  13
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .  14
-   Appendix A.  JWE Mapping  . . . . . . . . . . . . . . . . . . . .  15
+   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  14
+     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  14
+     7.2.  Informative References  . . . . . . . . . . . . . . . . .  15
+   Appendix A.  JWE Mapping  . . . . . . . . . . . . . . . . . . . .  16
    Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  16
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  16
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  17
 
 1.  Introduction
 
@@ -640,6 +640,15 @@ Internet-Draft           HTTP encryption coding            November 2016
    [RFC7540] combined with TLS [RFC5246] might be used to hide the size
    of individual messages.
 
+   Developing a padding strategy is difficult.  A good padding strategy
+   can depend on context.  Common strategies include padding to a small
+   set of fixed lengths, padding to multiples of a values, or padding to
+   powers of 2.  Even a good strategy can still cause size information
+   to leak if processing activity of a recipient can be observed.  This
+   is especially good if the trailing records of a message contain only
+   padding.  To minimize this information, non-padding data can be
+   evenly distributed between records.
+
 6.  IANA Considerations
 
 6.1.  The "aes128gcm" HTTP Content Coding
@@ -654,6 +663,17 @@ Internet-Draft           HTTP encryption coding            November 2016
 
    o  Reference: this specification
 
+
+
+
+
+
+
+Thomson                   Expires May 25, 2017                 [Page 12]
+
+Internet-Draft           HTTP encryption coding            November 2016
+
+
 6.2.  Crypto-Key Header Field
 
    This memo registers the "Crypto-Key" HTTP header field in the
@@ -666,13 +686,6 @@ Internet-Draft           HTTP encryption coding            November 2016
    o  Status: Standard
 
    o  Reference: this specification
-
-
-
-Thomson                   Expires May 25, 2017                 [Page 12]
-
-Internet-Draft           HTTP encryption coding            November 2016
-
 
    o  Notes:
 
@@ -708,6 +721,15 @@ Internet-Draft           HTTP encryption coding            November 2016
 
    o  Parameter Name: aes128gcm
 
+
+
+
+
+Thomson                   Expires May 25, 2017                 [Page 13]
+
+Internet-Draft           HTTP encryption coding            November 2016
+
+
    o  Purpose: Provide an explicit input keying material value for the
       aes128gcm content coding.
 
@@ -722,13 +744,6 @@ Internet-Draft           HTTP encryption coding            November 2016
               Secure Hash Standard", March 2012,
               <http://csrc.nist.gov/publications/fips/fips180-4/
               fips-180-4.pdf>.
-
-
-
-Thomson                   Expires May 25, 2017                 [Page 13]
-
-Internet-Draft           HTTP encryption coding            November 2016
-
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -763,6 +778,14 @@ Internet-Draft           HTTP encryption coding            November 2016
               Signature (JWS)", RFC 7515, DOI 10.17487/RFC7515, May
               2015, <http://www.rfc-editor.org/info/rfc7515>.
 
+
+
+
+Thomson                   Expires May 25, 2017                 [Page 14]
+
+Internet-Draft           HTTP encryption coding            November 2016
+
+
 7.2.  Informative References
 
    [AEBounds]
@@ -774,17 +797,6 @@ Internet-Draft           HTTP encryption coding            November 2016
               Thayer, "OpenPGP Message Format", RFC 4880,
               DOI 10.17487/RFC4880, November 2007,
               <http://www.rfc-editor.org/info/rfc4880>.
-
-
-
-
-
-
-
-Thomson                   Expires May 25, 2017                 [Page 14]
-
-Internet-Draft           HTTP encryption coding            November 2016
-
 
    [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
               (TLS) Protocol Version 1.2", RFC 5246,
@@ -820,6 +832,16 @@ Internet-Draft           HTTP encryption coding            November 2016
               Recommendation REC-xmlenc-core1-20130411 , January 2013,
               <https://www.w3.org/TR/2013/REC-xmlenc-core1-20130411>.
 
+
+
+
+
+
+Thomson                   Expires May 25, 2017                 [Page 15]
+
+Internet-Draft           HTTP encryption coding            November 2016
+
+
 Appendix A.  JWE Mapping
 
    The "aes128gcm" content coding can be considered as a sequence of
@@ -833,14 +855,6 @@ Appendix A.  JWE Mapping
       with a 128-bit content encryption key.  This header is not
       transmitted, it is instead implied by the value of the Content-
       Encoding header field.
-
-
-
-
-Thomson                   Expires May 25, 2017                 [Page 15]
-
-Internet-Draft           HTTP encryption coding            November 2016
-
 
    o  The JWE Encrypted Key is empty, as stipulated by the direct
       encryption algorithm.
@@ -876,6 +890,14 @@ Appendix B.  Acknowledgements
    Adam Langley, John Mattsson, Julian Reschke, Eric Rescorla, Jim
    Schaad, and Magnus Westerlund.
 
+
+
+
+Thomson                   Expires May 25, 2017                 [Page 16]
+
+Internet-Draft           HTTP encryption coding            November 2016
+
+
 Author's Address
 
    Martin Thomson
@@ -893,4 +915,38 @@ Author's Address
 
 
 
-Thomson                   Expires May 25, 2017                 [Page 16]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thomson                   Expires May 25, 2017                 [Page 17]
