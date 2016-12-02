@@ -4,9 +4,9 @@
 
 HTTP Working Group                                               M. West
 Internet-Draft                                               Google, Inc
-Updates: 6265 (if approved)                            November 27, 2016
+Updates: 6265 (if approved)                             December 2, 2016
 Intended status: Standards Track
-Expires: May 31, 2017
+Expires: June 5, 2017
 
 
                             Cookie Prefixes
@@ -46,16 +46,16 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 31, 2017.
+   This Internet-Draft will expire on June 5, 2017.
 
 
 
 
 
 
-West                      Expires May 31, 2017                  [Page 1]
+West                      Expires June 5, 2017                  [Page 1]
 
-Internet-Draft               Cookie Prefixes               November 2016
+Internet-Draft               Cookie Prefixes               December 2016
 
 
 Copyright Notice
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-West                      Expires May 31, 2017                  [Page 2]
+West                      Expires June 5, 2017                  [Page 2]
 
-Internet-Draft               Cookie Prefixes               November 2016
+Internet-Draft               Cookie Prefixes               December 2016
 
 
    smuggle information along with the cookie if we reserve certain name
@@ -165,9 +165,9 @@ Internet-Draft               Cookie Prefixes               November 2016
 
 
 
-West                      Expires May 31, 2017                  [Page 3]
+West                      Expires June 5, 2017                  [Page 3]
 
-Internet-Draft               Cookie Prefixes               November 2016
+Internet-Draft               Cookie Prefixes               December 2016
 
 
    4.  Sent to every request for a host.  That is, a cookie named
@@ -221,9 +221,9 @@ Internet-Draft               Cookie Prefixes               November 2016
 
 
 
-West                      Expires May 31, 2017                  [Page 4]
+West                      Expires June 5, 2017                  [Page 4]
 
-Internet-Draft               Cookie Prefixes               November 2016
+Internet-Draft               Cookie Prefixes               December 2016
 
 
 5.2.  Why "__"?
@@ -277,9 +277,9 @@ Internet-Draft               Cookie Prefixes               November 2016
 
 
 
-West                      Expires May 31, 2017                  [Page 5]
+West                      Expires June 5, 2017                  [Page 5]
 
-Internet-Draft               Cookie Prefixes               November 2016
+Internet-Draft               Cookie Prefixes               December 2016
 
 
    [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
@@ -333,4 +333,4 @@ Author's Address
 
 
 
-West                      Expires May 31, 2017                  [Page 6]
+West                      Expires June 5, 2017                  [Page 6]
