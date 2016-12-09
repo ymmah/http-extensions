@@ -8,7 +8,7 @@ Intended status: Standards Track                        December 9, 2016
 Expires: June 12, 2017
 
 
-                      HTTP Header Common Structure
+                   HTTP Header Field Common Structure
                draft-kamp-httpbis-header-structure-latest
 
 Abstract
@@ -55,7 +55,7 @@ Copyright Notice
 
 Kamp                      Expires June 12, 2017                 [Page 1]
 
-Internet-Draft        HTTP Header Common Structure         December 2016
+Internet-Draft     HTTP Header Field Common Structure      December 2016
 
 
    (http://trustee.ietf.org/license-info) in effect on the date of
@@ -111,7 +111,7 @@ Internet-Draft        HTTP Header Common Structure         December 2016
 
 Kamp                      Expires June 12, 2017                 [Page 2]
 
-Internet-Draft        HTTP Header Common Structure         December 2016
+Internet-Draft     HTTP Header Field Common Structure      December 2016
 
 
    that HTTP/1 serialization and 'field-value' compatibility is built
@@ -167,7 +167,7 @@ Internet-Draft        HTTP Header Common Structure         December 2016
 
 Kamp                      Expires June 12, 2017                 [Page 3]
 
-Internet-Draft        HTTP Header Common Structure         December 2016
+Internet-Draft     HTTP Header Field Common Structure      December 2016
 
 
      import token from RFC7230
@@ -223,7 +223,7 @@ Internet-Draft        HTTP Header Common Structure         December 2016
 
 Kamp                      Expires June 12, 2017                 [Page 4]
 
-Internet-Draft        HTTP Header Common Structure         December 2016
+Internet-Draft     HTTP Header Field Common Structure      December 2016
 
 
      import HEXDIG, DQUOTE from RFC5234
@@ -279,7 +279,7 @@ Internet-Draft        HTTP Header Common Structure         December 2016
 
 Kamp                      Expires June 12, 2017                 [Page 5]
 
-Internet-Draft        HTTP Header Common Structure         December 2016
+Internet-Draft     HTTP Header Field Common Structure      December 2016
 
 
            h1_timestamp = number
@@ -335,7 +335,7 @@ Internet-Draft        HTTP Header Common Structure         December 2016
 
 Kamp                      Expires June 12, 2017                 [Page 6]
 
-Internet-Draft        HTTP Header Common Structure         December 2016
+Internet-Draft     HTTP Header Field Common Structure      December 2016
 
 
    Most on-the-fly editing is hackish at best.
@@ -391,7 +391,7 @@ Internet-Draft        HTTP Header Common Structure         December 2016
 
 Kamp                      Expires June 12, 2017                 [Page 7]
 
-Internet-Draft        HTTP Header Common Structure         December 2016
+Internet-Draft     HTTP Header Field Common Structure      December 2016
 
 
 10.  Normative References
@@ -447,7 +447,7 @@ A.1.  Survey of HTTP header structure
 
 Kamp                      Expires June 12, 2017                 [Page 8]
 
-Internet-Draft        HTTP Header Common Structure         December 2016
+Internet-Draft     HTTP Header Field Common Structure      December 2016
 
 
    In pidgin ABNF, ignoring white-space for the sake of clarity, the
@@ -503,7 +503,7 @@ A.2.2.  Timestamps
 
 Kamp                      Expires June 12, 2017                 [Page 9]
 
-Internet-Draft        HTTP Header Common Structure         December 2016
+Internet-Draft     HTTP Header Field Common Structure      December 2016
 
 
 A.2.3.  Strings
@@ -559,7 +559,7 @@ A.3.  Is this actually a useful thing to generalize ?
 
 Kamp                      Expires June 12, 2017                [Page 10]
 
-Internet-Draft        HTTP Header Common Structure         December 2016
+Internet-Draft     HTTP Header Field Common Structure      December 2016
 
 
    Most attempts studied as part of this effort, have sunk under
@@ -615,7 +615,7 @@ A.5.  RFC723x headers with "uncommon structure"
 
 Kamp                      Expires June 12, 2017                [Page 11]
 
-Internet-Draft        HTTP Header Common Structure         December 2016
+Internet-Draft     HTTP Header Field Common Structure      December 2016
 
 
      Accept-Ranges       [RFC7233, Section 2.3]
@@ -671,7 +671,7 @@ Internet-Draft        HTTP Header Common Structure         December 2016
 
 Kamp                      Expires June 12, 2017                [Page 12]
 
-Internet-Draft        HTTP Header Common Structure         December 2016
+Internet-Draft     HTTP Header Field Common Structure      December 2016
 
 
          HTTP-date / delay-seconds
