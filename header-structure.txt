@@ -2,14 +2,14 @@
 
 
 
-HTTP                                                            PH. Kamp
+HTTP Working Group                                              PH. Kamp
 Internet-Draft                                 The Varnish Cache Project
 Intended status: Standards Track                        December 9, 2016
 Expires: June 12, 2017
 
 
-                   HTTP Header Field Common Structure
-               draft-kamp-httpbis-header-structure-latest
+                      HTTP Header Common Structure
+               draft-ietf-httpbis-header-structure-latest
 
 Abstract
 
@@ -55,7 +55,7 @@ Copyright Notice
 
 Kamp                      Expires June 12, 2017                 [Page 1]
 
-Internet-Draft     HTTP Header Field Common Structure      December 2016
+Internet-Draft        HTTP Header Common Structure         December 2016
 
 
    (http://trustee.ietf.org/license-info) in effect on the date of
@@ -111,7 +111,7 @@ Internet-Draft     HTTP Header Field Common Structure      December 2016
 
 Kamp                      Expires June 12, 2017                 [Page 2]
 
-Internet-Draft     HTTP Header Field Common Structure      December 2016
+Internet-Draft        HTTP Header Common Structure         December 2016
 
 
    that HTTP/1 serialization and 'field-value' compatibility is built
@@ -167,7 +167,7 @@ Internet-Draft     HTTP Header Field Common Structure      December 2016
 
 Kamp                      Expires June 12, 2017                 [Page 3]
 
-Internet-Draft     HTTP Header Field Common Structure      December 2016
+Internet-Draft        HTTP Header Common Structure         December 2016
 
 
      import token from RFC7230
@@ -223,17 +223,17 @@ Internet-Draft     HTTP Header Field Common Structure      December 2016
 
 Kamp                      Expires June 12, 2017                 [Page 4]
 
-Internet-Draft     HTTP Header Field Common Structure      December 2016
+Internet-Draft        HTTP Header Common Structure         December 2016
 
 
      import HEXDIG, DQUOTE from RFC5234
-           import UTF8-2, UTF8-3, UTF8-4 from RFC3629
+     import UTF8-2, UTF8-3, UTF8-4 from RFC3629
 
      h1_common-structure-header =
              ( field-name ":" OWS ">" h1_common_structure "<" )
-           # Self-identifying HTTP headers
+     # Self-identifying HTTP headers
              ( field-name ":" OWS h1_common_structure ) /
-           # legacy HTTP headers on white-list, see {{iana}}
+     # legacy HTTP headers on white-list, see {{iana}}
 
      h1_common_structure = h1_element  * ("," h1_element)
 
@@ -269,7 +269,7 @@ Internet-Draft     HTTP Header Field Common Structure      December 2016
                          UTF8-4
                          ) DQUOTE
      # This is UTF8 with HTTP1 unfriendly codepoints
-           # (00-1f, 7f) neutered with \uXXXX escapes.
+     # (00-1f, 7f) neutered with \uXXXX escapes.
 
      h1_blob = "'" base64 "'"
      # XXX: where to import base64 from ?
@@ -279,12 +279,12 @@ Internet-Draft     HTTP Header Field Common Structure      December 2016
 
 Kamp                      Expires June 12, 2017                 [Page 5]
 
-Internet-Draft     HTTP Header Field Common Structure      December 2016
+Internet-Draft        HTTP Header Common Structure         December 2016
 
 
-           h1_timestamp = number
-           # UNIX/POSIX time_t semantics.
-           # fractional seconds allowed.
+     h1_timestamp = number
+     # UNIX/POSIX time_t semantics.
+     # fractional seconds allowed.
 
      h1_common_structure = ">" h1_common_structure "<"
 
@@ -335,7 +335,7 @@ Internet-Draft     HTTP Header Field Common Structure      December 2016
 
 Kamp                      Expires June 12, 2017                 [Page 6]
 
-Internet-Draft     HTTP Header Field Common Structure      December 2016
+Internet-Draft        HTTP Header Common Structure         December 2016
 
 
    Most on-the-fly editing is hackish at best.
@@ -351,7 +351,7 @@ Internet-Draft     HTTP Header Field Common Structure      December 2016
    For instance one could imagine:
 
 
-           Date: >1475061449.201<
+     Date: >1475061449.201<
 
    Which would be faster to parse and validate than the current
    definition of the Date header and more precise too.
@@ -391,7 +391,7 @@ Internet-Draft     HTTP Header Field Common Structure      December 2016
 
 Kamp                      Expires June 12, 2017                 [Page 7]
 
-Internet-Draft     HTTP Header Field Common Structure      December 2016
+Internet-Draft        HTTP Header Common Structure         December 2016
 
 
 10.  Normative References
@@ -447,7 +447,7 @@ A.1.  Survey of HTTP header structure
 
 Kamp                      Expires June 12, 2017                 [Page 8]
 
-Internet-Draft     HTTP Header Field Common Structure      December 2016
+Internet-Draft        HTTP Header Common Structure         December 2016
 
 
    In pidgin ABNF, ignoring white-space for the sake of clarity, the
@@ -503,7 +503,7 @@ A.2.2.  Timestamps
 
 Kamp                      Expires June 12, 2017                 [Page 9]
 
-Internet-Draft     HTTP Header Field Common Structure      December 2016
+Internet-Draft        HTTP Header Common Structure         December 2016
 
 
 A.2.3.  Strings
@@ -559,7 +559,7 @@ A.3.  Is this actually a useful thing to generalize ?
 
 Kamp                      Expires June 12, 2017                [Page 10]
 
-Internet-Draft     HTTP Header Field Common Structure      December 2016
+Internet-Draft        HTTP Header Common Structure         December 2016
 
 
    Most attempts studied as part of this effort, have sunk under
@@ -615,7 +615,7 @@ A.5.  RFC723x headers with "uncommon structure"
 
 Kamp                      Expires June 12, 2017                [Page 11]
 
-Internet-Draft     HTTP Header Field Common Structure      December 2016
+Internet-Draft        HTTP Header Common Structure         December 2016
 
 
      Accept-Ranges       [RFC7233, Section 2.3]
@@ -671,7 +671,7 @@ Internet-Draft     HTTP Header Field Common Structure      December 2016
 
 Kamp                      Expires June 12, 2017                [Page 12]
 
-Internet-Draft     HTTP Header Field Common Structure      December 2016
+Internet-Draft        HTTP Header Common Structure         December 2016
 
 
          HTTP-date / delay-seconds
