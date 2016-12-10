@@ -690,16 +690,16 @@ Internet-Draft        HTTP Header Common Structure         December 2016
      WWW-Authenticate    [RFC7235, Section 4.1]
          1#challenge
 
+Appendix B.  Changes
+
+B.1.  Since draft-ietf-httpbis-header-structure-00
+
 Author's Address
 
    Poul-Henning Kamp
    The Varnish Cache Project
 
    Email: phk@varnish-cache.org
-
-
-
-
 
 
 
