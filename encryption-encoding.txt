@@ -578,6 +578,15 @@ Internet-Draft           HTTP encryption coding            December 2016
    [RFC7540] combined with TLS [RFC5246] might be used to hide the size
    of individual messages.
 
+   Developing a padding strategy is difficult.  A good padding strategy
+   can depend on context.  Common strategies include padding to a small
+   set of fixed lengths, padding to multiples of a values, or padding to
+   powers of 2.  Even a good strategy can still cause size information
+   to leak if processing activity of a recipient can be observed.  This
+   is especially true if the trailing records of a message contain only
+   padding.  Distributing non-padding data is recommended to avoid
+   leaking size information.
+
 5.  IANA Considerations
 
 5.1.  The "aes128gcm" HTTP Content Coding
@@ -602,6 +611,13 @@ Internet-Draft           HTTP encryption coding            December 2016
               <http://csrc.nist.gov/publications/fips/fips180-4/
               fips-180-4.pdf>.
 
+
+
+Thomson                   Expires June 25, 2017                [Page 11]
+
+Internet-Draft           HTTP encryption coding            December 2016
+
+
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
@@ -610,13 +626,6 @@ Internet-Draft           HTTP encryption coding            December 2016
    [RFC5116]  McGrew, D., "An Interface and Algorithms for Authenticated
               Encryption", RFC 5116, DOI 10.17487/RFC5116, January 2008,
               <http://www.rfc-editor.org/info/rfc5116>.
-
-
-
-Thomson                   Expires June 25, 2017                [Page 11]
-
-Internet-Draft           HTTP encryption coding            December 2016
-
 
    [RFC5869]  Krawczyk, H. and P. Eronen, "HMAC-based Extract-and-Expand
               Key Derivation Function (HKDF)", RFC 5869,
@@ -658,21 +667,17 @@ Internet-Draft           HTTP encryption coding            December 2016
               RFC 5652, DOI 10.17487/RFC5652, September 2009,
               <http://www.rfc-editor.org/info/rfc5652>.
 
-   [RFC7233]  Fielding, R., Ed., Lafon, Y., Ed., and J. Reschke, Ed.,
-              "Hypertext Transfer Protocol (HTTP/1.1): Range Requests",
-              RFC 7233, DOI 10.17487/RFC7233, June 2014,
-              <http://www.rfc-editor.org/info/rfc7233>.
-
-
-
-
-
 
 
 Thomson                   Expires June 25, 2017                [Page 12]
 
 Internet-Draft           HTTP encryption coding            December 2016
 
+
+   [RFC7233]  Fielding, R., Ed., Lafon, Y., Ed., and J. Reschke, Ed.,
+              "Hypertext Transfer Protocol (HTTP/1.1): Range Requests",
+              RFC 7233, DOI 10.17487/RFC7233, June 2014,
+              <http://www.rfc-editor.org/info/rfc7233>.
 
    [RFC7235]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Authentication", RFC 7235,
@@ -716,11 +721,6 @@ Appendix A.  JWE Mapping
       zero, and a value derived from the input keying material (see
       Section 2.3).  This value is also not transmitted.
 
-   o  The final value is the concatenated header, JWE Ciphertext, and
-      JWE Authentication Tag, all expressed without base64url encoding.
-      The "." separator is omitted, since the length of these fields is
-      known.
-
 
 
 
@@ -729,6 +729,11 @@ Thomson                   Expires June 25, 2017                [Page 13]
 
 Internet-Draft           HTTP encryption coding            December 2016
 
+
+   o  The final value is the concatenated header, JWE Ciphertext, and
+      JWE Authentication Tag, all expressed without base64url encoding.
+      The "." separator is omitted, since the length of these fields is
+      known.
 
    Thus, the example in Section 3.1 can be rendered using the JWE
    Compact Serialization as:
@@ -757,11 +762,6 @@ Author's Address
    Mozilla
 
    Email: martin.thomson@gmail.com
-
-
-
-
-
 
 
 
