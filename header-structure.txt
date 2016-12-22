@@ -175,7 +175,7 @@ Internet-Draft        HTTP Header Common Structure         December 2016
 
      common-structure = 1* ( identifier dictionary )
 
-     dictionary = * ( identifier value )
+     dictionary = * ( identifier [ value ] )
 
      value = identifier /
              number /
