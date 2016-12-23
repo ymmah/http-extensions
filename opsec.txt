@@ -180,9 +180,9 @@ Internet-Draft         Opportunistic HTTP Security         December 2016
    Client certificates are not meaningful for URLs with the "http"
    scheme, and therefore clients creating new TLS connections to
    alternative services for the purposes of this specification MUST NOT
-   present them.  A server that also provides "https" resources on the
-   same port can request a certificate during the TLS handshake, but it
-   MUST NOT abort the handshake if the client does not provide one.
+   present them.  Connections that use client certificates for other
+   reasons MAY be reused, though client certificates MUST NOT affect the
+   responses to requests for "http" resources.
 
 2.1.  Alternative Server Opt-In
 
@@ -194,17 +194,17 @@ Internet-Draft         Opportunistic HTTP Security         December 2016
 
    Clients MUST NOT send "http" requests over a secured connection,
    unless the chosen alternative service presents a certificate that is
-   valid for the origin as defined in [RFC2818] (this also establishes
-   "reasonable assurances" for the purposes of {RFC7838}}) and they have
-   obtained a valid http-opportunistic response for an origin (as per
-   Section 2.3).  An exception to the last restriction is made for
-   requests for the "http-opportunistic" well-known URI.
+   valid for the origin - as per [RFC2818] (this also establishes
+   "reasonable assurances" for the purposes of {RFC7838}}) - and they
+   have obtained a valid http-opportunistic response for an origin (as
+   per Section 2.3).
 
    For example, assuming the following request is made over a TLS
    connection that is successfully authenticated for those origins, the
    following request/response pair would allow requests for the origins
    "http://www.example.com" or "http://example.com" to be sent using a
    secured connection:
+
 
 
 
@@ -253,12 +253,9 @@ Internet-Draft         Opportunistic HTTP Security         December 2016
    [RFC5785].  A client is said to have a valid http-opportunistic
    response for a given origin when:
 
-   o  The client has requested the well-known URI from the origin over
-      an authenticated connection and a 200 (OK) response was provided,
-      and
-
-   o  That response is fresh [RFC7234] (potentially through revalidation
-      [RFC7232]), and
+   o  The client has obtained a 200 (OK) response for the well-known URI
+      from the origin, and it is fresh [RFC7234] (potentially through
+      revalidation [RFC7232]), and
 
    o  That response has the media type "application/json", and
 
@@ -272,6 +269,9 @@ Internet-Draft         Opportunistic HTTP Security         December 2016
    A client MAY treat an "http-opportunistic" resource as invalid if the
    contains values that are not strings.
 
+   This document does not define semantics for "http-opportunistic"
+   resources on an "https" origin, nor does it define semantics if the
+   resource includes "https" origins.
 
 
 
@@ -281,10 +281,6 @@ Nottingham & Thomson      Expires June 26, 2017                 [Page 5]
 
 Internet-Draft         Opportunistic HTTP Security         December 2016
 
-
-   This document does not define semantics for "http-opportunistic"
-   resources on an "https" origin, nor does it define semantics if the
-   resource includes "https" origins.
 
 3.  IANA Considerations
 
@@ -331,6 +327,10 @@ Internet-Draft         Opportunistic HTTP Security         December 2016
    to determine if a request is for an "https" resource; for example,
    they might look for TLS on the stack, or a server port number of 443.
 
+   This might be due to expected limitations in the protocol (the most
+   common HTTP/1.1 request form does not carry an explicit indication of
+   the URI scheme and the resource might have been developed assuming
+
 
 
 Nottingham & Thomson      Expires June 26, 2017                 [Page 6]
@@ -338,9 +338,6 @@ Nottingham & Thomson      Expires June 26, 2017                 [Page 6]
 Internet-Draft         Opportunistic HTTP Security         December 2016
 
 
-   This might be due to expected limitations in the protocol (the most
-   common HTTP/1.1 request form does not carry an explicit indication of
-   the URI scheme and the resource might have been developed assuming
    HTTP/1.1), or it may be because how the server and application are
    implemented (often, they are two separate entities, with a variety of
    possible interfaces between them).
@@ -386,6 +383,9 @@ Internet-Draft         Opportunistic HTTP Security         December 2016
               Uniform Resource Identifiers (URIs)", RFC 5785,
               DOI 10.17487/RFC5785, April 2010,
               <http://www.rfc-editor.org/info/rfc5785>.
+
+
+
 
 
 
