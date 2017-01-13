@@ -150,6 +150,7 @@ Internet-Draft          HTTP Immutable Responses            January 2017
 
 2.2.  Example
 
+
    Cache-Control: max-age=31536000, immutable
 
 3.  Security Considerations
@@ -159,9 +160,8 @@ Internet-Draft          HTTP Immutable Responses            January 2017
    corruption incidents.  These incidents include cache poisoning
    attacks.  Three mechanisms are suggested for mitigation of this risk:
 
-   o  Clients should ignore immutable for resources that are not part of
-      an authenticated context such as HTTPS.  Authenticated resources
-      are less vulnerable to cache poisoning.
+
+
 
 
 
@@ -169,6 +169,10 @@ McManus                   Expires July 17, 2017                 [Page 3]
 
 Internet-Draft          HTTP Immutable Responses            January 2017
 
+
+   o  Clients should ignore immutable for resources that are not part of
+      an authenticated context such as HTTPS.  Authenticated resources
+      are less vulnerable to cache poisoning.
 
    o  User-Agents often provide two different refresh mechanismss:
       reload and some form of force-reload.  The latter is used to
@@ -214,10 +218,6 @@ Internet-Draft          HTTP Immutable Responses            January 2017
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
               RFC 7234, DOI 10.17487/RFC7234, June 2014,
               <http://www.rfc-editor.org/info/rfc7234>.
-
-
-
-
 
 
 
