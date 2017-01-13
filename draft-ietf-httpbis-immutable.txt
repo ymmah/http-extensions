@@ -2,14 +2,14 @@
 
 
 
-Network Working Group                                         P. McManus
+HTTP Working Group                                            P. McManus
 Internet-Draft                                                   Mozilla
-Intended status: Standards Track                        January 12, 2017
-Expires: July 16, 2017
+Intended status: Standards Track                        January 13, 2017
+Expires: July 17, 2017
 
 
                         HTTP Immutable Responses
-                    draft-ietf-httpbis-immutable-00
+                  draft-ietf-httpbis-immutable-latest
 
 Abstract
 
@@ -17,6 +17,16 @@ Abstract
    identify resources that will not be updated during their freshness
    lifetime.  This assures that a client never needs to revalidate a
    cached fresh resource to be certain it has not been modified.
+
+Note to Readers
+
+   Discussion of this draft takes place on the HTTP working group
+   mailing list (ietf-http-wg@w3.org), which is archived at
+   https://lists.w3.org/Archives/Public/ietf-http-wg/ .
+
+   Working Group information can be found at http://httpwg.github.io/ ;
+   source code and issues list for this draft can be found at
+   https://github.com/httpwg/http-extensions/labels/immutable .
 
 Status of This Memo
 
@@ -33,12 +43,20 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on July 16, 2017.
+   This Internet-Draft will expire on July 17, 2017.
 
 Copyright Notice
 
    Copyright (c) 2017 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
+
+
+
+
+McManus                   Expires July 17, 2017                 [Page 1]
+
+Internet-Draft          HTTP Immutable Responses            January 2017
+
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
@@ -49,14 +67,6 @@ Copyright Notice
    include Simplified BSD License text as described in Section 4.e of
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
-
-
-
-
-McManus                   Expires July 16, 2017                 [Page 1]
-
-Internet-Draft                     I-D                      January 2017
-
 
 1.  Introduction
 
@@ -95,6 +105,15 @@ Internet-Draft                     I-D                      January 2017
 
    Unfortunately, the user-agent is not aware of the versioned URL
    design pattern.  User driven refresh events still translate into
+
+
+
+
+McManus                   Expires July 17, 2017                 [Page 2]
+
+Internet-Draft          HTTP Immutable Responses            January 2017
+
+
    wasted conditional requests for each sub-resource as each will return
    304 responses.
 
@@ -103,16 +122,6 @@ Internet-Draft                     I-D                      January 2017
    lifetime.  This effectively instructs the client that any conditional
    request for a previously served variant of that resource may be
    safely skipped without worrying that it has been updated.
-
-
-
-
-
-
-McManus                   Expires July 16, 2017                 [Page 2]
-
-Internet-Draft                     I-D                      January 2017
-
 
 2.  The immutable Cache-Control extension
 
@@ -154,21 +163,18 @@ Internet-Draft                     I-D                      January 2017
       an authenticated context such as HTTPS.  Authenticated resources
       are less vulnerable to cache poisoning.
 
+
+
+McManus                   Expires July 17, 2017                 [Page 3]
+
+Internet-Draft          HTTP Immutable Responses            January 2017
+
+
    o  User-Agents often provide two different refresh mechanismss:
       reload and some form of force-reload.  The latter is used to
       rectify interrupted loads and other corruption.  These reloads,
       typically indicated through no-cache request attributes, should
       ignore immutable as well.
-
-
-
-
-
-
-McManus                   Expires July 16, 2017                 [Page 3]
-
-Internet-Draft                     I-D                      January 2017
-
 
    o  Clients should ignore immutable for resources that do not provide
       a strong indication that the stored response size is the correct
@@ -209,22 +215,22 @@ Internet-Draft                     I-D                      January 2017
               RFC 7234, DOI 10.17487/RFC7234, June 2014,
               <http://www.rfc-editor.org/info/rfc7234>.
 
+
+
+
+
+
+
+McManus                   Expires July 17, 2017                 [Page 4]
+
+Internet-Draft          HTTP Immutable Responses            January 2017
+
+
 6.2.  Informative References
 
    [REQPERPAGE]
               "HTTP Archive", n.d.,
               <http://httparchive.org/interesting.php#reqTotal>.
-
-
-
-
-
-
-
-McManus                   Expires July 16, 2017                 [Page 4]
-
-Internet-Draft                     I-D                      January 2017
-
 
 Author's Address
 
@@ -271,10 +277,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-McManus                   Expires July 16, 2017                 [Page 5]
+McManus                   Expires July 17, 2017                 [Page 5]
