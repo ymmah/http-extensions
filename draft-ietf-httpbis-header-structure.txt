@@ -8,7 +8,7 @@ Intended status: Standards Track                        February 1, 2017
 Expires: August 5, 2017
 
 
-                   HTTP Header Field Common Structure
+                      HTTP Header Common Structure
                draft-ietf-httpbis-header-structure-latest
 
 Abstract
@@ -55,7 +55,7 @@ Copyright Notice
 
 Kamp                     Expires August 5, 2017                 [Page 1]
 
-Internet-Draft     HTTP Header Field Common Structure      February 2017
+Internet-Draft        HTTP Header Common Structure         February 2017
 
 
    (http://trustee.ietf.org/license-info) in effect on the date of
@@ -111,7 +111,7 @@ Internet-Draft     HTTP Header Field Common Structure      February 2017
 
 Kamp                     Expires August 5, 2017                 [Page 2]
 
-Internet-Draft     HTTP Header Field Common Structure      February 2017
+Internet-Draft        HTTP Header Common Structure         February 2017
 
 
    that HTTP/1 serialization and 'field-value' compatibility is built
@@ -167,7 +167,7 @@ Internet-Draft     HTTP Header Field Common Structure      February 2017
 
 Kamp                     Expires August 5, 2017                 [Page 3]
 
-Internet-Draft     HTTP Header Field Common Structure      February 2017
+Internet-Draft        HTTP Header Common Structure         February 2017
 
 
    Recursion is included as a way to to support deep and more general
@@ -223,7 +223,7 @@ Internet-Draft     HTTP Header Field Common Structure      February 2017
 
 Kamp                     Expires August 5, 2017                 [Page 4]
 
-Internet-Draft     HTTP Header Field Common Structure      February 2017
+Internet-Draft        HTTP Header Common Structure         February 2017
 
 
      timestamp = number
@@ -279,7 +279,7 @@ Internet-Draft     HTTP Header Field Common Structure      February 2017
 
 Kamp                     Expires August 5, 2017                 [Page 5]
 
-Internet-Draft     HTTP Header Field Common Structure      February 2017
+Internet-Draft        HTTP Header Common Structure         February 2017
 
 
      h1-common-structure = h1-element * ("," h1-element)
@@ -335,7 +335,7 @@ Internet-Draft     HTTP Header Field Common Structure      February 2017
 
 Kamp                     Expires August 5, 2017                 [Page 6]
 
-Internet-Draft     HTTP Header Field Common Structure      February 2017
+Internet-Draft        HTTP Header Common Structure         February 2017
 
 
 4.  When to use Common Structure Parser
@@ -391,7 +391,7 @@ Internet-Draft     HTTP Header Field Common Structure      February 2017
 
 Kamp                     Expires August 5, 2017                 [Page 7]
 
-Internet-Draft     HTTP Header Field Common Structure      February 2017
+Internet-Draft        HTTP Header Common Structure         February 2017
 
 
      Date: >1475061449.201<
@@ -447,7 +447,7 @@ Internet-Draft     HTTP Header Field Common Structure      February 2017
 
 Kamp                     Expires August 5, 2017                 [Page 8]
 
-Internet-Draft     HTTP Header Field Common Structure      February 2017
+Internet-Draft        HTTP Header Common Structure         February 2017
 
 
 Appendix A.  Do HTTP headers have any common structure ?
@@ -503,7 +503,7 @@ A.1.  Survey of HTTP header structure
 
 Kamp                     Expires August 5, 2017                 [Page 9]
 
-Internet-Draft     HTTP Header Field Common Structure      February 2017
+Internet-Draft        HTTP Header Common Structure         February 2017
 
 
      token-or-asterix = token from {{RFC7230}}, but also allowing "*"
@@ -559,7 +559,7 @@ A.2.3.  Strings
 
 Kamp                     Expires August 5, 2017                [Page 10]
 
-Internet-Draft     HTTP Header Field Common Structure      February 2017
+Internet-Draft        HTTP Header Common Structure         February 2017
 
 
    Where non-ASCII character sets are used, they are almost always
@@ -615,7 +615,7 @@ A.3.  Is this actually a useful thing to generalize ?
 
 Kamp                     Expires August 5, 2017                [Page 11]
 
-Internet-Draft     HTTP Header Field Common Structure      February 2017
+Internet-Draft        HTTP Header Common Structure         February 2017
 
 
 A.4.  RFC723x headers with "common structure"
@@ -671,7 +671,7 @@ A.5.  RFC723x headers with "uncommon structure"
 
 Kamp                     Expires August 5, 2017                [Page 12]
 
-Internet-Draft     HTTP Header Field Common Structure      February 2017
+Internet-Draft        HTTP Header Common Structure         February 2017
 
 
      Proxy-Authorization [RFC7235, Section 4.4]
@@ -727,7 +727,7 @@ Internet-Draft     HTTP Header Field Common Structure      February 2017
 
 Kamp                     Expires August 5, 2017                [Page 13]
 
-Internet-Draft     HTTP Header Field Common Structure      February 2017
+Internet-Draft        HTTP Header Common Structure         February 2017
 
 
          product *( RWS ( product / comment ) )
