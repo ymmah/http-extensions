@@ -4,8 +4,8 @@
 
 HTTP Working Group                                            M. Thomson
 Internet-Draft                                                   Mozilla
-Intended status: Standards Track                        January 31, 2017
-Expires: August 4, 2017
+Intended status: Standards Track                        February 1, 2017
+Expires: August 5, 2017
 
 
                   Encrypted Content-Encoding for HTTP
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 4, 2017.
+   This Internet-Draft will expire on August 5, 2017.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Thomson                  Expires August 4, 2017                 [Page 1]
+Thomson                  Expires August 5, 2017                 [Page 1]
 
-Internet-Draft           HTTP encryption coding             January 2017
+Internet-Draft           HTTP encryption coding            February 2017
 
 
    (http://trustee.ietf.org/license-info) in effect on the date of
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Thomson                  Expires August 4, 2017                 [Page 2]
+Thomson                  Expires August 5, 2017                 [Page 2]
 
-Internet-Draft           HTTP encryption coding             January 2017
+Internet-Draft           HTTP encryption coding            February 2017
 
 
    These uses are not met by the use of TLS [RFC5246], since it only
@@ -165,9 +165,9 @@ Internet-Draft           HTTP encryption coding             January 2017
 
 
 
-Thomson                  Expires August 4, 2017                 [Page 3]
+Thomson                  Expires August 5, 2017                 [Page 3]
 
-Internet-Draft           HTTP encryption coding             January 2017
+Internet-Draft           HTTP encryption coding            February 2017
 
 
    The "aes128gcm" content coding uses a fixed record size.  The final
@@ -221,9 +221,9 @@ Internet-Draft           HTTP encryption coding             January 2017
 
 
 
-Thomson                  Expires August 4, 2017                 [Page 4]
+Thomson                  Expires August 5, 2017                 [Page 4]
 
-Internet-Draft           HTTP encryption coding             January 2017
+Internet-Draft           HTTP encryption coding            February 2017
 
 
    A consequence of this record structure is that range requests
@@ -277,9 +277,9 @@ Internet-Draft           HTTP encryption coding             January 2017
 
 
 
-Thomson                  Expires August 4, 2017                 [Page 5]
+Thomson                  Expires August 5, 2017                 [Page 5]
 
-Internet-Draft           HTTP encryption coding             January 2017
+Internet-Draft           HTTP encryption coding            February 2017
 
 
       be input to that process.  A "keyid" parameter SHOULD be a UTF-8
@@ -333,9 +333,9 @@ Internet-Draft           HTTP encryption coding             January 2017
 
 
 
-Thomson                  Expires August 4, 2017                 [Page 6]
+Thomson                  Expires August 5, 2017                 [Page 6]
 
-Internet-Draft           HTTP encryption coding             January 2017
+Internet-Draft           HTTP encryption coding            February 2017
 
 
    The length (L) parameter is 12 octets.  The info parameter for the
@@ -389,9 +389,9 @@ Internet-Draft           HTTP encryption coding             January 2017
 
 
 
-Thomson                  Expires August 4, 2017                 [Page 7]
+Thomson                  Expires August 5, 2017                 [Page 7]
 
-Internet-Draft           HTTP encryption coding             January 2017
+Internet-Draft           HTTP encryption coding            February 2017
 
 
    HTTP/1.1 200 OK
@@ -445,9 +445,9 @@ Internet-Draft           HTTP encryption coding             January 2017
 
 
 
-Thomson                  Expires August 4, 2017                 [Page 8]
+Thomson                  Expires August 5, 2017                 [Page 8]
 
-Internet-Draft           HTTP encryption coding             January 2017
+Internet-Draft           HTTP encryption coding            February 2017
 
 
    Implementation of cryptography - and key management in particular -
@@ -501,9 +501,9 @@ Internet-Draft           HTTP encryption coding             January 2017
 
 
 
-Thomson                  Expires August 4, 2017                 [Page 9]
+Thomson                  Expires August 5, 2017                 [Page 9]
 
-Internet-Draft           HTTP encryption coding             January 2017
+Internet-Draft           HTTP encryption coding            February 2017
 
 
 4.3.  Content Integrity
@@ -557,9 +557,9 @@ Internet-Draft           HTTP encryption coding             January 2017
 
 
 
-Thomson                  Expires August 4, 2017                [Page 10]
+Thomson                  Expires August 5, 2017                [Page 10]
 
-Internet-Draft           HTTP encryption coding             January 2017
+Internet-Draft           HTTP encryption coding            February 2017
 
 
 4.5.  Poisoning Storage
@@ -613,9 +613,9 @@ Internet-Draft           HTTP encryption coding             January 2017
 
 
 
-Thomson                  Expires August 4, 2017                [Page 11]
+Thomson                  Expires August 5, 2017                [Page 11]
 
-Internet-Draft           HTTP encryption coding             January 2017
+Internet-Draft           HTTP encryption coding            February 2017
 
 
 6.  References
@@ -669,9 +669,9 @@ Internet-Draft           HTTP encryption coding             January 2017
 
 
 
-Thomson                  Expires August 4, 2017                [Page 12]
+Thomson                  Expires August 5, 2017                [Page 12]
 
-Internet-Draft           HTTP encryption coding             January 2017
+Internet-Draft           HTTP encryption coding            February 2017
 
 
    [RFC4880]  Callas, J., Donnerhacke, L., Finney, H., Shaw, D., and R.
@@ -725,9 +725,9 @@ Appendix A.  JWE Mapping
 
 
 
-Thomson                  Expires August 4, 2017                [Page 13]
+Thomson                  Expires August 5, 2017                [Page 13]
 
-Internet-Draft           HTTP encryption coding             January 2017
+Internet-Draft           HTTP encryption coding            February 2017
 
 
    o  The JWE Protected Header is fixed to the value { "alg": "dir",
@@ -781,4 +781,4 @@ Author's Address
 
 
 
-Thomson                  Expires August 4, 2017                [Page 14]
+Thomson                  Expires August 5, 2017                [Page 14]
