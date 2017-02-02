@@ -80,7 +80,7 @@ Table of Contents
    5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   6
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   6
      5.2.  Informative References  . . . . . . . . . . . . . . . . .   6
-   Appendix A.  Non-Normative Processing Algoritm  . . . . . . . . .   6
+   Appendix A.  Non-Normative Processing Algorithm . . . . . . . . .   6
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   7
 
 1.  Introduction
@@ -323,7 +323,7 @@ Internet-Draft                ORIGIN Frames                February 2017
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
               <http://www.rfc-editor.org/info/rfc7230>.
 
-Appendix A.  Non-Normative Processing Algoritm
+Appendix A.  Non-Normative Processing Algorithm
 
    The following algorithm illustrates how a client could handle
    received ORIGIN frames:
