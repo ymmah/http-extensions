@@ -69,16 +69,17 @@ Internet-Draft                ORIGIN Frames                February 2017
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
-     1.1.  Notational Conventions  . . . . . . . . . . . . . . . . .   2
+     1.1.  Notational Conventions  . . . . . . . . . . . . . . . . .   3
    2.  The ORIGIN HTTP/2 Frame . . . . . . . . . . . . . . . . . . .   3
      2.1.  Syntax  . . . . . . . . . . . . . . . . . . . . . . . . .   3
      2.2.  Processing ORIGIN Frames  . . . . . . . . . . . . . . . .   3
      2.3.  The Origin Set  . . . . . . . . . . . . . . . . . . . . .   4
      2.4.  Authority and Coalescing with ORIGIN  . . . . . . . . . .   5
-   3.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
-   4.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   5
-     4.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
-     4.2.  Informative References  . . . . . . . . . . . . . . . . .   6
+   3.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
+   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
+   5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   6
+     5.1.  Normative References  . . . . . . . . . . . . . . . . . .   6
+     5.2.  Informative References  . . . . . . . . . . . . . . . . .   6
    Appendix A.  Non-Normative Processing Algoritm  . . . . . . . . .   6
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   7
 
@@ -101,11 +102,10 @@ Table of Contents
    certificate is onerous.  This specification relaxes the requirement
    to check DNS when the ORIGIN frame is in use.
 
-1.1.  Notational Conventions
 
-   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-   document are to be interpreted as described in [RFC2119].
+
+
+
 
 
 
@@ -113,6 +113,12 @@ Nottingham & Nygren      Expires August 6, 2017                 [Page 2]
 
 Internet-Draft                ORIGIN Frames                February 2017
 
+
+1.1.  Notational Conventions
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in [RFC2119].
 
 2.  The ORIGIN HTTP/2 Frame
 
@@ -156,12 +162,6 @@ Internet-Draft                ORIGIN Frames                February 2017
 
    Likewise, the ORIGIN frame is only valid on connections with the "h2"
    protocol identifier, or when specifically nominated by the protocol's
-   definition; it MUST be ignored when received on a connection with the
-   "h2c" protocol identifier.
-
-   The ORIGIN frame is processed hop-by-hop.  An intermediary MUST NOT
-   forward ORIGIN frames.  Clients configured to use a proxy MUST ignore
-   any ORIGIN frames received from it.
 
 
 
@@ -169,6 +169,13 @@ Nottingham & Nygren      Expires August 6, 2017                 [Page 3]
 
 Internet-Draft                ORIGIN Frames                February 2017
 
+
+   definition; it MUST be ignored when received on a connection with the
+   "h2c" protocol identifier.
+
+   The ORIGIN frame is processed hop-by-hop.  An intermediary MUST NOT
+   forward ORIGIN frames.  Clients configured to use a proxy MUST ignore
+   any ORIGIN frames received from it.
 
    Each ASCII-Origin field in the frame's payload MUST be parsed as an
    ASCII serialisation of an origin ([RFC6454], Section 6.2).  If
@@ -212,19 +219,19 @@ Internet-Draft                ORIGIN Frames                February 2017
    server to incrementally add new origins to the Origin Set, as
    described in Section 2.2.
 
-   The Origin Set is also affected by the 421 (Misdirected Request)
-   response status code, defined in [RFC7540] Section 9.1.2.  Upon
-   receipt of a response with this status code, implementing clients
-   MUST create the ASCII serialisation of the corresponding request's
-   origin (as per [RFC6454], Section 6.2) and remove it from the
-   connection's Origin Set, if present.
-
 
 
 Nottingham & Nygren      Expires August 6, 2017                 [Page 4]
 
 Internet-Draft                ORIGIN Frames                February 2017
 
+
+   The Origin Set is also affected by the 421 (Misdirected Request)
+   response status code, defined in [RFC7540] Section 9.1.2.  Upon
+   receipt of a response with this status code, implementing clients
+   MUST create the ASCII serialisation of the corresponding request's
+   origin (as per [RFC6454], Section 6.2) and remove it from the
+   connection's Origin Set, if present.
 
 2.4.  Authority and Coalescing with ORIGIN
 
@@ -246,7 +253,11 @@ Internet-Draft                ORIGIN Frames                February 2017
       that connection's Origin Set, unless there are operational reasons
       for creating a new connection.
 
-3.  Security Considerations
+3.  IANA Considerations
+
+   TBD.
+
+4.  Security Considerations
 
    Clients that blindly trust the ORIGIN frame's contents will be
    vulnerable to a large number of attacks.  See Section 2.4 for
@@ -259,18 +270,7 @@ Internet-Draft                ORIGIN Frames                February 2017
    visit another Web site, in order to coalesce connections to the
    target onto their existing connection.
 
-4.  References
 
-4.1.  Normative References
-
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <http://www.rfc-editor.org/info/rfc2119>.
-
-   [RFC2818]  Rescorla, E., "HTTP Over TLS", RFC 2818,
-              DOI 10.17487/RFC2818, May 2000,
-              <http://www.rfc-editor.org/info/rfc2818>.
 
 
 
@@ -281,6 +281,19 @@ Nottingham & Nygren      Expires August 6, 2017                 [Page 5]
 
 Internet-Draft                ORIGIN Frames                February 2017
 
+
+5.  References
+
+5.1.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <http://www.rfc-editor.org/info/rfc2119>.
+
+   [RFC2818]  Rescorla, E., "HTTP Over TLS", RFC 2818,
+              DOI 10.17487/RFC2818, May 2000,
+              <http://www.rfc-editor.org/info/rfc2818>.
 
    [RFC6006]  Zhao, Q., Ed., King, D., Ed., Verhaeghe, F., Takeda, T.,
               Ali, Z., and J. Meuric, "Extensions to the Path
@@ -303,7 +316,7 @@ Internet-Draft                ORIGIN Frames                February 2017
               DOI 10.17487/RFC7540, May 2015,
               <http://www.rfc-editor.org/info/rfc7540>.
 
-4.2.  Informative References
+5.2.  Informative References
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
@@ -318,6 +331,13 @@ Appendix A.  Non-Normative Processing Algoritm
    1.  If the client is configured to use a proxy for the connection,
        ignore the frame and stop processing.
 
+
+
+Nottingham & Nygren      Expires August 6, 2017                 [Page 6]
+
+Internet-Draft                ORIGIN Frames                February 2017
+
+
    2.  If the connection is not running under TLS or does not present
        Server Name Indication (SNI) [RFC6006], ignore the frame and stop
        processing.
@@ -329,15 +349,6 @@ Appendix A.  Non-Normative Processing Algoritm
 
        1.  Parse "origin_raw" as an ASCII serialization of an origin
            ([RFC6454], Section 6.2) and let the result be
-
-
-
-
-Nottingham & Nygren      Expires August 6, 2017                 [Page 6]
-
-Internet-Draft                ORIGIN Frames                February 2017
-
-
            "parsed_origin".  If parsing fails, skip to the next
            "origin_raw".
 
@@ -367,17 +378,6 @@ Authors' Addresses
    Akamai
 
    Email: nygren@akamai.com
-
-
-
-
-
-
-
-
-
-
-
 
 
 
