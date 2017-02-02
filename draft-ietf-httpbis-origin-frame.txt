@@ -253,6 +253,11 @@ Internet-Draft                ORIGIN Frames                February 2017
       that connection's Origin Set, unless there are operational reasons
       for creating a new connection.
 
+   Note that this does not prevent clients from performing other
+   certificate checks as required or allowed, either at connection time
+   or when processing ORIGIN.  See [RFC7540] Section 9.1.1 for more
+   information.
+
 3.  IANA Considerations
 
    TBD.
@@ -269,11 +274,6 @@ Internet-Draft                ORIGIN Frames                February 2017
    them; instead of modifying DNS, they need only convince the user to
    visit another Web site, in order to coalesce connections to the
    target onto their existing connection.
-
-
-
-
-
 
 
 
