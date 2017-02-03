@@ -80,12 +80,12 @@ Table of Contents
    3.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
    4.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
      4.1.  Security Indicators . . . . . . . . . . . . . . . . . . .   6
-     4.2.  Downgrade Attacks . . . . . . . . . . . . . . . . . . . .   6
+     4.2.  Downgrade Attacks . . . . . . . . . . . . . . . . . . . .   7
      4.3.  Privacy Considerations  . . . . . . . . . . . . . . . . .   7
      4.4.  Confusion Regarding Request Scheme  . . . . . . . . . . .   7
      4.5.  Server Controls . . . . . . . . . . . . . . . . . . . . .   7
-   5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   7
-     5.1.  Normative References  . . . . . . . . . . . . . . . . . .   7
+   5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   8
+     5.1.  Normative References  . . . . . . . . . . . . . . . . . .   8
      5.2.  Informative References  . . . . . . . . . . . . . . . . .   9
    Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .   9
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   9
@@ -194,19 +194,19 @@ Internet-Draft         Opportunistic HTTP Security         February 2017
 
    Clients MUST NOT send "http" requests over a secured connection,
    unless the chosen alternative service presents a certificate that is
-   valid for the origin as defined in [RFC2818] (this also establishes
-   "reasonable assurances" for the purposes of {RFC7838}}) and they have
-   obtained a valid http-opportunistic response for an origin (as per
-   Section 2.3).  An exception to the last restriction is made for
-   requests for the "http-opportunistic" well-known URI.
+   valid for the origin as defined in [RFC2818].  Using an authenticated
+   alternative service establishes "reasonable assurances" for the
+   purposes of {RFC7838}}.  In addition to authenticating the server,
+   the client MUST have obtained a valid http-opportunistic response for
+   an origin (as per Section 2.3) using the authenticated connection.
+   An exception to the latter restriction is made for requests for the
+   "http-opportunistic" well-known URI.
 
    For example, assuming the following request is made over a TLS
    connection that is successfully authenticated for those origins, the
    following request/response pair would allow requests for the origins
    "http://www.example.com" or "http://example.com" to be sent using a
    secured connection:
-
-
 
 
 
@@ -231,8 +231,8 @@ Internet-Draft         Opportunistic HTTP Security         February 2017
      + END_HEADERS
        :method = GET
        :scheme = http
+       :authority = example.com
        :path = /.well-known/http-opportunistic
-       host: example.com
 
    HEADERS
        :status = 200
@@ -240,6 +240,13 @@ Internet-Draft         Opportunistic HTTP Security         February 2017
    DATA
      + END_STREAM
    [ "http://www.example.com", "http://example.com" ]
+
+   Though this document describes multiple origins, this is only for
+   operational convenience.  Only a request made to an origin (over an
+   authenticated connection) can be used to acquire this resource for
+   that origin.  Thus in the example, the request to
+   "http://example.com" cannot be assumed to also provide an http-
+   opportunistic response for "http://www.example.com".
 
 2.2.  Interaction with "https" URIs
 
@@ -265,13 +272,6 @@ Internet-Draft         Opportunistic HTTP Security         February 2017
    o  That response's payload, when parsed as JSON [RFC7159], contains
       an array as the root, and
 
-   o  The array contains a string that is a case-insensitive character-
-      for-character match for the origin in question, serialised into
-      Unicode as per Section 6.1 of [RFC6454].
-
-   A client MAY treat an "http-opportunistic" resource as invalid if
-   values it contains are not strings.
-
 
 
 
@@ -281,6 +281,13 @@ Nottingham & Thomson     Expires August 7, 2017                 [Page 5]
 
 Internet-Draft         Opportunistic HTTP Security         February 2017
 
+
+   o  The array contains a string that is a case-insensitive character-
+      for-character match for the origin in question, serialised into
+      Unicode as per Section 6.1 of [RFC6454].
+
+   A client MAY treat an "http-opportunistic" resource as invalid if
+   values it contains are not strings.
 
    This document does not define semantics for "http-opportunistic"
    resources on an "https" origin, nor does it define semantics if the
@@ -293,10 +300,16 @@ Internet-Draft         Opportunistic HTTP Security         February 2017
    service.
 
    A client MUST NOT use any cached copies of an http-opportunistic
-   resource that are acquired over unauthenticated connections.  To
-   avoid potential errors, a client can request or revalidate the http-
-   opportunistic resource before using any connection to an alternative
-   service.
+   resource that was acquired (or revalidated) over an unauthenticated
+   connection.  To avoid potential errors, a client can request or
+   revalidate the http-opportunistic resource before using any
+   connection to an alternative service.
+
+   Clients that use cached http-opportunistic responses MUST ensure that
+   their cache is cleared of any responses that were acquired over an
+   unauthenticated connection.  Revalidating an unauthenticated response
+   using an authenticated connection does not ensure the integrity of
+   the response.
 
 3.  IANA Considerations
 
@@ -316,6 +329,15 @@ Internet-Draft         Opportunistic HTTP Security         February 2017
 
    User Agents MUST NOT provide any special security indicia when an
    "http" resource is acquired using TLS.  In particular, indicators
+
+
+
+
+Nottingham & Thomson     Expires August 7, 2017                 [Page 6]
+
+Internet-Draft         Opportunistic HTTP Security         February 2017
+
+
    that might suggest the same level of security as "https" MUST NOT be
    used (e.g., a "lock device").
 
@@ -328,15 +350,6 @@ Internet-Draft         Opportunistic HTTP Security         February 2017
    to downgrade by network attackers.  In its simplest form, an attacker
    that wants the connection to remain in the clear need only strip the
    "Alt-Svc" header field from responses.
-
-
-
-
-
-Nottingham & Thomson     Expires August 7, 2017                 [Page 6]
-
-Internet-Draft         Opportunistic HTTP Security         February 2017
-
 
 4.3.  Privacy Considerations
 
@@ -373,6 +386,14 @@ Internet-Draft         Opportunistic HTTP Security         February 2017
    This specification requires that a server send both an Alternative
    Service advertisement and host content in a well-known location to
    send HTTP requests over TLS.  Servers SHOULD take suitable measures
+
+
+
+Nottingham & Thomson     Expires August 7, 2017                 [Page 7]
+
+Internet-Draft         Opportunistic HTTP Security         February 2017
+
+
    to ensure that the content of the well-known resource remains under
    their control.  Likewise, because the Alt-Svc header field is used to
    describe policies across an entire origin, servers SHOULD NOT permit
@@ -386,13 +407,6 @@ Internet-Draft         Opportunistic HTTP Security         February 2017
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <http://www.rfc-editor.org/info/rfc2119>.
-
-
-
-Nottingham & Thomson     Expires August 7, 2017                 [Page 7]
-
-Internet-Draft         Opportunistic HTTP Security         February 2017
-
 
    [RFC2818]  Rescorla, E., "HTTP Over TLS", RFC 2818,
               DOI 10.17487/RFC2818, May 2000,
@@ -426,6 +440,16 @@ Internet-Draft         Opportunistic HTTP Security         February 2017
               DOI 10.17487/RFC7232, June 2014,
               <http://www.rfc-editor.org/info/rfc7232>.
 
+
+
+
+
+
+Nottingham & Thomson     Expires August 7, 2017                 [Page 8]
+
+Internet-Draft         Opportunistic HTTP Security         February 2017
+
+
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
               RFC 7234, DOI 10.17487/RFC7234, June 2014,
@@ -439,16 +463,6 @@ Internet-Draft         Opportunistic HTTP Security         February 2017
    [RFC7838]  Nottingham, M., McManus, P., and J. Reschke, "HTTP
               Alternative Services", RFC 7838, DOI 10.17487/RFC7838,
               April 2016, <http://www.rfc-editor.org/info/rfc7838>.
-
-
-
-
-
-
-Nottingham & Thomson     Expires August 7, 2017                 [Page 8]
-
-Internet-Draft         Opportunistic HTTP Security         February 2017
-
 
 5.2.  Informative References
 
@@ -486,6 +500,12 @@ Authors' Addresses
    URI:   https://www.mnot.net/
 
 
+
+Nottingham & Thomson     Expires August 7, 2017                 [Page 9]
+
+Internet-Draft         Opportunistic HTTP Security         February 2017
+
+
    Martin Thomson
    Mozilla
 
@@ -501,4 +521,40 @@ Authors' Addresses
 
 
 
-Nottingham & Thomson     Expires August 7, 2017                 [Page 9]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Nottingham & Thomson     Expires August 7, 2017                [Page 10]
