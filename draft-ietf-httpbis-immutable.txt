@@ -4,8 +4,8 @@
 
 HTTP Working Group                                            P. McManus
 Internet-Draft                                                   Mozilla
-Intended status: Standards Track                        February 3, 2017
-Expires: August 7, 2017
+Intended status: Standards Track                        February 4, 2017
+Expires: August 8, 2017
 
 
                         HTTP Immutable Responses
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 7, 2017.
+   This Internet-Draft will expire on August 8, 2017.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-McManus                  Expires August 7, 2017                 [Page 1]
+McManus                  Expires August 8, 2017                 [Page 1]
 
 Internet-Draft          HTTP Immutable Responses           February 2017
 
@@ -70,79 +70,74 @@ Internet-Draft          HTTP Immutable Responses           February 2017
 
 1.  Introduction
 
-   HTTP's freshness lifetime mechanism [RFC7234] allows a client to
-   safely reuse a stored response to satisfy future requests for a
-   specified period of time.  However, it is still possible that the
-   resource will be modified during that period.
+   The HTTP freshness lifetime [RFC7234] caching attribute specifies
+   that a client may safely reuse a response to satisfy future requests
+   over a specific period of time.  It does not specify that the
+   resource will be not be modified during that period.
 
    For instance, a front page newspaper photo with a freshness lifetime
-   of one hour would mean that no user would see a cached photo more
-   than one hour old.  However, the photo could be updated at any time
-   resulting in different users seeing different photos depending on the
-   contents of their caches for up to one hour.  This is compliant with
-   the caching mechanism defined in [RFC7234].
+   of one hour would mean that no user should see a photo more than one
+   hour old.  However, the photo could be updated at any time resulting
+   in different users seeing different photos depending on the contents
+   of their caches for up to one hour.  This is compliant with the
+   caching mechanism defined in [RFC7234].
 
-   Users that need to confirm there have been no updates to their cached
-   responses typically use the reload (or refresh) mechanism in their
-   user agents.  This in turn generates a conditional request [RFC7232]
-   and either a new representation or, if unmodified, a 304 (Not
-   Modified) response [RFC7232] is returned.  A user agent that
-   understands HTML and fetches its dependent sub-resources might issue
-   hundreds of conditional requests to refresh all portions of a common
-   page [REQPERPAGE].
+   Users that need to confirm there have been no updates to their
+   current cached resources typically invoke the reload (or refresh)
+   mechanism in the user agent.  This in turn generates a conditional
+   request [RFC7232] and either a new representation or, if unmodified,
+   a 304 response [RFC7231] is returned.  A user agent that manages HTML
+   and its dependent sub-resources may issue hundreds of conditional
+   requests to refresh all portions of a common HTML page [REQPERPAGE].
 
-   However some content providers never create more than one variant of
-   a sub-resource, because they use "versioned" URLs.  When these
-   resources need an update they are simply published under a new URL,
-   typically embedding an identifier unique to that version of the
-   resource in the path, and references to the sub-resource are updated
-   with the new path information.
+   Through the use of the versioned URL design pattern some content
+   providers never create more than one variant of a sub-resource.  When
+   these resources need an update they are simply published under a new
+   URL, typically embedding a variant identifier in the path, and
+   references to the sub-resource are updated with the new path
+   information.
 
-   For example, "https://www.example.com/101016/main.css" might be
-   updated and republished as "https://www.example.com/102026/main.css",
-   with any links that references it being changed at the same time.
-   This design pattern allows a very large freshness lifetime to be used
-   for the sub-resource without guessing when it will be updated in the
-   future.
+   For example, https://www.example.com/101016/main.css might be updated
+   and republished as https://www.example.com/102026/main.css and the
+   html that references it is changed at the same time.  This design
+   pattern allows a very large freshness lifetime to be applied to the
+   sub-resource without guessing when it will be updated in the future.
 
-
-
+   Unfortunately, the user-agent is not aware of the versioned URL
+   design pattern.  User driven refresh events still translate into
 
 
-McManus                  Expires August 7, 2017                 [Page 2]
+
+
+McManus                  Expires August 8, 2017                 [Page 2]
 
 Internet-Draft          HTTP Immutable Responses           February 2017
 
 
-   Unfortunately, the user agent does not know when this versioned URL
-   design pattern is used.  As a result, user-driven refreshes still
-   translate into wasted conditional requests for each sub-resource as
-   each will return 304 responses.
+   wasted conditional requests for each sub-resource as each will return
+   304 responses.
 
-   The "immutable" HTTP response Cache-Control extension allows servers
-   to identify responses that will not be updated during their freshness
-   lifetimes.
-
-   This effectively informs clients that any conditional request for
-   that response can be safely skipped without worrying that it has been
-   updated.
+   The immutable HTTP response Cache-Control extension allows servers to
+   identify resources that will not be updated during their freshness
+   lifetime.  This effectively instructs the client that any conditional
+   request for a previously served variant of that resource may be
+   safely skipped without worrying that it has been updated.
 
 2.  The immutable Cache-Control extension
 
-   When present in an HTTP response, the "immutable" Cache-Control
+   When present in an HTTP response, the immutable Cache-Control
    extension indicates that the origin server MUST NOT update the
    representation of that resource during the freshness lifetime of the
    response.
 
    The immutable extension only applies during the freshness lifetime of
-   the stored response.  Stale responses SHOULD be revalidated as they
-   normally would be in the absence of immutable.
+   the response.  Stale responses SHOULD be revalidated as they normally
+   would be in the absence of immutable.
 
-   The immutable extension takes no arguments.  If any arguments are
-   present, they have no meaning, and MUST be ignored.  Multiple
-   instances of the immutable extension are equivalent to one instance.
-   The presence of an immutable Cache-Control extension in a request has
-   no effect.
+   The immutable extension takes no arguments and if any arguments are
+   present they have no meaning.  Multiple instances of the immutable
+   extension are equivalent to one instance.  The presence of an
+   immutable Cache-Control extension in a request has no effect.
 
 2.1.  About Intermediaries
 
@@ -158,18 +153,6 @@ Internet-Draft          HTTP Immutable Responses           February 2017
 
    Cache-Control: max-age=31536000, immutable
 
-
-
-
-
-
-
-
-McManus                  Expires August 7, 2017                 [Page 3]
-
-Internet-Draft          HTTP Immutable Responses           February 2017
-
-
 3.  Security Considerations
 
    The immutable mechanism acts as form of soft pinning and, as with all
@@ -177,17 +160,27 @@ Internet-Draft          HTTP Immutable Responses           February 2017
    corruption incidents.  These incidents include cache poisoning
    attacks.  Three mechanisms are suggested for mitigation of this risk:
 
-   o  Clients SHOULD ignore immutable from resources that are not part
-      of an authenticated context such as HTTPS.  Authenticated
-      resources are less vulnerable to cache poisoning.
 
-   o  User-Agents often provide two different refresh mechanisms: reload
-      and some form of force-reload.  The latter is used to rectify
-      interrupted loads and other corruption.  These reloads, typically
-      indicated through no-cache request attributes, SHOULD ignore
-      immutable as well.
 
-   o  Clients SHOULD ignore immutable for resources that do not provide
+
+
+
+McManus                  Expires August 8, 2017                 [Page 3]
+
+Internet-Draft          HTTP Immutable Responses           February 2017
+
+
+   o  Clients should ignore immutable for resources that are not part of
+      an authenticated context such as HTTPS.  Authenticated resources
+      are less vulnerable to cache poisoning.
+
+   o  User-Agents often provide two different refresh mechanismss:
+      reload and some form of force-reload.  The latter is used to
+      rectify interrupted loads and other corruption.  These reloads,
+      typically indicated through no-cache request attributes, should
+      ignore immutable as well.
+
+   o  Clients should ignore immutable for resources that do not provide
       a strong indication that the stored response size is the correct
       response size such as responses delimited by connection close.
 
@@ -216,16 +209,6 @@ Internet-Draft          HTTP Immutable Responses           February 2017
               DOI 10.17487/RFC7231, June 2014,
               <http://www.rfc-editor.org/info/rfc7231>.
 
-
-
-
-
-
-McManus                  Expires August 7, 2017                 [Page 4]
-
-Internet-Draft          HTTP Immutable Responses           February 2017
-
-
    [RFC7232]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Conditional Requests", RFC 7232,
               DOI 10.17487/RFC7232, June 2014,
@@ -235,6 +218,13 @@ Internet-Draft          HTTP Immutable Responses           February 2017
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
               RFC 7234, DOI 10.17487/RFC7234, June 2014,
               <http://www.rfc-editor.org/info/rfc7234>.
+
+
+
+McManus                  Expires August 8, 2017                 [Page 4]
+
+Internet-Draft          HTTP Immutable Responses           February 2017
+
 
 6.2.  Informative References
 
@@ -277,4 +267,14 @@ Author's Address
 
 
 
-McManus                  Expires August 7, 2017                 [Page 5]
+
+
+
+
+
+
+
+
+
+
+McManus                  Expires August 8, 2017                 [Page 5]
