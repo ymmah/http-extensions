@@ -196,8 +196,9 @@ Internet-Draft        HTTP Header Common Structure         February 2017
 
      ascii-string = * %x20-7e
 
-   This is intented to be an efficient, "safe" and uncomplicated string
-   type, for uses where the string content will not be user visible.
+   This is intended to be an efficient, "safe" and uncomplicated string
+   type, for uses where the string content is culturally neutral or
+   where it will not be user visible.
 
 
      unicode-string = * UNICODE
@@ -210,14 +211,13 @@ Internet-Draft        HTTP Header Common Structure         February 2017
    and Unicode is still evolving new and interesting code points.
 
    Users of unicode-string SHALL be prepared for the full gammut of
-   glyph-gymnastics in order to avoid: U+1F4A9 U+08 U+1F574.
+   glyph-gymnastics in order to avoid U+1F4A9 U+08 U+1F574.
 
 
      blob = * %0x00-ff
 
-   Blobs are intented primarily for cryptographic data, but can be used
+   Blobs are intended primarily for cryptographic data, but can be used
    for any otherwise unsatisfied needs.
-
 
 
 
@@ -241,13 +241,13 @@ Internet-Draft        HTTP Header Common Structure         February 2017
      import EmbeddedUnicodeChar from BCP137
 
      h1-common-structure-header =
-             ( field-name ":" OWS ">" h1-common-structure "<" )
-             ( field-name ":" OWS h1-common-structure ) /
+             h1-common-structure-legacy-header /
+             h1-common-structure-self-identifying-header
 
-   Only white-listed legacy headers (see Section 8) are exempt from
-   using the ">...<" format.
+     h1-common-structure-legacy-header =
+             field-name ":" OWS h1-common-structure
 
-
+   Only white-listed legacy headers (see Section 8) can use this format.
 
 
 
@@ -281,6 +281,9 @@ Kamp                     Expires August 8, 2017                 [Page 5]
 
 Internet-Draft        HTTP Header Common Structure         February 2017
 
+
+     h1-common-structure-self-identifying-header:
+             field-name ":" OWS ">" h1-common-structure "<"
 
      h1-common-structure = h1-element * ("," h1-element)
 
@@ -319,16 +322,13 @@ Internet-Draft        HTTP Header Common Structure         February 2017
    more efficient BCP137 compliant escape-sequences seems unwarranted.
 
 
-     h1-blob = "'" base64 "'"
+     h1-blob = ":" base64 ":"
      # XXX: where to import base64 from ?
 
      h1-timestamp = number
 
    XXX: Allow OWS in parsers, but not in generators ?
 
-   In programming environments which do not define a native
-   representation or serialization of Common Structure, the HTTP/1
-   serialization should be used.
 
 
 
@@ -337,6 +337,10 @@ Kamp                     Expires August 8, 2017                 [Page 6]
 
 Internet-Draft        HTTP Header Common Structure         February 2017
 
+
+   In programming environments which do not define a native
+   representation or serialization of Common Structure, the HTTP/1
+   serialization should be used.
 
 4.  When to use Common Structure Parser
 
@@ -378,13 +382,9 @@ Internet-Draft        HTTP Header Common Structure         February 2017
 
 7.  Future Work
 
-7.1.  Redefining existing headers for better performance
 
-   The HTTP/1 serializations self-identification mechanism makes it
-   possible to extend the definition of existing Appendix A.5 headers
-   into Common Structure.
 
-   For instance one could imagine:
+
 
 
 
@@ -392,6 +392,15 @@ Internet-Draft        HTTP Header Common Structure         February 2017
 Kamp                     Expires August 8, 2017                 [Page 7]
 
 Internet-Draft        HTTP Header Common Structure         February 2017
+
+
+7.1.  Redefining existing headers for better performance
+
+   The HTTP/1 serializations self-identification mechanism makes it
+   possible to extend the definition of existing Appendix A.5 headers
+   into Common Structure.
+
+   For instance one could imagine:
 
 
      Date: >1475061449.201<
@@ -430,15 +439,6 @@ Internet-Draft        HTTP Header Common Structure         February 2017
 
 10.  Normative References
 
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <http://www.rfc-editor.org/info/rfc2119>.
-
-   [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
-              Protocol (HTTP/1.1): Message Syntax and Routing",
-              RFC 7230, DOI 10.17487/RFC7230, June 2014,
-              <http://www.rfc-editor.org/info/rfc7230>.
 
 
 
@@ -449,6 +449,16 @@ Kamp                     Expires August 8, 2017                 [Page 8]
 
 Internet-Draft        HTTP Header Common Structure         February 2017
 
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <http://www.rfc-editor.org/info/rfc2119>.
+
+   [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
+              Protocol (HTTP/1.1): Message Syntax and Routing",
+              RFC 7230, DOI 10.17487/RFC7230, June 2014,
+              <http://www.rfc-editor.org/info/rfc7230>.
 
 Appendix A.  Do HTTP headers have any common structure ?
 
@@ -487,16 +497,6 @@ A.1.  Survey of HTTP header structure
    Generalizing from these motifs, our candidate "Common Structure" data
    model becomes an ordered list of named dictionaries.
 
-   In pidgin ABNF, ignoring white-space for the sake of clarity, the
-   HTTP/1.1 serialization of Common Structure is is something like:
-
-
-
-
-
-
-
-
 
 
 
@@ -504,6 +504,10 @@ A.1.  Survey of HTTP header structure
 Kamp                     Expires August 8, 2017                 [Page 9]
 
 Internet-Draft        HTTP Header Common Structure         February 2017
+
+
+   In pidgin ABNF, ignoring white-space for the sake of clarity, the
+   HTTP/1.1 serialization of Common Structure is is something like:
 
 
      token-or-asterix = token from {{RFC7230}}, but also allowing "*"
@@ -547,11 +551,7 @@ A.2.2.  Timestamps
    RFC723x text format, but POSIX time_t represented as integer or
    floating point is not uncommon.  ISO8601 have also been spotted.
 
-A.2.3.  Strings
 
-   The vast majority are pure ASCII strings, with either no escapes, %xx
-   URL-like escapes or C-style back-slash escapes, possibly with the
-   addition of \uxxxx UNICODE escapes.
 
 
 
@@ -561,6 +561,12 @@ Kamp                     Expires August 8, 2017                [Page 10]
 
 Internet-Draft        HTTP Header Common Structure         February 2017
 
+
+A.2.3.  Strings
+
+   The vast majority are pure ASCII strings, with either no escapes, %xx
+   URL-like escapes or C-style back-slash escapes, possibly with the
+   addition of \uxxxx UNICODE escapes.
 
    Where non-ASCII character sets are used, they are almost always
    implicit, rather than explicit.  UTF8 and ISO-8859-1 seem to be most
@@ -604,12 +610,6 @@ A.3.  Is this actually a useful thing to generalize ?
 
    But history has been particularly unkind to that idea.
 
-   Most attempts studied as part of this effort, have sunk under
-   complexity caused by reaching for generality, but where scope has
-   been wisely limited, it seems to be possible.
-
-   So file that idea under "future work".
-
 
 
 
@@ -617,6 +617,12 @@ Kamp                     Expires August 8, 2017                [Page 11]
 
 Internet-Draft        HTTP Header Common Structure         February 2017
 
+
+   Most attempts studied as part of this effort, have sunk under
+   complexity caused by reaching for generality, but where scope has
+   been wisely limited, it seems to be possible.
+
+   So file that idea under "future work".
 
 A.4.  RFC723x headers with "common structure"
 
@@ -662,18 +668,16 @@ A.5.  RFC723x headers with "uncommon structure"
    in rare cases two headers share:
 
 
-     Accept-Ranges       [RFC7233, Section 2.3]
-         bytes-unit / other-range-unit
-
-     Authorization       [RFC7235, Section 4.2]
-
-
 
 Kamp                     Expires August 8, 2017                [Page 12]
 
 Internet-Draft        HTTP Header Common Structure         February 2017
 
 
+     Accept-Ranges       [RFC7233, Section 2.3]
+         bytes-unit / other-range-unit
+
+     Authorization       [RFC7235, Section 4.2]
      Proxy-Authorization [RFC7235, Section 4.4]
          credentials
 
@@ -718,10 +722,6 @@ Internet-Draft        HTTP Header Common Structure         February 2017
          absolute-URI / partial-URI
 
      Retry-After         [RFC7231, Section 7.1.3]
-         HTTP-date / delay-seconds
-
-     Server              [RFC7231, Section 7.4.2]
-     User-Agent          [RFC7231, Section 5.5.3]
 
 
 
@@ -730,6 +730,10 @@ Kamp                     Expires August 8, 2017                [Page 13]
 Internet-Draft        HTTP Header Common Structure         February 2017
 
 
+         HTTP-date / delay-seconds
+
+     Server              [RFC7231, Section 7.4.2]
+     User-Agent          [RFC7231, Section 5.5.3]
          product *( RWS ( product / comment ) )
 
      Via                 [RFC7230, Section 5.7.1]
@@ -750,21 +754,17 @@ B.1.  Since draft-ietf-httpbis-header-structure-00
 
    Added signed 64bit integer type
 
+   Drop UTF8, and settle on BCP137::EmbeddedUnicodeChar for h1-unicode-
+   string
+
+   Change h1_blob delimiter to ":" as "'" is valid t_char
+
 Author's Address
 
    Poul-Henning Kamp
    The Varnish Cache Project
 
    Email: phk@varnish-cache.org
-
-
-
-
-
-
-
-
-
 
 
 
