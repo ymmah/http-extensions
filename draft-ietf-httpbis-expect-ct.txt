@@ -509,7 +509,7 @@ Internet-Draft                  Expect-CT                  February 2017
 2.3.3.  HTTP-Equiv <meta> Element Attribute
 
    UAs MUST NOT heed "http-equiv="Expect-CT"" attribute settings on
-   "<meta>" elements [W3C.REC-html401-19991224] in received content.
+   "<meta>" elements [W3C.REC-html51-20161101] in received content.
 
 2.4.  Noting Expect-CT
 
@@ -912,11 +912,11 @@ Internet-Draft                  Expect-CT                  February 2017
               PKCS, and CMS Structures", RFC 7468, DOI 10.17487/RFC7468,
               April 2015, <http://www.rfc-editor.org/info/rfc7468>.
 
-   [W3C.REC-html401-19991224]
-              Raggett, D., Hors, A., and I. Jacobs, "HTML 4.01
-              Specification", World Wide Web Consortium Recommendation
-              REC-html401-19991224, December 1999,
-              <http://www.w3.org/TR/1999/REC-html401-19991224>.
+   [W3C.REC-html51-20161101]
+              Faulkner, S., Eicholz, A., Leithead, T., and A. Danilo,
+              "HTML 5.1", World Wide Web Consortium Recommendation REC-
+              html51-20161101, November 2016,
+              <https://www.w3.org/TR/2016/REC-html51-20161101>.
 
 8.2.  URIs
 
