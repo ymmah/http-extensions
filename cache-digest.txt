@@ -400,7 +400,7 @@ Internet-Draft          Cache Digests for HTTP/2           February 2017
    4.   Let "C" be -1.
 
    5.   Read '0' bits from "digest-value" until a '1' bit is found; let
-        "Q" bit the number of '0' bits.  Discard the '1'.
+        "Q" be the number of '0' bits.  Discard the '1'.
 
    6.   Read log2("P") bits from "digest-value" after the '1' as an
         integer; let "R" be its value.
