@@ -73,15 +73,27 @@ Copyright Notice
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
+   This document may contain material from IETF Documents or IETF
+   Contributions published or made publicly available before November
+   10, 2008.  The person(s) controlling the copyright in some of this
+   material may not have granted the IETF Trust the right to allow
+   modifications of such material outside the IETF Standards Process.
+   Without obtaining an adequate license from the person(s) controlling
+   the copyright in such materials, this document may not be modified
+   outside the IETF Standards Process, and derivative works of it may
+   not be created outside the IETF Standards Process, except to format
+   it for publication as an RFC or to translate it into languages other
+   than English.
+
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
-   2.  Conventions . . . . . . . . . . . . . . . . . . . . . . . . .   4
-     2.1.  Conformance Criteria  . . . . . . . . . . . . . . . . . .   4
+   2.  Conventions . . . . . . . . . . . . . . . . . . . . . . . . .   5
+     2.1.  Conformance Criteria  . . . . . . . . . . . . . . . . . .   5
      2.2.  Syntax Notation . . . . . . . . . . . . . . . . . . . . .   5
-     2.3.  Terminology . . . . . . . . . . . . . . . . . . . . . . .   5
+     2.3.  Terminology . . . . . . . . . . . . . . . . . . . . . . .   6
    3.  Overview  . . . . . . . . . . . . . . . . . . . . . . . . . .   6
-     3.1.  Examples  . . . . . . . . . . . . . . . . . . . . . . . .   6
+     3.1.  Examples  . . . . . . . . . . . . . . . . . . . . . . . .   7
    4.  Server Requirements . . . . . . . . . . . . . . . . . . . . .   8
      4.1.  Set-Cookie  . . . . . . . . . . . . . . . . . . . . . . .   8
        4.1.1.  Syntax  . . . . . . . . . . . . . . . . . . . . . . .   8
@@ -94,6 +106,14 @@ Table of Contents
        5.1.1.  Dates . . . . . . . . . . . . . . . . . . . . . . . .  14
        5.1.2.  Canonicalized Host Names  . . . . . . . . . . . . . .  15
        5.1.3.  Domain Matching . . . . . . . . . . . . . . . . . . .  16
+
+
+
+Barth & West             Expires August 11, 2017                [Page 2]
+
+Internet-Draft       HTTP State Management Mechanism       February 2017
+
+
        5.1.4.  Paths and Path-Match  . . . . . . . . . . . . . . . .  16
      5.2.  The Set-Cookie Header . . . . . . . . . . . . . . . . . .  17
        5.2.1.  The Expires Attribute . . . . . . . . . . . . . . . .  19
@@ -106,14 +126,6 @@ Table of Contents
      5.4.  The Cookie Header . . . . . . . . . . . . . . . . . . . .  23
    6.  Implementation Considerations . . . . . . . . . . . . . . . .  25
      6.1.  Limits  . . . . . . . . . . . . . . . . . . . . . . . . .  25
-
-
-
-Barth & West             Expires August 11, 2017                [Page 2]
-
-Internet-Draft       HTTP State Management Mechanism       February 2017
-
-
      6.2.  Application Programming Interfaces  . . . . . . . . . . .  25
      6.3.  IDNA Dependency and Migration . . . . . . . . . . . . . .  26
    7.  Privacy Considerations  . . . . . . . . . . . . . . . . . . .  26
@@ -150,6 +162,14 @@ Internet-Draft       HTTP State Management Mechanism       February 2017
    Although simple on their surface, cookies have a number of
    complexities.  For example, the server indicates a scope for each
    cookie when sending it to the user agent.  The scope indicates the
+
+
+
+Barth & West             Expires August 11, 2017                [Page 3]
+
+Internet-Draft       HTTP State Management Mechanism       February 2017
+
+
    maximum amount of time in which the user agent should return the
    cookie, the servers to which the user agent should return the cookie,
    and the URI schemes for which the cookie is applicable.
@@ -162,13 +182,6 @@ Internet-Draft       HTTP State Management Mechanism       February 2017
    across all the ports on that host, even though the usual "same-origin
    policy" used by web browsers isolates content retrieved via different
    ports.
-
-
-
-Barth & West             Expires August 11, 2017                [Page 3]
-
-Internet-Draft       HTTP State Management Mechanism       February 2017
-
 
    There are two audiences for this specification: developers of cookie-
    generating servers and developers of cookie-consuming user agents.
@@ -206,6 +219,13 @@ Internet-Draft       HTTP State Management Mechanism       February 2017
    2.  Change the status of [RFC2965] to Historic.
    3.  Indicate that [RFC2965] has been obsoleted by this document.
 
+
+
+Barth & West             Expires August 11, 2017                [Page 4]
+
+Internet-Draft       HTTP State Management Mechanism       February 2017
+
+
    In particular, in moving RFC 2965 to Historic and obsoleting it, this
    document deprecates the use of the Cookie2 and Set-Cookie2 header
    fields.
@@ -217,14 +237,6 @@ Internet-Draft       HTTP State Management Mechanism       February 2017
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
    document are to be interpreted as described in [RFC2119].
-
-
-
-
-Barth & West             Expires August 11, 2017                [Page 4]
-
-Internet-Draft       HTTP State Management Mechanism       February 2017
-
 
    Requirements phrased in the imperative as part of algorithms (such as
    "strip any leading space characters" or "return false and abort these
@@ -261,6 +273,15 @@ Internet-Draft       HTTP State Management Mechanism       February 2017
    OWS SHOULD either not be produced or be produced as a single SP
    character.
 
+
+
+
+
+Barth & West             Expires August 11, 2017                [Page 5]
+
+Internet-Draft       HTTP State Management Mechanism       February 2017
+
+
 2.3.  Terminology
 
    The terms "user agent", "client", "server", "proxy", and "origin
@@ -273,14 +294,6 @@ Internet-Draft       HTTP State Management Mechanism       February 2017
    sent the corresponding HTTP request).
 
    The term request-uri is defined in Section 5.1.2 of [RFC2616].
-
-
-
-
-Barth & West             Expires August 11, 2017                [Page 5]
-
-Internet-Draft       HTTP State Management Mechanism       February 2017
-
 
    Two sequences of octets are said to case-insensitively match each
    other if and only if they are equivalent under the i;ascii-casemap
@@ -316,6 +329,15 @@ Internet-Draft       HTTP State Management Mechanism       February 2017
    the Set-Cookie header field because the %x2C (",") character is used
    by Set-Cookie in a way that conflicts with such folding.
 
+
+
+
+
+Barth & West             Expires August 11, 2017                [Page 6]
+
+Internet-Draft       HTTP State Management Mechanism       February 2017
+
+
 3.1.  Examples
 
    Using the Set-Cookie header, a server can send the user agent a short
@@ -324,18 +346,6 @@ Internet-Draft       HTTP State Management Mechanism       February 2017
    the server can send the user agent a "session identifier" named SID
    with the value 31d4d96e407aad42.  The user agent then returns the
    session identifier in subsequent requests.
-
-
-
-
-
-
-
-
-
-Barth & West             Expires August 11, 2017                [Page 6]
-
-Internet-Draft       HTTP State Management Mechanism       February 2017
 
 
    == Server -> User Agent ==
@@ -377,6 +387,13 @@ Internet-Draft       HTTP State Management Mechanism       February 2017
 
    Cookie: SID=31d4d96e407aad42; lang=en-US
 
+
+
+Barth & West             Expires August 11, 2017                [Page 7]
+
+Internet-Draft       HTTP State Management Mechanism       February 2017
+
+
    Notice that the Cookie header above contains two cookies, one named
    SID and one named lang.  If the server wishes the user agent to
    persist the cookie over multiple "sessions" (e.g., user agent
@@ -384,14 +401,6 @@ Internet-Draft       HTTP State Management Mechanism       February 2017
    attribute.  Note that the user agent might delete the cookie before
    the expiration date if the user agent's cookie store exceeds its
    quota or if the user manually deletes the server's cookie.
-
-
-
-
-
-Barth & West             Expires August 11, 2017                [Page 7]
-
-Internet-Draft       HTTP State Management Mechanism       February 2017
 
 
    == Server -> User Agent ==
@@ -432,15 +441,6 @@ Internet-Draft       HTTP State Management Mechanism       February 2017
    Informally, the Set-Cookie response header contains the header name
    "Set-Cookie" followed by a ":" and a cookie.  Each cookie begins with
    a name-value-pair, followed by zero or more attribute-value pairs.
-   Servers SHOULD NOT send Set-Cookie headers that fail to conform to
-   the following grammar:
-
-
-
-
-
-
-
 
 
 
@@ -448,6 +448,10 @@ Internet-Draft       HTTP State Management Mechanism       February 2017
 Barth & West             Expires August 11, 2017                [Page 8]
 
 Internet-Draft       HTTP State Management Mechanism       February 2017
+
+
+   Servers SHOULD NOT send Set-Cookie headers that fail to conform to
+   the following grammar:
 
 
    set-cookie-header = "Set-Cookie:" SP set-cookie-string
@@ -495,10 +499,6 @@ Internet-Draft       HTTP State Management Mechanism       February 2017
    store arbitrary data in a cookie-value SHOULD encode that data, for
    example, using Base64 [RFC4648].
 
-   The portions of the set-cookie-string produced by the cookie-av term
-   are known as attributes.  To maximize compatibility with user agents,
-   servers SHOULD NOT produce two attributes with the same name in the
-
 
 
 Barth & West             Expires August 11, 2017                [Page 9]
@@ -506,6 +506,9 @@ Barth & West             Expires August 11, 2017                [Page 9]
 Internet-Draft       HTTP State Management Mechanism       February 2017
 
 
+   The portions of the set-cookie-string produced by the cookie-av term
+   are known as attributes.  To maximize compatibility with user agents,
+   servers SHOULD NOT produce two attributes with the same name in the
    same set-cookie-string.  (See Section 5.3 for how user agents handle
    this case.)
 
@@ -550,9 +553,6 @@ Internet-Draft       HTTP State Management Mechanism       February 2017
    subdomains), and it expires at the end of the current session (as
    defined by the user agent).  User agents ignore unrecognized cookie
    attributes (but not the entire cookie).
-
-
-
 
 
 
