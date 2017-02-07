@@ -211,7 +211,7 @@ Internet-Draft                ORIGIN Frames                February 2017
    o  Host: the value sent in Server Name Indication ([RFC6066]
       Section 3), converted to lower case
 
-   o  Port: the local port of the connection on the server
+   o  Port: the remote port of the connection (i.e., the server's port)
 
    The contents of that ORIGIN frame (and subsequent ones) allows the
    server to incrementally add new origins to the Origin Set, as

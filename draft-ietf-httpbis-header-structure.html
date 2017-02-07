@@ -151,14 +151,14 @@ window.addEventListener('DOMContentLoaded', anchorRewrite);
            ["-"] 14DIGIT '.' 1DIGIT
 </pre></div><div id="rfc.section.2.p.7"><p>The limit of 15 siginificant digits is chosen so that numbers can be correctly represented by IEEE754 64 bit binary floating point.</p></div><div id="rfc.figure.u.5"><pre class="inline">
   ascii-string = * %x20-7e
-</pre></div><div id="rfc.section.2.p.8"><p>This is intented to be an efficient, “safe” and uncomplicated string type, for uses where the string content will not be user visible.</p></div><div id="rfc.figure.u.6"><pre class="inline">
+</pre></div><div id="rfc.section.2.p.8"><p>This is intended to be an efficient, “safe” and uncomplicated string type, for uses where the string content is culturally neutral or where it will not be user visible.</p></div><div id="rfc.figure.u.6"><pre class="inline">
   unicode-string = * UNICODE
 
   UNICODE = &lt;U+0000-U+D7FF / U+E000-U+10FFFF&gt;
   # UNICODE nicked from draft-seantek-unicode-in-abnf-02
-</pre></div><div id="rfc.section.2.p.9"><p>Unicode-strings are unrestricted because there is no sane and/or culturally neutral way to subset or otherwise make unicode “safe”, and Unicode is still evolving new and interesting code points.</p></div><div id="rfc.section.2.p.10"><p>Users of unicode-string SHALL be prepared for the full gammut of glyph-gymnastics in order to avoid: U+1F4A9 U+08 U+1F574.</p></div><div id="rfc.figure.u.7"><pre class="inline">
+</pre></div><div id="rfc.section.2.p.9"><p>Unicode-strings are unrestricted because there is no sane and/or culturally neutral way to subset or otherwise make unicode “safe”, and Unicode is still evolving new and interesting code points.</p></div><div id="rfc.section.2.p.10"><p>Users of unicode-string SHALL be prepared for the full gammut of glyph-gymnastics in order to avoid U+1F4A9 U+08 U+1F574.</p></div><div id="rfc.figure.u.7"><pre class="inline">
   blob = * %0x00-ff
-</pre></div><div id="rfc.section.2.p.11"><p>Blobs are intented primarily for cryptographic data, but can be used for any otherwise unsatisfied needs.</p></div><div id="rfc.figure.u.8"><pre class="inline">
+</pre></div><div id="rfc.section.2.p.11"><p>Blobs are intended primarily for cryptographic data, but can be used for any otherwise unsatisfied needs.</p></div><div id="rfc.figure.u.8"><pre class="inline">
   timestamp = number
 </pre></div><div id="rfc.section.2.p.12"><p>A timestamp counts seconds since the UNIX time_t epoch, including the “invisible leap-seconds” misfeature.</p></div></section><hr class="hidden-print"><section id="http1-serialization-of-http-header-common-structure"><h2 id="rfc.section.3" class="np"><a href="#rfc.section.3">3.</a>&nbsp;<a href="#http1-serialization-of-http-header-common-structure">HTTP/1 Serialization of HTTP Header Common Structure</a></h2><div id="rfc.section.3.p.1" class="avoidbreakafter"><p>In ABNF:</p></div><div id="rfc.figure.u.9"><pre class="inline">
   import OWS from RFC7230
@@ -166,9 +166,15 @@ window.addEventListener('DOMContentLoaded', anchorRewrite);
   import EmbeddedUnicodeChar from BCP137
 
   h1-common-structure-header =
-          ( field-name ":" OWS "&gt;" h1-common-structure "&lt;" )
-          ( field-name ":" OWS h1-common-structure ) /
-</pre></div><div id="rfc.section.3.p.2"><p>Only white-listed legacy headers (see <a href="#iana" title="IANA Considerations">Section&nbsp;8</a>) are exempt from using the “&gt;…&lt;” format.</p></div><div id="rfc.figure.u.10"><pre class="inline">
+          h1-common-structure-legacy-header /
+          h1-common-structure-self-identifying-header
+
+  h1-common-structure-legacy-header =
+          field-name ":" OWS h1-common-structure
+</pre></div><div id="rfc.section.3.p.2"><p>Only white-listed legacy headers (see <a href="#iana" title="IANA Considerations">Section&nbsp;8</a>) can use this format.</p></div><div id="rfc.figure.u.10"><pre class="inline">
+  h1-common-structure-self-identifying-header:
+          field-name ":" OWS "&gt;" h1-common-structure "&lt;"
+
   h1-common-structure = h1-element * ("," h1-element)
 
   h1-element = identifier * (";" identifier ["=" h1-value])
@@ -199,7 +205,7 @@ window.addEventListener('DOMContentLoaded', anchorRewrite);
                       0x5D-7E /
                       ) DQUOTE
 </pre></div><div id="rfc.section.3.p.3"><p>The dim prospects of ever getting a majority of HTTP1 paths 8-bit clean makes UTF-8 unviable as H1 serialization. Given that very little of the information in HTTP headers is presented to users in the first place, improving H1 and HPACK efficiency by inventing a more efficient BCP137 compliant escape-sequences seems unwarranted.</p></div><div id="rfc.figure.u.11"><pre class="inline">
-  h1-blob = "'" base64 "'"
+  h1-blob = ":" base64 ":"
   # XXX: where to import base64 from ?
 
   h1-timestamp = number
@@ -313,4 +319,4 @@ window.addEventListener('DOMContentLoaded', anchorRewrite);
   Proxy-Authenticate  [RFC7235, Section 4.3]
   WWW-Authenticate    [RFC7235, Section 4.1]
       1#challenge
-</pre></div></section></section><hr class="hidden-print"><section id="changes"><h2 id="rfc.section.B" class="np"><a href="#rfc.section.B">B.</a>&nbsp;<a href="#changes">Changes</a></h2><section id="since-draft-ietf-httpbis-header-structure-00"><h3 id="rfc.section.B.1"><a href="#rfc.section.B.1">B.1</a>&nbsp;<a href="#since-draft-ietf-httpbis-header-structure-00">Since draft-ietf-httpbis-header-structure-00</a></h3><div id="rfc.section.B.1.p.1"><p>Added uniqueness requirement on dictionary keys.</p></div><div id="rfc.section.B.1.p.2"><p>Added signed 64bit integer type</p></div></section></section><hr class="hidden-print"><section id="rfc.authors" class="np"><h2><a href="#rfc.authors">Author's Address</a></h2><p><b>Poul-Henning Kamp</b><br>The Varnish Cache Project<br>EMail: <a href="mailto:phk@varnish-cache.org">phk@varnish-cache.org</a></p></section></div></div></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script></body></html>
+</pre></div></section></section><hr class="hidden-print"><section id="changes"><h2 id="rfc.section.B" class="np"><a href="#rfc.section.B">B.</a>&nbsp;<a href="#changes">Changes</a></h2><section id="since-draft-ietf-httpbis-header-structure-00"><h3 id="rfc.section.B.1"><a href="#rfc.section.B.1">B.1</a>&nbsp;<a href="#since-draft-ietf-httpbis-header-structure-00">Since draft-ietf-httpbis-header-structure-00</a></h3><div id="rfc.section.B.1.p.1"><p>Added uniqueness requirement on dictionary keys.</p></div><div id="rfc.section.B.1.p.2"><p>Added signed 64bit integer type</p></div><div id="rfc.section.B.1.p.3"><p>Drop UTF8, and settle on BCP137::EmbeddedUnicodeChar for h1-unicode-string</p></div><div id="rfc.section.B.1.p.4"><p>Change h1_blob delimiter to “:” as “’” is valid t_char</p></div></section></section><hr class="hidden-print"><section id="rfc.authors" class="np"><h2><a href="#rfc.authors">Author's Address</a></h2><p><b>Poul-Henning Kamp</b><br>The Varnish Cache Project<br>EMail: <a href="mailto:phk@varnish-cache.org">phk@varnish-cache.org</a></p></section></div></div></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script></body></html>
