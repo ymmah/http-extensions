@@ -4,7 +4,7 @@
 
 HTTP Working Group                                                K. Oku
 Internet-Draft                                            DeNA Co., Ltd.
-Intended status: Experimental                           February 8, 2017
+Intended status: Informational                          February 8, 2017
 Expires: August 12, 2017
 
 
@@ -73,13 +73,12 @@ Table of Contents
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
      1.1.  Notational Conventions  . . . . . . . . . . . . . . . . .   3
    2.  103 Early Hints . . . . . . . . . . . . . . . . . . . . . . .   3
-   3.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
-   4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
-   5.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   4
-   6.  Changes . . . . . . . . . . . . . . . . . . . . . . . . . . .   4
-     6.1.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .   4
+   3.  Interoperatibility Issues . . . . . . . . . . . . . . . . . .   3
+   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
+   6.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   4
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   4
-     7.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
+     7.1.  Normative References  . . . . . . . . . . . . . . . . . .   4
      7.2.  Informative References  . . . . . . . . . . . . . . . . .   5
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   5
 
@@ -105,7 +104,8 @@ Table of Contents
    cannot do so until the status code and the headers of the final HTTP
    response is determined.
 
-
+   HTTP/2 ([RFC7540]) push can be used as a solution to the issue, but
+   has its own limitations.  The resources that can be pushed using
 
 
 
@@ -114,8 +114,6 @@ Oku                      Expires August 12, 2017                [Page 2]
 Internet-Draft                 Early Hints                 February 2017
 
 
-   HTTP/2 ([RFC7540]) push can be used as a solution to the issue, but
-   has its own limitations.  The resources that can be pushed using
    HTTP/2 are limited to those belonging to the same origin.  Also, it
    is impossible to send only the links of the resources using HTTP/2
    push.  Sending HTTP responses for every resource is an inefficient
@@ -158,10 +156,12 @@ Internet-Draft                 Early Hints                 February 2017
    HTTP/2 ([RFC7540]) push responses using the information found in the
    informational response.
 
+3.  Interoperatibility Issues
 
-
-
-
+   Clients may have issues handling Early Hints, since informational
+   response is rarely used for requests not including an Expect header
+   ([RFC7231], section 5.1.1).  Therefore, it is desirable to negotiate
+   the capability to use the status code.
 
 
 
@@ -170,28 +170,11 @@ Oku                      Expires August 12, 2017                [Page 3]
 Internet-Draft                 Early Hints                 February 2017
 
 
-3.  Security Considerations
+4.  Security Considerations
 
-   Clients may have issues handling Early Hints, since informational
-   response is rarely used for requests not including an Expect header
-   ([RFC7231], section 5.1.1).
+   TBD
 
-   An HTTP/1.1 client that mishandles the informational response as a
-   final response is likely to consider all the responses to the
-   succeeding requests sent over the same connection to be part of the
-   final response.  Such behavior may constitute a cross-origin
-   information disclosure vulnerability in case the client multiplexes
-   requests to different origins onto a single persistent connection.
-
-   Therefore, a server might refrain from sending Early Hints over
-   HTTP/1.1 unless when the client is known to handle informational
-   responses correctly.
-
-   HTTP/2 clients are less likely to suffer from incorrect framing since
-   handling of the response headers does not affect how the end of the
-   response body is determined.
-
-4.  IANA Considerations
+5.  IANA Considerations
 
    If Early Hints is standardized, the HTTP Status Codes Registry should
    be updated with the following entries:
@@ -202,29 +185,12 @@ Internet-Draft                 Early Hints                 February 2017
 
    o  Specification: this document
 
-5.  Acknowledgements
+6.  Acknowledgements
 
    Thanks to Tatsuhiro Tsujikawa for coming up with the idea of sending
    the link headers using an informational response.
 
-6.  Changes
-
-6.1.  Since -00
-
-   None yet.
-
 7.  References
-
-
-
-
-
-
-
-Oku                      Expires August 12, 2017                [Page 4]
-
-Internet-Draft                 Early Hints                 February 2017
-
 
 7.1.  Normative References
 
@@ -248,6 +214,18 @@ Internet-Draft                 Early Hints                 February 2017
               DOI 10.17487/RFC7540, May 2015,
               <http://www.rfc-editor.org/info/rfc7540>.
 
+
+
+
+
+
+
+
+Oku                      Expires August 12, 2017                [Page 4]
+
+Internet-Draft                 Early Hints                 February 2017
+
+
 7.2.  Informative References
 
    [Preload]  Grigorik, I., "Preload", September 2016,
@@ -259,6 +237,28 @@ Author's Address
    DeNA Co., Ltd.
 
    Email: kazuhooku@gmail.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
