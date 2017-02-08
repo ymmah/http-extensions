@@ -103,9 +103,9 @@ Table of Contents
    5.  Privacy Considerations  . . . . . . . . . . . . . . . . . . .  15
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  15
    7.  Usability Considerations  . . . . . . . . . . . . . . . . . .  16
-   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  16
-     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  16
-     8.2.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  17
+   8.  Changes . . . . . . . . . . . . . . . . . . . . . . . . . . .  16
+     8.1.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .  16
+   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  16
 
 
 
@@ -114,6 +114,8 @@ Stark                    Expires August 12, 2017                [Page 2]
 Internet-Draft                  Expect-CT                  February 2017
 
 
+     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  16
+     9.2.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  17
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  17
 
 1.  Introduction
@@ -157,8 +159,6 @@ Internet-Draft                  Expect-CT                  February 2017
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
    "OPTIONAL" in this document are to be interpreted as described in RFC
    2119 [RFC2119].
-
-
 
 
 
@@ -848,9 +848,15 @@ Internet-Draft                  Expect-CT                  February 2017
    CT Policy, users will experience denials of service.  It is advisable
    for UAs to explain the reason why.
 
-8.  References
+8.  Changes
 
-8.1.  Normative References
+8.1.  Since -00
+
+   None yet.
+
+9.  References
+
+9.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -882,6 +888,16 @@ Internet-Draft                  Expect-CT                  February 2017
               DOI 10.17487/RFC5246, August 2008,
               <http://www.rfc-editor.org/info/rfc5246>.
 
+
+
+
+
+
+Stark                    Expires August 12, 2017               [Page 16]
+
+Internet-Draft                  Expect-CT                  February 2017
+
+
    [RFC6797]  Hodges, J., Jackson, C., and A. Barth, "HTTP Strict
               Transport Security (HSTS)", RFC 6797,
               DOI 10.17487/RFC6797, November 2012,
@@ -890,13 +906,6 @@ Internet-Draft                  Expect-CT                  February 2017
    [RFC6962]  Laurie, B., Langley, A., and E. Kasper, "Certificate
               Transparency", RFC 6962, DOI 10.17487/RFC6962, June 2013,
               <http://www.rfc-editor.org/info/rfc6962>.
-
-
-
-Stark                    Expires August 12, 2017               [Page 16]
-
-Internet-Draft                  Expect-CT                  February 2017
-
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
@@ -918,7 +927,7 @@ Internet-Draft                  Expect-CT                  February 2017
               REC-html401-19991224, December 1999,
               <http://www.w3.org/TR/1999/REC-html401-19991224>.
 
-8.2.  URIs
+9.2.  URIs
 
    [1] https://html.spec.whatwg.org/#queue-a-task
 
@@ -930,15 +939,6 @@ Author's Address
    Google
 
    Email: estark@google.com
-
-
-
-
-
-
-
-
-
 
 
 
