@@ -203,7 +203,7 @@ Internet-Draft                  Expect-CT                  February 2017
 
    UA is an acronym for "user agent".  For the purposes of this
       specification, a UA is an HTTP client application typically
-      actively manipulated by a user [RFC2616].
+      actively manipulated by a user [RFC7230].
 
    Unknown Expect-CT Host  is an Expect-CT Host that the UA has not
       noted.
@@ -863,12 +863,6 @@ Internet-Draft                  Expect-CT                  February 2017
               DOI 10.17487/RFC2119, March 1997,
               <http://www.rfc-editor.org/info/rfc2119>.
 
-   [RFC2616]  Fielding, R., Gettys, J., Mogul, J., Frystyk, H.,
-              Masinter, L., Leach, P., and T. Berners-Lee, "Hypertext
-              Transfer Protocol -- HTTP/1.1", RFC 2616,
-              DOI 10.17487/RFC2616, June 1999,
-              <http://www.rfc-editor.org/info/rfc2616>.
-
    [RFC3339]  Klyne, G. and C. Newman, "Date and Time on the Internet:
               Timestamps", RFC 3339, DOI 10.17487/RFC3339, July 2002,
               <http://www.rfc-editor.org/info/rfc3339>.
@@ -888,16 +882,6 @@ Internet-Draft                  Expect-CT                  February 2017
               DOI 10.17487/RFC5246, August 2008,
               <http://www.rfc-editor.org/info/rfc5246>.
 
-
-
-
-
-
-Stark                    Expires August 12, 2017               [Page 16]
-
-Internet-Draft                  Expect-CT                  February 2017
-
-
    [RFC6797]  Hodges, J., Jackson, C., and A. Barth, "HTTP Strict
               Transport Security (HSTS)", RFC 6797,
               DOI 10.17487/RFC6797, November 2012,
@@ -906,6 +890,13 @@ Internet-Draft                  Expect-CT                  February 2017
    [RFC6962]  Laurie, B., Langley, A., and E. Kasper, "Certificate
               Transparency", RFC 6962, DOI 10.17487/RFC6962, June 2013,
               <http://www.rfc-editor.org/info/rfc6962>.
+
+
+
+Stark                    Expires August 12, 2017               [Page 16]
+
+Internet-Draft                  Expect-CT                  February 2017
+
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
@@ -939,6 +930,15 @@ Author's Address
    Google
 
    Email: estark@google.com
+
+
+
+
+
+
+
+
+
 
 
 
