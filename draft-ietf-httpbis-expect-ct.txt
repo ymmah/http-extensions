@@ -4,8 +4,8 @@
 
 HTTP Working Group                                              E. Stark
 Internet-Draft                                                    Google
-Intended status: Experimental                           February 8, 2017
-Expires: August 12, 2017
+Intended status: Experimental                           February 9, 2017
+Expires: August 13, 2017
 
 
                       Expect-CT Extension for HTTP
@@ -53,12 +53,12 @@ Status of This Memo
 
 
 
-Stark                    Expires August 12, 2017                [Page 1]
+Stark                    Expires August 13, 2017                [Page 1]
 
 Internet-Draft                  Expect-CT                  February 2017
 
 
-   This Internet-Draft will expire on August 12, 2017.
+   This Internet-Draft will expire on August 13, 2017.
 
 Copyright Notice
 
@@ -103,20 +103,20 @@ Table of Contents
    5.  Privacy Considerations  . . . . . . . . . . . . . . . . . . .  15
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  15
    7.  Usability Considerations  . . . . . . . . . . . . . . . . . .  16
-   8.  Changes . . . . . . . . . . . . . . . . . . . . . . . . . . .  16
-     8.1.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .  16
-   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  16
+   8.  Authoring Considerations  . . . . . . . . . . . . . . . . . .  16
+     8.1.  HTTP Header . . . . . . . . . . . . . . . . . . . . . . .  16
+   9.  Changes . . . . . . . . . . . . . . . . . . . . . . . . . . .  16
 
 
 
-Stark                    Expires August 12, 2017                [Page 2]
+Stark                    Expires August 13, 2017                [Page 2]
 
 Internet-Draft                  Expect-CT                  February 2017
 
 
-     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  16
-     9.2.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  17
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  17
+     9.1.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .  16
+   10. Normative References  . . . . . . . . . . . . . . . . . . . .  16
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  18
 
 1.  Introduction
 
@@ -165,7 +165,7 @@ Internet-Draft                  Expect-CT                  February 2017
 
 
 
-Stark                    Expires August 12, 2017                [Page 3]
+Stark                    Expires August 13, 2017                [Page 3]
 
 Internet-Draft                  Expect-CT                  February 2017
 
@@ -221,7 +221,7 @@ Internet-Draft                  Expect-CT                  February 2017
 
 
 
-Stark                    Expires August 12, 2017                [Page 4]
+Stark                    Expires August 13, 2017                [Page 4]
 
 Internet-Draft                  Expect-CT                  February 2017
 
@@ -277,7 +277,7 @@ Internet-Draft                  Expect-CT                  February 2017
 
 
 
-Stark                    Expires August 12, 2017                [Page 5]
+Stark                    Expires August 13, 2017                [Page 5]
 
 Internet-Draft                  Expect-CT                  February 2017
 
@@ -333,7 +333,7 @@ Internet-Draft                  Expect-CT                  February 2017
 
 
 
-Stark                    Expires August 12, 2017                [Page 6]
+Stark                    Expires August 13, 2017                [Page 6]
 
 Internet-Draft                  Expect-CT                  February 2017
 
@@ -389,7 +389,7 @@ Internet-Draft                  Expect-CT                  February 2017
 
 
 
-Stark                    Expires August 12, 2017                [Page 7]
+Stark                    Expires August 13, 2017                [Page 7]
 
 Internet-Draft                  Expect-CT                  February 2017
 
@@ -445,7 +445,7 @@ Internet-Draft                  Expect-CT                  February 2017
 
 
 
-Stark                    Expires August 12, 2017                [Page 8]
+Stark                    Expires August 13, 2017                [Page 8]
 
 Internet-Draft                  Expect-CT                  February 2017
 
@@ -501,7 +501,7 @@ Internet-Draft                  Expect-CT                  February 2017
 
 
 
-Stark                    Expires August 12, 2017                [Page 9]
+Stark                    Expires August 13, 2017                [Page 9]
 
 Internet-Draft                  Expect-CT                  February 2017
 
@@ -557,7 +557,7 @@ Internet-Draft                  Expect-CT                  February 2017
 
 
 
-Stark                    Expires August 12, 2017               [Page 10]
+Stark                    Expires August 13, 2017               [Page 10]
 
 Internet-Draft                  Expect-CT                  February 2017
 
@@ -613,7 +613,7 @@ Internet-Draft                  Expect-CT                  February 2017
 
 
 
-Stark                    Expires August 12, 2017               [Page 11]
+Stark                    Expires August 13, 2017               [Page 11]
 
 Internet-Draft                  Expect-CT                  February 2017
 
@@ -669,7 +669,7 @@ Internet-Draft                  Expect-CT                  February 2017
 
 
 
-Stark                    Expires August 12, 2017               [Page 12]
+Stark                    Expires August 13, 2017               [Page 12]
 
 Internet-Draft                  Expect-CT                  February 2017
 
@@ -712,7 +712,8 @@ Internet-Draft                  Expect-CT                  February 2017
    and the connection does not comply with the UA's CT Policy, or when
    the UA connects to a Known Expect-CT Host with Expect-CT metadata
    that contains a "report-uri", the UA SHOULD report the failure as
-   follows:
+   follows.  "Queue a task" is defined in [HTML], and "fetch" in
+   [FETCH].
 
    1.  Prepare a JSON object "report object" with the single key
        "expect-ct-report", whose value is the result of generating a
@@ -720,20 +721,22 @@ Internet-Draft                  Expect-CT                  February 2017
 
    2.  Let "report body" by the JSON stringification of "report object".
 
-   3.  Let "report-uri" be the value of the "report-uri" directive in
-       the Expect-CT header field.
 
 
 
-Stark                    Expires August 12, 2017               [Page 13]
+
+Stark                    Expires August 13, 2017               [Page 13]
 
 Internet-Draft                  Expect-CT                  February 2017
 
 
-   4.  Queue a task [4] to fetch [5] "report-uri", with the synchronous
-       flag not set, using HTTP method "POST", with a "Content-Type"
-       header field of "application/expect-ct-report", and an entity
-       body consisting of "report body".
+   3.  Let "report-uri" be the value of the "report-uri" directive in
+       the Expect-CT header field.
+
+   4.  Queue a task to fetch "report-uri", with the synchronous flag not
+       set, using HTTP method "POST", with a "Content-Type" header field
+       of "application/expect-ct-report", and an entity body consisting
+       of "report body".
 
 4.  Security Considerations
 
@@ -778,10 +781,7 @@ Internet-Draft                  Expect-CT                  February 2017
 
 
 
-
-
-
-Stark                    Expires August 12, 2017               [Page 14]
+Stark                    Expires August 13, 2017               [Page 14]
 
 Internet-Draft                  Expect-CT                  February 2017
 
@@ -837,7 +837,7 @@ Internet-Draft                  Expect-CT                  February 2017
 
 
 
-Stark                    Expires August 12, 2017               [Page 15]
+Stark                    Expires August 13, 2017               [Page 15]
 
 Internet-Draft                  Expect-CT                  February 2017
 
@@ -848,15 +848,39 @@ Internet-Draft                  Expect-CT                  February 2017
    CT Policy, users will experience denials of service.  It is advisable
    for UAs to explain the reason why.
 
-8.  Changes
+8.  Authoring Considerations
 
-8.1.  Since -00
+8.1.  HTTP Header
+
+   Expect-CT could be specified as a TLS extension or X.509 certificate
+   extension instead of an HTTP response header.  Using an HTTP header
+   as the mechanism for Expect-CT introduces a layering mismatch: for
+   example, the software that terminates TLS and validates Certificate
+   Transparency information might know nothing about HTTP.
+   Nevertheless, an HTTP header was chosen primarily for ease of
+   deployment.  In practice, deploying new certificate extensions
+   requires certificate authorities to support them, and new TLS
+   extensions require server software updates, including possibly to
+   servers outside of the site owner's direct control (such as in the
+   case of a third-party CDN).  Ease of deployment is a high priority
+   for Expect-CT because it is intended as a temporary transition
+   mechanism for user agents that are transitioning to universal
+   Certificate Transparency requirements.
+
+9.  Changes
+
+9.1.  Since -00
 
    None yet.
 
-9.  References
+10.  Normative References
 
-9.1.  Normative References
+   [FETCH]    van Kesteren, A., "Fetch", n.d.,
+              <https://fetch.spec.whatwg.org/>.
+
+   [HTML]     Hickson, I., Pieters, S., van Kesteren, A., Jaegenstedt,
+              P., and D. Denicola, "HTML", n.d.,
+              <https://html.spec.whatwg.org/>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -866,6 +890,13 @@ Internet-Draft                  Expect-CT                  February 2017
    [RFC3339]  Klyne, G. and C. Newman, "Date and Time on the Internet:
               Timestamps", RFC 3339, DOI 10.17487/RFC3339, July 2002,
               <http://www.rfc-editor.org/info/rfc3339>.
+
+
+
+Stark                    Expires August 13, 2017               [Page 16]
+
+Internet-Draft                  Expect-CT                  February 2017
+
 
    [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
               Resource Identifier (URI): Generic Syntax", STD 66,
@@ -891,13 +922,6 @@ Internet-Draft                  Expect-CT                  February 2017
               Transparency", RFC 6962, DOI 10.17487/RFC6962, June 2013,
               <http://www.rfc-editor.org/info/rfc6962>.
 
-
-
-Stark                    Expires August 12, 2017               [Page 16]
-
-Internet-Draft                  Expect-CT                  February 2017
-
-
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
@@ -918,11 +942,17 @@ Internet-Draft                  Expect-CT                  February 2017
               REC-html401-19991224, December 1999,
               <http://www.w3.org/TR/1999/REC-html401-19991224>.
 
-9.2.  URIs
 
-   [1] https://html.spec.whatwg.org/#queue-a-task
 
-   [2] https://fetch.spec.whatwg.org/#fetching
+
+
+
+
+
+Stark                    Expires August 13, 2017               [Page 17]
+
+Internet-Draft                  Expect-CT                  February 2017
+
 
 Author's Address
 
@@ -949,4 +979,30 @@ Author's Address
 
 
 
-Stark                    Expires August 12, 2017               [Page 17]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Stark                    Expires August 13, 2017               [Page 18]
