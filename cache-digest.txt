@@ -102,7 +102,7 @@ Table of Contents
    capacity even then.
 
    This specification defines a HTTP/2 frame type to allow clients to
-   inform the server of their cache's contents using a Golumb-Rice Coded
+   inform the server of their cache's contents using a Golomb-Rice Coded
    Set [Rice].  Servers can then use this to inform their choices of
    what to push to clients.
 
@@ -400,7 +400,7 @@ Internet-Draft          Cache Digests for HTTP/2           February 2017
    4.   Let "C" be -1.
 
    5.   Read '0' bits from "digest-value" until a '1' bit is found; let
-        "Q" bit the number of '0' bits.  Discard the '1'.
+        "Q" be the number of '0' bits.  Discard the '1'.
 
    6.   Read log2("P") bits from "digest-value" after the '1' as an
         integer; let "R" be its value.
@@ -513,7 +513,7 @@ Internet-Draft          Cache Digests for HTTP/2           February 2017
 Appendix A.  Acknowledgements
 
    Thanks to Adam Langley and Giovanni Bajo for their explorations of
-   Golumb-coded sets.  In particular, see
+   Golomb-coded sets.  In particular, see
    http://giovanni.bajo.it/post/47119962313/golomb-coded-sets-smaller-
    than-bloom-filters , which refers to sample code.
 
