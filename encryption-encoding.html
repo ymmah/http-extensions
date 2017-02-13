@@ -165,7 +165,7 @@ NONCE = Bcs8gkIRKLI8GeI8
 plaintext = SSBhbSB0aGUgd2FscnVzAg
 </pre></div></section><section id="encryption-with-multiple-records"><h3 id="rfc.section.3.2"><a href="#rfc.section.3.2">3.2</a>&nbsp;<a href="#encryption-with-multiple-records">Encryption with Multiple Records</a></h3><div id="rfc.section.3.2.p.1"><p>This example shows the same message with input keying material of “BO3ZVPxUlnLORbVGMpbT1Q”. In this example, the plaintext is split into records of 25 octets each (that is, the “rs” field in the header is 25). The first record includes one 0x00 padding octet. This means that there are 7 octets of message in the first record, and 8 in the second. A key identifier of the UTF-8 encoded string “a1” is also included in the header.</p></div><div id="rfc.figure.u.10"><pre class="text">
 HTTP/1.1 200 OK
-Content-Length: 93
+Content-Length: 73
 Content-Encoding: aes128gcm
 
 uNCkWiNYzKTnBN9ji3-qWAAAABkCYTHOG8chz_gnvgOqdGYovxyjuqRyJFjEDyoF
