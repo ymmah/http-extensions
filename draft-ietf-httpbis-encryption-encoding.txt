@@ -124,7 +124,7 @@ Internet-Draft           HTTP encryption coding            February 2017
    encryption formats - such as those that are described by [RFC4880],
    [RFC5652], [RFC7516], and [XMLENC] - which are not suited to stream
    processing, which is necessary for HTTP.  The format described here
-   cleaves more closely to the lower level constructs described in
+   follows more closely to the lower level constructs described in
    [RFC5116].
 
    To the extent that message-based encryption formats use the same
@@ -171,23 +171,23 @@ Internet-Draft           HTTP encryption coding            February 2017
 
 
    The "aes128gcm" content coding uses a fixed record size.  The final
-   encoding consists of a header (see Section 2.1), zero or more fixed
-   size encrypted records.  The final record can be smaller than the
-   record size.
+   encoding consists of a header (see Section 2.1) and zero or more
+   fixed size encrypted records; the final record can be smaller than
+   the record size.
 
    The record size determines the length of each portion of plaintext
    that is enciphered.  The record size ("rs") is included in the
    content coding header (see Section 2.1).
 
 
-   +-----------+              content of rs octets
-   |   data    |              less padding (1+) and tag (16);
-   +-----------+              the last record is smaller
+   +-----------+              content
+   |   data    |              any length up to rs-17 octets
+   +-----------+
         |
         v
-   +-----------+-----+        add padding to get rs-16 octets;
-   |   data    | pad |        padding is zeros starting with 1,
-   +-----------+-----+        or 2 on the last record
+   +-----------+-----+        add a delimiter octet (0x01 or 0x02)
+   |   data    | pad |        the 0x00-valued octets to rs-16
+   +-----------+-----+        (or less on the last record)
             |
             v
    +--------------------+    encrypt with AEAD_AES_128_GCM;
@@ -197,7 +197,7 @@ Internet-Draft           HTTP encryption coding            February 2017
    AEAD_AES_128_GCM produces ciphertext 16 octets longer than its input
    plaintext.  Therefore, the unencrypted content of each record is
    shorter than the record size by 16 octets.  Valid records always
-   contain at least a padding terminator octet and a 16 octet
+   contain at least a padding delimiter octet and a 16 octet
    authentication tag.
 
    Each record contains a single padding delimiter octet followed by any
@@ -320,8 +320,8 @@ Internet-Draft           HTTP encryption coding            February 2017
 
    The nonce input to AEAD_AES_128_GCM is constructed for each record.
    The nonce for each record is a 12 octet (96 bit) value that is
-   produced from the record sequence number and a value derived from the
-   input keying material.
+   derived from the record sequence number, input keying material, and
+   salt.
 
    The input keying material and salt values are input to HKDF with
    different info and length parameters.
@@ -372,9 +372,9 @@ Internet-Draft           HTTP encryption coding            February 2017
 
    The encrypted data in this example is the UTF-8 encoded string "I am
    the walrus".  The input keying material is the value "yqdlZ-
-   tYemfogSmv7Ws5PQ" (in base64url).  The content body contains a single
-   record and is shown here using base64url encoding for presentation
-   reasons.
+   tYemfogSmv7Ws5PQ" (in base64url).  The 54 octet content body contains
+   a single record and is shown here using 71 base64url characters for
+   presentation reasons.
 
 
    HTTP/1.1 200 OK
@@ -399,7 +399,7 @@ Internet-Draft           HTTP encryption coding            February 2017
    Alternatively (and equivalently), the Content-Type header field can
    be omitted.
 
-   Intermediate values for this example (all shown in base64):
+   Intermediate values for this example (all shown using base64url):
 
 
    salt (from header) = I1BsxtFttlv3u_Oo94xnmw
@@ -413,7 +413,7 @@ Internet-Draft           HTTP encryption coding            February 2017
    This example shows the same message with input keying material of
    "BO3ZVPxUlnLORbVGMpbT1Q".  In this example, the plaintext is split
    into records of 25 octets each (that is, the "rs" field in the header
-   is 25).  The first record includes a single octet of padding.  This
+   is 25).  The first record includes one 0x00 padding octet.  This
    means that there are 7 octets of message in the first record, and 8
    in the second.  A key identifier of the UTF-8 encoded string "a1" is
    also included in the header.
@@ -440,8 +440,8 @@ Internet-Draft           HTTP encryption coding            February 2017
    The requirements for a good implementation of cryptographic
    algorithms can change over time.
 
-
-
+   As a content coding, presence of the "aes128gcm" coding might be
+   transparent to a consumer of a message.  Recipients that depend on
 
 
 
@@ -449,6 +449,9 @@ Thomson                  Expires August 17, 2017                [Page 8]
 
 Internet-Draft           HTTP encryption coding            February 2017
 
+
+   content origin authentication using this mechanism MUST reject
+   messages that don't include the "aes128gcm" content coding.
 
 4.1.  Message Truncation
 
@@ -493,11 +496,8 @@ Internet-Draft           HTTP encryption coding            February 2017
    limit for a single application of AEAD_AES_128_GCM is not reached
    [RFC5116].  In order to preserve a 2^-40 probability of
    indistinguishability under chosen plaintext attack (IND-CPA), the
-   total amount of plaintext that can be enciphered MUST be less than
-   2^44.5 blocks of 16 octets [AEBounds].
+   total amount of plaintext that can be enciphered with the key derived
 
-   If the record size is a multiple of 16 octets, this means 398
-   terabytes can be encrypted safely, including padding and overhead.
 
 
 
@@ -506,6 +506,11 @@ Thomson                  Expires August 17, 2017                [Page 9]
 Internet-Draft           HTTP encryption coding            February 2017
 
 
+   from the same input keying material and salt MUST be less than 2^44.5
+   blocks of 16 octets [AEBounds].
+
+   If the record size is a multiple of 16 octets, this means 398
+   terabytes can be encrypted safely, including padding and overhead.
    However, if the record size is not a multiple of 16 octets, the total
    amount of data that can be safely encrypted is reduced because
    partial AES blocks are encrypted.  The worst case is a record size of
@@ -522,11 +527,11 @@ Internet-Draft           HTTP encryption coding            February 2017
    content that will be accepted as valid.  This includes all recipients
    of the same HTTP message.
 
-   Furthermore, any entity that is able to modify both the Encryption
-   header field and the HTTP message body can replace the contents.
-   Without the content encryption key or the input keying material,
-   modifications to or replacement of parts of a payload body are not
-   possible.
+   Furthermore, any entity that is able to modify both the Content-
+   Encoding header field and the HTTP message body can replace the
+   contents.  Without the content encryption key or the input keying
+   material, modifications to or replacement of parts of a payload body
+   are not possible.
 
 4.5.  Leaking Information in Header Fields
 
@@ -549,11 +554,6 @@ Internet-Draft           HTTP encryption coding            February 2017
    2.  If it is considered sensitive information and it is possible to
        determine it through other means (e.g., out of band, using hints
        in other representations, etc.), omit the relevant headers, and/
-       or normalize them.  In the case of Content-Type, this could be
-       accomplished by always sending Content-Type: application/octet-
-       stream (the most generic media type), or no Content-Type at all.
-
-
 
 
 
@@ -561,6 +561,10 @@ Thomson                  Expires August 17, 2017               [Page 10]
 
 Internet-Draft           HTTP encryption coding            February 2017
 
+
+       or normalize them.  In the case of Content-Type, this could be
+       accomplished by always sending Content-Type: application/octet-
+       stream (the most generic media type), or no Content-Type at all.
 
    3.  If it is considered sensitive information and it is not possible
        to convey it elsewhere, encapsulate the HTTP message using the
@@ -585,13 +589,13 @@ Internet-Draft           HTTP encryption coding            February 2017
 
    This risk can be mitigated through the use of the padding that this
    mechanism provides.  Alternatively, splitting up content into
-   segments and storing the separately might reduce exposure.  HTTP/2
+   segments and storing them separately might reduce exposure.  HTTP/2
    [RFC7540] combined with TLS [RFC5246] might be used to hide the size
    of individual messages.
 
    Developing a padding strategy is difficult.  A good padding strategy
    can depend on context.  Common strategies include padding to a small
-   set of fixed lengths, padding to multiples of a values, or padding to
+   set of fixed lengths, padding to multiples of a value, or padding to
    powers of 2.  Even a good strategy can still cause size information
    to leak if processing activity of a recipient can be observed.  This
    is especially true if the trailing records of a message contain only
@@ -607,16 +611,15 @@ Internet-Draft           HTTP encryption coding            February 2017
 
    o  Name: aes128gcm
 
-   o  Description: AES-GCM encryption with a 128-bit content encryption
-      key
-
-
 
 
 Thomson                  Expires August 17, 2017               [Page 11]
 
 Internet-Draft           HTTP encryption coding            February 2017
 
+
+   o  Description: AES-GCM encryption with a 128-bit content encryption
+      key
 
    o  Reference: this specification
 
@@ -661,9 +664,6 @@ Internet-Draft           HTTP encryption coding            February 2017
    [RFC7515]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web
               Signature (JWS)", RFC 7515, DOI 10.17487/RFC7515, May
               2015, <http://www.rfc-editor.org/info/rfc7515>.
-
-
-
 
 
 
