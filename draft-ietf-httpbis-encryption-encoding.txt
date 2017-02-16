@@ -186,7 +186,7 @@ Internet-Draft           HTTP encryption coding            February 2017
         |
         v
    +-----------+-----+        add a delimiter octet (0x01 or 0x02)
-   |   data    | pad |        the 0x00-valued octets to rs-16
+   |   data    | pad |        then 0x00-valued octets to rs-16
    +-----------+-----+        (or less on the last record)
             |
             v
