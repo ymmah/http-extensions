@@ -629,9 +629,9 @@ Internet-Draft           HTTP encryption coding            February 2017
 
    [FIPS180-4]
               Department of Commerce, National., "NIST FIPS 180-4,
-              Secure Hash Standard", March 2012,
-              <http://csrc.nist.gov/publications/fips/fips180-4/
-              fips-180-4.pdf>.
+              Secure Hash Standard", August 2015,
+              <http://nvlpubs.nist.gov/nistpubs/FIPS/
+              NIST.FIPS.180-4.pdf>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -717,7 +717,7 @@ Internet-Draft           HTTP encryption coding            February 2017
    [XMLENC]   Eastlake, D., Reagle, J., Hirsch, F., Roessler, T.,
               Imamura, T., Dillaway, B., Simon, E., Yiu, K., and M.
               Nystroem, "XML Encryption Syntax and Processing", W3C
-              Recommendation REC-xmlenc-core1-20130411 , January 2013,
+              Recommendation REC-xmlenc-core1-20130411, January 2013,
               <https://www.w3.org/TR/2013/REC-xmlenc-core1-20130411>.
 
 
