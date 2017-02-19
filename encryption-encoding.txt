@@ -180,14 +180,14 @@ Internet-Draft           HTTP encryption coding            February 2017
    content coding header (see Section 2.1).
 
 
-   +-----------+              content
-   |   data    |              any length up to rs-17 octets
+   +-----------+             content
+   |   data    |             any length up to rs-17 octets
    +-----------+
         |
         v
-   +-----------+-----+        add a delimiter octet (0x01 or 0x02)
-   |   data    | pad |        then 0x00-valued octets to rs-16
-   +-----------+-----+        (or less on the last record)
+   +-----------+-----+       add a delimiter octet (0x01 or 0x02)
+   |   data    | pad |       then 0x00-valued octets to rs-16
+   +-----------+-----+       (or less on the last record)
             |
             v
    +--------------------+    encrypt with AEAD_AES_128_GCM;
@@ -717,7 +717,7 @@ Internet-Draft           HTTP encryption coding            February 2017
    [XMLENC]   Eastlake, D., Reagle, J., Hirsch, F., Roessler, T.,
               Imamura, T., Dillaway, B., Simon, E., Yiu, K., and M.
               Nystroem, "XML Encryption Syntax and Processing", W3C
-              Recommendation REC-xmlenc-core1-20130411, January 2013,
+              Recommendation REC-xmlenc-core1-20130411 , January 2013,
               <https://www.w3.org/TR/2013/REC-xmlenc-core1-20130411>.
 
 
