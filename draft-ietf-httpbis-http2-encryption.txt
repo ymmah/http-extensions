@@ -16,8 +16,7 @@ Abstract
 
    This document describes how "http" URIs can be accessed using
    Transport Layer Security (TLS) and HTTP/2 to mitigate pervasive
-   monitoring attacks.  This mechanism not a replacement for "https"
-   URIs; it is vulnerable to active attacks.
+   monitoring attacks.
 
 Note to Readers
 
@@ -46,9 +45,10 @@ Status of This Memo
 
    This Internet-Draft will expire on August 31, 2017.
 
+Copyright Notice
 
-
-
+   Copyright (c) 2017 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
 
 
 
@@ -57,11 +57,6 @@ Nottingham & Thomson     Expires August 31, 2017                [Page 1]
 
 Internet-Draft         Opportunistic HTTP Security         February 2017
 
-
-Copyright Notice
-
-   Copyright (c) 2017 IETF Trust and the persons identified as the
-   document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
@@ -105,7 +100,12 @@ Table of Contents
 
    This document describes a usage model whereby sites can serve "http"
    URIs over TLS, thereby avoiding the problem of serving Mixed Content
+   (described in [W3C.CR-mixed-content-20160802]) while still providing
+   protection against passive attacks.
 
+   Opportunistic Security does not provide the same guarantees as using
+   TLS with "https" URIs, because it is vulnerable to active attacks,
+   and does not change the security context of the connection.
 
 
 
@@ -114,12 +114,6 @@ Nottingham & Thomson     Expires August 31, 2017                [Page 2]
 Internet-Draft         Opportunistic HTTP Security         February 2017
 
 
-   (described in [W3C.CR-mixed-content-20160802]) while still providing
-   protection against passive attacks.
-
-   Opportunistic Security does not provide the same guarantees as using
-   TLS with "https" URIs, because it is vulnerable to active attacks,
-   and does not change the security context of the connection.
    Normally, users will not be able to tell that it is in use (i.e.,
    there will be no "lock icon").
 
@@ -161,6 +155,12 @@ Internet-Draft         Opportunistic HTTP Security         February 2017
    service (as specified by [RFC7838]), provided that the alternative
    service opts in as described in Section 2.1.
 
+   A client that places the importance of protection against passive
+   attacks over performance might choose to withhold requests until an
+   encrypted connection is available.  However, if such a connection
+   cannot be successfully established, the client can resume its use of
+   the cleartext connection.
+
 
 
 
@@ -169,12 +169,6 @@ Nottingham & Thomson     Expires August 31, 2017                [Page 3]
 
 Internet-Draft         Opportunistic HTTP Security         February 2017
 
-
-   A client that places the importance of protection against passive
-   attacks over performance might choose to withhold requests until an
-   encrypted connection is available.  However, if such a connection
-   cannot be successfully established, the client can resume its use of
-   the cleartext connection.
 
    A client can also explicitly probe for an alternative service
    advertisement by sending a request that bears little or no sensitive
@@ -213,6 +207,12 @@ Internet-Draft         Opportunistic HTTP Security         February 2017
    following request/response pair would allow requests for the origins
    "http://www.example.com" or "http://example.com" to be sent using a
    secured connection:
+
+
+
+
+
+
 
 
 
@@ -327,7 +327,7 @@ Internet-Draft         Opportunistic HTTP Security         February 2017
 
 4.1.  Security Indicators
 
-   User Agents MUST NOT provide any special security indicators when an
+   User Agents MUST NOT provide any special security indicia when an
    "http" resource is acquired using TLS.  In particular, indicators
 
 
@@ -378,8 +378,8 @@ Internet-Draft         Opportunistic HTTP Security         February 2017
    accessing a HTTPS URI, and operating in the security context implied
    by HTTPS.
 
-   Therefore, server implementers and administrators need to carefully
-   examine the use of such signals before deploying this specification.
+   Therefore, servers need to carefully examine the use of such signals
+   before deploying this specification.
 
 4.5.  Server Controls
 
