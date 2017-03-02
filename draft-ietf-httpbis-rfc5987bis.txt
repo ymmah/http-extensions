@@ -123,6 +123,7 @@ Internet-Draft      Charset/Language Encoding in HTTP         March 2017
      C.11. Since draft-ietf-httpbis-rfc5987bis-02  . . . . . . . . .  16
      C.12. Since draft-ietf-httpbis-rfc5987bis-03  . . . . . . . . .  16
      C.13. Since draft-ietf-httpbis-rfc5987bis-04  . . . . . . . . .  16
+     C.14. Since draft-ietf-httpbis-rfc5987bis-05  . . . . . . . . .  16
    Appendix D.  Acknowledgements . . . . . . . . . . . . . . . . . .  16
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  17
 
@@ -161,7 +162,6 @@ Internet-Draft      Charset/Language Encoding in HTTP         March 2017
       Note: in the remainder of this document, RFC 2231 is only
       referenced for the purpose of explaining the choice of features
       that were adopted; they are therefore purely informative.
-
 
 
 
@@ -881,15 +881,15 @@ C.13.  Since draft-ietf-httpbis-rfc5987bis-04
 
    Mention RFC8053 in Implementation Report.
 
+C.14.  Since draft-ietf-httpbis-rfc5987bis-05
+
+   None yet.
+
 Appendix D.  Acknowledgements
 
    Thanks to Martin Duerst and Frank Ellermann for help figuring out
    ABNF details, to Graham Klyne and Alexey Melnikov for general review,
    to Chris Newman for pointing out an RFC 2231 incompatibility, and to
-   Benjamin Carlyle, Roar Lauritzsen, Eric Lawrence, and James Manger
-   for implementer's feedback.
-
-
 
 
 
@@ -897,6 +897,9 @@ Reschke                 Expires September 3, 2017              [Page 16]
 
 Internet-Draft      Charset/Language Encoding in HTTP         March 2017
 
+
+   Benjamin Carlyle, Roar Lauritzsen, Eric Lawrence, and James Manger
+   for implementer's feedback.
 
    Furthermore thanks to the members of the IETF HTTP Working Group for
    the feedback specific to this update of RFC 5987.
@@ -911,9 +914,6 @@ Author's Address
 
    EMail: julian.reschke@greenbytes.de
    URI:   http://greenbytes.de/tech/webdav/
-
-
-
 
 
 
