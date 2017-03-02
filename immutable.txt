@@ -4,8 +4,8 @@
 
 HTTP Working Group                                            P. McManus
 Internet-Draft                                                   Mozilla
-Intended status: Standards Track                       February 27, 2017
-Expires: August 31, 2017
+Intended status: Standards Track                           March 2, 2017
+Expires: September 3, 2017
 
 
                         HTTP Immutable Responses
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 31, 2017.
+   This Internet-Draft will expire on September 3, 2017.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-McManus                  Expires August 31, 2017                [Page 1]
+McManus                 Expires September 3, 2017               [Page 1]
 
-Internet-Draft          HTTP Immutable Responses           February 2017
+Internet-Draft          HTTP Immutable Responses              March 2017
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Internet-Draft          HTTP Immutable Responses           February 2017
 
 
 
-McManus                  Expires August 31, 2017                [Page 2]
+McManus                 Expires September 3, 2017               [Page 2]
 
-Internet-Draft          HTTP Immutable Responses           February 2017
+Internet-Draft          HTTP Immutable Responses              March 2017
 
 
    wasted conditional requests for each sub-resource as each will return
@@ -165,9 +165,9 @@ Internet-Draft          HTTP Immutable Responses           February 2017
 
 
 
-McManus                  Expires August 31, 2017                [Page 3]
+McManus                 Expires September 3, 2017               [Page 3]
 
-Internet-Draft          HTTP Immutable Responses           February 2017
+Internet-Draft          HTTP Immutable Responses              March 2017
 
 
    o  Clients should ignore immutable for resources that are not part of
@@ -221,9 +221,9 @@ Internet-Draft          HTTP Immutable Responses           February 2017
 
 
 
-McManus                  Expires August 31, 2017                [Page 4]
+McManus                 Expires September 3, 2017               [Page 4]
 
-Internet-Draft          HTTP Immutable Responses           February 2017
+Internet-Draft          HTTP Immutable Responses              March 2017
 
 
 6.2.  Informative References
@@ -277,4 +277,4 @@ Author's Address
 
 
 
-McManus                  Expires August 31, 2017                [Page 5]
+McManus                 Expires September 3, 2017               [Page 5]

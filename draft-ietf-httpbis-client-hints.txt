@@ -4,8 +4,8 @@
 
 HTTP Working Group                                           I. Grigorik
 Internet-Draft                                                    Google
-Intended status: Experimental                          February 27, 2017
-Expires: August 31, 2017
+Intended status: Experimental                              March 2, 2017
+Expires: September 3, 2017
 
 
                            HTTP Client Hints
@@ -49,13 +49,13 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 31, 2017.
+   This Internet-Draft will expire on September 3, 2017.
 
 
 
-Grigorik                 Expires August 31, 2017                [Page 1]
+Grigorik                Expires September 3, 2017               [Page 1]
 
-Internet-Draft              HTTP Client Hints              February 2017
+Internet-Draft              HTTP Client Hints                 March 2017
 
 
 Copyright Notice
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Grigorik                 Expires August 31, 2017                [Page 2]
+Grigorik                Expires September 3, 2017               [Page 2]
 
-Internet-Draft              HTTP Client Hints              February 2017
+Internet-Draft              HTTP Client Hints                 March 2017
 
 
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  13
@@ -165,9 +165,9 @@ Internet-Draft              HTTP Client Hints              February 2017
 
 
 
-Grigorik                 Expires August 31, 2017                [Page 3]
+Grigorik                Expires September 3, 2017               [Page 3]
 
-Internet-Draft              HTTP Client Hints              February 2017
+Internet-Draft              HTTP Client Hints                 March 2017
 
 
    Appendix B.  It includes by reference the DIGIT rule from [RFC5234]
@@ -221,9 +221,9 @@ Internet-Draft              HTTP Client Hints              February 2017
 
 
 
-Grigorik                 Expires August 31, 2017                [Page 4]
+Grigorik                Expires September 3, 2017               [Page 4]
 
-Internet-Draft              HTTP Client Hints              February 2017
+Internet-Draft              HTTP Client Hints                 March 2017
 
 
 2.2.1.  Advertising Support for Client Hints
@@ -277,9 +277,9 @@ Internet-Draft              HTTP Client Hints              February 2017
 
 
 
-Grigorik                 Expires August 31, 2017                [Page 5]
+Grigorik                Expires September 3, 2017               [Page 5]
 
-Internet-Draft              HTTP Client Hints              February 2017
+Internet-Draft              HTTP Client Hints                 March 2017
 
 
    Above example indicates that the cache key needs to include the DPR,
@@ -333,9 +333,9 @@ Internet-Draft              HTTP Client Hints              February 2017
 
 
 
-Grigorik                 Expires August 31, 2017                [Page 6]
+Grigorik                Expires September 3, 2017               [Page 6]
 
-Internet-Draft              HTTP Client Hints              February 2017
+Internet-Draft              HTTP Client Hints                 March 2017
 
 
 3.1.  Confirming Selected DPR
@@ -389,9 +389,9 @@ Internet-Draft              HTTP Client Hints              February 2017
 
 
 
-Grigorik                 Expires August 31, 2017                [Page 7]
+Grigorik                Expires September 3, 2017               [Page 7]
 
-Internet-Draft              HTTP Client Hints              February 2017
+Internet-Draft              HTTP Client Hints                 March 2017
 
 
      Viewport-Width = 1*DIGIT
@@ -445,9 +445,9 @@ Internet-Draft              HTTP Client Hints              February 2017
 
 
 
-Grigorik                 Expires August 31, 2017                [Page 8]
+Grigorik                Expires September 3, 2017               [Page 8]
 
-Internet-Draft              HTTP Client Hints              February 2017
+Internet-Draft              HTTP Client Hints                 March 2017
 
 
    If the server uses above hints to perform resource selection for an
@@ -501,9 +501,9 @@ Internet-Draft              HTTP Client Hints              February 2017
 
 
 
-Grigorik                 Expires August 31, 2017                [Page 9]
+Grigorik                Expires September 3, 2017               [Page 9]
 
-Internet-Draft              HTTP Client Hints              February 2017
+Internet-Draft              HTTP Client Hints                 March 2017
 
 
    requests.  Restricting such field values to an enumerated range,
@@ -557,9 +557,9 @@ Internet-Draft              HTTP Client Hints              February 2017
 
 
 
-Grigorik                 Expires August 31, 2017               [Page 10]
+Grigorik                Expires September 3, 2017              [Page 10]
 
-Internet-Draft              HTTP Client Hints              February 2017
+Internet-Draft              HTTP Client Hints                 March 2017
 
 
 10.4.  DPR
@@ -613,9 +613,9 @@ Internet-Draft              HTTP Client Hints              February 2017
 
 
 
-Grigorik                 Expires August 31, 2017               [Page 11]
+Grigorik                Expires September 3, 2017              [Page 11]
 
-Internet-Draft              HTTP Client Hints              February 2017
+Internet-Draft              HTTP Client Hints                 March 2017
 
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
@@ -669,9 +669,9 @@ Internet-Draft              HTTP Client Hints              February 2017
 
 
 
-Grigorik                 Expires August 31, 2017               [Page 12]
+Grigorik                Expires September 3, 2017              [Page 12]
 
-Internet-Draft              HTTP Client Hints              February 2017
+Internet-Draft              HTTP Client Hints                 March 2017
 
 
 Appendix A.  Changes
@@ -725,4 +725,4 @@ Author's Address
 
 
 
-Grigorik                 Expires August 31, 2017               [Page 13]
+Grigorik                Expires September 3, 2017              [Page 13]

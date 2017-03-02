@@ -4,8 +4,8 @@
 
 HTTP Working Group                                                K. Oku
 Internet-Draft                                            DeNA Co., Ltd.
-Intended status: Experimental                          February 27, 2017
-Expires: August 31, 2017
+Intended status: Experimental                              March 2, 2017
+Expires: September 3, 2017
 
 
                 An HTTP Status Code for Indicating Hints
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 31, 2017.
+   This Internet-Draft will expire on September 3, 2017.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Oku                      Expires August 31, 2017                [Page 1]
+Oku                     Expires September 3, 2017               [Page 1]
 
-Internet-Draft                 Early Hints                 February 2017
+Internet-Draft                 Early Hints                    March 2017
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Oku                      Expires August 31, 2017                [Page 2]
+Oku                     Expires September 3, 2017               [Page 2]
 
-Internet-Draft                 Early Hints                 February 2017
+Internet-Draft                 Early Hints                    March 2017
 
 
    HTTP/2 ([RFC7540]) push can be used as a solution to the issue, but
@@ -165,9 +165,9 @@ Internet-Draft                 Early Hints                 February 2017
 
 
 
-Oku                      Expires August 31, 2017                [Page 3]
+Oku                     Expires September 3, 2017               [Page 3]
 
-Internet-Draft                 Early Hints                 February 2017
+Internet-Draft                 Early Hints                    March 2017
 
 
 3.  Security Considerations
@@ -221,9 +221,9 @@ Internet-Draft                 Early Hints                 February 2017
 
 
 
-Oku                      Expires August 31, 2017                [Page 4]
+Oku                     Expires September 3, 2017               [Page 4]
 
-Internet-Draft                 Early Hints                 February 2017
+Internet-Draft                 Early Hints                    March 2017
 
 
 7.1.  Normative References
@@ -277,4 +277,4 @@ Author's Address
 
 
 
-Oku                      Expires August 31, 2017                [Page 5]
+Oku                     Expires September 3, 2017               [Page 5]
