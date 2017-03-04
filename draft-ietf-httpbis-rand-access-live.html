@@ -383,10 +383,10 @@
 <link href="#rfc.section.3.1" rel="Chapter" title="3.1 Requests Starting at the Aggregation (&quot;Live&quot;) Point"/>
 <link href="#rfc.section.3.2" rel="Chapter" title="3.2 Shift Buffer Representations"/>
 <link href="#rfc.section.4" rel="Chapter" title="4 Security Considerations"/>
-<link href="#rfc.section.5" rel="Chapter" title="5 Acknowledgements"/>
-<link href="#rfc.references" rel="Chapter" title="6 References"/>
-<link href="#rfc.references.1" rel="Chapter" title="6.1 Normative References"/>
-<link href="#rfc.references.2" rel="Chapter" title="6.2 Informative References"/>
+<link href="#rfc.references" rel="Chapter" title="5 References"/>
+<link href="#rfc.references.1" rel="Chapter" title="5.1 Normative References"/>
+<link href="#rfc.references.2" rel="Chapter" title="5.2 Informative References"/>
+<link href="#rfc.appendix.A" rel="Chapter" title="A Acknowledgements"/>
 <link href="#rfc.authors" rel="Chapter"/>
 
 
@@ -482,11 +482,11 @@
 <ul><li>3.1.   <a href="#rfc.section.3.1">Requests Starting at the Aggregation ("Live") Point</a></li>
 <li>3.2.   <a href="#rfc.section.3.2">Shift Buffer Representations</a></li>
 </ul><li>4.   <a href="#rfc.section.4">Security Considerations</a></li>
-<li>5.   <a href="#rfc.section.5">Acknowledgements</a></li>
-<li>6.   <a href="#rfc.references">References</a></li>
-<ul><li>6.1.   <a href="#rfc.references.1">Normative References</a></li>
-<li>6.2.   <a href="#rfc.references.2">Informative References</a></li>
-</ul><li><a href="#rfc.authors">Authors' Addresses</a></li>
+<li>5.   <a href="#rfc.references">References</a></li>
+<ul><li>5.1.   <a href="#rfc.references.1">Normative References</a></li>
+<li>5.2.   <a href="#rfc.references.2">Informative References</a></li>
+</ul><li>Appendix A.   <a href="#rfc.appendix.A">Acknowledgements</a></li>
+<li><a href="#rfc.authors">Authors' Addresses</a></li>
 
 
   </ul>
@@ -644,10 +644,8 @@
 <p> with the response body returning bytes 1020000-1254567 immediately and aggregated ("live") data being returned as the content is aggregated.  </p>
 <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a> <a href="#Security" id="Security">Security Considerations</a></h1>
 <p id="rfc.section.4.p.1">One potential issue with this recommendation is related to the use of very-large last-byte-pos values. Some Client and Server implementations may not be prepared to deal with byte position values of 2^^63 and beyond. So in applications where there's no expectation that the representation will ever exceed 2^^63, a value smaller than this value should be used as the Very Large last-byte-pos in a byte-seek request or content-range response.  </p>
-<h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> <a href="#Acknowledgements" id="Acknowledgements">Acknowledgements</a></h1>
-<p id="rfc.section.5.p.1">Mark Nottingham, Patrick McManus, Julian Reschke, Remy Lebeau, Rodger Combs, Thorsten Lohmar, Martin Thompson, Adrien de Croy, K. Morgan, Roy T. Fielding, Jeremy Poulter </p>
-<h1 id="rfc.references"><a href="#rfc.references">6.</a> References</h1>
-<h1 id="rfc.references.1"><a href="#rfc.references.1">6.1.</a> Normative References</h1>
+<h1 id="rfc.references"><a href="#rfc.references">5.</a> References</h1>
+<h1 id="rfc.references.1"><a href="#rfc.references.1">5.1.</a> Normative References</h1>
 <table>
   <tbody>
     <tr>
@@ -670,7 +668,7 @@
     </tr>
   </tbody>
 </table>
-<h1 id="rfc.references.2"><a href="#rfc.references.2">6.2.</a> Informative References</h1>
+<h1 id="rfc.references.2"><a href="#rfc.references.2">5.2.</a> Informative References</h1>
 <table>
   <tbody>
     <tr>
@@ -687,6 +685,8 @@
     </tr>
   </tbody>
 </table>
+<h1 id="rfc.appendix.A"><a href="#rfc.appendix.A">Appendix A.</a> <a href="#Acknowledgements" id="Acknowledgements">Acknowledgements</a></h1>
+<p id="rfc.section.A.p.1">Mark Nottingham, Patrick McManus, Julian Reschke, Remy Lebeau, Rodger Combs, Thorsten Lohmar, Martin Thompson, Adrien de Croy, K. Morgan, Roy T. Fielding, Jeremy Poulter.  </p>
 <h1 id="rfc.authors">
   <a href="#rfc.authors">Authors' Addresses</a>
 </h1>

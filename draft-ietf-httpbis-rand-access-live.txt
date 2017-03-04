@@ -92,10 +92,10 @@ Table of Contents
      3.1.  Requests Starting at the Aggregation ("Live") Point . . .   6
      3.2.  Shift Buffer Representations  . . . . . . . . . . . . . .   7
    4.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
-   5.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   8
-   6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   8
-     6.1.  Normative References  . . . . . . . . . . . . . . . . . .   8
-     6.2.  Informative References  . . . . . . . . . . . . . . . . .   8
+   5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   8
+     5.1.  Normative References  . . . . . . . . . . . . . . . . . .   8
+     5.2.  Informative References  . . . . . . . . . . . . . . . . .   8
+   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .   8
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   9
 
 1.  Introduction
@@ -404,15 +404,9 @@ Internet-Draft            http-rand-access-live               March 2017
    this value should be used as the Very Large last-byte-pos in a byte-
    seek request or content-range response.
 
-5.  Acknowledgements
+5.  References
 
-   Mark Nottingham, Patrick McManus, Julian Reschke, Remy Lebeau, Rodger
-   Combs, Thorsten Lohmar, Martin Thompson, Adrien de Croy, K.  Morgan,
-   Roy T.  Fielding, Jeremy Poulter
-
-6.  References
-
-6.1.  Normative References
+5.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -429,7 +423,7 @@ Internet-Draft            http-rand-access-live               March 2017
               RFC 7233, DOI 10.17487/RFC7233, June 2014,
               <http://www.rfc-editor.org/info/rfc7233>.
 
-6.2.  Informative References
+5.2.  Informative References
 
    [RANGE-UNIT-REGISTRY]
               IANA, "Hypertext Transfer Protocol (HTTP) Parameters",
@@ -439,6 +433,12 @@ Internet-Draft            http-rand-access-live               March 2017
    [RFC4234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
               Specifications: ABNF", RFC 4234, DOI 10.17487/RFC4234,
               October 2005, <http://www.rfc-editor.org/info/rfc4234>.
+
+Appendix A.  Acknowledgements
+
+   Mark Nottingham, Patrick McManus, Julian Reschke, Remy Lebeau, Rodger
+   Combs, Thorsten Lohmar, Martin Thompson, Adrien de Croy, K.  Morgan,
+   Roy T.  Fielding, Jeremy Poulter.
 
 
 
