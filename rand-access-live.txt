@@ -22,6 +22,16 @@ Abstract
    an arbitrary byte offset within the representation and ends at an
    indeterminate offset.
 
+Editorial Note (To be removed by RFC Editor before publication)
+
+   Discussion of this draft takes place on the HTTPBIS working group
+   mailing list (ietf-http-wg@w3.org), which is archived at
+   <https://lists.w3.org/Archives/Public/ietf-http-wg/>.
+
+   Working Group information can be found at <http://httpwg.github.io/>;
+   source code and issues list for this draft can be found at
+   <https://github.com/httpwg/http-extensions/labels/rand-access-live>.
+
 Requirements Language
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
@@ -40,6 +50,14 @@ Status of This Memo
 
    Internet-Drafts are draft documents valid for a maximum of six months
    and may be updated, replaced, or obsoleted by other documents at any
+
+
+
+Pratt, et al.           Expires September 5, 2017               [Page 1]
+
+Internet-Draft            http-rand-access-live               March 2017
+
+
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
@@ -49,14 +67,6 @@ Copyright Notice
 
    Copyright (c) 2017 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
-
-
-
-
-Pratt, et al.           Expires September 5, 2017               [Page 1]
-
-Internet-Draft            http-rand-access-live               March 2017
-
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
@@ -73,7 +83,7 @@ Table of Contents
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Performing Range requests on Random-Access Aggregating
        ("live") Content  . . . . . . . . . . . . . . . . . . . . . .   3
-     2.1.  Establishing the Randomly Accessible Byte Range . . . . .   3
+     2.1.  Establishing the Randomly Accessible Byte Range . . . . .   4
      2.2.  Byte-Range Requests Beyond the Randomly Accessible Byte
            Range . . . . . . . . . . . . . . . . . . . . . . . . . .   4
      2.3.  Byte-Range Responses Beyond the Randomly Accessible Byte
@@ -81,12 +91,12 @@ Table of Contents
    3.  Other Applications of Random-Access Aggregating Content . . .   6
      3.1.  Requests Starting at the Aggregation ("Live") Point . . .   6
      3.2.  Shift Buffer Representations  . . . . . . . . . . . . . .   7
-   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   7
+   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
    5.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   8
    6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   8
      6.1.  Normative References  . . . . . . . . . . . . . . . . . .   8
      6.2.  Informative References  . . . . . . . . . . . . . . . . .   8
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   8
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   9
 
 1.  Introduction
 
@@ -96,6 +106,14 @@ Table of Contents
    representations require content to be continuously or periodically
    appended - such as representations consisting of live audio or video
    sources, blockchain databases, and log files.  Clients cannot access
+
+
+
+Pratt, et al.           Expires September 5, 2017               [Page 2]
+
+Internet-Draft            http-rand-access-live               March 2017
+
+
    the appended/live content using a Range request with the bytes range
    unit using the currently defined byte-range semantics without
    accepting performance or behavior sacrifices which are not acceptable
@@ -106,14 +124,6 @@ Table of Contents
    representation from the beginning and continuing to read the appended
    content as it's made available.  Obviously, this is highly
    inefficient for cases where the representation is large and only a
-
-
-
-Pratt, et al.           Expires September 5, 2017               [Page 2]
-
-Internet-Draft            http-rand-access-live               March 2017
-
-
    portion of the randomly accessible content is needed by the Client.
    And when bandwidth is limited, the client may never "catch up" with
    the appending content.
@@ -148,6 +158,18 @@ Internet-Draft            http-rand-access-live               March 2017
       Performing range requests that continue beyond the randomly
       accessible range.
 
+
+
+
+
+
+
+
+Pratt, et al.           Expires September 5, 2017               [Page 3]
+
+Internet-Draft            http-rand-access-live               March 2017
+
+
 2.1.  Establishing the Randomly Accessible Byte Range
 
    Establishing if a representation is continuously aggregating ("live")
@@ -162,14 +184,6 @@ Internet-Draft            http-rand-access-live               March 2017
    leave last-byte-pos absent.  A Server that receives a satisfiable
    byte-range request (with first-byte-pos smaller than the current
    representation length) must respond with a 206 status code (Partial
-
-
-
-Pratt, et al.           Expires September 5, 2017               [Page 3]
-
-Internet-Draft            http-rand-access-live               March 2017
-
-
    Content) with a Content-Range header indicating the currently
    satisfiable byte range.  For example, a Client-issued HEAD request
    performed against a continuously aggregating representation hosted on
@@ -203,6 +217,15 @@ Internet-Draft            http-rand-access-live               March 2017
    as content is aggregated - in order to support low-latency startup of
    a live video stream.
 
+
+
+
+
+Pratt, et al.           Expires September 5, 2017               [Page 4]
+
+Internet-Draft            http-rand-access-live               March 2017
+
+
    Unlike a byte-range Range request, a byte-range Content-Range
    response header cannot be "open ended", per [RFC7233]:
 
@@ -216,15 +239,6 @@ Internet-Draft            http-rand-access-live               March 2017
       unsatisfied-range = "*/" complete-length
 
       complete-length = 1*DIGIT
-
-
-
-
-
-Pratt, et al.           Expires September 5, 2017               [Page 4]
-
-Internet-Draft            http-rand-access-live               March 2017
-
 
    last-byte-pos is required in byte-range.  So in order to preserve
    interoperability with existing HTTP clients, servers, proxies, and
@@ -261,6 +275,13 @@ Internet-Draft            http-rand-access-live               March 2017
    1230000 and continues indefinitely to include all aggregated content,
    as it becomes available.
 
+
+
+Pratt, et al.           Expires September 5, 2017               [Page 5]
+
+Internet-Draft            http-rand-access-live               March 2017
+
+
    A Server that doesn't support or supply a continuously aggregating
    ("live") response should supply the currently satisfiable byte range,
    as it would with an open-ended byte request.
@@ -272,15 +293,6 @@ Internet-Draft            http-rand-access-live               March 2017
    could return
 
       Content-Range: bytes 1230000-1234567/*
-
-
-
-
-
-Pratt, et al.           Expires September 5, 2017               [Page 5]
-
-Internet-Draft            http-rand-access-live               March 2017
-
 
    from the Server to indicate that the response will start at byte
    1230000 and end at byte 1234567 and will not include any aggregated
@@ -319,24 +331,19 @@ Internet-Draft            http-rand-access-live               March 2017
 
       Range: bytes=1234567-999999999999
 
-   could return
-
-      Content-Range: bytes 1234567-999999999999/*
-
-   with the response body starting with continuously aggregating
-   ("live") data and continuing indefinitely.
-
-
-
-
-
-
 
 
 Pratt, et al.           Expires September 5, 2017               [Page 6]
 
 Internet-Draft            http-rand-access-live               March 2017
 
+
+   could return
+
+      Content-Range: bytes 1234567-999999999999/*
+
+   with the response body starting with continuously aggregating
+   ("live") data and continuing indefinitely.
 
 3.2.  Shift Buffer Representations
 
@@ -380,13 +387,6 @@ Internet-Draft            http-rand-access-live               March 2017
    and aggregated ("live") data being returned as the content is
    aggregated.
 
-4.  Security Considerations
-
-   One potential issue with this recommendation is related to the use of
-   very-large last-byte-pos values.  Some Client and Server
-   implementations may not be prepared to deal with byte position values
-   of 2^^63 and beyond.  So in applications where there's no expectation
-
 
 
 Pratt, et al.           Expires September 5, 2017               [Page 7]
@@ -394,6 +394,12 @@ Pratt, et al.           Expires September 5, 2017               [Page 7]
 Internet-Draft            http-rand-access-live               March 2017
 
 
+4.  Security Considerations
+
+   One potential issue with this recommendation is related to the use of
+   very-large last-byte-pos values.  Some Client and Server
+   implementations may not be prepared to deal with byte position values
+   of 2^^63 and beyond.  So in applications where there's no expectation
    that the representation will ever exceed 2^^63, a value smaller than
    this value should be used as the Very Large last-byte-pos in a byte-
    seek request or content-range response.
@@ -434,6 +440,16 @@ Internet-Draft            http-rand-access-live               March 2017
               Specifications: ABNF", RFC 4234, DOI 10.17487/RFC4234,
               October 2005, <http://www.rfc-editor.org/info/rfc4234>.
 
+
+
+
+
+
+Pratt, et al.           Expires September 5, 2017               [Page 8]
+
+Internet-Draft            http-rand-access-live               March 2017
+
+
 Authors' Addresses
 
    Craig Pratt
@@ -442,12 +458,6 @@ Authors' Addresses
    Louisville, CO  80027
 
    Email: pratt@acm.org
-
-
-
-Pratt, et al.           Expires September 5, 2017               [Page 8]
-
-Internet-Draft            http-rand-access-live               March 2017
 
 
    Barbara Stark
@@ -464,16 +474,6 @@ Internet-Draft            http-rand-access-live               March 2017
    Louisville, CO  80027
 
    Email: d.thakore@cablelabs.com
-
-
-
-
-
-
-
-
-
-
 
 
 
