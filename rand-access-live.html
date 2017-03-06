@@ -375,6 +375,7 @@
 
   <link href="#rfc.toc" rel="Contents"/>
 <link href="#rfc.section.1" rel="Chapter" title="1 Introduction"/>
+<link href="#rfc.section.1.1" rel="Chapter" title="1.1 Requirements Language"/>
 <link href="#rfc.section.2" rel="Chapter" title="2 Performing Range requests on Random-Access Aggregating (&quot;live&quot;) Content"/>
 <link href="#rfc.section.2.1" rel="Chapter" title="2.1 Establishing the Randomly Accessible Byte Range"/>
 <link href="#rfc.section.2.2" rel="Chapter" title="2.2 Byte-Range Requests Beyond the Randomly Accessible Byte Range"/>
@@ -451,10 +452,6 @@
 </h1>
 <p>Discussion of this draft takes place on the HTTPBIS working group mailing list (ietf-http-wg@w3.org), which is archived at <span>&lt;</span><a href="https://lists.w3.org/Archives/Public/ietf-http-wg/">https://lists.w3.org/Archives/Public/ietf-http-wg/</a><span>&gt;</span>.  </p>
 <p>Working Group information can be found at <span>&lt;</span><a href="http://httpwg.github.io/">http://httpwg.github.io/</a><span>&gt;</span>; source code and issues list for this draft can be found at <span>&lt;</span><a href="https://github.com/httpwg/http-extensions/labels/rand-access-live">https://github.com/httpwg/http-extensions/labels/rand-access-live</a><span>&gt;</span>.  </p>
-<h1>
-  <a>Requirements Language</a>
-</h1>
-<p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="#RFC2119">RFC 2119</a> <cite title="NONE">[RFC2119]</cite>.  </p>
 <h1 id="rfc.status">
   <a href="#rfc.status">Status of This Memo</a>
 </h1>
@@ -474,7 +471,8 @@
   <ul class="toc">
 
   	<li>1.   <a href="#rfc.section.1">Introduction</a></li>
-<li>2.   <a href="#rfc.section.2">Performing Range requests on Random-Access Aggregating ("live") Content</a></li>
+<ul><li>1.1.   <a href="#rfc.section.1.1">Requirements Language</a></li>
+</ul><li>2.   <a href="#rfc.section.2">Performing Range requests on Random-Access Aggregating ("live") Content</a></li>
 <ul><li>2.1.   <a href="#rfc.section.2.1">Establishing the Randomly Accessible Byte Range</a></li>
 <li>2.2.   <a href="#rfc.section.2.2">Byte-Range Requests Beyond the Randomly Accessible Byte Range</a></li>
 <li>2.3.   <a href="#rfc.section.2.3">Byte-Range Responses Beyond the Randomly Accessible Byte Range</a></li>
@@ -496,6 +494,8 @@
 <p id="rfc.section.1.p.2">For instance, HTTP Clients have the ability to access appended content by simply transferring the entire accessible portion of the representation from the beginning and continuing to read the appended content as it's made available. Obviously, this is highly inefficient for cases where the representation is large and only a portion of the randomly accessible content is needed by the Client. And when bandwidth is limited, the client may never "catch up" with the appending content.  </p>
 <p id="rfc.section.1.p.3">Clients can also attempt to access appended content by sending periodic bytes Range requests using the last-known end byte position (polling). Performing low-frequency periodic bytes Range requests in this fashion (polling) introduces latency since the Client will necessarily be somewhat behind the aggregated content - mimicking the behavior (and latency) of segmented content representations such as HLS or MPEG-DASH. And performing these Range requests at higher frequency incurs more processing overhead and HTTP traffic as the periodic requests will often return no content - since content is usually aggregated in groups of bytes (e.g. a video frame, audio sample, block, or log entry).  </p>
 <p id="rfc.section.1.p.4">To accommodate byte-range requests on large representations which have data appended over time efficiently and with low latency, this recommendation defines semantics whereby the HTTP Client performs byte-range requests using a combination of open-ended byte-range HEAD requests and GET requests using "Large Value" last-byte-pos values.  </p>
+<h1 id="rfc.section.1.1"><a href="#rfc.section.1.1">1.1.</a> Requirements Language</h1>
+<p id="rfc.section.1.1.p.1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="#RFC2119">RFC 2119</a> <cite title="NONE">[RFC2119]</cite>.  </p>
 <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> <a href="#definition" id="definition">Performing Range requests on Random-Access Aggregating ("live") Content</a></h1>
 <p id="rfc.section.2.p.1">There are two critical operations for accessing randomly accessing live/aggregating representations: </p>
 

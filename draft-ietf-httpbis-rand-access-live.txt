@@ -32,12 +32,6 @@ Editorial Note (To be removed by RFC Editor before publication)
    source code and issues list for this draft can be found at
    <https://github.com/httpwg/http-extensions/labels/rand-access-live>.
 
-Requirements Language
-
-   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-   document are to be interpreted as described in RFC 2119 [RFC2119].
-
 Status of This Memo
 
    This Internet-Draft is submitted in full conformance with the
@@ -50,6 +44,12 @@ Status of This Memo
 
    Internet-Drafts are draft documents valid for a maximum of six months
    and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on September 7, 2017.
+
+
 
 
 
@@ -57,11 +57,6 @@ Pratt, et al.           Expires September 7, 2017               [Page 1]
 
 Internet-Draft            http-rand-access-live               March 2017
 
-
-   time.  It is inappropriate to use Internet-Drafts as reference
-   material or to cite them other than as "work in progress."
-
-   This Internet-Draft will expire on September 7, 2017.
 
 Copyright Notice
 
@@ -81,6 +76,7 @@ Copyright Notice
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+     1.1.  Requirements Language . . . . . . . . . . . . . . . . . .   3
    2.  Performing Range requests on Random-Access Aggregating
        ("live") Content  . . . . . . . . . . . . . . . . . . . . . .   3
      2.1.  Establishing the Randomly Accessible Byte Range . . . . .   4
@@ -106,6 +102,10 @@ Table of Contents
    representations require content to be continuously or periodically
    appended - such as representations consisting of live audio or video
    sources, blockchain databases, and log files.  Clients cannot access
+   the appended/live content using a Range request with the bytes range
+   unit using the currently defined byte-range semantics without
+   accepting performance or behavior sacrifices which are not acceptable
+   for many applications.
 
 
 
@@ -113,11 +113,6 @@ Pratt, et al.           Expires September 7, 2017               [Page 2]
 
 Internet-Draft            http-rand-access-live               March 2017
 
-
-   the appended/live content using a Range request with the bytes range
-   unit using the currently defined byte-range semantics without
-   accepting performance or behavior sacrifices which are not acceptable
-   for many applications.
 
    For instance, HTTP Clients have the ability to access appended
    content by simply transferring the entire accessible portion of the
@@ -146,6 +141,12 @@ Internet-Draft            http-rand-access-live               March 2017
    byte-range requests using a combination of open-ended byte-range HEAD
    requests and GET requests using "Large Value" last-byte-pos values.
 
+1.1.  Requirements Language
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in RFC 2119 [RFC2119].
+
 2.  Performing Range requests on Random-Access Aggregating ("live")
     Content
 
@@ -157,7 +158,6 @@ Internet-Draft            http-rand-access-live               March 2017
 
       Performing range requests that continue beyond the randomly
       accessible range.
-
 
 
 
