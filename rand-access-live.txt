@@ -2,13 +2,13 @@
 
 
 
-Hypertext Transfer Protocol                                     C. Pratt
+HTTP                                                            C. Pratt
 Internet-Draft                                                 CableLabs
-Intended status: Informational                                  B. Stark
-Expires: September 7, 2017                                          AT&T
+Intended status: Experimental                                   B. Stark
+Expires: September 9, 2017                                          AT&T
                                                               D. Thakore
                                                                CableLabs
-                                                           March 6, 2017
+                                                           March 8, 2017
 
 
                   HTTP Random Access and Live Content
@@ -22,11 +22,15 @@ Abstract
    an arbitrary byte offset within the representation and ends at an
    indeterminate offset.
 
-Requirements Language
+Editorial Note (To be removed by RFC Editor before publication)
 
-   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-   document are to be interpreted as described in RFC 2119 [RFC2119].
+   Discussion of this draft takes place on the HTTPBIS working group
+   mailing list (ietf-http-wg@w3.org), which is archived at
+   <https://lists.w3.org/Archives/Public/ietf-http-wg/>.
+
+   Working Group information can be found at <http://httpwg.github.io/>;
+   source code and issues list for this draft can be found at
+   <https://github.com/httpwg/http-extensions/labels/rand-access-live>.
 
 Status of This Memo
 
@@ -43,20 +47,21 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 7, 2017.
+   This Internet-Draft will expire on September 9, 2017.
+
+
+
+
+
+Pratt, et al.           Expires September 9, 2017               [Page 1]
+
+Internet-Draft            http-rand-access-live               March 2017
+
 
 Copyright Notice
 
    Copyright (c) 2017 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
-
-
-
-
-Pratt, et al.           Expires September 7, 2017               [Page 1]
-
-Internet-Draft            http-rand-access-live               March 2017
-
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
@@ -71,9 +76,10 @@ Internet-Draft            http-rand-access-live               March 2017
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+     1.1.  Requirements Language . . . . . . . . . . . . . . . . . .   3
    2.  Performing Range requests on Random-Access Aggregating
        ("live") Content  . . . . . . . . . . . . . . . . . . . . . .   3
-     2.1.  Establishing the Randomly Accessible Byte Range . . . . .   3
+     2.1.  Establishing the Randomly Accessible Byte Range . . . . .   4
      2.2.  Byte-Range Requests Beyond the Randomly Accessible Byte
            Range . . . . . . . . . . . . . . . . . . . . . . . . . .   4
      2.3.  Byte-Range Responses Beyond the Randomly Accessible Byte
@@ -81,12 +87,12 @@ Table of Contents
    3.  Other Applications of Random-Access Aggregating Content . . .   6
      3.1.  Requests Starting at the Aggregation ("Live") Point . . .   6
      3.2.  Shift Buffer Representations  . . . . . . . . . . . . . .   7
-   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   7
-   5.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   8
-   6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   8
-     6.1.  Normative References  . . . . . . . . . . . . . . . . . .   8
-     6.2.  Informative References  . . . . . . . . . . . . . . . . .   8
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   8
+   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
+   5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   8
+     5.1.  Normative References  . . . . . . . . . . . . . . . . . .   8
+     5.2.  Informative References  . . . . . . . . . . . . . . . . .   8
+   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .   8
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   9
 
 1.  Introduction
 
@@ -101,19 +107,18 @@ Table of Contents
    accepting performance or behavior sacrifices which are not acceptable
    for many applications.
 
+
+
+Pratt, et al.           Expires September 9, 2017               [Page 2]
+
+Internet-Draft            http-rand-access-live               March 2017
+
+
    For instance, HTTP Clients have the ability to access appended
    content by simply transferring the entire accessible portion of the
    representation from the beginning and continuing to read the appended
    content as it's made available.  Obviously, this is highly
    inefficient for cases where the representation is large and only a
-
-
-
-Pratt, et al.           Expires September 7, 2017               [Page 2]
-
-Internet-Draft            http-rand-access-live               March 2017
-
-
    portion of the randomly accessible content is needed by the Client.
    And when bandwidth is limited, the client may never "catch up" with
    the appending content.
@@ -136,6 +141,12 @@ Internet-Draft            http-rand-access-live               March 2017
    byte-range requests using a combination of open-ended byte-range HEAD
    requests and GET requests using "Large Value" last-byte-pos values.
 
+1.1.  Requirements Language
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in RFC 2119 [RFC2119].
+
 2.  Performing Range requests on Random-Access Aggregating ("live")
     Content
 
@@ -147,6 +158,17 @@ Internet-Draft            http-rand-access-live               March 2017
 
       Performing range requests that continue beyond the randomly
       accessible range.
+
+
+
+
+
+
+
+Pratt, et al.           Expires September 9, 2017               [Page 3]
+
+Internet-Draft            http-rand-access-live               March 2017
+
 
 2.1.  Establishing the Randomly Accessible Byte Range
 
@@ -162,14 +184,6 @@ Internet-Draft            http-rand-access-live               March 2017
    leave last-byte-pos absent.  A Server that receives a satisfiable
    byte-range request (with first-byte-pos smaller than the current
    representation length) must respond with a 206 status code (Partial
-
-
-
-Pratt, et al.           Expires September 7, 2017               [Page 3]
-
-Internet-Draft            http-rand-access-live               March 2017
-
-
    Content) with a Content-Range header indicating the currently
    satisfiable byte range.  For example, a Client-issued HEAD request
    performed against a continuously aggregating representation hosted on
@@ -203,6 +217,15 @@ Internet-Draft            http-rand-access-live               March 2017
    as content is aggregated - in order to support low-latency startup of
    a live video stream.
 
+
+
+
+
+Pratt, et al.           Expires September 9, 2017               [Page 4]
+
+Internet-Draft            http-rand-access-live               March 2017
+
+
    Unlike a byte-range Range request, a byte-range Content-Range
    response header cannot be "open ended", per [RFC7233]:
 
@@ -216,15 +239,6 @@ Internet-Draft            http-rand-access-live               March 2017
       unsatisfied-range = "*/" complete-length
 
       complete-length = 1*DIGIT
-
-
-
-
-
-Pratt, et al.           Expires September 7, 2017               [Page 4]
-
-Internet-Draft            http-rand-access-live               March 2017
-
 
    last-byte-pos is required in byte-range.  So in order to preserve
    interoperability with existing HTTP clients, servers, proxies, and
@@ -261,6 +275,13 @@ Internet-Draft            http-rand-access-live               March 2017
    1230000 and continues indefinitely to include all aggregated content,
    as it becomes available.
 
+
+
+Pratt, et al.           Expires September 9, 2017               [Page 5]
+
+Internet-Draft            http-rand-access-live               March 2017
+
+
    A Server that doesn't support or supply a continuously aggregating
    ("live") response should supply the currently satisfiable byte range,
    as it would with an open-ended byte request.
@@ -272,15 +293,6 @@ Internet-Draft            http-rand-access-live               March 2017
    could return
 
       Content-Range: bytes 1230000-1234567/*
-
-
-
-
-
-Pratt, et al.           Expires September 7, 2017               [Page 5]
-
-Internet-Draft            http-rand-access-live               March 2017
-
 
    from the Server to indicate that the response will start at byte
    1230000 and end at byte 1234567 and will not include any aggregated
@@ -319,24 +331,19 @@ Internet-Draft            http-rand-access-live               March 2017
 
       Range: bytes=1234567-999999999999
 
+
+
+Pratt, et al.           Expires September 9, 2017               [Page 6]
+
+Internet-Draft            http-rand-access-live               March 2017
+
+
    could return
 
       Content-Range: bytes 1234567-999999999999/*
 
    with the response body starting with continuously aggregating
    ("live") data and continuing indefinitely.
-
-
-
-
-
-
-
-
-Pratt, et al.           Expires September 7, 2017               [Page 6]
-
-Internet-Draft            http-rand-access-live               March 2017
-
 
 3.2.  Shift Buffer Representations
 
@@ -380,33 +387,26 @@ Internet-Draft            http-rand-access-live               March 2017
    and aggregated ("live") data being returned as the content is
    aggregated.
 
+
+
+Pratt, et al.           Expires September 9, 2017               [Page 7]
+
+Internet-Draft            http-rand-access-live               March 2017
+
+
 4.  Security Considerations
 
    One potential issue with this recommendation is related to the use of
    very-large last-byte-pos values.  Some Client and Server
    implementations may not be prepared to deal with byte position values
    of 2^^63 and beyond.  So in applications where there's no expectation
-
-
-
-Pratt, et al.           Expires September 7, 2017               [Page 7]
-
-Internet-Draft            http-rand-access-live               March 2017
-
-
    that the representation will ever exceed 2^^63, a value smaller than
    this value should be used as the Very Large last-byte-pos in a byte-
    seek request or content-range response.
 
-5.  Acknowledgements
+5.  References
 
-   Mark Nottingham, Patrick McManus, Julian Reschke, Remy Lebeau, Rodger
-   Combs, Thorsten Lohmar, Martin Thompson, Adrien de Croy, K.  Morgan,
-   Roy T.  Fielding, Jeremy Poulter
-
-6.  References
-
-6.1.  Normative References
+5.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -423,7 +423,7 @@ Internet-Draft            http-rand-access-live               March 2017
               RFC 7233, DOI 10.17487/RFC7233, June 2014,
               <http://www.rfc-editor.org/info/rfc7233>.
 
-6.2.  Informative References
+5.2.  Informative References
 
    [RANGE-UNIT-REGISTRY]
               IANA, "Hypertext Transfer Protocol (HTTP) Parameters",
@@ -434,6 +434,22 @@ Internet-Draft            http-rand-access-live               March 2017
               Specifications: ABNF", RFC 4234, DOI 10.17487/RFC4234,
               October 2005, <http://www.rfc-editor.org/info/rfc4234>.
 
+Appendix A.  Acknowledgements
+
+   Mark Nottingham, Patrick McManus, Julian Reschke, Remy Lebeau, Rodger
+   Combs, Thorsten Lohmar, Martin Thompson, Adrien de Croy, K.  Morgan,
+   Roy T.  Fielding, Jeremy Poulter.
+
+
+
+
+
+
+Pratt, et al.           Expires September 9, 2017               [Page 8]
+
+Internet-Draft            http-rand-access-live               March 2017
+
+
 Authors' Addresses
 
    Craig Pratt
@@ -442,12 +458,6 @@ Authors' Addresses
    Louisville, CO  80027
 
    Email: pratt@acm.org
-
-
-
-Pratt, et al.           Expires September 7, 2017               [Page 8]
-
-Internet-Draft            http-rand-access-live               March 2017
 
 
    Barbara Stark
@@ -491,14 +501,4 @@ Internet-Draft            http-rand-access-live               March 2017
 
 
 
-
-
-
-
-
-
-
-
-
-
-Pratt, et al.           Expires September 7, 2017               [Page 9]
+Pratt, et al.           Expires September 9, 2017               [Page 9]
