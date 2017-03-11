@@ -5,10 +5,10 @@
 HTTP                                                            C. Pratt
 Internet-Draft                                                 CableLabs
 Intended status: Experimental                                   B. Stark
-Expires: September 9, 2017                                          AT&T
+Expires: September 12, 2017                                         AT&T
                                                               D. Thakore
                                                                CableLabs
-                                                           March 8, 2017
+                                                          March 11, 2017
 
 
                   HTTP Random Access and Live Content
@@ -47,13 +47,13 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 9, 2017.
+   This Internet-Draft will expire on September 12, 2017.
 
 
 
 
 
-Pratt, et al.           Expires September 9, 2017               [Page 1]
+Pratt, et al.          Expires September 12, 2017               [Page 1]
 
 Internet-Draft            http-rand-access-live               March 2017
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Pratt, et al.           Expires September 9, 2017               [Page 2]
+Pratt, et al.          Expires September 12, 2017               [Page 2]
 
 Internet-Draft            http-rand-access-live               March 2017
 
@@ -153,10 +153,10 @@ Internet-Draft            http-rand-access-live               March 2017
    There are two critical operations for accessing randomly accessing
    live/aggregating representations:
 
-      Establishing the randomly accessible range of the representation,
+   o  Establishing the randomly accessible range of the representation,
       and
 
-      Performing range requests that continue beyond the randomly
+   o  Performing range requests that continue beyond the randomly
       accessible range.
 
 
@@ -165,7 +165,7 @@ Internet-Draft            http-rand-access-live               March 2017
 
 
 
-Pratt, et al.           Expires September 9, 2017               [Page 3]
+Pratt, et al.          Expires September 12, 2017               [Page 3]
 
 Internet-Draft            http-rand-access-live               March 2017
 
@@ -221,7 +221,7 @@ Internet-Draft            http-rand-access-live               March 2017
 
 
 
-Pratt, et al.           Expires September 9, 2017               [Page 4]
+Pratt, et al.          Expires September 12, 2017               [Page 4]
 
 Internet-Draft            http-rand-access-live               March 2017
 
@@ -229,16 +229,14 @@ Internet-Draft            http-rand-access-live               March 2017
    Unlike a byte-range Range request, a byte-range Content-Range
    response header cannot be "open ended", per [RFC7233]:
 
-      byte-content-range = bytes-unit SP ( byte-range-resp /
-      unsatisfied-range )
+      byte-content-range  = bytes-unit SP
+                           ( byte-range-resp / unsatisfied-range )
 
-      byte-range-resp = byte-range "/" ( complete-length / "*" )
+      byte-range-resp     = byte-range "/" ( complete-length / "*" )
+      byte-range          = first-byte-pos "-" last-byte-pos
+      unsatisfied-range   = "*/" complete-length
 
-      byte-range = first-byte-pos "-" last-byte-pos
-
-      unsatisfied-range = "*/" complete-length
-
-      complete-length = 1*DIGIT
+      complete-length     = 1*DIGIT
 
    last-byte-pos is required in byte-range.  So in order to preserve
    interoperability with existing HTTP clients, servers, proxies, and
@@ -277,7 +275,9 @@ Internet-Draft            http-rand-access-live               March 2017
 
 
 
-Pratt, et al.           Expires September 9, 2017               [Page 5]
+
+
+Pratt, et al.          Expires September 12, 2017               [Page 5]
 
 Internet-Draft            http-rand-access-live               March 2017
 
@@ -333,7 +333,7 @@ Internet-Draft            http-rand-access-live               March 2017
 
 
 
-Pratt, et al.           Expires September 9, 2017               [Page 6]
+Pratt, et al.          Expires September 12, 2017               [Page 6]
 
 Internet-Draft            http-rand-access-live               March 2017
 
@@ -389,7 +389,7 @@ Internet-Draft            http-rand-access-live               March 2017
 
 
 
-Pratt, et al.           Expires September 9, 2017               [Page 7]
+Pratt, et al.          Expires September 12, 2017               [Page 7]
 
 Internet-Draft            http-rand-access-live               March 2017
 
@@ -445,7 +445,7 @@ Appendix A.  Acknowledgements
 
 
 
-Pratt, et al.           Expires September 9, 2017               [Page 8]
+Pratt, et al.          Expires September 12, 2017               [Page 8]
 
 Internet-Draft            http-rand-access-live               March 2017
 
@@ -501,4 +501,4 @@ Authors' Addresses
 
 
 
-Pratt, et al.           Expires September 9, 2017               [Page 9]
+Pratt, et al.          Expires September 12, 2017               [Page 9]
