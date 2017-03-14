@@ -97,14 +97,14 @@ Table of Contents
    3.  Reporting Expect-CT Failure . . . . . . . . . . . . . . . . .  11
      3.1.  Generating a violation report . . . . . . . . . . . . . .  11
      3.2.  Sending a violation report  . . . . . . . . . . . . . . .  13
-   4.  Security Considerations . . . . . . . . . . . . . . . . . . .  14
+   4.  Security Considerations . . . . . . . . . . . . . . . . . . .  13
      4.1.  Maximum max-age . . . . . . . . . . . . . . . . . . . . .  14
-     4.2.  Avoiding amplification attacks  . . . . . . . . . . . . .  15
-   5.  Privacy Considerations  . . . . . . . . . . . . . . . . . . .  15
+     4.2.  Avoiding amplification attacks  . . . . . . . . . . . . .  14
+   5.  Privacy Considerations  . . . . . . . . . . . . . . . . . . .  14
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  15
-   7.  Usability Considerations  . . . . . . . . . . . . . . . . . .  16
-   8.  Authoring Considerations  . . . . . . . . . . . . . . . . . .  16
-     8.1.  HTTP Header . . . . . . . . . . . . . . . . . . . . . . .  16
+   7.  Usability Considerations  . . . . . . . . . . . . . . . . . .  15
+   8.  Authoring Considerations  . . . . . . . . . . . . . . . . . .  15
+     8.1.  HTTP Header . . . . . . . . . . . . . . . . . . . . . . .  15
    9.  Changes . . . . . . . . . . . . . . . . . . . . . . . . . . .  16
 
 
@@ -116,7 +116,7 @@ Internet-Draft                  Expect-CT                     March 2017
 
      9.1.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .  16
    10. Normative References  . . . . . . . . . . . . . . . . . . . .  16
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  18
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  17
 
 1.  Introduction
 
@@ -230,7 +230,6 @@ Internet-Draft                  Expect-CT                     March 2017
    header field, using the grammar defined in RFC 5234 [RFC5234] and the
    rules defined in Section 3.2 of RFC 7230 [RFC7230].
 
-
    Expect-CT-Directives = directive *( OWS ";" OWS directive )
    directive            = directive-name [ "=" directive-value ]
    directive-name       = token
@@ -273,6 +272,7 @@ Internet-Draft                  Expect-CT                     March 2017
 
    The "report-uri" directive is REQUIRED to have a directive value, for
    which the syntax is defined in Figure 2.
+
 
 
 
@@ -343,7 +343,6 @@ Internet-Draft                  Expect-CT                     March 2017
    directive value, for which the syntax (after quoted-string
    unescaping, if necessary) is defined in Figure 3.
 
-
    max-age-value = delta-seconds
    delta-seconds = 1*DIGIT
 
@@ -384,6 +383,7 @@ Internet-Draft                  Expect-CT                     March 2017
    responses conveyed over non-secure transport.  UAs MUST ignore any
    Expect-CT header received in an HTTP response conveyed over non-
    secure transport.
+
 
 
 
@@ -593,31 +593,6 @@ Internet-Draft                  Expect-CT                     March 2017
    To generate a violation report object, the UA constructs a JSON
    message of the following form:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Stark                  Expires September 15, 2017              [Page 11]
-
-Internet-Draft                  Expect-CT                     March 2017
-
-
    {
      "date-time": date-time,
      "hostname": hostname,
@@ -635,6 +610,13 @@ Internet-Draft                  Expect-CT                     March 2017
    }
 
             Figure 4: JSON format of a violation report object
+
+
+
+Stark                  Expires September 15, 2017              [Page 11]
+
+Internet-Draft                  Expect-CT                     March 2017
+
 
    Whitespace outside of quoted strings is not significant.  The key/
    value pairs may appear in any order, but each MUST appear only once.
@@ -666,14 +648,6 @@ Internet-Draft                  Expect-CT                     March 2017
    constructed by the UA during certificate chain verification.  (This
    may differ from the "served-certificate-chain".)  It is provided as
    an array of strings, which MUST appear in the order matching the
-
-
-
-Stark                  Expires September 15, 2017              [Page 12]
-
-Internet-Draft                  Expect-CT                     March 2017
-
-
    chain that the UA validated; each string "pem1", ... "pemN" is the
    Privacy-Enhanced Mail (PEM) representation of each X.509 certificate
    as described in [RFC7468].
@@ -682,7 +656,6 @@ Internet-Draft                  Expect-CT                     March 2017
    UA received for the Expect-CT host and their validation statuses.
    The format of "sct1", ... "sctN" is shown in Figure 5.  The SCTs may
    appear in any order.
-
 
    {
      "sct": sct,
@@ -693,6 +666,13 @@ Internet-Draft                  Expect-CT                     March 2017
                   Figure 5: JSON format of an SCT object
 
    The "sct" is as defined in Section 4.1 of RFC 6962 [RFC6962].
+
+
+
+Stark                  Expires September 15, 2017              [Page 12]
+
+Internet-Draft                  Expect-CT                     March 2017
+
 
    The "status" is a string that the UA MUST set to one of the following
    values: "unknown" (indicating that the UA does not have or does not
@@ -721,15 +701,6 @@ Internet-Draft                  Expect-CT                     March 2017
 
    2.  Let "report body" by the JSON stringification of "report object".
 
-
-
-
-
-Stark                  Expires September 15, 2017              [Page 13]
-
-Internet-Draft                  Expect-CT                     March 2017
-
-
    3.  Let "report-uri" be the value of the "report-uri" directive in
        the Expect-CT header field.
 
@@ -751,6 +722,14 @@ Internet-Draft                  Expect-CT                     March 2017
    configuration could then be reverted to not comply with the CT
    policy, prompting failures.  Note this scenario would require the
    attacker to have substantial control over the infrastructure in
+
+
+
+Stark                  Expires September 15, 2017              [Page 13]
+
+Internet-Draft                  Expect-CT                     March 2017
+
+
    question, being able to obtain different certificates, change server
    software, or act as a man-in-the-middle in connections.
 
@@ -777,15 +756,6 @@ Internet-Draft                  Expect-CT                     March 2017
    of 30 days (2,592,000 seconds) may be considered a balance between
    these competing security concerns.
 
-
-
-
-
-Stark                  Expires September 15, 2017              [Page 14]
-
-Internet-Draft                  Expect-CT                     March 2017
-
-
 4.2.  Avoiding amplification attacks
 
    Another kind of hostile header attack uses the "report-uri" mechanism
@@ -808,6 +778,14 @@ Internet-Draft                  Expect-CT                     March 2017
 
    Additionally, reports submitted to the "report-uri" could reveal
    information to a third party about which webpage is being accessed
+
+
+
+Stark                  Expires September 15, 2017              [Page 14]
+
+Internet-Draft                  Expect-CT                     March 2017
+
+
    and by which IP address, by using individual "report-uri" values for
    individually-tracked pages.  This information could be leaked even if
    client-side scripting were disabled.
@@ -830,17 +808,6 @@ Internet-Draft                  Expect-CT                     March 2017
 6.  IANA Considerations
 
    TBD
-
-
-
-
-
-
-
-Stark                  Expires September 15, 2017              [Page 15]
-
-Internet-Draft                  Expect-CT                     March 2017
-
 
 7.  Usability Considerations
 
@@ -867,6 +834,14 @@ Internet-Draft                  Expect-CT                     March 2017
    mechanism for user agents that are transitioning to universal
    Certificate Transparency requirements.
 
+
+
+
+Stark                  Expires September 15, 2017              [Page 15]
+
+Internet-Draft                  Expect-CT                     March 2017
+
+
 9.  Changes
 
 9.1.  Since -00
@@ -890,13 +865,6 @@ Internet-Draft                  Expect-CT                     March 2017
    [RFC3339]  Klyne, G. and C. Newman, "Date and Time on the Internet:
               Timestamps", RFC 3339, DOI 10.17487/RFC3339, July 2002,
               <http://www.rfc-editor.org/info/rfc3339>.
-
-
-
-Stark                  Expires September 15, 2017              [Page 16]
-
-Internet-Draft                  Expect-CT                     March 2017
-
 
    [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
               Resource Identifier (URI): Generic Syntax", STD 66,
@@ -922,6 +890,14 @@ Internet-Draft                  Expect-CT                     March 2017
               Transparency", RFC 6962, DOI 10.17487/RFC6962, June 2013,
               <http://www.rfc-editor.org/info/rfc6962>.
 
+
+
+
+Stark                  Expires September 15, 2017              [Page 16]
+
+Internet-Draft                  Expect-CT                     March 2017
+
+
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
@@ -941,18 +917,6 @@ Internet-Draft                  Expect-CT                     March 2017
               Specification", World Wide Web Consortium Recommendation
               REC-html401-19991224, December 1999,
               <http://www.w3.org/TR/1999/REC-html401-19991224>.
-
-
-
-
-
-
-
-
-Stark                  Expires September 15, 2017              [Page 17]
-
-Internet-Draft                  Expect-CT                     March 2017
-
 
 Author's Address
 
@@ -985,24 +949,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Stark                  Expires September 15, 2017              [Page 18]
+Stark                  Expires September 15, 2017              [Page 17]

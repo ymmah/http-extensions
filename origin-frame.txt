@@ -131,7 +131,6 @@ Internet-Draft                ORIGIN Frames                   March 2017
 
    The ORIGIN frame type is 0xb (decimal 11).
 
-
    +-------------------------------+-------------------------------+
    |         Origin-Len (16)       | ASCII-Origin? (*)           ...
    +-------------------------------+-------------------------------+
@@ -161,7 +160,8 @@ Internet-Draft                ORIGIN Frames                   March 2017
    The origin frame MUST be sent on stream 0; an ORIGIN frame on any
    other stream is invalid and MUST be ignored.
 
-
+   Likewise, the ORIGIN frame is only valid on connections with the "h2"
+   protocol identifier, or when specifically nominated by the protocol's
 
 
 
@@ -170,8 +170,6 @@ Nottingham & Nygren    Expires September 15, 2017               [Page 3]
 Internet-Draft                ORIGIN Frames                   March 2017
 
 
-   Likewise, the ORIGIN frame is only valid on connections with the "h2"
-   protocol identifier, or when specifically nominated by the protocol's
    definition; it MUST be ignored when received on a connection with the
    "h2c" protocol identifier.
 
@@ -217,7 +215,9 @@ Internet-Draft                ORIGIN Frames                   March 2017
    server to incrementally add new origins to the Origin Set, as
    described in Section 2.2.
 
-
+   The Origin Set is also affected by the 421 (Misdirected Request)
+   response status code, defined in [RFC7540] Section 9.1.2.  Upon
+   receipt of a response with this status code, implementing clients
 
 
 
@@ -226,9 +226,6 @@ Nottingham & Nygren    Expires September 15, 2017               [Page 4]
 Internet-Draft                ORIGIN Frames                   March 2017
 
 
-   The Origin Set is also affected by the 421 (Misdirected Request)
-   response status code, defined in [RFC7540] Section 9.1.2.  Upon
-   receipt of a response with this status code, implementing clients
    MUST create the ASCII serialisation of the corresponding request's
    origin (as per [RFC6454], Section 6.2) and remove it from the
    connection's Origin Set, if present.
@@ -272,6 +269,9 @@ Internet-Draft                ORIGIN Frames                   March 2017
    clients SHOULD not emit new requests on any connection whose Origin
    Set is a subset of another connection's Origin Set, and SHOULD close
    it once all outstanding requests are satisfied.
+
+
+
 
 
 

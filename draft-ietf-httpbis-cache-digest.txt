@@ -125,7 +125,6 @@ Internet-Draft          Cache Digests for HTTP/2              March 2017
    The CACHE_DIGEST frame type is 0xf1.  NOTE: This is an experimental
    value; if standardised, a permanent value will be assigned.
 
-
    +-------------------------------+-------------------------------+
    |         Origin-Len (16)       | Origin? (\*)                ...
    +-------------------------------+-------------------------------+
@@ -161,6 +160,7 @@ Internet-Draft          Cache Digests for HTTP/2              March 2017
    o  *STALE* (0x8): When set, indicates that all cached responses
       represented in the digest-value are stale [RFC7234] at the point
       in them that the digest was generated; otherwise, all are fresh.
+
 
 
 

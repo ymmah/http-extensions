@@ -142,12 +142,10 @@ Internet-Draft               Cookie Prefixes                  March 2017
    The following cookie would be rejected when set from any origin, as
    the "Secure" flag is not set
 
-
    Set-Cookie: __Secure-SID=12345; Domain=example.com
 
    While the following would be accepted if set from a secure origin
    (e.g.  "https://example.com/"), and rejected otherwise:
-
 
    Set-Cookie: __Secure-SID=12345; Secure; Domain=example.com
 
@@ -165,6 +163,8 @@ Internet-Draft               Cookie Prefixes                  March 2017
 
 
 
+
+
 West                   Expires September 15, 2017               [Page 3]
 
 Internet-Draft               Cookie Prefixes                  March 2017
@@ -176,7 +176,6 @@ Internet-Draft               Cookie Prefixes                  March 2017
 
    The following cookies would always be rejected:
 
-
    Set-Cookie: __Host-SID=12345
    Set-Cookie: __Host-SID=12345; Secure
    Set-Cookie: __Host-SID=12345; Domain=example.com
@@ -185,7 +184,6 @@ Internet-Draft               Cookie Prefixes                  March 2017
 
    While the following would be accepted if set from a secure origin
    (e.g.  "https://example.com/"), and rejected otherwise:
-
 
    Set-Cookie: __Host-SID=12345; Secure; Path=/
 
@@ -216,6 +214,8 @@ Internet-Draft               Cookie Prefixes                  March 2017
 5.1.  Not pretty.
 
    Prefixes are ugly. :(
+
+
 
 
 

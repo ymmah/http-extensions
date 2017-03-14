@@ -172,7 +172,6 @@ Internet-Draft          HTTP Immutable Responses              March 2017
 
 2.2.  Example
 
-
    Cache-Control: max-age=31536000, immutable
 
 3.  Security Considerations
@@ -214,6 +213,7 @@ Internet-Draft          HTTP Immutable Responses              March 2017
 
 6.  References
 
+6.1.  Normative References
 
 
 
@@ -225,8 +225,6 @@ McManus                Expires September 15, 2017               [Page 4]
 
 Internet-Draft          HTTP Immutable Responses              March 2017
 
-
-6.1.  Normative References
 
    [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
@@ -255,6 +253,8 @@ Author's Address
    Mozilla
 
    Email: pmcmanus@mozilla.com
+
+
 
 
 

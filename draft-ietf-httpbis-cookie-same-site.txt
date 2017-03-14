@@ -179,13 +179,11 @@ Internet-Draft              Same-Site Cookies                 March 2017
    Cookie" header field.  That is, given a server's response to a user
    agent which contains the following header field:
 
-
    Set-Cookie: SID=31d4d96e407aad42; SameSite=Strict
 
    Subsequent requests from that user agent can be expected to contain
    the following header field if and only if both the requested resource
    and the resource in the top-level browsing context match the cookie.
-
 
    Cookie: SID=31d4d96e407aad42
 
@@ -218,6 +216,8 @@ Internet-Draft              Same-Site Cookies                 March 2017
    "Safe" HTTP methods include "GET", "HEAD", "OPTIONS", and "TRACE", as
    defined in Section 4.2.1 of [RFC7231].
 
+   The term "public suffix" is defined in a note in Section 5.3 of
+   [RFC6265] as "a domain that is controlled by a public registry", and
 
 
 
@@ -226,8 +226,6 @@ West & Goodwin         Expires September 15, 2017               [Page 4]
 Internet-Draft              Same-Site Cookies                 March 2017
 
 
-   The term "public suffix" is defined in a note in Section 5.3 of
-   [RFC6265] as "a domain that is controlled by a public registry", and
    are also know as "effective top-level domains" (eTLDs).  For example,
    "example.com"'s public suffix is "com".  User agents SHOULD use an
    up-to-date public suffix list, such as the one maintained by Mozilla
@@ -274,6 +272,8 @@ Internet-Draft              Same-Site Cookies                 March 2017
    need to audit the origins of each of a document's ancestor browsing
    contexts' active documents in order to account for the "multiple-
    nested scenarios" described in Section 4 of [RFC7034].  These
+   document's "site for cookies" is the top-level site if and only if
+   the document and each of its ancestor documents' origins have the
 
 
 
@@ -282,8 +282,6 @@ West & Goodwin         Expires September 15, 2017               [Page 5]
 Internet-Draft              Same-Site Cookies                 March 2017
 
 
-   document's "site for cookies" is the top-level site if and only if
-   the document and each of its ancestor documents' origins have the
    same registered domain as the top-level site.  Otherwise its "site
    for cookies" is the empty string.
 
@@ -330,6 +328,8 @@ Internet-Draft              Same-Site Cookies                 March 2017
    Shared workers may be bound to multiple documents at once.  As it is
    quite possible for those documents to have distinct "site for cookie"
    values, the worker's "site for cookies" will be the empty string in
+   cases where the values diverge, and the shared value in cases where
+   the values agree.
 
 
 
@@ -337,9 +337,6 @@ West & Goodwin         Expires September 15, 2017               [Page 6]
 
 Internet-Draft              Same-Site Cookies                 March 2017
 
-
-   cases where the values diverge, and the shared value in cases where
-   the values agree.
 
    Given a WorkerGlobalScope ("worker"), the following algorithm returns
    its "site for cookies" (either a registered domain, or the empty
@@ -386,6 +383,9 @@ Internet-Draft              Same-Site Cookies                 March 2017
    Add "SameSite" to the list of accepted attributes in the "Set-Cookie"
    header field's value by replacing the "cookie-av" token definition in
    Section 4.1.1 of [RFC6265] with the following ABNF grammar:
+
+
+
 
 
 

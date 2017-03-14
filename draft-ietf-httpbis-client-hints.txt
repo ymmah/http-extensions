@@ -84,7 +84,7 @@ Table of Contents
        2.2.2.  Interaction with Caches . . . . . . . . . . . . . . .   5
    3.  Client Hints  . . . . . . . . . . . . . . . . . . . . . . . .   6
      3.1.  The DPR header field  . . . . . . . . . . . . . . . . . .   6
-       3.1.1.  Confirming Selected DPR . . . . . . . . . . . . . . .   7
+       3.1.1.  Confirming Selected DPR . . . . . . . . . . . . . . .   6
      3.2.  The Width header field  . . . . . . . . . . . . . . . . .   7
      3.3.  The Viewport-Width header field . . . . . . . . . . . . .   7
      3.4.  The Downlink header field . . . . . . . . . . . . . . . .   8
@@ -95,15 +95,15 @@ Table of Contents
      6.1.  Accept-CH . . . . . . . . . . . . . . . . . . . . . . . .  10
      6.2.  Content-DPR . . . . . . . . . . . . . . . . . . . . . . .  10
      6.3.  Downlink  . . . . . . . . . . . . . . . . . . . . . . . .  10
-     6.4.  DPR . . . . . . . . . . . . . . . . . . . . . . . . . . .  11
+     6.4.  DPR . . . . . . . . . . . . . . . . . . . . . . . . . . .  10
      6.5.  Save-Data . . . . . . . . . . . . . . . . . . . . . . . .  11
      6.6.  Viewport-Width  . . . . . . . . . . . . . . . . . . . . .  11
      6.7.  Width . . . . . . . . . . . . . . . . . . . . . . . . . .  11
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  11
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .  11
      7.2.  Informative References  . . . . . . . . . . . . . . . . .  12
-   Appendix A.  Changes  . . . . . . . . . . . . . . . . . . . . . .  13
-     A.1.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .  13
+   Appendix A.  Changes  . . . . . . . . . . . . . . . . . . . . . .  12
+     A.1.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .  12
      A.2.  Since -01 . . . . . . . . . . . . . . . . . . . . . . . .  13
      A.3.  Since -02 . . . . . . . . . . . . . . . . . . . . . . . .  13
 
@@ -232,11 +232,9 @@ Internet-Draft              HTTP Client Hints                 March 2017
    header field or an equivalent HTML meta element with http-equiv
    attribute ([W3C.REC-html5-20141028]).
 
-
      Accept-CH = #field-name
 
    For example:
-
 
      Accept-CH: DPR, Width, Viewport-Width, Downlink
 
@@ -266,14 +264,16 @@ Internet-Draft              HTTP Client Hints                 March 2017
    affect the selected response and whether the selected response is
    appropriate for a later request.
 
-
      Vary: DPR
 
    Above example indicates that the cache key needs to include the DPR
    header field.
 
-
      Vary: DPR, Width, Downlink
+
+   Above example indicates that the cache key needs to include the DPR,
+   Width, and Downlink header fields.
+
 
 
 
@@ -282,14 +282,10 @@ Grigorik               Expires September 15, 2017               [Page 5]
 Internet-Draft              HTTP Client Hints                 March 2017
 
 
-   Above example indicates that the cache key needs to include the DPR,
-   Width, and Downlink header fields.
-
    Client Hints MAY be combined with Key ([I-D.ietf-httpbis-key]) to
    enable fine-grained control of the cache key for improved cache
    efficiency.  For example, the server can return the following set of
    instructions:
-
 
      Key: DPR;partition=1.5:2.5:4.0
 
@@ -297,13 +293,11 @@ Internet-Draft              HTTP Client Hints                 March 2017
    of the DPR header field with three segments: less than 1.5, 1.5 to
    less than 2.5, and 4.0 or greater.
 
-
      Key: Width;div=320
 
    Above example indicates that the cache key needs to include the value
    of the Width header field and be partitioned into groups of 320:
    0-320, 320-640, and so on.
-
 
      Key: Downlink;partition=0.5:1.0:3.0:5.0:10
 
@@ -322,12 +316,18 @@ Internet-Draft              HTTP Client Hints                 March 2017
    [W3C.CR-css-values-3-20160929]) of the layout viewport (Section 9.1.1
    of [CSS2]) on the device.
 
-
      DPR = 1*DIGIT [ "." 1*DIGIT ]
 
    If DPR occurs in a message more than once, the last value overrides
    all previous occurrences.
 
+3.1.1.  Confirming Selected DPR
+
+   The "Content-DPR" response header field is a number that indicates
+   the ratio between physical pixels over CSS px of the selected image
+   response.
+
+     Content-DPR = 1*DIGIT [ "." 1*DIGIT ]
 
 
 
@@ -337,15 +337,6 @@ Grigorik               Expires September 15, 2017               [Page 6]
 
 Internet-Draft              HTTP Client Hints                 March 2017
 
-
-3.1.1.  Confirming Selected DPR
-
-   The "Content-DPR" response header field is a number that indicates
-   the ratio between physical pixels over CSS px of the selected image
-   response.
-
-
-     Content-DPR = 1*DIGIT [ "." 1*DIGIT ]
 
    DPR ratio affects the calculation of intrinsic size of image
    resources on the client - i.e. typically, the client automatically
@@ -372,7 +363,6 @@ Internet-Draft              HTTP Client Hints                 March 2017
    image).  The provided physical px value is a number rounded to the
    smallest following integer (i.e. ceiling value).
 
-
      Width = 1*DIGIT
 
    If the desired resource width is not known at the time of the request
@@ -387,6 +377,16 @@ Internet-Draft              HTTP Client Hints                 March 2017
    number rounded to the smallest following integer (i.e. ceiling
    value).
 
+     Viewport-Width = 1*DIGIT
+
+   If Viewport-Width occurs in a message more than once, the last value
+   overrides all previous occurrences.
+
+
+
+
+
+
 
 
 Grigorik               Expires September 15, 2017               [Page 7]
@@ -394,16 +394,10 @@ Grigorik               Expires September 15, 2017               [Page 7]
 Internet-Draft              HTTP Client Hints                 March 2017
 
 
-     Viewport-Width = 1*DIGIT
-
-   If Viewport-Width occurs in a message more than once, the last value
-   overrides all previous occurrences.
-
 3.4.  The Downlink header field
 
    The "Downlink" request header field is a number that indicates the
    client's maximum downlink speed in megabits per second (Mbps).
-
 
      Downlink = 1*DIGIT [ "." 1*DIGIT ]
 
@@ -415,7 +409,6 @@ Internet-Draft              HTTP Client Hints                 March 2017
    The "Save-Data" request header field consists of one or more tokens
    that indicate client's preference for reduced data usage, due to high
    transfer costs, slow connection speeds, or other reasons.
-
 
      Save-Data = sd-token *( OWS ";" OWS [sd-token] )
      sd-token = token
@@ -432,7 +425,6 @@ Internet-Draft              HTTP Client Hints                 March 2017
 
    For example, given the following request header fields:
 
-
      DPR: 2.0
      Width: 320
      Viewport-Width: 320
@@ -442,14 +434,6 @@ Internet-Draft              HTTP Client Hints                 March 2017
    physical pixels at 2x resolution), and that the viewport width is 320
    CSS px.
 
-
-
-
-Grigorik               Expires September 15, 2017               [Page 8]
-
-Internet-Draft              HTTP Client Hints                 March 2017
-
-
    If the server uses above hints to perform resource selection for an
    image asset, it must confirm its selection via the Content-DPR
    response header to allow the client to calculate the appropriate
@@ -457,8 +441,14 @@ Internet-Draft              HTTP Client Hints                 March 2017
    confirm resource width, only the ratio between physical pixels and
    CSS px of the selected image resource:
 
-
      Content-DPR: 1.0
+
+
+
+Grigorik               Expires September 15, 2017               [Page 8]
+
+Internet-Draft              HTTP Client Hints                 March 2017
+
 
    The Content-DPR response header field indicates to the client that
    the server has selected resource with DPR ratio of 1.0.  The client
@@ -469,7 +459,6 @@ Internet-Draft              HTTP Client Hints                 March 2017
 
    Alternatively, the server could select an alternate resource based on
    the maximum downlink speed advertised in the request header fields:
-
 
      Downlink: 0.384
 
@@ -498,14 +487,6 @@ Internet-Draft              HTTP Client Hints                 March 2017
    the desired outcome - e.g. this may enable an image optimization
    service to deliver a tailored asset, and it may reveal same
    information about the user to other origins that may not have had
-
-
-
-Grigorik               Expires September 15, 2017               [Page 9]
-
-Internet-Draft              HTTP Client Hints                 March 2017
-
-
    access to it before.  Similarly, sending highly granular data, such
    as image and viewport width may help identify users across multiple
    requests.  Restricting such field values to an enumerated range,
@@ -517,6 +498,14 @@ Internet-Draft              HTTP Client Hints                 March 2017
    and when such hints are advertised.  For example, they could require
    origin opt-in; restrict delivery to same origin subrequests; limit
    delivery to requests that already carry indentifying information
+
+
+
+Grigorik               Expires September 15, 2017               [Page 9]
+
+Internet-Draft              HTTP Client Hints                 March 2017
+
+
    (e.g. cookies); modify delivery policy when in an "incognito" or a
    similar privacy mode; enable user configuration and opt in, and so
    on.
@@ -554,14 +543,6 @@ Internet-Draft              HTTP Client Hints                 March 2017
    o  Specification document(s): Section 3.4 of this document
    o  Related information: for Client Hints
 
-
-
-
-Grigorik               Expires September 15, 2017              [Page 10]
-
-Internet-Draft              HTTP Client Hints                 March 2017
-
-
 6.4.  DPR
 
    o  Header field name: DPR
@@ -570,6 +551,16 @@ Internet-Draft              HTTP Client Hints                 March 2017
    o  Author/Change controller: IETF
    o  Specification document(s): Section 3.1 of this document
    o  Related information: for Client Hints
+
+
+
+
+
+
+Grigorik               Expires September 15, 2017              [Page 10]
+
+Internet-Draft              HTTP Client Hints                 March 2017
+
 
 6.5.  Save-Data
 
@@ -607,6 +598,15 @@ Internet-Draft              HTTP Client Hints                 March 2017
               W3C Recommendation REC-CSS2-20110607, June 2011,
               <http://www.w3.org/TR/2011/REC-CSS2-20110607>.
 
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <http://www.rfc-editor.org/info/rfc2119>.
+
+   [RFC5234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
+              Specifications: ABNF", STD 68, RFC 5234,
+              DOI 10.17487/RFC5234, January 2008,
+              <http://www.rfc-editor.org/info/rfc5234>.
 
 
 
@@ -617,16 +617,6 @@ Grigorik               Expires September 15, 2017              [Page 11]
 
 Internet-Draft              HTTP Client Hints                 March 2017
 
-
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <http://www.rfc-editor.org/info/rfc2119>.
-
-   [RFC5234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
-              Specifications: ABNF", STD 68, RFC 5234,
-              DOI 10.17487/RFC5234, January 2008,
-              <http://www.rfc-editor.org/info/rfc5234>.
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
@@ -667,13 +657,6 @@ Internet-Draft              HTTP Client Hints                 March 2017
               DOI 10.17487/RFC6265, April 2011,
               <http://www.rfc-editor.org/info/rfc6265>.
 
-
-
-Grigorik               Expires September 15, 2017              [Page 12]
-
-Internet-Draft              HTTP Client Hints                 March 2017
-
-
 Appendix A.  Changes
 
 A.1.  Since -00
@@ -682,6 +665,14 @@ A.1.  Since -00
    o  Issue 163 (CH review feedback) editorial feedback from httpwg
       list.
    o  Issue 153 (NetInfo API citation) added normative reference.
+
+
+
+
+Grigorik               Expires September 15, 2017              [Page 12]
+
+Internet-Draft              HTTP Client Hints                 March 2017
+
 
 A.2.  Since -01
 
@@ -708,6 +699,15 @@ Author's Address
 
    Email: ilya@igvita.com
    URI:   https://www.igvita.com/
+
+
+
+
+
+
+
+
+
 
 
 

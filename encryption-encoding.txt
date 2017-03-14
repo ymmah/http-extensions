@@ -80,19 +80,19 @@ Table of Contents
    4.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
      4.1.  Message Truncation  . . . . . . . . . . . . . . . . . . .   9
      4.2.  Key and Nonce Reuse . . . . . . . . . . . . . . . . . . .   9
-     4.3.  Data Encryption Limits  . . . . . . . . . . . . . . . . .  10
+     4.3.  Data Encryption Limits  . . . . . . . . . . . . . . . . .   9
      4.4.  Content Integrity . . . . . . . . . . . . . . . . . . . .  10
      4.5.  Leaking Information in Header Fields  . . . . . . . . . .  10
      4.6.  Poisoning Storage . . . . . . . . . . . . . . . . . . . .  11
      4.7.  Sizing and Timing Attacks . . . . . . . . . . . . . . . .  11
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  12
-     5.1.  The "aes128gcm" HTTP Content Coding . . . . . . . . . . .  12
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  11
+     5.1.  The "aes128gcm" HTTP Content Coding . . . . . . . . . . .  11
    6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  12
      6.1.  Normative References  . . . . . . . . . . . . . . . . . .  12
-     6.2.  Informative References  . . . . . . . . . . . . . . . . .  13
-   Appendix A.  JWE Mapping  . . . . . . . . . . . . . . . . . . . .  14
-   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  15
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  15
+     6.2.  Informative References  . . . . . . . . . . . . . . . . .  12
+   Appendix A.  JWE Mapping  . . . . . . . . . . . . . . . . . . . .  13
+   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  14
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  14
 
 1.  Introduction
 
@@ -179,7 +179,6 @@ Internet-Draft           HTTP encryption coding               March 2017
    that is enciphered.  The record size ("rs") is included in the
    content coding header (see Section 2.1).
 
-
    +-----------+             content
    |   data    |             any length up to rs-17 octets
    +-----------+
@@ -221,6 +220,7 @@ Internet-Draft           HTTP encryption coding               March 2017
 
 
 
+
 Thomson                Expires September 15, 2017               [Page 4]
 
 Internet-Draft           HTTP encryption coding               March 2017
@@ -251,7 +251,6 @@ Internet-Draft           HTTP encryption coding               March 2017
    needed to decrypt the content (other than the key).  The header block
    is placed in the body of a message ahead of the sequence of records.
 
-
    +-----------+--------+-----------+---------------+
    | salt (16) | rs (4) | idlen (1) | keyid (idlen) |
    +-----------+--------+-----------+---------------+
@@ -273,7 +272,8 @@ Internet-Draft           HTTP encryption coding               March 2017
       material that is used.  Recipients that receive a message are
       expected to know how to retrieve keys; the "keyid" parameter might
       be input to that process.  A "keyid" parameter SHOULD be a UTF-8
-
+      [RFC3629] encoded string, particularly where the identifier might
+      need to appear in a textual form.
 
 
 
@@ -281,9 +281,6 @@ Thomson                Expires September 15, 2017               [Page 5]
 
 Internet-Draft           HTTP encryption coding               March 2017
 
-
-      [RFC3629] encoded string, particularly where the identifier might
-      need to appear in a textual form.
 
 2.2.  Content Encryption Key Derivation
 
@@ -299,12 +296,10 @@ Internet-Draft           HTTP encryption coding               March 2017
    be provided to recipients separately.  The extract phase of HKDF
    therefore produces a pseudorandom key (PRK) as follows:
 
-
       PRK = HMAC-SHA-256(salt, IKM)
 
    The info parameter to HKDF is set to the ASCII-encoded string
    "Content-Encoding: aes128gcm" and a single zero octet:
-
 
       cek_info = "Content-Encoding: aes128gcm" || 0x00
 
@@ -315,7 +310,6 @@ Internet-Draft           HTTP encryption coding               March 2017
    (CEK), so the length (L) parameter to HKDF is 16.  The second step of
    HKDF can therefore be simplified to the first 16 octets of a single
    HMAC:
-
 
       CEK = HMAC-SHA-256(PRK, cek_info || 0x01)
 
@@ -329,6 +323,12 @@ Internet-Draft           HTTP encryption coding               March 2017
    The input keying material and salt values are input to HKDF with
    different info and length parameters.
 
+   The length (L) parameter is 12 octets.  The info parameter for the
+   nonce is the ASCII-encoded string "Content-Encoding: nonce",
+   terminated by a a single zero octet:
+
+      nonce_info = "Content-Encoding: nonce" || 0x00
+
 
 
 
@@ -338,20 +338,12 @@ Thomson                Expires September 15, 2017               [Page 6]
 Internet-Draft           HTTP encryption coding               March 2017
 
 
-   The length (L) parameter is 12 octets.  The info parameter for the
-   nonce is the ASCII-encoded string "Content-Encoding: nonce",
-   terminated by a a single zero octet:
-
-
-      nonce_info = "Content-Encoding: nonce" || 0x00
-
    The result is combined with the record sequence number - using
    exclusive or - to produce the nonce.  The record sequence number
    (SEQ) is a 96-bit unsigned integer in network byte order that starts
    at zero.
 
    Thus, the final nonce for each record is a 12 octet value:
-
 
       NONCE = HMAC-SHA-256(PRK, nonce_info || 0x01) XOR SEQ
 
@@ -381,19 +373,6 @@ Internet-Draft           HTTP encryption coding               March 2017
    a single record and is shown here using 71 base64url characters for
    presentation reasons.
 
-
-
-
-
-
-
-
-
-Thomson                Expires September 15, 2017               [Page 7]
-
-Internet-Draft           HTTP encryption coding               March 2017
-
-
    HTTP/1.1 200 OK
    Content-Type: application/octet-stream
    Content-Length: 54
@@ -407,8 +386,15 @@ Internet-Draft           HTTP encryption coding               March 2017
    Alternatively (and equivalently), the Content-Type header field can
    be omitted.
 
-   Intermediate values for this example (all shown using base64url):
 
+
+
+Thomson                Expires September 15, 2017               [Page 7]
+
+Internet-Draft           HTTP encryption coding               March 2017
+
+
+   Intermediate values for this example (all shown using base64url):
 
    salt (from header) = I1BsxtFttlv3u_Oo94xnmw
    PRK = zyeH5phsIsgUyd4oiSEIy35x-gIi4aM7y0hCF8mwn9g
@@ -426,7 +412,6 @@ Internet-Draft           HTTP encryption coding               March 2017
    in the second.  A key identifier of the UTF-8 encoded string "a1" is
    also included in the header.
 
-
    HTTP/1.1 200 OK
    Content-Length: 73
    Content-Encoding: aes128gcm
@@ -441,15 +426,6 @@ Internet-Draft           HTTP encryption coding               March 2017
    and receivers.  Defining key management is part of composing this
    mechanism into a larger application, protocol, or framework.
 
-
-
-
-
-Thomson                Expires September 15, 2017               [Page 8]
-
-Internet-Draft           HTTP encryption coding               March 2017
-
-
    Implementation of cryptography - and key management in particular -
    can be difficult.  For instance, implementations need to account for
    the potential for exposing keying material on side channels, such as
@@ -461,6 +437,18 @@ Internet-Draft           HTTP encryption coding               March 2017
    transparent to a consumer of a message.  Recipients that depend on
    content origin authentication using this mechanism MUST reject
    messages that don't include the "aes128gcm" content coding.
+
+
+
+
+
+
+
+
+Thomson                Expires September 15, 2017               [Page 8]
+
+Internet-Draft           HTTP encryption coding               March 2017
+
 
 4.1.  Message Truncation
 
@@ -497,15 +485,6 @@ Internet-Draft           HTTP encryption coding               March 2017
    generate a random salt parameter for every message; a counter could
    achieve the same result.
 
-
-
-
-
-Thomson                Expires September 15, 2017               [Page 9]
-
-Internet-Draft           HTTP encryption coding               March 2017
-
-
 4.3.  Data Encryption Limits
 
    There are limits to the data that AEAD_AES_128_GCM can encipher.  The
@@ -517,6 +496,15 @@ Internet-Draft           HTTP encryption coding               March 2017
    total amount of plaintext that can be enciphered with the key derived
    from the same input keying material and salt MUST be less than 2^44.5
    blocks of 16 octets [AEBounds].
+
+
+
+
+
+Thomson                Expires September 15, 2017               [Page 9]
+
+Internet-Draft           HTTP encryption coding               March 2017
+
 
    If the record size is a multiple of 16 octets, this means 398
    terabytes can be encrypted safely, including padding and overhead.
@@ -555,13 +543,6 @@ Internet-Draft           HTTP encryption coding               March 2017
    depending upon the application's threat model and the users'
    tolerance for leaked information:
 
-
-
-Thomson                Expires September 15, 2017              [Page 10]
-
-Internet-Draft           HTTP encryption coding               March 2017
-
-
    1.  Determine that it is not an issue.  For example, if it is
        expected that all content stored will be "application/json", or
        another very common media type, exposing the Content-Type header
@@ -573,6 +554,13 @@ Internet-Draft           HTTP encryption coding               March 2017
        or normalize them.  In the case of Content-Type, this could be
        accomplished by always sending Content-Type: application/octet-
        stream (the most generic media type), or no Content-Type at all.
+
+
+
+Thomson                Expires September 15, 2017              [Page 10]
+
+Internet-Draft           HTTP encryption coding               March 2017
+
 
    3.  If it is considered sensitive information and it is not possible
        to convey it elsewhere, encapsulate the HTTP message using the
@@ -610,14 +598,6 @@ Internet-Draft           HTTP encryption coding               March 2017
    padding.  Distributing non-padding data is recommended to avoid
    leaking size information.
 
-
-
-
-Thomson                Expires September 15, 2017              [Page 11]
-
-Internet-Draft           HTTP encryption coding               March 2017
-
-
 5.  IANA Considerations
 
 5.1.  The "aes128gcm" HTTP Content Coding
@@ -629,6 +609,14 @@ Internet-Draft           HTTP encryption coding               March 2017
 
    o  Description: AES-GCM encryption with a 128-bit content encryption
       key
+
+
+
+
+Thomson                Expires September 15, 2017              [Page 11]
+
+Internet-Draft           HTTP encryption coding               March 2017
+
 
    o  Reference: this specification
 
@@ -666,14 +654,6 @@ Internet-Draft           HTTP encryption coding               March 2017
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
               <http://www.rfc-editor.org/info/rfc7230>.
 
-
-
-
-Thomson                Expires September 15, 2017              [Page 12]
-
-Internet-Draft           HTTP encryption coding               March 2017
-
-
    [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
               DOI 10.17487/RFC7231, June 2014,
@@ -685,6 +665,14 @@ Internet-Draft           HTTP encryption coding               March 2017
               Luykx, A. and K. Paterson, "Limits on Authenticated
               Encryption Use in TLS", March 2016,
               <http://www.isg.rhul.ac.uk/~kp/TLS-AEbounds.pdf>.
+
+
+
+
+Thomson                Expires September 15, 2017              [Page 12]
+
+Internet-Draft           HTTP encryption coding               March 2017
+
 
    [RFC4880]  Callas, J., Donnerhacke, L., Finney, H., Shaw, D., and R.
               Thayer, "OpenPGP Message Format", RFC 4880,
@@ -723,13 +711,6 @@ Internet-Draft           HTTP encryption coding               March 2017
               DOI 10.17487/RFC7540, May 2015,
               <http://www.rfc-editor.org/info/rfc7540>.
 
-
-
-Thomson                Expires September 15, 2017              [Page 13]
-
-Internet-Draft           HTTP encryption coding               March 2017
-
-
    [XMLENC]   Eastlake, D., Reagle, J., Hirsch, F., Roessler, T.,
               Imamura, T., Dillaway, B., Simon, E., Yiu, K., and M.
               Nystroem, "XML Encryption Syntax and Processing", W3C
@@ -741,6 +722,14 @@ Appendix A.  JWE Mapping
    The "aes128gcm" content coding can be considered as a sequence of
    JSON Web Encryption (JWE) objects [RFC7516], each corresponding to a
    single fixed size record that includes trailing padding.  The
+
+
+
+Thomson                Expires September 15, 2017              [Page 13]
+
+Internet-Draft           HTTP encryption coding               March 2017
+
+
    following transformations are applied to a JWE object that might be
    expressed using the JWE Compact Serialization:
 
@@ -766,7 +755,6 @@ Appendix A.  JWE Mapping
    Thus, the example in Section 3.1 can be rendered using the JWE
    Compact Serialization as:
 
-
    eyAiYWxnIjogImRpciIsICJlbmMiOiAiQTEyOEdDTSIgfQ..Bcs8gkIRKLI8GeI8.
    -NAVub2qFgBEuQKRapoZuw.4jGQi9rcwQHU8P6XLxOGOA
 
@@ -774,17 +762,6 @@ Appendix A.  JWE Mapping
    empty JWE Encrypted Key, and the algorithmically-determined JWE
    Initialization Vector.  The second line contains the encoded body,
    split into JWE Ciphertext and JWE Authentication Tag.
-
-
-
-
-
-
-
-Thomson                Expires September 15, 2017              [Page 14]
-
-Internet-Draft           HTTP encryption coding               March 2017
-
 
 Appendix B.  Acknowledgements
 
@@ -804,37 +781,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Thomson                Expires September 15, 2017              [Page 15]
+Thomson                Expires September 15, 2017              [Page 14]
