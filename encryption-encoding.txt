@@ -4,8 +4,8 @@
 
 HTTP Working Group                                            M. Thomson
 Internet-Draft                                                   Mozilla
-Intended status: Standards Track                          March 14, 2017
-Expires: September 15, 2017
+Intended status: Standards Track                          March 16, 2017
+Expires: September 17, 2017
 
 
                   Encrypted Content-Encoding for HTTP
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 15, 2017.
+   This Internet-Draft will expire on September 17, 2017.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Thomson                Expires September 15, 2017               [Page 1]
+Thomson                Expires September 17, 2017               [Page 1]
 
 Internet-Draft           HTTP encryption coding               March 2017
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Thomson                Expires September 15, 2017               [Page 2]
+Thomson                Expires September 17, 2017               [Page 2]
 
 Internet-Draft           HTTP encryption coding               March 2017
 
@@ -144,8 +144,6 @@ Internet-Draft           HTTP encryption coding               March 2017
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
    document are to be interpreted as described in [RFC2119].
 
-   Base64url encoding is defined in Section 2 of [RFC7515].
-
 2.  The "aes128gcm" HTTP Content Coding
 
    The "aes128gcm" HTTP content coding indicates that a payload has been
@@ -165,7 +163,9 @@ Internet-Draft           HTTP encryption coding               March 2017
 
 
 
-Thomson                Expires September 15, 2017               [Page 3]
+
+
+Thomson                Expires September 17, 2017               [Page 3]
 
 Internet-Draft           HTTP encryption coding               March 2017
 
@@ -221,7 +221,7 @@ Internet-Draft           HTTP encryption coding               March 2017
 
 
 
-Thomson                Expires September 15, 2017               [Page 4]
+Thomson                Expires September 17, 2017               [Page 4]
 
 Internet-Draft           HTTP encryption coding               March 2017
 
@@ -277,7 +277,7 @@ Internet-Draft           HTTP encryption coding               March 2017
 
 
 
-Thomson                Expires September 15, 2017               [Page 5]
+Thomson                Expires September 17, 2017               [Page 5]
 
 Internet-Draft           HTTP encryption coding               March 2017
 
@@ -333,7 +333,7 @@ Internet-Draft           HTTP encryption coding               March 2017
 
 
 
-Thomson                Expires September 15, 2017               [Page 6]
+Thomson                Expires September 17, 2017               [Page 6]
 
 Internet-Draft           HTTP encryption coding               March 2017
 
@@ -355,9 +355,10 @@ Internet-Draft           HTTP encryption coding               March 2017
 
    This section shows a few examples of the encrypted content coding.
 
-   Note: All binary values in the examples in this section use base64url
-   encoding [RFC7515].  This includes the bodies of requests.
-   Whitespace and line wrapping is added to fit formatting constraints.
+   Note: All binary values in the examples in this section use Base 64
+   Encoding with URL and Filename Safe Alphabet [RFC4648].  This
+   includes the bodies of requests.  Whitespace and line wrapping is
+   added to fit formatting constraints.
 
 3.1.  Encryption of a Response
 
@@ -388,8 +389,7 @@ Internet-Draft           HTTP encryption coding               March 2017
 
 
 
-
-Thomson                Expires September 15, 2017               [Page 7]
+Thomson                Expires September 17, 2017               [Page 7]
 
 Internet-Draft           HTTP encryption coding               March 2017
 
@@ -445,7 +445,7 @@ Internet-Draft           HTTP encryption coding               March 2017
 
 
 
-Thomson                Expires September 15, 2017               [Page 8]
+Thomson                Expires September 17, 2017               [Page 8]
 
 Internet-Draft           HTTP encryption coding               March 2017
 
@@ -501,7 +501,7 @@ Internet-Draft           HTTP encryption coding               March 2017
 
 
 
-Thomson                Expires September 15, 2017               [Page 9]
+Thomson                Expires September 17, 2017               [Page 9]
 
 Internet-Draft           HTTP encryption coding               March 2017
 
@@ -557,7 +557,7 @@ Internet-Draft           HTTP encryption coding               March 2017
 
 
 
-Thomson                Expires September 15, 2017              [Page 10]
+Thomson                Expires September 17, 2017              [Page 10]
 
 Internet-Draft           HTTP encryption coding               March 2017
 
@@ -613,7 +613,7 @@ Internet-Draft           HTTP encryption coding               March 2017
 
 
 
-Thomson                Expires September 15, 2017              [Page 11]
+Thomson                Expires September 17, 2017              [Page 11]
 
 Internet-Draft           HTTP encryption coding               March 2017
 
@@ -669,10 +669,14 @@ Internet-Draft           HTTP encryption coding               March 2017
 
 
 
-Thomson                Expires September 15, 2017              [Page 12]
+Thomson                Expires September 17, 2017              [Page 12]
 
 Internet-Draft           HTTP encryption coding               March 2017
 
+
+   [RFC4648]  Josefsson, S., "The Base16, Base32, and Base64 Data
+              Encodings", RFC 4648, DOI 10.17487/RFC4648, October 2006,
+              <http://www.rfc-editor.org/info/rfc4648>.
 
    [RFC4880]  Callas, J., Donnerhacke, L., Finney, H., Shaw, D., and R.
               Thayer, "OpenPGP Message Format", RFC 4880,
@@ -698,10 +702,6 @@ Internet-Draft           HTTP encryption coding               March 2017
               DOI 10.17487/RFC7235, June 2014,
               <http://www.rfc-editor.org/info/rfc7235>.
 
-   [RFC7515]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web
-              Signature (JWS)", RFC 7515, DOI 10.17487/RFC7515, May
-              2015, <http://www.rfc-editor.org/info/rfc7515>.
-
    [RFC7516]  Jones, M. and J. Hildebrand, "JSON Web Encryption (JWE)",
               RFC 7516, DOI 10.17487/RFC7516, May 2015,
               <http://www.rfc-editor.org/info/rfc7516>.
@@ -725,7 +725,7 @@ Appendix A.  JWE Mapping
 
 
 
-Thomson                Expires September 15, 2017              [Page 13]
+Thomson                Expires September 17, 2017              [Page 13]
 
 Internet-Draft           HTTP encryption coding               March 2017
 
@@ -781,4 +781,4 @@ Author's Address
 
 
 
-Thomson                Expires September 15, 2017              [Page 14]
+Thomson                Expires September 17, 2017              [Page 14]
