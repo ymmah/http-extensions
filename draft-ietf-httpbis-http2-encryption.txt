@@ -19,16 +19,6 @@ Abstract
    monitoring attacks.  This mechanism not a replacement for "https"
    URIs; it is vulnerable to active attacks.
 
-Note to Readers
-
-   Discussion of this draft takes place on the HTTP working group
-   mailing list (ietf-http-wg@w3.org), which is archived at
-   https://lists.w3.org/Archives/Public/ietf-http-wg/ .
-
-   Working Group information can be found at http://httpwg.github.io/ ;
-   source code and issues list for this draft can be found at
-   https://github.com/httpwg/http-extensions/labels/opp-sec .
-
 Status of This Memo
 
    This Internet-Draft is submitted in full conformance with the
@@ -46,18 +36,6 @@ Status of This Memo
 
    This Internet-Draft will expire on September 17, 2017.
 
-
-
-
-
-
-
-
-Nottingham & Thomson   Expires September 17, 2017               [Page 1]
-
-Internet-Draft        Opportunistic HTTP/2 Security           March 2017
-
-
 Copyright Notice
 
    Copyright (c) 2017 IETF Trust and the persons identified as the
@@ -73,10 +51,17 @@ Copyright Notice
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
+
+
+Nottingham & Thomson   Expires September 17, 2017               [Page 1]
+
+Internet-Draft        Opportunistic HTTP/2 Security           March 2017
+
+
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
-     1.1.  Goals and Non-Goals . . . . . . . . . . . . . . . . . . .   3
+     1.1.  Goals and Non-Goals . . . . . . . . . . . . . . . . . . .   2
      1.2.  Notational Conventions  . . . . . . . . . . . . . . . . .   3
    2.  Using HTTP URIs over TLS  . . . . . . . . . . . . . . . . . .   3
      2.1.  Alternative Server Opt-In . . . . . . . . . . . . . . . .   4
@@ -85,13 +70,13 @@ Table of Contents
    3.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
    4.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
      4.1.  Security Indicators . . . . . . . . . . . . . . . . . . .   6
-     4.2.  Downgrade Attacks . . . . . . . . . . . . . . . . . . . .   7
-     4.3.  Privacy Considerations  . . . . . . . . . . . . . . . . .   7
+     4.2.  Downgrade Attacks . . . . . . . . . . . . . . . . . . . .   6
+     4.3.  Privacy Considerations  . . . . . . . . . . . . . . . . .   6
      4.4.  Confusion Regarding Request Scheme  . . . . . . . . . . .   7
      4.5.  Server Controls . . . . . . . . . . . . . . . . . . . . .   7
-   5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   8
-     5.1.  Normative References  . . . . . . . . . . . . . . . . . .   8
-     5.2.  Informative References  . . . . . . . . . . . . . . . . .   9
+   5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   7
+     5.1.  Normative References  . . . . . . . . . . . . . . . . . .   7
+     5.2.  Informative References  . . . . . . . . . . . . . . . . .   8
    Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .   9
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   9
 
@@ -105,15 +90,6 @@ Table of Contents
 
    This document describes a usage model whereby sites can serve "http"
    URIs over TLS, thereby avoiding the problem of serving Mixed Content
-
-
-
-
-Nottingham & Thomson   Expires September 17, 2017               [Page 2]
-
-Internet-Draft        Opportunistic HTTP/2 Security           March 2017
-
-
    (described in [W3C.CR-mixed-content-20160802]) while still providing
    protection against passive attacks.
 
@@ -130,6 +106,14 @@ Internet-Draft        Opportunistic HTTP/2 Security           March 2017
 
    A secondary (but significant) goal is to provide for ease of
    implementation, deployment and operation.  This mechanism is expected
+
+
+
+Nottingham & Thomson   Expires September 17, 2017               [Page 2]
+
+Internet-Draft        Opportunistic HTTP/2 Security           March 2017
+
+
    to have a minimal impact upon performance, and require a trivial
    administrative effort to configure.
 
@@ -161,15 +145,6 @@ Internet-Draft        Opportunistic HTTP/2 Security           March 2017
    service (as specified by [RFC7838]), provided that the alternative
    service opts in as described in Section 2.1.
 
-
-
-
-
-Nottingham & Thomson   Expires September 17, 2017               [Page 3]
-
-Internet-Draft        Opportunistic HTTP/2 Security           March 2017
-
-
    A client that places the importance of protection against passive
    attacks over performance might choose to withhold requests until an
    encrypted connection is available.  However, if such a connection
@@ -187,6 +162,14 @@ Internet-Draft        Opportunistic HTTP/2 Security           March 2017
    scheme, and therefore clients creating new TLS connections to
    alternative services for the purposes of this specification MUST NOT
    present them.  A server that also provides "https" resources on the
+
+
+
+Nottingham & Thomson   Expires September 17, 2017               [Page 3]
+
+Internet-Draft        Opportunistic HTTP/2 Security           March 2017
+
+
    same port can request a certificate during the TLS handshake, but it
    MUST NOT abort the handshake if the client does not provide one.
 
@@ -214,18 +197,6 @@ Internet-Draft        Opportunistic HTTP/2 Security           March 2017
    "http://www.example.com" or "http://example.com" to be sent using a
    secured connection:
 
-
-
-
-
-
-
-
-Nottingham & Thomson   Expires September 17, 2017               [Page 4]
-
-Internet-Draft        Opportunistic HTTP/2 Security           March 2017
-
-
    HEADERS
      + END_STREAM
      + END_HEADERS
@@ -247,6 +218,13 @@ Internet-Draft        Opportunistic HTTP/2 Security           March 2017
    that origin.  Thus in the example, the request to
    "http://example.com" cannot be assumed to also provide an http-
    opportunistic response for "http://www.example.com".
+
+
+
+Nottingham & Thomson   Expires September 17, 2017               [Page 4]
+
+Internet-Draft        Opportunistic HTTP/2 Security           March 2017
+
 
 2.2.  Interaction with "https" URIs
 
@@ -272,16 +250,6 @@ Internet-Draft        Opportunistic HTTP/2 Security           March 2017
    o  That response's payload, when parsed as JSON [RFC7159], contains
       an array as the root, and
 
-
-
-
-
-
-Nottingham & Thomson   Expires September 17, 2017               [Page 5]
-
-Internet-Draft        Opportunistic HTTP/2 Security           March 2017
-
-
    o  The array contains a string that is a case-insensitive character-
       for-character match for the origin in question, serialised into
       Unicode as per Section 6.1 of [RFC6454].
@@ -304,6 +272,15 @@ Internet-Draft        Opportunistic HTTP/2 Security           March 2017
    connection.  To avoid potential errors, a client can request or
    revalidate the http-opportunistic resource before using any
    connection to an alternative service.
+
+
+
+
+
+Nottingham & Thomson   Expires September 17, 2017               [Page 5]
+
+Internet-Draft        Opportunistic HTTP/2 Security           March 2017
+
 
    Clients that use cached http-opportunistic responses MUST ensure that
    their cache is cleared of any responses that were acquired over an
@@ -329,15 +306,6 @@ Internet-Draft        Opportunistic HTTP/2 Security           March 2017
 
    User Agents MUST NOT provide any special security indicators when an
    "http" resource is acquired using TLS.  In particular, indicators
-
-
-
-
-Nottingham & Thomson   Expires September 17, 2017               [Page 6]
-
-Internet-Draft        Opportunistic HTTP/2 Security           March 2017
-
-
    that might suggest the same level of security as "https" MUST NOT be
    used (e.g., a "lock device").
 
@@ -358,6 +326,17 @@ Internet-Draft        Opportunistic HTTP/2 Security           March 2017
    ability of servers to track clients; therefore clients MUST clear
    cached alternative service information when clearing other origin-
    based state (i.e., cookies).
+
+
+
+
+
+
+
+Nottingham & Thomson   Expires September 17, 2017               [Page 6]
+
+Internet-Draft        Opportunistic HTTP/2 Security           March 2017
+
 
 4.4.  Confusion Regarding Request Scheme
 
@@ -386,14 +365,6 @@ Internet-Draft        Opportunistic HTTP/2 Security           March 2017
    This specification requires that a server send both an Alternative
    Service advertisement and host content in a well-known location to
    send HTTP requests over TLS.  Servers SHOULD take suitable measures
-
-
-
-Nottingham & Thomson   Expires September 17, 2017               [Page 7]
-
-Internet-Draft        Opportunistic HTTP/2 Security           March 2017
-
-
    to ensure that the content of the well-known resource remains under
    their control.  Likewise, because the Alt-Svc header field is used to
    describe policies across an entire origin, servers SHOULD NOT permit
@@ -411,6 +382,17 @@ Internet-Draft        Opportunistic HTTP/2 Security           March 2017
    [RFC2818]  Rescorla, E., "HTTP Over TLS", RFC 2818,
               DOI 10.17487/RFC2818, May 2000,
               <http://www.rfc-editor.org/info/rfc2818>.
+
+
+
+
+
+
+
+Nottingham & Thomson   Expires September 17, 2017               [Page 7]
+
+Internet-Draft        Opportunistic HTTP/2 Security           March 2017
+
 
    [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
               (TLS) Protocol Version 1.2", RFC 5246,
@@ -440,16 +422,6 @@ Internet-Draft        Opportunistic HTTP/2 Security           March 2017
               DOI 10.17487/RFC7232, June 2014,
               <http://www.rfc-editor.org/info/rfc7232>.
 
-
-
-
-
-
-Nottingham & Thomson   Expires September 17, 2017               [Page 8]
-
-Internet-Draft        Opportunistic HTTP/2 Security           March 2017
-
-
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
               RFC 7234, DOI 10.17487/RFC7234, June 2014,
@@ -469,6 +441,14 @@ Internet-Draft        Opportunistic HTTP/2 Security           March 2017
    [RFC7258]  Farrell, S. and H. Tschofenig, "Pervasive Monitoring Is an
               Attack", BCP 188, RFC 7258, DOI 10.17487/RFC7258, May
               2014, <http://www.rfc-editor.org/info/rfc7258>.
+
+
+
+
+Nottingham & Thomson   Expires September 17, 2017               [Page 8]
+
+Internet-Draft        Opportunistic HTTP/2 Security           March 2017
+
 
    [RFC7435]  Dukhovni, V., "Opportunistic Security: Some Protection
               Most of the Time", RFC 7435, DOI 10.17487/RFC7435,
@@ -500,12 +480,6 @@ Authors' Addresses
    URI:   https://www.mnot.net/
 
 
-
-Nottingham & Thomson   Expires September 17, 2017               [Page 9]
-
-Internet-Draft        Opportunistic HTTP/2 Security           March 2017
-
-
    Martin Thomson
    Mozilla
 
@@ -527,34 +501,4 @@ Internet-Draft        Opportunistic HTTP/2 Security           March 2017
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Nottingham & Thomson   Expires September 17, 2017              [Page 10]
+Nottingham & Thomson   Expires September 17, 2017               [Page 9]
