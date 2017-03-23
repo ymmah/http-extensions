@@ -4,8 +4,8 @@
 
 HTTP Working Group                                           I. Grigorik
 Internet-Draft                                                    Google
-Intended status: Experimental                             March 17, 2017
-Expires: September 18, 2017
+Intended status: Experimental                             March 23, 2017
+Expires: September 24, 2017
 
 
                            HTTP Client Hints
@@ -49,11 +49,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 18, 2017.
+   This Internet-Draft will expire on September 24, 2017.
 
 
 
-Grigorik               Expires September 18, 2017               [Page 1]
+Grigorik               Expires September 24, 2017               [Page 1]
 
 Internet-Draft              HTTP Client Hints                 March 2017
 
@@ -86,20 +86,20 @@ Table of Contents
    3.  Client Hints  . . . . . . . . . . . . . . . . . . . . . . . .   7
      3.1.  The DPR header field  . . . . . . . . . . . . . . . . . .   7
        3.1.1.  Confirming Selected DPR . . . . . . . . . . . . . . .   7
-     3.2.  The Width header field  . . . . . . . . . . . . . . . . .   7
+     3.2.  The Width header field  . . . . . . . . . . . . . . . . .   8
      3.3.  The Viewport-Width header field . . . . . . . . . . . . .   8
      3.4.  The Downlink header field . . . . . . . . . . . . . . . .   8
      3.5.  The Save-Data header field  . . . . . . . . . . . . . . .   8
    4.  Examples  . . . . . . . . . . . . . . . . . . . . . . . . . .   9
-   5.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
+   5.  Security Considerations . . . . . . . . . . . . . . . . . . .  10
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  10
      6.1.  Accept-CH . . . . . . . . . . . . . . . . . . . . . . . .  10
-     6.2.  Accept-CH-Lifetime  . . . . . . . . . . . . . . . . . . .  10
+     6.2.  Accept-CH-Lifetime  . . . . . . . . . . . . . . . . . . .  11
      6.3.  Content-DPR . . . . . . . . . . . . . . . . . . . . . . .  11
      6.4.  Downlink  . . . . . . . . . . . . . . . . . . . . . . . .  11
      6.5.  DPR . . . . . . . . . . . . . . . . . . . . . . . . . . .  11
      6.6.  Save-Data . . . . . . . . . . . . . . . . . . . . . . . .  11
-     6.7.  Viewport-Width  . . . . . . . . . . . . . . . . . . . . .  11
+     6.7.  Viewport-Width  . . . . . . . . . . . . . . . . . . . . .  12
      6.8.  Width . . . . . . . . . . . . . . . . . . . . . . . . . .  12
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  12
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .  12
@@ -109,14 +109,14 @@ Table of Contents
 
 
 
-Grigorik               Expires September 18, 2017               [Page 2]
+Grigorik               Expires September 24, 2017               [Page 2]
 
 Internet-Draft              HTTP Client Hints                 March 2017
 
 
      A.2.  Since -01 . . . . . . . . . . . . . . . . . . . . . . . .  13
-     A.3.  Since -02 . . . . . . . . . . . . . . . . . . . . . . . .  13
-     A.4.  Since -03 . . . . . . . . . . . . . . . . . . . . . . . .  13
+     A.3.  Since -02 . . . . . . . . . . . . . . . . . . . . . . . .  14
+     A.4.  Since -03 . . . . . . . . . . . . . . . . . . . . . . . .  14
      A.5.  Since -04 . . . . . . . . . . . . . . . . . . . . . . . .  14
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  14
 
@@ -165,7 +165,7 @@ Internet-Draft              HTTP Client Hints                 March 2017
 
 
 
-Grigorik               Expires September 18, 2017               [Page 3]
+Grigorik               Expires September 24, 2017               [Page 3]
 
 Internet-Draft              HTTP Client Hints                 March 2017
 
@@ -221,7 +221,7 @@ Internet-Draft              HTTP Client Hints                 March 2017
 
 
 
-Grigorik               Expires September 18, 2017               [Page 4]
+Grigorik               Expires September 24, 2017               [Page 4]
 
 Internet-Draft              HTTP Client Hints                 March 2017
 
@@ -259,7 +259,9 @@ Internet-Draft              HTTP Client Hints                 March 2017
 
    Servers can ask the client to remember an origin-wide Accept-CH
    preference for a specified period of time to enable delivery of
-   Client Hints on subsequent requests.
+   Client Hints on all subsequent requests to the origin, and on
+   subresource requests initiated as a result of processing a response
+   from the origin.
 
      Accept-CH-Lifetime = #delta-seconds
 
@@ -272,19 +274,21 @@ Internet-Draft              HTTP Client Hints                 March 2017
 
    For example, based on the Accept-CH and Accept-CH-Lifetime example
    above, a user agent could persist an origin-wide Accept-CH preference
-   for up to 86400 seconds (1 day).  Then, if a request is initiated to
-   the same origin before the preference is stale, the client could
 
 
 
-Grigorik               Expires September 18, 2017               [Page 5]
+Grigorik               Expires September 24, 2017               [Page 5]
 
 Internet-Draft              HTTP Client Hints                 March 2017
 
 
-   append the requested header fields (DPR and Viewport-Width in this
-   example) to the request, and any subresource request initiated as a
-   result of processing a response from same origin.
+   for up to 86400 seconds (1 day).  Then, if a request is initiated to
+   the same origin before the preference is stale (e.g. as a result of a
+   navigation to the origin, or fetching a subresource from the origin)
+   the client could append the requested header fields (DPR and
+   Viewport-Width in this example) to the request and any subresource
+   requests initiated as a result of processing a response from same
+   origin.
 
 2.2.3.  Interaction with Caches
 
@@ -325,18 +329,17 @@ Internet-Draft              HTTP Client Hints                 March 2017
 
    Above example indicates that the cache key needs to include the
    (Mbps) value of the Downlink header field with six segments: less
-   than 0.5, 0.5 to less than 1.0, 1.0 to less than 3.0, 3.0 to less
-   than 5.0, 5.0 to less than 10; 10 or higher.
 
 
 
 
-
-
-Grigorik               Expires September 18, 2017               [Page 6]
+Grigorik               Expires September 24, 2017               [Page 6]
 
 Internet-Draft              HTTP Client Hints                 March 2017
 
+
+   than 0.5, 0.5 to less than 1.0, 1.0 to less than 3.0, 3.0 to less
+   than 5.0, 5.0 to less than 10; 10 or higher.
 
 3.  Client Hints
 
@@ -379,20 +382,24 @@ Internet-Draft              HTTP Client Hints                 March 2017
    If Content-DPR occurs in a message more than once, the last value
    overrides all previous occurrences.
 
+
+
+
+
+
+
+
+Grigorik               Expires September 24, 2017               [Page 7]
+
+Internet-Draft              HTTP Client Hints                 March 2017
+
+
 3.2.  The Width header field
 
    The "Width" request header field is a number that indicates the
    desired resource width in physical px (i.e. intrinsic size of an
    image).  The provided physical px value is a number rounded to the
    smallest following integer (i.e. ceiling value).
-
-
-
-
-Grigorik               Expires September 18, 2017               [Page 7]
-
-Internet-Draft              HTTP Client Hints                 March 2017
-
 
      Width = 1*DIGIT
 
@@ -435,20 +442,18 @@ Internet-Draft              HTTP Client Hints                 March 2017
    This document defines the "on" sd-token value, which is used as a
    signal indicating explicit user opt-in into a reduced data usage mode
    on the client, and when communicated to origins allows them to
+
+
+
+Grigorik               Expires September 24, 2017               [Page 8]
+
+Internet-Draft              HTTP Client Hints                 March 2017
+
+
    deliver alternate content honoring such preference - e.g. smaller
    image and video resources, alternate markup, and so on.  New token
    and extension token values can be defined by updates to this
    specification.
-
-
-
-
-
-
-Grigorik               Expires September 18, 2017               [Page 8]
-
-Internet-Draft              HTTP Client Hints                 March 2017
-
 
 4.  Examples
 
@@ -489,6 +494,18 @@ Internet-Draft              HTTP Client Hints                 March 2017
    optimized resource - for example, an alternate image asset,
    stylesheet, HTML document, media stream, and so on.
 
+
+
+
+
+
+
+
+Grigorik               Expires September 24, 2017               [Page 9]
+
+Internet-Draft              HTTP Client Hints                 March 2017
+
+
 5.  Security Considerations
 
    The request header fields defined in this specification expose
@@ -498,14 +515,6 @@ Internet-Draft              HTTP Client Hints                 March 2017
    width, and device pixel ratio via JavaScript, or through the use of
    CSS media queries and unique resource URLs even if JavaScript is
    disabled.  However, servers that gather this information through such
-
-
-
-Grigorik               Expires September 18, 2017               [Page 9]
-
-Internet-Draft              HTTP Client Hints                 March 2017
-
-
    mechanisms are typically observable (e.g., you can see that they're
    using JavaScript to gather it), whereas servers' use of the header
    fields introduced by this specification is not observable.
@@ -545,6 +554,14 @@ Internet-Draft              HTTP Client Hints                 March 2017
    o  Header field name: Accept-CH
    o  Applicable protocol: HTTP
    o  Status: standard
+
+
+
+Grigorik               Expires September 24, 2017              [Page 10]
+
+Internet-Draft              HTTP Client Hints                 March 2017
+
+
    o  Author/Change controller: IETF
    o  Specification document(s): Section 2.2.1 of this document
    o  Related information: for Client Hints
@@ -554,14 +571,6 @@ Internet-Draft              HTTP Client Hints                 March 2017
    o  Header field name: Accept-CH-Lifetime
    o  Applicable protocol: HTTP
    o  Status: standard
-
-
-
-Grigorik               Expires September 18, 2017              [Page 10]
-
-Internet-Draft              HTTP Client Hints                 March 2017
-
-
    o  Author/Change controller: IETF
    o  Specification document(s): Section 2.2.2 of this document
    o  Related information: for Client Hints
@@ -602,6 +611,13 @@ Internet-Draft              HTTP Client Hints                 March 2017
    o  Specification document(s): Section 3.5 of this document
    o  Related information: for Client Hints
 
+
+
+Grigorik               Expires September 24, 2017              [Page 11]
+
+Internet-Draft              HTTP Client Hints                 March 2017
+
+
 6.7.  Viewport-Width
 
    o  Header field name: Viewport-Width
@@ -610,13 +626,6 @@ Internet-Draft              HTTP Client Hints                 March 2017
    o  Author/Change controller: IETF
    o  Specification document(s): Section 3.3 of this document
    o  Related information: for Client Hints
-
-
-
-Grigorik               Expires September 18, 2017              [Page 11]
-
-Internet-Draft              HTTP Client Hints                 March 2017
-
 
 6.8.  Width
 
@@ -656,6 +665,15 @@ Internet-Draft              HTTP Client Hints                 March 2017
               DOI 10.17487/RFC7231, June 2014,
               <http://www.rfc-editor.org/info/rfc7231>.
 
+
+
+
+
+Grigorik               Expires September 24, 2017              [Page 12]
+
+Internet-Draft              HTTP Client Hints                 March 2017
+
+
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
               RFC 7234, DOI 10.17487/RFC7234, June 2014,
@@ -666,13 +684,6 @@ Internet-Draft              HTTP Client Hints                 March 2017
               Level 3", World Wide Web Consortium CR CR-css-values-
               3-20160929, September 2016, <https://www.w3.org/TR/2016/
               CR-css-values-3-20160929>.
-
-
-
-Grigorik               Expires September 18, 2017              [Page 12]
-
-Internet-Draft              HTTP Client Hints                 March 2017
-
 
    [W3C.REC-html5-20141028]
               Hickson, I., Berjon, R., Faulkner, S., Leithead, T.,
@@ -708,6 +719,17 @@ A.2.  Since -01
       considerations.
    o  Changed document status to experimental.
 
+
+
+
+
+
+
+Grigorik               Expires September 24, 2017              [Page 13]
+
+Internet-Draft              HTTP Client Hints                 March 2017
+
+
 A.3.  Since -02
 
    o  Issue 239: Updated reference to CR-css-values-3
@@ -720,15 +742,6 @@ A.4.  Since -03
    o  Issue 284: Extended guidance for Accept-CH
    o  Issue 308: Editorial cleanup
    o  Issue 306: Define Accept-CH-Lifetime
-
-
-
-
-
-Grigorik               Expires September 18, 2017              [Page 13]
-
-Internet-Draft              HTTP Client Hints                 March 2017
-
 
 A.5.  Since -04
 
@@ -768,17 +781,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-Grigorik               Expires September 18, 2017              [Page 14]
+Grigorik               Expires September 24, 2017              [Page 14]
