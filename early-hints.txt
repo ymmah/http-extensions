@@ -9,7 +9,7 @@ Expires: September 30, 2017
 
 
                 An HTTP Status Code for Indicating Hints
-                   draft-ietf-httpbis-early-hints-01
+                 draft-ietf-httpbis-early-hints-latest
 
 Abstract
 
@@ -77,7 +77,8 @@ Table of Contents
    4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
    5.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   4
    6.  Changes . . . . . . . . . . . . . . . . . . . . . . . . . . .   4
-     6.1.  Since draft-ietf-httpbis-early-hints-00 . . . . . . . . .   4
+     6.1.  Since draft-ietf-httpbis-early-hints-01 . . . . . . . . .   4
+     6.2.  Since draft-ietf-httpbis-early-hints-00 . . . . . . . . .   4
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   5
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
      7.2.  Informative References  . . . . . . . . . . . . . . . . .   5
@@ -104,7 +105,6 @@ Table of Contents
    server to send some headers as soon as it receives a request, it
    cannot do so until the status code and the headers of the final HTTP
    response is determined.
-
 
 
 
@@ -209,14 +209,14 @@ Internet-Draft                 Early Hints                    March 2017
 
 6.  Changes
 
-6.1.  Since draft-ietf-httpbis-early-hints-00
+6.1.  Since draft-ietf-httpbis-early-hints-01
+
+   o  None yet.
+
+6.2.  Since draft-ietf-httpbis-early-hints-00
 
    o  Forbid processing the headers of a 103 response as part of the
       informational response.
-
-
-
-
 
 
 
