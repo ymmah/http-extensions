@@ -4,8 +4,8 @@
 
 HTTP Working Group                                            M. Thomson
 Internet-Draft                                                   Mozilla
-Intended status: Standards Track                          March 29, 2017
-Expires: September 30, 2017
+Intended status: Standards Track                           April 4, 2017
+Expires: October 6, 2017
 
 
                   Encrypted Content-Encoding for HTTP
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 30, 2017.
+   This Internet-Draft will expire on October 6, 2017.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Thomson                Expires September 30, 2017               [Page 1]
+Thomson                  Expires October 6, 2017                [Page 1]
 
-Internet-Draft           HTTP encryption coding               March 2017
+Internet-Draft           HTTP encryption coding               April 2017
 
 
    (http://trustee.ietf.org/license-info) in effect on the date of
@@ -78,13 +78,14 @@ Table of Contents
      3.1.  Encryption of a Response  . . . . . . . . . . . . . . . .   7
      3.2.  Encryption with Multiple Records  . . . . . . . . . . . .   8
    4.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
-     4.1.  Message Truncation  . . . . . . . . . . . . . . . . . . .   9
-     4.2.  Key and Nonce Reuse . . . . . . . . . . . . . . . . . . .   9
-     4.3.  Data Encryption Limits  . . . . . . . . . . . . . . . . .   9
-     4.4.  Content Integrity . . . . . . . . . . . . . . . . . . . .  10
-     4.5.  Leaking Information in Header Fields  . . . . . . . . . .  10
-     4.6.  Poisoning Storage . . . . . . . . . . . . . . . . . . . .  11
-     4.7.  Sizing and Timing Attacks . . . . . . . . . . . . . . . .  11
+     4.1.  Automatic Decryption  . . . . . . . . . . . . . . . . . .   8
+     4.2.  Message Truncation  . . . . . . . . . . . . . . . . . . .   9
+     4.3.  Key and Nonce Reuse . . . . . . . . . . . . . . . . . . .   9
+     4.4.  Data Encryption Limits  . . . . . . . . . . . . . . . . .   9
+     4.5.  Content Integrity . . . . . . . . . . . . . . . . . . . .  10
+     4.6.  Leaking Information in Header Fields  . . . . . . . . . .  10
+     4.7.  Poisoning Storage . . . . . . . . . . . . . . . . . . . .  11
+     4.8.  Sizing and Timing Attacks . . . . . . . . . . . . . . . .  11
    5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  11
      5.1.  The "aes128gcm" HTTP Content Coding . . . . . . . . . . .  11
    6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  12
@@ -108,10 +109,9 @@ Table of Contents
 
 
 
-
-Thomson                Expires September 30, 2017               [Page 2]
+Thomson                  Expires October 6, 2017                [Page 2]
 
-Internet-Draft           HTTP encryption coding               March 2017
+Internet-Draft           HTTP encryption coding               April 2017
 
 
    These uses are not met by the use of TLS [RFC5246], since it only
@@ -165,9 +165,9 @@ Internet-Draft           HTTP encryption coding               March 2017
 
 
 
-Thomson                Expires September 30, 2017               [Page 3]
+Thomson                  Expires October 6, 2017                [Page 3]
 
-Internet-Draft           HTTP encryption coding               March 2017
+Internet-Draft           HTTP encryption coding               April 2017
 
 
    The "aes128gcm" content coding uses a fixed record size.  The final
@@ -221,9 +221,9 @@ Internet-Draft           HTTP encryption coding               March 2017
 
 
 
-Thomson                Expires September 30, 2017               [Page 4]
+Thomson                  Expires October 6, 2017                [Page 4]
 
-Internet-Draft           HTTP encryption coding               March 2017
+Internet-Draft           HTTP encryption coding               April 2017
 
 
    A consequence of this record structure is that range requests
@@ -277,9 +277,9 @@ Internet-Draft           HTTP encryption coding               March 2017
 
 
 
-Thomson                Expires September 30, 2017               [Page 5]
+Thomson                  Expires October 6, 2017                [Page 5]
 
-Internet-Draft           HTTP encryption coding               March 2017
+Internet-Draft           HTTP encryption coding               April 2017
 
 
 2.2.  Content Encryption Key Derivation
@@ -333,9 +333,9 @@ Internet-Draft           HTTP encryption coding               March 2017
 
 
 
-Thomson                Expires September 30, 2017               [Page 6]
+Thomson                  Expires October 6, 2017                [Page 6]
 
-Internet-Draft           HTTP encryption coding               March 2017
+Internet-Draft           HTTP encryption coding               April 2017
 
 
    The result is combined with the record sequence number - using
@@ -348,8 +348,6 @@ Internet-Draft           HTTP encryption coding               March 2017
       NONCE = HMAC-SHA-256(PRK, nonce_info || 0x01) XOR SEQ
 
    This nonce construction prevents removal or reordering of records.
-   However, it permits truncation of the tail of the sequence (see
-   Section 2 for how this is avoided).
 
 3.  Examples
 
@@ -387,14 +385,14 @@ Internet-Draft           HTTP encryption coding               March 2017
    Alternatively (and equivalently), the Content-Type header field can
    be omitted.
 
-
-
-Thomson                Expires September 30, 2017               [Page 7]
-
-Internet-Draft           HTTP encryption coding               March 2017
-
-
    Intermediate values for this example (all shown using base64url):
+
+
+
+Thomson                  Expires October 6, 2017                [Page 7]
+
+Internet-Draft           HTTP encryption coding               April 2017
+
 
    salt (from header) = I1BsxtFttlv3u_Oo94xnmw
    PRK = zyeH5phsIsgUyd4oiSEIy35x-gIi4aM7y0hCF8mwn9g
@@ -433,10 +431,13 @@ Internet-Draft           HTTP encryption coding               March 2017
    The requirements for a good implementation of cryptographic
    algorithms can change over time.
 
-   As a content coding, presence of the "aes128gcm" coding might be
-   transparent to a consumer of a message.  Recipients that depend on
-   content origin authentication using this mechanism MUST reject
-   messages that don't include the "aes128gcm" content coding.
+4.1.  Automatic Decryption
+
+   As a content coding, a "aes128gcm" content coding might be
+   automatically removed by a receiver in way that is not obvious to the
+   ultimate consumer of a message.  Recipients that depend on content
+   origin authentication using this mechanism MUST reject messages that
+   don't include the "aes128gcm" content coding.
 
 
 
@@ -444,13 +445,12 @@ Internet-Draft           HTTP encryption coding               March 2017
 
 
 
-
-Thomson                Expires September 30, 2017               [Page 8]
+Thomson                  Expires October 6, 2017                [Page 8]
 
-Internet-Draft           HTTP encryption coding               March 2017
+Internet-Draft           HTTP encryption coding               April 2017
 
 
-4.1.  Message Truncation
+4.2.  Message Truncation
 
    This content encoding is designed to permit the incremental
    processing of large messages.  It also permits random access to
@@ -467,7 +467,7 @@ Internet-Draft           HTTP encryption coding               March 2017
    ensure that any intermediate processing states don't advantage an
    attacker.
 
-4.2.  Key and Nonce Reuse
+4.3.  Key and Nonce Reuse
 
    Encrypting different plaintext with the same content encryption key
    and nonce in AES-GCM is not safe [RFC5116].  The scheme defined here
@@ -485,7 +485,7 @@ Internet-Draft           HTTP encryption coding               March 2017
    generate a random salt parameter for every message; a counter could
    achieve the same result.
 
-4.3.  Data Encryption Limits
+4.4.  Data Encryption Limits
 
    There are limits to the data that AEAD_AES_128_GCM can encipher.  The
    maximum value for the record size is limited by the size of the "rs"
@@ -501,9 +501,9 @@ Internet-Draft           HTTP encryption coding               March 2017
 
 
 
-Thomson                Expires September 30, 2017               [Page 9]
+Thomson                  Expires October 6, 2017                [Page 9]
 
-Internet-Draft           HTTP encryption coding               March 2017
+Internet-Draft           HTTP encryption coding               April 2017
 
 
    If the record size is a multiple of 16 octets, this means 398
@@ -514,7 +514,7 @@ Internet-Draft           HTTP encryption coding               March 2017
    18 octets, for which at most 74 terabytes of plaintext can be
    encrypted, of which at least half is padding.
 
-4.4.  Content Integrity
+4.5.  Content Integrity
 
    This mechanism only provides content origin authentication.  The
    authentication tag only ensures that an entity with access to the
@@ -530,7 +530,7 @@ Internet-Draft           HTTP encryption coding               March 2017
    material, modifications to or replacement of parts of a payload body
    are not possible.
 
-4.5.  Leaking Information in Header Fields
+4.6.  Leaking Information in Header Fields
 
    Because only the payload body is encrypted, information exposed in
    header fields is visible to anyone who can read the HTTP message.
@@ -557,9 +557,9 @@ Internet-Draft           HTTP encryption coding               March 2017
 
 
 
-Thomson                Expires September 30, 2017              [Page 10]
+Thomson                  Expires October 6, 2017               [Page 10]
 
-Internet-Draft           HTTP encryption coding               March 2017
+Internet-Draft           HTTP encryption coding               April 2017
 
 
    3.  If it is considered sensitive information and it is not possible
@@ -567,7 +567,7 @@ Internet-Draft           HTTP encryption coding               March 2017
        application/http media type (Section 8.3.2 of [RFC7230]),
        encrypting that as the payload of the "outer" message.
 
-4.6.  Poisoning Storage
+4.7.  Poisoning Storage
 
    This mechanism only offers encryption of content; it does not perform
    authentication or authorization, which still needs to be performed
@@ -577,7 +577,7 @@ Internet-Draft           HTTP encryption coding               March 2017
    server; if the request is unauthenticated, it becomes possible for a
    third party to deny service and/or poison the store.
 
-4.7.  Sizing and Timing Attacks
+4.8.  Sizing and Timing Attacks
 
    Applications using this mechanism need to be aware that the size of
    encrypted messages, as well as their timing, HTTP methods, URIs and
@@ -613,9 +613,9 @@ Internet-Draft           HTTP encryption coding               March 2017
 
 
 
-Thomson                Expires September 30, 2017              [Page 11]
+Thomson                  Expires October 6, 2017               [Page 11]
 
-Internet-Draft           HTTP encryption coding               March 2017
+Internet-Draft           HTTP encryption coding               April 2017
 
 
    o  Reference: this specification
@@ -669,9 +669,9 @@ Internet-Draft           HTTP encryption coding               March 2017
 
 
 
-Thomson                Expires September 30, 2017              [Page 12]
+Thomson                  Expires October 6, 2017               [Page 12]
 
-Internet-Draft           HTTP encryption coding               March 2017
+Internet-Draft           HTTP encryption coding               April 2017
 
 
    [RFC4648]  Josefsson, S., "The Base16, Base32, and Base64 Data
@@ -725,9 +725,9 @@ Appendix A.  JWE Mapping
 
 
 
-Thomson                Expires September 30, 2017              [Page 13]
+Thomson                  Expires October 6, 2017               [Page 13]
 
-Internet-Draft           HTTP encryption coding               March 2017
+Internet-Draft           HTTP encryption coding               April 2017
 
 
    following transformations are applied to a JWE object that might be
@@ -781,4 +781,4 @@ Author's Address
 
 
 
-Thomson                Expires September 30, 2017              [Page 14]
+Thomson                  Expires October 6, 2017               [Page 14]

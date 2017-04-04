@@ -4,8 +4,8 @@
 
 HTTP Working Group                                              E. Stark
 Internet-Draft                                                    Google
-Intended status: Experimental                             March 29, 2017
-Expires: September 30, 2017
+Intended status: Experimental                              April 4, 2017
+Expires: October 6, 2017
 
 
                       Expect-CT Extension for HTTP
@@ -53,12 +53,12 @@ Status of This Memo
 
 
 
-Stark                  Expires September 30, 2017               [Page 1]
+Stark                    Expires October 6, 2017                [Page 1]
 
-Internet-Draft                  Expect-CT                     March 2017
+Internet-Draft                  Expect-CT                     April 2017
 
 
-   This Internet-Draft will expire on September 30, 2017.
+   This Internet-Draft will expire on October 6, 2017.
 
 Copyright Notice
 
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Stark                  Expires September 30, 2017               [Page 2]
+Stark                    Expires October 6, 2017                [Page 2]
 
-Internet-Draft                  Expect-CT                     March 2017
+Internet-Draft                  Expect-CT                     April 2017
 
 
      9.1.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .  16
@@ -165,9 +165,9 @@ Internet-Draft                  Expect-CT                     March 2017
 
 
 
-Stark                  Expires September 30, 2017               [Page 3]
+Stark                    Expires October 6, 2017                [Page 3]
 
-Internet-Draft                  Expect-CT                     March 2017
+Internet-Draft                  Expect-CT                     April 2017
 
 
 1.2.  Terminology
@@ -221,9 +221,9 @@ Internet-Draft                  Expect-CT                     March 2017
 
 
 
-Stark                  Expires September 30, 2017               [Page 4]
+Stark                    Expires October 6, 2017                [Page 4]
 
-Internet-Draft                  Expect-CT                     March 2017
+Internet-Draft                  Expect-CT                     April 2017
 
 
    Figure 1 describes the syntax (Augmented Backus-Naur Form) of the
@@ -277,9 +277,9 @@ Internet-Draft                  Expect-CT                     March 2017
 
 
 
-Stark                  Expires September 30, 2017               [Page 5]
+Stark                    Expires October 6, 2017                [Page 5]
 
-Internet-Draft                  Expect-CT                     March 2017
+Internet-Draft                  Expect-CT                     April 2017
 
 
    report-uri-value = absolute-URI
@@ -333,9 +333,9 @@ Internet-Draft                  Expect-CT                     March 2017
 
 
 
-Stark                  Expires September 30, 2017               [Page 6]
+Stark                    Expires October 6, 2017                [Page 6]
 
-Internet-Draft                  Expect-CT                     March 2017
+Internet-Draft                  Expect-CT                     April 2017
 
 
    The "max-age" directive is REQUIRED to be present within an "Expect-
@@ -389,9 +389,9 @@ Internet-Draft                  Expect-CT                     March 2017
 
 
 
-Stark                  Expires September 30, 2017               [Page 7]
+Stark                    Expires October 6, 2017                [Page 7]
 
-Internet-Draft                  Expect-CT                     March 2017
+Internet-Draft                  Expect-CT                     April 2017
 
 
 2.3.  User Agent Processing Model
@@ -445,9 +445,9 @@ Internet-Draft                  Expect-CT                     March 2017
 
 
 
-Stark                  Expires September 30, 2017               [Page 8]
+Stark                    Expires October 6, 2017                [Page 8]
 
-Internet-Draft                  Expect-CT                     March 2017
+Internet-Draft                  Expect-CT                     April 2017
 
 
 2.3.2.  Noting an Expect-CT Host - Storage Model
@@ -501,9 +501,9 @@ Internet-Draft                  Expect-CT                     March 2017
 
 
 
-Stark                  Expires September 30, 2017               [Page 9]
+Stark                    Expires October 6, 2017                [Page 9]
 
-Internet-Draft                  Expect-CT                     March 2017
+Internet-Draft                  Expect-CT                     April 2017
 
 
 2.3.3.  HTTP-Equiv <meta> Element Attribute
@@ -557,9 +557,9 @@ Internet-Draft                  Expect-CT                     March 2017
 
 
 
-Stark                  Expires September 30, 2017              [Page 10]
+Stark                    Expires October 6, 2017               [Page 10]
 
-Internet-Draft                  Expect-CT                     March 2017
+Internet-Draft                  Expect-CT                     April 2017
 
 
    If a connection to a Known CT Host violates the UA's CT policy, and
@@ -613,9 +613,9 @@ Internet-Draft                  Expect-CT                     March 2017
 
 
 
-Stark                  Expires September 30, 2017              [Page 11]
+Stark                    Expires October 6, 2017               [Page 11]
 
-Internet-Draft                  Expect-CT                     March 2017
+Internet-Draft                  Expect-CT                     April 2017
 
 
    Whitespace outside of quoted strings is not significant.  The key/
@@ -669,9 +669,9 @@ Internet-Draft                  Expect-CT                     March 2017
 
 
 
-Stark                  Expires September 30, 2017              [Page 12]
+Stark                    Expires October 6, 2017               [Page 12]
 
-Internet-Draft                  Expect-CT                     March 2017
+Internet-Draft                  Expect-CT                     April 2017
 
 
    The "status" is a string that the UA MUST set to one of the following
@@ -725,9 +725,9 @@ Internet-Draft                  Expect-CT                     March 2017
 
 
 
-Stark                  Expires September 30, 2017              [Page 13]
+Stark                    Expires October 6, 2017               [Page 13]
 
-Internet-Draft                  Expect-CT                     March 2017
+Internet-Draft                  Expect-CT                     April 2017
 
 
    question, being able to obtain different certificates, change server
@@ -781,9 +781,9 @@ Internet-Draft                  Expect-CT                     March 2017
 
 
 
-Stark                  Expires September 30, 2017              [Page 14]
+Stark                    Expires October 6, 2017               [Page 14]
 
-Internet-Draft                  Expect-CT                     March 2017
+Internet-Draft                  Expect-CT                     April 2017
 
 
    and by which IP address, by using individual "report-uri" values for
@@ -837,9 +837,9 @@ Internet-Draft                  Expect-CT                     March 2017
 
 
 
-Stark                  Expires September 30, 2017              [Page 15]
+Stark                    Expires October 6, 2017               [Page 15]
 
-Internet-Draft                  Expect-CT                     March 2017
+Internet-Draft                  Expect-CT                     April 2017
 
 
 9.  Changes
@@ -893,9 +893,9 @@ Internet-Draft                  Expect-CT                     March 2017
 
 
 
-Stark                  Expires September 30, 2017              [Page 16]
+Stark                    Expires October 6, 2017               [Page 16]
 
-Internet-Draft                  Expect-CT                     March 2017
+Internet-Draft                  Expect-CT                     April 2017
 
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
@@ -949,4 +949,4 @@ Author's Address
 
 
 
-Stark                  Expires September 30, 2017              [Page 17]
+Stark                    Expires October 6, 2017               [Page 17]
