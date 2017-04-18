@@ -356,9 +356,11 @@ Internet-Draft                  Expect-CT                     April 2017
    The following examples demonstrate valid Expect-CT response header
    fields:
 
- Expect-CT: max-age=86400,enforce
- Expect-CT: max-age=86400, enforce, report-uri="https://foo.test/report"
- Expect-CT: max-age=86400,report-uri="https://foo.test/report"
+Expect-CT: max-age=86400,enforce
+
+Expect-CT: max-age=86400, enforce, report-uri="https://foo.example/report"
+
+Expect-CT: max-age=86400,report-uri="https://foo.example/report"
 
        Figure 4: Examples of valid Expect-CT response header fields
 
@@ -384,8 +386,6 @@ Internet-Draft                  Expect-CT                     April 2017
    1.  Over the HTTP protocol running over secure transport, by
        correctly returning (per this specification) at least one valid
        Expect-CT header field to the UA.
-
-
 
 
 
