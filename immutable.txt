@@ -68,6 +68,20 @@ Internet-Draft          HTTP Immutable Responses              April 2017
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
+Table of Contents
+
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   2.  The immutable Cache-Control extension . . . . . . . . . . . .   3
+     2.1.  About Intermediaries  . . . . . . . . . . . . . . . . . .   4
+     2.2.  Example . . . . . . . . . . . . . . . . . . . . . . . . .   4
+   3.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
+   4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
+   5.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   5
+   6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   5
+     6.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
+     6.2.  Informative References  . . . . . . . . . . . . . . . . .   5
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   5
+
 1.  Introduction
 
    HTTP's freshness lifetime mechanism [RFC7234] allows a client to
@@ -91,6 +105,15 @@ Internet-Draft          HTTP Immutable Responses              April 2017
    hundreds of conditional requests to refresh all portions of a common
    page [REQPERPAGE].
 
+
+
+
+
+McManus                 Expires October 20, 2017                [Page 2]
+
+Internet-Draft          HTTP Immutable Responses              April 2017
+
+
    However some content providers never create more than one variant of
    a sub-resource, because they use "versioned" URLs.  When these
    resources need an update they are simply published under a new URL,
@@ -104,15 +127,6 @@ Internet-Draft          HTTP Immutable Responses              April 2017
    This design pattern allows a very large freshness lifetime to be used
    for the sub-resource without guessing when it will be updated in the
    future.
-
-
-
-
-
-McManus                 Expires October 20, 2017                [Page 2]
-
-Internet-Draft          HTTP Immutable Responses              April 2017
-
 
    Unfortunately, the user agent does not know when this versioned URL
    design pattern is used.  As a result, user-driven refreshes still
@@ -148,6 +162,14 @@ Internet-Draft          HTTP Immutable Responses              April 2017
    The presence of an immutable Cache-Control extension in a request has
    no effect.
 
+
+
+
+McManus                 Expires October 20, 2017                [Page 3]
+
+Internet-Draft          HTTP Immutable Responses              April 2017
+
+
 2.1.  About Intermediaries
 
    An immutable response has the same semantic meaning when received by
@@ -160,15 +182,6 @@ Internet-Draft          HTTP Immutable Responses              April 2017
    A proxy that uses immutable to bypass a conditional revalidation may
    choose whether to reply with a 304 or 200 to its requesting client
    based on the request headers the proxy received.
-
-
-
-
-
-McManus                 Expires October 20, 2017                [Page 3]
-
-Internet-Draft          HTTP Immutable Responses              April 2017
-
 
 2.2.  Example
 
@@ -205,6 +218,14 @@ Internet-Draft          HTTP Immutable Responses              April 2017
 
    o  Pointer to specification text: [this document]
 
+
+
+
+McManus                 Expires October 20, 2017                [Page 4]
+
+Internet-Draft          HTTP Immutable Responses              April 2017
+
+
 5.  Acknowledgments
 
    Thank you to Ben Maurer for partnership in developing and testing
@@ -214,17 +235,6 @@ Internet-Draft          HTTP Immutable Responses              April 2017
 6.  References
 
 6.1.  Normative References
-
-
-
-
-
-
-
-McManus                 Expires October 20, 2017                [Page 4]
-
-Internet-Draft          HTTP Immutable Responses              April 2017
-
 
    [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
@@ -253,16 +263,6 @@ Author's Address
    Mozilla
 
    Email: pmcmanus@mozilla.com
-
-
-
-
-
-
-
-
-
-
 
 
 
