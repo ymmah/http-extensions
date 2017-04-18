@@ -196,11 +196,10 @@ Internet-Draft                  Expect-CT                     April 2017
    HTTP Expect-CT Host  is a conformant host implementing the HTTP
       server aspects of HTTP Expect-CT.  This means that an Expect-CT
       Host returns the "Expect-CT" HTTP response header field in its
-      HTTP response messages sent over secure transport.  ` Known
-      Expect-CT Host
+      HTTP response messages sent over secure transport.
 
-      is an Expect-CT Host that the UA has noted as such.  See
-      Section 2.4 for particulars.
+   Known Expect-CT Host  is an Expect-CT Host that the UA has noted as
+      such.  See Section 2.4 for particulars.
 
    UA is an acronym for "user agent".  For the purposes of this
       specification, a UA is an HTTP client application typically
@@ -217,6 +216,7 @@ Internet-Draft                  Expect-CT                     April 2017
    specification.  It is used by a server to indicate that UAs should
    evaluate connections to the host emitting the header for CT
    compliance (Section 2.5).
+
 
 
 
