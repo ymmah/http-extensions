@@ -4,8 +4,8 @@
 
 HTTP Working Group                                            M. Thomson
 Internet-Draft                                                   Mozilla
-Intended status: Standards Track                          April 11, 2017
-Expires: October 13, 2017
+Intended status: Standards Track                          April 18, 2017
+Expires: October 20, 2017
 
 
                   Encrypted Content-Encoding for HTTP
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 13, 2017.
+   This Internet-Draft will expire on October 20, 2017.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Thomson                 Expires October 13, 2017                [Page 1]
+Thomson                 Expires October 20, 2017                [Page 1]
 
 Internet-Draft           HTTP encryption coding               April 2017
 
@@ -78,7 +78,7 @@ Table of Contents
      3.1.  Encryption of a Response  . . . . . . . . . . . . . . . .   7
      3.2.  Encryption with Multiple Records  . . . . . . . . . . . .   8
    4.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
-     4.1.  Automatic Decryption  . . . . . . . . . . . . . . . . . .   8
+     4.1.  Automatic Decryption  . . . . . . . . . . . . . . . . . .   9
      4.2.  Message Truncation  . . . . . . . . . . . . . . . . . . .   9
      4.3.  Key and Nonce Reuse . . . . . . . . . . . . . . . . . . .   9
      4.4.  Data Encryption Limits  . . . . . . . . . . . . . . . . .   9
@@ -86,14 +86,14 @@ Table of Contents
      4.6.  Leaking Information in Header Fields  . . . . . . . . . .  10
      4.7.  Poisoning Storage . . . . . . . . . . . . . . . . . . . .  11
      4.8.  Sizing and Timing Attacks . . . . . . . . . . . . . . . .  11
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  11
-     5.1.  The "aes128gcm" HTTP Content Coding . . . . . . . . . . .  11
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  12
+     5.1.  The "aes128gcm" HTTP Content Coding . . . . . . . . . . .  12
    6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  12
      6.1.  Normative References  . . . . . . . . . . . . . . . . . .  12
-     6.2.  Informative References  . . . . . . . . . . . . . . . . .  12
-   Appendix A.  JWE Mapping  . . . . . . . . . . . . . . . . . . . .  13
-   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  14
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  14
+     6.2.  Informative References  . . . . . . . . . . . . . . . . .  13
+   Appendix A.  JWE Mapping  . . . . . . . . . . . . . . . . . . . .  14
+   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  15
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  15
 
 1.  Introduction
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Thomson                 Expires October 13, 2017                [Page 2]
+Thomson                 Expires October 20, 2017                [Page 2]
 
 Internet-Draft           HTTP encryption coding               April 2017
 
@@ -165,7 +165,7 @@ Internet-Draft           HTTP encryption coding               April 2017
 
 
 
-Thomson                 Expires October 13, 2017                [Page 3]
+Thomson                 Expires October 20, 2017                [Page 3]
 
 Internet-Draft           HTTP encryption coding               April 2017
 
@@ -221,7 +221,7 @@ Internet-Draft           HTTP encryption coding               April 2017
 
 
 
-Thomson                 Expires October 13, 2017                [Page 4]
+Thomson                 Expires October 20, 2017                [Page 4]
 
 Internet-Draft           HTTP encryption coding               April 2017
 
@@ -268,19 +268,24 @@ Internet-Draft           HTTP encryption coding               April 2017
       2^36-31 limit on plaintext input to AEAD_AES_128_GCM.  Values
       smaller than 18 are invalid.
 
+   idlen:  The "idlen" parameter is an unsigned 8-bit integer that
+      defines the length of the "keyid" parameter.
+
    keyid:  The "keyid" parameter can be used to identify the keying
-      material that is used.  Recipients that receive a message are
-      expected to know how to retrieve keys; the "keyid" parameter might
-      be input to that process.  A "keyid" parameter SHOULD be a UTF-8
-      [RFC3629] encoded string, particularly where the identifier might
-      need to appear in a textual form.
+      material that is used.  This field is the length determined by the
+      "idlen" parameter.  Recipients that receive a message are expected
 
 
 
-Thomson                 Expires October 13, 2017                [Page 5]
+Thomson                 Expires October 20, 2017                [Page 5]
 
 Internet-Draft           HTTP encryption coding               April 2017
 
+
+      to know how to retrieve keys; the "keyid" parameter might be input
+      to that process.  A "keyid" parameter SHOULD be a UTF-8 [RFC3629]
+      encoded string, particularly where the identifier might need to be
+      rendered in a textual form.
 
 2.2.  Content Encryption Key Derivation
 
@@ -303,8 +308,11 @@ Internet-Draft           HTTP encryption coding               April 2017
 
       cek_info = "Content-Encoding: aes128gcm" || 0x00
 
-   Note:  Concatenation of octet sequences is represented by the "||"
+   Note(1):  Concatenation of octet sequences is represented by the "||"
       operator.
+
+   Note(2):  The strings used here and in Section 2.3 do not include a
+      terminating 0x00 octet, as is used in some programming languages.
 
    AEAD_AES_128_GCM requires a 16 octet (128 bit) content encryption key
    (CEK), so the length (L) parameter to HKDF is 16.  The second step of
@@ -323,20 +331,18 @@ Internet-Draft           HTTP encryption coding               April 2017
    The input keying material and salt values are input to HKDF with
    different info and length parameters.
 
+
+
+Thomson                 Expires October 20, 2017                [Page 6]
+
+Internet-Draft           HTTP encryption coding               April 2017
+
+
    The length (L) parameter is 12 octets.  The info parameter for the
    nonce is the ASCII-encoded string "Content-Encoding: nonce",
    terminated by a a single zero octet:
 
       nonce_info = "Content-Encoding: nonce" || 0x00
-
-
-
-
-
-Thomson                 Expires October 13, 2017                [Page 6]
-
-Internet-Draft           HTTP encryption coding               April 2017
-
 
    The result is combined with the record sequence number - using
    exclusive or - to produce the nonce.  The record sequence number
@@ -380,6 +386,14 @@ Internet-Draft           HTTP encryption coding               April 2017
    I1BsxtFttlv3u_Oo94xnmwAAEAAA-NAVub2qFgBEuQKRapoZu-IxkIva3MEB1PD-
    ly8Thjg
 
+
+
+
+Thomson                 Expires October 20, 2017                [Page 7]
+
+Internet-Draft           HTTP encryption coding               April 2017
+
+
    Note that the media type has been changed to "application/octet-
    stream" to avoid exposing information about the content.
    Alternatively (and equivalently), the Content-Type header field can
@@ -387,18 +401,11 @@ Internet-Draft           HTTP encryption coding               April 2017
 
    Intermediate values for this example (all shown using base64url):
 
-
-
-Thomson                 Expires October 13, 2017                [Page 7]
-
-Internet-Draft           HTTP encryption coding               April 2017
-
-
    salt (from header) = I1BsxtFttlv3u_Oo94xnmw
    PRK = zyeH5phsIsgUyd4oiSEIy35x-gIi4aM7y0hCF8mwn9g
    CEK = _wniytB-ofscZDh4tbSjHw
    NONCE = Bcs8gkIRKLI8GeI8
-   plaintext = SSBhbSB0aGUgd2FscnVzAg
+   unencrypted data = SSBhbSB0aGUgd2FscnVzAg
 
 3.2.  Encryption with Multiple Records
 
@@ -431,6 +438,18 @@ Internet-Draft           HTTP encryption coding               April 2017
    The requirements for a good implementation of cryptographic
    algorithms can change over time.
 
+
+
+
+
+
+
+
+Thomson                 Expires October 20, 2017                [Page 8]
+
+Internet-Draft           HTTP encryption coding               April 2017
+
+
 4.1.  Automatic Decryption
 
    As a content coding, a "aes128gcm" content coding might be
@@ -438,17 +457,6 @@ Internet-Draft           HTTP encryption coding               April 2017
    ultimate consumer of a message.  Recipients that depend on content
    origin authentication using this mechanism MUST reject messages that
    don't include the "aes128gcm" content coding.
-
-
-
-
-
-
-
-Thomson                 Expires October 13, 2017                [Page 8]
-
-Internet-Draft           HTTP encryption coding               April 2017
-
 
 4.2.  Message Truncation
 
@@ -490,6 +498,14 @@ Internet-Draft           HTTP encryption coding               April 2017
    maximum value for the record size is limited by the size of the "rs"
    field in the header (see Section 2.1), which ensures that the 2^36-31
    limit for a single application of AEAD_AES_128_GCM is not reached
+
+
+
+Thomson                 Expires October 20, 2017                [Page 9]
+
+Internet-Draft           HTTP encryption coding               April 2017
+
+
    [RFC5116].  In order to preserve a 2^-40 probability of
    indistinguishability under chosen plaintext attack (IND-CPA), the
    total amount of plaintext that can be enciphered with the key derived
@@ -498,14 +514,6 @@ Internet-Draft           HTTP encryption coding               April 2017
 
    If the record size is a multiple of 16 octets, this means 398
    terabytes can be encrypted safely, including padding and overhead.
-
-
-
-Thomson                 Expires October 13, 2017                [Page 9]
-
-Internet-Draft           HTTP encryption coding               April 2017
-
-
    However, if the record size is not a multiple of 16 octets, the total
    amount of data that can be safely encrypted is reduced because
    partial AES blocks are encrypted.  The worst case is a record size of
@@ -546,21 +554,20 @@ Internet-Draft           HTTP encryption coding               April 2017
        another very common media type, exposing the Content-Type header
        field could be an acceptable risk.
 
+
+
+
+Thomson                 Expires October 20, 2017               [Page 10]
+
+Internet-Draft           HTTP encryption coding               April 2017
+
+
    2.  If it is considered sensitive information and it is possible to
        determine it through other means (e.g., out of band, using hints
        in other representations, etc.), omit the relevant headers, and/
        or normalize them.  In the case of Content-Type, this could be
        accomplished by always sending Content-Type: application/octet-
        stream (the most generic media type), or no Content-Type at all.
-
-
-
-
-
-Thomson                 Expires October 13, 2017               [Page 10]
-
-Internet-Draft           HTTP encryption coding               April 2017
-
 
    3.  If it is considered sensitive information and it is not possible
        to convey it elsewhere, encapsulate the HTTP message using the
@@ -569,19 +576,22 @@ Internet-Draft           HTTP encryption coding               April 2017
 
 4.7.  Poisoning Storage
 
-   This mechanism only offers encryption of content; it does not perform
-   authentication or authorization, which still needs to be performed
-   (e.g., by HTTP authentication [RFC7235]).
+   This mechanism only offers data origin authentication; it does not
+   perform authentication or authorization of the message creator, which
+   could still need to be performed (e.g., by HTTP authentication
+   [RFC7235]).
 
    This is especially relevant when a HTTP PUT request is accepted by a
-   server; if the request is unauthenticated, it becomes possible for a
-   third party to deny service and/or poison the store.
+   server without decrypting the payload; if the request is
+   unauthenticated, it becomes possible for a third party to deny
+   service and/or poison the store.
 
 4.8.  Sizing and Timing Attacks
 
    Applications using this mechanism need to be aware that the size of
    encrypted messages, as well as their timing, HTTP methods, URIs and
-   so on, may leak sensitive information.
+   so on, may leak sensitive information.  See for example [NETFLIX] or
+   [CLINIC].
 
    This risk can be mitigated through the use of the padding that this
    mechanism provides.  Alternatively, splitting up content into
@@ -595,8 +605,18 @@ Internet-Draft           HTTP encryption coding               April 2017
    powers of 2.  Even a good strategy can still cause size information
    to leak if processing activity of a recipient can be observed.  This
    is especially true if the trailing records of a message contain only
-   padding.  Distributing non-padding data is recommended to avoid
-   leaking size information.
+   padding.  Distributing non-padding data across records is recommended
+   to avoid leaking size information.
+
+
+
+
+
+
+Thomson                 Expires October 20, 2017               [Page 11]
+
+Internet-Draft           HTTP encryption coding               April 2017
+
 
 5.  IANA Considerations
 
@@ -609,14 +629,6 @@ Internet-Draft           HTTP encryption coding               April 2017
 
    o  Description: AES-GCM encryption with a 128-bit content encryption
       key
-
-
-
-
-Thomson                 Expires October 13, 2017               [Page 11]
-
-Internet-Draft           HTTP encryption coding               April 2017
-
 
    o  Reference: this specification
 
@@ -654,6 +666,14 @@ Internet-Draft           HTTP encryption coding               April 2017
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
               <http://www.rfc-editor.org/info/rfc7230>.
 
+
+
+
+Thomson                 Expires October 20, 2017               [Page 12]
+
+Internet-Draft           HTTP encryption coding               April 2017
+
+
    [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
               DOI 10.17487/RFC7231, June 2014,
@@ -666,13 +686,15 @@ Internet-Draft           HTTP encryption coding               April 2017
               Encryption Use in TLS", March 2016,
               <http://www.isg.rhul.ac.uk/~kp/TLS-AEbounds.pdf>.
 
+   [CLINIC]   Miller, B., Huang, L., Joseph, A., and J. Tygar, "I Know
+              Why You Went to the Clinic: Risks and Realization of HTTPS
+              Traffic Analysis", March 2014, <https://arxiv.org/
+              abs/1403.0297>.
 
-
-
-Thomson                 Expires October 13, 2017               [Page 12]
-
-Internet-Draft           HTTP encryption coding               April 2017
-
+   [NETFLIX]  Reed, A. and M. Kranch, "Identifying HTTPS-Protected
+              Netflix Videos in Real-Time", Proceedings of the Seventh
+              ACM on Conference on Data and Application Security and
+              Privacy - CODASPY '17 , DOI 10.1145/3029806.3029821, 2017.
 
    [RFC4648]  Josefsson, S., "The Base16, Base32, and Base64 Data
               Encodings", RFC 4648, DOI 10.17487/RFC4648, October 2006,
@@ -696,6 +718,17 @@ Internet-Draft           HTTP encryption coding               April 2017
               "Hypertext Transfer Protocol (HTTP/1.1): Range Requests",
               RFC 7233, DOI 10.17487/RFC7233, June 2014,
               <http://www.rfc-editor.org/info/rfc7233>.
+
+
+
+
+
+
+
+Thomson                 Expires October 20, 2017               [Page 13]
+
+Internet-Draft           HTTP encryption coding               April 2017
+
 
    [RFC7235]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Authentication", RFC 7235,
@@ -722,14 +755,6 @@ Appendix A.  JWE Mapping
    The "aes128gcm" content coding can be considered as a sequence of
    JSON Web Encryption (JWE) objects [RFC7516], each corresponding to a
    single fixed size record that includes trailing padding.  The
-
-
-
-Thomson                 Expires October 13, 2017               [Page 13]
-
-Internet-Draft           HTTP encryption coding               April 2017
-
-
    following transformations are applied to a JWE object that might be
    expressed using the JWE Compact Serialization:
 
@@ -751,6 +776,15 @@ Internet-Draft           HTTP encryption coding               April 2017
       JWE Authentication Tag, all expressed without base64url encoding.
       The "." separator is omitted, since the length of these fields is
       known.
+
+
+
+
+
+Thomson                 Expires October 20, 2017               [Page 14]
+
+Internet-Draft           HTTP encryption coding               April 2017
+
 
    Thus, the example in Section 3.1 can be rendered using the JWE
    Compact Serialization as:
@@ -781,4 +815,26 @@ Author's Address
 
 
 
-Thomson                 Expires October 13, 2017               [Page 14]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thomson                 Expires October 20, 2017               [Page 15]
