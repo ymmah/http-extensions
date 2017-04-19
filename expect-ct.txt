@@ -4,8 +4,8 @@
 
 HTTP Working Group                                              E. Stark
 Internet-Draft                                                    Google
-Intended status: Experimental                             April 18, 2017
-Expires: October 20, 2017
+Intended status: Experimental                             April 19, 2017
+Expires: October 21, 2017
 
 
                       Expect-CT Extension for HTTP
@@ -53,12 +53,12 @@ Status of This Memo
 
 
 
-Stark                   Expires October 20, 2017                [Page 1]
+Stark                   Expires October 21, 2017                [Page 1]
 
 Internet-Draft                  Expect-CT                     April 2017
 
 
-   This Internet-Draft will expire on October 20, 2017.
+   This Internet-Draft will expire on October 21, 2017.
 
 Copyright Notice
 
@@ -85,10 +85,9 @@ Table of Contents
        2.1.1.  The report-uri Directive  . . . . . . . . . . . . . .   5
        2.1.2.  The enforce Directive . . . . . . . . . . . . . . . .   6
        2.1.3.  The max-age Directive . . . . . . . . . . . . . . . .   6
-       2.1.4.  Examples  . . . . . . . . . . . . . . . . . . . . . .   7
      2.2.  Server Processing Model . . . . . . . . . . . . . . . . .   7
        2.2.1.  HTTP-over-Secure-Transport Request Type . . . . . . .   7
-       2.2.2.  HTTP Request Type . . . . . . . . . . . . . . . . . .   8
+       2.2.2.  HTTP Request Type . . . . . . . . . . . . . . . . . .   7
      2.3.  User Agent Processing Model . . . . . . . . . . . . . . .   8
        2.3.1.  Expect-CT Header Field Processing . . . . . . . . . .   8
        2.3.2.  Noting an Expect-CT Host - Storage Model  . . . . . .   9
@@ -106,15 +105,15 @@ Table of Contents
    7.  Usability Considerations  . . . . . . . . . . . . . . . . . .  15
    8.  Authoring Considerations  . . . . . . . . . . . . . . . . . .  15
      8.1.  HTTP Header . . . . . . . . . . . . . . . . . . . . . . .  15
+   9.  Changes . . . . . . . . . . . . . . . . . . . . . . . . . . .  16
 
 
 
-Stark                   Expires October 20, 2017                [Page 2]
+Stark                   Expires October 21, 2017                [Page 2]
 
 Internet-Draft                  Expect-CT                     April 2017
 
 
-   9.  Changes . . . . . . . . . . . . . . . . . . . . . . . . . . .  16
      9.1.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .  16
    10. Normative References  . . . . . . . . . . . . . . . . . . . .  16
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  17
@@ -165,7 +164,8 @@ Internet-Draft                  Expect-CT                     April 2017
 
 
 
-Stark                   Expires October 20, 2017                [Page 3]
+
+Stark                   Expires October 21, 2017                [Page 3]
 
 Internet-Draft                  Expect-CT                     April 2017
 
@@ -221,7 +221,7 @@ Internet-Draft                  Expect-CT                     April 2017
 
 
 
-Stark                   Expires October 20, 2017                [Page 4]
+Stark                   Expires October 21, 2017                [Page 4]
 
 Internet-Draft                  Expect-CT                     April 2017
 
@@ -230,10 +230,10 @@ Internet-Draft                  Expect-CT                     April 2017
    header field, using the grammar defined in RFC 5234 [RFC5234] and the
    rules defined in Section 3.2 of RFC 7230 [RFC7230].
 
-   Expect-CT           = #expect-ct-directive
-   expect-ct-directive = directive-name [ "=" directive-value ]
-   directive-name      = token
-   directive-value     = token / quoted-string
+   Expect-CT-Directives = directive *( OWS ";" OWS directive )
+   directive            = directive-name [ "=" directive-value ]
+   directive-name       = token
+   directive-value      = token / quoted-string
 
               Figure 1: Syntax of the Expect-CT header field
 
@@ -277,7 +277,7 @@ Internet-Draft                  Expect-CT                     April 2017
 
 
 
-Stark                   Expires October 20, 2017                [Page 5]
+Stark                   Expires October 21, 2017                [Page 5]
 
 Internet-Draft                  Expect-CT                     April 2017
 
@@ -333,7 +333,7 @@ Internet-Draft                  Expect-CT                     April 2017
 
 
 
-Stark                   Expires October 20, 2017                [Page 6]
+Stark                   Expires October 21, 2017                [Page 6]
 
 Internet-Draft                  Expect-CT                     April 2017
 
@@ -350,19 +350,6 @@ Internet-Draft                  Expect-CT                     April 2017
 
    "delta-seconds" is used as defined in Section 1.2.1 of RFC 7234
    [RFC7234].
-
-2.1.4.  Examples
-
-   The following examples demonstrate valid Expect-CT response header
-   fields:
-
-Expect-CT: max-age=86400,enforce
-
-Expect-CT: max-age=86400, enforce, report-uri="https://foo.example/report"
-
-Expect-CT: max-age=86400,report-uri="https://foo.example/report"
-
-       Figure 4: Examples of valid Expect-CT response header fields
 
 2.2.  Server Processing Model
 
@@ -387,13 +374,6 @@ Expect-CT: max-age=86400,report-uri="https://foo.example/report"
        correctly returning (per this specification) at least one valid
        Expect-CT header field to the UA.
 
-
-
-Stark                   Expires October 20, 2017                [Page 7]
-
-Internet-Draft                  Expect-CT                     April 2017
-
-
    2.  Through other mechanisms, such as a client-side preloaded Expect-
        CT Host list.
 
@@ -403,6 +383,16 @@ Internet-Draft                  Expect-CT                     April 2017
    responses conveyed over non-secure transport.  UAs MUST ignore any
    Expect-CT header received in an HTTP response conveyed over non-
    secure transport.
+
+
+
+
+
+
+Stark                   Expires October 21, 2017                [Page 7]
+
+Internet-Draft                  Expect-CT                     April 2017
+
 
 2.3.  User Agent Processing Model
 
@@ -442,16 +432,23 @@ Internet-Draft                  Expect-CT                     April 2017
    Expect-CT report for this connection, then the UA SHOULD send a
    report to the specified "report-uri" as specified in Section 3.
 
-
-
-
-Stark                   Expires October 20, 2017                [Page 8]
-
-Internet-Draft                  Expect-CT                     April 2017
-
+   If a UA receives more than one Expect-CT header field in an HTTP
+   response message over secure transport, then the UA MUST process only
+   the first Expect-CT header field.
 
    The UA MUST ignore any Expect-CT header field not conforming to the
    grammar specified in Section 2.1.
+
+
+
+
+
+
+
+Stark                   Expires October 21, 2017                [Page 8]
+
+Internet-Draft                  Expect-CT                     April 2017
+
 
 2.3.2.  Noting an Expect-CT Host - Storage Model
 
@@ -501,7 +498,10 @@ Internet-Draft                  Expect-CT                     April 2017
 
 
 
-Stark                   Expires October 20, 2017                [Page 9]
+
+
+
+Stark                   Expires October 21, 2017                [Page 9]
 
 Internet-Draft                  Expect-CT                     April 2017
 
@@ -557,7 +557,7 @@ Internet-Draft                  Expect-CT                     April 2017
 
 
 
-Stark                   Expires October 20, 2017               [Page 10]
+Stark                   Expires October 21, 2017               [Page 10]
 
 Internet-Draft                  Expect-CT                     April 2017
 
@@ -609,11 +609,11 @@ Internet-Draft                  Expect-CT                     April 2017
      ]
    }
 
-            Figure 5: JSON format of a violation report object
+            Figure 4: JSON format of a violation report object
 
 
 
-Stark                   Expires October 20, 2017               [Page 11]
+Stark                   Expires October 21, 2017               [Page 11]
 
 Internet-Draft                  Expect-CT                     April 2017
 
@@ -654,7 +654,7 @@ Internet-Draft                  Expect-CT                     April 2017
 
    The "scts" are JSON messages representing the SCTs (if any) that the
    UA received for the Expect-CT host and their validation statuses.
-   The format of "sct1", ... "sctN" is shown in Figure 6.  The SCTs may
+   The format of "sct1", ... "sctN" is shown in Figure 5.  The SCTs may
    appear in any order.
 
    {
@@ -663,13 +663,13 @@ Internet-Draft                  Expect-CT                     April 2017
      "source": source
    }
 
-                  Figure 6: JSON format of an SCT object
+                  Figure 5: JSON format of an SCT object
 
    The "sct" is as defined in Section 4.1 of RFC 6962 [RFC6962].
 
 
 
-Stark                   Expires October 20, 2017               [Page 12]
+Stark                   Expires October 21, 2017               [Page 12]
 
 Internet-Draft                  Expect-CT                     April 2017
 
@@ -697,7 +697,7 @@ Internet-Draft                  Expect-CT                     April 2017
 
    1.  Prepare a JSON object "report object" with the single key
        "expect-ct-report", whose value is the result of generating a
-       violation report object as described in Figure 5.
+       violation report object as described in Figure 4.
 
    2.  Let "report body" by the JSON stringification of "report object".
 
@@ -725,7 +725,7 @@ Internet-Draft                  Expect-CT                     April 2017
 
 
 
-Stark                   Expires October 20, 2017               [Page 13]
+Stark                   Expires October 21, 2017               [Page 13]
 
 Internet-Draft                  Expect-CT                     April 2017
 
@@ -781,7 +781,7 @@ Internet-Draft                  Expect-CT                     April 2017
 
 
 
-Stark                   Expires October 20, 2017               [Page 14]
+Stark                   Expires October 21, 2017               [Page 14]
 
 Internet-Draft                  Expect-CT                     April 2017
 
@@ -837,7 +837,7 @@ Internet-Draft                  Expect-CT                     April 2017
 
 
 
-Stark                   Expires October 20, 2017               [Page 15]
+Stark                   Expires October 21, 2017               [Page 15]
 
 Internet-Draft                  Expect-CT                     April 2017
 
@@ -893,7 +893,7 @@ Internet-Draft                  Expect-CT                     April 2017
 
 
 
-Stark                   Expires October 20, 2017               [Page 16]
+Stark                   Expires October 21, 2017               [Page 16]
 
 Internet-Draft                  Expect-CT                     April 2017
 
@@ -949,4 +949,4 @@ Author's Address
 
 
 
-Stark                   Expires October 20, 2017               [Page 17]
+Stark                   Expires October 21, 2017               [Page 17]
