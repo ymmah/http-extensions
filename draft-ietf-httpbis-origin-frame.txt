@@ -3,9 +3,10 @@
 
 
 HTTP Working Group                                         M. Nottingham
-Internet-Draft                                                 E. Nygren
-Intended status: Standards Track                                  Akamai
-Expires: October 21, 2017                                 April 19, 2017
+Internet-Draft
+Intended status: Standards Track                               E. Nygren
+Expires: October 22, 2017                                         Akamai
+                                                          April 20, 2017
 
 
                         The ORIGIN HTTP/2 Frame
@@ -41,23 +42,24 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 21, 2017.
+   This Internet-Draft will expire on October 22, 2017.
 
 Copyright Notice
 
    Copyright (c) 2017 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
-   This document is subject to BCP 78 and the IETF Trust's Legal
-   Provisions Relating to IETF Documents
 
 
 
-Nottingham & Nygren     Expires October 21, 2017                [Page 1]
+
+Nottingham & Nygren     Expires October 22, 2017                [Page 1]
 
 Internet-Draft                ORIGIN Frames                   April 2017
 
 
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
    (http://trustee.ietf.org/license-info) in effect on the date of
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
@@ -107,9 +109,7 @@ Table of Contents
 
 
 
-
-
-Nottingham & Nygren     Expires October 21, 2017                [Page 2]
+Nottingham & Nygren     Expires October 22, 2017                [Page 2]
 
 Internet-Draft                ORIGIN Frames                   April 2017
 
@@ -165,7 +165,7 @@ Internet-Draft                ORIGIN Frames                   April 2017
 
 
 
-Nottingham & Nygren     Expires October 21, 2017                [Page 3]
+Nottingham & Nygren     Expires October 22, 2017                [Page 3]
 
 Internet-Draft                ORIGIN Frames                   April 2017
 
@@ -178,9 +178,9 @@ Internet-Draft                ORIGIN Frames                   April 2017
    four flags (0x1, 0x2, 0x4 and 0x8) are reserved for backwards-
    incompatible changes, and therefore when any of them are set, the
    ORIGIN frame containing them MUST be ignored by clients conforming to
-   this specification.  The remaining flags are reserved for backwards-
-   compatible changes, and do not affect processing by clients
-   conformant to this specification.
+   this specification, unless the flag's semantics are understood.  The
+   remaining flags are reserved for backwards-compatible changes, and do
+   not affect processing by clients conformant to this specification.
 
    The ORIGIN frame describes a property of the connection, and
    therefore is processed hop-by-hop.  An intermediary MUST NOT forward
@@ -221,7 +221,7 @@ Internet-Draft                ORIGIN Frames                   April 2017
 
 
 
-Nottingham & Nygren     Expires October 21, 2017                [Page 4]
+Nottingham & Nygren     Expires October 22, 2017                [Page 4]
 
 Internet-Draft                ORIGIN Frames                   April 2017
 
@@ -277,7 +277,7 @@ Internet-Draft                ORIGIN Frames                   April 2017
 
 
 
-Nottingham & Nygren     Expires October 21, 2017                [Page 5]
+Nottingham & Nygren     Expires October 22, 2017                [Page 5]
 
 Internet-Draft                ORIGIN Frames                   April 2017
 
@@ -333,7 +333,7 @@ Internet-Draft                ORIGIN Frames                   April 2017
 
 
 
-Nottingham & Nygren     Expires October 21, 2017                [Page 6]
+Nottingham & Nygren     Expires October 22, 2017                [Page 6]
 
 Internet-Draft                ORIGIN Frames                   April 2017
 
@@ -389,7 +389,7 @@ Appendix A.  Non-Normative Processing Algorithm
 
 
 
-Nottingham & Nygren     Expires October 21, 2017                [Page 7]
+Nottingham & Nygren     Expires October 22, 2017                [Page 7]
 
 Internet-Draft                ORIGIN Frames                   April 2017
 
@@ -434,18 +434,18 @@ Appendix B.  Operational Considerations for Servers
    Senders take note that, as per [RFC6454] Section 4, the values in an
    ORIGIN header need to be case-normalised before serialisation.
 
-   Finally, servers that allow alternative services [RFC7838] will need
-   to explicitly advertise those origins when sending ORIGIN, because
+   Finally, servers that host alternative services [RFC7838] will need
+   to explicitly advertise their origins when sending ORIGIN, because
    the default contents of the Origin Set (as per Section 2.3) do not
-   contain any Alternative Services, even if they have been used
-   previously on the connection.
+   contain any Alternative Services' origins, even if they have been
+   used previously on the connection.
 
 
 
 
 
 
-Nottingham & Nygren     Expires October 21, 2017                [Page 8]
+Nottingham & Nygren     Expires October 22, 2017                [Page 8]
 
 Internet-Draft                ORIGIN Frames                   April 2017
 
@@ -453,7 +453,6 @@ Internet-Draft                ORIGIN Frames                   April 2017
 Authors' Addresses
 
    Mark Nottingham
-   Akamai
 
    Email: mnot@mnot.net
    URI:   https://www.mnot.net/
@@ -501,4 +500,5 @@ Authors' Addresses
 
 
 
-Nottingham & Nygren     Expires October 21, 2017                [Page 9]
+
+Nottingham & Nygren     Expires October 22, 2017                [Page 9]
