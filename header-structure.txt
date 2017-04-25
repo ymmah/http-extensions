@@ -4,8 +4,8 @@
 
 HTTP Working Group                                             P-H. Kamp
 Internet-Draft                                 The Varnish Cache Project
-Intended status: Standards Track                          April 24, 2017
-Expires: October 26, 2017
+Intended status: Standards Track                          April 25, 2017
+Expires: October 27, 2017
 
 
                       HTTP Header Common Structure
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 26, 2017.
+   This Internet-Draft will expire on October 27, 2017.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Kamp                    Expires October 26, 2017                [Page 1]
+Kamp                    Expires October 27, 2017                [Page 1]
 
 Internet-Draft        HTTP Header Common Structure            April 2017
 
@@ -89,11 +89,11 @@ Internet-Draft        HTTP Header Common Structure            April 2017
 
    Parallel to this, various proposals for how to fulfill data-
    transportation needs, and to a lesser degree to impose some kind of
-   order on HTTP headers, at least going forward were floated.
+   order on HTTP headers, at least going forward, were floated.
 
    All of these proposals, JSON, CBOR etc. run into the same basic
-   problem: Their serialization is incompatible with [RFC7230]'s ABNF
-   definition of 'field-value'.
+   problem: Their serialization is incompatible with RFC 7230's
+   [RFC7230] ABNF definition of 'field-value'.
 
    For binary formats, such as CBOR, a wholesale base64/85
    reserialization would be needed, with negative results for both
@@ -101,19 +101,21 @@ Internet-Draft        HTTP Header Common Structure            April 2017
 
    For textual formats, such as JSON, the format must first be neutered
    to not violate field-value's ABNF, and then workarounds added to
-   reintroduce the features just lost, for instance UNICODE strings, and
-   suddenly it is no longer JSON anymore.
+   reintroduce the features just lost, for instance UNICODE strings.
 
-   This proposal starts from the other end, and builds and generalizes a
-   data structure definition from existing HTTP headers, which means
+   The post-surgery format is no longer JSON, and it experience
+   indicates that almost-but-not-quite compatibility is worse than no
+   compatibility.
 
 
 
-Kamp                    Expires October 26, 2017                [Page 2]
+Kamp                    Expires October 27, 2017                [Page 2]
 
 Internet-Draft        HTTP Header Common Structure            April 2017
 
 
+   This proposal starts from the other end, and builds and generalizes a
+   data structure definition from existing HTTP headers, which means
    that HTTP/1 serialization and 'field-value' compatibility is built
    in.
 
@@ -136,10 +138,11 @@ Internet-Draft        HTTP Header Common Structure            April 2017
 
    The definition of the data model is on purpose abstract, uncoupled
    from any protocol serialization or programming environment
-   representation, meant as the foundation on which all such
+   representation, it is meant as the foundation on which all such
    manifestations of the model can be built.
 
-   Common Structure in ABNF:
+   Common Structure in ABNF (Slightly bastardized relative to RFC5234
+   [RFC5234]):
 
      import token from RFC7230
      import DIGIT from RFC5234
@@ -147,10 +150,6 @@ Internet-Draft        HTTP Header Common Structure            April 2017
      common-structure = 1* ( identifier dictionary )
 
      dictionary = * ( identifier [ value ] )
-
-   Key identifiers in dictionaries SHALL be unique, but semantically
-   overlapping key identifiers for instance 'text/plain' and 'text/*'
-   are ok.
 
      value = identifier /
              integer /
@@ -161,18 +160,18 @@ Internet-Draft        HTTP Header Common Structure            April 2017
              timestamp /
              common-structure
 
+   Recursion is included as a way to to support deep and more general
+   data structures, but its use is highly discouraged and where it is
 
 
 
-
-Kamp                    Expires October 26, 2017                [Page 3]
+Kamp                    Expires October 27, 2017                [Page 3]
 
 Internet-Draft        HTTP Header Common Structure            April 2017
 
 
-   Recursion is included as a way to to support deep and more general
-   data structures, but its use is highly discouraged and where it is
-   used the depth of recursion SHALL always be explicitly limited.
+   used the depth of recursion SHALL always be explicitly limited in the
+   specifications of the HTTP headers which allow it.
 
      identifier = token  [ "/" token ]
 
@@ -188,7 +187,7 @@ Internet-Draft        HTTP Header Common Structure            April 2017
               ["-"] 13DIGIT '.' 1*2DIGIT /
               ["-"] 14DIGIT '.' 1DIGIT
 
-   The limit of 15 siginificant digits is chosen so that numbers can be
+   The limit of 15 significant digits is chosen so that numbers can be
    correctly represented by IEEE754 64 bit binary floating point.
 
      ascii-string = * %x20-7e
@@ -221,7 +220,8 @@ Internet-Draft        HTTP Header Common Structure            April 2017
 
 
 
-Kamp                    Expires October 26, 2017                [Page 4]
+
+Kamp                    Expires October 27, 2017                [Page 4]
 
 Internet-Draft        HTTP Header Common Structure            April 2017
 
@@ -232,7 +232,7 @@ Internet-Draft        HTTP Header Common Structure            April 2017
 
      import OWS from RFC7230
      import HEXDIG, DQUOTE from RFC5234
-     import EmbeddedUnicodeChar from BCP137
+     import EmbeddedUnicodeChar from RFC5137
 
      h1-common-structure-header =
              h1-common-structure-legacy-header /
@@ -277,7 +277,7 @@ Internet-Draft        HTTP Header Common Structure            April 2017
 
 
 
-Kamp                    Expires October 26, 2017                [Page 5]
+Kamp                    Expires October 27, 2017                [Page 5]
 
 Internet-Draft        HTTP Header Common Structure            April 2017
 
@@ -319,7 +319,7 @@ Internet-Draft        HTTP Header Common Structure            April 2017
    clean makes UTF-8 unviable as H1 serialization.  Given that very
    little of the information in HTTP headers is presented to users in
    the first place, improving H1 and HPACK efficiency by inventing a
-   more efficient BCP137 compliant escape-sequences seems unwarranted.
+   more efficient RFC5137 compliant escape-sequences seems unwarranted.
 
      h1-blob = ":" base64 ":"
      # XXX: where to import base64 from ?
@@ -333,7 +333,7 @@ Internet-Draft        HTTP Header Common Structure            April 2017
 
 
 
-Kamp                    Expires October 26, 2017                [Page 6]
+Kamp                    Expires October 27, 2017                [Page 6]
 
 Internet-Draft        HTTP Header Common Structure            April 2017
 
@@ -389,7 +389,7 @@ Internet-Draft        HTTP Header Common Structure            April 2017
 
 
 
-Kamp                    Expires October 26, 2017                [Page 7]
+Kamp                    Expires October 27, 2017                [Page 7]
 
 Internet-Draft        HTTP Header Common Structure            April 2017
 
@@ -436,24 +436,84 @@ Internet-Draft        HTTP Header Common Structure            April 2017
    Unique dictionary keys are required to reduce the risk of smuggling
    attacks.
 
-10.  Normative References
+10.  References
+
+
+
+
+
+
+
+
+Kamp                    Expires October 27, 2017                [Page 8]
+
+Internet-Draft        HTTP Header Common Structure            April 2017
+
+
+10.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <http://www.rfc-editor.org/info/rfc2119>.
 
+   [RFC5137]  Klensin, J., "ASCII Escaping of Unicode Characters",
+              BCP 137, RFC 5137, DOI 10.17487/RFC5137, February 2008,
+              <http://www.rfc-editor.org/info/rfc5137>.
 
-
-Kamp                    Expires October 26, 2017                [Page 8]
-
-Internet-Draft        HTTP Header Common Structure            April 2017
-
+   [RFC5234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
+              Specifications: ABNF", STD 68, RFC 5234,
+              DOI 10.17487/RFC5234, January 2008,
+              <http://www.rfc-editor.org/info/rfc5234>.
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
               <http://www.rfc-editor.org/info/rfc7230>.
+
+10.2.  Informative References
+
+   [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
+              Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
+              DOI 10.17487/RFC7231, June 2014,
+              <http://www.rfc-editor.org/info/rfc7231>.
+
+   [RFC7232]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
+              Protocol (HTTP/1.1): Conditional Requests", RFC 7232,
+              DOI 10.17487/RFC7232, June 2014,
+              <http://www.rfc-editor.org/info/rfc7232>.
+
+   [RFC7233]  Fielding, R., Ed., Lafon, Y., Ed., and J. Reschke, Ed.,
+              "Hypertext Transfer Protocol (HTTP/1.1): Range Requests",
+              RFC 7233, DOI 10.17487/RFC7233, June 2014,
+              <http://www.rfc-editor.org/info/rfc7233>.
+
+   [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
+              Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
+              RFC 7234, DOI 10.17487/RFC7234, June 2014,
+              <http://www.rfc-editor.org/info/rfc7234>.
+
+   [RFC7235]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
+              Protocol (HTTP/1.1): Authentication", RFC 7235,
+              DOI 10.17487/RFC7235, June 2014,
+              <http://www.rfc-editor.org/info/rfc7235>.
+
+
+
+
+Kamp                    Expires October 27, 2017                [Page 9]
+
+Internet-Draft        HTTP Header Common Structure            April 2017
+
+
+   [RFC7239]  Petersson, A. and M. Nilsson, "Forwarded HTTP Extension",
+              RFC 7239, DOI 10.17487/RFC7239, June 2014,
+              <http://www.rfc-editor.org/info/rfc7239>.
+
+   [RFC7694]  Reschke, J., "Hypertext Transfer Protocol (HTTP) Client-
+              Initiated Content-Encoding", RFC 7694,
+              DOI 10.17487/RFC7694, November 2015,
+              <http://www.rfc-editor.org/info/rfc7694>.
 
 Appendix A.  Do HTTP headers have any common structure ?
 
@@ -497,20 +557,16 @@ A.1.  Survey of HTTP header structure
 
 
 
-
-
-
-
-Kamp                    Expires October 26, 2017                [Page 9]
+Kamp                    Expires October 27, 2017               [Page 10]
 
 Internet-Draft        HTTP Header Common Structure            April 2017
 
 
-     token-or-asterix = token from {{RFC7230}}, but also allowing "*"
+     token-or-asterix = token from RFC7230, but also allowing "*"
 
      qualified-token = token-or-asterix [ "/" token-or-asterix ]
 
-     field-name, see {{RFC7230}}
+     field-name, see RFC7230
 
      Common-Structure-Header = field-name ":" 1#named-dictionary
 
@@ -557,7 +613,7 @@ A.2.3.  Strings
 
 
 
-Kamp                    Expires October 26, 2017               [Page 10]
+Kamp                    Expires October 27, 2017               [Page 11]
 
 Internet-Draft        HTTP Header Common Structure            April 2017
 
@@ -613,142 +669,193 @@ A.3.  Is this actually a useful thing to generalize ?
 
 
 
-Kamp                    Expires October 26, 2017               [Page 11]
+Kamp                    Expires October 27, 2017               [Page 12]
 
 Internet-Draft        HTTP Header Common Structure            April 2017
 
 
 A.4.  RFC723x headers with "common structure"
 
-     Accept              [RFC7231, Section 5.3.2]
-     Accept-Charset      [RFC7231, Section 5.3.3]
-     Accept-Encoding     [RFC7231, Section 5.3.4][RFC7694, Section 3]
-     Accept-Language     [RFC7231, Section 5.3.5]
-     Age                 [RFC7234, Section 5.1]
-     Allow               [RFC7231, Section 7.4.1]
-     Connection          [RFC7230, Section 6.1]
-     Content-Encoding    [RFC7231, Section 3.1.2.2]
-     Content-Language    [RFC7231, Section 3.1.3.2]
-     Content-Length      [RFC7230, Section 3.3.2]
-     Content-Type        [RFC7231, Section 3.1.1.5]
-     Expect              [RFC7231, Section 5.1.1]
-     Max-Forwards        [RFC7231, Section 5.1.2]
-     MIME-Version        [RFC7231, Appendix A.1]
-     TE                  [RFC7230, Section 4.3]
-     Trailer             [RFC7230, Section 4.4]
-     Transfer-Encoding   [RFC7230, Section 3.3.1]
-     Upgrade             [RFC7230, Section 6.7]
-     Vary                [RFC7231, Section 7.1.4]
+   o  Accept [RFC7231], Section 5.3.2
+
+   o  Accept-Charset [RFC7231], Section 5.3.3
+
+   o  Accept-Encoding [RFC7231], Section 5.3.4, [RFC7694], Section 3
+
+   o  Accept-Language [RFC7231], Section 5.3.5
+
+   o  Age [RFC7234], Section 5.1
+
+   o  Allow [RFC7231], Section 7.4.1
+
+   o  Connection [RFC7230], Section 6.1
+
+   o  Content-Encoding [RFC7231], Section 3.1.2.2
+
+   o  Content-Language [RFC7231], Section 3.1.3.2
+
+   o  Content-Length [RFC7230], Section 3.3.2
+
+   o  Content-Type [RFC7231], Section 3.1.1.5
+
+   o  Expect [RFC7231], Section 5.1.1
+
+   o  Max-Forwards [RFC7231], Section 5.1.2
+
+   o  MIME-Version [RFC7231], Appendix A.1
+
+   o  TE [RFC7230], Section 4.3
+
+   o  Trailer [RFC7230], Section 4.4
+
+   o  Transfer-Encoding [RFC7230], Section 3.3.1
+
+   o  Upgrade [RFC7230], Section 6.7
+
+   o  Vary [RFC7231], Section 7.1.4
 
 A.5.  RFC723x headers with "uncommon structure"
 
    1 of the RFC723x headers is only reserved, and therefore have no
    structure at all:
 
-     Close               [RFC7230, Section 8.1]
+   o  Close [RFC7230], Section 8.1
 
    5 of the RFC723x headers are HTTP dates:
 
-     Date                [RFC7231, Section 7.1.1.2]
-     Expires             [RFC7234, Section 5.3]
-     If-Modified-Since   [RFC7232, Section 3.3]
-     If-Unmodified-Since [RFC7232, Section 3.4]
-     Last-Modified       [RFC7232, Section 2.2]
+
+
+Kamp                    Expires October 27, 2017               [Page 13]
+
+Internet-Draft        HTTP Header Common Structure            April 2017
+
+
+   o  Date [RFC7231], Section 7.1.1.2
+
+   o  Expires [RFC7234], Section 5.3
+
+   o  If-Modified-Since [RFC7232], Section 3.3
+
+   o  If-Unmodified-Since [RFC7232], Section 3.4
+
+   o  Last-Modified [RFC7232], Section 2.2
 
    24 of the RFC723x headers use bespoke formats which only a single or
    in rare cases two headers share:
 
-     Accept-Ranges       [RFC7233, Section 2.3]
-         bytes-unit / other-range-unit
+   o  Accept-Ranges [RFC7233], Section 2.3
 
-     Authorization       [RFC7235, Section 4.2]
-     Proxy-Authorization [RFC7235, Section 4.4]
-         credentials
+      *  bytes-unit / other-range-unit
 
-     Cache-Control       [RFC7234, Section 5.2]
+   o  Authorization [RFC7235], Section 4.2
+
+   o  Proxy-Authorization [RFC7235], Section 4.4
+
+      *  credentials
+
+   o  Cache-Control [RFC7234], Section 5.2
+
+      *  1#cache-directive
+
+   o  Content-Location [RFC7231], Section 3.1.4.2
+
+      *  absolute-URI / partial-URI
+
+   o  Content-Range [RFC7233], Section 4.2
+
+      *  byte-content-range / other-content-range
+
+   o  ETag [RFC7232], Section 2.3
+
+      *  entity-tag
+
+   o  Forwarded [RFC7239]
+
+      *  1#forwarded-element
+
+   o  From [RFC7231], Section 5.5.1
+
+      *  mailbox
+
+   o  If-Match [RFC7232], Section 3.1
 
 
 
-Kamp                    Expires October 26, 2017               [Page 12]
+Kamp                    Expires October 27, 2017               [Page 14]
 
 Internet-Draft        HTTP Header Common Structure            April 2017
 
 
-         1#cache-directive
+   o  If-None-Match [RFC7232], Section 3.2
 
-     Content-Location    [RFC7231, Section 3.1.4.2]
-         absolute-URI / partial-URI
+      *  "*" / 1#entity-tag
 
-     Content-Range       [RFC7233, Section 4.2]
-         byte-content-range / other-content-range
+   o  If-Range [RFC7233], Section 3.2
 
-     ETag                [RFC7232, Section 2.3]
-         entity-tag
+      *  entity-tag / HTTP-date
 
-     Forwarded           [RFC7239]
-         1#forwarded-element
+   o  Host [RFC7230], Section 5.4
 
-     From                [RFC7231, Section 5.5.1]
-         mailbox
+      *  uri-host [ ":" port ]
 
-     If-Match            [RFC7232, Section 3.1]
-     If-None-Match       [RFC7232, Section 3.2]
-         "*" / 1#entity-tag
+   o  Location [RFC7231], Section 7.1.2
 
-     If-Range            [RFC7233, Section 3.2]
-         entity-tag / HTTP-date
+      *  URI-reference
 
-     Host                [RFC7230, Section 5.4]
-         uri-host [ ":" port ]
+   o  Pragma [RFC7234], Section 5.4
 
-     Location            [RFC7231, Section 7.1.2]
-         URI-reference
+      *  1#pragma-directive
 
-     Pragma              [RFC7234, Section 5.4]
-         1#pragma-directive
+   o  Range [RFC7233], Section 3.1
 
-     Range               [RFC7233, Section 3.1]
-         byte-ranges-specifier / other-ranges-specifier
+      *  byte-ranges-specifier / other-ranges-specifier
 
-     Referer             [RFC7231, Section 5.5.2]
-         absolute-URI / partial-URI
+   o  Referer [RFC7231], Section 5.5.2
 
-     Retry-After         [RFC7231, Section 7.1.3]
-         HTTP-date / delay-seconds
+      *  absolute-URI / partial-URI
 
-     Server              [RFC7231, Section 7.4.2]
-     User-Agent          [RFC7231, Section 5.5.3]
-         product *( RWS ( product / comment ) )
+   o  Retry-After [RFC7231], Section 7.1.3
 
-     Via                 [RFC7230, Section 5.7.1]
-         1#( received-protocol RWS received-by [ RWS comment ] )
+      *  HTTP-date / delay-seconds
 
+   o  Server [RFC7231], Section 7.4.2
+
+   o  User-Agent [RFC7231], Section 5.5.3
+
+      *  product *( RWS ( product / comment ) )
+
+   o  Via [RFC7230], Section 5.7.1
+
+      *  1#( received-protocol RWS received-by [ RWS comment ] )
+
+   o  Warning [RFC7234], Section 5.5
+
+      *  1#warning-value
+
+   o  Proxy-Authenticate [RFC7235], Section 4.3
 
 
-Kamp                    Expires October 26, 2017               [Page 13]
+
+
+Kamp                    Expires October 27, 2017               [Page 15]
 
 Internet-Draft        HTTP Header Common Structure            April 2017
 
 
-     Warning             [RFC7234, Section 5.5]
-         1#warning-value
+   o  WWW-Authenticate [RFC7235], Section 4.1
 
-     Proxy-Authenticate  [RFC7235, Section 4.3]
-     WWW-Authenticate    [RFC7235, Section 4.1]
-         1#challenge
+      *  1#challenge
 
 Appendix B.  Changes
 
 B.1.  Since draft-ietf-httpbis-header-structure-00
 
-   Added uniqueness requirement on dictionary keys.
+   Added signed 64bit integer type.
 
-   Added signed 64bit integer type
+   Drop UTF8, and settle on BCP137 [RFC5137]::EmbeddedUnicodeChar for
+   h1-unicode-string.
 
-   Drop UTF8, and settle on BCP137::EmbeddedUnicodeChar for h1-unicode-
-   string
-
-   Change h1_blob delimiter to ":" as "'" is valid t_char
+   Change h1_blob delimiter to ":" since "'" is valid t_char
 
 Author's Address
 
@@ -781,4 +888,9 @@ Author's Address
 
 
 
-Kamp                    Expires October 26, 2017               [Page 14]
+
+
+
+
+
+Kamp                    Expires October 27, 2017               [Page 16]
