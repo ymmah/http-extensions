@@ -150,6 +150,7 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
    Appendix A.  Changes  . . . . . . . . . . . . . . . . . . . . . .  39
      A.1.  draft-ietf-httpbis-rfc6265bis-00  . . . . . . . . . . . .  39
      A.2.  draft-ietf-httpbis-rfc6265bis-01  . . . . . . . . . . . .  39
+     A.3.  draft-ietf-httpbis-rfc6265bis-02  . . . . . . . . . . . .  40
    Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  40
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  40
 
@@ -161,7 +162,6 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
    the user agent makes subsequent requests to the server, the user
    agent uses the metadata and other information to determine whether to
    return the name/value pairs in the Cookie header.
-
 
 
 
@@ -2186,6 +2186,10 @@ Barth & West            Expires October 27, 2017               [Page 39]
 Internet-Draft       HTTP State Management Mechanism          April 2017
 
 
+A.3.  draft-ietf-httpbis-rfc6265bis-02
+
+   o  None (yet).
+
 Appendix B.  Acknowledgements
 
    This document is a minor update of RFC 6265, adding small features,
@@ -2205,10 +2209,6 @@ Authors' Addresses
 
    Email: mkwst@google.com
    URI:   https://mikewest.org/
-
-
-
-
 
 
 
