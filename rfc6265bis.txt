@@ -95,17 +95,17 @@ Table of Contents
    3.  Overview  . . . . . . . . . . . . . . . . . . . . . . . . . .   6
      3.1.  Examples  . . . . . . . . . . . . . . . . . . . . . . . .   7
    4.  Server Requirements . . . . . . . . . . . . . . . . . . . . .   8
-     4.1.  Set-Cookie  . . . . . . . . . . . . . . . . . . . . . . .   8
-       4.1.1.  Syntax  . . . . . . . . . . . . . . . . . . . . . . .   8
+     4.1.  Set-Cookie  . . . . . . . . . . . . . . . . . . . . . . .   9
+       4.1.1.  Syntax  . . . . . . . . . . . . . . . . . . . . . . .   9
        4.1.2.  Semantics (Non-Normative) . . . . . . . . . . . . . .  10
-     4.2.  Cookie  . . . . . . . . . . . . . . . . . . . . . . . . .  13
-       4.2.1.  Syntax  . . . . . . . . . . . . . . . . . . . . . . .  13
-       4.2.2.  Semantics . . . . . . . . . . . . . . . . . . . . . .  13
-   5.  User Agent Requirements . . . . . . . . . . . . . . . . . . .  13
-     5.1.  Subcomponent Algorithms . . . . . . . . . . . . . . . . .  14
-       5.1.1.  Dates . . . . . . . . . . . . . . . . . . . . . . . .  14
-       5.1.2.  Canonicalized Host Names  . . . . . . . . . . . . . .  15
-       5.1.3.  Domain Matching . . . . . . . . . . . . . . . . . . .  16
+       4.1.3.  Cookie Name Prefixes  . . . . . . . . . . . . . . . .  13
+     4.2.  Cookie  . . . . . . . . . . . . . . . . . . . . . . . . .  14
+       4.2.1.  Syntax  . . . . . . . . . . . . . . . . . . . . . . .  14
+       4.2.2.  Semantics . . . . . . . . . . . . . . . . . . . . . .  14
+   5.  User Agent Requirements . . . . . . . . . . . . . . . . . . .  15
+     5.1.  Subcomponent Algorithms . . . . . . . . . . . . . . . . .  15
+       5.1.1.  Dates . . . . . . . . . . . . . . . . . . . . . . . .  15
+       5.1.2.  Canonicalized Host Names  . . . . . . . . . . . . . .  17
 
 
 
@@ -114,41 +114,44 @@ Barth & West            Expires October 27, 2017                [Page 2]
 Internet-Draft       HTTP State Management Mechanism          April 2017
 
 
-       5.1.4.  Paths and Path-Match  . . . . . . . . . . . . . . . .  16
-     5.2.  The Set-Cookie Header . . . . . . . . . . . . . . . . . .  17
-       5.2.1.  The Expires Attribute . . . . . . . . . . . . . . . .  19
-       5.2.2.  The Max-Age Attribute . . . . . . . . . . . . . . . .  19
-       5.2.3.  The Domain Attribute  . . . . . . . . . . . . . . . .  19
-       5.2.4.  The Path Attribute  . . . . . . . . . . . . . . . . .  20
-       5.2.5.  The Secure Attribute  . . . . . . . . . . . . . . . .  20
-       5.2.6.  The HttpOnly Attribute  . . . . . . . . . . . . . . .  20
-     5.3.  Storage Model . . . . . . . . . . . . . . . . . . . . . .  20
-     5.4.  The Cookie Header . . . . . . . . . . . . . . . . . . . .  23
-   6.  Implementation Considerations . . . . . . . . . . . . . . . .  25
-     6.1.  Limits  . . . . . . . . . . . . . . . . . . . . . . . . .  25
-     6.2.  Application Programming Interfaces  . . . . . . . . . . .  25
-     6.3.  IDNA Dependency and Migration . . . . . . . . . . . . . .  26
-   7.  Privacy Considerations  . . . . . . . . . . . . . . . . . . .  26
-     7.1.  Third-Party Cookies . . . . . . . . . . . . . . . . . . .  26
-     7.2.  User Controls . . . . . . . . . . . . . . . . . . . . . .  27
-     7.3.  Expiration Dates  . . . . . . . . . . . . . . . . . . . .  27
-   8.  Security Considerations . . . . . . . . . . . . . . . . . . .  28
-     8.1.  Overview  . . . . . . . . . . . . . . . . . . . . . . . .  28
-     8.2.  Ambient Authority . . . . . . . . . . . . . . . . . . . .  28
-     8.3.  Clear Text  . . . . . . . . . . . . . . . . . . . . . . .  29
-     8.4.  Session Identifiers . . . . . . . . . . . . . . . . . . .  29
-     8.5.  Weak Confidentiality  . . . . . . . . . . . . . . . . . .  30
-     8.6.  Weak Integrity  . . . . . . . . . . . . . . . . . . . . .  31
-     8.7.  Reliance on DNS . . . . . . . . . . . . . . . . . . . . .  31
-   9.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  32
-     9.1.  Cookie  . . . . . . . . . . . . . . . . . . . . . . . . .  32
-     9.2.  Set-Cookie  . . . . . . . . . . . . . . . . . . . . . . .  32
-   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  32
-     10.1.  Normative References . . . . . . . . . . . . . . . . . .  32
-     10.2.  Informative References . . . . . . . . . . . . . . . . .  33
-   Appendix A.  Changes since draft-ietf-httpbis-rfc6265bis-00 . . .  34
-   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  35
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  35
+       5.1.3.  Domain Matching . . . . . . . . . . . . . . . . . . .  18
+       5.1.4.  Paths and Path-Match  . . . . . . . . . . . . . . . .  18
+     5.2.  The Set-Cookie Header . . . . . . . . . . . . . . . . . .  19
+       5.2.1.  The Expires Attribute . . . . . . . . . . . . . . . .  21
+       5.2.2.  The Max-Age Attribute . . . . . . . . . . . . . . . .  21
+       5.2.3.  The Domain Attribute  . . . . . . . . . . . . . . . .  22
+       5.2.4.  The Path Attribute  . . . . . . . . . . . . . . . . .  22
+       5.2.5.  The Secure Attribute  . . . . . . . . . . . . . . . .  23
+       5.2.6.  The HttpOnly Attribute  . . . . . . . . . . . . . . .  23
+     5.3.  Storage Model . . . . . . . . . . . . . . . . . . . . . .  23
+     5.4.  The Cookie Header . . . . . . . . . . . . . . . . . . . .  27
+   6.  Implementation Considerations . . . . . . . . . . . . . . . .  29
+     6.1.  Limits  . . . . . . . . . . . . . . . . . . . . . . . . .  29
+     6.2.  Application Programming Interfaces  . . . . . . . . . . .  29
+     6.3.  IDNA Dependency and Migration . . . . . . . . . . . . . .  30
+   7.  Privacy Considerations  . . . . . . . . . . . . . . . . . . .  30
+     7.1.  Third-Party Cookies . . . . . . . . . . . . . . . . . . .  30
+     7.2.  User Controls . . . . . . . . . . . . . . . . . . . . . .  31
+     7.3.  Expiration Dates  . . . . . . . . . . . . . . . . . . . .  31
+   8.  Security Considerations . . . . . . . . . . . . . . . . . . .  32
+     8.1.  Overview  . . . . . . . . . . . . . . . . . . . . . . . .  32
+     8.2.  Ambient Authority . . . . . . . . . . . . . . . . . . . .  32
+     8.3.  Clear Text  . . . . . . . . . . . . . . . . . . . . . . .  33
+     8.4.  Session Identifiers . . . . . . . . . . . . . . . . . . .  33
+     8.5.  Weak Confidentiality  . . . . . . . . . . . . . . . . . .  34
+     8.6.  Weak Integrity  . . . . . . . . . . . . . . . . . . . . .  35
+     8.7.  Reliance on DNS . . . . . . . . . . . . . . . . . . . . .  35
+   9.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  36
+     9.1.  Cookie  . . . . . . . . . . . . . . . . . . . . . . . . .  36
+     9.2.  Set-Cookie  . . . . . . . . . . . . . . . . . . . . . . .  36
+   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  36
+     10.1.  Normative References . . . . . . . . . . . . . . . . . .  36
+     10.2.  Informative References . . . . . . . . . . . . . . . . .  37
+   Appendix A.  Changes  . . . . . . . . . . . . . . . . . . . . . .  39
+     A.1.  draft-ietf-httpbis-rfc6265bis-00  . . . . . . . . . . . .  39
+     A.2.  draft-ietf-httpbis-rfc6265bis-01  . . . . . . . . . . . .  39
+   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  40
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  40
 
 1.  Introduction
 
@@ -159,9 +162,6 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
    agent uses the metadata and other information to determine whether to
    return the name/value pairs in the Cookie header.
 
-   Although simple on their surface, cookies have a number of
-   complexities.  For example, the server indicates a scope for each
-   cookie when sending it to the user agent.  The scope indicates the
 
 
 
@@ -170,6 +170,9 @@ Barth & West            Expires October 27, 2017                [Page 3]
 Internet-Draft       HTTP State Management Mechanism          April 2017
 
 
+   Although simple on their surface, cookies have a number of
+   complexities.  For example, the server indicates a scope for each
+   cookie when sending it to the user agent.  The scope indicates the
    maximum amount of time in which the user agent should return the
    cookie, the servers to which the user agent should return the cookie,
    and the URI schemes for which the cookie is applicable.
@@ -214,10 +217,7 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
    relation to previous IETF specifications of HTTP state management
    mechanisms, this document requests the following actions:
 
-   1.  Change the status of [RFC2109] to Historic (it has already been
-       obsoleted by [RFC2965]).
-   2.  Change the status of [RFC2965] to Historic.
-   3.  Indicate that [RFC2965] has been obsoleted by this document.
+
 
 
 
@@ -225,6 +225,13 @@ Barth & West            Expires October 27, 2017                [Page 4]
 
 Internet-Draft       HTTP State Management Mechanism          April 2017
 
+
+   1.  Change the status of [RFC2109] to Historic (it has already been
+       obsoleted by [RFC2965]).
+
+   2.  Change the status of [RFC2965] to Historic.
+
+   3.  Indicate that [RFC2965] has been obsoleted by this document.
 
    In particular, in moving RFC 2965 to Historic and obsoleting it, this
    document deprecates the use of the Cookie2 and Set-Cookie2 header
@@ -265,13 +272,6 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
    The OWS (optional whitespace) rule is used where zero or more linear
    whitespace characters MAY appear:
 
-   OWS            = *( [ obs-fold ] WSP )
-                    ; "optional" whitespace
-   obs-fold       = CRLF
-
-   OWS SHOULD either not be produced or be produced as a single SP
-   character.
-
 
 
 
@@ -281,6 +281,13 @@ Barth & West            Expires October 27, 2017                [Page 5]
 
 Internet-Draft       HTTP State Management Mechanism          April 2017
 
+
+   OWS            = *( [ obs-fold ] WSP )
+                    ; "optional" whitespace
+   obs-fold       = CRLF
+
+   OWS SHOULD either not be produced or be produced as a single SP
+   character.
 
 2.3.  Terminology
 
@@ -323,13 +330,6 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
    Cookie or a Set-Cookie header field does not preclude HTTP caches
    from storing and reusing a response.
 
-   Origin servers SHOULD NOT fold multiple Set-Cookie header fields into
-   a single header field.  The usual mechanism for folding HTTP headers
-   fields (i.e., as defined in [RFC2616]) might change the semantics of
-   the Set-Cookie header field because the %x2C (",") character is used
-   by Set-Cookie in a way that conflicts with such folding.
-
-
 
 
 
@@ -337,6 +337,12 @@ Barth & West            Expires October 27, 2017                [Page 6]
 
 Internet-Draft       HTTP State Management Mechanism          April 2017
 
+
+   Origin servers SHOULD NOT fold multiple Set-Cookie header fields into
+   a single header field.  The usual mechanism for folding HTTP headers
+   fields (i.e., as defined in [RFC2616]) might change the semantics of
+   the Set-Cookie header field because the %x2C (",") character is used
+   by Set-Cookie in a way that conflicts with such folding.
 
 3.1.  Examples
 
@@ -375,6 +381,19 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
    HttpOnly attributes to provide additional security protections for
    the more sensitive session identifier (see Section 4.1.2).
 
+
+
+
+
+
+
+
+
+Barth & West            Expires October 27, 2017                [Page 7]
+
+Internet-Draft       HTTP State Management Mechanism          April 2017
+
+
    == Server -> User Agent ==
 
    Set-Cookie: SID=31d4d96e407aad42; Path=/; Secure; HttpOnly
@@ -386,14 +405,6 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
 
    Notice that the Cookie header above contains two cookies, one named
    SID and one named lang.  If the server wishes the user agent to
-
-
-
-Barth & West            Expires October 27, 2017                [Page 7]
-
-Internet-Draft       HTTP State Management Mechanism          April 2017
-
-
    persist the cookie over multiple "sessions" (e.g., user agent
    restarts), the server can specify an expiration date in the Expires
    attribute.  Note that the user agent might delete the cookie before
@@ -427,6 +438,18 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
    This section describes the syntax and semantics of a well-behaved
    profile of the Cookie and Set-Cookie headers.
 
+
+
+
+
+
+
+
+Barth & West            Expires October 27, 2017                [Page 8]
+
+Internet-Draft       HTTP State Management Mechanism          April 2017
+
+
 4.1.  Set-Cookie
 
    The Set-Cookie HTTP response header is used to send cookies from the
@@ -439,16 +462,6 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
    a name-value-pair, followed by zero or more attribute-value pairs.
    Servers SHOULD NOT send Set-Cookie headers that fail to conform to
    the following grammar:
-
-
-
-
-
-
-Barth & West            Expires October 27, 2017                [Page 8]
-
-Internet-Draft       HTTP State Management Mechanism          April 2017
-
 
    set-cookie-header = "Set-Cookie:" SP set-cookie-string
    set-cookie-string = cookie-pair *( ";" SP cookie-av )
@@ -485,6 +498,14 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
    av-octet          = %x20-3A / %x3C-7E
                          ; any CHAR except CTLs or ";"
 
+
+
+
+Barth & West            Expires October 27, 2017                [Page 9]
+
+Internet-Draft       HTTP State Management Mechanism          April 2017
+
+
    Note that some of the grammatical terms above reference documents
    that use different grammatical notations than this document (which
    uses ABNF from [RFC5234]).
@@ -498,14 +519,6 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
    The portions of the set-cookie-string produced by the cookie-av term
    are known as attributes.  To maximize compatibility with user agents,
    servers SHOULD NOT produce two attributes with the same name in the
-
-
-
-Barth & West            Expires October 27, 2017                [Page 9]
-
-Internet-Draft       HTTP State Management Mechanism          April 2017
-
-
    same set-cookie-string.  (See Section 5.3 for how user agents handle
    this case.)
 
@@ -541,6 +554,14 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
 
    If the user agent receives a new cookie with the same cookie-name,
    domain-value, and path-value as a cookie that it has already stored,
+
+
+
+Barth & West            Expires October 27, 2017               [Page 10]
+
+Internet-Draft       HTTP State Management Mechanism          April 2017
+
+
    the existing cookie is evicted and replaced with the new cookie.
    Notice that servers can delete cookies by sending the user agent a
    new cookie with an Expires attribute with a value in the past.
@@ -550,17 +571,6 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
    subdomains), and it expires at the end of the current session (as
    defined by the user agent).  User agents ignore unrecognized cookie
    attributes (but not the entire cookie).
-
-
-
-
-
-
-
-Barth & West            Expires October 27, 2017               [Page 10]
-
-Internet-Draft       HTTP State Management Mechanism          April 2017
-
 
 4.1.2.1.  The Expires Attribute
 
@@ -600,6 +610,14 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
    the attribute.)  If the server omits the Domain attribute, the user
    agent will return the cookie only to the origin server.
 
+
+
+
+Barth & West            Expires October 27, 2017               [Page 11]
+
+Internet-Draft       HTTP State Management Mechanism          April 2017
+
+
    WARNING: Some existing user agents treat an absent Domain attribute
    as if the Domain attribute were present and contained the current
    host name.  For example, if example.com returns a Set-Cookie header
@@ -610,14 +628,6 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
    specifies a scope for the cookie that would include the origin
    server.  For example, the user agent will accept a cookie with a
    Domain attribute of "example.com" or of "foo.example.com" from
-
-
-
-Barth & West            Expires October 27, 2017               [Page 11]
-
-Internet-Draft       HTTP State Management Mechanism          April 2017
-
-
    foo.example.com, but the user agent will not accept a cookie with a
    Domain attribute of "bar.example.com" or of "baz.foo.example.com".
 
@@ -657,16 +667,6 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
    cookies from an insecure channel, disrupting their integrity (see
    Section 8.6 for more details).
 
-4.1.2.6.  The HttpOnly Attribute
-
-   The HttpOnly attribute limits the scope of the cookie to HTTP
-   requests.  In particular, the attribute instructs the user agent to
-   omit the cookie when providing access to cookies via "non-HTTP" APIs
-   (such as a web browser API that exposes cookies to scripts).
-
-
-
-
 
 
 Barth & West            Expires October 27, 2017               [Page 12]
@@ -674,9 +674,84 @@ Barth & West            Expires October 27, 2017               [Page 12]
 Internet-Draft       HTTP State Management Mechanism          April 2017
 
 
+4.1.2.6.  The HttpOnly Attribute
+
+   The HttpOnly attribute limits the scope of the cookie to HTTP
+   requests.  In particular, the attribute instructs the user agent to
+   omit the cookie when providing access to cookies via "non-HTTP" APIs
+   (such as a web browser API that exposes cookies to scripts).
+
    Note that the HttpOnly attribute is independent of the Secure
    attribute: a cookie can have both the HttpOnly and the Secure
    attribute.
+
+4.1.3.  Cookie Name Prefixes
+
+   Section 8.5 and 8.6 of this document spell out some of the drawbacks
+   of cookies' historical implementation.  In particular, it is
+   impossible for a server to have confidence that a given cookie was
+   set with a particular set of attributes.  In order to provide such
+   confidence in a backwards-compatible way, two common sets of
+   requirements can be inferred from the first few characters of the
+   cookie's name.
+
+   The normative requirements for the prefixes described below are
+   detailed in the storage model algorithm defined in Section 5.3.
+
+4.1.3.1.  The "__Secure-" Prefix
+
+   If a cookie's name begins with a case-sensitive match for the string
+   "__Secure-", then the cookie will have been set with a "Secure"
+   attribute.
+
+   For example, the following "Set-Cookie" header would be rejected by a
+   conformant user agent, as it does not have a "Secure" attribute.
+
+   Set-Cookie: __Secure-SID=12345; Domain=example.com
+
+   Whereas the following "Set-Cookie" header would be accepted:
+
+   Set-Cookie: __Secure-SID=12345; Domain=example.com; Secure
+
+4.1.3.2.  The "__Host-" Prefix
+
+   If a cookie's name begins with a case-sensitive match for the string
+   "__Host-", then the cookie will have been set with a "Secure"
+   attribute, a "Path" attribute with a value of "/", and no "Domain"
+   attribute.
+
+   This combination yields a cookie that hews as closely as a cookie can
+   to treating the origin as a security boundary.  The lack of a
+
+
+
+Barth & West            Expires October 27, 2017               [Page 13]
+
+Internet-Draft       HTTP State Management Mechanism          April 2017
+
+
+   "Domain" attribute ensures that the cookie's "host-only-flag" is
+   true, locking the cookie to a particular host, rather than allowing
+   it to span subdomains.  Setting the "Path" to "/" means that the
+   cookie is effective for the entire host, and won't be overridden for
+   specific paths.  The "Secure" attribute ensures that the cookie is
+   unaltered by non-secure origins, and won't span protocols.
+
+   Ports are the only piece of the origin model that "__Host-" cookies
+   continue to ignore.
+
+   For example, the following cookies would always be rejected:
+
+   Set-Cookie: __Host-SID=12345
+   Set-Cookie: __Host-SID=12345; Secure
+   Set-Cookie: __Host-SID=12345; Domain=example.com
+   Set-Cookie: __Host-SID=12345; Domain=example.com; Path=/
+   Set-Cookie: __Host-SID=12345; Secure; Domain=example.com; Path=/
+
+   While the would be accepted if set from a secure origin (e.g.
+   "https://example.com/"), and rejected otherwise:
+
+   Set-Cookie: __Host-SID=12345; Secure; Path=/
 
 4.2.  Cookie
 
@@ -703,6 +778,14 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
    paths the cookie is valid, or whether the cookie was set with the
    Secure or HttpOnly attributes.
 
+
+
+
+Barth & West            Expires October 27, 2017               [Page 14]
+
+Internet-Draft       HTTP State Management Mechanism          April 2017
+
+
    The semantics of individual cookies in the Cookie header are not
    defined by this document.  Servers are expected to imbue these
    cookies with application-specific semantics.
@@ -720,15 +803,6 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
    sufficient detail that a user agent implementing these requirements
    precisely can interoperate with existing servers (even those that do
    not conform to the well-behaved profile described in Section 4).
-
-
-
-
-
-Barth & West            Expires October 27, 2017               [Page 13]
-
-Internet-Draft       HTTP State Management Mechanism          April 2017
-
 
    A user agent could enforce more restrictions than those specified
    herein (e.g., for the sake of improved security); however,
@@ -751,6 +825,23 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+Barth & West            Expires October 27, 2017               [Page 15]
+
+Internet-Draft       HTTP State Management Mechanism          April 2017
+
+
    cookie-date     = *delimiter date-token-list *delimiter
    date-token-list = date-token *( 1*delimiter date-token )
    date-token      = 1*non-delimiter
@@ -767,6 +858,7 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
    time            = hms-time [ non-digit *OCTET ]
    hms-time        = time-field ":" time-field ":" time-field
    time-field      = 1*2DIGIT
+
    2.  Process each date-token sequentially in the order the date-tokens
        appear in the cookie-date:
 
@@ -775,50 +867,63 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
            value, minute-value, and second-value to the numbers denoted
            by the digits in the date-token, respectively.  Skip the
            remaining sub-steps and continue to the next date-token.
+
        2.  If the found-day-of-month flag is not set and the date-token
            matches the day-of-month production, set the found-day-of-
            month flag and set the day-of-month-value to the number
-
-
-
-Barth & West            Expires October 27, 2017               [Page 14]
-
-Internet-Draft       HTTP State Management Mechanism          April 2017
-
-
            denoted by the date-token.  Skip the remaining sub-steps and
            continue to the next date-token.
+
        3.  If the found-month flag is not set and the date-token matches
            the month production, set the found-month flag and set the
            month-value to the month denoted by the date-token.  Skip the
            remaining sub-steps and continue to the next date-token.
+
        4.  If the found-year flag is not set and the date-token matches
            the year production, set the found-year flag and set the
            year-value to the number denoted by the date-token.  Skip the
            remaining sub-steps and continue to the next date-token.
+
    3.  If the year-value is greater than or equal to 70 and less than or
        equal to 99, increment the year-value by 1900.
+
    4.  If the year-value is greater than or equal to 0 and less than or
        equal to 69, increment the year-value by 2000.
 
+
+
+
+Barth & West            Expires October 27, 2017               [Page 16]
+
+Internet-Draft       HTTP State Management Mechanism          April 2017
+
+
        1.  NOTE: Some existing user agents interpret two-digit years
            differently.
+
    5.  Abort these steps and fail to parse the cookie-date if:
 
        *  at least one of the found-day-of-month, found-month, found-
           year, or found-time flags is not set,
+
        *  the day-of-month-value is less than 1 or greater than 31,
+
        *  the year-value is less than 1601,
+
        *  the hour-value is greater than 23,
+
        *  the minute-value is greater than 59, or
+
        *  the second-value is greater than 59.
 
        (Note that leap seconds cannot be represented in this syntax.)
+
    6.  Let the parsed-cookie-date be the date whose day-of-month, month,
        year, hour, minute, and second (in UTC) are the day-of-month-
        value, the month-value, the year-value, the hour-value, the
        minute-value, and the second-value, respectively.  If no such
        date exists, abort these steps and fail to parse the cookie-date.
+
    7.  Return the parsed-cookie-date as the result of this algorithm.
 
 5.1.2.  Canonicalized Host Names
@@ -828,22 +933,26 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
 
    1.  Convert the host name to a sequence of individual domain name
        labels.
+
    2.  Convert each label that is not a Non-Reserved LDH (NR-LDH) label,
        to an A-label (see Section 2.3.2.1 of [RFC5890] for the former
        and latter), or to a "punycode label" (a label resulting from the
        "ToASCII" conversion in Section 4 of [RFC3490]), as appropriate
        (see Section 6.3 of this specification).
 
+   3.  Concatenate the resulting labels, separated by a %x2E (".")
+       character.
 
 
 
-Barth & West            Expires October 27, 2017               [Page 15]
+
+
+
+
+Barth & West            Expires October 27, 2017               [Page 17]
 
 Internet-Draft       HTTP State Management Mechanism          April 2017
 
-
-   3.  Concatenate the resulting labels, separated by a %x2E (".")
-       character.
 
 5.1.3.  Domain Matching
 
@@ -853,11 +962,14 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
    o  The domain string and the string are identical.  (Note that both
       the domain string and the string will have been canonicalized to
       lower case at this point.)
+
    o  All of the following conditions hold:
 
       *  The domain string is a suffix of the string.
+
       *  The last character of the string that is not included in the
          domain string is a %x2E (".") character.
+
       *  The string is a host name (i.e., not an IP address).
 
 5.1.4.  Paths and Path-Match
@@ -871,11 +983,14 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
        then the uri-path is that path (without the %x3F ("?") character
        or query string), and if the request-uri contains a full
        absoluteURI, the uri-path is the path component of that URI.
+
    2.  If the uri-path is empty or if the first character of the uri-
        path is not a %x2F ("/") character, output %x2F ("/") and skip
        the remaining steps.
+
    3.  If the uri-path contains no more than one %x2F ("/") character,
        output %x2F ("/") and skip the remaining step.
+
    4.  Output the characters of the uri-path from the first character up
        to, but not including, the right-most %x2F ("/").
 
@@ -887,16 +1002,16 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
       Note that this differs from the rules in [RFC3986] for equivalence
       of the path component, and hence two equivalent paths can have
       different cookies.
-   o  The cookie-path is a prefix of the request-path, and the last
-      character of the cookie-path is %x2F ("/").
 
 
 
-
-Barth & West            Expires October 27, 2017               [Page 16]
+Barth & West            Expires October 27, 2017               [Page 18]
 
 Internet-Draft       HTTP State Management Mechanism          April 2017
 
+
+   o  The cookie-path is a prefix of the request-path, and the last
+      character of the cookie-path is %x2F ("/").
 
    o  The cookie-path is a prefix of the request-path, and the first
       character of the request-path that is not included in the cookie-
@@ -937,25 +1052,29 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
        1.  The name-value-pair string consists of all the characters
            contained in the set-cookie-string, and the unparsed-
            attributes is the empty string.
+
    2.  If the name-value-pair string lacks a %x3D ("=") character,
        ignore the set-cookie-string entirely.
+
    3.  The (possibly empty) name string consists of the characters up
        to, but not including, the first %x3D ("=") character, and the
-       (possibly empty) value string consists of the characters after
-       the first %x3D ("=") character.
-   4.  Remove any leading or trailing WSP characters from the name
-       string and the value string.
 
 
 
-
-Barth & West            Expires October 27, 2017               [Page 17]
+Barth & West            Expires October 27, 2017               [Page 19]
 
 Internet-Draft       HTTP State Management Mechanism          April 2017
 
 
+       (possibly empty) value string consists of the characters after
+       the first %x3D ("=") character.
+
+   4.  Remove any leading or trailing WSP characters from the name
+       string and the value string.
+
    5.  If the name string is empty, ignore the set-cookie-string
        entirely.
+
    6.  The cookie-name is the name string, and the cookie-value is the
        value string.
 
@@ -964,8 +1083,10 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
 
    1.  If the unparsed-attributes string is empty, skip the rest of
        these steps.
+
    2.  Discard the first character of the unparsed-attributes (which
        will be a %x3B (";") character).
+
    3.  If the remaining unparsed-attributes contains a %x3B (";")
        character:
 
@@ -977,6 +1098,7 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
        1.  Consume the remainder of the unparsed-attributes.
 
        Let the cookie-av string be the characters consumed in this step.
+
    4.  If the cookie-av string contains a %x3D ("=") character:
 
        1.  The (possibly empty) attribute-name string consists of the
@@ -989,11 +1111,21 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
 
        1.  The attribute-name string consists of the entire cookie-av
            string, and the attribute-value string is empty.
+
    5.  Remove any leading or trailing WSP characters from the attribute-
        name string and the attribute-value string.
+
+
+
+Barth & West            Expires October 27, 2017               [Page 20]
+
+Internet-Draft       HTTP State Management Mechanism          April 2017
+
+
    6.  Process the attribute-name and attribute-value according to the
        requirements in the following subsections.  (Notice that
        attributes with unrecognized attribute-names are ignored.)
+
    7.  Return to Step 1 of this algorithm.
 
    When the user agent finishes parsing the set-cookie-string, the user
@@ -1002,14 +1134,6 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
    list.  (See Section 5.3 for additional requirements triggered by
    receiving a cookie.)
 
-
-
-
-Barth & West            Expires October 27, 2017               [Page 18]
-
-Internet-Draft       HTTP State Management Mechanism          April 2017
-
-
 5.2.1.  The Expires Attribute
 
    If the attribute-name case-insensitively matches the string
@@ -1017,14 +1141,18 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
 
    1.  Let the expiry-time be the result of parsing the attribute-value
        as cookie-date (see Section 5.1.1).
+
    2.  If the attribute-value failed to parse as a cookie date, ignore
        the cookie-av.
+
    3.  If the expiry-time is later than the last date the user agent can
        represent, the user agent MAY replace the expiry-time with the
        last representable date.
+
    4.  If the expiry-time is earlier than the earliest date the user
        agent can represent, the user agent MAY replace the expiry-time
        with the earliest representable date.
+
    5.  Append an attribute to the cookie-attribute-list with an
        attribute-name of Expires and an attribute-value of expiry-time.
 
@@ -1035,13 +1163,26 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
 
    1.  If the first character of the attribute-value is not a DIGIT or a
        "-" character, ignore the cookie-av.
+
    2.  If the remainder of attribute-value contains a non-DIGIT
        character, ignore the cookie-av.
+
    3.  Let delta-seconds be the attribute-value converted to an integer.
+
+
+
+
+
+Barth & West            Expires October 27, 2017               [Page 21]
+
+Internet-Draft       HTTP State Management Mechanism          April 2017
+
+
    4.  If delta-seconds is less than or equal to zero (0), let expiry-
        time be the earliest representable date and time.  Otherwise, let
        the expiry-time be the current date and time plus delta-seconds
        seconds.
+
    5.  Append an attribute to the cookie-attribute-list with an
        attribute-name of Max-Age and an attribute-value of expiry-time.
 
@@ -1052,24 +1193,19 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
 
    1.  If the attribute-value is empty, the behavior is undefined.
        However, the user agent SHOULD ignore the cookie-av entirely.
+
    2.  If the first character of the attribute-value string is %x2E
        ("."):
 
        1.  Let cookie-domain be the attribute-value without the leading
            %x2E (".") character.
 
-
-
-
-Barth & West            Expires October 27, 2017               [Page 19]
-
-Internet-Draft       HTTP State Management Mechanism          April 2017
-
-
        Otherwise:
 
        1.  Let cookie-domain be the entire attribute-value.
+
    3.  Convert the cookie-domain to lower case.
+
    4.  Append an attribute to the cookie-attribute-list with an
        attribute-name of Domain and an attribute-value of cookie-domain.
 
@@ -1086,8 +1222,17 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
        Otherwise:
 
        1.  Let cookie-path be the attribute-value.
+
    2.  Append an attribute to the cookie-attribute-list with an
        attribute-name of Path and an attribute-value of cookie-path.
+
+
+
+
+Barth & West            Expires October 27, 2017               [Page 22]
+
+Internet-Draft       HTTP State Management Mechanism          April 2017
+
 
 5.2.5.  The Secure Attribute
 
@@ -1113,26 +1258,20 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
    cookie-name, value cookie-value, and attributes cookie-attribute-
    list, the user agent MUST process the cookie as follows:
 
-
-
-
-
-Barth & West            Expires October 27, 2017               [Page 20]
-
-Internet-Draft       HTTP State Management Mechanism          April 2017
-
-
    1.   A user agent MAY ignore a received cookie in its entirety.  For
         example, the user agent might wish to block receiving cookies
         from "third-party" responses or the user agent might not wish to
         store cookies that exceed some size.
+
    2.   Create a new cookie with name cookie-name, value cookie-value.
         Set the creation-time and the last-access-time to the current
         date and time.
+
    3.   If the cookie-attribute-list contains an attribute with an
         attribute-name of "Max-Age":
 
         1.  Set the cookie's persistent-flag to true.
+
         2.  Set the cookie's expiry-time to attribute-value of the last
             attribute in the cookie-attribute-list with an attribute-
             name of "Max-Age".
@@ -1142,6 +1281,15 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
         attribute with an attribute-name of "Max-Age"):
 
         1.  Set the cookie's persistent-flag to true.
+
+
+
+
+Barth & West            Expires October 27, 2017               [Page 23]
+
+Internet-Draft       HTTP State Management Mechanism          April 2017
+
+
         2.  Set the cookie's expiry-time to attribute-value of the last
             attribute in the cookie-attribute-list with an attribute-
             name of "Expires".
@@ -1149,8 +1297,10 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
         Otherwise:
 
         1.  Set the cookie's persistent-flag to false.
+
         2.  Set the cookie's expiry-time to the latest representable
             date.
+
    4.   If the cookie-attribute-list contains an attribute with an
         attribute-name iof "Domain":
 
@@ -1161,6 +1311,7 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
         Otherwise:
 
         1.  Let the domain-attribute be the empty string.
+
    5.   If the user agent is configured to reject "public suffixes" and
         the domain-attribute is a public suffix:
 
@@ -1170,13 +1321,6 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
             1.  Let the domain-attribute be the empty string.
 
             Otherwise:
-
-
-
-Barth & West            Expires October 27, 2017               [Page 21]
-
-Internet-Draft       HTTP State Management Mechanism          April 2017
-
 
             1.  Ignore the cookie entirely and abort these steps.
 
@@ -1189,60 +1333,130 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
         over time.  If feasible, user agents SHOULD use an up-to-date
         public suffix list, such as the one maintained by the Mozilla
         project at http://publicsuffix.org/ .
+
    6.   If the domain-attribute is non-empty:
 
         1.  If the canonicalized request-host does not domain-match the
             domain-attribute:
+
+
+
+Barth & West            Expires October 27, 2017               [Page 24]
+
+Internet-Draft       HTTP State Management Mechanism          April 2017
+
 
             1.  Ignore the cookie entirely and abort these steps.
 
             Otherwise:
 
             1.  Set the cookie's host-only-flag to false.
+
             2.  Set the cookie's domain to the domain-attribute.
 
         Otherwise:
 
         1.  Set the cookie's host-only-flag to true.
+
         2.  Set the cookie's domain to the canonicalized request-host.
+
    7.   If the cookie-attribute-list contains an attribute with an
         attribute-name of "Path", set the cookie's path to attribute-
         value of the last attribute in the cookie-attribute-list with an
         attribute-name of "Path".  Otherwise, set the cookie's path to
         the default-path of the request-uri.
+
    8.   If the cookie-attribute-list contains an attribute with an
         attribute-name of "Secure", set the cookie's secure-only-flag to
         true.  Otherwise, set the cookie's secure-only-flag to false.
-   9.   If the cookie-attribute-list contains an attribute with an
+
+   9.   If the scheme component of the request-uri does not denote a
+        "secure" protocol (as defined by the user agent), and the
+        cookie's secure-only-flag is true, then abort these steps and
+        ignore the cookie entirely.
+
+   10.  If the cookie-attribute-list contains an attribute with an
         attribute-name of "HttpOnly", set the cookie's http-only-flag to
         true.  Otherwise, set the cookie's http-only-flag to false.
-   10.  If the cookie was received from a "non-HTTP" API and the
-        cookie's http-only-flag is set, abort these steps and ignore the
-        cookie entirely.
-   11.  If the cookie store contains a cookie with the same name,
-        domain, and path as the newly created cookie:
 
-        1.  Let old-cookie be the existing cookie with the same name,
-            domain, and path as the newly created cookie.  (Notice that
-            this algorithm maintains the invariant that there is at most
-            one such cookie.)
+   11.  If the cookie was received from a "non-HTTP" API and the
+        cookie's http-only-flag is true, abort these steps and ignore
+        the cookie entirely.
+
+   12.  If the cookie's secure-only-flag is not set, and the scheme
+        component of request-uri does not denote a "secure" protocol,
+        then abort these steps and ignore the cookie entirely if the
+        cookie store contains one or more cookies that meet all of the
+        following criteria:
+
+        1.  Their name matches the name of the newly-created cookie.
+
+        2.  Their secure-only-flag is true.
 
 
 
-Barth & West            Expires October 27, 2017               [Page 22]
+
+
+Barth & West            Expires October 27, 2017               [Page 25]
 
 Internet-Draft       HTTP State Management Mechanism          April 2017
 
 
-        2.  If the newly created cookie was received from a "non-HTTP"
-            API and the old-cookie's http-only-flag is set, abort these
+        3.  Their domain domain-matches the domain of the newly-created
+            cookie, or vice-versa.
+
+        4.  The path of the newly-created cookie path-matches the path
+            of the existing cookie.
+
+        Note: The path comparison is not symmetric, ensuring only that a
+        newly-created, non-secure cookie does not overlay an existing
+        secure cookie, providing some mitigation against cookie-fixing
+        attacks.  That is, given an existing secure cookie named 'a'
+        with a path of '/login', a non-secure cookie named 'a' could be
+        set for a path of '/' or '/foo', but not for a path of '/login'
+        or '/login/en'.
+
+   13.  If the cookie-name begins with a case-sensitive match for the
+        string "__Secure-", abort these steps and ignore the cookie
+        entirely unless the cookie's secure-only-flag is true.
+
+   14.  If the cookie-name begins with a case-sensitive match for the
+        string "__Host-", abort these steps and ignore the cookie
+        entirely unless the cookie meets all the following criteria:
+
+        1.  The cookie's secure-only-flag is true.
+
+        2.  The cookie's host-only-flag is true.
+
+        3.  The cookie's path is "/".
+
+   15.  If the cookie store contains a cookie with the same name,
+        domain, and path as the newly-created cookie:
+
+        1.  Let old-cookie be the existing cookie with the same name,
+            domain, and path as the newly-created cookie.  (Notice that
+            this algorithm maintains the invariant that there is at most
+            one such cookie.)
+
+        2.  If the newly-created cookie was received from a "non-HTTP"
+            API and the old-cookie's http-only-flag is true, abort these
             steps and ignore the newly created cookie entirely.
-        3.  Update the creation-time of the newly created cookie to
+
+        3.  Update the creation-time of the newly-created cookie to
             match the creation-time of the old-cookie.
+
         4.  Remove the old-cookie from the cookie store.
-   12.  Insert the newly created cookie into the cookie store.
+
+   16.  Insert the newly-created cookie into the cookie store.
 
    A cookie is "expired" if the cookie has an expiry date in the past.
+
+
+
+Barth & West            Expires October 27, 2017               [Page 26]
+
+Internet-Draft       HTTP State Management Mechanism          April 2017
+
 
    The user agent MUST evict all expired cookies from the cookie store
    if, at any time, an expired cookie exists in the cookie store.
@@ -1259,9 +1473,15 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
    user agent MUST evict cookies in the following priority order:
 
    1.  Expired cookies.
-   2.  Cookies that share a domain field with more than a predetermined
+
+   2.  Cookies whose secure-only-flag is not set, and which share a
+       domain field with more than a predetermined number of other
+       cookies.
+
+   3.  Cookies that share a domain field with more than a predetermined
        number of other cookies.
-   3.  All cookies.
+
+   4.  All cookies.
 
    If two cookies have the same removal priority, the user agent MUST
    evict the cookie with the earliest last-access date first.
@@ -1282,17 +1502,17 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
    example, the user agent might wish to block sending cookies during
    "third-party" requests from setting cookies (see Section 7.1).
 
-
-
-
-Barth & West            Expires October 27, 2017               [Page 23]
-
-Internet-Draft       HTTP State Management Mechanism          April 2017
-
-
    If the user agent does attach a Cookie header field to an HTTP
    request, the user agent MUST send the cookie-string (defined below)
    as the value of the header field.
+
+
+
+
+Barth & West            Expires October 27, 2017               [Page 27]
+
+Internet-Draft       HTTP State Management Mechanism          April 2017
+
 
    The user agent MUST use an algorithm equivalent to the following
    algorithm to compute the cookie-string from a cookie store and a
@@ -1310,7 +1530,9 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
 
           +  The cookie's host-only-flag is false and the canonicalized
              request-host domain-matches the cookie's domain.
+
        *  The request-uri's path path-matches the cookie's path.
+
        *  If the cookie's secure-only-flag is true, then the request-
           uri's scheme must denote a "secure" protocol (as defined by
           the user agent).
@@ -1320,14 +1542,17 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
           if the protocol makes use of transport-layer security, such as
           SSL or TLS.  For example, most user agents consider "https" to
           be a scheme that denotes a secure protocol.
+
        *  If the cookie's http-only-flag is true, then exclude the
           cookie if the cookie-string is being generated for a "non-
           HTTP" API (as defined by the user agent).
+
    2.  The user agent SHOULD sort the cookie-list in the following
        order:
 
        *  Cookies with longer paths are listed before cookies with
           shorter paths.
+
        *  Among cookies that have equal-length path fields, cookies with
           earlier creation-times are listed before cookies with later
           creation-times.
@@ -1336,21 +1561,24 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
        this order reflects common practice when this document was
        written, and, historically, there have been servers that
        (erroneously) depended on this order.
-   3.  Update the last-access-time of each cookie in the cookie-list to
-       the current date and time.
 
 
 
-Barth & West            Expires October 27, 2017               [Page 24]
+
+Barth & West            Expires October 27, 2017               [Page 28]
 
 Internet-Draft       HTTP State Management Mechanism          April 2017
 
+
+   3.  Update the last-access-time of each cookie in the cookie-list to
+       the current date and time.
 
    4.  Serialize the cookie-list into a cookie-string by processing each
        cookie in the cookie-list in order:
 
        1.  Output the cookie's name, the %x3D ("=") character, and the
            cookie's value.
+
        2.  If there is an unprocessed cookie in the cookie-list, output
            the characters %x3B and %x20 ("; ").
 
@@ -1372,7 +1600,9 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
 
    o  At least 4096 bytes per cookie (as measured by the sum of the
       length of the cookie's name, value, and attributes).
+
    o  At least 50 cookies per domain.
+
    o  At least 3000 cookies total.
 
    Servers SHOULD use as few and as small cookies as possible to avoid
@@ -1388,19 +1618,18 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
    One reason the Cookie and Set-Cookie headers use such esoteric syntax
    is that many platforms (both in servers and user agents) provide a
    string-based application programming interface (API) to cookies,
+
+
+
+Barth & West            Expires October 27, 2017               [Page 29]
+
+Internet-Draft       HTTP State Management Mechanism          April 2017
+
+
    requiring application-layer programmers to generate and parse the
    syntax used by the Cookie and Set-Cookie headers, which many
    programmers have done incorrectly, resulting in interoperability
    problems.
-
-
-
-
-
-Barth & West            Expires October 27, 2017               [Page 25]
-
-Internet-Draft       HTTP State Management Mechanism          April 2017
-
 
    Instead of providing string-based APIs to cookies, platforms would be
    well-served by providing more semantic APIs.  It is beyond the scope
@@ -1445,19 +1674,18 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
    Some user agents restrict how third-party cookies behave.  For
    example, some of these user agents refuse to send the Cookie header
    in third-party requests.  Others refuse to process the Set-Cookie
-   header in responses to third-party requests.  User agents vary widely
-   in their third-party cookie policies.  This document grants user
-   agents wide latitude to experiment with third-party cookie policies
-   that balance the privacy and compatibility needs of their users.
 
 
 
-
-Barth & West            Expires October 27, 2017               [Page 26]
+Barth & West            Expires October 27, 2017               [Page 30]
 
 Internet-Draft       HTTP State Management Mechanism          April 2017
 
 
+   header in responses to third-party requests.  User agents vary widely
+   in their third-party cookie policies.  This document grants user
+   agents wide latitude to experiment with third-party cookie policies
+   that balance the privacy and compatibility needs of their users.
    However, this document does not endorse any particular third-party
    cookie policy.
 
@@ -1505,11 +1733,7 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
 
 
 
-
-
-
-
-Barth & West            Expires October 27, 2017               [Page 27]
+Barth & West            Expires October 27, 2017               [Page 31]
 
 Internet-Draft       HTTP State Management Mechanism          April 2017
 
@@ -1565,7 +1789,7 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
 
 
 
-Barth & West            Expires October 27, 2017               [Page 28]
+Barth & West            Expires October 27, 2017               [Page 32]
 
 Internet-Draft       HTTP State Management Mechanism          April 2017
 
@@ -1577,8 +1801,10 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
 
    1.  All sensitive information conveyed in these headers is exposed to
        an eavesdropper.
+
    2.  A malicious intermediary could alter the headers as they travel
        in either direction, with unpredictable results.
+
    3.  A malicious client could alter the Cookie header before
        transmission, with unpredictable results.
 
@@ -1619,9 +1845,7 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
 
 
 
-
-
-Barth & West            Expires October 27, 2017               [Page 29]
+Barth & West            Expires October 27, 2017               [Page 33]
 
 Internet-Draft       HTTP State Management Mechanism          April 2017
 
@@ -1677,7 +1901,7 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
 
 
 
-Barth & West            Expires October 27, 2017               [Page 30]
+Barth & West            Expires October 27, 2017               [Page 34]
 
 Internet-Draft       HTTP State Management Mechanism          April 2017
 
@@ -1733,7 +1957,7 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
 
 
 
-Barth & West            Expires October 27, 2017               [Page 31]
+Barth & West            Expires October 27, 2017               [Page 35]
 
 Internet-Draft       HTTP State Management Mechanism          April 2017
 
@@ -1746,17 +1970,25 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
 9.1.  Cookie
 
    Header field name:  Cookie
+
    Applicable protocol:  http
+
    Status:  standard
+
    Author/Change controller:  IETF
+
    Specification document:  this specification (Section 5.4)
 
 9.2.  Set-Cookie
 
    Header field name:  Set-Cookie
+
    Applicable protocol:  http
+
    Status:  standard
+
    Author/Change controller:  IETF
+
    Specification document:  this specification (Section 5.2)
 
 10.  References
@@ -1777,22 +2009,20 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
               DOI 10.17487/RFC2119, March 1997,
               <http://www.rfc-editor.org/info/rfc2119>.
 
+
+
+
+
+Barth & West            Expires October 27, 2017               [Page 36]
+
+Internet-Draft       HTTP State Management Mechanism          April 2017
+
+
    [RFC2616]  Fielding, R., Gettys, J., Mogul, J., Frystyk, H.,
               Masinter, L., Leach, P., and T. Berners-Lee, "Hypertext
               Transfer Protocol -- HTTP/1.1", RFC 2616,
               DOI 10.17487/RFC2616, June 1999,
               <http://www.rfc-editor.org/info/rfc2616>.
-
-
-
-
-
-
-
-Barth & West            Expires October 27, 2017               [Page 32]
-
-Internet-Draft       HTTP State Management Mechanism          April 2017
-
 
    [RFC3490]  Faltstrom, P., Hoffman, P., and A. Costello,
               "Internationalizing Domain Names in Applications (IDNA)",
@@ -1831,6 +2061,24 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
               for Cross-Site Request Forgery", 2008,
               <http://portal.acm.org/citation.cfm?id=1455770.1455782>.
 
+   [draft-ietf-httpbis-cookie-alone]
+              West, M., "Deprecate modification of 'secure' cookies from
+              non-secure origins", September 2016,
+              <https://tools.ietf.org/html/draft-ietf-httpbis-cookie-
+              alone-01>.
+
+
+
+Barth & West            Expires October 27, 2017               [Page 37]
+
+Internet-Draft       HTTP State Management Mechanism          April 2017
+
+
+   [draft-ietf-httpbis-cookie-prefixes]
+              West, M., "Cookie Prefixes", February 2016,
+              <https://tools.ietf.org/html/draft-ietf-httpbis-cookie-
+              prefixes-00>.
+
    [Kri2001]  Kristol, D., "HTTP Cookies: Standards, Privacy, and
               Politics", ACM ACM Transactions on Internet Technology
               Vol. 1, #2, November 2001,
@@ -1840,15 +2088,6 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
               Corp., N., "Persistent Client State -- HTTP Cookies",
               1999, <http://web.archive.org/web/20020803110822/http://wp
               .netscape.com/newsref/std/cookie_spec.html>.
-
-
-
-
-
-Barth & West            Expires October 27, 2017               [Page 33]
-
-Internet-Draft       HTTP State Management Mechanism          April 2017
-
 
    [RFC2109]  Kristol, D. and L. Montulli, "HTTP State Management
               Mechanism", RFC 2109, DOI 10.17487/RFC2109, February 1997,
@@ -1880,6 +2119,17 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
               Encodings", RFC 4648, DOI 10.17487/RFC4648, October 2006,
               <http://www.rfc-editor.org/info/rfc4648>.
 
+
+
+
+
+
+
+Barth & West            Expires October 27, 2017               [Page 38]
+
+Internet-Draft       HTTP State Management Mechanism          April 2017
+
+
    [RFC5895]  Resnick, P. and P. Hoffman, "Mapping Characters for
               Internationalized Domain Names in Applications (IDNA)
               2008", RFC 5895, DOI 10.17487/RFC5895, September 2010,
@@ -1893,25 +2143,48 @@ Internet-Draft       HTTP State Management Mechanism          April 2017
               Processing", UNICODE Unicode Technical Standards # 46,
               2010, <http://unicode.org/reports/tr46/>.
 
-Appendix A.  Changes since draft-ietf-httpbis-rfc6265bis-00
+Appendix A.  Changes
+
+A.1.  draft-ietf-httpbis-rfc6265bis-00
+
+   o  Port [RFC6265] to Markdown.  No (intentional) normative changes.
+
+A.2.  draft-ietf-httpbis-rfc6265bis-01
 
    o  Fixes to formatting caused by mistakes in the initial port to
       Markdown:
 
+      *  https://github.com/httpwg/http-extensions/issues/243
+
+      *  https://github.com/httpwg/http-extensions/issues/246
+
+   o  Addresses errata 3444 by updating the "path-value" and "extension-
+      av" grammar, errata 4148 by updating the "day-of-month", "year",
+      and "time" grammar, and errata 3663 by adding the requested note.
+      https://www.rfc-editor.org/errata_search.php?rfc=6265
+
+   o  Dropped "Cookie2" and "Set-Cookie2" from the IANA Considerations
+      section: https://github.com/httpwg/http-extensions/issues/247
+
+   o  Merged the recommendations from [draft-ietf-httpbis-cookie-alone],
+      removing the ability for a non-secure origin to set cookies with a
+      'secure' flag, and to overwrite cookies whose 'secure' flag is
+      true.
+
+   o  Merged the recommendations from
+      [draft-ietf-httpbis-cookie-prefixes], adding "__Secure-" and
+      "__Host-" cookie name prefix processing instructions.
 
 
 
-Barth & West            Expires October 27, 2017               [Page 34]
+
+
+
+
+Barth & West            Expires October 27, 2017               [Page 39]
 
 Internet-Draft       HTTP State Management Mechanism          April 2017
 
-
-      *  https://github.com/httpwg/http-extensions/issues/243
-   o  -01 addresses errata 3444 by updating the "path-value" and
-      "extension-av" grammar, errata 4148 by updating the "day-of-
-      month", "year", and "time" grammar, and errata 3663 by adding the
-      requested note.  https://www.rfc-editor.org/
-      errata_search.php?rfc=6265
 
 Appendix B.  Acknowledgements
 
@@ -1957,4 +2230,11 @@ Authors' Addresses
 
 
 
-Barth & West            Expires October 27, 2017               [Page 35]
+
+
+
+
+
+
+
+Barth & West            Expires October 27, 2017               [Page 40]
