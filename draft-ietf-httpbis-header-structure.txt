@@ -848,7 +848,11 @@ Internet-Draft        HTTP Header Common Structure            April 2017
 
 Appendix B.  Changes
 
-B.1.  Since draft-ietf-httpbis-header-structure-00
+B.1.  Since draft-ietf-httpbis-header-structure-01
+
+   None yet.
+
+B.2.  Since draft-ietf-httpbis-header-structure-00
 
    Added signed 64bit integer type.
 
@@ -863,10 +867,6 @@ Author's Address
    The Varnish Cache Project
 
    Email: phk@varnish-cache.org
-
-
-
-
 
 
 
