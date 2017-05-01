@@ -5,7 +5,7 @@
 HTTP Working Group                                                K. Oku
 Internet-Draft                                             DeNA Co, Ltd.
 Intended status: Standards Track                           M. Nottingham
-Expires: October 30, 2017                                 April 28, 2017
+Expires: November 2, 2017                                    May 1, 2017
 
 
                         Cache Digests for HTTP/2
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 30, 2017.
+   This Internet-Draft will expire on November 2, 2017.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Oku & Nottingham        Expires October 30, 2017                [Page 1]
+Oku & Nottingham        Expires November 2, 2017                [Page 1]
 
-Internet-Draft          Cache Digests for HTTP/2              April 2017
+Internet-Draft          Cache Digests for HTTP/2                May 2017
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Oku & Nottingham        Expires October 30, 2017                [Page 2]
+Oku & Nottingham        Expires November 2, 2017                [Page 2]
 
-Internet-Draft          Cache Digests for HTTP/2              April 2017
+Internet-Draft          Cache Digests for HTTP/2                May 2017
 
 
 1.1.  Notational Conventions
@@ -165,9 +165,9 @@ Internet-Draft          Cache Digests for HTTP/2              April 2017
 
 
 
-Oku & Nottingham        Expires October 30, 2017                [Page 3]
+Oku & Nottingham        Expires November 2, 2017                [Page 3]
 
-Internet-Draft          Cache Digests for HTTP/2              April 2017
+Internet-Draft          Cache Digests for HTTP/2                May 2017
 
 
 2.1.  Client Behavior
@@ -221,9 +221,9 @@ Internet-Draft          Cache Digests for HTTP/2              April 2017
 
 
 
-Oku & Nottingham        Expires October 30, 2017                [Page 4]
+Oku & Nottingham        Expires November 2, 2017                [Page 4]
 
-Internet-Draft          Cache Digests for HTTP/2              April 2017
+Internet-Draft          Cache Digests for HTTP/2                May 2017
 
 
    CACHE_DIGEST has no defined meaning when sent from servers, and
@@ -277,9 +277,9 @@ Internet-Draft          Cache Digests for HTTP/2              April 2017
 
 
 
-Oku & Nottingham        Expires October 30, 2017                [Page 5]
+Oku & Nottingham        Expires November 2, 2017                [Page 5]
 
-Internet-Draft          Cache Digests for HTTP/2              April 2017
+Internet-Draft          Cache Digests for HTTP/2                May 2017
 
 
         4.  Let "R" be the result of "D modulo P".
@@ -333,9 +333,9 @@ Internet-Draft          Cache Digests for HTTP/2              April 2017
 
 
 
-Oku & Nottingham        Expires October 30, 2017                [Page 6]
+Oku & Nottingham        Expires November 2, 2017                [Page 6]
 
-Internet-Draft          Cache Digests for HTTP/2              April 2017
+Internet-Draft          Cache Digests for HTTP/2                May 2017
 
 
    o  If a given URL has a match in a current CACHE_DIGEST with the
@@ -389,9 +389,9 @@ Internet-Draft          Cache Digests for HTTP/2              April 2017
 
 
 
-Oku & Nottingham        Expires October 30, 2017                [Page 7]
+Oku & Nottingham        Expires November 2, 2017                [Page 7]
 
-Internet-Draft          Cache Digests for HTTP/2              April 2017
+Internet-Draft          Cache Digests for HTTP/2                May 2017
 
 
    3.   Let "hash-value" be the result of computing a hash value
@@ -445,9 +445,9 @@ Internet-Draft          Cache Digests for HTTP/2              April 2017
 
 
 
-Oku & Nottingham        Expires October 30, 2017                [Page 8]
+Oku & Nottingham        Expires November 2, 2017                [Page 8]
 
-Internet-Draft          Cache Digests for HTTP/2              April 2017
+Internet-Draft          Cache Digests for HTTP/2                May 2017
 
 
 5.  References
@@ -501,9 +501,9 @@ Internet-Draft          Cache Digests for HTTP/2              April 2017
 
 
 
-Oku & Nottingham        Expires October 30, 2017                [Page 9]
+Oku & Nottingham        Expires November 2, 2017                [Page 9]
 
-Internet-Draft          Cache Digests for HTTP/2              April 2017
+Internet-Draft          Cache Digests for HTTP/2                May 2017
 
 
    [Rice]     Rice, R. and J. Plaunt, "Adaptive variable-length coding
@@ -557,4 +557,4 @@ Authors' Addresses
 
 
 
-Oku & Nottingham        Expires October 30, 2017               [Page 10]
+Oku & Nottingham        Expires November 2, 2017               [Page 10]
