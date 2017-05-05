@@ -2045,8 +2045,7 @@ Internet-Draft       HTTP State Management Mechanism            May 2017
               <http://www.rfc-editor.org/info/rfc5890>.
 
    [USASCII]  Institute, A., "Coded Character Set -- 7-bit American
-              Standard Code for Information Interchange", 1986, <ANSI
-              X3.4>.
+              Standard Code for Information Interchange", 1986.
 
 10.2.  Informative References
 
@@ -2066,6 +2065,7 @@ Internet-Draft       HTTP State Management Mechanism            May 2017
               non-secure origins", September 2016,
               <https://tools.ietf.org/html/draft-ietf-httpbis-cookie-
               alone-01>.
+
 
 
 
