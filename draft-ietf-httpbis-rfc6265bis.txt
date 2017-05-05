@@ -2054,18 +2054,18 @@ Internet-Draft       HTTP State Management Mechanism            May 2017
               for Cross-Site Request Forgery", 2008,
               <http://portal.acm.org/citation.cfm?id=1455770.1455782>.
 
-   [draft-ietf-httpbis-cookie-alone]
+   [I-D.ietf-httpbis-cookie-alone]
               West, M., "Deprecate modification of 'secure' cookies from
-              non-secure origins", September 2016,
-              <https://tools.ietf.org/html/draft-ietf-httpbis-cookie-
-              alone-01>.
+              non-secure origins", draft-ietf-httpbis-cookie-alone-01
+              (work in progress), September 2016.
 
-   [draft-ietf-httpbis-cookie-prefixes]
-              West, M., "Cookie Prefixes", February 2016,
-              <https://tools.ietf.org/html/draft-ietf-httpbis-cookie-
-              prefixes-00>.
+   [I-D.ietf-httpbis-cookie-prefixes]
+              West, M., "Cookie Prefixes", draft-ietf-httpbis-cookie-
+              prefixes-00 (work in progress), February 2016.
 
-
+   [RFC2818]  Rescorla, E., "HTTP Over TLS", RFC 2818,
+              DOI 10.17487/RFC2818, May 2000,
+              <http://www.rfc-editor.org/info/rfc2818>.
 
 
 
@@ -2073,10 +2073,6 @@ Barth & West            Expires November 6, 2017               [Page 37]
 
 Internet-Draft       HTTP State Management Mechanism            May 2017
 
-
-   [RFC2818]  Rescorla, E., "HTTP Over TLS", RFC 2818,
-              DOI 10.17487/RFC2818, May 2000,
-              <http://www.rfc-editor.org/info/rfc2818>.
 
    [RFC3629]  Yergeau, F., "UTF-8, a transformation format of ISO
               10646", STD 63, RFC 3629, DOI 10.17487/RFC3629, November
@@ -2122,6 +2118,10 @@ A.2.  draft-ietf-httpbis-rfc6265bis-01
 
       *  https://github.com/httpwg/http-extensions/issues/243
 
+      *  https://github.com/httpwg/http-extensions/issues/246
+
+   o  Addresses errata 3444 by updating the "path-value" and "extension-
+      av" grammar, errata 4148 by updating the "day-of-month", "year",
 
 
 
@@ -2130,23 +2130,19 @@ Barth & West            Expires November 6, 2017               [Page 38]
 Internet-Draft       HTTP State Management Mechanism            May 2017
 
 
-      *  https://github.com/httpwg/http-extensions/issues/246
-
-   o  Addresses errata 3444 by updating the "path-value" and "extension-
-      av" grammar, errata 4148 by updating the "day-of-month", "year",
       and "time" grammar, and errata 3663 by adding the requested note.
       https://www.rfc-editor.org/errata_search.php?rfc=6265
 
    o  Dropped "Cookie2" and "Set-Cookie2" from the IANA Considerations
       section: https://github.com/httpwg/http-extensions/issues/247
 
-   o  Merged the recommendations from [draft-ietf-httpbis-cookie-alone],
+   o  Merged the recommendations from [I-D.ietf-httpbis-cookie-alone],
       removing the ability for a non-secure origin to set cookies with a
       'secure' flag, and to overwrite cookies whose 'secure' flag is
       true.
 
    o  Merged the recommendations from
-      [draft-ietf-httpbis-cookie-prefixes], adding "__Secure-" and
+      [I-D.ietf-httpbis-cookie-prefixes], adding "__Secure-" and
       "__Host-" cookie name prefix processing instructions.
 
 A.3.  draft-ietf-httpbis-rfc6265bis-02
@@ -2172,6 +2168,10 @@ Authors' Addresses
 
    Email: mkwst@google.com
    URI:   https://mikewest.org/
+
+
+
+
 
 
 
