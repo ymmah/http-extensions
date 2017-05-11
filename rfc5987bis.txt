@@ -124,7 +124,7 @@ Internet-Draft      Charset/Language Encoding in HTTP           May 2017
      C.12. Since draft-ietf-httpbis-rfc5987bis-03  . . . . . . . . .  16
      C.13. Since draft-ietf-httpbis-rfc5987bis-04  . . . . . . . . .  16
      C.14. Since draft-ietf-httpbis-rfc5987bis-05  . . . . . . . . .  16
-   Appendix D.  Acknowledgements . . . . . . . . . . . . . . . . . .  16
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  16
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  17
 
 1.  Introduction
@@ -885,7 +885,7 @@ C.14.  Since draft-ietf-httpbis-rfc5987bis-05
 
    None yet.
 
-Appendix D.  Acknowledgements
+Acknowledgements
 
    Thanks to Martin Duerst and Frank Ellermann for help figuring out
    ABNF details, to Graham Klyne and Alexey Melnikov for general review,
