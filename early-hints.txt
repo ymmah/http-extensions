@@ -77,8 +77,9 @@ Table of Contents
    4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
    5.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   4
    6.  Changes . . . . . . . . . . . . . . . . . . . . . . . . . . .   4
-     6.1.  Since draft-ietf-httpbis-early-hints-01 . . . . . . . . .   4
-     6.2.  Since draft-ietf-httpbis-early-hints-00 . . . . . . . . .   4
+     6.1.  Since draft-ietf-httpbis-early-hints-02 . . . . . . . . .   4
+     6.2.  Since draft-ietf-httpbis-early-hints-01 . . . . . . . . .   4
+     6.3.  Since draft-ietf-httpbis-early-hints-00 . . . . . . . . .   5
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   5
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
      7.2.  Informative References  . . . . . . . . . . . . . . . . .   5
@@ -104,8 +105,7 @@ Table of Contents
    cannot do so until the status code and the full headers of the final
    HTTP response are determined.
 
-   HTTP/2 ([RFC7540]) server push can be used as a solution to this
-   issue, but has its own limitations.  The responses that can be pushed
+
 
 
 
@@ -114,6 +114,8 @@ Oku                     Expires November 17, 2017               [Page 2]
 Internet-Draft                 Early Hints                      May 2017
 
 
+   HTTP/2 ([RFC7540]) server push can be used as a solution to this
+   issue, but has its own limitations.  The responses that can be pushed
    using HTTP/2 are limited to those belonging to the same origin.
    Also, it is impossible to send only the links using server push.
    Finally, sending HTTP responses for every resource is an inefficient
@@ -163,8 +165,6 @@ Internet-Draft                 Early Hints                      May 2017
 
 
 
-
-
 Oku                     Expires November 17, 2017               [Page 3]
 
 Internet-Draft                 Early Hints                      May 2017
@@ -209,14 +209,14 @@ Internet-Draft                 Early Hints                      May 2017
 
 6.  Changes
 
-6.1.  Since draft-ietf-httpbis-early-hints-01
+6.1.  Since draft-ietf-httpbis-early-hints-02
 
    o  None yet.
 
-6.2.  Since draft-ietf-httpbis-early-hints-00
+6.2.  Since draft-ietf-httpbis-early-hints-01
 
-   o  Forbid processing the headers of a 103 response as part of the
-      informational response.
+   o  Editorial changes.
+
 
 
 
@@ -225,6 +225,11 @@ Oku                     Expires November 17, 2017               [Page 4]
 
 Internet-Draft                 Early Hints                      May 2017
 
+
+6.3.  Since draft-ietf-httpbis-early-hints-00
+
+   o  Forbid processing the headers of a 103 response as part of the
+      informational response.
 
 7.  References
 
@@ -261,11 +266,6 @@ Author's Address
    DeNA Co., Ltd.
 
    Email: kazuhooku@gmail.com
-
-
-
-
-
 
 
 
