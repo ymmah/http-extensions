@@ -149,7 +149,7 @@ Internet-Draft       HTTP State Management Mechanism            May 2017
      10.2.  Informative References . . . . . . . . . . . . . . . . .  37
    Appendix A.  Changes  . . . . . . . . . . . . . . . . . . . . . .  38
      A.1.  draft-ietf-httpbis-rfc6265bis-00  . . . . . . . . . . . .  38
-     A.2.  draft-ietf-httpbis-rfc6265bis-01  . . . . . . . . . . . .  38
+     A.2.  draft-ietf-httpbis-rfc6265bis-01  . . . . . . . . . . . .  39
      A.3.  draft-ietf-httpbis-rfc6265bis-02  . . . . . . . . . . . .  39
    Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  39
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  39
@@ -2052,17 +2052,17 @@ Internet-Draft       HTTP State Management Mechanism            May 2017
               Aggarwal.pdf>.
 
    [CSRF]     Barth, A., Jackson, C., and J. Mitchell, "Robust Defenses
-              for Cross-Site Request Forgery", 2008,
+              for Cross-Site Request Forgery",
+              DOI 10.1145/1455770.1455782, ISBN 978-1-59593-810-7,
+              ACM CCS '08: Proceedings of the 15th ACM conference on
+              Computer and communications security (pages 75-88),
+              October 2008,
               <http://portal.acm.org/citation.cfm?id=1455770.1455782>.
 
    [I-D.ietf-httpbis-cookie-alone]
               West, M., "Deprecate modification of 'secure' cookies from
               non-secure origins", draft-ietf-httpbis-cookie-alone-01
               (work in progress), September 2016.
-
-   [I-D.ietf-httpbis-cookie-prefixes]
-              West, M., "Cookie Prefixes", draft-ietf-httpbis-cookie-
-              prefixes-00 (work in progress), February 2016.
 
 
 
@@ -2073,6 +2073,10 @@ Barth & West            Expires November 18, 2017              [Page 37]
 
 Internet-Draft       HTTP State Management Mechanism            May 2017
 
+
+   [I-D.ietf-httpbis-cookie-prefixes]
+              West, M., "Cookie Prefixes", draft-ietf-httpbis-cookie-
+              prefixes-00 (work in progress), February 2016.
 
    [RFC2818]  Rescorla, E., "HTTP Over TLS", RFC 2818,
               DOI 10.17487/RFC2818, May 2000,
@@ -2107,7 +2111,7 @@ Internet-Draft       HTTP State Management Mechanism            May 2017
 
    [UTS46]    Davis, M. and M. Suignard, "Unicode IDNA Compatibility
               Processing", UNICODE Unicode Technical Standards # 46,
-              June 2016, <http://unicode.org/reports/tr46/>.
+              2010, <http://unicode.org/reports/tr46/>.
 
 Appendix A.  Changes
 
@@ -2115,12 +2119,8 @@ A.1.  draft-ietf-httpbis-rfc6265bis-00
 
    o  Port [RFC6265] to Markdown.  No (intentional) normative changes.
 
-A.2.  draft-ietf-httpbis-rfc6265bis-01
 
-   o  Fixes to formatting caused by mistakes in the initial port to
-      Markdown:
 
-      *  https://github.com/httpwg/http-extensions/issues/243
 
 
 
@@ -2129,6 +2129,13 @@ Barth & West            Expires November 18, 2017              [Page 38]
 
 Internet-Draft       HTTP State Management Mechanism            May 2017
 
+
+A.2.  draft-ietf-httpbis-rfc6265bis-01
+
+   o  Fixes to formatting caused by mistakes in the initial port to
+      Markdown:
+
+      *  https://github.com/httpwg/http-extensions/issues/243
 
       *  https://github.com/httpwg/http-extensions/issues/246
 
@@ -2167,6 +2174,18 @@ Authors' Addresses
    URI:   https://www.adambarth.com/
 
 
+
+
+
+
+
+
+
+Barth & West            Expires November 18, 2017              [Page 39]
+
+Internet-Draft       HTTP State Management Mechanism            May 2017
+
+
    Mike West
    Google, Inc
 
@@ -2181,4 +2200,41 @@ Authors' Addresses
 
 
 
-Barth & West            Expires November 18, 2017              [Page 39]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Barth & West            Expires November 18, 2017              [Page 40]
