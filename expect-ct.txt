@@ -4,8 +4,8 @@
 
 HTTP Working Group                                              E. Stark
 Internet-Draft                                                    Google
-Intended status: Experimental                               May 18, 2017
-Expires: November 19, 2017
+Intended status: Experimental                               May 22, 2017
+Expires: November 23, 2017
 
 
                       Expect-CT Extension for HTTP
@@ -53,12 +53,12 @@ Status of This Memo
 
 
 
-Stark                   Expires November 19, 2017               [Page 1]
+Stark                   Expires November 23, 2017               [Page 1]
 
 Internet-Draft                  Expect-CT                       May 2017
 
 
-   This Internet-Draft will expire on November 19, 2017.
+   This Internet-Draft will expire on November 23, 2017.
 
 Copyright Notice
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Stark                   Expires November 19, 2017               [Page 2]
+Stark                   Expires November 23, 2017               [Page 2]
 
 Internet-Draft                  Expect-CT                       May 2017
 
@@ -165,7 +165,7 @@ Internet-Draft                  Expect-CT                       May 2017
 
 
 
-Stark                   Expires November 19, 2017               [Page 3]
+Stark                   Expires November 23, 2017               [Page 3]
 
 Internet-Draft                  Expect-CT                       May 2017
 
@@ -221,7 +221,7 @@ Internet-Draft                  Expect-CT                       May 2017
 
 
 
-Stark                   Expires November 19, 2017               [Page 4]
+Stark                   Expires November 23, 2017               [Page 4]
 
 Internet-Draft                  Expect-CT                       May 2017
 
@@ -277,7 +277,7 @@ Internet-Draft                  Expect-CT                       May 2017
 
 
 
-Stark                   Expires November 19, 2017               [Page 5]
+Stark                   Expires November 23, 2017               [Page 5]
 
 Internet-Draft                  Expect-CT                       May 2017
 
@@ -333,7 +333,7 @@ Internet-Draft                  Expect-CT                       May 2017
 
 
 
-Stark                   Expires November 19, 2017               [Page 6]
+Stark                   Expires November 23, 2017               [Page 6]
 
 Internet-Draft                  Expect-CT                       May 2017
 
@@ -389,7 +389,7 @@ Expect-CT: max-age=86400,report-uri="https://foo.example/report"
 
 
 
-Stark                   Expires November 19, 2017               [Page 7]
+Stark                   Expires November 23, 2017               [Page 7]
 
 Internet-Draft                  Expect-CT                       May 2017
 
@@ -445,7 +445,7 @@ Internet-Draft                  Expect-CT                       May 2017
 
 
 
-Stark                   Expires November 19, 2017               [Page 8]
+Stark                   Expires November 23, 2017               [Page 8]
 
 Internet-Draft                  Expect-CT                       May 2017
 
@@ -493,15 +493,15 @@ Internet-Draft                  Expect-CT                       May 2017
    attack) have some chance of recovering over time.  If the server sets
    a max-age greater than the UA's upper limit, the UA MAY behave as if
    the server set the max-age to the UA's upper limit.  For example, if
-   the UA caps max-age at 5,184,000 seconds (60 days), and a Pinned Host
-   sets a max- age directive of 90 days in its Expect-CT header, the UA
-   MAY behave as if the max-age were effectively 60 days.  (One way to
-   achieve this behavior is for the UA to simply store a value of 60
-   days instead of the 90-day value provided by the Expect-CT host.)
+   the UA caps max-age at 5,184,000 seconds (60 days), and an Expect-CT
+   Host sets a max- age directive of 90 days in its Expect-CT header,
+   the UA MAY behave as if the max-age were effectively 60 days.  (One
+   way to achieve this behavior is for the UA to simply store a value of
+   60 days instead of the 90-day value provided by the Expect-CT host.)
 
 
 
-Stark                   Expires November 19, 2017               [Page 9]
+Stark                   Expires November 23, 2017               [Page 9]
 
 Internet-Draft                  Expect-CT                       May 2017
 
@@ -557,7 +557,7 @@ Internet-Draft                  Expect-CT                       May 2017
 
 
 
-Stark                   Expires November 19, 2017              [Page 10]
+Stark                   Expires November 23, 2017              [Page 10]
 
 Internet-Draft                  Expect-CT                       May 2017
 
@@ -613,7 +613,7 @@ Internet-Draft                  Expect-CT                       May 2017
 
 
 
-Stark                   Expires November 19, 2017              [Page 11]
+Stark                   Expires November 23, 2017              [Page 11]
 
 Internet-Draft                  Expect-CT                       May 2017
 
@@ -669,7 +669,7 @@ Internet-Draft                  Expect-CT                       May 2017
 
 
 
-Stark                   Expires November 19, 2017              [Page 12]
+Stark                   Expires November 23, 2017              [Page 12]
 
 Internet-Draft                  Expect-CT                       May 2017
 
@@ -725,7 +725,7 @@ Internet-Draft                  Expect-CT                       May 2017
 
 
 
-Stark                   Expires November 19, 2017              [Page 13]
+Stark                   Expires November 23, 2017              [Page 13]
 
 Internet-Draft                  Expect-CT                       May 2017
 
@@ -781,7 +781,7 @@ Internet-Draft                  Expect-CT                       May 2017
 
 
 
-Stark                   Expires November 19, 2017              [Page 14]
+Stark                   Expires November 23, 2017              [Page 14]
 
 Internet-Draft                  Expect-CT                       May 2017
 
@@ -837,7 +837,7 @@ Internet-Draft                  Expect-CT                       May 2017
 
 
 
-Stark                   Expires November 19, 2017              [Page 15]
+Stark                   Expires November 23, 2017              [Page 15]
 
 Internet-Draft                  Expect-CT                       May 2017
 
@@ -893,7 +893,7 @@ Internet-Draft                  Expect-CT                       May 2017
 
 
 
-Stark                   Expires November 19, 2017              [Page 16]
+Stark                   Expires November 23, 2017              [Page 16]
 
 Internet-Draft                  Expect-CT                       May 2017
 
@@ -949,4 +949,4 @@ Author's Address
 
 
 
-Stark                   Expires November 19, 2017              [Page 17]
+Stark                   Expires November 23, 2017              [Page 17]
