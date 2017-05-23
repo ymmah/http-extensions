@@ -231,15 +231,18 @@ Internet-Draft                ORIGIN Frames                     May 2017
    connection's Origin Set, if present.
 
    Note:  A server that acts as an alternative service [RFC7838] might
-      remove the origin that a client creates the connection for by
-      sending an ORIGIN frame.  The single value that is in the newly-
-      initialized Origin Set will contain the port of the alternative
-      service rather than that of the origin.  For instance, a client
-      making requests for "https://example.com" that is directed to an
-      alternative at ("h2", "x.example.net", "8443") will seed the
-      origin set with "https://example.com:8443".  This problem can be
-      avoided by explicitly including an origin with the correct port in
-      the ORIGIN frame.
+      invalidate the connection for use with the origin that initiated
+      use of the alternative by sending an ORIGIN frame.  If the port on
+      the alternative service is different from the origin that caused
+      the alternative to be used, that origin won't be automatically
+      included in the Origin Set.  The entry with which the Origin Set
+      is initialized includes the port of the alternative service rather
+      than that of the origin.  For instance, a client making requests
+      for "https://example.com" that is directed to an alternative
+      service at ("h2", "x.example.net", "8443") will seed the origin
+      set with "https://example.com:8443".  This problem can be avoided
+      by explicitly including an origin with the correct port in the
+      ORIGIN frame.
 
 2.4.  Authority, Push and Coalescing with ORIGIN
 
@@ -271,9 +274,6 @@ Internet-Draft                ORIGIN Frames                     May 2017
    certificate presented by the server for each origin that a connection
    is used for; see [RFC7540] Section 9.1.1 for more information.  This
    includes verifying that the host matches a "dNSName" value from the
-   certificate "subjectAltName" field (using the wildcard rules defined
-   in [RFC2818]; see also [RFC5280] Section 4.2.1.6).
-
 
 
 
@@ -281,6 +281,9 @@ Nottingham & Nygren     Expires November 24, 2017               [Page 5]
 
 Internet-Draft                ORIGIN Frames                     May 2017
 
+
+   certificate "subjectAltName" field (using the wildcard rules defined
+   in [RFC2818]; see also [RFC5280] Section 4.2.1.6).
 
    Because ORIGIN can change the set of origins a connection is used for
    over time, it is possible that a client might have more than one
@@ -325,9 +328,6 @@ Internet-Draft                ORIGIN Frames                     May 2017
               DOI 10.17487/RFC2119, March 1997,
               <http://www.rfc-editor.org/info/rfc2119>.
 
-   [RFC2818]  Rescorla, E., "HTTP Over TLS", RFC 2818,
-              DOI 10.17487/RFC2818, May 2000,
-              <http://www.rfc-editor.org/info/rfc2818>.
 
 
 
@@ -337,6 +337,10 @@ Nottingham & Nygren     Expires November 24, 2017               [Page 6]
 
 Internet-Draft                ORIGIN Frames                     May 2017
 
+
+   [RFC2818]  Rescorla, E., "HTTP Over TLS", RFC 2818,
+              DOI 10.17487/RFC2818, May 2000,
+              <http://www.rfc-editor.org/info/rfc2818>.
 
    [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
               Housley, R., and W. Polk, "Internet X.509 Public Key
@@ -381,10 +385,6 @@ Appendix A.  Non-Normative Processing Algorithm
    1.  If the client is configured to use a proxy for the connection,
        ignore the frame and stop processing.
 
-   2.  If the connection is not identified with the "h2" protocol
-       identifier or another protocol that has explicitly opted into
-       this specification, ignore the frame and stop processing.
-
 
 
 
@@ -393,6 +393,10 @@ Nottingham & Nygren     Expires November 24, 2017               [Page 7]
 
 Internet-Draft                ORIGIN Frames                     May 2017
 
+
+   2.  If the connection is not identified with the "h2" protocol
+       identifier or another protocol that has explicitly opted into
+       this specification, ignore the frame and stop processing.
 
    3.  If the frame occurs upon any stream except stream 0, ignore the
        frame and stop processing.
@@ -437,10 +441,6 @@ Appendix B.  Operational Considerations for Servers
    of origins the connection is used for with subsequent ORIGIN frames
    later (e.g., when the connection is idle).
 
-   That said, senders are encouraged to include as many origins as
-   practical within a single ORIGIN frame; clients need to make
-   decisions about creating connections on the fly, and if the origin
-   set is split across many frames, their behaviour might be suboptimal.
 
 
 
@@ -449,6 +449,11 @@ Nottingham & Nygren     Expires November 24, 2017               [Page 8]
 
 Internet-Draft                ORIGIN Frames                     May 2017
 
+
+   That said, senders are encouraged to include as many origins as
+   practical within a single ORIGIN frame; clients need to make
+   decisions about creating connections on the fly, and if the origin
+   set is split across many frames, their behaviour might be suboptimal.
 
    Senders take note that, as per [RFC6454] Section 4, the values in an
    ORIGIN header need to be case-normalised before serialisation.
@@ -471,11 +476,6 @@ Authors' Addresses
    Akamai
 
    Email: nygren@akamai.com
-
-
-
-
-
 
 
 
