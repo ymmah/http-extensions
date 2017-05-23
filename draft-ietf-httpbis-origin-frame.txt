@@ -230,6 +230,17 @@ Internet-Draft                ORIGIN Frames                     May 2017
    origin (as per [RFC6454], Section 6.2) and remove it from the
    connection's Origin Set, if present.
 
+   Note:  A server that acts as an alternative service [RFC7838] might
+      remove the origin that a client creates the connection for by
+      sending an ORIGIN frame.  The single value that is in the newly-
+      initialized Origin Set will contain the port of the alternative
+      service rather than that of the origin.  For instance, a client
+      making requests for "https://example.com" that is directed to an
+      alternative at ("h2", "x.example.net", "8443") will seed the
+      origin set with "https://example.com:8443".  This problem can be
+      avoided by explicitly including an origin with the correct port in
+      the ORIGIN frame.
+
 2.4.  Authority, Push and Coalescing with ORIGIN
 
    [RFC7540], Section 10.1 uses both DNS and the presented TLS
@@ -263,17 +274,6 @@ Internet-Draft                ORIGIN Frames                     May 2017
    certificate "subjectAltName" field (using the wildcard rules defined
    in [RFC2818]; see also [RFC5280] Section 4.2.1.6).
 
-   Because ORIGIN can change the set of origins a connection is used for
-   over time, it is possible that a client might have more than one
-   viable connection to an origin open at any time.  When this occurs,
-   clients SHOULD not emit new requests on any connection whose Origin
-   Set is a proper subset of another connection's Origin Set, and SHOULD
-   close it once all outstanding requests are satisfied.
-
-
-
-
-
 
 
 
@@ -281,6 +281,17 @@ Nottingham & Nygren     Expires November 24, 2017               [Page 5]
 
 Internet-Draft                ORIGIN Frames                     May 2017
 
+
+   Because ORIGIN can change the set of origins a connection is used for
+   over time, it is possible that a client might have more than one
+   viable connection to an origin open at any time.  When this occurs,
+   clients SHOULD not emit new requests on any connection whose Origin
+   Set is a proper subset of another connection's Origin Set, and SHOULD
+   close it once all outstanding requests are satisfied.
+
+   The Origin Set is unaffected by any alternative services [RFC7838]
+   advertisements made by the server.  Advertising an alternative
+   service does not affect whether a server is authoritative.
 
 3.  IANA Considerations
 
@@ -318,6 +329,15 @@ Internet-Draft                ORIGIN Frames                     May 2017
               DOI 10.17487/RFC2818, May 2000,
               <http://www.rfc-editor.org/info/rfc2818>.
 
+
+
+
+
+Nottingham & Nygren     Expires November 24, 2017               [Page 6]
+
+Internet-Draft                ORIGIN Frames                     May 2017
+
+
    [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
               Housley, R., and W. Polk, "Internet X.509 Public Key
               Infrastructure Certificate and Certificate Revocation List
@@ -328,15 +348,6 @@ Internet-Draft                ORIGIN Frames                     May 2017
               Extensions: Extension Definitions", RFC 6066,
               DOI 10.17487/RFC6066, January 2011,
               <http://www.rfc-editor.org/info/rfc6066>.
-
-
-
-
-
-Nottingham & Nygren     Expires November 24, 2017               [Page 6]
-
-Internet-Draft                ORIGIN Frames                     May 2017
-
 
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
               DOI 10.17487/RFC6454, December 2011,
@@ -374,6 +385,15 @@ Appendix A.  Non-Normative Processing Algorithm
        identifier or another protocol that has explicitly opted into
        this specification, ignore the frame and stop processing.
 
+
+
+
+
+Nottingham & Nygren     Expires November 24, 2017               [Page 7]
+
+Internet-Draft                ORIGIN Frames                     May 2017
+
+
    3.  If the frame occurs upon any stream except stream 0, ignore the
        frame and stop processing.
 
@@ -384,15 +404,6 @@ Appendix A.  Non-Normative Processing Algorithm
        step, initialise the Origin Set as per Section 2.3.
 
    6.  For each Origin field "origin_raw" in the frame payload:
-
-
-
-
-
-Nottingham & Nygren     Expires November 24, 2017               [Page 7]
-
-Internet-Draft                ORIGIN Frames                     May 2017
-
 
        1.  Parse "origin_raw" as an ASCII serialization of an origin
            ([RFC6454], Section 6.2) and let the result be
@@ -431,6 +442,14 @@ Appendix B.  Operational Considerations for Servers
    decisions about creating connections on the fly, and if the origin
    set is split across many frames, their behaviour might be suboptimal.
 
+
+
+
+Nottingham & Nygren     Expires November 24, 2017               [Page 8]
+
+Internet-Draft                ORIGIN Frames                     May 2017
+
+
    Senders take note that, as per [RFC6454] Section 4, the values in an
    ORIGIN header need to be case-normalised before serialisation.
 
@@ -439,16 +458,6 @@ Appendix B.  Operational Considerations for Servers
    the default contents of the Origin Set (as per Section 2.3) do not
    contain any Alternative Services' origins, even if they have been
    used previously on the connection.
-
-
-
-
-
-
-Nottingham & Nygren     Expires November 24, 2017               [Page 8]
-
-Internet-Draft                ORIGIN Frames                     May 2017
-
 
 Authors' Addresses
 
@@ -462,15 +471,6 @@ Authors' Addresses
    Akamai
 
    Email: nygren@akamai.com
-
-
-
-
-
-
-
-
-
 
 
 
