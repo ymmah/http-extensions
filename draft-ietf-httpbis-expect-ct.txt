@@ -831,7 +831,7 @@ Internet-Draft                  Expect-CT                       May 2017
 
 9.1.  Since -00
 
-   None yet.
+   o  Editorial changes
 
 
 
@@ -841,6 +841,13 @@ Stark                   Expires November 25, 2017              [Page 15]
 
 Internet-Draft                  Expect-CT                       May 2017
 
+
+   o  Change Content-Type header of reports to 'application/expect-ct-
+      report+json'
+
+   o  Update header field syntax to match convention (issue #327)
+
+   o  Reference RFC 6962-bis instead of RFC 6962
 
 10.  Normative References
 
@@ -881,6 +888,16 @@ Internet-Draft                  Expect-CT                       May 2017
               DOI 10.17487/RFC5246, August 2008,
               <http://www.rfc-editor.org/info/rfc5246>.
 
+
+
+
+
+
+Stark                   Expires November 25, 2017              [Page 16]
+
+Internet-Draft                  Expect-CT                       May 2017
+
+
    [RFC6797]  Hodges, J., Jackson, C., and A. Barth, "HTTP Strict
               Transport Security (HSTS)", RFC 6797,
               DOI 10.17487/RFC6797, November 2012,
@@ -890,13 +907,6 @@ Internet-Draft                  Expect-CT                       May 2017
               Protocol (HTTP/1.1): Message Syntax and Routing",
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
               <http://www.rfc-editor.org/info/rfc7230>.
-
-
-
-Stark                   Expires November 25, 2017              [Page 16]
-
-Internet-Draft                  Expect-CT                       May 2017
-
 
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
@@ -919,16 +929,6 @@ Author's Address
    Google
 
    Email: estark@google.com
-
-
-
-
-
-
-
-
-
-
 
 
 
