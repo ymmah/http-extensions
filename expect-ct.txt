@@ -115,7 +115,8 @@ Internet-Draft                  Expect-CT                       May 2017
 
 
    9.  Changes . . . . . . . . . . . . . . . . . . . . . . . . . . .  15
-     9.1.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .  15
+     9.1.  Since -01 . . . . . . . . . . . . . . . . . . . . . . . .  15
+     9.2.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .  16
    10. Normative References  . . . . . . . . . . . . . . . . . . . .  16
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  17
 
@@ -160,7 +161,6 @@ Internet-Draft                  Expect-CT                       May 2017
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
    "OPTIONAL" in this document are to be interpreted as described in RFC
    2119 [RFC2119].
-
 
 
 
@@ -829,9 +829,9 @@ Internet-Draft                  Expect-CT                       May 2017
 
 9.  Changes
 
-9.1.  Since -00
+9.1.  Since -01
 
-   o  Editorial changes
+   o  None yet
 
 
 
@@ -841,6 +841,10 @@ Stark                   Expires November 25, 2017              [Page 15]
 
 Internet-Draft                  Expect-CT                       May 2017
 
+
+9.2.  Since -00
+
+   o  Editorial changes
 
    o  Change Content-Type header of reports to 'application/expect-ct-
       report+json'
@@ -883,10 +887,6 @@ Internet-Draft                  Expect-CT                       May 2017
               DOI 10.17487/RFC5234, January 2008,
               <http://www.rfc-editor.org/info/rfc5234>.
 
-   [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
-              (TLS) Protocol Version 1.2", RFC 5246,
-              DOI 10.17487/RFC5246, August 2008,
-              <http://www.rfc-editor.org/info/rfc5246>.
 
 
 
@@ -897,6 +897,11 @@ Stark                   Expires November 25, 2017              [Page 16]
 
 Internet-Draft                  Expect-CT                       May 2017
 
+
+   [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
+              (TLS) Protocol Version 1.2", RFC 5246,
+              DOI 10.17487/RFC5246, August 2008,
+              <http://www.rfc-editor.org/info/rfc5246>.
 
    [RFC6797]  Hodges, J., Jackson, C., and A. Barth, "HTTP Strict
               Transport Security (HSTS)", RFC 6797,
@@ -929,11 +934,6 @@ Author's Address
    Google
 
    Email: estark@google.com
-
-
-
-
-
 
 
 
