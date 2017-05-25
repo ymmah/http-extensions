@@ -5,8 +5,8 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Standards Track                               E. Nygren
-Expires: November 25, 2017                                        Akamai
-                                                            May 24, 2017
+Expires: November 26, 2017                                        Akamai
+                                                            May 25, 2017
 
 
                         The ORIGIN HTTP/2 Frame
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on November 25, 2017.
+   This Internet-Draft will expire on November 26, 2017.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Nottingham & Nygren     Expires November 25, 2017               [Page 1]
+Nottingham & Nygren     Expires November 26, 2017               [Page 1]
 
 Internet-Draft                ORIGIN Frames                     May 2017
 
@@ -82,7 +82,7 @@ Table of Contents
    5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   6
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   6
      5.2.  Informative References  . . . . . . . . . . . . . . . . .   7
-   Appendix A.  Non-Normative Processing Algorithm . . . . . . . . .   7
+   Appendix A.  Non-Normative Processing Algorithm . . . . . . . . .   8
    Appendix B.  Operational Considerations for Servers . . . . . . .   8
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   9
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Nottingham & Nygren     Expires November 25, 2017               [Page 2]
+Nottingham & Nygren     Expires November 26, 2017               [Page 2]
 
 Internet-Draft                ORIGIN Frames                     May 2017
 
@@ -165,7 +165,7 @@ Internet-Draft                ORIGIN Frames                     May 2017
 
 
 
-Nottingham & Nygren     Expires November 25, 2017               [Page 3]
+Nottingham & Nygren     Expires November 26, 2017               [Page 3]
 
 Internet-Draft                ORIGIN Frames                     May 2017
 
@@ -201,8 +201,8 @@ Internet-Draft                ORIGIN Frames                     May 2017
 
    By default, a connections's Origin Set is uninitialised.  When an
    ORIGIN frame is first received and successfully processed by a
-   client, the connection's Origin Set is defined to contain a single
-   origin, composed from:
+   client, the connection's Origin Set is defined to contain an initial
+   origin.  The initial origin is composed from:
 
    o  Scheme: "https"
 
@@ -221,7 +221,7 @@ Internet-Draft                ORIGIN Frames                     May 2017
 
 
 
-Nottingham & Nygren     Expires November 25, 2017               [Page 4]
+Nottingham & Nygren     Expires November 26, 2017               [Page 4]
 
 Internet-Draft                ORIGIN Frames                     May 2017
 
@@ -229,6 +229,23 @@ Internet-Draft                ORIGIN Frames                     May 2017
    MUST create the ASCII serialisation of the corresponding request's
    origin (as per [RFC6454], Section 6.2) and remove it from the
    connection's Origin Set, if present.
+
+   Note:  Using an alternative service [RFC7838] can result in using a
+      service that has a different port to the original service (that
+      is, the server that a client contacts when it has no active
+      alternative services).  In that case, the initial origin will have
+      a different port number.  A client could be unable to send
+      requests for the origin that advertised the alternative service.
+      Explicitly including origins in the ORIGIN frame avoids this
+      problem.
+
+      For example, a client making requests for "https://example.com" is
+      directed to an alternative service at ("h2", "x.example.net",
+      "8443").  If this alternative service sends an ORIGIN frame, the
+      initial origin will be "https://example.com:8443".  The client
+      will not be able to use the alternative service to make requests
+      for "https://example.com" unless that origin is explicitly
+      included in the ORIGIN frame.
 
 2.4.  Authority, Push and Coalescing with ORIGIN
 
@@ -256,6 +273,15 @@ Internet-Draft                ORIGIN Frames                     May 2017
       PUSH_PROMISE is authoritative, as described in [RFC7540],
       Section 8.2.2.
 
+
+
+
+
+Nottingham & Nygren     Expires November 26, 2017               [Page 5]
+
+Internet-Draft                ORIGIN Frames                     May 2017
+
+
    Note that clients are still required to perform checks on the
    certificate presented by the server for each origin that a connection
    is used for; see [RFC7540] Section 9.1.1 for more information.  This
@@ -270,17 +296,9 @@ Internet-Draft                ORIGIN Frames                     May 2017
    Set is a proper subset of another connection's Origin Set, and SHOULD
    close it once all outstanding requests are satisfied.
 
-
-
-
-
-
-
-
-Nottingham & Nygren     Expires November 25, 2017               [Page 5]
-
-Internet-Draft                ORIGIN Frames                     May 2017
-
+   The Origin Set is unaffected by any alternative services [RFC7838]
+   advertisements made by the server.  Advertising an alternative
+   service does not affect whether a server is authoritative.
 
 3.  IANA Considerations
 
@@ -309,6 +327,17 @@ Internet-Draft                ORIGIN Frames                     May 2017
 
 5.1.  Normative References
 
+
+
+
+
+
+
+Nottingham & Nygren     Expires November 26, 2017               [Page 6]
+
+Internet-Draft                ORIGIN Frames                     May 2017
+
+
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
@@ -328,15 +357,6 @@ Internet-Draft                ORIGIN Frames                     May 2017
               Extensions: Extension Definitions", RFC 6066,
               DOI 10.17487/RFC6066, January 2011,
               <http://www.rfc-editor.org/info/rfc6066>.
-
-
-
-
-
-Nottingham & Nygren     Expires November 25, 2017               [Page 6]
-
-Internet-Draft                ORIGIN Frames                     May 2017
-
 
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
               DOI 10.17487/RFC6454, December 2011,
@@ -362,6 +382,18 @@ Internet-Draft                ORIGIN Frames                     May 2017
               Alternative Services", RFC 7838, DOI 10.17487/RFC7838,
               April 2016, <http://www.rfc-editor.org/info/rfc7838>.
 
+
+
+
+
+
+
+
+Nottingham & Nygren     Expires November 26, 2017               [Page 7]
+
+Internet-Draft                ORIGIN Frames                     May 2017
+
+
 Appendix A.  Non-Normative Processing Algorithm
 
    The following algorithm illustrates how a client could handle
@@ -384,15 +416,6 @@ Appendix A.  Non-Normative Processing Algorithm
        step, initialise the Origin Set as per Section 2.3.
 
    6.  For each Origin field "origin_raw" in the frame payload:
-
-
-
-
-
-Nottingham & Nygren     Expires November 25, 2017               [Page 7]
-
-Internet-Draft                ORIGIN Frames                     May 2017
-
 
        1.  Parse "origin_raw" as an ASCII serialization of an origin
            ([RFC6454], Section 6.2) and let the result be
@@ -419,6 +442,14 @@ Appendix B.  Operational Considerations for Servers
    Therefore, the ORIGIN frame ought be sent as soon as possible on a
    connection, ideally before any HEADERS or PUSH_PROMISE frames.
 
+
+
+
+Nottingham & Nygren     Expires November 26, 2017               [Page 8]
+
+Internet-Draft                ORIGIN Frames                     May 2017
+
+
    However, if it's desirable to associate a large number of origins
    with a connection, doing so might introduce end-user perceived
    latency, due to their size.  As a result, it might be necessary to
@@ -439,16 +470,6 @@ Appendix B.  Operational Considerations for Servers
    the default contents of the Origin Set (as per Section 2.3) do not
    contain any Alternative Services' origins, even if they have been
    used previously on the connection.
-
-
-
-
-
-
-Nottingham & Nygren     Expires November 25, 2017               [Page 8]
-
-Internet-Draft                ORIGIN Frames                     May 2017
-
 
 Authors' Addresses
 
@@ -480,25 +501,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Nottingham & Nygren     Expires November 25, 2017               [Page 9]
+Nottingham & Nygren     Expires November 26, 2017               [Page 9]
