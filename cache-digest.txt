@@ -78,14 +78,15 @@ Table of Contents
        2.1.2.  Computing a Hash Value  . . . . . . . . . . . . . . .   6
      2.2.  Server Behavior . . . . . . . . . . . . . . . . . . . . .   6
        2.2.1.  Querying the Digest for a Value . . . . . . . . . . .   7
-   3.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   8
-   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
-   5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
-     5.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
-     5.2.  Informative References  . . . . . . . . . . . . . . . . .  10
-   Appendix A.  Encoding the CACHE_DIGEST frame as an HTTP Header  .  11
-   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  12
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  12
+   3.  The ACCEPT_CACHE_DIGEST SETTINGS Parameter  . . . . . . . . .   8
+   4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
+   5.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
+   6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
+     6.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
+     6.2.  Informative References  . . . . . . . . . . . . . . . . .  11
+   Appendix A.  Encoding the CACHE_DIGEST frame as an HTTP Header  .  12
+   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  13
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  13
 
 1.  Introduction
 
@@ -104,8 +105,7 @@ Table of Contents
 
    This specification defines a HTTP/2 frame type to allow clients to
    inform the server of their cache's contents using a Golomb-Rice Coded
-   Set [Rice].  Servers can then use this to inform their choices of
-   what to push to clients.
+
 
 
 
@@ -113,6 +113,9 @@ Oku & Nottingham        Expires November 26, 2017               [Page 2]
 
 Internet-Draft          Cache Digests for HTTP/2                May 2017
 
+
+   Set [Rice].  Servers can then use this to inform their choices of
+   what to push to clients.
 
 1.1.  Notational Conventions
 
@@ -159,9 +162,6 @@ Internet-Draft          Cache Digests for HTTP/2                May 2017
    o  *STALE* (0x8): When set, indicates that all cached responses
       represented in the digest-value are stale [RFC7234] at the point
       in them that the digest was generated; otherwise, all are fresh.
-
-
-
 
 
 
@@ -414,7 +414,47 @@ Internet-Draft          Cache Digests for HTTP/2                May 2017
    10.  Otherwise, return to step 5 and continue processing; if no match
         is found before "digest-value" is exhausted, return 'false'.
 
-3.  IANA Considerations
+3.  The ACCEPT_CACHE_DIGEST SETTINGS Parameter
+
+   A server can notify its support for CACHE_DIGEST frame by sending the
+   ACCEPT_CACHE_DIGEST (0x7) SETTINGS parameter.  If the server is
+   tempted to making optimizations based on CACHE_DIGEST frames, it
+   SHOULD send the SETTINGS parameter immediately after the connection
+   is established.
+
+   The value of the parameter is a bit-field of which the following bits
+   are defined:
+
+   FRESH (0x1): When set, it indicates that the server is willing to
+   make use of a digest of freshly-cached responses.
+
+   STALE (0x2): When set, it indicates that the server is willing to
+   make use of a digest of stale-cached responses.
+
+   Rest of the bits MUST be ignored and MUST be left unset when sending.
+
+   The initial value of the parameter is zero (0x0) meaning that the
+   server is not interested in seeing a CACHE_DIGEST frame.
+
+   Some underlying transports allow the server's first flight of
+   application data to reach the client at around the same time when the
+   client sends it's first flight data.  When such transport (e.g., TLS
+   1.3 [I-D.ietf-tls-tls13] in full-handshake mode) is used, a client
+   can postpone sending the CACHE_DIGEST frame until it receives a
+   ACCEPT_CACHE_DIGEST settings value.
+
+
+
+Oku & Nottingham        Expires November 26, 2017               [Page 8]
+
+Internet-Draft          Cache Digests for HTTP/2                May 2017
+
+
+   When the underlying transport does not have such property (e.g., TLS
+   1.3 in 0-RTT mode), a client can reuse the settings value found in
+   previous connections to that origin [RFC6454] to make assumptions.
+
+4.  IANA Considerations
 
    This document registers the following entry in the Permanent Message
    Headers Registry, as per [RFC3864]:
@@ -438,19 +478,18 @@ Internet-Draft          Cache Digests for HTTP/2                May 2017
 
    o  Specification: [this document]
 
+   This document registers the following entry in the HTTP/2 Settings
+   Registry, as per [RFC7540]:
 
+   o  Code: 0x7
 
+   o  Name: ACCEPT_CACHE_DIGEST
 
+   o  Initial Value: 0x0
 
+   o  Reference: [this document]
 
-
-
-Oku & Nottingham        Expires November 26, 2017               [Page 8]
-
-Internet-Draft          Cache Digests for HTTP/2                May 2017
-
-
-4.  Security Considerations
+5.  Security Considerations
 
    The contents of a User Agent's cache can be used to re-identify or
    "fingerprint" the user over time, even when other identifiers (e.g.,
@@ -459,6 +498,13 @@ Internet-Draft          Cache Digests for HTTP/2                May 2017
    CACHE_DIGEST allows such cache-based fingerprinting to become
    passive, since it allows the server to discover the state of the
    client's cache without any visible change in server behaviour.
+
+
+
+Oku & Nottingham        Expires November 26, 2017               [Page 9]
+
+Internet-Draft          Cache Digests for HTTP/2                May 2017
+
 
    As a result, clients MUST mitigate for this threat when the user
    attempts to remove identifiers (e.g., "clearing cookies").  This
@@ -472,9 +518,9 @@ Internet-Draft          Cache Digests for HTTP/2                May 2017
    Additionally, User Agents SHOULD NOT send CACHE_DIGEST when in
    "privacy mode."
 
-5.  References
+6.  References
 
-5.1.  Normative References
+6.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -495,17 +541,6 @@ Internet-Draft          Cache Digests for HTTP/2                May 2017
               DOI 10.17487/RFC6454, December 2011,
               <http://www.rfc-editor.org/info/rfc6454>.
 
-
-
-
-
-
-
-Oku & Nottingham        Expires November 26, 2017               [Page 9]
-
-Internet-Draft          Cache Digests for HTTP/2                May 2017
-
-
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
@@ -515,6 +550,17 @@ Internet-Draft          Cache Digests for HTTP/2                May 2017
               Protocol (HTTP/1.1): Conditional Requests", RFC 7232,
               DOI 10.17487/RFC7232, June 2014,
               <http://www.rfc-editor.org/info/rfc7232>.
+
+
+
+
+
+
+
+Oku & Nottingham        Expires November 26, 2017              [Page 10]
+
+Internet-Draft          Cache Digests for HTTP/2                May 2017
+
 
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
@@ -526,9 +572,14 @@ Internet-Draft          Cache Digests for HTTP/2                May 2017
               DOI 10.17487/RFC7540, May 2015,
               <http://www.rfc-editor.org/info/rfc7540>.
 
-5.2.  Informative References
+6.2.  Informative References
 
    [Fetch]    "Fetch Standard", n.d., <https://fetch.spec.whatwg.org/>.
+
+   [I-D.ietf-tls-tls13]
+              Rescorla, E., "The Transport Layer Security (TLS) Protocol
+              Version 1.3", draft-ietf-tls-tls13-20 (work in progress),
+              April 2017.
 
    [RFC3864]  Klyne, G., Nottingham, M., and J. Mogul, "Registration
               Procedures for Message Header Fields", BCP 90, RFC 3864,
@@ -552,20 +603,20 @@ Internet-Draft          Cache Digests for HTTP/2                May 2017
               for efficient compression of spacecraft television data",
               IEEE Transactions on Communication Technology 19.6 , 1971.
 
-
-
-
-
-
-Oku & Nottingham        Expires November 26, 2017              [Page 10]
-
-Internet-Draft          Cache Digests for HTTP/2                May 2017
-
-
    [Service-Workers]
               Russell, A., Song, J., Archibald, J., and M.
               Kruisselbrink, "Service Workers 1", October 2016,
               <https://www.w3.org/TR/2016/WD-service-workers-1/>.
+
+
+
+
+
+
+Oku & Nottingham        Expires November 26, 2017              [Page 11]
+
+Internet-Draft          Cache Digests for HTTP/2                May 2017
+
 
 Appendix A.  Encoding the CACHE_DIGEST frame as an HTTP Header
 
@@ -610,19 +661,18 @@ Appendix A.  Encoding the CACHE_DIGEST frame as an HTTP Header
    to the server nor guarantees that all the requests will be
    transmitted using a single HTTP/2 connection.
 
-
-
-
-Oku & Nottingham        Expires November 26, 2017              [Page 11]
-
-Internet-Draft          Cache Digests for HTTP/2                May 2017
-
-
    Also, due to the fact that any header that is supplied to Fetch is
    required to be end-to-end, there is an ambiguity in what a Cache-
    Digest header respresents when a request is transmitted through a
    proxy.  The header may represent the cache state of a client or that
    of a proxy, depending on how the proxy handles the header.
+
+
+
+Oku & Nottingham        Expires November 26, 2017              [Page 12]
+
+Internet-Draft          Cache Digests for HTTP/2                May 2017
+
 
 Appendix B.  Acknowledgements
 
@@ -669,4 +719,10 @@ Authors' Addresses
 
 
 
-Oku & Nottingham        Expires November 26, 2017              [Page 12]
+
+
+
+
+
+
+Oku & Nottingham        Expires November 26, 2017              [Page 13]
