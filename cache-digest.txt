@@ -83,8 +83,9 @@ Table of Contents
    5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
      5.2.  Informative References  . . . . . . . . . . . . . . . . .   9
-   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .  10
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  10
+   Appendix A.  Encoding the CACHE_DIGEST frame as an HTTP Header  .  10
+   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  11
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  11
 
 1.  Introduction
 
@@ -105,7 +106,6 @@ Table of Contents
    inform the server of their cache's contents using a Golomb-Rice Coded
    Set [Rice].  Servers can then use this to inform their choices of
    what to push to clients.
-
 
 
 
@@ -417,8 +417,9 @@ Internet-Draft          Cache Digests for HTTP/2                May 2017
 3.  IANA Considerations
 
    This draft currently has no requirements for IANA.  If the
-   CACHE_DIGEST frame is standardised, it will need to be assigned a
-   frame type.
+   specification is standardised, the CACHE_DIGEST frame will need to be
+   assigned a frame type and the Cache-Digest header will need to be
+   registered.
 
 4.  Security Considerations
 
@@ -441,7 +442,6 @@ Internet-Draft          Cache Digests for HTTP/2                May 2017
 
    Additionally, User Agents SHOULD NOT send CACHE_DIGEST when in
    "privacy mode."
-
 
 
 
@@ -495,9 +495,9 @@ Internet-Draft          Cache Digests for HTTP/2                May 2017
 
 5.2.  Informative References
 
-   [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
-              DOI 10.17487/RFC6265, April 2011,
-              <http://www.rfc-editor.org/info/rfc6265>.
+   [Fetch]    "Fetch Standard", n.d., <https://fetch.spec.whatwg.org/>.
+
+
 
 
 
@@ -506,11 +506,85 @@ Oku & Nottingham        Expires November 26, 2017               [Page 9]
 Internet-Draft          Cache Digests for HTTP/2                May 2017
 
 
+   [RFC4648]  Josefsson, S., "The Base16, Base32, and Base64 Data
+              Encodings", RFC 4648, DOI 10.17487/RFC4648, October 2006,
+              <http://www.rfc-editor.org/info/rfc4648>.
+
+   [RFC5234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
+              Specifications: ABNF", STD 68, RFC 5234,
+              DOI 10.17487/RFC5234, January 2008,
+              <http://www.rfc-editor.org/info/rfc5234>.
+
+   [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
+              DOI 10.17487/RFC6265, April 2011,
+              <http://www.rfc-editor.org/info/rfc6265>.
+
    [Rice]     Rice, R. and J. Plaunt, "Adaptive variable-length coding
               for efficient compression of spacecraft television data",
               IEEE Transactions on Communication Technology 19.6 , 1971.
 
-Appendix A.  Acknowledgements
+   [Service-Workers]
+              Russell, A., Song, J., Archibald, J., and M.
+              Kruisselbrink, "Service Workers 1", October 2016,
+              <https://www.w3.org/TR/2016/WD-service-workers-1/>.
+
+Appendix A.  Encoding the CACHE_DIGEST frame as an HTTP Header
+
+   On some web browsers that support Service Workers [Service-Workers]
+   but not Cache Digests (yet), it is possible to achieve the benefit of
+   using Cache Digests by emulating the frame using HTTP Headers.
+
+   For the sake of interoperability with such clients, this appendix
+   defines how a CACHE_DIGEST frame can be encoded as an HTTP header
+   named "Cache-Digest".
+
+   The definition uses the Augmented Backus-Naur Form (ABNF) notation of
+   [RFC5234] with the list rule extension defined in [RFC7230],
+   Appendix B.
+
+     Cache-Digest  = 1#digest-entity
+     digest-entity = digest-value *(OWS ";" OWS digest-flag)
+     digest-value  = <Digest-Value encoded using base64url>
+     digest-flag   = token
+
+   A Cache-Digest request header is defined as a list construct of
+   cache-digest-entities.  Each cache-digest-entity corresponds to a
+   CACHE_DIGEST frame.
+
+   Digest-Value is encoded using base64url [RFC4648], Section 5.  Flags
+   that are set are encoded as digest-flags by their names that are
+   compared case-insensitively.
+
+
+
+Oku & Nottingham        Expires November 26, 2017              [Page 10]
+
+Internet-Draft          Cache Digests for HTTP/2                May 2017
+
+
+   Origin is omitted in the header form.  The value is implied from the
+   value of the ":authority" pseudo header.  Client MUST only send
+   Cache-Digest headers containing digests that belong to the origin
+   specified by the HTTP request.
+
+   The example below contains one digest of fresh resource and has only
+   the "COMPLETE" flag set.
+
+     Cache-Digest: AfdA; complete
+
+   Clients MUST associate Cache-Digest headers to every HTTP request,
+   since Fetch [Fetch] - the HTTP API supported by Service Workers -
+   does not define the order in which the issued requests will be sent
+   to the server nor guarantees that all the requests will be
+   transmitted using a single HTTP/2 connection.
+
+   Also, due to the fact that any header that is supplied to Fetch is
+   required to be end-to-end, there is an ambiguity in what a Cache-
+   Digest header respresents when a request is transmitted through a
+   proxy.  The header may represent the cache state of a client or that
+   of a proxy, depending on how the proxy handles the header.
+
+Appendix B.  Acknowledgements
 
    Thanks to Adam Langley and Giovanni Bajo for their explorations of
    Golomb-coded sets.  In particular, see
@@ -539,22 +613,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Oku & Nottingham        Expires November 26, 2017              [Page 10]
+Oku & Nottingham        Expires November 26, 2017              [Page 11]
