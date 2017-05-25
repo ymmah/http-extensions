@@ -79,13 +79,13 @@ Table of Contents
      2.2.  Server Behavior . . . . . . . . . . . . . . . . . . . . .   6
        2.2.1.  Querying the Digest for a Value . . . . . . . . . . .   7
    3.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   8
-   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
+   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
    5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
-     5.2.  Informative References  . . . . . . . . . . . . . . . . .   9
-   Appendix A.  Encoding the CACHE_DIGEST frame as an HTTP Header  .  10
-   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  11
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  11
+     5.2.  Informative References  . . . . . . . . . . . . . . . . .  10
+   Appendix A.  Encoding the CACHE_DIGEST frame as an HTTP Header  .  11
+   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  12
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  12
 
 1.  Introduction
 
@@ -122,8 +122,7 @@ Internet-Draft          Cache Digests for HTTP/2                May 2017
 
 2.  The CACHE_DIGEST Frame
 
-   The CACHE_DIGEST frame type is 0xf1.  NOTE: This is an experimental
-   value; if standardised, a permanent value will be assigned.
+   The CACHE_DIGEST frame type is 0xd (decimal 13).
 
    +-------------------------------+-------------------------------+
    |         Origin-Len (16)       | Origin? (\*)                ...
@@ -160,6 +159,7 @@ Internet-Draft          Cache Digests for HTTP/2                May 2017
    o  *STALE* (0x8): When set, indicates that all cached responses
       represented in the digest-value are stale [RFC7234] at the point
       in them that the digest was generated; otherwise, all are fresh.
+
 
 
 
@@ -416,10 +416,39 @@ Internet-Draft          Cache Digests for HTTP/2                May 2017
 
 3.  IANA Considerations
 
-   This draft currently has no requirements for IANA.  If the
-   specification is standardised, the CACHE_DIGEST frame will need to be
-   assigned a frame type and the Cache-Digest header will need to be
-   registered.
+   This document registers the following entry in the Permanent Message
+   Headers Registry, as per [RFC3864]:
+
+   o  Header field name: Cache-Digest
+
+   o  Applicable protocol: http
+
+   o  Status: experimental
+
+   o  Author/Change controller: IESG
+
+   o  Specification document(s): [this document]
+
+   This document registers the following entry in the HTTP/2 Frame Type
+   Registry, as per [RFC7540]:
+
+   o  Frame Type: CACHE_DIGEST
+
+   o  Code: 0xd
+
+   o  Specification: [this document]
+
+
+
+
+
+
+
+
+Oku & Nottingham        Expires November 26, 2017               [Page 8]
+
+Internet-Draft          Cache Digests for HTTP/2                May 2017
+
 
 4.  Security Considerations
 
@@ -443,13 +472,6 @@ Internet-Draft          Cache Digests for HTTP/2                May 2017
    Additionally, User Agents SHOULD NOT send CACHE_DIGEST when in
    "privacy mode."
 
-
-
-Oku & Nottingham        Expires November 26, 2017               [Page 8]
-
-Internet-Draft          Cache Digests for HTTP/2                May 2017
-
-
 5.  References
 
 5.1.  Normative References
@@ -472,6 +494,17 @@ Internet-Draft          Cache Digests for HTTP/2                May 2017
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
               DOI 10.17487/RFC6454, December 2011,
               <http://www.rfc-editor.org/info/rfc6454>.
+
+
+
+
+
+
+
+Oku & Nottingham        Expires November 26, 2017               [Page 9]
+
+Internet-Draft          Cache Digests for HTTP/2                May 2017
+
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
@@ -497,14 +530,10 @@ Internet-Draft          Cache Digests for HTTP/2                May 2017
 
    [Fetch]    "Fetch Standard", n.d., <https://fetch.spec.whatwg.org/>.
 
-
-
-
-
-Oku & Nottingham        Expires November 26, 2017               [Page 9]
-
-Internet-Draft          Cache Digests for HTTP/2                May 2017
-
+   [RFC3864]  Klyne, G., Nottingham, M., and J. Mogul, "Registration
+              Procedures for Message Header Fields", BCP 90, RFC 3864,
+              DOI 10.17487/RFC3864, September 2004,
+              <http://www.rfc-editor.org/info/rfc3864>.
 
    [RFC4648]  Josefsson, S., "The Base16, Base32, and Base64 Data
               Encodings", RFC 4648, DOI 10.17487/RFC4648, October 2006,
@@ -522,6 +551,16 @@ Internet-Draft          Cache Digests for HTTP/2                May 2017
    [Rice]     Rice, R. and J. Plaunt, "Adaptive variable-length coding
               for efficient compression of spacecraft television data",
               IEEE Transactions on Communication Technology 19.6 , 1971.
+
+
+
+
+
+
+Oku & Nottingham        Expires November 26, 2017              [Page 10]
+
+Internet-Draft          Cache Digests for HTTP/2                May 2017
+
 
    [Service-Workers]
               Russell, A., Song, J., Archibald, J., and M.
@@ -555,13 +594,6 @@ Appendix A.  Encoding the CACHE_DIGEST frame as an HTTP Header
    that are set are encoded as digest-flags by their names that are
    compared case-insensitively.
 
-
-
-Oku & Nottingham        Expires November 26, 2017              [Page 10]
-
-Internet-Draft          Cache Digests for HTTP/2                May 2017
-
-
    Origin is omitted in the header form.  The value is implied from the
    value of the ":authority" pseudo header.  Client MUST only send
    Cache-Digest headers containing digests that belong to the origin
@@ -577,6 +609,14 @@ Internet-Draft          Cache Digests for HTTP/2                May 2017
    does not define the order in which the issued requests will be sent
    to the server nor guarantees that all the requests will be
    transmitted using a single HTTP/2 connection.
+
+
+
+
+Oku & Nottingham        Expires November 26, 2017              [Page 11]
+
+Internet-Draft          Cache Digests for HTTP/2                May 2017
+
 
    Also, due to the fact that any header that is supplied to Fetch is
    required to be end-to-end, there is an ambiguity in what a Cache-
@@ -613,4 +653,20 @@ Authors' Addresses
 
 
 
-Oku & Nottingham        Expires November 26, 2017              [Page 11]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Oku & Nottingham        Expires November 26, 2017              [Page 12]
