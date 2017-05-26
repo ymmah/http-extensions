@@ -2111,7 +2111,7 @@ Internet-Draft       HTTP State Management Mechanism            May 2017
 
    [UTS46]    Davis, M. and M. Suignard, "Unicode IDNA Compatibility
               Processing", UNICODE Unicode Technical Standards # 46,
-              2010, <http://unicode.org/reports/tr46/>.
+              June 2016, <http://unicode.org/reports/tr46/>.
 
 Appendix A.  Changes
 
