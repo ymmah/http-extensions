@@ -2018,10 +2018,12 @@ Barth & West            Expires November 27, 2017              [Page 36]
 Internet-Draft       HTTP State Management Mechanism            May 2017
 
 
-   [RFC3490]  Faltstrom, P., Hoffman, P., and A. Costello,
-              "Internationalizing Domain Names in Applications (IDNA)",
-              RFC 3490, DOI 10.17487/RFC3490, March 2003,
-              <http://www.rfc-editor.org/info/rfc3490>.
+   [RFC3490]  Costello, A., "Internationalizing Domain Names in
+              Applications (IDNA)", RFC 3490, DOI 10.17487/RFC3490,
+              March 2003, <http://www.rfc-editor.org/info/rfc3490>.
+
+              See Section 6.3 for an explanation why the normative
+              reference to an obsoleted specification is needed.
 
    [RFC4790]  Newman, C., Duerst, M., and A. Gulbrandsen, "Internet
               Application Protocol Collation Registry", RFC 4790,
@@ -2063,8 +2065,6 @@ Internet-Draft       HTTP State Management Mechanism            May 2017
               West, M., "Deprecate modification of 'secure' cookies from
               non-secure origins", draft-ietf-httpbis-cookie-alone-01
               (work in progress), September 2016.
-
-
 
 
 
