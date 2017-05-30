@@ -4,8 +4,8 @@
 
 HTTP Working Group                                                K. Oku
 Internet-Draft                                            DeNA Co., Ltd.
-Intended status: Experimental                               May 26, 2017
-Expires: November 27, 2017
+Intended status: Experimental                               May 30, 2017
+Expires: December 1, 2017
 
 
                 An HTTP Status Code for Indicating Hints
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on November 27, 2017.
+   This Internet-Draft will expire on December 1, 2017.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Oku                     Expires November 27, 2017               [Page 1]
+Oku                     Expires December 1, 2017                [Page 1]
 
 Internet-Draft                 Early Hints                      May 2017
 
@@ -74,16 +74,16 @@ Table of Contents
      1.1.  Notational Conventions  . . . . . . . . . . . . . . . . .   3
    2.  103 Early Hints . . . . . . . . . . . . . . . . . . . . . . .   3
    3.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
-   4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
-   5.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   4
-   6.  Changes . . . . . . . . . . . . . . . . . . . . . . . . . . .   4
-     6.1.  Since draft-ietf-httpbis-early-hints-02 . . . . . . . . .   4
+   4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
+   5.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   5
+   6.  Changes . . . . . . . . . . . . . . . . . . . . . . . . . . .   5
+     6.1.  Since draft-ietf-httpbis-early-hints-02 . . . . . . . . .   5
      6.2.  Since draft-ietf-httpbis-early-hints-01 . . . . . . . . .   5
      6.3.  Since draft-ietf-httpbis-early-hints-00 . . . . . . . . .   5
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   5
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .   5
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   5
+     7.2.  Informative References  . . . . . . . . . . . . . . . . .   6
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   6
 
 1.  Introduction
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Oku                     Expires November 27, 2017               [Page 2]
+Oku                     Expires December 1, 2017                [Page 2]
 
 Internet-Draft                 Early Hints                      May 2017
 
@@ -165,7 +165,7 @@ Internet-Draft                 Early Hints                      May 2017
 
 
 
-Oku                     Expires November 27, 2017               [Page 3]
+Oku                     Expires December 1, 2017                [Page 3]
 
 Internet-Draft                 Early Hints                      May 2017
 
@@ -173,6 +173,30 @@ Internet-Draft                 Early Hints                      May 2017
    An intermediary MAY drop the informational response.  It MAY send
    HTTP/2 ([RFC7540]) server pushes using the information found in the
    103 (Early Hints) response.
+
+   The following example illustrates a typical message exchange that
+   involves a 103 (Early Hints) response.
+
+   Client request:
+
+     GET / HTTP/1.1
+     Host: example.com
+
+   Server response:
+
+     HTTP/1.1 103 Early Hints
+     Link: </style.css>; rel=preload; as=style
+     Link: </script.js>; rel=preload; as=script
+
+     HTTP/1.1 200 OK
+     Date: Fri, 26 May 2017 10:02:11 GMT
+     Content-Length: 1234
+     Content-Type: text/html; charset=utf-8
+     Link: </style.css>; rel=preload; as=style
+     Link: </script.js>; rel=preload; as=script
+
+     <!doctype html>
+     [... rest of the response body is ommitted from the example ...]
 
 3.  Security Considerations
 
@@ -194,6 +218,13 @@ Internet-Draft                 Early Hints                      May 2017
    HTTP/2 clients are less likely to suffer from incorrect framing since
    handling of the response header fields does not affect how the end of
    the response body is determined.
+
+
+
+Oku                     Expires December 1, 2017                [Page 4]
+
+Internet-Draft                 Early Hints                      May 2017
+
 
 4.  IANA Considerations
 
@@ -217,15 +248,6 @@ Internet-Draft                 Early Hints                      May 2017
 
    o  None yet.
 
-
-
-
-
-Oku                     Expires November 27, 2017               [Page 4]
-
-Internet-Draft                 Early Hints                      May 2017
-
-
 6.2.  Since draft-ietf-httpbis-early-hints-01
 
    o  Editorial changes.
@@ -248,6 +270,17 @@ Internet-Draft                 Early Hints                      May 2017
               Protocol (HTTP/1.1): Message Syntax and Routing",
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
               <http://www.rfc-editor.org/info/rfc7230>.
+
+
+
+
+
+
+
+Oku                     Expires December 1, 2017                [Page 5]
+
+Internet-Draft                 Early Hints                      May 2017
+
 
    [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
@@ -277,4 +310,27 @@ Author's Address
 
 
 
-Oku                     Expires November 27, 2017               [Page 5]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Oku                     Expires December 1, 2017                [Page 6]
