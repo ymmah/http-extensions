@@ -9,7 +9,7 @@ Expires: December 1, 2017                                   May 30, 2017
 
 
                         Cache Digests for HTTP/2
-                   draft-ietf-httpbis-cache-digest-02
+                 draft-ietf-httpbis-cache-digest-latest
 
 Abstract
 
@@ -87,8 +87,9 @@ Table of Contents
    Appendix A.  Encoding the CACHE_DIGEST frame as an HTTP Header  .  12
    Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  13
    Appendix C.  Changes  . . . . . . . . . . . . . . . . . . . . . .  13
-     C.1.  Since draft-ietf-httpbis-cache-digest-01  . . . . . . . .  13
-     C.2.  Since draft-ietf-httpbis-cache-digest-00  . . . . . . . .  13
+     C.1.  Since draft-ietf-httpbis-cache-digest-02  . . . . . . . .  13
+     C.2.  Since draft-ietf-httpbis-cache-digest-01  . . . . . . . .  13
+     C.3.  Since draft-ietf-httpbis-cache-digest-00  . . . . . . . .  13
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  13
 
 1.  Introduction
@@ -105,7 +106,6 @@ Table of Contents
    be cancelled by a client using a RST_STREAM frame in this situation,
    but there is still at least one round trip of potentially wasted
    capacity even then.
-
 
 
 
@@ -695,7 +695,11 @@ Appendix B.  Acknowledgements
 
 Appendix C.  Changes
 
-C.1.  Since draft-ietf-httpbis-cache-digest-01
+C.1.  Since draft-ietf-httpbis-cache-digest-02
+
+   o  None yet.
+
+C.2.  Since draft-ietf-httpbis-cache-digest-01
 
    o  Added definition of the Cache-Digest header.
 
@@ -703,7 +707,7 @@ C.1.  Since draft-ietf-httpbis-cache-digest-01
 
    o  Change intended status from Standard to Experimental.
 
-C.2.  Since draft-ietf-httpbis-cache-digest-00
+C.3.  Since draft-ietf-httpbis-cache-digest-00
 
    o  Make the scope of a digest frame explicit and shift to stream 0.
 
@@ -713,6 +717,17 @@ Authors' Addresses
    DeNA Co, Ltd.
 
    Email: kazuhooku@gmail.com
+
+
+
+
+
+
+
+
+Oku & Nottingham        Expires December 1, 2017               [Page 13]
+
+Internet-Draft          Cache Digests for HTTP/2                May 2017
 
 
    Mark Nottingham
@@ -725,4 +740,45 @@ Authors' Addresses
 
 
 
-Oku & Nottingham        Expires December 1, 2017               [Page 13]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Oku & Nottingham        Expires December 1, 2017               [Page 14]
