@@ -4,7 +4,7 @@
 
 HTTP Working Group                                                K. Oku
 Internet-Draft                                             DeNA Co, Ltd.
-Intended status: Standards Track                           M. Nottingham
+Intended status: Experimental                              M. Nottingham
 Expires: December 1, 2017                                   May 30, 2017
 
 
