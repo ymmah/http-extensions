@@ -4,9 +4,9 @@
 
 HTTP Working Group                                            J. Reschke
 Internet-Draft                                                greenbytes
-Obsoletes: 5987 (if approved)                               May 30, 2017
+Obsoletes: 5987 (if approved)                              June 13, 2017
 Intended status: Standards Track
-Expires: December 1, 2017
+Expires: December 15, 2017
 
 
     Indicating Character Encoding and Language for HTTP Header Field
@@ -53,15 +53,15 @@ Status of This Memo
 
 
 
-Reschke                 Expires December 1, 2017                [Page 1]
+Reschke                 Expires December 15, 2017               [Page 1]
 
-Internet-Draft      Charset/Language Encoding in HTTP           May 2017
+Internet-Draft      Charset/Language Encoding in HTTP          June 2017
 
 
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 1, 2017.
+   This Internet-Draft will expire on December 15, 2017.
 
 Copyright Notice
 
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Reschke                 Expires December 1, 2017                [Page 2]
+Reschke                 Expires December 15, 2017               [Page 2]
 
-Internet-Draft      Charset/Language Encoding in HTTP           May 2017
+Internet-Draft      Charset/Language Encoding in HTTP          June 2017
 
 
      C.5.  Since draft-reschke-rfc5987bis-03 . . . . . . . . . . . .  15
@@ -165,9 +165,9 @@ Internet-Draft      Charset/Language Encoding in HTTP           May 2017
 
 
 
-Reschke                 Expires December 1, 2017                [Page 3]
+Reschke                 Expires December 15, 2017               [Page 3]
 
-Internet-Draft      Charset/Language Encoding in HTTP           May 2017
+Internet-Draft      Charset/Language Encoding in HTTP          June 2017
 
 
       Note: this encoding does not apply to message payloads transmitted
@@ -221,9 +221,9 @@ Internet-Draft      Charset/Language Encoding in HTTP           May 2017
 
 
 
-Reschke                 Expires December 1, 2017                [Page 4]
+Reschke                 Expires December 15, 2017               [Page 4]
 
-Internet-Draft      Charset/Language Encoding in HTTP           May 2017
+Internet-Draft      Charset/Language Encoding in HTTP          June 2017
 
 
 3.2.  Parameter Value Character Encoding and Language Information
@@ -277,9 +277,9 @@ Internet-Draft      Charset/Language Encoding in HTTP           May 2017
 
 
 
-Reschke                 Expires December 1, 2017                [Page 5]
+Reschke                 Expires December 15, 2017               [Page 5]
 
-Internet-Draft      Charset/Language Encoding in HTTP           May 2017
+Internet-Draft      Charset/Language Encoding in HTTP          June 2017
 
 
      ext-value     = charset  "'" [ language ] "'" value-chars
@@ -333,9 +333,9 @@ Internet-Draft      Charset/Language Encoding in HTTP           May 2017
 
 
 
-Reschke                 Expires December 1, 2017                [Page 6]
+Reschke                 Expires December 15, 2017               [Page 6]
 
-Internet-Draft      Charset/Language Encoding in HTTP           May 2017
+Internet-Draft      Charset/Language Encoding in HTTP          June 2017
 
 
    Producers MUST use the "UTF-8" ([RFC3629]) character encoding.
@@ -389,9 +389,9 @@ Internet-Draft      Charset/Language Encoding in HTTP           May 2017
 
 
 
-Reschke                 Expires December 1, 2017                [Page 7]
+Reschke                 Expires December 15, 2017               [Page 7]
 
-Internet-Draft      Charset/Language Encoding in HTTP           May 2017
+Internet-Draft      Charset/Language Encoding in HTTP          June 2017
 
 
    Non-extended notation, using "quoted-string":
@@ -445,9 +445,9 @@ Internet-Draft      Charset/Language Encoding in HTTP           May 2017
 
 
 
-Reschke                 Expires December 1, 2017                [Page 8]
+Reschke                 Expires December 15, 2017               [Page 8]
 
-Internet-Draft      Charset/Language Encoding in HTTP           May 2017
+Internet-Draft      Charset/Language Encoding in HTTP          June 2017
 
 
    For instance:
@@ -501,9 +501,9 @@ Internet-Draft      Charset/Language Encoding in HTTP           May 2017
 
 
 
-Reschke                 Expires December 1, 2017                [Page 9]
+Reschke                 Expires December 15, 2017               [Page 9]
 
-Internet-Draft      Charset/Language Encoding in HTTP           May 2017
+Internet-Draft      Charset/Language Encoding in HTTP          June 2017
 
 
    both formats without breaking recipients that do not understand the
@@ -557,9 +557,9 @@ Internet-Draft      Charset/Language Encoding in HTTP           May 2017
 
 
 
-Reschke                 Expires December 1, 2017               [Page 10]
+Reschke                 Expires December 15, 2017              [Page 10]
 
-Internet-Draft      Charset/Language Encoding in HTTP           May 2017
+Internet-Draft      Charset/Language Encoding in HTTP          June 2017
 
 
    [RFC2978]  Freed, N. and J. Postel, "IANA Charset Registration
@@ -613,9 +613,9 @@ Internet-Draft      Charset/Language Encoding in HTTP           May 2017
 
 
 
-Reschke                 Expires December 1, 2017               [Page 11]
+Reschke                 Expires December 15, 2017              [Page 11]
 
-Internet-Draft      Charset/Language Encoding in HTTP           May 2017
+Internet-Draft      Charset/Language Encoding in HTTP          June 2017
 
 
    [RFC2047]  Moore, K., "MIME (Multipurpose Internet Mail Extensions)
@@ -669,9 +669,9 @@ Internet-Draft      Charset/Language Encoding in HTTP           May 2017
 
 
 
-Reschke                 Expires December 1, 2017               [Page 12]
+Reschke                 Expires December 15, 2017              [Page 12]
 
-Internet-Draft      Charset/Language Encoding in HTTP           May 2017
+Internet-Draft      Charset/Language Encoding in HTTP          June 2017
 
 
    [RFC8053]  Oiwa, Y., Watanabe, H., Takagi, H., Maeda, K., Hayashi,
@@ -725,9 +725,9 @@ Internet-Draft      Charset/Language Encoding in HTTP           May 2017
 
 
 
-Reschke                 Expires December 1, 2017               [Page 13]
+Reschke                 Expires December 15, 2017              [Page 13]
 
-Internet-Draft      Charset/Language Encoding in HTTP           May 2017
+Internet-Draft      Charset/Language Encoding in HTTP          June 2017
 
 
 Appendix A.  Changes from RFC 5987
@@ -781,9 +781,9 @@ Appendix B.  Implementation Report
 
 
 
-Reschke                 Expires December 1, 2017               [Page 14]
+Reschke                 Expires December 15, 2017              [Page 14]
 
-Internet-Draft      Charset/Language Encoding in HTTP           May 2017
+Internet-Draft      Charset/Language Encoding in HTTP          June 2017
 
 
    The "Link" header field, on the other hand, was more recently
@@ -837,9 +837,9 @@ C.8.  Since draft-reschke-rfc5987bis-06
 
 
 
-Reschke                 Expires December 1, 2017               [Page 15]
+Reschke                 Expires December 15, 2017              [Page 15]
 
-Internet-Draft      Charset/Language Encoding in HTTP           May 2017
+Internet-Draft      Charset/Language Encoding in HTTP          June 2017
 
 
 C.9.  Since draft-ietf-httpbis-rfc5987bis-00
@@ -893,9 +893,9 @@ Acknowledgements
 
 
 
-Reschke                 Expires December 1, 2017               [Page 16]
+Reschke                 Expires December 15, 2017              [Page 16]
 
-Internet-Draft      Charset/Language Encoding in HTTP           May 2017
+Internet-Draft      Charset/Language Encoding in HTTP          June 2017
 
 
    Benjamin Carlyle, Roar Lauritzsen, Eric Lawrence, and James Manger
@@ -949,4 +949,4 @@ Author's Address
 
 
 
-Reschke                 Expires December 1, 2017               [Page 17]
+Reschke                 Expires December 15, 2017              [Page 17]

@@ -5,7 +5,7 @@
 HTTP Working Group                                           R. Fielding
 Internet-Draft                                Adobe Systems Incorporated
 Intended status: Standards Track                           M. Nottingham
-Expires: December 1, 2017                                   May 30, 2017
+Expires: December 15, 2017                                 June 13, 2017
 
 
                    The Key HTTP Response Header Field
@@ -32,11 +32,11 @@ Note to Readers
 
    Discussion of this draft takes place on the HTTP working group
    mailing list (ietf-http-wg@w3.org), which is archived at
-   https://lists.w3.org/Archives/Public/ietf-http-wg/ .
+   https://lists.w3.org/Archives/Public/ietf-http-wg/.
 
-   Working Group information can be found at http://httpwg.github.io/ ;
+   Working Group information can be found at http://httpwg.github.io/;
    source code and issues list for this draft can be found at
-   https://github.com/httpwg/http-extensions/labels/key .
+   https://github.com/httpwg/http-extensions/labels/key.
 
 Status of This Memo
 
@@ -53,15 +53,15 @@ Status of This Memo
 
 
 
-Fielding & Nottingham   Expires December 1, 2017                [Page 1]
+Fielding & Nottingham   Expires December 15, 2017               [Page 1]
 
-Internet-Draft                     Key                          May 2017
+Internet-Draft                     Key                         June 2017
 
 
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 1, 2017.
+   This Internet-Draft will expire on December 15, 2017.
 
 Copyright Notice
 
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Fielding & Nottingham   Expires December 1, 2017                [Page 2]
+Fielding & Nottingham   Expires December 15, 2017               [Page 2]
 
-Internet-Draft                     Key                          May 2017
+Internet-Draft                     Key                         June 2017
 
 
 1.  Introduction
@@ -165,9 +165,9 @@ Internet-Draft                     Key                          May 2017
 
 
 
-Fielding & Nottingham   Expires December 1, 2017                [Page 3]
+Fielding & Nottingham   Expires December 15, 2017               [Page 3]
 
-Internet-Draft                     Key                          May 2017
+Internet-Draft                     Key                         June 2017
 
 
    indicates that there are two possible secondary cache keys for this
@@ -221,9 +221,9 @@ Internet-Draft                     Key                          May 2017
 
 
 
-Fielding & Nottingham   Expires December 1, 2017                [Page 4]
+Fielding & Nottingham   Expires December 15, 2017               [Page 4]
 
-Internet-Draft                     Key                          May 2017
+Internet-Draft                     Key                         June 2017
 
 
      Key       = 1#key-value
@@ -277,9 +277,9 @@ Internet-Draft                     Key                          May 2017
 
 
 
-Fielding & Nottingham   Expires December 1, 2017                [Page 5]
+Fielding & Nottingham   Expires December 15, 2017               [Page 5]
 
-Internet-Draft                     Key                          May 2017
+Internet-Draft                     Key                         June 2017
 
 
      Vary: *
@@ -333,9 +333,9 @@ Internet-Draft                     Key                          May 2017
 
 
 
-Fielding & Nottingham   Expires December 1, 2017                [Page 6]
+Fielding & Nottingham   Expires December 15, 2017               [Page 6]
 
-Internet-Draft                     Key                          May 2017
+Internet-Draft                     Key                         June 2017
 
 
    4)  Create "key_list" by splitting "key_value" on "," characters,
@@ -389,9 +389,9 @@ Internet-Draft                     Key                          May 2017
 
 
 
-Fielding & Nottingham   Expires December 1, 2017                [Page 7]
+Fielding & Nottingham   Expires December 15, 2017               [Page 7]
 
-Internet-Draft                     Key                          May 2017
+Internet-Draft                     Key                         June 2017
 
 
            8)  Run the identified processing algorithm on "field_value"
@@ -445,9 +445,9 @@ Internet-Draft                     Key                          May 2017
 
 
 
-Fielding & Nottingham   Expires December 1, 2017                [Page 8]
+Fielding & Nottingham   Expires December 15, 2017               [Page 8]
 
-Internet-Draft                     Key                          May 2017
+Internet-Draft                     Key                         June 2017
 
 
 2.2.2.  Failing Parameter Processing
@@ -501,9 +501,9 @@ Internet-Draft                     Key                          May 2017
 
 
 
-Fielding & Nottingham   Expires December 1, 2017                [Page 9]
+Fielding & Nottingham   Expires December 15, 2017               [Page 9]
 
-Internet-Draft                     Key                          May 2017
+Internet-Draft                     Key                         June 2017
 
 
    For example, the Key:
@@ -557,9 +557,9 @@ Internet-Draft                     Key                          May 2017
 
 
 
-Fielding & Nottingham   Expires December 1, 2017               [Page 10]
+Fielding & Nottingham   Expires December 15, 2017              [Page 10]
 
-Internet-Draft                     Key                          May 2017
+Internet-Draft                     Key                         June 2017
 
 
    For example, the Key:
@@ -613,9 +613,9 @@ Internet-Draft                     Key                          May 2017
 
 
 
-Fielding & Nottingham   Expires December 1, 2017               [Page 11]
+Fielding & Nottingham   Expires December 15, 2017              [Page 11]
 
-Internet-Draft                     Key                          May 2017
+Internet-Draft                     Key                         June 2017
 
 
    For example, the Key:
@@ -669,9 +669,9 @@ Internet-Draft                     Key                          May 2017
 
 
 
-Fielding & Nottingham   Expires December 1, 2017               [Page 12]
+Fielding & Nottingham   Expires December 15, 2017              [Page 12]
 
-Internet-Draft                     Key                          May 2017
+Internet-Draft                     Key                         June 2017
 
 
    Abc: bennet
@@ -725,9 +725,9 @@ Internet-Draft                     Key                          May 2017
 
 
 
-Fielding & Nottingham   Expires December 1, 2017               [Page 13]
+Fielding & Nottingham   Expires December 15, 2017              [Page 13]
 
-Internet-Draft                     Key                          May 2017
+Internet-Draft                     Key                         June 2017
 
 
    Note that steps 2 and 3 accommodate semicolon-separated values, so
@@ -750,7 +750,7 @@ Internet-Draft                     Key                          May 2017
 
    This specification defines the HTTP Key Parameter Registry,
    maintained at http://www.iana.org/assignments/http-parameters/http-
-   parameters.xhtml#key .
+   parameters.xhtml#key.
 
 3.1.  Procedure
 
@@ -781,9 +781,9 @@ Internet-Draft                     Key                          May 2017
 
 
 
-Fielding & Nottingham   Expires December 1, 2017               [Page 14]
+Fielding & Nottingham   Expires December 15, 2017              [Page 14]
 
-Internet-Draft                     Key                          May 2017
+Internet-Draft                     Key                         June 2017
 
 
 4.  Security Considerations
@@ -837,9 +837,9 @@ Internet-Draft                     Key                          May 2017
 
 
 
-Fielding & Nottingham   Expires December 1, 2017               [Page 15]
+Fielding & Nottingham   Expires December 15, 2017              [Page 15]
 
-Internet-Draft                     Key                          May 2017
+Internet-Draft                     Key                         June 2017
 
 
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
@@ -893,9 +893,9 @@ Authors' Addresses
 
 
 
-Fielding & Nottingham   Expires December 1, 2017               [Page 16]
+Fielding & Nottingham   Expires December 15, 2017              [Page 16]
 
-Internet-Draft                     Key                          May 2017
+Internet-Draft                     Key                         June 2017
 
 
    Mark Nottingham
@@ -949,4 +949,4 @@ Internet-Draft                     Key                          May 2017
 
 
 
-Fielding & Nottingham   Expires December 1, 2017               [Page 17]
+Fielding & Nottingham   Expires December 15, 2017              [Page 17]

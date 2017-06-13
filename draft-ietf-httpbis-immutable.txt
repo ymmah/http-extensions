@@ -4,8 +4,8 @@
 
 HTTP Working Group                                            P. McManus
 Internet-Draft                                                   Mozilla
-Intended status: Standards Track                            May 30, 2017
-Expires: December 1, 2017
+Intended status: Standards Track                           June 13, 2017
+Expires: December 15, 2017
 
 
                         HTTP Immutable Responses
@@ -22,11 +22,11 @@ Note to Readers
 
    Discussion of this draft takes place on the HTTP working group
    mailing list (ietf-http-wg@w3.org), which is archived at
-   https://lists.w3.org/Archives/Public/ietf-http-wg/ .
+   https://lists.w3.org/Archives/Public/ietf-http-wg/.
 
-   Working Group information can be found at http://httpwg.github.io/ ;
+   Working Group information can be found at http://httpwg.github.io/;
    source code and issues list for this draft can be found at
-   https://github.com/httpwg/http-extensions/labels/immutable .
+   https://github.com/httpwg/http-extensions/labels/immutable.
 
 Status of This Memo
 
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 1, 2017.
+   This Internet-Draft will expire on December 15, 2017.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-McManus                 Expires December 1, 2017                [Page 1]
+McManus                 Expires December 15, 2017               [Page 1]
 
-Internet-Draft          HTTP Immutable Responses                May 2017
+Internet-Draft          HTTP Immutable Responses               June 2017
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Internet-Draft          HTTP Immutable Responses                May 2017
 
 
 
-McManus                 Expires December 1, 2017                [Page 2]
+McManus                 Expires December 15, 2017               [Page 2]
 
-Internet-Draft          HTTP Immutable Responses                May 2017
+Internet-Draft          HTTP Immutable Responses               June 2017
 
 
    Unfortunately, the user agent does not know when this versioned URL
@@ -165,9 +165,9 @@ Internet-Draft          HTTP Immutable Responses                May 2017
 
 
 
-McManus                 Expires December 1, 2017                [Page 3]
+McManus                 Expires December 15, 2017               [Page 3]
 
-Internet-Draft          HTTP Immutable Responses                May 2017
+Internet-Draft          HTTP Immutable Responses               June 2017
 
 
 2.2.  Example
@@ -221,9 +221,9 @@ Internet-Draft          HTTP Immutable Responses                May 2017
 
 
 
-McManus                 Expires December 1, 2017                [Page 4]
+McManus                 Expires December 15, 2017               [Page 4]
 
-Internet-Draft          HTTP Immutable Responses                May 2017
+Internet-Draft          HTTP Immutable Responses               June 2017
 
 
    [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
@@ -277,4 +277,4 @@ Author's Address
 
 
 
-McManus                 Expires December 1, 2017                [Page 5]
+McManus                 Expires December 15, 2017               [Page 5]
