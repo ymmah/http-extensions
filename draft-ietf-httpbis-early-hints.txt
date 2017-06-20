@@ -9,7 +9,7 @@ Expires: December 22, 2017
 
 
                 An HTTP Status Code for Indicating Hints
-                   draft-ietf-httpbis-early-hints-03
+                 draft-ietf-httpbis-early-hints-latest
 
 Abstract
 
@@ -77,9 +77,10 @@ Table of Contents
    4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
    5.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   5
    6.  Changes . . . . . . . . . . . . . . . . . . . . . . . . . . .   5
-     6.1.  Since draft-ietf-httpbis-early-hints-02 . . . . . . . . .   5
-     6.2.  Since draft-ietf-httpbis-early-hints-01 . . . . . . . . .   5
-     6.3.  Since draft-ietf-httpbis-early-hints-00 . . . . . . . . .   5
+     6.1.  Since draft-ietf-httpbis-early-hints-03 . . . . . . . . .   5
+     6.2.  Since draft-ietf-httpbis-early-hints-02 . . . . . . . . .   5
+     6.3.  Since draft-ietf-httpbis-early-hints-01 . . . . . . . . .   5
+     6.4.  Since draft-ietf-httpbis-early-hints-00 . . . . . . . . .   5
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   5
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
      7.2.  Informative References  . . . . . . . . . . . . . . . . .   6
@@ -104,7 +105,6 @@ Table of Contents
    server to send some header fields as soon as it receives a request,
    it cannot do so until the status code and the full header fields of
    the final HTTP response are determined.
-
 
 
 
@@ -244,17 +244,21 @@ Internet-Draft                 Early Hints                     June 2017
 
 6.  Changes
 
-6.1.  Since draft-ietf-httpbis-early-hints-02
+6.1.  Since draft-ietf-httpbis-early-hints-03
+
+   o  None yet.
+
+6.2.  Since draft-ietf-httpbis-early-hints-02
 
    o  Editorial changes.
 
    o  Added an example.
 
-6.2.  Since draft-ietf-httpbis-early-hints-01
+6.3.  Since draft-ietf-httpbis-early-hints-01
 
    o  Editorial changes.
 
-6.3.  Since draft-ietf-httpbis-early-hints-00
+6.4.  Since draft-ietf-httpbis-early-hints-00
 
    o  Forbid processing the headers of a 103 response as part of the
       informational response.
@@ -268,10 +272,6 @@ Internet-Draft                 Early Hints                     June 2017
               DOI 10.17487/RFC2119, March 1997,
               <http://www.rfc-editor.org/info/rfc2119>.
 
-   [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
-              Protocol (HTTP/1.1): Message Syntax and Routing",
-              RFC 7230, DOI 10.17487/RFC7230, June 2014,
-              <http://www.rfc-editor.org/info/rfc7230>.
 
 
 
@@ -281,6 +281,11 @@ Oku                     Expires December 22, 2017               [Page 5]
 
 Internet-Draft                 Early Hints                     June 2017
 
+
+   [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
+              Protocol (HTTP/1.1): Message Syntax and Routing",
+              RFC 7230, DOI 10.17487/RFC7230, June 2014,
+              <http://www.rfc-editor.org/info/rfc7230>.
 
    [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
@@ -303,11 +308,6 @@ Author's Address
    Fastly
 
    Email: kazuhooku@gmail.com
-
-
-
-
-
 
 
 
