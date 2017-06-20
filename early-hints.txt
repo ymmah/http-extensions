@@ -3,7 +3,7 @@
 
 
 HTTP Working Group                                                K. Oku
-Internet-Draft                                            DeNA Co., Ltd.
+Internet-Draft                                                    Fastly
 Intended status: Experimental                              June 20, 2017
 Expires: December 22, 2017
 
@@ -300,7 +300,7 @@ Internet-Draft                 Early Hints                     June 2017
 Author's Address
 
    Kazuho Oku
-   DeNA Co., Ltd.
+   Fastly
 
    Email: kazuhooku@gmail.com
 
