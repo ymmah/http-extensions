@@ -9,7 +9,7 @@ Expires: December 22, 2017
 
 
                 An HTTP Status Code for Indicating Hints
-                 draft-ietf-httpbis-early-hints-latest
+                   draft-ietf-httpbis-early-hints-03
 
 Abstract
 
@@ -246,7 +246,9 @@ Internet-Draft                 Early Hints                     June 2017
 
 6.1.  Since draft-ietf-httpbis-early-hints-02
 
-   o  None yet.
+   o  Editorial changes.
+
+   o  Added an example.
 
 6.2.  Since draft-ietf-httpbis-early-hints-01
 
@@ -270,8 +272,6 @@ Internet-Draft                 Early Hints                     June 2017
               Protocol (HTTP/1.1): Message Syntax and Routing",
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
               <http://www.rfc-editor.org/info/rfc7230>.
-
-
 
 
 
