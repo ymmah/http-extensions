@@ -85,7 +85,7 @@ Table of Contents
        2.2.3.  Interaction with Caches . . . . . . . . . . . . . . .   6
    3.  Client Hints  . . . . . . . . . . . . . . . . . . . . . . . .   6
      3.1.  The DPR Header Field  . . . . . . . . . . . . . . . . . .   6
-       3.1.1.  Confirming Selected DPR . . . . . . . . . . . . . . .   6
+       3.1.1.  Confirming Selected DPR . . . . . . . . . . . . . . .   7
      3.2.  The Width Header Field  . . . . . . . . . . . . . . . . .   7
      3.3.  The Viewport-Width Header Field . . . . . . . . . . . . .   7
      3.4.  The Save-Data Header Field  . . . . . . . . . . . . . . .   8
@@ -270,9 +270,9 @@ Internet-Draft              HTTP Client Hints                  June 2017
    considered stale after its age is greater than the specified number
    of seconds.
 
-     Accept-CH: DPR, Viewport-Width
+     Accept-CH: DPR, Width
+     Accept-CH: Viewport-Width
      Accept-CH-Lifetime: 86400
-
 
 
 
@@ -287,10 +287,13 @@ Internet-Draft              HTTP Client Hints                  June 2017
    for up to 86400 seconds (1 day).  Then, if a request is initiated to
    the same origin before the preference is stale (e.g. as a result of a
    navigation to the origin, or fetching a subresource from the origin)
-   the client could append the requested header fields (DPR and
+   the client could append the requested header fields (DPR, Width, and
    Viewport-Width in this example) to the request and any subresource
    requests initiated as a result of processing a response from same
    origin.
+
+   If Accept-CH-Lifetime occurs in a message more than once, the last
+   value overrides all previous occurrences.
 
 2.2.3.  Interaction with Caches
 
@@ -325,11 +328,8 @@ Internet-Draft              HTTP Client Hints                  June 2017
    If DPR occurs in a message more than once, the last value overrides
    all previous occurrences.
 
-3.1.1.  Confirming Selected DPR
 
-   The "Content-DPR" response header field is a number that indicates
-   the ratio between physical pixels over CSS px of the selected image
-   response.
+
 
 
 
@@ -337,6 +337,12 @@ Grigorik                Expires December 28, 2017               [Page 6]
 
 Internet-Draft              HTTP Client Hints                  June 2017
 
+
+3.1.1.  Confirming Selected DPR
+
+   The "Content-DPR" response header field is a number that indicates
+   the ratio between physical pixels over CSS px of the selected image
+   response.
 
      Content-DPR = 1*DIGIT [ "." 1*DIGIT ]
 
@@ -381,18 +387,15 @@ Internet-Draft              HTTP Client Hints                  June 2017
 
      Viewport-Width = 1*DIGIT
 
-   If Viewport-Width occurs in a message more than once, the last value
-   overrides all previous occurrences.
-
-
-
-
 
 
 Grigorik                Expires December 28, 2017               [Page 7]
 
 Internet-Draft              HTTP Client Hints                  June 2017
 
+
+   If Viewport-Width occurs in a message more than once, the last value
+   overrides all previous occurrences.
 
 3.4.  The Save-Data Header Field
 
@@ -439,9 +442,6 @@ Internet-Draft              HTTP Client Hints                  June 2017
    The Content-DPR response header field indicates to the client that
    the server has selected resource with DPR ratio of 1.0.  The client
    can use this information to perform additional processing on the
-   resource - for example, calculate the appropriate intrinsic size of
-   the image resource such that it is displayed at the correct
-   resolution.
 
 
 
@@ -449,6 +449,10 @@ Grigorik                Expires December 28, 2017               [Page 8]
 
 Internet-Draft              HTTP Client Hints                  June 2017
 
+
+   resource - for example, calculate the appropriate intrinsic size of
+   the image resource such that it is displayed at the correct
+   resolution.
 
 5.  Security Considerations
 
@@ -493,10 +497,6 @@ Internet-Draft              HTTP Client Hints                  June 2017
    Width", and "Width" HTTP request fields, "Accept-CH", "Accept-CH-
    Lifetime", and "Content-DPR" HTTP response field, and registers them
    in the Permanent Message Header Fields registry.
-
-
-
-
 
 
 
