@@ -75,15 +75,15 @@ Table of Contents
    2.  103 Early Hints . . . . . . . . . . . . . . . . . . . . . . .   3
    3.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
    4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
-   5.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   5
-   6.  Changes . . . . . . . . . . . . . . . . . . . . . . . . . . .   5
-     6.1.  Since draft-ietf-httpbis-early-hints-03 . . . . . . . . .   5
-     6.2.  Since draft-ietf-httpbis-early-hints-02 . . . . . . . . .   5
-     6.3.  Since draft-ietf-httpbis-early-hints-01 . . . . . . . . .   5
-     6.4.  Since draft-ietf-httpbis-early-hints-00 . . . . . . . . .   5
-   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   5
-     7.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .   6
+   5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   5
+     5.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
+     5.2.  Informative References  . . . . . . . . . . . . . . . . .   5
+   Appendix A.  Changes  . . . . . . . . . . . . . . . . . . . . . .   6
+     A.1.  Since draft-ietf-httpbis-early-hints-03 . . . . . . . . .   6
+     A.2.  Since draft-ietf-httpbis-early-hints-02 . . . . . . . . .   6
+     A.3.  Since draft-ietf-httpbis-early-hints-01 . . . . . . . . .   6
+     A.4.  Since draft-ietf-httpbis-early-hints-00 . . . . . . . . .   6
+   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .   6
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   6
 
 1.  Introduction
@@ -182,6 +182,7 @@ Internet-Draft                 Early Hints                     June 2017
      GET / HTTP/1.1
      Host: example.com
 
+
    Server response:
 
      HTTP/1.1 103 Early Hints
@@ -202,12 +203,12 @@ Internet-Draft                 Early Hints                     June 2017
 
    Some clients might have issues handling 103 (Early Hints), since
    informational responses are rarely used in reply to requests not
-   including an Expect header ([RFC7231], Section 5.1.1).
+   including an Expect header field ([RFC7231], Section 5.1.1).
 
    In particular, an HTTP/1.1 client that mishandles an informational
    response as a final response is likely to consider all responses to
    the succeeding requests sent over the same connection to be part of
-   the final response.  Such behavior may constitute a cross-origin
+   the final response.  Such behavior might constitute a cross-origin
    information disclosure vulnerability in case the client multiplexes
    requests to different origins onto a single persistent connection.
 
@@ -215,9 +216,8 @@ Internet-Draft                 Early Hints                     June 2017
    HTTP/1.1 unless when the client is known to handle informational
    responses correctly.
 
-   HTTP/2 clients are less likely to suffer from incorrect framing since
-   handling of the response header fields does not affect how the end of
-   the response body is determined.
+
+
 
 
 
@@ -225,6 +225,10 @@ Oku                     Expires December 29, 2017               [Page 4]
 
 Internet-Draft                 Early Hints                     June 2017
 
+
+   HTTP/2 clients are less likely to suffer from incorrect framing since
+   handling of the response header fields does not affect how the end of
+   the response body is determined.
 
 4.  IANA Considerations
 
@@ -237,50 +241,14 @@ Internet-Draft                 Early Hints                     June 2017
 
    o  Specification: [this document]
 
-5.  Acknowledgements
+5.  References
 
-   Thanks to Tatsuhiro Tsujikawa for coming up with the idea of sending
-   the Link header fields using an informational response.
-
-6.  Changes
-
-6.1.  Since draft-ietf-httpbis-early-hints-03
-
-   o  None yet.
-
-6.2.  Since draft-ietf-httpbis-early-hints-02
-
-   o  Editorial changes.
-
-   o  Added an example.
-
-6.3.  Since draft-ietf-httpbis-early-hints-01
-
-   o  Editorial changes.
-
-6.4.  Since draft-ietf-httpbis-early-hints-00
-
-   o  Forbid processing the headers of a 103 response as part of the
-      informational response.
-
-7.  References
-
-7.1.  Normative References
+5.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <http://www.rfc-editor.org/info/rfc2119>.
-
-
-
-
-
-
-Oku                     Expires December 29, 2017               [Page 5]
-
-Internet-Draft                 Early Hints                     June 2017
-
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
@@ -297,10 +265,48 @@ Internet-Draft                 Early Hints                     June 2017
               DOI 10.17487/RFC7540, May 2015,
               <http://www.rfc-editor.org/info/rfc7540>.
 
-7.2.  Informative References
+5.2.  Informative References
 
    [Preload]  Grigorik, I., "Preload", n.d., <https://w3c.github.io/
               preload/>.
+
+
+
+
+
+
+
+
+Oku                     Expires December 29, 2017               [Page 5]
+
+Internet-Draft                 Early Hints                     June 2017
+
+
+Appendix A.  Changes
+
+A.1.  Since draft-ietf-httpbis-early-hints-03
+
+   o  None yet.
+
+A.2.  Since draft-ietf-httpbis-early-hints-02
+
+   o  Editorial changes.
+
+   o  Added an example.
+
+A.3.  Since draft-ietf-httpbis-early-hints-01
+
+   o  Editorial changes.
+
+A.4.  Since draft-ietf-httpbis-early-hints-00
+
+   o  Forbid processing the headers of a 103 response as part of the
+      informational response.
+
+Appendix B.  Acknowledgements
+
+   Thanks to Tatsuhiro Tsujikawa for coming up with the idea of sending
+   the Link header fields using an informational response.
 
 Author's Address
 
@@ -308,12 +314,6 @@ Author's Address
    Fastly
 
    Email: kazuhooku@gmail.com
-
-
-
-
-
-
 
 
 
