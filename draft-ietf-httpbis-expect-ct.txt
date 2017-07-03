@@ -4,8 +4,8 @@
 
 HTTP Working Group                                              E. Stark
 Internet-Draft                                                    Google
-Intended status: Experimental                              June 27, 2017
-Expires: December 29, 2017
+Intended status: Experimental                               July 3, 2017
+Expires: January 4, 2018
 
 
                       Expect-CT Extension for HTTP
@@ -53,12 +53,12 @@ Status of This Memo
 
 
 
-Stark                   Expires December 29, 2017               [Page 1]
+Stark                    Expires January 4, 2018                [Page 1]
 
-Internet-Draft                  Expect-CT                      June 2017
+Internet-Draft                  Expect-CT                      July 2017
 
 
-   This Internet-Draft will expire on December 29, 2017.
+   This Internet-Draft will expire on January 4, 2018.
 
 Copyright Notice
 
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Stark                   Expires December 29, 2017               [Page 2]
+Stark                    Expires January 4, 2018                [Page 2]
 
-Internet-Draft                  Expect-CT                      June 2017
+Internet-Draft                  Expect-CT                      July 2017
 
 
    9.  Changes . . . . . . . . . . . . . . . . . . . . . . . . . . .  16
@@ -165,9 +165,9 @@ Internet-Draft                  Expect-CT                      June 2017
 
 
 
-Stark                   Expires December 29, 2017               [Page 3]
+Stark                    Expires January 4, 2018                [Page 3]
 
-Internet-Draft                  Expect-CT                      June 2017
+Internet-Draft                  Expect-CT                      July 2017
 
 
 1.2.  Terminology
@@ -221,9 +221,9 @@ Internet-Draft                  Expect-CT                      June 2017
 
 
 
-Stark                   Expires December 29, 2017               [Page 4]
+Stark                    Expires January 4, 2018                [Page 4]
 
-Internet-Draft                  Expect-CT                      June 2017
+Internet-Draft                  Expect-CT                      July 2017
 
 
    evaluate connections to the host emitting the header for CT
@@ -277,9 +277,9 @@ Internet-Draft                  Expect-CT                      June 2017
 
 
 
-Stark                   Expires December 29, 2017               [Page 5]
+Stark                    Expires January 4, 2018                [Page 5]
 
-Internet-Draft                  Expect-CT                      June 2017
+Internet-Draft                  Expect-CT                      July 2017
 
 
    The "report-uri" directive is REQUIRED to have a directive value, for
@@ -333,9 +333,9 @@ Internet-Draft                  Expect-CT                      June 2017
 
 
 
-Stark                   Expires December 29, 2017               [Page 6]
+Stark                    Expires January 4, 2018                [Page 6]
 
-Internet-Draft                  Expect-CT                      June 2017
+Internet-Draft                  Expect-CT                      July 2017
 
 
 2.1.3.  The max-age Directive
@@ -389,9 +389,9 @@ Expect-CT: max-age=86400,report-uri="https://foo.example/report"
 
 
 
-Stark                   Expires December 29, 2017               [Page 7]
+Stark                    Expires January 4, 2018                [Page 7]
 
-Internet-Draft                  Expect-CT                      June 2017
+Internet-Draft                  Expect-CT                      July 2017
 
 
    Establishing a given host as an Expect-CT Host, in the context of a
@@ -445,9 +445,9 @@ Internet-Draft                  Expect-CT                      June 2017
 
 
 
-Stark                   Expires December 29, 2017               [Page 8]
+Stark                    Expires January 4, 2018                [Page 8]
 
-Internet-Draft                  Expect-CT                      June 2017
+Internet-Draft                  Expect-CT                      July 2017
 
 
    If the header field includes a "report-uri" directive, and the
@@ -501,9 +501,9 @@ Internet-Draft                  Expect-CT                      June 2017
 
 
 
-Stark                   Expires December 29, 2017               [Page 9]
+Stark                    Expires January 4, 2018                [Page 9]
 
-Internet-Draft                  Expect-CT                      June 2017
+Internet-Draft                  Expect-CT                      July 2017
 
 
    o  whether the "enforce" directive is present
@@ -557,9 +557,9 @@ Internet-Draft                  Expect-CT                      June 2017
 
 
 
-Stark                   Expires December 29, 2017              [Page 10]
+Stark                    Expires January 4, 2018               [Page 10]
 
-Internet-Draft                  Expect-CT                      June 2017
+Internet-Draft                  Expect-CT                      July 2017
 
 
    Host's Expect-CT metadata indicates an "enforce" configuration, the
@@ -613,9 +613,9 @@ Internet-Draft                  Expect-CT                      June 2017
 
 
 
-Stark                   Expires December 29, 2017              [Page 11]
+Stark                    Expires January 4, 2018               [Page 11]
 
-Internet-Draft                  Expect-CT                      June 2017
+Internet-Draft                  Expect-CT                      July 2017
 
 
    o  "effective-expiration-date": the value indicates the Effective
@@ -669,9 +669,9 @@ Internet-Draft                  Expect-CT                      June 2017
 
 
 
-Stark                   Expires December 29, 2017              [Page 12]
+Stark                    Expires January 4, 2018               [Page 12]
 
-Internet-Draft                  Expect-CT                      June 2017
+Internet-Draft                  Expect-CT                      July 2017
 
 
       *  The "serialized_sct" key, with a string value.  If the value of
@@ -725,9 +725,9 @@ Internet-Draft                  Expect-CT                      June 2017
 
 
 
-Stark                   Expires December 29, 2017              [Page 13]
+Stark                    Expires January 4, 2018               [Page 13]
 
-Internet-Draft                  Expect-CT                      June 2017
+Internet-Draft                  Expect-CT                      July 2017
 
 
    attacker to have substantial control over the infrastructure in
@@ -781,9 +781,9 @@ Internet-Draft                  Expect-CT                      June 2017
 
 
 
-Stark                   Expires December 29, 2017              [Page 14]
+Stark                    Expires January 4, 2018               [Page 14]
 
-Internet-Draft                  Expect-CT                      June 2017
+Internet-Draft                  Expect-CT                      July 2017
 
 
    Additionally, reports submitted to the "report-uri" could reveal
@@ -837,9 +837,9 @@ Internet-Draft                  Expect-CT                      June 2017
 
 
 
-Stark                   Expires December 29, 2017              [Page 15]
+Stark                    Expires January 4, 2018               [Page 15]
 
-Internet-Draft                  Expect-CT                      June 2017
+Internet-Draft                  Expect-CT                      July 2017
 
 
    mechanism for user agents that are transitioning to universal
@@ -874,8 +874,7 @@ Internet-Draft                  Expect-CT                      June 2017
    [I-D.ietf-trans-rfc6962-bis]
               Laurie, B., Langley, A., Kasper, E., Messeri, E., and R.
               Stradling, "Certificate Transparency Version 2.0", draft-
-              ietf-trans-rfc6962-bis-24 (work in progress), December
-              2016.
+              ietf-trans-rfc6962-bis-25 (work in progress), June 2017.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -893,9 +892,10 @@ Internet-Draft                  Expect-CT                      June 2017
 
 
 
-Stark                   Expires December 29, 2017              [Page 16]
+
+Stark                    Expires January 4, 2018               [Page 16]
 
-Internet-Draft                  Expect-CT                      June 2017
+Internet-Draft                  Expect-CT                      July 2017
 
 
    [RFC4648]  Josefsson, S., "The Base16, Base32, and Base64 Data
@@ -949,9 +949,9 @@ Author's Address
 
 
 
-Stark                   Expires December 29, 2017              [Page 17]
+Stark                    Expires January 4, 2018               [Page 17]
 
-Internet-Draft                  Expect-CT                      June 2017
+Internet-Draft                  Expect-CT                      July 2017
 
 
    Emily Stark
@@ -1005,4 +1005,4 @@ Internet-Draft                  Expect-CT                      June 2017
 
 
 
-Stark                   Expires December 29, 2017              [Page 18]
+Stark                    Expires January 4, 2018               [Page 18]
