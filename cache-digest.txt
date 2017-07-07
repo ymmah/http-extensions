@@ -5,7 +5,7 @@
 HTTP Working Group                                                K. Oku
 Internet-Draft                                             DeNA Co, Ltd.
 Intended status: Experimental                              M. Nottingham
-Expires: January 6, 2018                                    July 5, 2017
+Expires: January 8, 2018                                    July 7, 2017
 
 
                         Cache Digests for HTTP/2
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 6, 2018.
+   This Internet-Draft will expire on January 8, 2018.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Oku & Nottingham         Expires January 6, 2018                [Page 1]
+Oku & Nottingham         Expires January 8, 2018                [Page 1]
 
 Internet-Draft          Cache Digests for HTTP/2               July 2017
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Oku & Nottingham         Expires January 6, 2018                [Page 2]
+Oku & Nottingham         Expires January 8, 2018                [Page 2]
 
 Internet-Draft          Cache Digests for HTTP/2               July 2017
 
@@ -165,7 +165,7 @@ Internet-Draft          Cache Digests for HTTP/2               July 2017
 
 
 
-Oku & Nottingham         Expires January 6, 2018                [Page 3]
+Oku & Nottingham         Expires January 8, 2018                [Page 3]
 
 Internet-Draft          Cache Digests for HTTP/2               July 2017
 
@@ -221,7 +221,7 @@ Internet-Draft          Cache Digests for HTTP/2               July 2017
 
 
 
-Oku & Nottingham         Expires January 6, 2018                [Page 4]
+Oku & Nottingham         Expires January 8, 2018                [Page 4]
 
 Internet-Draft          Cache Digests for HTTP/2               July 2017
 
@@ -277,7 +277,7 @@ Internet-Draft          Cache Digests for HTTP/2               July 2017
 
 
 
-Oku & Nottingham         Expires January 6, 2018                [Page 5]
+Oku & Nottingham         Expires January 8, 2018                [Page 5]
 
 Internet-Draft          Cache Digests for HTTP/2               July 2017
 
@@ -333,7 +333,7 @@ Internet-Draft          Cache Digests for HTTP/2               July 2017
 
 
 
-Oku & Nottingham         Expires January 6, 2018                [Page 6]
+Oku & Nottingham         Expires January 8, 2018                [Page 6]
 
 Internet-Draft          Cache Digests for HTTP/2               July 2017
 
@@ -389,7 +389,7 @@ Internet-Draft          Cache Digests for HTTP/2               July 2017
 
 
 
-Oku & Nottingham         Expires January 6, 2018                [Page 7]
+Oku & Nottingham         Expires January 8, 2018                [Page 7]
 
 Internet-Draft          Cache Digests for HTTP/2               July 2017
 
@@ -445,7 +445,7 @@ Internet-Draft          Cache Digests for HTTP/2               July 2017
 
 
 
-Oku & Nottingham         Expires January 6, 2018                [Page 8]
+Oku & Nottingham         Expires January 8, 2018                [Page 8]
 
 Internet-Draft          Cache Digests for HTTP/2               July 2017
 
@@ -501,7 +501,7 @@ Internet-Draft          Cache Digests for HTTP/2               July 2017
 
 
 
-Oku & Nottingham         Expires January 6, 2018                [Page 9]
+Oku & Nottingham         Expires January 8, 2018                [Page 9]
 
 Internet-Draft          Cache Digests for HTTP/2               July 2017
 
@@ -557,7 +557,7 @@ Internet-Draft          Cache Digests for HTTP/2               July 2017
 
 
 
-Oku & Nottingham         Expires January 6, 2018               [Page 10]
+Oku & Nottingham         Expires January 8, 2018               [Page 10]
 
 Internet-Draft          Cache Digests for HTTP/2               July 2017
 
@@ -613,7 +613,7 @@ Internet-Draft          Cache Digests for HTTP/2               July 2017
 
 
 
-Oku & Nottingham         Expires January 6, 2018               [Page 11]
+Oku & Nottingham         Expires January 8, 2018               [Page 11]
 
 Internet-Draft          Cache Digests for HTTP/2               July 2017
 
@@ -669,7 +669,7 @@ Appendix A.  Encoding the CACHE_DIGEST frame as an HTTP Header
 
 
 
-Oku & Nottingham         Expires January 6, 2018               [Page 12]
+Oku & Nottingham         Expires January 8, 2018               [Page 12]
 
 Internet-Draft          Cache Digests for HTTP/2               July 2017
 
@@ -725,7 +725,7 @@ Authors' Addresses
 
 
 
-Oku & Nottingham         Expires January 6, 2018               [Page 13]
+Oku & Nottingham         Expires January 8, 2018               [Page 13]
 
 Internet-Draft          Cache Digests for HTTP/2               July 2017
 
@@ -781,4 +781,4 @@ Internet-Draft          Cache Digests for HTTP/2               July 2017
 
 
 
-Oku & Nottingham         Expires January 6, 2018               [Page 14]
+Oku & Nottingham         Expires January 8, 2018               [Page 14]
