@@ -114,8 +114,9 @@ Stark                   Expires January 11, 2018                [Page 2]
 Internet-Draft                  Expect-CT                      July 2017
 
 
-   9.  Changes . . . . . . . . . . . . . . . . . . . . . . . . . . .  15
-     9.1.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .  15
+   9.  Changes . . . . . . . . . . . . . . . . . . . . . . . . . . .  16
+     9.1.  Since -01 . . . . . . . . . . . . . . . . . . . . . . . .  16
+     9.2.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .  16
    10. Normative References  . . . . . . . . . . . . . . . . . . . .  16
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  17
 
@@ -160,7 +161,6 @@ Internet-Draft                  Expect-CT                      July 2017
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
    "OPTIONAL" in this document are to be interpreted as described in RFC
    2119 [RFC2119].
-
 
 
 
@@ -646,24 +646,24 @@ Internet-Draft                  Expect-CT                      July 2017
       appear in any order.  Each JSON object in the array has the
       following keys:
 
-      *  The "sct" key, with a value as defined in Section 4.6 of
-         [I-D.ietf-trans-rfc6962-bis].
+      *  A "version" key, with an integer value.  The UA MUST set this
+         value to "1" if the SCT is in the format defined in Section 3.2
+         of [RFC6962] and "2" if it is in the format defined in
+         Section 4.6 of [I-D.ietf-trans-rfc6962-bis].
 
       *  The "status" key, with a string value that the UA MUST set to
          one of the following values: "unknown" (indicating that the UA
          does not have or does not trust the public key of the log from
          which the SCT was issued), "valid" (indicating that the UA
-         successfully validated the SCT as described in Section 8.2.3 of
-         [I-D.ietf-trans-rfc6962-bis]), or "invalid" (indicating that
-         the SCT validation failed because of, e.g., a bad signature).
+         successfully validated the SCT as described in Section 5.2 of
+         [RFC6962] or Section 8.2.3 of [I-D.ietf-trans-rfc6962-bis]), or
+         "invalid" (indicating that the SCT validation failed because
+         of, e.g., a bad signature).
 
       *  The "source" key, with a string value that indicates from where
-         the UA obtained the SCT, as defined in Section 6 of
-         [I-D.ietf-trans-rfc6962-bis].  The UA MUST set the value to one
-         of "tls-extension", "ocsp", or "embedded".
-
-
-
+         the UA obtained the SCT, as defined in Section 3 or [RFC6962]
+         and Section 6 of [I-D.ietf-trans-rfc6962-bis].  The UA MUST set
+         the value to one of "tls-extension", "ocsp", or "embedded".
 
 
 
@@ -673,6 +673,15 @@ Stark                   Expires January 11, 2018               [Page 12]
 
 Internet-Draft                  Expect-CT                      July 2017
 
+
+      *  The "serialized_sct" key, with a string value.  If the value of
+         the "version" key is "1", the UA MUST set this value to the
+         base64 encoded [RFC4648] serialized
+         "SignedCertificateTimestamp" structure from Section 3.2 of
+         [RFC6962].  If the value of the "version" key is "2", the UA
+         MUST set this value to the base64 encoded [RFC4648] serialized
+         "TransItem" structure representing the SCT, as defined in
+         Section 4.6 of [I-D.ietf-trans-rfc6962-bis].
 
 3.2.  Sending a violation report
 
@@ -713,6 +722,14 @@ Internet-Draft                  Expect-CT                      July 2017
    as an Expect-CT Host (see Section 2.3.3).  After having done this,
    the configuration could then be reverted to not comply with the CT
    policy, prompting failures.  Note this scenario would require the
+
+
+
+Stark                   Expires January 11, 2018               [Page 13]
+
+Internet-Draft                  Expect-CT                      July 2017
+
+
    attacker to have substantial control over the infrastructure in
    question, being able to obtain different certificates, change server
    software, or act as a man-in-the-middle in connections.
@@ -722,14 +739,6 @@ Internet-Draft                  Expect-CT                      July 2017
    extension defined in Section 6.5 of [I-D.ietf-trans-rfc6962-bis],
    obtaining a certificate from an alternative certificate authority
    which provides SCTs by one of the other methods, or by waiting for
-
-
-
-Stark                   Expires January 11, 2018               [Page 13]
-
-Internet-Draft                  Expect-CT                      July 2017
-
-
    the user agents' persisted notation of this as an Expect-CT host to
    reach its "max-age".  User agents may choose to implement mechanisms
    for users to cure this situation, as noted in Section 7.
@@ -768,15 +777,6 @@ Internet-Draft                  Expect-CT                      July 2017
    this consideration is true of UAs which enforce CT policies without
    Expect-CT as well.
 
-   Additionally, reports submitted to the "report-uri" could reveal
-   information to a third party about which webpage is being accessed
-   and by which IP address, by using individual "report-uri" values for
-   individually-tracked pages.  This information could be leaked even if
-   client-side scripting were disabled.
-
-   Implementations must store state about Known Expect-CT Hosts, and
-   hence which domains the UA has contacted.
-
 
 
 
@@ -785,6 +785,15 @@ Stark                   Expires January 11, 2018               [Page 14]
 
 Internet-Draft                  Expect-CT                      July 2017
 
+
+   Additionally, reports submitted to the "report-uri" could reveal
+   information to a third party about which webpage is being accessed
+   and by which IP address, by using individual "report-uri" values for
+   individually-tracked pages.  This information could be leaked even if
+   client-side scripting were disabled.
+
+   Implementations must store state about Known Expect-CT Hosts, and
+   hence which domains the UA has contacted.
 
    Violation reports, as noted in Section 3, contain information about
    the certificate chain that has violated the CT policy.  In some
@@ -824,15 +833,6 @@ Internet-Draft                  Expect-CT                      July 2017
    servers outside of the site owner's direct control (such as in the
    case of a third-party CDN).  Ease of deployment is a high priority
    for Expect-CT because it is intended as a temporary transition
-   mechanism for user agents that are transitioning to universal
-   Certificate Transparency requirements.
-
-9.  Changes
-
-9.1.  Since -00
-
-   o  Editorial changes
-
 
 
 
@@ -841,6 +841,20 @@ Stark                   Expires January 11, 2018               [Page 15]
 
 Internet-Draft                  Expect-CT                      July 2017
 
+
+   mechanism for user agents that are transitioning to universal
+   Certificate Transparency requirements.
+
+9.  Changes
+
+9.1.  Since -01
+
+   o  Change SCT reporting format to support both RFC 6962 and 6962-bis
+      SCTs.
+
+9.2.  Since -00
+
+   o  Editorial changes
 
    o  Change Content-Type header of reports to 'application/expect-ct-
       report+json'
@@ -877,6 +891,17 @@ Internet-Draft                  Expect-CT                      July 2017
               RFC 3986, DOI 10.17487/RFC3986, January 2005,
               <http://www.rfc-editor.org/info/rfc3986>.
 
+
+
+Stark                   Expires January 11, 2018               [Page 16]
+
+Internet-Draft                  Expect-CT                      July 2017
+
+
+   [RFC4648]  Josefsson, S., "The Base16, Base32, and Base64 Data
+              Encodings", RFC 4648, DOI 10.17487/RFC4648, October 2006,
+              <http://www.rfc-editor.org/info/rfc4648>.
+
    [RFC5234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
               Specifications: ABNF", STD 68, RFC 5234,
               DOI 10.17487/RFC5234, January 2008,
@@ -887,21 +912,14 @@ Internet-Draft                  Expect-CT                      July 2017
               DOI 10.17487/RFC5246, August 2008,
               <http://www.rfc-editor.org/info/rfc5246>.
 
-
-
-
-
-
-
-Stark                   Expires January 11, 2018               [Page 16]
-
-Internet-Draft                  Expect-CT                      July 2017
-
-
    [RFC6797]  Hodges, J., Jackson, C., and A. Barth, "HTTP Strict
               Transport Security (HSTS)", RFC 6797,
               DOI 10.17487/RFC6797, November 2012,
               <http://www.rfc-editor.org/info/rfc6797>.
+
+   [RFC6962]  Laurie, B., Langley, A., and E. Kasper, "Certificate
+              Transparency", RFC 6962, DOI 10.17487/RFC6962, June 2013,
+              <http://www.rfc-editor.org/info/rfc6962>.
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
@@ -924,6 +942,17 @@ Internet-Draft                  Expect-CT                      July 2017
               <http://www.w3.org/TR/1999/REC-html401-19991224>.
 
 Author's Address
+
+
+
+
+
+
+
+Stark                   Expires January 11, 2018               [Page 17]
+
+Internet-Draft                  Expect-CT                      July 2017
+
 
    Emily Stark
    Google
@@ -949,4 +978,31 @@ Author's Address
 
 
 
-Stark                   Expires January 11, 2018               [Page 17]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Stark                   Expires January 11, 2018               [Page 18]
