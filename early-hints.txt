@@ -9,7 +9,7 @@ Expires: January 12, 2018
 
 
                 An HTTP Status Code for Indicating Hints
-                 draft-ietf-httpbis-early-hints-latest
+                   draft-ietf-httpbis-early-hints-04
 
 Abstract
 
@@ -286,7 +286,15 @@ Appendix A.  Changes
 
 A.1.  Since draft-ietf-httpbis-early-hints-03
 
-   o  None yet.
+   o  Removed statements that were either redundant or contradictory to
+      RFC7230-7234.
+
+   o  Clarified what the server's expected behavior is.
+
+   o  Explain that a server might want to send more than one 103
+      response.
+
+   o  Editorial Changes.
 
 A.2.  Since draft-ietf-httpbis-early-hints-02
 
@@ -314,14 +322,6 @@ Author's Address
    Fastly
 
    Email: kazuhooku@gmail.com
-
-
-
-
-
-
-
-
 
 
 
