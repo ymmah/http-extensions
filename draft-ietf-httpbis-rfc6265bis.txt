@@ -5,8 +5,8 @@
 HTTP Working Group                                              A. Barth
 Internet-Draft                                                   M. West
 Obsoletes: 6265 (if approved)                                Google, Inc
-Intended status: Standards Track                           July 10, 2017
-Expires: January 11, 2018
+Intended status: Standards Track                           July 11, 2017
+Expires: January 12, 2018
 
 
                     HTTP State Management Mechanism
@@ -47,13 +47,13 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 11, 2018.
+   This Internet-Draft will expire on January 12, 2018.
 
 
 
 
 
-Barth & West            Expires January 11, 2018                [Page 1]
+Barth & West            Expires January 12, 2018                [Page 1]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Barth & West            Expires January 11, 2018                [Page 2]
+Barth & West            Expires January 12, 2018                [Page 2]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -165,7 +165,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018                [Page 3]
+Barth & West            Expires January 12, 2018                [Page 3]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -221,7 +221,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018                [Page 4]
+Barth & West            Expires January 12, 2018                [Page 4]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -277,7 +277,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018                [Page 5]
+Barth & West            Expires January 12, 2018                [Page 5]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -333,7 +333,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018                [Page 6]
+Barth & West            Expires January 12, 2018                [Page 6]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -389,7 +389,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018                [Page 7]
+Barth & West            Expires January 12, 2018                [Page 7]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -445,7 +445,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018                [Page 8]
+Barth & West            Expires January 12, 2018                [Page 8]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -501,7 +501,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018                [Page 9]
+Barth & West            Expires January 12, 2018                [Page 9]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -557,7 +557,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 10]
+Barth & West            Expires January 12, 2018               [Page 10]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -613,7 +613,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 11]
+Barth & West            Expires January 12, 2018               [Page 11]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -669,7 +669,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 12]
+Barth & West            Expires January 12, 2018               [Page 12]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -725,7 +725,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 13]
+Barth & West            Expires January 12, 2018               [Page 13]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -781,7 +781,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 14]
+Barth & West            Expires January 12, 2018               [Page 14]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -837,7 +837,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 15]
+Barth & West            Expires January 12, 2018               [Page 15]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -893,7 +893,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 16]
+Barth & West            Expires January 12, 2018               [Page 16]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -949,7 +949,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 17]
+Barth & West            Expires January 12, 2018               [Page 17]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -1005,7 +1005,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 18]
+Barth & West            Expires January 12, 2018               [Page 18]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -1061,7 +1061,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 19]
+Barth & West            Expires January 12, 2018               [Page 19]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -1117,7 +1117,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 20]
+Barth & West            Expires January 12, 2018               [Page 20]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -1173,7 +1173,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 21]
+Barth & West            Expires January 12, 2018               [Page 21]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -1229,7 +1229,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 22]
+Barth & West            Expires January 12, 2018               [Page 22]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -1285,7 +1285,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 23]
+Barth & West            Expires January 12, 2018               [Page 23]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -1341,7 +1341,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 24]
+Barth & West            Expires January 12, 2018               [Page 24]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -1397,7 +1397,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 25]
+Barth & West            Expires January 12, 2018               [Page 25]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -1453,7 +1453,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 26]
+Barth & West            Expires January 12, 2018               [Page 26]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -1509,7 +1509,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 27]
+Barth & West            Expires January 12, 2018               [Page 27]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -1565,7 +1565,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 28]
+Barth & West            Expires January 12, 2018               [Page 28]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -1621,7 +1621,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 29]
+Barth & West            Expires January 12, 2018               [Page 29]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -1677,7 +1677,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 30]
+Barth & West            Expires January 12, 2018               [Page 30]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -1733,7 +1733,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 31]
+Barth & West            Expires January 12, 2018               [Page 31]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -1789,7 +1789,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 32]
+Barth & West            Expires January 12, 2018               [Page 32]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -1845,7 +1845,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 33]
+Barth & West            Expires January 12, 2018               [Page 33]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -1901,7 +1901,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 34]
+Barth & West            Expires January 12, 2018               [Page 34]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -1957,7 +1957,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 35]
+Barth & West            Expires January 12, 2018               [Page 35]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -2013,7 +2013,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 36]
+Barth & West            Expires January 12, 2018               [Page 36]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -2069,7 +2069,7 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 37]
+Barth & West            Expires January 12, 2018               [Page 37]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -2125,7 +2125,7 @@ A.1.  draft-ietf-httpbis-rfc6265bis-00
 
 
 
-Barth & West            Expires January 11, 2018               [Page 38]
+Barth & West            Expires January 12, 2018               [Page 38]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -2181,7 +2181,7 @@ Authors' Addresses
 
 
 
-Barth & West            Expires January 11, 2018               [Page 39]
+Barth & West            Expires January 12, 2018               [Page 39]
 
 Internet-Draft       HTTP State Management Mechanism           July 2017
 
@@ -2237,4 +2237,4 @@ Internet-Draft       HTTP State Management Mechanism           July 2017
 
 
 
-Barth & West            Expires January 11, 2018               [Page 40]
+Barth & West            Expires January 12, 2018               [Page 40]

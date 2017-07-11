@@ -4,8 +4,8 @@
 
 HTTP Working Group                                                K. Oku
 Internet-Draft                                                    Fastly
-Intended status: Experimental                              July 10, 2017
-Expires: January 11, 2018
+Intended status: Experimental                              July 11, 2017
+Expires: January 12, 2018
 
 
                 An HTTP Status Code for Indicating Hints
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 11, 2018.
+   This Internet-Draft will expire on January 12, 2018.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Oku                     Expires January 11, 2018                [Page 1]
+Oku                     Expires January 12, 2018                [Page 1]
 
 Internet-Draft                 Early Hints                     July 2017
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Oku                     Expires January 11, 2018                [Page 2]
+Oku                     Expires January 12, 2018                [Page 2]
 
 Internet-Draft                 Early Hints                     July 2017
 
@@ -144,35 +144,31 @@ Internet-Draft                 Early Hints                     July 2017
    client that the server is likely to send a final response with the
    header fields included in the informational response.
 
-   A server MUST NOT include Content-Length, Transfer-Encoding, or any
-   hop-by-hop header fields ([RFC7230], Section 6.1) in a 103 (Early
-   Hints) response.
+   Typically, a server will include the header fields sent in a 103
+   (Early Hints) response in the final response as well.  However, there
+   might be cases when this is not desirable, such as when the server
+   learns that they are not correct before the final response is sent.
 
    A client can speculatively evaluate the header fields included in a
    103 (Early Hints) response while waiting for the final response.  For
    example, a client might recognize a Link header field value
    containing the relation type "preload" and start fetching the target
-   resource.
+   resource.  However, these header fields only provide hints to the
+   client; they do not replace the header fields on the final response.
 
-   However, these header fields only provide hints to the client; they
-   do not replace the header fields on the final response.  Aside from
-   performance optimizations, such evaluation of the 103 (Early Hints)
-   response's header fields MUST NOT affect how the final response is
-   processed.  A client MUST NOT interpret the 103 (Early Hints)
-   response header fields as if they applied to the informational
+   Aside from performance optimizations, such evaluation of the 103
+   (Early Hints) response's header fields MUST NOT affect how the final
+   response is processed.  A client MUST NOT interpret the 103 (Early
+   Hints) response header fields as if they applied to the informational
    response itself (e.g., as metadata about the 103 (Early Hints)
    response).
 
 
 
-Oku                     Expires January 11, 2018                [Page 3]
+Oku                     Expires January 12, 2018                [Page 3]
 
 Internet-Draft                 Early Hints                     July 2017
 
-
-   An intermediary MAY drop the informational response.  It MAY send
-   HTTP/2 ([RFC7540]) server pushes using the information found in the
-   103 (Early Hints) response.
 
    The following example illustrates a typical message exchange that
    involves a 103 (Early Hints) response.
@@ -199,6 +195,14 @@ Internet-Draft                 Early Hints                     July 2017
      <!doctype html>
      [... rest of the response body is ommitted from the example ...]
 
+   As is the case with any informational response, a server might emit
+   more than one 103 (Early Hints) response prior to sending a final
+   response.  This can happen for example when a caching intermediary
+   generates a 103 (Early Hints) response based on the header fields of
+   a stale-cached response, then forwards a 103 (Early Hints) response
+   and a final response that were sent from the origin server in
+   response to a revalidation request.
+
 3.  Security Considerations
 
    Some clients might have issues handling 103 (Early Hints), since
@@ -212,19 +216,19 @@ Internet-Draft                 Early Hints                     July 2017
    information disclosure vulnerability in case the client multiplexes
    requests to different origins onto a single persistent connection.
 
-   Therefore, a server might refrain from sending Early Hints over
-   HTTP/1.1 unless the client is known to handle informational responses
-   correctly.
 
 
 
 
 
-
-Oku                     Expires January 11, 2018                [Page 4]
+Oku                     Expires January 12, 2018                [Page 4]
 
 Internet-Draft                 Early Hints                     July 2017
 
+
+   Therefore, a server might refrain from sending Early Hints over
+   HTTP/1.1 unless the client is known to handle informational responses
+   correctly.
 
    HTTP/2 clients are less likely to suffer from incorrect framing since
    handling of the response header fields does not affect how the end of
@@ -273,11 +277,7 @@ Internet-Draft                 Early Hints                     July 2017
 
 
 
-
-
-
-
-Oku                     Expires January 11, 2018                [Page 5]
+Oku                     Expires January 12, 2018                [Page 5]
 
 Internet-Draft                 Early Hints                     July 2017
 
@@ -333,4 +333,4 @@ Author's Address
 
 
 
-Oku                     Expires January 11, 2018                [Page 6]
+Oku                     Expires January 12, 2018                [Page 6]
