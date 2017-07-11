@@ -9,7 +9,7 @@ Expires: January 12, 2018
 
 
                 An HTTP Status Code for Indicating Hints
-                   draft-ietf-httpbis-early-hints-04
+                 draft-ietf-httpbis-early-hints-latest
 
 Abstract
 
@@ -79,10 +79,11 @@ Table of Contents
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
      5.2.  Informative References  . . . . . . . . . . . . . . . . .   5
    Appendix A.  Changes  . . . . . . . . . . . . . . . . . . . . . .   6
-     A.1.  Since draft-ietf-httpbis-early-hints-03 . . . . . . . . .   6
-     A.2.  Since draft-ietf-httpbis-early-hints-02 . . . . . . . . .   6
-     A.3.  Since draft-ietf-httpbis-early-hints-01 . . . . . . . . .   6
-     A.4.  Since draft-ietf-httpbis-early-hints-00 . . . . . . . . .   6
+     A.1.  Since draft-ietf-httpbis-early-hints-04 . . . . . . . . .   6
+     A.2.  Since draft-ietf-httpbis-early-hints-03 . . . . . . . . .   6
+     A.3.  Since draft-ietf-httpbis-early-hints-02 . . . . . . . . .   6
+     A.4.  Since draft-ietf-httpbis-early-hints-01 . . . . . . . . .   6
+     A.5.  Since draft-ietf-httpbis-early-hints-00 . . . . . . . . .   6
    Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .   6
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   6
 
@@ -105,7 +106,6 @@ Table of Contents
    server to send some header fields as soon as it receives a request,
    it cannot do so until the status code and the full header fields of
    the final HTTP response are determined.
-
 
 
 
@@ -284,7 +284,11 @@ Internet-Draft                 Early Hints                     July 2017
 
 Appendix A.  Changes
 
-A.1.  Since draft-ietf-httpbis-early-hints-03
+A.1.  Since draft-ietf-httpbis-early-hints-04
+
+   o  None yet.
+
+A.2.  Since draft-ietf-httpbis-early-hints-03
 
    o  Removed statements that were either redundant or contradictory to
       RFC7230-7234.
@@ -296,17 +300,17 @@ A.1.  Since draft-ietf-httpbis-early-hints-03
 
    o  Editorial Changes.
 
-A.2.  Since draft-ietf-httpbis-early-hints-02
+A.3.  Since draft-ietf-httpbis-early-hints-02
 
    o  Editorial changes.
 
    o  Added an example.
 
-A.3.  Since draft-ietf-httpbis-early-hints-01
+A.4.  Since draft-ietf-httpbis-early-hints-01
 
    o  Editorial changes.
 
-A.4.  Since draft-ietf-httpbis-early-hints-00
+A.5.  Since draft-ietf-httpbis-early-hints-00
 
    o  Forbid processing the headers of a 103 response as part of the
       informational response.
@@ -322,10 +326,6 @@ Author's Address
    Fastly
 
    Email: kazuhooku@gmail.com
-
-
-
-
 
 
 
