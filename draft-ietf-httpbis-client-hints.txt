@@ -86,20 +86,20 @@ Table of Contents
    3.  Client Hints  . . . . . . . . . . . . . . . . . . . . . . . .   7
      3.1.  The DPR header field  . . . . . . . . . . . . . . . . . .   7
        3.1.1.  Confirming Selected DPR . . . . . . . . . . . . . . .   7
-     3.2.  The Width header field  . . . . . . . . . . . . . . . . .   8
+     3.2.  The Width header field  . . . . . . . . . . . . . . . . .   7
      3.3.  The Viewport-Width header field . . . . . . . . . . . . .   8
      3.4.  The Downlink header field . . . . . . . . . . . . . . . .   8
      3.5.  The Save-Data header field  . . . . . . . . . . . . . . .   8
    4.  Examples  . . . . . . . . . . . . . . . . . . . . . . . . . .   9
-   5.  Security Considerations . . . . . . . . . . . . . . . . . . .  10
+   5.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  10
      6.1.  Accept-CH . . . . . . . . . . . . . . . . . . . . . . . .  10
-     6.2.  Accept-CH-Lifetime  . . . . . . . . . . . . . . . . . . .  11
+     6.2.  Accept-CH-Lifetime  . . . . . . . . . . . . . . . . . . .  10
      6.3.  Content-DPR . . . . . . . . . . . . . . . . . . . . . . .  11
      6.4.  Downlink  . . . . . . . . . . . . . . . . . . . . . . . .  11
      6.5.  DPR . . . . . . . . . . . . . . . . . . . . . . . . . . .  11
      6.6.  Save-Data . . . . . . . . . . . . . . . . . . . . . . . .  11
-     6.7.  Viewport-Width  . . . . . . . . . . . . . . . . . . . . .  12
+     6.7.  Viewport-Width  . . . . . . . . . . . . . . . . . . . . .  11
      6.8.  Width . . . . . . . . . . . . . . . . . . . . . . . . . .  12
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  12
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .  12
@@ -115,8 +115,8 @@ Internet-Draft              HTTP Client Hints                  July 2017
 
 
      A.2.  Since -01 . . . . . . . . . . . . . . . . . . . . . . . .  13
-     A.3.  Since -02 . . . . . . . . . . . . . . . . . . . . . . . .  14
-     A.4.  Since -03 . . . . . . . . . . . . . . . . . . . . . . . .  14
+     A.3.  Since -02 . . . . . . . . . . . . . . . . . . . . . . . .  13
+     A.4.  Since -03 . . . . . . . . . . . . . . . . . . . . . . . .  13
      A.5.  Since -04 . . . . . . . . . . . . . . . . . . . . . . . .  14
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  14
 
@@ -211,9 +211,9 @@ Internet-Draft              HTTP Client Hints                  July 2017
    headers, servers can optimize the response based upon the information
    in them.  When doing so, and if the resource is cacheable, the server
    MUST also generate a Vary response header field (Section 7.1.4 of
-   [RFC7231]), and optionally Key ([I-D.ietf-httpbis-key]), to indicate
-   which hints can affect the selected response and whether the selected
-   response is appropriate for a later request.
+   [RFC7231]), and optionally Key ([KEY]), to indicate which hints can
+   affect the selected response and whether the selected response is
+   appropriate for a later request.
 
    Further, depending on the hint used, the server can generate
    additional response header fields to convey related values to aid
@@ -233,7 +233,7 @@ Internet-Draft              HTTP Client Hints                  July 2017
 
    Servers can advertise support for Client Hints using the Accept-CH
    header field or an equivalent HTML meta element with http-equiv
-   attribute ([W3C.REC-html5-20141028]).
+   attribute ([HTML5]).
 
      Accept-CH = #field-name
 
@@ -308,10 +308,9 @@ Internet-Draft              HTTP Client Hints                  July 2017
    Above example indicates that the cache key needs to include the DPR,
    Width, and Downlink header fields.
 
-   Client Hints MAY be combined with Key ([I-D.ietf-httpbis-key]) to
-   enable fine-grained control of the cache key for improved cache
-   efficiency.  For example, the server can return the following set of
-   instructions:
+   Client Hints MAY be combined with Key ([KEY]) to enable fine-grained
+   control of the cache key for improved cache efficiency.  For example,
+   the server can return the following set of instructions:
 
      Key: DPR;partition=1.5:2.5:4.0
 
@@ -329,7 +328,8 @@ Internet-Draft              HTTP Client Hints                  July 2017
 
    Above example indicates that the cache key needs to include the
    (Mbps) value of the Downlink header field with six segments: less
-
+   than 0.5, 0.5 to less than 1.0, 1.0 to less than 3.0, 3.0 to less
+   than 5.0, 5.0 to less than 10; 10 or higher.
 
 
 
@@ -338,18 +338,14 @@ Grigorik                Expires January 17, 2018                [Page 6]
 Internet-Draft              HTTP Client Hints                  July 2017
 
 
-   than 0.5, 0.5 to less than 1.0, 1.0 to less than 3.0, 3.0 to less
-   than 5.0, 5.0 to less than 10; 10 or higher.
-
 3.  Client Hints
 
 3.1.  The DPR header field
 
    The "DPR" request header field is a number that indicates the
    client's current Device Pixel Ratio (DPR), which is the ratio of
-   physical pixels over CSS px (Section 5.2 of
-   [W3C.CR-css-values-3-20160929]) of the layout viewport (Section 9.1.1
-   of [CSS2]) on the device.
+   physical pixels over CSS px (Section 5.2 of [CSSVAL]) of the layout
+   viewport (Section 9.1.1 of [CSS2]) on the device.
 
      DPR = 1*DIGIT [ "." 1*DIGIT ]
 
@@ -382,18 +378,6 @@ Internet-Draft              HTTP Client Hints                  July 2017
    If Content-DPR occurs in a message more than once, the last value
    overrides all previous occurrences.
 
-
-
-
-
-
-
-
-Grigorik                Expires January 17, 2018                [Page 7]
-
-Internet-Draft              HTTP Client Hints                  July 2017
-
-
 3.2.  The Width header field
 
    The "Width" request header field is a number that indicates the
@@ -402,6 +386,13 @@ Internet-Draft              HTTP Client Hints                  July 2017
    smallest following integer (i.e. ceiling value).
 
      Width = 1*DIGIT
+
+
+
+Grigorik                Expires January 17, 2018                [Page 7]
+
+Internet-Draft              HTTP Client Hints                  July 2017
+
 
    If the desired resource width is not known at the time of the request
    or the resource does not have a display width, the Width header field
@@ -442,6 +433,15 @@ Internet-Draft              HTTP Client Hints                  July 2017
    This document defines the "on" sd-token value, which is used as a
    signal indicating explicit user opt-in into a reduced data usage mode
    on the client, and when communicated to origins allows them to
+   deliver alternate content honoring such preference - e.g. smaller
+   image and video resources, alternate markup, and so on.  New token
+   and extension token values can be defined by updates to this
+   specification.
+
+
+
+
+
 
 
 
@@ -449,11 +449,6 @@ Grigorik                Expires January 17, 2018                [Page 8]
 
 Internet-Draft              HTTP Client Hints                  July 2017
 
-
-   deliver alternate content honoring such preference - e.g. smaller
-   image and video resources, alternate markup, and so on.  New token
-   and extension token values can be defined by updates to this
-   specification.
 
 4.  Examples
 
@@ -494,18 +489,6 @@ Internet-Draft              HTTP Client Hints                  July 2017
    optimized resource - for example, an alternate image asset,
    stylesheet, HTML document, media stream, and so on.
 
-
-
-
-
-
-
-
-Grigorik                Expires January 17, 2018                [Page 9]
-
-Internet-Draft              HTTP Client Hints                  July 2017
-
-
 5.  Security Considerations
 
    The request header fields defined in this specification expose
@@ -515,6 +498,14 @@ Internet-Draft              HTTP Client Hints                  July 2017
    width, and device pixel ratio via JavaScript, or through the use of
    CSS media queries and unique resource URLs even if JavaScript is
    disabled.  However, servers that gather this information through such
+
+
+
+Grigorik                Expires January 17, 2018                [Page 9]
+
+Internet-Draft              HTTP Client Hints                  July 2017
+
+
    mechanisms are typically observable (e.g., you can see that they're
    using JavaScript to gather it), whereas servers' use of the header
    fields introduced by this specification is not observable.
@@ -554,14 +545,6 @@ Internet-Draft              HTTP Client Hints                  July 2017
    o  Header field name: Accept-CH
    o  Applicable protocol: HTTP
    o  Status: standard
-
-
-
-Grigorik                Expires January 17, 2018               [Page 10]
-
-Internet-Draft              HTTP Client Hints                  July 2017
-
-
    o  Author/Change controller: IETF
    o  Specification document(s): Section 2.2.1 of this document
    o  Related information: for Client Hints
@@ -571,6 +554,14 @@ Internet-Draft              HTTP Client Hints                  July 2017
    o  Header field name: Accept-CH-Lifetime
    o  Applicable protocol: HTTP
    o  Status: standard
+
+
+
+Grigorik                Expires January 17, 2018               [Page 10]
+
+Internet-Draft              HTTP Client Hints                  July 2017
+
+
    o  Author/Change controller: IETF
    o  Specification document(s): Section 2.2.2 of this document
    o  Related information: for Client Hints
@@ -611,13 +602,6 @@ Internet-Draft              HTTP Client Hints                  July 2017
    o  Specification document(s): Section 3.5 of this document
    o  Related information: for Client Hints
 
-
-
-Grigorik                Expires January 17, 2018               [Page 11]
-
-Internet-Draft              HTTP Client Hints                  July 2017
-
-
 6.7.  Viewport-Width
 
    o  Header field name: Viewport-Width
@@ -626,6 +610,13 @@ Internet-Draft              HTTP Client Hints                  July 2017
    o  Author/Change controller: IETF
    o  Specification document(s): Section 3.3 of this document
    o  Related information: for Client Hints
+
+
+
+Grigorik                Expires January 17, 2018               [Page 11]
+
+Internet-Draft              HTTP Client Hints                  July 2017
+
 
 6.8.  Width
 
@@ -644,6 +635,17 @@ Internet-Draft              HTTP Client Hints                  July 2017
               Style Sheets Level 2 Revision 1 (CSS 2.1) Specification",
               W3C Recommendation REC-CSS2-20110607, June 2011,
               <http://www.w3.org/TR/2011/REC-CSS2-20110607>.
+
+   [CSSVAL]   Atkins, T. and E. Etemad, "CSS Values and Units Module
+              Level 3", World Wide Web Consortium CR CR-css-values-
+              3-20160929, September 2016, <https://www.w3.org/TR/2016/
+              CR-css-values-3-20160929>.
+
+   [HTML5]    Hickson, I., Berjon, R., Faulkner, S., Leithead, T.,
+              Navara, E., O&#039;Connor, T., and S. Pfeiffer, "HTML5",
+              World Wide Web Consortium Recommendation REC-
+              html5-20141028, October 2014,
+              <http://www.w3.org/TR/2014/REC-html5-20141028>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -667,8 +669,6 @@ Internet-Draft              HTTP Client Hints                  July 2017
 
 
 
-
-
 Grigorik                Expires January 17, 2018               [Page 12]
 
 Internet-Draft              HTTP Client Hints                  July 2017
@@ -679,23 +679,9 @@ Internet-Draft              HTTP Client Hints                  July 2017
               RFC 7234, DOI 10.17487/RFC7234, June 2014,
               <http://www.rfc-editor.org/info/rfc7234>.
 
-   [W3C.CR-css-values-3-20160929]
-              Atkins, T. and E. Etemad, "CSS Values and Units Module
-              Level 3", World Wide Web Consortium CR CR-css-values-
-              3-20160929, September 2016, <https://www.w3.org/TR/2016/
-              CR-css-values-3-20160929>.
-
-   [W3C.REC-html5-20141028]
-              Hickson, I., Berjon, R., Faulkner, S., Leithead, T.,
-              Navara, E., O&#039;Connor, T., and S. Pfeiffer, "HTML5",
-              World Wide Web Consortium Recommendation REC-
-              html5-20141028, October 2014,
-              <http://www.w3.org/TR/2014/REC-html5-20141028>.
-
 7.2.  Informative References
 
-   [I-D.ietf-httpbis-key]
-              Fielding, R. and M. Nottingham, "The Key HTTP Response
+   [KEY]      Fielding, R. and M. Nottingham, "The Key HTTP Response
               Header Field", draft-ietf-httpbis-key-01 (work in
               progress), March 2016.
 
@@ -719,17 +705,6 @@ A.2.  Since -01
       considerations.
    o  Changed document status to experimental.
 
-
-
-
-
-
-
-Grigorik                Expires January 17, 2018               [Page 13]
-
-Internet-Draft              HTTP Client Hints                  July 2017
-
-
 A.3.  Since -02
 
    o  Issue 239: Updated reference to CR-css-values-3
@@ -743,6 +718,18 @@ A.4.  Since -03
    o  Issue 308: Editorial cleanup
    o  Issue 306: Define Accept-CH-Lifetime
 
+
+
+
+
+
+
+
+Grigorik                Expires January 17, 2018               [Page 13]
+
+Internet-Draft              HTTP Client Hints                  July 2017
+
+
 A.5.  Since -04
 
    o  None yet.
@@ -754,6 +741,19 @@ Author's Address
 
    Email: ilya@igvita.com
    URI:   https://www.igvita.com/
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
