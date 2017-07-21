@@ -83,27 +83,27 @@ Table of Contents
        2.2.1.  Advertising Support via Accept-CH Header Field  . . .   5
        2.2.2.  The Accept-CH-Lifetime Header Field . . . . . . . . .   5
        2.2.3.  Interaction with Caches . . . . . . . . . . . . . . .   6
-   3.  Client Hints  . . . . . . . . . . . . . . . . . . . . . . . .   7
-     3.1.  The DPR Header Field  . . . . . . . . . . . . . . . . . .   7
+   3.  Client Hints  . . . . . . . . . . . . . . . . . . . . . . . .   6
+     3.1.  The DPR Header Field  . . . . . . . . . . . . . . . . . .   6
        3.1.1.  Confirming Selected DPR . . . . . . . . . . . . . . .   7
-     3.2.  The Width Header Field  . . . . . . . . . . . . . . . . .   8
-     3.3.  The Viewport-Width Header Field . . . . . . . . . . . . .   8
+     3.2.  The Width Header Field  . . . . . . . . . . . . . . . . .   7
+     3.3.  The Viewport-Width Header Field . . . . . . . . . . . . .   7
      3.4.  The Save-Data Header Field  . . . . . . . . . . . . . . .   8
-   4.  Examples  . . . . . . . . . . . . . . . . . . . . . . . . . .   9
+   4.  Examples  . . . . . . . . . . . . . . . . . . . . . . . . . .   8
    5.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  10
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
      6.1.  Accept-CH . . . . . . . . . . . . . . . . . . . . . . . .  10
      6.2.  Accept-CH-Lifetime  . . . . . . . . . . . . . . . . . . .  10
      6.3.  Content-DPR . . . . . . . . . . . . . . . . . . . . . . .  10
-     6.4.  DPR . . . . . . . . . . . . . . . . . . . . . . . . . . .  11
-     6.5.  Save-Data . . . . . . . . . . . . . . . . . . . . . . . .  11
+     6.4.  DPR . . . . . . . . . . . . . . . . . . . . . . . . . . .  10
+     6.5.  Save-Data . . . . . . . . . . . . . . . . . . . . . . . .  10
      6.6.  Viewport-Width  . . . . . . . . . . . . . . . . . . . . .  11
      6.7.  Width . . . . . . . . . . . . . . . . . . . . . . . . . .  11
    7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  11
-   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  12
-     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  12
-     8.2.  Informative References  . . . . . . . . . . . . . . . . .  13
-   Appendix A.  Interaction with Key Response Header Field . . . . .  13
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  11
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  11
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .  12
+   Appendix A.  Interaction with Key Response Header Field . . . . .  12
    Appendix B.  Changes  . . . . . . . . . . . . . . . . . . . . . .  13
      B.1.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .  13
 
@@ -115,9 +115,9 @@ Internet-Draft              HTTP Client Hints                  July 2017
 
 
      B.2.  Since -01 . . . . . . . . . . . . . . . . . . . . . . . .  13
-     B.3.  Since -02 . . . . . . . . . . . . . . . . . . . . . . . .  14
-     B.4.  Since -03 . . . . . . . . . . . . . . . . . . . . . . . .  14
-     B.5.  Since -04 . . . . . . . . . . . . . . . . . . . . . . . .  14
+     B.3.  Since -02 . . . . . . . . . . . . . . . . . . . . . . . .  13
+     B.4.  Since -03 . . . . . . . . . . . . . . . . . . . . . . . .  13
+     B.5.  Since -04 . . . . . . . . . . . . . . . . . . . . . . . .  13
      B.6.  Since -05 . . . . . . . . . . . . . . . . . . . . . . . .  14
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  14
 
@@ -317,31 +317,6 @@ Internet-Draft              HTTP Client Hints                  July 2017
    Above example indicates that the cache key needs to include the DPR
    and Width header fields.
 
-   <<<<<<< HEAD Client Hints MAY be combined with Key ([KEY]) to enable
-   fine-grained control of the cache key for improved cache efficiency.
-   For example, the server can return the following set of instructions:
-
-     Key: DPR;partition=1.5:2.5:4.0
-
-   Above example indicates that the cache key needs to include the value
-   of the DPR header field with three segments: less than 1.5, 1.5 to
-   less than 2.5, and 4.0 or greater.
-
-     Key: Width;div=320
-
-
-
-
-
-Grigorik                Expires January 22, 2018                [Page 6]
-
-Internet-Draft              HTTP Client Hints                  July 2017
-
-
-   Above example indicates that the cache key needs to include the value
-   of the Width header field and be partitioned into groups of 320:
-   0-320, 320-640, and so on.
-
 3.  Client Hints
 
 3.1.  The DPR Header Field
@@ -355,6 +330,13 @@ Internet-Draft              HTTP Client Hints                  July 2017
 
    If DPR occurs in a message more than once, the last value overrides
    all previous occurrences.
+
+
+
+Grigorik                Expires January 22, 2018                [Page 6]
+
+Internet-Draft              HTTP Client Hints                  July 2017
+
 
 3.1.1.  Confirming Selected DPR
 
@@ -382,18 +364,6 @@ Internet-Draft              HTTP Client Hints                  July 2017
    If Content-DPR occurs in a message more than once, the last value
    overrides all previous occurrences.
 
-
-
-
-
-
-
-
-Grigorik                Expires January 22, 2018                [Page 7]
-
-Internet-Draft              HTTP Client Hints                  July 2017
-
-
 3.2.  The Width Header Field
 
    The "Width" request header field is a number that indicates the
@@ -417,6 +387,13 @@ Internet-Draft              HTTP Client Hints                  July 2017
 
      Viewport-Width = 1*DIGIT
 
+
+
+Grigorik                Expires January 22, 2018                [Page 7]
+
+Internet-Draft              HTTP Client Hints                  July 2017
+
+
    If Viewport-Width occurs in a message more than once, the last value
    overrides all previous occurrences.
 
@@ -439,16 +416,6 @@ Internet-Draft              HTTP Client Hints                  July 2017
 
    If Save-Data occurs in a message more than once, the last value
    overrides all previous occurrences.
-
-
-
-
-
-
-Grigorik                Expires January 22, 2018                [Page 8]
-
-Internet-Draft              HTTP Client Hints                  July 2017
-
 
 4.  Examples
 
@@ -475,6 +442,14 @@ Internet-Draft              HTTP Client Hints                  July 2017
    The Content-DPR response header field indicates to the client that
    the server has selected resource with DPR ratio of 1.0.  The client
    can use this information to perform additional processing on the
+
+
+
+Grigorik                Expires January 22, 2018                [Page 8]
+
+Internet-Draft              HTTP Client Hints                  July 2017
+
+
    resource - for example, calculate the appropriate intrinsic size of
    the image resource such that it is displayed at the correct
    resolution.
@@ -498,14 +473,6 @@ Internet-Draft              HTTP Client Hints                  July 2017
    otherwise did not have access to this data, which may or may not be
    the desired outcome - e.g. this may enable an image optimization
    service to deliver a tailored asset, and it may reveal same
-
-
-
-Grigorik                Expires January 22, 2018                [Page 9]
-
-Internet-Draft              HTTP Client Hints                  July 2017
-
-
    information about the user to other origins that may not have had
    access to it before.  Similarly, sending highly granular data, such
    as image and viewport width may help identify users across multiple
@@ -531,6 +498,14 @@ Internet-Draft              HTTP Client Hints                  July 2017
    Lifetime", and "Content-DPR" HTTP response field, and registers them
    in the Permanent Message Header Fields registry.
 
+
+
+
+Grigorik                Expires January 22, 2018                [Page 9]
+
+Internet-Draft              HTTP Client Hints                  July 2017
+
+
 6.1.  Accept-CH
 
    o  Header field name: Accept-CH
@@ -554,14 +529,6 @@ Internet-Draft              HTTP Client Hints                  July 2017
    o  Header field name: Content-DPR
    o  Applicable protocol: HTTP
    o  Status: standard
-
-
-
-Grigorik                Expires January 22, 2018               [Page 10]
-
-Internet-Draft              HTTP Client Hints                  July 2017
-
-
    o  Author/Change controller: IETF
    o  Specification document(s): Section 3.1.1 of this document
    o  Related information: for Client Hints
@@ -583,6 +550,17 @@ Internet-Draft              HTTP Client Hints                  July 2017
    o  Author/Change controller: IETF
    o  Specification document(s): Section 3.4 of this document
    o  Related information: for Client Hints
+
+
+
+
+
+
+
+Grigorik                Expires January 22, 2018               [Page 10]
+
+Internet-Draft              HTTP Client Hints                  July 2017
+
 
 6.6.  Viewport-Width
 
@@ -609,15 +587,6 @@ Internet-Draft              HTTP Client Hints                  July 2017
    Hardie, Jonas Sicking, and numerous other members of the IETF HTTP
    Working Group for invaluable help and feedback.
 
-
-
-
-
-Grigorik                Expires January 22, 2018               [Page 11]
-
-Internet-Draft              HTTP Client Hints                  July 2017
-
-
 8.  References
 
 8.1.  Normative References
@@ -637,6 +606,17 @@ Internet-Draft              HTTP Client Hints                  July 2017
               World Wide Web Consortium Recommendation REC-
               html5-20141028, October 2014,
               <http://www.w3.org/TR/2014/REC-html5-20141028>.
+
+
+
+
+
+
+
+Grigorik                Expires January 22, 2018               [Page 11]
+
+Internet-Draft              HTTP Client Hints                  July 2017
+
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -667,13 +647,6 @@ Internet-Draft              HTTP Client Hints                  July 2017
               RFC 7234, DOI 10.17487/RFC7234, June 2014,
               <http://www.rfc-editor.org/info/rfc7234>.
 
-
-
-Grigorik                Expires January 22, 2018               [Page 12]
-
-Internet-Draft              HTTP Client Hints                  July 2017
-
-
 8.2.  Informative References
 
    [KEY]      Fielding, R. and M. Nottingham, "The Key HTTP Response
@@ -692,6 +665,14 @@ Appendix A.  Interaction with Key Response Header Field
    instructions:
 
      Key: DPR;partition=1.5:2.5:4.0
+
+
+
+
+Grigorik                Expires January 22, 2018               [Page 12]
+
+Internet-Draft              HTTP Client Hints                  July 2017
+
 
    Above example indicates that the cache key needs to include the value
    of the DPR header field with three segments: less than 1.5, 1.5 to
@@ -719,17 +700,6 @@ B.2.  Since -01
       considerations.
    o  Changed document status to experimental.
 
-
-
-
-
-
-
-Grigorik                Expires January 22, 2018               [Page 13]
-
-Internet-Draft              HTTP Client Hints                  July 2017
-
-
 B.3.  Since -02
 
    o  Issue 239: Updated reference to CR-css-values-3
@@ -748,6 +718,18 @@ B.5.  Since -04
    o  Issue 361: Removed Downlink
    o  Issue 361: Moved Key to appendix, plus other editorial feedback.
 
+
+
+
+
+
+
+
+Grigorik                Expires January 22, 2018               [Page 13]
+
+Internet-Draft              HTTP Client Hints                  July 2017
+
+
 B.6.  Since -05
 
    o  None
@@ -759,6 +741,24 @@ Author's Address
 
    Email: ilya@igvita.com
    URI:   https://www.igvita.com/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
