@@ -4,8 +4,8 @@
 
 HTTP Working Group                                                K. Oku
 Internet-Draft                                                    Fastly
-Intended status: Experimental                              July 28, 2017
-Expires: January 29, 2018
+Intended status: Experimental                              July 31, 2017
+Expires: February 1, 2018
 
 
                 An HTTP Status Code for Indicating Hints
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 29, 2018.
+   This Internet-Draft will expire on February 1, 2018.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Oku                     Expires January 29, 2018                [Page 1]
+Oku                     Expires February 1, 2018                [Page 1]
 
 Internet-Draft                 Early Hints                     July 2017
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Oku                     Expires January 29, 2018                [Page 2]
+Oku                     Expires February 1, 2018                [Page 2]
 
 Internet-Draft                 Early Hints                     July 2017
 
@@ -165,7 +165,7 @@ Internet-Draft                 Early Hints                     July 2017
 
 
 
-Oku                     Expires January 29, 2018                [Page 3]
+Oku                     Expires February 1, 2018                [Page 3]
 
 Internet-Draft                 Early Hints                     July 2017
 
@@ -221,7 +221,7 @@ Internet-Draft                 Early Hints                     July 2017
 
 
 
-Oku                     Expires January 29, 2018                [Page 4]
+Oku                     Expires February 1, 2018                [Page 4]
 
 Internet-Draft                 Early Hints                     July 2017
 
@@ -277,7 +277,7 @@ Internet-Draft                 Early Hints                     July 2017
 
 
 
-Oku                     Expires January 29, 2018                [Page 5]
+Oku                     Expires February 1, 2018                [Page 5]
 
 Internet-Draft                 Early Hints                     July 2017
 
@@ -333,4 +333,4 @@ Author's Address
 
 
 
-Oku                     Expires January 29, 2018                [Page 6]
+Oku                     Expires February 1, 2018                [Page 6]

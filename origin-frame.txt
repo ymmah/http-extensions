@@ -5,8 +5,8 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Standards Track                               E. Nygren
-Expires: January 29, 2018                                         Akamai
-                                                           July 28, 2017
+Expires: February 1, 2018                                         Akamai
+                                                           July 31, 2017
 
 
                         The ORIGIN HTTP/2 Frame
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 29, 2018.
+   This Internet-Draft will expire on February 1, 2018.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Nottingham & Nygren     Expires January 29, 2018                [Page 1]
+Nottingham & Nygren     Expires February 1, 2018                [Page 1]
 
 Internet-Draft                ORIGIN Frames                    July 2017
 
@@ -105,11 +105,11 @@ Table of Contents
    certificate is onerous.  This specification relaxes the requirement
    to check DNS when the ORIGIN frame is in use.  Doing so has
    additional benefits, such as removing the latency associated with
-   some DNS lookups, and improving DNS privacy.
+   some DNS lookups.
 
 
 
-Nottingham & Nygren     Expires January 29, 2018                [Page 2]
+Nottingham & Nygren     Expires February 1, 2018                [Page 2]
 
 Internet-Draft                ORIGIN Frames                    July 2017
 
@@ -165,7 +165,7 @@ Internet-Draft                ORIGIN Frames                    July 2017
 
 
 
-Nottingham & Nygren     Expires January 29, 2018                [Page 3]
+Nottingham & Nygren     Expires February 1, 2018                [Page 3]
 
 Internet-Draft                ORIGIN Frames                    July 2017
 
@@ -221,7 +221,7 @@ Internet-Draft                ORIGIN Frames                    July 2017
 
 
 
-Nottingham & Nygren     Expires January 29, 2018                [Page 4]
+Nottingham & Nygren     Expires February 1, 2018                [Page 4]
 
 Internet-Draft                ORIGIN Frames                    July 2017
 
@@ -234,17 +234,19 @@ Internet-Draft                ORIGIN Frames                    July 2017
 
    [RFC7540], Section 10.1 uses both DNS and the presented TLS
    certificate to establish the origin server(s) that a connection is
-   authoritative for, just as HTTP/1.1 does in [RFC7230].  Furthermore,
-   [RFC7540] Section 9.1.1 explicitly allows a connection to be used for
-   more than one origin server, if it is authoritative.  This affects
-   what requests can be sent on the connection, both in HEADERS frame by
-   the client and as PUSH_PROMISE frames from the server.
+   authoritative for, just as HTTP/1.1 does in [RFC7230].
+
+   Furthermore, [RFC7540] Section 9.1.1 explicitly allows a connection
+   to be used for more than one origin server, if it is authoritative.
+   This affects what requests can be sent on the connection, both in
+   HEADERS frame by the client and as PUSH_PROMISE frames from the
+   server.
 
    Once an Origin Set has been initialised for a connection, clients
    that implement this specification change these behaviors in the
    following ways:
 
-   o  Clients MUST NOT consult DNS to establish the connection's
+   o  Clients MAY avoid consulting DNS to establish the connection's
       authority for new requests.  The TLS certificate MUST still be
       used to do so, as described in [RFC7540] Section 9.1.1.
 
@@ -275,9 +277,7 @@ Internet-Draft                ORIGIN Frames                    July 2017
 
 
 
-
-
-Nottingham & Nygren     Expires January 29, 2018                [Page 5]
+Nottingham & Nygren     Expires February 1, 2018                [Page 5]
 
 Internet-Draft                ORIGIN Frames                    July 2017
 
@@ -303,7 +303,10 @@ Internet-Draft                ORIGIN Frames                    July 2017
    certificate no longer needs to be on-path to redirect traffic to
    them; instead of modifying DNS, they need only convince the user to
    visit another Web site, in order to coalesce connections to the
-   target onto their existing connection.
+   target onto their existing connection.  Clients can mitigate this
+   attack in a variety of ways; examples include checking for a Signed
+   Certificate Timestamp [RFC6929], or performing certificate revocation
+   checks.
 
 5.  References
 
@@ -324,19 +327,21 @@ Internet-Draft                ORIGIN Frames                    July 2017
               (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008,
               <http://www.rfc-editor.org/info/rfc5280>.
 
+
+
+
+
+
+
+Nottingham & Nygren     Expires February 1, 2018                [Page 6]
+
+Internet-Draft                ORIGIN Frames                    July 2017
+
+
    [RFC6066]  Eastlake 3rd, D., "Transport Layer Security (TLS)
               Extensions: Extension Definitions", RFC 6066,
               DOI 10.17487/RFC6066, January 2011,
               <http://www.rfc-editor.org/info/rfc6066>.
-
-
-
-
-
-Nottingham & Nygren     Expires January 29, 2018                [Page 6]
-
-Internet-Draft                ORIGIN Frames                    July 2017
-
 
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
               DOI 10.17487/RFC6454, December 2011,
@@ -352,6 +357,11 @@ Internet-Draft                ORIGIN Frames                    July 2017
    [RFC5988]  Nottingham, M., "Web Linking", RFC 5988,
               DOI 10.17487/RFC5988, October 2010,
               <http://www.rfc-editor.org/info/rfc5988>.
+
+   [RFC6929]  DeKok, A. and A. Lior, "Remote Authentication Dial In User
+              Service (RADIUS) Protocol Extensions", RFC 6929,
+              DOI 10.17487/RFC6929, April 2013,
+              <http://www.rfc-editor.org/info/rfc6929>.
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
@@ -377,6 +387,13 @@ Appendix A.  Non-Normative Processing Algorithm
    3.  If the frame occurs upon any stream except stream 0, ignore the
        frame and stop processing.
 
+
+
+Nottingham & Nygren     Expires February 1, 2018                [Page 7]
+
+Internet-Draft                ORIGIN Frames                    July 2017
+
+
    4.  If any of the flags 0x1, 0x2, 0x4 or 0x8 are set, ignore the
        frame and stop processing.
 
@@ -384,15 +401,6 @@ Appendix A.  Non-Normative Processing Algorithm
        step, initialise the Origin Set as per Section 2.3.
 
    6.  For each Origin field "origin_raw" in the frame payload:
-
-
-
-
-
-Nottingham & Nygren     Expires January 29, 2018                [Page 7]
-
-Internet-Draft                ORIGIN Frames                    July 2017
-
 
        1.  Parse "origin_raw" as an ASCII serialization of an origin
            ([RFC6454], Section 6.2) and let the result be
@@ -434,6 +442,14 @@ Appendix B.  Operational Considerations for Servers
    decisions about creating connections on the fly, and if the origin
    set is split across many frames, their behaviour might be suboptimal.
 
+
+
+
+Nottingham & Nygren     Expires February 1, 2018                [Page 8]
+
+Internet-Draft                ORIGIN Frames                    July 2017
+
+
    Senders take note that, as per [RFC6454] Section 4, the values in an
    ORIGIN header need to be case-normalised before serialisation.
 
@@ -442,13 +458,6 @@ Appendix B.  Operational Considerations for Servers
    the default contents of the Origin Set (as per Section 2.3) do not
    contain any Alternative Services' origins, even if they have been
    used previously on the connection.
-
-
-
-Nottingham & Nygren     Expires January 29, 2018                [Page 8]
-
-Internet-Draft                ORIGIN Frames                    July 2017
-
 
 Authors' Addresses
 
@@ -492,13 +501,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-
-
-
-Nottingham & Nygren     Expires January 29, 2018                [Page 9]
+Nottingham & Nygren     Expires February 1, 2018                [Page 9]
