@@ -407,12 +407,12 @@ Internet-Draft                ORIGIN Frames                    July 2017
    5.  If no previous ORIGIN frame on the connection has reached this
        step, initialise the Origin Set as per Section 2.3.
 
-   6.  For each Origin field "origin_raw" in the frame payload:
+   6.  For each "Origin-Entry" in the frame payload:
 
-       1.  Parse "origin_raw" as an ASCII serialization of an origin
+       1.  Parse "ASCII-Origin" as an ASCII serialization of an origin
            ([RFC6454], Section 6.2) and let the result be
-           "parsed_origin".  If parsing fails, skip to the next
-           "origin_raw".
+           "parsed_origin".  If parsing fails, skip to the next "Origin-
+           Entry".
 
        2.  Add "parsed_origin" to the Origin Set.
 
