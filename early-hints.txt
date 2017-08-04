@@ -114,14 +114,13 @@ Oku                     Expires February 5, 2018                [Page 2]
 Internet-Draft                 Early Hints                   August 2017
 
 
-   HTTP/2 ([RFC7540]) server push can accelerate the delivery of
-   resources, but only resources for which the server is authoritative.
-   The other limitation of server push is that the response will be
-   transmitted regardless of if the client has the response cached.  At
-   the cost of spending one extra round-trip compared to server push in
-   the worst case, delivering Link header fields in a timely fashion is
-   more flexible and consumes less bandwidth, especially if a client is
-   associated with a large amount of cache storage.
+   HTTP/2 ([RFC7540]) server push can be used as a solution to this
+   issue, but has its own limitations.  The responses that can be pushed
+   using HTTP/2 are limited to those belonging to the same origin.
+   Also, it is impossible to send only the links using server push.
+   Finally, sending HTTP responses for every resource is an inefficient
+   way of using bandwidth, especially when a caching server exists as an
+   intermediary.
 
    This memo defines a status code for sending an informational response
    ([RFC7231], Section 6.2) that contains header fields that are likely
@@ -161,7 +160,8 @@ Internet-Draft                 Early Hints                   August 2017
    (Early Hints) response's header fields MUST NOT affect how the final
    response is processed.  A client MUST NOT interpret the 103 (Early
    Hints) response header fields as if they applied to the informational
-
+   response itself (e.g., as metadata about the 103 (Early Hints)
+   response).
 
 
 
@@ -169,9 +169,6 @@ Oku                     Expires February 5, 2018                [Page 3]
 
 Internet-Draft                 Early Hints                   August 2017
 
-
-   response itself (e.g., as metadata about the 103 (Early Hints)
-   response).
 
    The following example illustrates a typical message exchange that
    involves a 103 (Early Hints) response.
@@ -218,6 +215,9 @@ Internet-Draft                 Early Hints                   August 2017
    the final response.  Such behavior might constitute a cross-origin
    information disclosure vulnerability in case the client multiplexes
    requests to different origins onto a single persistent connection.
+
+
+
 
 
 
