@@ -6,7 +6,7 @@ HTTP Working Group                                               M. West
 Internet-Draft                                               Google, Inc
 Updates: 6265 (if approved)                                   M. Goodwin
 Intended status: Standards Track                                 Mozilla
-Expires: February 1, 2018                                  July 31, 2017
+Expires: February 5, 2018                                 August 4, 2017
 
 
                            Same-Site Cookies
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on February 1, 2018.
+   This Internet-Draft will expire on February 5, 2018.
 
 
 
@@ -53,9 +53,9 @@ Status of This Memo
 
 
 
-West & Goodwin          Expires February 1, 2018                [Page 1]
+West & Goodwin          Expires February 5, 2018                [Page 1]
 
-Internet-Draft              Same-Site Cookies                  July 2017
+Internet-Draft              Same-Site Cookies                August 2017
 
 
 Copyright Notice
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-West & Goodwin          Expires February 1, 2018                [Page 2]
+West & Goodwin          Expires February 5, 2018                [Page 2]
 
-Internet-Draft              Same-Site Cookies                  July 2017
+Internet-Draft              Same-Site Cookies                August 2017
 
 
 1.  Introduction
@@ -165,9 +165,9 @@ Internet-Draft              Same-Site Cookies                  July 2017
 
 
 
-West & Goodwin          Expires February 1, 2018                [Page 3]
+West & Goodwin          Expires February 5, 2018                [Page 3]
 
-Internet-Draft              Same-Site Cookies                  July 2017
+Internet-Draft              Same-Site Cookies                August 2017
 
 
        cookies should not be sent along with cross-site requests in
@@ -221,9 +221,9 @@ Internet-Draft              Same-Site Cookies                  July 2017
 
 
 
-West & Goodwin          Expires February 1, 2018                [Page 4]
+West & Goodwin          Expires February 5, 2018                [Page 4]
 
-Internet-Draft              Same-Site Cookies                  July 2017
+Internet-Draft              Same-Site Cookies                August 2017
 
 
    are also know as "effective top-level domains" (eTLDs).  For example,
@@ -277,9 +277,9 @@ Internet-Draft              Same-Site Cookies                  July 2017
 
 
 
-West & Goodwin          Expires February 1, 2018                [Page 5]
+West & Goodwin          Expires February 5, 2018                [Page 5]
 
-Internet-Draft              Same-Site Cookies                  July 2017
+Internet-Draft              Same-Site Cookies                August 2017
 
 
    same registered domain as the top-level site.  Otherwise its "site
@@ -333,9 +333,9 @@ Internet-Draft              Same-Site Cookies                  July 2017
 
 
 
-West & Goodwin          Expires February 1, 2018                [Page 6]
+West & Goodwin          Expires February 5, 2018                [Page 6]
 
-Internet-Draft              Same-Site Cookies                  July 2017
+Internet-Draft              Same-Site Cookies                August 2017
 
 
    Given a WorkerGlobalScope ("worker"), the following algorithm returns
@@ -389,9 +389,9 @@ Internet-Draft              Same-Site Cookies                  July 2017
 
 
 
-West & Goodwin          Expires February 1, 2018                [Page 7]
+West & Goodwin          Expires February 5, 2018                [Page 7]
 
-Internet-Draft              Same-Site Cookies                  July 2017
+Internet-Draft              Same-Site Cookies                August 2017
 
 
    cookie-av      = expires-av / max-age-av / domain-av /
@@ -445,9 +445,9 @@ Internet-Draft              Same-Site Cookies                  July 2017
 
 
 
-West & Goodwin          Expires February 1, 2018                [Page 8]
+West & Goodwin          Expires February 5, 2018                [Page 8]
 
-Internet-Draft              Same-Site Cookies                  July 2017
+Internet-Draft              Same-Site Cookies                August 2017
 
 
 4.1.1.  "Strict" and "Lax" enforcement
@@ -501,9 +501,9 @@ Internet-Draft              Same-Site Cookies                  July 2017
 
 
 
-West & Goodwin          Expires February 1, 2018                [Page 9]
+West & Goodwin          Expires February 5, 2018                [Page 9]
 
-Internet-Draft              Same-Site Cookies                  July 2017
+Internet-Draft              Same-Site Cookies                August 2017
 
 
            registered domain, then abort these steps and ignore the
@@ -557,9 +557,9 @@ Internet-Draft              Same-Site Cookies                  July 2017
 
 
 
-West & Goodwin          Expires February 1, 2018               [Page 10]
+West & Goodwin          Expires February 5, 2018               [Page 10]
 
-Internet-Draft              Same-Site Cookies                  July 2017
+Internet-Draft              Same-Site Cookies                August 2017
 
 
 5.2.  Top-level Navigations
@@ -613,9 +613,9 @@ Internet-Draft              Same-Site Cookies                  July 2017
 
 
 
-West & Goodwin          Expires February 1, 2018               [Page 11]
+West & Goodwin          Expires February 5, 2018               [Page 11]
 
-Internet-Draft              Same-Site Cookies                  July 2017
+Internet-Draft              Same-Site Cookies                August 2017
 
 
    about.  The user is not involved in this decision.  Moreover, a
@@ -669,9 +669,9 @@ Internet-Draft              Same-Site Cookies                  July 2017
 
 
 
-West & Goodwin          Expires February 1, 2018               [Page 12]
+West & Goodwin          Expires February 5, 2018               [Page 12]
 
-Internet-Draft              Same-Site Cookies                  July 2017
+Internet-Draft              Same-Site Cookies                August 2017
 
 
    [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
@@ -725,9 +725,9 @@ Internet-Draft              Same-Site Cookies                  July 2017
 
 
 
-West & Goodwin          Expires February 1, 2018               [Page 13]
+West & Goodwin          Expires February 5, 2018               [Page 13]
 
-Internet-Draft              Same-Site Cookies                  July 2017
+Internet-Draft              Same-Site Cookies                August 2017
 
 
    [secure-contexts]
@@ -781,4 +781,4 @@ Authors' Addresses
 
 
 
-West & Goodwin          Expires February 1, 2018               [Page 14]
+West & Goodwin          Expires February 5, 2018               [Page 14]

@@ -4,9 +4,9 @@
 
 HTTP Working Group                                               M. West
 Internet-Draft                                               Google, Inc
-Updates: 6265 (if approved)                                July 31, 2017
+Updates: 6265 (if approved)                               August 4, 2017
 Intended status: Standards Track
-Expires: February 1, 2018
+Expires: February 5, 2018
 
 
    Deprecate modification of 'secure' cookies from non-secure origins
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on February 1, 2018.
+   This Internet-Draft will expire on February 5, 2018.
 
 
 
@@ -53,9 +53,9 @@ Status of This Memo
 
 
 
-West                    Expires February 1, 2018                [Page 1]
+West                    Expires February 5, 2018                [Page 1]
 
-Internet-Draft         Leave Secure Cookies Alone              July 2017
+Internet-Draft         Leave Secure Cookies Alone            August 2017
 
 
 Copyright Notice
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-West                    Expires February 1, 2018                [Page 2]
+West                    Expires February 5, 2018                [Page 2]
 
-Internet-Draft         Leave Secure Cookies Alone              July 2017
+Internet-Draft         Leave Secure Cookies Alone            August 2017
 
 
 2.  Terminology and notation
@@ -165,9 +165,9 @@ Internet-Draft         Leave Secure Cookies Alone              July 2017
 
 
 
-West                    Expires February 1, 2018                [Page 3]
+West                    Expires February 5, 2018                [Page 3]
 
-Internet-Draft         Leave Secure Cookies Alone              July 2017
+Internet-Draft         Leave Secure Cookies Alone            August 2017
 
 
    3.  In order to ensure that a non-secure site can never cause a
@@ -221,9 +221,9 @@ Internet-Draft         Leave Secure Cookies Alone              July 2017
 
 
 
-West                    Expires February 1, 2018                [Page 4]
+West                    Expires February 5, 2018                [Page 4]
 
-Internet-Draft         Leave Secure Cookies Alone              July 2017
+Internet-Draft         Leave Secure Cookies Alone            August 2017
 
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
@@ -277,9 +277,9 @@ Appendix B.  Changes
 
 
 
-West                    Expires February 1, 2018                [Page 5]
+West                    Expires February 5, 2018                [Page 5]
 
-Internet-Draft         Leave Secure Cookies Alone              July 2017
+Internet-Draft         Leave Secure Cookies Alone            August 2017
 
 
 B.1.  Since -00
@@ -333,4 +333,4 @@ Author's Address
 
 
 
-West                    Expires February 1, 2018                [Page 6]
+West                    Expires February 5, 2018                [Page 6]

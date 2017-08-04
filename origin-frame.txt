@@ -5,8 +5,8 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Standards Track                               E. Nygren
-Expires: February 1, 2018                                         Akamai
-                                                           July 31, 2017
+Expires: February 5, 2018                                         Akamai
+                                                          August 4, 2017
 
 
                         The ORIGIN HTTP/2 Frame
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on February 1, 2018.
+   This Internet-Draft will expire on February 5, 2018.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Nottingham & Nygren     Expires February 1, 2018                [Page 1]
+Nottingham & Nygren     Expires February 5, 2018                [Page 1]
 
-Internet-Draft                ORIGIN Frames                    July 2017
+Internet-Draft                ORIGIN Frames                  August 2017
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Nottingham & Nygren     Expires February 1, 2018                [Page 2]
+Nottingham & Nygren     Expires February 5, 2018                [Page 2]
 
-Internet-Draft                ORIGIN Frames                    July 2017
+Internet-Draft                ORIGIN Frames                  August 2017
 
 
 1.1.  Notational Conventions
@@ -165,9 +165,9 @@ Internet-Draft                ORIGIN Frames                    July 2017
 
 
 
-Nottingham & Nygren     Expires February 1, 2018                [Page 3]
+Nottingham & Nygren     Expires February 5, 2018                [Page 3]
 
-Internet-Draft                ORIGIN Frames                    July 2017
+Internet-Draft                ORIGIN Frames                  August 2017
 
 
    The origin frame MUST be sent on stream 0; an ORIGIN frame on any
@@ -221,9 +221,9 @@ Internet-Draft                ORIGIN Frames                    July 2017
 
 
 
-Nottingham & Nygren     Expires February 1, 2018                [Page 4]
+Nottingham & Nygren     Expires February 5, 2018                [Page 4]
 
-Internet-Draft                ORIGIN Frames                    July 2017
+Internet-Draft                ORIGIN Frames                  August 2017
 
 
    The contents of that ORIGIN frame (and subsequent ones) allows the
@@ -277,9 +277,9 @@ Internet-Draft                ORIGIN Frames                    July 2017
 
 
 
-Nottingham & Nygren     Expires February 1, 2018                [Page 5]
+Nottingham & Nygren     Expires February 5, 2018                [Page 5]
 
-Internet-Draft                ORIGIN Frames                    July 2017
+Internet-Draft                ORIGIN Frames                  August 2017
 
 
    origins in the Origin Set for which the connection is authoritative,
@@ -333,9 +333,9 @@ Internet-Draft                ORIGIN Frames                    July 2017
 
 
 
-Nottingham & Nygren     Expires February 1, 2018                [Page 6]
+Nottingham & Nygren     Expires February 5, 2018                [Page 6]
 
-Internet-Draft                ORIGIN Frames                    July 2017
+Internet-Draft                ORIGIN Frames                  August 2017
 
 
    Certificate Timestamp [RFC6929], or performing certificate revocation
@@ -389,9 +389,9 @@ Internet-Draft                ORIGIN Frames                    July 2017
 
 
 
-Nottingham & Nygren     Expires February 1, 2018                [Page 7]
+Nottingham & Nygren     Expires February 5, 2018                [Page 7]
 
-Internet-Draft                ORIGIN Frames                    July 2017
+Internet-Draft                ORIGIN Frames                  August 2017
 
 
    [RFC6929]  DeKok, A. and A. Lior, "Remote Authentication Dial In User
@@ -445,9 +445,9 @@ Appendix A.  Non-Normative Processing Algorithm
 
 
 
-Nottingham & Nygren     Expires February 1, 2018                [Page 8]
+Nottingham & Nygren     Expires February 5, 2018                [Page 8]
 
-Internet-Draft                ORIGIN Frames                    July 2017
+Internet-Draft                ORIGIN Frames                  August 2017
 
 
 Appendix B.  Operational Considerations for Servers
@@ -501,9 +501,9 @@ Authors' Addresses
 
 
 
-Nottingham & Nygren     Expires February 1, 2018                [Page 9]
+Nottingham & Nygren     Expires February 5, 2018                [Page 9]
 
-Internet-Draft                ORIGIN Frames                    July 2017
+Internet-Draft                ORIGIN Frames                  August 2017
 
 
    Erik Nygren
@@ -557,4 +557,4 @@ Internet-Draft                ORIGIN Frames                    July 2017
 
 
 
-Nottingham & Nygren     Expires February 1, 2018               [Page 10]
+Nottingham & Nygren     Expires February 5, 2018               [Page 10]

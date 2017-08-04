@@ -4,8 +4,8 @@
 
 HTTP Working Group                                                K. Oku
 Internet-Draft                                                    Fastly
-Intended status: Experimental                              July 31, 2017
-Expires: February 1, 2018
+Intended status: Experimental                             August 4, 2017
+Expires: February 5, 2018
 
 
                 An HTTP Status Code for Indicating Hints
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on February 1, 2018.
+   This Internet-Draft will expire on February 5, 2018.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Oku                     Expires February 1, 2018                [Page 1]
+Oku                     Expires February 5, 2018                [Page 1]
 
-Internet-Draft                 Early Hints                     July 2017
+Internet-Draft                 Early Hints                   August 2017
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,18 +109,19 @@ Table of Contents
 
 
 
-Oku                     Expires February 1, 2018                [Page 2]
+Oku                     Expires February 5, 2018                [Page 2]
 
-Internet-Draft                 Early Hints                     July 2017
+Internet-Draft                 Early Hints                   August 2017
 
 
-   HTTP/2 ([RFC7540]) server push can be used as a solution to this
-   issue, but has its own limitations.  The responses that can be pushed
-   using HTTP/2 are limited to those belonging to the same origin.
-   Also, it is impossible to send only the links using server push.
-   Finally, sending HTTP responses for every resource is an inefficient
-   way of using bandwidth, especially when a caching server exists as an
-   intermediary.
+   HTTP/2 ([RFC7540]) server push can accelerate the delivery of
+   resources, but only resources for which the server is authoritative.
+   The other limitation of server push is that the response will be
+   transmitted regardless of if the client has the response cached.  At
+   the cost of spending one extra round-trip compared to server push in
+   the worst case, delivering Link header fields in a timely fashion is
+   more flexible and consumes less bandwidth, especially if a client is
+   associated with a large amount of cache storage.
 
    This memo defines a status code for sending an informational response
    ([RFC7231], Section 6.2) that contains header fields that are likely
@@ -160,15 +161,17 @@ Internet-Draft                 Early Hints                     July 2017
    (Early Hints) response's header fields MUST NOT affect how the final
    response is processed.  A client MUST NOT interpret the 103 (Early
    Hints) response header fields as if they applied to the informational
+
+
+
+
+Oku                     Expires February 5, 2018                [Page 3]
+
+Internet-Draft                 Early Hints                   August 2017
+
+
    response itself (e.g., as metadata about the 103 (Early Hints)
    response).
-
-
-
-Oku                     Expires February 1, 2018                [Page 3]
-
-Internet-Draft                 Early Hints                     July 2017
-
 
    The following example illustrates a typical message exchange that
    involves a 103 (Early Hints) response.
@@ -218,12 +221,9 @@ Internet-Draft                 Early Hints                     July 2017
 
 
 
-
-
-
-Oku                     Expires February 1, 2018                [Page 4]
+Oku                     Expires February 5, 2018                [Page 4]
 
-Internet-Draft                 Early Hints                     July 2017
+Internet-Draft                 Early Hints                   August 2017
 
 
    Therefore, a server might refrain from sending Early Hints over
@@ -277,9 +277,9 @@ Internet-Draft                 Early Hints                     July 2017
 
 
 
-Oku                     Expires February 1, 2018                [Page 5]
+Oku                     Expires February 5, 2018                [Page 5]
 
-Internet-Draft                 Early Hints                     July 2017
+Internet-Draft                 Early Hints                   August 2017
 
 
 Appendix A.  Changes
@@ -333,4 +333,4 @@ Author's Address
 
 
 
-Oku                     Expires February 1, 2018                [Page 6]
+Oku                     Expires February 5, 2018                [Page 6]
