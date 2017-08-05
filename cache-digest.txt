@@ -626,8 +626,10 @@ Internet-Draft          Cache Digests for HTTP/2             August 2017
 
    [Service-Workers]
               Russell, A., Song, J., Archibald, J., and M.
-              Kruisselbrink, "Service Workers 1", October 2016,
-              <https://www.w3.org/TR/2016/WD-service-workers-1/>.
+              Kruisselbrink, "Service Workers 1", W3C Working Draft WD-
+              service-workers-1-20161011, October 2016,
+              <https://www.w3.org/TR/2016/WD-service-workers-
+              1-20161011/>.
 
 Appendix A.  Encoding the CACHE_DIGEST frame as an HTTP Header
 
@@ -664,8 +666,6 @@ Appendix A.  Encoding the CACHE_DIGEST frame as an HTTP Header
    The example below contains one digest of fresh resource and has only
    the "COMPLETE" flag set.
 
-     Cache-Digest: AfdA; complete
-
 
 
 
@@ -673,6 +673,8 @@ Oku & Nottingham        Expires February 6, 2018               [Page 12]
 
 Internet-Draft          Cache Digests for HTTP/2             August 2017
 
+
+     Cache-Digest: AfdA; complete
 
    Clients MUST associate Cache-Digest headers to every HTTP request,
    since Fetch [Fetch] - the HTTP API supported by Service Workers -
@@ -719,8 +721,6 @@ Authors' Addresses
    DeNA Co, Ltd.
 
    Email: kazuhooku@gmail.com
-
-
 
 
 
