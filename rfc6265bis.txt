@@ -2417,8 +2417,8 @@ Internet-Draft  Cookies: HTTP State Management Mechanism     August 2017
    [FETCH]    van Kesteren, A., "Fetch", n.d.,
               <https://fetch.spec.whatwg.org/>.
 
-   [HTML]     Hickson, I., Pieters, S., van Kesteren, A., JA[currency
-              units]genstedt, P., and D. Denicola, "HTML", n.d.,
+   [HTML]     Hickson, I., Pieters, S., van Kesteren, A., Jaegenstedt,
+              P., and D. Denicola, "HTML", n.d.,
               <https://html.spec.whatwg.org/>.
 
    [PSL]      "Public Suffix List", n.d., <https://publicsuffix.org/
