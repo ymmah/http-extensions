@@ -4,8 +4,8 @@
 
 HTTP Working Group                                              E. Stark
 Internet-Draft                                                    Google
-Intended status: Experimental                            August 15, 2017
-Expires: February 16, 2018
+Intended status: Experimental                            August 16, 2017
+Expires: February 17, 2018
 
 
                       Expect-CT Extension for HTTP
@@ -53,12 +53,12 @@ Status of This Memo
 
 
 
-Stark                   Expires February 16, 2018               [Page 1]
+Stark                   Expires February 17, 2018               [Page 1]
 
 Internet-Draft                  Expect-CT                    August 2017
 
 
-   This Internet-Draft will expire on February 16, 2018.
+   This Internet-Draft will expire on February 17, 2018.
 
 Copyright Notice
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Stark                   Expires February 16, 2018               [Page 2]
+Stark                   Expires February 17, 2018               [Page 2]
 
 Internet-Draft                  Expect-CT                    August 2017
 
@@ -165,7 +165,7 @@ Internet-Draft                  Expect-CT                    August 2017
 
 
 
-Stark                   Expires February 16, 2018               [Page 3]
+Stark                   Expires February 17, 2018               [Page 3]
 
 Internet-Draft                  Expect-CT                    August 2017
 
@@ -221,7 +221,7 @@ Internet-Draft                  Expect-CT                    August 2017
 
 
 
-Stark                   Expires February 16, 2018               [Page 4]
+Stark                   Expires February 17, 2018               [Page 4]
 
 Internet-Draft                  Expect-CT                    August 2017
 
@@ -230,8 +230,8 @@ Internet-Draft                  Expect-CT                    August 2017
    compliance (Section 2.4).
 
    Figure 1 describes the syntax (Augmented Backus-Naur Form) of the
-   header field, using the grammar defined in [RFC5234] and the rules
-   defined in Section 3.2 of [RFC7230].
+   header field, using the grammar defined in RFC 5234 [RFC5234] and the
+   rules defined in Section 3.2 of RFC 7230 [RFC7230].
 
    Expect-CT           = #expect-ct-directive
    expect-ct-directive = directive-name [ "=" directive-value ]
@@ -241,8 +241,8 @@ Internet-Draft                  Expect-CT                    August 2017
               Figure 1: Syntax of the Expect-CT header field
 
    Optional white space ("OWS") is used as defined in Section 3.2.3 of
-   [RFC7230]. "token" and "quoted-string" are used as defined in
-   Section 3.2.6 of [RFC7230].
+   RFC 7230 [RFC7230]. "token" and "quoted-string" are used as defined
+   in Section 3.2.6 of RFC 7230 [RFC7230].
 
    The directives defined in this specification are described below.
    The overall requirements for directives are:
@@ -277,7 +277,7 @@ Internet-Draft                  Expect-CT                    August 2017
 
 
 
-Stark                   Expires February 16, 2018               [Page 5]
+Stark                   Expires February 17, 2018               [Page 5]
 
 Internet-Draft                  Expect-CT                    August 2017
 
@@ -289,7 +289,7 @@ Internet-Draft                  Expect-CT                    August 2017
 
             Figure 2: Syntax of the report-uri directive value
 
-   "absolute-URI" is defined in Section 4.3 of [RFC3986].
+   "absolute-URI" is defined in Section 4.3 of RFC 3986 [RFC3986].
 
    Hosts may set "report-uri"s that use HTTP or HTTPS.  If the scheme in
    the "report-uri" is one that uses TLS (e.g., HTTPS), UAs MUST check
@@ -333,7 +333,7 @@ Internet-Draft                  Expect-CT                    August 2017
 
 
 
-Stark                   Expires February 16, 2018               [Page 6]
+Stark                   Expires February 17, 2018               [Page 6]
 
 Internet-Draft                  Expect-CT                    August 2017
 
@@ -355,7 +355,8 @@ Internet-Draft                  Expect-CT                    August 2017
 
               Figure 3: Syntax of the max-age directive value
 
-   "delta-seconds" is used as defined in Section 1.2.1 of [RFC7234].
+   "delta-seconds" is used as defined in Section 1.2.1 of RFC 7234
+   [RFC7234].
 
 2.1.4.  Examples
 
@@ -388,8 +389,7 @@ Expect-CT: max-age=86400,report-uri="https://foo.example/report"
 
 
 
-
-Stark                   Expires February 16, 2018               [Page 7]
+Stark                   Expires February 17, 2018               [Page 7]
 
 Internet-Draft                  Expect-CT                    August 2017
 
@@ -445,7 +445,7 @@ Internet-Draft                  Expect-CT                    August 2017
 
 
 
-Stark                   Expires February 16, 2018               [Page 8]
+Stark                   Expires February 17, 2018               [Page 8]
 
 Internet-Draft                  Expect-CT                    August 2017
 
@@ -501,7 +501,7 @@ Internet-Draft                  Expect-CT                    August 2017
 
 
 
-Stark                   Expires February 16, 2018               [Page 9]
+Stark                   Expires February 17, 2018               [Page 9]
 
 Internet-Draft                  Expect-CT                    August 2017
 
@@ -557,7 +557,7 @@ Internet-Draft                  Expect-CT                    August 2017
 
 
 
-Stark                   Expires February 16, 2018              [Page 10]
+Stark                   Expires February 17, 2018              [Page 10]
 
 Internet-Draft                  Expect-CT                    August 2017
 
@@ -613,7 +613,7 @@ Internet-Draft                  Expect-CT                    August 2017
 
 
 
-Stark                   Expires February 16, 2018              [Page 11]
+Stark                   Expires February 17, 2018              [Page 11]
 
 Internet-Draft                  Expect-CT                    August 2017
 
@@ -621,8 +621,8 @@ Internet-Draft                  Expect-CT                    August 2017
    o  "effective-expiration-date": the value indicates the Effective
       Expiration Date (see Section 2.3.4) for the Expect-CT Host that
       failed the CT compliance check.  The value is provided as a string
-      formatted according to Section 5.6 of [RFC3339] ("Internet Date/
-      Time Format").
+      formatted according to Section 5.6, "Internet Date/Time Format",
+      of [RFC3339].
 
    o  "served-certificate-chain": the value is the certificate chain as
       served by the Expect-CT Host during TLS session setup.  The value
@@ -669,7 +669,7 @@ Internet-Draft                  Expect-CT                    August 2017
 
 
 
-Stark                   Expires February 16, 2018              [Page 12]
+Stark                   Expires February 17, 2018              [Page 12]
 
 Internet-Draft                  Expect-CT                    August 2017
 
@@ -725,7 +725,7 @@ Internet-Draft                  Expect-CT                    August 2017
 
 
 
-Stark                   Expires February 16, 2018              [Page 13]
+Stark                   Expires February 17, 2018              [Page 13]
 
 Internet-Draft                  Expect-CT                    August 2017
 
@@ -781,7 +781,7 @@ Internet-Draft                  Expect-CT                    August 2017
 
 
 
-Stark                   Expires February 16, 2018              [Page 14]
+Stark                   Expires February 17, 2018              [Page 14]
 
 Internet-Draft                  Expect-CT                    August 2017
 
@@ -837,7 +837,7 @@ Internet-Draft                  Expect-CT                    August 2017
 
 
 
-Stark                   Expires February 16, 2018              [Page 15]
+Stark                   Expires February 17, 2018              [Page 15]
 
 Internet-Draft                  Expect-CT                    August 2017
 
@@ -893,7 +893,7 @@ Internet-Draft                  Expect-CT                    August 2017
 
 
 
-Stark                   Expires February 16, 2018              [Page 16]
+Stark                   Expires February 17, 2018              [Page 16]
 
 Internet-Draft                  Expect-CT                    August 2017
 
@@ -949,7 +949,7 @@ Author's Address
 
 
 
-Stark                   Expires February 16, 2018              [Page 17]
+Stark                   Expires February 17, 2018              [Page 17]
 
 Internet-Draft                  Expect-CT                    August 2017
 
@@ -1005,4 +1005,4 @@ Internet-Draft                  Expect-CT                    August 2017
 
 
 
-Stark                   Expires February 16, 2018              [Page 18]
+Stark                   Expires February 17, 2018              [Page 18]

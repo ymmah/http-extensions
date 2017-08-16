@@ -5,8 +5,8 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Standards Track                               E. Nygren
-Expires: February 16, 2018                                        Akamai
-                                                         August 15, 2017
+Expires: February 17, 2018                                        Akamai
+                                                         August 16, 2017
 
 
                         The ORIGIN HTTP/2 Frame
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on February 16, 2018.
+   This Internet-Draft will expire on February 17, 2018.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Nottingham & Nygren     Expires February 16, 2018               [Page 1]
+Nottingham & Nygren     Expires February 17, 2018               [Page 1]
 
 Internet-Draft                ORIGIN Frames                  August 2017
 
@@ -81,10 +81,10 @@ Table of Contents
    4.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
    5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   7
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   7
-     5.2.  Informative References  . . . . . . . . . . . . . . . . .   7
+     5.2.  Informative References  . . . . . . . . . . . . . . . . .   8
    Appendix A.  Non-Normative Processing Algorithm . . . . . . . . .   8
    Appendix B.  Operational Considerations for Servers . . . . . . .   9
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   9
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  10
 
 1.  Introduction
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Nottingham & Nygren     Expires February 16, 2018               [Page 2]
+Nottingham & Nygren     Expires February 17, 2018               [Page 2]
 
 Internet-Draft                ORIGIN Frames                  August 2017
 
@@ -165,7 +165,7 @@ Internet-Draft                ORIGIN Frames                  August 2017
 
 
 
-Nottingham & Nygren     Expires February 16, 2018               [Page 3]
+Nottingham & Nygren     Expires February 17, 2018               [Page 3]
 
 Internet-Draft                ORIGIN Frames                  August 2017
 
@@ -221,7 +221,7 @@ Internet-Draft                ORIGIN Frames                  August 2017
 
 
 
-Nottingham & Nygren     Expires February 16, 2018               [Page 4]
+Nottingham & Nygren     Expires February 17, 2018               [Page 4]
 
 Internet-Draft                ORIGIN Frames                  August 2017
 
@@ -277,7 +277,7 @@ Internet-Draft                ORIGIN Frames                  August 2017
 
 
 
-Nottingham & Nygren     Expires February 16, 2018               [Page 5]
+Nottingham & Nygren     Expires February 17, 2018               [Page 5]
 
 Internet-Draft                ORIGIN Frames                  August 2017
 
@@ -333,7 +333,7 @@ Internet-Draft                ORIGIN Frames                  August 2017
 
 
 
-Nottingham & Nygren     Expires February 16, 2018               [Page 6]
+Nottingham & Nygren     Expires February 17, 2018               [Page 6]
 
 Internet-Draft                ORIGIN Frames                  August 2017
 
@@ -342,6 +342,14 @@ Internet-Draft                ORIGIN Frames                  August 2017
    alternative means to increase confidence that the certificate is
    legitimate, such as such as checking for a Signed Certificate
    Timestamp [RFC6929], or performing certificate revocation checks.
+
+   Clients opting not to consult DNS ought to do so only if they have a
+   high degree of confidence that the certificate is legitimate.  For
+   instance, clients might skip consulting DNS only if they receive
+   proof of inclusion in a Certificate Transparency log [RFC6929] or
+   they have a recent OCSP response [RFC6960] (possibly using the
+   "status_request" TLS extension [RFC6066]) showing that the
+   certificate was not revoked.
 
    The Origin Set's size is unbounded by this specification, and thus
    could be used by attackers to exhaust client resources.  To mitigate
@@ -376,6 +384,16 @@ Internet-Draft                ORIGIN Frames                  August 2017
               DOI 10.17487/RFC6454, December 2011,
               <http://www.rfc-editor.org/info/rfc6454>.
 
+
+
+
+
+
+Nottingham & Nygren     Expires February 17, 2018               [Page 7]
+
+Internet-Draft                ORIGIN Frames                  August 2017
+
+
    [RFC7540]  Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
               Transfer Protocol Version 2 (HTTP/2)", RFC 7540,
               DOI 10.17487/RFC7540, May 2015,
@@ -387,17 +405,16 @@ Internet-Draft                ORIGIN Frames                  August 2017
               DOI 10.17487/RFC5988, October 2010,
               <http://www.rfc-editor.org/info/rfc5988>.
 
-
-
-Nottingham & Nygren     Expires February 16, 2018               [Page 7]
-
-Internet-Draft                ORIGIN Frames                  August 2017
-
-
    [RFC6929]  DeKok, A. and A. Lior, "Remote Authentication Dial In User
               Service (RADIUS) Protocol Extensions", RFC 6929,
               DOI 10.17487/RFC6929, April 2013,
               <http://www.rfc-editor.org/info/rfc6929>.
+
+   [RFC6960]  Santesson, S., Myers, M., Ankney, R., Malpani, A.,
+              Galperin, S., and C. Adams, "X.509 Internet Public Key
+              Infrastructure Online Certificate Status Protocol - OCSP",
+              RFC 6960, DOI 10.17487/RFC6960, June 2013,
+              <http://www.rfc-editor.org/info/rfc6960>.
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
@@ -426,6 +443,13 @@ Appendix A.  Non-Normative Processing Algorithm
    4.  If any of the flags 0x1, 0x2, 0x4 or 0x8 are set, ignore the
        frame and stop processing.
 
+
+
+Nottingham & Nygren     Expires February 17, 2018               [Page 8]
+
+Internet-Draft                ORIGIN Frames                  August 2017
+
+
    5.  If no previous ORIGIN frame on the connection has reached this
        step, initialise the Origin Set as per Section 2.3.
 
@@ -437,18 +461,6 @@ Appendix A.  Non-Normative Processing Algorithm
            Entry".
 
        2.  Add "parsed_origin" to the Origin Set.
-
-
-
-
-
-
-
-
-Nottingham & Nygren     Expires February 16, 2018               [Page 8]
-
-Internet-Draft                ORIGIN Frames                  August 2017
-
 
 Appendix B.  Operational Considerations for Servers
 
@@ -486,6 +498,14 @@ Appendix B.  Operational Considerations for Servers
    Senders take note that, as per [RFC6454] Section 4, the values in an
    ORIGIN header need to be case-normalised before serialisation.
 
+
+
+
+Nottingham & Nygren     Expires February 17, 2018               [Page 9]
+
+Internet-Draft                ORIGIN Frames                  August 2017
+
+
    Finally, servers that host alternative services [RFC7838] will need
    to explicitly advertise their origins when sending ORIGIN, because
    the default contents of the Origin Set (as per Section 2.3) do not
@@ -498,12 +518,6 @@ Authors' Addresses
 
    Email: mnot@mnot.net
    URI:   https://www.mnot.net/
-
-
-
-Nottingham & Nygren     Expires February 16, 2018               [Page 9]
-
-Internet-Draft                ORIGIN Frames                  August 2017
 
 
    Erik Nygren
@@ -543,18 +557,4 @@ Internet-Draft                ORIGIN Frames                  August 2017
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Nottingham & Nygren     Expires February 16, 2018              [Page 10]
+Nottingham & Nygren     Expires February 17, 2018              [Page 10]
