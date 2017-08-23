@@ -4,8 +4,8 @@
 
 HTTP Working Group                                           I. Grigorik
 Internet-Draft                                                    Google
-Intended status: Experimental                            August 16, 2017
-Expires: February 17, 2018
+Intended status: Experimental                            August 23, 2017
+Expires: February 24, 2018
 
 
                            HTTP Client Hints
@@ -49,11 +49,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on February 17, 2018.
+   This Internet-Draft will expire on February 24, 2018.
 
 
 
-Grigorik                Expires February 17, 2018               [Page 1]
+Grigorik                Expires February 24, 2018               [Page 1]
 
 Internet-Draft              HTTP Client Hints                August 2017
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Grigorik                Expires February 17, 2018               [Page 2]
+Grigorik                Expires February 24, 2018               [Page 2]
 
 Internet-Draft              HTTP Client Hints                August 2017
 
@@ -165,7 +165,7 @@ Internet-Draft              HTTP Client Hints                August 2017
 
 
 
-Grigorik                Expires February 17, 2018               [Page 3]
+Grigorik                Expires February 24, 2018               [Page 3]
 
 Internet-Draft              HTTP Client Hints                August 2017
 
@@ -221,7 +221,7 @@ Internet-Draft              HTTP Client Hints                August 2017
 
 
 
-Grigorik                Expires February 17, 2018               [Page 4]
+Grigorik                Expires February 24, 2018               [Page 4]
 
 Internet-Draft              HTTP Client Hints                August 2017
 
@@ -277,7 +277,7 @@ Internet-Draft              HTTP Client Hints                August 2017
 
 
 
-Grigorik                Expires February 17, 2018               [Page 5]
+Grigorik                Expires February 24, 2018               [Page 5]
 
 Internet-Draft              HTTP Client Hints                August 2017
 
@@ -333,7 +333,7 @@ Internet-Draft              HTTP Client Hints                August 2017
 
 
 
-Grigorik                Expires February 17, 2018               [Page 6]
+Grigorik                Expires February 24, 2018               [Page 6]
 
 Internet-Draft              HTTP Client Hints                August 2017
 
@@ -389,7 +389,7 @@ Internet-Draft              HTTP Client Hints                August 2017
 
 
 
-Grigorik                Expires February 17, 2018               [Page 7]
+Grigorik                Expires February 24, 2018               [Page 7]
 
 Internet-Draft              HTTP Client Hints                August 2017
 
@@ -445,7 +445,7 @@ Internet-Draft              HTTP Client Hints                August 2017
 
 
 
-Grigorik                Expires February 17, 2018               [Page 8]
+Grigorik                Expires February 24, 2018               [Page 8]
 
 Internet-Draft              HTTP Client Hints                August 2017
 
@@ -501,7 +501,7 @@ Internet-Draft              HTTP Client Hints                August 2017
 
 
 
-Grigorik                Expires February 17, 2018               [Page 9]
+Grigorik                Expires February 24, 2018               [Page 9]
 
 Internet-Draft              HTTP Client Hints                August 2017
 
@@ -557,7 +557,7 @@ Internet-Draft              HTTP Client Hints                August 2017
 
 
 
-Grigorik                Expires February 17, 2018              [Page 10]
+Grigorik                Expires February 24, 2018              [Page 10]
 
 Internet-Draft              HTTP Client Hints                August 2017
 
@@ -613,39 +613,39 @@ Internet-Draft              HTTP Client Hints                August 2017
 
 
 
-Grigorik                Expires February 17, 2018              [Page 11]
+Grigorik                Expires February 24, 2018              [Page 11]
 
 Internet-Draft              HTTP Client Hints                August 2017
 
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <http://www.rfc-editor.org/info/rfc2119>.
+              DOI 10.17487/RFC2119, March 1997, <https://www.rfc-
+              editor.org/info/rfc2119>.
 
    [RFC5234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
               Specifications: ABNF", STD 68, RFC 5234,
-              DOI 10.17487/RFC5234, January 2008,
-              <http://www.rfc-editor.org/info/rfc5234>.
+              DOI 10.17487/RFC5234, January 2008, <https://www.rfc-
+              editor.org/info/rfc5234>.
 
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
-              DOI 10.17487/RFC6454, December 2011,
-              <http://www.rfc-editor.org/info/rfc6454>.
+              DOI 10.17487/RFC6454, December 2011, <https://www.rfc-
+              editor.org/info/rfc6454>.
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
-              <http://www.rfc-editor.org/info/rfc7230>.
+              <https://www.rfc-editor.org/info/rfc7230>.
 
    [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
-              DOI 10.17487/RFC7231, June 2014,
-              <http://www.rfc-editor.org/info/rfc7231>.
+              DOI 10.17487/RFC7231, June 2014, <https://www.rfc-
+              editor.org/info/rfc7231>.
 
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
               RFC 7234, DOI 10.17487/RFC7234, June 2014,
-              <http://www.rfc-editor.org/info/rfc7234>.
+              <https://www.rfc-editor.org/info/rfc7234>.
 
 8.2.  Informative References
 
@@ -654,8 +654,8 @@ Internet-Draft              HTTP Client Hints                August 2017
               progress), March 2016.
 
    [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
-              DOI 10.17487/RFC6265, April 2011,
-              <http://www.rfc-editor.org/info/rfc6265>.
+              DOI 10.17487/RFC6265, April 2011, <https://www.rfc-
+              editor.org/info/rfc6265>.
 
 Appendix A.  Interaction with Key Response Header Field
 
@@ -669,7 +669,7 @@ Appendix A.  Interaction with Key Response Header Field
 
 
 
-Grigorik                Expires February 17, 2018              [Page 12]
+Grigorik                Expires February 24, 2018              [Page 12]
 
 Internet-Draft              HTTP Client Hints                August 2017
 
@@ -725,7 +725,7 @@ B.5.  Since -04
 
 
 
-Grigorik                Expires February 17, 2018              [Page 13]
+Grigorik                Expires February 24, 2018              [Page 13]
 
 Internet-Draft              HTTP Client Hints                August 2017
 
@@ -781,4 +781,4 @@ Author's Address
 
 
 
-Grigorik                Expires February 17, 2018              [Page 14]
+Grigorik                Expires February 24, 2018              [Page 14]

@@ -5,7 +5,7 @@
 HTTP Working Group                                                K. Oku
 Internet-Draft                                             DeNA Co, Ltd.
 Intended status: Experimental                              M. Nottingham
-Expires: February 17, 2018                               August 16, 2017
+Expires: February 24, 2018                               August 23, 2017
 
 
                         Cache Digests for HTTP/2
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on February 17, 2018.
+   This Internet-Draft will expire on February 24, 2018.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Oku & Nottingham        Expires February 17, 2018               [Page 1]
+Oku & Nottingham        Expires February 24, 2018               [Page 1]
 
 Internet-Draft          Cache Digests for HTTP/2             August 2017
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Oku & Nottingham        Expires February 17, 2018               [Page 2]
+Oku & Nottingham        Expires February 24, 2018               [Page 2]
 
 Internet-Draft          Cache Digests for HTTP/2             August 2017
 
@@ -165,7 +165,7 @@ Internet-Draft          Cache Digests for HTTP/2             August 2017
 
 
 
-Oku & Nottingham        Expires February 17, 2018               [Page 3]
+Oku & Nottingham        Expires February 24, 2018               [Page 3]
 
 Internet-Draft          Cache Digests for HTTP/2             August 2017
 
@@ -221,7 +221,7 @@ Internet-Draft          Cache Digests for HTTP/2             August 2017
 
 
 
-Oku & Nottingham        Expires February 17, 2018               [Page 4]
+Oku & Nottingham        Expires February 24, 2018               [Page 4]
 
 Internet-Draft          Cache Digests for HTTP/2             August 2017
 
@@ -277,7 +277,7 @@ Internet-Draft          Cache Digests for HTTP/2             August 2017
 
 
 
-Oku & Nottingham        Expires February 17, 2018               [Page 5]
+Oku & Nottingham        Expires February 24, 2018               [Page 5]
 
 Internet-Draft          Cache Digests for HTTP/2             August 2017
 
@@ -333,7 +333,7 @@ Internet-Draft          Cache Digests for HTTP/2             August 2017
 
 
 
-Oku & Nottingham        Expires February 17, 2018               [Page 6]
+Oku & Nottingham        Expires February 24, 2018               [Page 6]
 
 Internet-Draft          Cache Digests for HTTP/2             August 2017
 
@@ -389,7 +389,7 @@ Internet-Draft          Cache Digests for HTTP/2             August 2017
 
 
 
-Oku & Nottingham        Expires February 17, 2018               [Page 7]
+Oku & Nottingham        Expires February 24, 2018               [Page 7]
 
 Internet-Draft          Cache Digests for HTTP/2             August 2017
 
@@ -445,7 +445,7 @@ Internet-Draft          Cache Digests for HTTP/2             August 2017
 
 
 
-Oku & Nottingham        Expires February 17, 2018               [Page 8]
+Oku & Nottingham        Expires February 24, 2018               [Page 8]
 
 Internet-Draft          Cache Digests for HTTP/2             August 2017
 
@@ -501,7 +501,7 @@ Internet-Draft          Cache Digests for HTTP/2             August 2017
 
 
 
-Oku & Nottingham        Expires February 17, 2018               [Page 9]
+Oku & Nottingham        Expires February 24, 2018               [Page 9]
 
 Internet-Draft          Cache Digests for HTTP/2             August 2017
 
@@ -534,22 +534,22 @@ Internet-Draft          Cache Digests for HTTP/2             August 2017
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <http://www.rfc-editor.org/info/rfc2119>.
+              DOI 10.17487/RFC2119, March 1997, <https://www.rfc-
+              editor.org/info/rfc2119>.
 
    [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
               Resource Identifier (URI): Generic Syntax", STD 66,
               RFC 3986, DOI 10.17487/RFC3986, January 2005,
-              <http://www.rfc-editor.org/info/rfc3986>.
+              <https://www.rfc-editor.org/info/rfc3986>.
 
    [RFC6234]  Eastlake 3rd, D. and T. Hansen, "US Secure Hash Algorithms
               (SHA and SHA-based HMAC and HKDF)", RFC 6234,
-              DOI 10.17487/RFC6234, May 2011,
-              <http://www.rfc-editor.org/info/rfc6234>.
+              DOI 10.17487/RFC6234, May 2011, <https://www.rfc-
+              editor.org/info/rfc6234>.
 
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
-              DOI 10.17487/RFC6454, December 2011,
-              <http://www.rfc-editor.org/info/rfc6454>.
+              DOI 10.17487/RFC6454, December 2011, <https://www.rfc-
+              editor.org/info/rfc6454>.
 
 
 
@@ -557,7 +557,7 @@ Internet-Draft          Cache Digests for HTTP/2             August 2017
 
 
 
-Oku & Nottingham        Expires February 17, 2018              [Page 10]
+Oku & Nottingham        Expires February 24, 2018              [Page 10]
 
 Internet-Draft          Cache Digests for HTTP/2             August 2017
 
@@ -565,22 +565,22 @@ Internet-Draft          Cache Digests for HTTP/2             August 2017
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
-              <http://www.rfc-editor.org/info/rfc7230>.
+              <https://www.rfc-editor.org/info/rfc7230>.
 
    [RFC7232]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Conditional Requests", RFC 7232,
-              DOI 10.17487/RFC7232, June 2014,
-              <http://www.rfc-editor.org/info/rfc7232>.
+              DOI 10.17487/RFC7232, June 2014, <https://www.rfc-
+              editor.org/info/rfc7232>.
 
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
               RFC 7234, DOI 10.17487/RFC7234, June 2014,
-              <http://www.rfc-editor.org/info/rfc7234>.
+              <https://www.rfc-editor.org/info/rfc7234>.
 
    [RFC7540]  Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
               Transfer Protocol Version 2 (HTTP/2)", RFC 7540,
-              DOI 10.17487/RFC7540, May 2015,
-              <http://www.rfc-editor.org/info/rfc7540>.
+              DOI 10.17487/RFC7540, May 2015, <https://www.rfc-
+              editor.org/info/rfc7540>.
 
 6.2.  Informative References
 
@@ -593,27 +593,27 @@ Internet-Draft          Cache Digests for HTTP/2             August 2017
 
    [RFC3864]  Klyne, G., Nottingham, M., and J. Mogul, "Registration
               Procedures for Message Header Fields", BCP 90, RFC 3864,
-              DOI 10.17487/RFC3864, September 2004,
-              <http://www.rfc-editor.org/info/rfc3864>.
+              DOI 10.17487/RFC3864, September 2004, <https://www.rfc-
+              editor.org/info/rfc3864>.
 
    [RFC4648]  Josefsson, S., "The Base16, Base32, and Base64 Data
               Encodings", RFC 4648, DOI 10.17487/RFC4648, October 2006,
-              <http://www.rfc-editor.org/info/rfc4648>.
+              <https://www.rfc-editor.org/info/rfc4648>.
 
    [RFC5234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
               Specifications: ABNF", STD 68, RFC 5234,
-              DOI 10.17487/RFC5234, January 2008,
-              <http://www.rfc-editor.org/info/rfc5234>.
+              DOI 10.17487/RFC5234, January 2008, <https://www.rfc-
+              editor.org/info/rfc5234>.
 
    [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
-              DOI 10.17487/RFC6265, April 2011,
-              <http://www.rfc-editor.org/info/rfc6265>.
+              DOI 10.17487/RFC6265, April 2011, <https://www.rfc-
+              editor.org/info/rfc6265>.
 
 
 
 
 
-Oku & Nottingham        Expires February 17, 2018              [Page 11]
+Oku & Nottingham        Expires February 24, 2018              [Page 11]
 
 Internet-Draft          Cache Digests for HTTP/2             August 2017
 
@@ -669,7 +669,7 @@ Appendix A.  Encoding the CACHE_DIGEST frame as an HTTP Header
 
 
 
-Oku & Nottingham        Expires February 17, 2018              [Page 12]
+Oku & Nottingham        Expires February 24, 2018              [Page 12]
 
 Internet-Draft          Cache Digests for HTTP/2             August 2017
 
@@ -725,7 +725,7 @@ Authors' Addresses
 
 
 
-Oku & Nottingham        Expires February 17, 2018              [Page 13]
+Oku & Nottingham        Expires February 24, 2018              [Page 13]
 
 Internet-Draft          Cache Digests for HTTP/2             August 2017
 
@@ -781,4 +781,4 @@ Internet-Draft          Cache Digests for HTTP/2             August 2017
 
 
 
-Oku & Nottingham        Expires February 17, 2018              [Page 14]
+Oku & Nottingham        Expires February 24, 2018              [Page 14]

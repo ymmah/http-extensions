@@ -4,9 +4,9 @@
 
 HTTP Working Group                                               M. West
 Internet-Draft                                               Google, Inc
-Updates: 6265 (if approved)                              August 16, 2017
+Updates: 6265 (if approved)                              August 23, 2017
 Intended status: Standards Track
-Expires: February 17, 2018
+Expires: February 24, 2018
 
 
                             Cookie Prefixes
@@ -46,14 +46,14 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on February 17, 2018.
+   This Internet-Draft will expire on February 24, 2018.
 
 
 
 
 
 
-West                    Expires February 17, 2018               [Page 1]
+West                    Expires February 24, 2018               [Page 1]
 
 Internet-Draft               Cookie Prefixes                 August 2017
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-West                    Expires February 17, 2018               [Page 2]
+West                    Expires February 24, 2018               [Page 2]
 
 Internet-Draft               Cookie Prefixes                 August 2017
 
@@ -165,7 +165,7 @@ Internet-Draft               Cookie Prefixes                 August 2017
 
 
 
-West                    Expires February 17, 2018               [Page 3]
+West                    Expires February 24, 2018               [Page 3]
 
 Internet-Draft               Cookie Prefixes                 August 2017
 
@@ -221,7 +221,7 @@ Internet-Draft               Cookie Prefixes                 August 2017
 
 
 
-West                    Expires February 17, 2018               [Page 4]
+West                    Expires February 24, 2018               [Page 4]
 
 Internet-Draft               Cookie Prefixes                 August 2017
 
@@ -267,24 +267,24 @@ Internet-Draft               Cookie Prefixes                 August 2017
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <http://www.rfc-editor.org/info/rfc2119>.
+              DOI 10.17487/RFC2119, March 1997, <https://www.rfc-
+              editor.org/info/rfc2119>.
 
    [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
               Resource Identifier (URI): Generic Syntax", STD 66,
               RFC 3986, DOI 10.17487/RFC3986, January 2005,
-              <http://www.rfc-editor.org/info/rfc3986>.
+              <https://www.rfc-editor.org/info/rfc3986>.
 
 
 
-West                    Expires February 17, 2018               [Page 5]
+West                    Expires February 24, 2018               [Page 5]
 
 Internet-Draft               Cookie Prefixes                 August 2017
 
 
    [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
-              DOI 10.17487/RFC6265, April 2011,
-              <http://www.rfc-editor.org/info/rfc6265>.
+              DOI 10.17487/RFC6265, April 2011, <https://www.rfc-
+              editor.org/info/rfc6265>.
 
 7.2.  Informative References
 
@@ -306,7 +306,7 @@ Internet-Draft               Cookie Prefixes                 August 2017
 
    [RFC2109]  Kristol, D. and L. Montulli, "HTTP State Management
               Mechanism", RFC 2109, DOI 10.17487/RFC2109, February 1997,
-              <http://www.rfc-editor.org/info/rfc2109>.
+              <https://www.rfc-editor.org/info/rfc2109>.
 
    [SECURE-CONTEXTS]
               West, M., "Secure Contexts", 2016, <https://w3c.github.io/
@@ -333,4 +333,4 @@ Author's Address
 
 
 
-West                    Expires February 17, 2018               [Page 6]
+West                    Expires February 24, 2018               [Page 6]

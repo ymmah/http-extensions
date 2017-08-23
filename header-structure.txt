@@ -4,8 +4,8 @@
 
 HTTP Working Group                                             P-H. Kamp
 Internet-Draft                                 The Varnish Cache Project
-Intended status: Standards Track                         August 16, 2017
-Expires: February 17, 2018
+Intended status: Standards Track                         August 23, 2017
+Expires: February 24, 2018
 
 
                       HTTP Header Common Structure
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on February 17, 2018.
+   This Internet-Draft will expire on February 24, 2018.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Kamp                    Expires February 17, 2018               [Page 1]
+Kamp                    Expires February 24, 2018               [Page 1]
 
 Internet-Draft        HTTP Header Common Structure           August 2017
 
@@ -109,7 +109,7 @@ Internet-Draft        HTTP Header Common Structure           August 2017
 
 
 
-Kamp                    Expires February 17, 2018               [Page 2]
+Kamp                    Expires February 24, 2018               [Page 2]
 
 Internet-Draft        HTTP Header Common Structure           August 2017
 
@@ -165,7 +165,7 @@ Internet-Draft        HTTP Header Common Structure           August 2017
 
 
 
-Kamp                    Expires February 17, 2018               [Page 3]
+Kamp                    Expires February 24, 2018               [Page 3]
 
 Internet-Draft        HTTP Header Common Structure           August 2017
 
@@ -221,7 +221,7 @@ Internet-Draft        HTTP Header Common Structure           August 2017
 
 
 
-Kamp                    Expires February 17, 2018               [Page 4]
+Kamp                    Expires February 24, 2018               [Page 4]
 
 Internet-Draft        HTTP Header Common Structure           August 2017
 
@@ -277,7 +277,7 @@ Internet-Draft        HTTP Header Common Structure           August 2017
 
 
 
-Kamp                    Expires February 17, 2018               [Page 5]
+Kamp                    Expires February 24, 2018               [Page 5]
 
 Internet-Draft        HTTP Header Common Structure           August 2017
 
@@ -333,7 +333,7 @@ Internet-Draft        HTTP Header Common Structure           August 2017
 
 
 
-Kamp                    Expires February 17, 2018               [Page 6]
+Kamp                    Expires February 24, 2018               [Page 6]
 
 Internet-Draft        HTTP Header Common Structure           August 2017
 
@@ -389,7 +389,7 @@ Internet-Draft        HTTP Header Common Structure           August 2017
 
 
 
-Kamp                    Expires February 17, 2018               [Page 7]
+Kamp                    Expires February 24, 2018               [Page 7]
 
 Internet-Draft        HTTP Header Common Structure           August 2017
 
@@ -445,7 +445,7 @@ Internet-Draft        HTTP Header Common Structure           August 2017
 
 
 
-Kamp                    Expires February 17, 2018               [Page 8]
+Kamp                    Expires February 24, 2018               [Page 8]
 
 Internet-Draft        HTTP Header Common Structure           August 2017
 
@@ -454,66 +454,66 @@ Internet-Draft        HTTP Header Common Structure           August 2017
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <http://www.rfc-editor.org/info/rfc2119>.
+              DOI 10.17487/RFC2119, March 1997, <https://www.rfc-
+              editor.org/info/rfc2119>.
 
    [RFC5137]  Klensin, J., "ASCII Escaping of Unicode Characters",
               BCP 137, RFC 5137, DOI 10.17487/RFC5137, February 2008,
-              <http://www.rfc-editor.org/info/rfc5137>.
+              <https://www.rfc-editor.org/info/rfc5137>.
 
    [RFC5234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
               Specifications: ABNF", STD 68, RFC 5234,
-              DOI 10.17487/RFC5234, January 2008,
-              <http://www.rfc-editor.org/info/rfc5234>.
+              DOI 10.17487/RFC5234, January 2008, <https://www.rfc-
+              editor.org/info/rfc5234>.
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
-              <http://www.rfc-editor.org/info/rfc7230>.
+              <https://www.rfc-editor.org/info/rfc7230>.
 
 10.2.  Informative References
 
    [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
-              DOI 10.17487/RFC7231, June 2014,
-              <http://www.rfc-editor.org/info/rfc7231>.
+              DOI 10.17487/RFC7231, June 2014, <https://www.rfc-
+              editor.org/info/rfc7231>.
 
    [RFC7232]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Conditional Requests", RFC 7232,
-              DOI 10.17487/RFC7232, June 2014,
-              <http://www.rfc-editor.org/info/rfc7232>.
+              DOI 10.17487/RFC7232, June 2014, <https://www.rfc-
+              editor.org/info/rfc7232>.
 
    [RFC7233]  Fielding, R., Ed., Lafon, Y., Ed., and J. Reschke, Ed.,
               "Hypertext Transfer Protocol (HTTP/1.1): Range Requests",
               RFC 7233, DOI 10.17487/RFC7233, June 2014,
-              <http://www.rfc-editor.org/info/rfc7233>.
+              <https://www.rfc-editor.org/info/rfc7233>.
 
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
               RFC 7234, DOI 10.17487/RFC7234, June 2014,
-              <http://www.rfc-editor.org/info/rfc7234>.
+              <https://www.rfc-editor.org/info/rfc7234>.
 
    [RFC7235]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Authentication", RFC 7235,
-              DOI 10.17487/RFC7235, June 2014,
-              <http://www.rfc-editor.org/info/rfc7235>.
+              DOI 10.17487/RFC7235, June 2014, <https://www.rfc-
+              editor.org/info/rfc7235>.
 
 
 
 
-Kamp                    Expires February 17, 2018               [Page 9]
+Kamp                    Expires February 24, 2018               [Page 9]
 
 Internet-Draft        HTTP Header Common Structure           August 2017
 
 
    [RFC7239]  Petersson, A. and M. Nilsson, "Forwarded HTTP Extension",
               RFC 7239, DOI 10.17487/RFC7239, June 2014,
-              <http://www.rfc-editor.org/info/rfc7239>.
+              <https://www.rfc-editor.org/info/rfc7239>.
 
    [RFC7694]  Reschke, J., "Hypertext Transfer Protocol (HTTP) Client-
               Initiated Content-Encoding", RFC 7694,
-              DOI 10.17487/RFC7694, November 2015,
-              <http://www.rfc-editor.org/info/rfc7694>.
+              DOI 10.17487/RFC7694, November 2015, <https://www.rfc-
+              editor.org/info/rfc7694>.
 
 Appendix A.  Do HTTP headers have any common structure ?
 
@@ -557,7 +557,7 @@ A.1.  Survey of HTTP header structure
 
 
 
-Kamp                    Expires February 17, 2018              [Page 10]
+Kamp                    Expires February 24, 2018              [Page 10]
 
 Internet-Draft        HTTP Header Common Structure           August 2017
 
@@ -613,7 +613,7 @@ A.2.3.  Strings
 
 
 
-Kamp                    Expires February 17, 2018              [Page 11]
+Kamp                    Expires February 24, 2018              [Page 11]
 
 Internet-Draft        HTTP Header Common Structure           August 2017
 
@@ -669,7 +669,7 @@ A.3.  Is this actually a useful thing to generalize ?
 
 
 
-Kamp                    Expires February 17, 2018              [Page 12]
+Kamp                    Expires February 24, 2018              [Page 12]
 
 Internet-Draft        HTTP Header Common Structure           August 2017
 
@@ -725,7 +725,7 @@ A.5.  RFC723x headers with "uncommon structure"
 
 
 
-Kamp                    Expires February 17, 2018              [Page 13]
+Kamp                    Expires February 24, 2018              [Page 13]
 
 Internet-Draft        HTTP Header Common Structure           August 2017
 
@@ -781,7 +781,7 @@ Internet-Draft        HTTP Header Common Structure           August 2017
 
 
 
-Kamp                    Expires February 17, 2018              [Page 14]
+Kamp                    Expires February 24, 2018              [Page 14]
 
 Internet-Draft        HTTP Header Common Structure           August 2017
 
@@ -837,7 +837,7 @@ Internet-Draft        HTTP Header Common Structure           August 2017
 
 
 
-Kamp                    Expires February 17, 2018              [Page 15]
+Kamp                    Expires February 24, 2018              [Page 15]
 
 Internet-Draft        HTTP Header Common Structure           August 2017
 
@@ -893,4 +893,4 @@ Author's Address
 
 
 
-Kamp                    Expires February 17, 2018              [Page 16]
+Kamp                    Expires February 24, 2018              [Page 16]

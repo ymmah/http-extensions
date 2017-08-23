@@ -6,7 +6,7 @@ HTTP Working Group                                               M. West
 Internet-Draft                                               Google, Inc
 Updates: 6265 (if approved)                                   M. Goodwin
 Intended status: Standards Track                                 Mozilla
-Expires: February 17, 2018                               August 16, 2017
+Expires: February 24, 2018                               August 23, 2017
 
 
                            Same-Site Cookies
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on February 17, 2018.
+   This Internet-Draft will expire on February 24, 2018.
 
 
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-West & Goodwin          Expires February 17, 2018               [Page 1]
+West & Goodwin          Expires February 24, 2018               [Page 1]
 
 Internet-Draft              Same-Site Cookies                August 2017
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-West & Goodwin          Expires February 17, 2018               [Page 2]
+West & Goodwin          Expires February 24, 2018               [Page 2]
 
 Internet-Draft              Same-Site Cookies                August 2017
 
@@ -165,7 +165,7 @@ Internet-Draft              Same-Site Cookies                August 2017
 
 
 
-West & Goodwin          Expires February 17, 2018               [Page 3]
+West & Goodwin          Expires February 24, 2018               [Page 3]
 
 Internet-Draft              Same-Site Cookies                August 2017
 
@@ -221,7 +221,7 @@ Internet-Draft              Same-Site Cookies                August 2017
 
 
 
-West & Goodwin          Expires February 17, 2018               [Page 4]
+West & Goodwin          Expires February 24, 2018               [Page 4]
 
 Internet-Draft              Same-Site Cookies                August 2017
 
@@ -277,7 +277,7 @@ Internet-Draft              Same-Site Cookies                August 2017
 
 
 
-West & Goodwin          Expires February 17, 2018               [Page 5]
+West & Goodwin          Expires February 24, 2018               [Page 5]
 
 Internet-Draft              Same-Site Cookies                August 2017
 
@@ -333,7 +333,7 @@ Internet-Draft              Same-Site Cookies                August 2017
 
 
 
-West & Goodwin          Expires February 17, 2018               [Page 6]
+West & Goodwin          Expires February 24, 2018               [Page 6]
 
 Internet-Draft              Same-Site Cookies                August 2017
 
@@ -389,7 +389,7 @@ Internet-Draft              Same-Site Cookies                August 2017
 
 
 
-West & Goodwin          Expires February 17, 2018               [Page 7]
+West & Goodwin          Expires February 24, 2018               [Page 7]
 
 Internet-Draft              Same-Site Cookies                August 2017
 
@@ -445,7 +445,7 @@ Internet-Draft              Same-Site Cookies                August 2017
 
 
 
-West & Goodwin          Expires February 17, 2018               [Page 8]
+West & Goodwin          Expires February 24, 2018               [Page 8]
 
 Internet-Draft              Same-Site Cookies                August 2017
 
@@ -501,7 +501,7 @@ Internet-Draft              Same-Site Cookies                August 2017
 
 
 
-West & Goodwin          Expires February 17, 2018               [Page 9]
+West & Goodwin          Expires February 24, 2018               [Page 9]
 
 Internet-Draft              Same-Site Cookies                August 2017
 
@@ -557,7 +557,7 @@ Internet-Draft              Same-Site Cookies                August 2017
 
 
 
-West & Goodwin          Expires February 17, 2018              [Page 10]
+West & Goodwin          Expires February 24, 2018              [Page 10]
 
 Internet-Draft              Same-Site Cookies                August 2017
 
@@ -613,7 +613,7 @@ Internet-Draft              Same-Site Cookies                August 2017
 
 
 
-West & Goodwin          Expires February 17, 2018              [Page 11]
+West & Goodwin          Expires February 24, 2018              [Page 11]
 
 Internet-Draft              Same-Site Cookies                August 2017
 
@@ -654,42 +654,42 @@ Internet-Draft              Same-Site Cookies                August 2017
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <http://www.rfc-editor.org/info/rfc2119>.
+              DOI 10.17487/RFC2119, March 1997, <https://www.rfc-
+              editor.org/info/rfc2119>.
 
    [RFC4790]  Newman, C., Duerst, M., and A. Gulbrandsen, "Internet
               Application Protocol Collation Registry", RFC 4790,
-              DOI 10.17487/RFC4790, March 2007,
-              <http://www.rfc-editor.org/info/rfc4790>.
+              DOI 10.17487/RFC4790, March 2007, <https://www.rfc-
+              editor.org/info/rfc4790>.
 
    [RFC5234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
               Specifications: ABNF", STD 68, RFC 5234,
-              DOI 10.17487/RFC5234, January 2008,
-              <http://www.rfc-editor.org/info/rfc5234>.
+              DOI 10.17487/RFC5234, January 2008, <https://www.rfc-
+              editor.org/info/rfc5234>.
 
 
 
-West & Goodwin          Expires February 17, 2018              [Page 12]
+West & Goodwin          Expires February 24, 2018              [Page 12]
 
 Internet-Draft              Same-Site Cookies                August 2017
 
 
    [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
-              DOI 10.17487/RFC6265, April 2011,
-              <http://www.rfc-editor.org/info/rfc6265>.
+              DOI 10.17487/RFC6265, April 2011, <https://www.rfc-
+              editor.org/info/rfc6265>.
 
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
-              DOI 10.17487/RFC6454, December 2011,
-              <http://www.rfc-editor.org/info/rfc6454>.
+              DOI 10.17487/RFC6454, December 2011, <https://www.rfc-
+              editor.org/info/rfc6454>.
 
    [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
-              DOI 10.17487/RFC7231, June 2014,
-              <http://www.rfc-editor.org/info/rfc7231>.
+              DOI 10.17487/RFC7231, June 2014, <https://www.rfc-
+              editor.org/info/rfc7231>.
 
    [RFC7258]  Farrell, S. and H. Tschofenig, "Pervasive Monitoring Is an
               Attack", BCP 188, RFC 7258, DOI 10.17487/RFC7258, May
-              2014, <http://www.rfc-editor.org/info/rfc7258>.
+              2014, <https://www.rfc-editor.org/info/rfc7258>.
 
    [SERVICE-WORKERS]
               Russell, A., Song, J., and J. Archibald, "Service
@@ -716,7 +716,7 @@ Internet-Draft              Same-Site Cookies                August 2017
 
    [RFC7034]  Ross, D. and T. Gondrom, "HTTP Header Field X-Frame-
               Options", RFC 7034, DOI 10.17487/RFC7034, October 2013,
-              <http://www.rfc-editor.org/info/rfc7034>.
+              <https://www.rfc-editor.org/info/rfc7034>.
 
    [samedomain-cookies]
               Goodwin, M. and J. Walker, "SameDomain Cookie Flag", 2011,
@@ -725,7 +725,7 @@ Internet-Draft              Same-Site Cookies                August 2017
 
 
 
-West & Goodwin          Expires February 17, 2018              [Page 13]
+West & Goodwin          Expires February 24, 2018              [Page 13]
 
 Internet-Draft              Same-Site Cookies                August 2017
 
@@ -781,4 +781,4 @@ Authors' Addresses
 
 
 
-West & Goodwin          Expires February 17, 2018              [Page 14]
+West & Goodwin          Expires February 24, 2018              [Page 14]

@@ -5,8 +5,8 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Standards Track                               E. Nygren
-Expires: February 17, 2018                                        Akamai
-                                                         August 16, 2017
+Expires: February 24, 2018                                        Akamai
+                                                         August 23, 2017
 
 
                         The ORIGIN HTTP/2 Frame
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on February 17, 2018.
+   This Internet-Draft will expire on February 24, 2018.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Nottingham & Nygren     Expires February 17, 2018               [Page 1]
+Nottingham & Nygren     Expires February 24, 2018               [Page 1]
 
 Internet-Draft                ORIGIN Frames                  August 2017
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Nottingham & Nygren     Expires February 17, 2018               [Page 2]
+Nottingham & Nygren     Expires February 24, 2018               [Page 2]
 
 Internet-Draft                ORIGIN Frames                  August 2017
 
@@ -165,7 +165,7 @@ Internet-Draft                ORIGIN Frames                  August 2017
 
 
 
-Nottingham & Nygren     Expires February 17, 2018               [Page 3]
+Nottingham & Nygren     Expires February 24, 2018               [Page 3]
 
 Internet-Draft                ORIGIN Frames                  August 2017
 
@@ -221,7 +221,7 @@ Internet-Draft                ORIGIN Frames                  August 2017
 
 
 
-Nottingham & Nygren     Expires February 17, 2018               [Page 4]
+Nottingham & Nygren     Expires February 24, 2018               [Page 4]
 
 Internet-Draft                ORIGIN Frames                  August 2017
 
@@ -277,7 +277,7 @@ Internet-Draft                ORIGIN Frames                  August 2017
 
 
 
-Nottingham & Nygren     Expires February 17, 2018               [Page 5]
+Nottingham & Nygren     Expires February 24, 2018               [Page 5]
 
 Internet-Draft                ORIGIN Frames                  August 2017
 
@@ -333,15 +333,16 @@ Internet-Draft                ORIGIN Frames                  August 2017
 
 
 
-Nottingham & Nygren     Expires February 17, 2018               [Page 6]
+Nottingham & Nygren     Expires February 24, 2018               [Page 6]
 
 Internet-Draft                ORIGIN Frames                  August 2017
 
 
    As a result, clients opting not to consult DNS ought to employ some
    alternative means to increase confidence that the certificate is
-   legitimate, such as such as checking for a Signed Certificate
-   Timestamp [RFC6929], or performing certificate revocation checks.
+   legitimate.  Examples of mechanisms that can give additional
+   confidence in a certificate include checking for a Signed Certificate
+   Timestamp [RFC6929] and performing certificate revocation checks.
 
    Clients opting not to consult DNS ought to do so only if they have a
    high degree of confidence that the certificate is legitimate.  For
@@ -362,68 +363,67 @@ Internet-Draft                ORIGIN Frames                  August 2017
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <http://www.rfc-editor.org/info/rfc2119>.
+              DOI 10.17487/RFC2119, March 1997, <https://www.rfc-
+              editor.org/info/rfc2119>.
 
    [RFC2818]  Rescorla, E., "HTTP Over TLS", RFC 2818,
-              DOI 10.17487/RFC2818, May 2000,
-              <http://www.rfc-editor.org/info/rfc2818>.
+              DOI 10.17487/RFC2818, May 2000, <https://www.rfc-
+              editor.org/info/rfc2818>.
 
    [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
               Housley, R., and W. Polk, "Internet X.509 Public Key
               Infrastructure Certificate and Certificate Revocation List
               (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008,
-              <http://www.rfc-editor.org/info/rfc5280>.
+              <https://www.rfc-editor.org/info/rfc5280>.
 
    [RFC6066]  Eastlake 3rd, D., "Transport Layer Security (TLS)
               Extensions: Extension Definitions", RFC 6066,
-              DOI 10.17487/RFC6066, January 2011,
-              <http://www.rfc-editor.org/info/rfc6066>.
+              DOI 10.17487/RFC6066, January 2011, <https://www.rfc-
+              editor.org/info/rfc6066>.
 
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
-              DOI 10.17487/RFC6454, December 2011,
-              <http://www.rfc-editor.org/info/rfc6454>.
+              DOI 10.17487/RFC6454, December 2011, <https://www.rfc-
+              editor.org/info/rfc6454>.
 
 
 
 
 
-
-Nottingham & Nygren     Expires February 17, 2018               [Page 7]
+Nottingham & Nygren     Expires February 24, 2018               [Page 7]
 
 Internet-Draft                ORIGIN Frames                  August 2017
 
 
    [RFC7540]  Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
               Transfer Protocol Version 2 (HTTP/2)", RFC 7540,
-              DOI 10.17487/RFC7540, May 2015,
-              <http://www.rfc-editor.org/info/rfc7540>.
+              DOI 10.17487/RFC7540, May 2015, <https://www.rfc-
+              editor.org/info/rfc7540>.
 
 5.2.  Informative References
 
    [RFC5988]  Nottingham, M., "Web Linking", RFC 5988,
-              DOI 10.17487/RFC5988, October 2010,
-              <http://www.rfc-editor.org/info/rfc5988>.
+              DOI 10.17487/RFC5988, October 2010, <https://www.rfc-
+              editor.org/info/rfc5988>.
 
    [RFC6929]  DeKok, A. and A. Lior, "Remote Authentication Dial In User
               Service (RADIUS) Protocol Extensions", RFC 6929,
-              DOI 10.17487/RFC6929, April 2013,
-              <http://www.rfc-editor.org/info/rfc6929>.
+              DOI 10.17487/RFC6929, April 2013, <https://www.rfc-
+              editor.org/info/rfc6929>.
 
    [RFC6960]  Santesson, S., Myers, M., Ankney, R., Malpani, A.,
               Galperin, S., and C. Adams, "X.509 Internet Public Key
               Infrastructure Online Certificate Status Protocol - OCSP",
               RFC 6960, DOI 10.17487/RFC6960, June 2013,
-              <http://www.rfc-editor.org/info/rfc6960>.
+              <https://www.rfc-editor.org/info/rfc6960>.
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
-              <http://www.rfc-editor.org/info/rfc7230>.
+              <https://www.rfc-editor.org/info/rfc7230>.
 
    [RFC7838]  Nottingham, M., McManus, P., and J. Reschke, "HTTP
               Alternative Services", RFC 7838, DOI 10.17487/RFC7838,
-              April 2016, <http://www.rfc-editor.org/info/rfc7838>.
+              April 2016, <https://www.rfc-editor.org/info/rfc7838>.
 
 Appendix A.  Non-Normative Processing Algorithm
 
@@ -445,7 +445,7 @@ Appendix A.  Non-Normative Processing Algorithm
 
 
 
-Nottingham & Nygren     Expires February 17, 2018               [Page 8]
+Nottingham & Nygren     Expires February 24, 2018               [Page 8]
 
 Internet-Draft                ORIGIN Frames                  August 2017
 
@@ -501,7 +501,7 @@ Appendix B.  Operational Considerations for Servers
 
 
 
-Nottingham & Nygren     Expires February 17, 2018               [Page 9]
+Nottingham & Nygren     Expires February 24, 2018               [Page 9]
 
 Internet-Draft                ORIGIN Frames                  August 2017
 
@@ -557,4 +557,4 @@ Authors' Addresses
 
 
 
-Nottingham & Nygren     Expires February 17, 2018              [Page 10]
+Nottingham & Nygren     Expires February 24, 2018              [Page 10]
