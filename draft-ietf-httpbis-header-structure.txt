@@ -4,8 +4,8 @@
 
 HTTP Working Group                                             P-H. Kamp
 Internet-Draft                                 The Varnish Cache Project
-Intended status: Standards Track                         August 29, 2017
-Expires: March 2, 2018
+Intended status: Standards Track                       September 1, 2017
+Expires: March 5, 2018
 
 
                       HTTP Header Common Structure
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on March 2, 2018.
+   This Internet-Draft will expire on March 5, 2018.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Kamp                      Expires March 2, 2018                 [Page 1]
+Kamp                      Expires March 5, 2018                 [Page 1]
 
-Internet-Draft        HTTP Header Common Structure           August 2017
+Internet-Draft        HTTP Header Common Structure        September 2017
 
 
    (http://trustee.ietf.org/license-info) in effect on the date of
@@ -109,9 +109,9 @@ Internet-Draft        HTTP Header Common Structure           August 2017
 
 
 
-Kamp                      Expires March 2, 2018                 [Page 2]
+Kamp                      Expires March 5, 2018                 [Page 2]
 
-Internet-Draft        HTTP Header Common Structure           August 2017
+Internet-Draft        HTTP Header Common Structure        September 2017
 
 
    This proposal starts from the other end, and builds and generalizes a
@@ -165,9 +165,9 @@ Internet-Draft        HTTP Header Common Structure           August 2017
 
 
 
-Kamp                      Expires March 2, 2018                 [Page 3]
+Kamp                      Expires March 5, 2018                 [Page 3]
 
-Internet-Draft        HTTP Header Common Structure           August 2017
+Internet-Draft        HTTP Header Common Structure        September 2017
 
 
    used the depth of recursion SHALL always be explicitly limited in the
@@ -221,9 +221,9 @@ Internet-Draft        HTTP Header Common Structure           August 2017
 
 
 
-Kamp                      Expires March 2, 2018                 [Page 4]
+Kamp                      Expires March 5, 2018                 [Page 4]
 
-Internet-Draft        HTTP Header Common Structure           August 2017
+Internet-Draft        HTTP Header Common Structure        September 2017
 
 
 3.  HTTP/1 Serialization of HTTP Header Common Structure
@@ -277,9 +277,9 @@ Internet-Draft        HTTP Header Common Structure           August 2017
 
 
 
-Kamp                      Expires March 2, 2018                 [Page 5]
+Kamp                      Expires March 5, 2018                 [Page 5]
 
-Internet-Draft        HTTP Header Common Structure           August 2017
+Internet-Draft        HTTP Header Common Structure        September 2017
 
 
      h1-common-structure-self-identifying-header:
@@ -333,9 +333,9 @@ Internet-Draft        HTTP Header Common Structure           August 2017
 
 
 
-Kamp                      Expires March 2, 2018                 [Page 6]
+Kamp                      Expires March 5, 2018                 [Page 6]
 
-Internet-Draft        HTTP Header Common Structure           August 2017
+Internet-Draft        HTTP Header Common Structure        September 2017
 
 
    In programming environments which do not define a native
@@ -389,9 +389,9 @@ Internet-Draft        HTTP Header Common Structure           August 2017
 
 
 
-Kamp                      Expires March 2, 2018                 [Page 7]
+Kamp                      Expires March 5, 2018                 [Page 7]
 
-Internet-Draft        HTTP Header Common Structure           August 2017
+Internet-Draft        HTTP Header Common Structure        September 2017
 
 
 7.1.  Redefining existing headers for better performance
@@ -445,9 +445,9 @@ Internet-Draft        HTTP Header Common Structure           August 2017
 
 
 
-Kamp                      Expires March 2, 2018                 [Page 8]
+Kamp                      Expires March 5, 2018                 [Page 8]
 
-Internet-Draft        HTTP Header Common Structure           August 2017
+Internet-Draft        HTTP Header Common Structure        September 2017
 
 
 10.1.  Normative References
@@ -501,9 +501,9 @@ Internet-Draft        HTTP Header Common Structure           August 2017
 
 
 
-Kamp                      Expires March 2, 2018                 [Page 9]
+Kamp                      Expires March 5, 2018                 [Page 9]
 
-Internet-Draft        HTTP Header Common Structure           August 2017
+Internet-Draft        HTTP Header Common Structure        September 2017
 
 
    [RFC7239]  Petersson, A. and M. Nilsson, "Forwarded HTTP Extension",
@@ -557,9 +557,9 @@ A.1.  Survey of HTTP header structure
 
 
 
-Kamp                      Expires March 2, 2018                [Page 10]
+Kamp                      Expires March 5, 2018                [Page 10]
 
-Internet-Draft        HTTP Header Common Structure           August 2017
+Internet-Draft        HTTP Header Common Structure        September 2017
 
 
      token-or-asterix = token from RFC7230, but also allowing "*"
@@ -613,9 +613,9 @@ A.2.3.  Strings
 
 
 
-Kamp                      Expires March 2, 2018                [Page 11]
+Kamp                      Expires March 5, 2018                [Page 11]
 
-Internet-Draft        HTTP Header Common Structure           August 2017
+Internet-Draft        HTTP Header Common Structure        September 2017
 
 
    Where non-ASCII character sets are used, they are almost always
@@ -669,9 +669,9 @@ A.3.  Is this actually a useful thing to generalize ?
 
 
 
-Kamp                      Expires March 2, 2018                [Page 12]
+Kamp                      Expires March 5, 2018                [Page 12]
 
-Internet-Draft        HTTP Header Common Structure           August 2017
+Internet-Draft        HTTP Header Common Structure        September 2017
 
 
 A.4.  RFC723x headers with "common structure"
@@ -725,9 +725,9 @@ A.5.  RFC723x headers with "uncommon structure"
 
 
 
-Kamp                      Expires March 2, 2018                [Page 13]
+Kamp                      Expires March 5, 2018                [Page 13]
 
-Internet-Draft        HTTP Header Common Structure           August 2017
+Internet-Draft        HTTP Header Common Structure        September 2017
 
 
    o  Date [RFC7231], Section 7.1.1.2
@@ -781,9 +781,9 @@ Internet-Draft        HTTP Header Common Structure           August 2017
 
 
 
-Kamp                      Expires March 2, 2018                [Page 14]
+Kamp                      Expires March 5, 2018                [Page 14]
 
-Internet-Draft        HTTP Header Common Structure           August 2017
+Internet-Draft        HTTP Header Common Structure        September 2017
 
 
    o  If-None-Match [RFC7232], Section 3.2
@@ -837,9 +837,9 @@ Internet-Draft        HTTP Header Common Structure           August 2017
 
 
 
-Kamp                      Expires March 2, 2018                [Page 15]
+Kamp                      Expires March 5, 2018                [Page 15]
 
-Internet-Draft        HTTP Header Common Structure           August 2017
+Internet-Draft        HTTP Header Common Structure        September 2017
 
 
    o  WWW-Authenticate [RFC7235], Section 4.1
@@ -893,4 +893,4 @@ Author's Address
 
 
 
-Kamp                      Expires March 2, 2018                [Page 16]
+Kamp                      Expires March 5, 2018                [Page 16]

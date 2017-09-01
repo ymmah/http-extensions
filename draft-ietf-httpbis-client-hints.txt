@@ -4,8 +4,8 @@
 
 HTTP Working Group                                           I. Grigorik
 Internet-Draft                                                    Google
-Intended status: Experimental                            August 29, 2017
-Expires: March 2, 2018
+Intended status: Experimental                          September 1, 2017
+Expires: March 5, 2018
 
 
                            HTTP Client Hints
@@ -49,13 +49,13 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on March 2, 2018.
+   This Internet-Draft will expire on March 5, 2018.
 
 
 
-Grigorik                  Expires March 2, 2018                 [Page 1]
+Grigorik                  Expires March 5, 2018                 [Page 1]
 
-Internet-Draft              HTTP Client Hints                August 2017
+Internet-Draft              HTTP Client Hints             September 2017
 
 
 Copyright Notice
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Grigorik                  Expires March 2, 2018                 [Page 2]
+Grigorik                  Expires March 5, 2018                 [Page 2]
 
-Internet-Draft              HTTP Client Hints                August 2017
+Internet-Draft              HTTP Client Hints             September 2017
 
 
      B.2.  Since -01 . . . . . . . . . . . . . . . . . . . . . . . .  13
@@ -165,9 +165,9 @@ Internet-Draft              HTTP Client Hints                August 2017
 
 
 
-Grigorik                  Expires March 2, 2018                 [Page 3]
+Grigorik                  Expires March 5, 2018                 [Page 3]
 
-Internet-Draft              HTTP Client Hints                August 2017
+Internet-Draft              HTTP Client Hints             September 2017
 
 
 1.1.  Notational Conventions
@@ -221,9 +221,9 @@ Internet-Draft              HTTP Client Hints                August 2017
 
 
 
-Grigorik                  Expires March 2, 2018                 [Page 4]
+Grigorik                  Expires March 5, 2018                 [Page 4]
 
-Internet-Draft              HTTP Client Hints                August 2017
+Internet-Draft              HTTP Client Hints             September 2017
 
 
    Further, depending on the hint used, the server can generate
@@ -277,9 +277,9 @@ Internet-Draft              HTTP Client Hints                August 2017
 
 
 
-Grigorik                  Expires March 2, 2018                 [Page 5]
+Grigorik                  Expires March 5, 2018                 [Page 5]
 
-Internet-Draft              HTTP Client Hints                August 2017
+Internet-Draft              HTTP Client Hints             September 2017
 
 
      Accept-CH: DPR, Width
@@ -333,9 +333,9 @@ Internet-Draft              HTTP Client Hints                August 2017
 
 
 
-Grigorik                  Expires March 2, 2018                 [Page 6]
+Grigorik                  Expires March 5, 2018                 [Page 6]
 
-Internet-Draft              HTTP Client Hints                August 2017
+Internet-Draft              HTTP Client Hints             September 2017
 
 
 3.1.1.  Confirming Selected DPR
@@ -389,9 +389,9 @@ Internet-Draft              HTTP Client Hints                August 2017
 
 
 
-Grigorik                  Expires March 2, 2018                 [Page 7]
+Grigorik                  Expires March 5, 2018                 [Page 7]
 
-Internet-Draft              HTTP Client Hints                August 2017
+Internet-Draft              HTTP Client Hints             September 2017
 
 
    If Viewport-Width occurs in a message more than once, the last value
@@ -445,9 +445,9 @@ Internet-Draft              HTTP Client Hints                August 2017
 
 
 
-Grigorik                  Expires March 2, 2018                 [Page 8]
+Grigorik                  Expires March 5, 2018                 [Page 8]
 
-Internet-Draft              HTTP Client Hints                August 2017
+Internet-Draft              HTTP Client Hints             September 2017
 
 
    resource - for example, calculate the appropriate intrinsic size of
@@ -501,9 +501,9 @@ Internet-Draft              HTTP Client Hints                August 2017
 
 
 
-Grigorik                  Expires March 2, 2018                 [Page 9]
+Grigorik                  Expires March 5, 2018                 [Page 9]
 
-Internet-Draft              HTTP Client Hints                August 2017
+Internet-Draft              HTTP Client Hints             September 2017
 
 
 6.1.  Accept-CH
@@ -557,9 +557,9 @@ Internet-Draft              HTTP Client Hints                August 2017
 
 
 
-Grigorik                  Expires March 2, 2018                [Page 10]
+Grigorik                  Expires March 5, 2018                [Page 10]
 
-Internet-Draft              HTTP Client Hints                August 2017
+Internet-Draft              HTTP Client Hints             September 2017
 
 
 6.6.  Viewport-Width
@@ -613,9 +613,9 @@ Internet-Draft              HTTP Client Hints                August 2017
 
 
 
-Grigorik                  Expires March 2, 2018                [Page 11]
+Grigorik                  Expires March 5, 2018                [Page 11]
 
-Internet-Draft              HTTP Client Hints                August 2017
+Internet-Draft              HTTP Client Hints             September 2017
 
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
@@ -669,9 +669,9 @@ Appendix A.  Interaction with Key Response Header Field
 
 
 
-Grigorik                  Expires March 2, 2018                [Page 12]
+Grigorik                  Expires March 5, 2018                [Page 12]
 
-Internet-Draft              HTTP Client Hints                August 2017
+Internet-Draft              HTTP Client Hints             September 2017
 
 
    Above example indicates that the cache key needs to include the value
@@ -725,9 +725,9 @@ B.5.  Since -04
 
 
 
-Grigorik                  Expires March 2, 2018                [Page 13]
+Grigorik                  Expires March 5, 2018                [Page 13]
 
-Internet-Draft              HTTP Client Hints                August 2017
+Internet-Draft              HTTP Client Hints             September 2017
 
 
 B.6.  Since -05
@@ -781,4 +781,4 @@ Author's Address
 
 
 
-Grigorik                  Expires March 2, 2018                [Page 14]
+Grigorik                  Expires March 5, 2018                [Page 14]
