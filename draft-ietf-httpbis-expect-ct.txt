@@ -4,8 +4,8 @@
 
 HTTP Working Group                                              E. Stark
 Internet-Draft                                                    Google
-Intended status: Experimental                          September 1, 2017
-Expires: March 5, 2018
+Intended status: Experimental                          September 2, 2017
+Expires: March 6, 2018
 
 
                       Expect-CT Extension for HTTP
@@ -53,12 +53,12 @@ Status of This Memo
 
 
 
-Stark                     Expires March 5, 2018                 [Page 1]
+Stark                     Expires March 6, 2018                 [Page 1]
 
 Internet-Draft                  Expect-CT                 September 2017
 
 
-   This Internet-Draft will expire on March 5, 2018.
+   This Internet-Draft will expire on March 6, 2018.
 
 Copyright Notice
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Stark                     Expires March 5, 2018                 [Page 2]
+Stark                     Expires March 6, 2018                 [Page 2]
 
 Internet-Draft                  Expect-CT                 September 2017
 
@@ -165,7 +165,7 @@ Internet-Draft                  Expect-CT                 September 2017
 
 
 
-Stark                     Expires March 5, 2018                 [Page 3]
+Stark                     Expires March 6, 2018                 [Page 3]
 
 Internet-Draft                  Expect-CT                 September 2017
 
@@ -221,7 +221,7 @@ Internet-Draft                  Expect-CT                 September 2017
 
 
 
-Stark                     Expires March 5, 2018                 [Page 4]
+Stark                     Expires March 6, 2018                 [Page 4]
 
 Internet-Draft                  Expect-CT                 September 2017
 
@@ -277,7 +277,7 @@ Internet-Draft                  Expect-CT                 September 2017
 
 
 
-Stark                     Expires March 5, 2018                 [Page 5]
+Stark                     Expires March 6, 2018                 [Page 5]
 
 Internet-Draft                  Expect-CT                 September 2017
 
@@ -333,7 +333,7 @@ Internet-Draft                  Expect-CT                 September 2017
 
 
 
-Stark                     Expires March 5, 2018                 [Page 6]
+Stark                     Expires March 6, 2018                 [Page 6]
 
 Internet-Draft                  Expect-CT                 September 2017
 
@@ -389,7 +389,7 @@ Expect-CT: max-age=86400,report-uri="https://foo.example/report"
 
 
 
-Stark                     Expires March 5, 2018                 [Page 7]
+Stark                     Expires March 6, 2018                 [Page 7]
 
 Internet-Draft                  Expect-CT                 September 2017
 
@@ -445,7 +445,7 @@ Internet-Draft                  Expect-CT                 September 2017
 
 
 
-Stark                     Expires March 5, 2018                 [Page 8]
+Stark                     Expires March 6, 2018                 [Page 8]
 
 Internet-Draft                  Expect-CT                 September 2017
 
@@ -501,7 +501,7 @@ Internet-Draft                  Expect-CT                 September 2017
 
 
 
-Stark                     Expires March 5, 2018                 [Page 9]
+Stark                     Expires March 6, 2018                 [Page 9]
 
 Internet-Draft                  Expect-CT                 September 2017
 
@@ -557,7 +557,7 @@ Internet-Draft                  Expect-CT                 September 2017
 
 
 
-Stark                     Expires March 5, 2018                [Page 10]
+Stark                     Expires March 6, 2018                [Page 10]
 
 Internet-Draft                  Expect-CT                 September 2017
 
@@ -613,7 +613,7 @@ Internet-Draft                  Expect-CT                 September 2017
 
 
 
-Stark                     Expires March 5, 2018                [Page 11]
+Stark                     Expires March 6, 2018                [Page 11]
 
 Internet-Draft                  Expect-CT                 September 2017
 
@@ -669,7 +669,7 @@ Internet-Draft                  Expect-CT                 September 2017
 
 
 
-Stark                     Expires March 5, 2018                [Page 12]
+Stark                     Expires March 6, 2018                [Page 12]
 
 Internet-Draft                  Expect-CT                 September 2017
 
@@ -725,7 +725,7 @@ Internet-Draft                  Expect-CT                 September 2017
 
 
 
-Stark                     Expires March 5, 2018                [Page 13]
+Stark                     Expires March 6, 2018                [Page 13]
 
 Internet-Draft                  Expect-CT                 September 2017
 
@@ -781,7 +781,7 @@ Internet-Draft                  Expect-CT                 September 2017
 
 
 
-Stark                     Expires March 5, 2018                [Page 14]
+Stark                     Expires March 6, 2018                [Page 14]
 
 Internet-Draft                  Expect-CT                 September 2017
 
@@ -837,7 +837,7 @@ Internet-Draft                  Expect-CT                 September 2017
 
 
 
-Stark                     Expires March 5, 2018                [Page 15]
+Stark                     Expires March 6, 2018                [Page 15]
 
 Internet-Draft                  Expect-CT                 September 2017
 
@@ -893,7 +893,7 @@ Internet-Draft                  Expect-CT                 September 2017
 
 
 
-Stark                     Expires March 5, 2018                [Page 16]
+Stark                     Expires March 6, 2018                [Page 16]
 
 Internet-Draft                  Expect-CT                 September 2017
 
@@ -949,7 +949,7 @@ Author's Address
 
 
 
-Stark                     Expires March 5, 2018                [Page 17]
+Stark                     Expires March 6, 2018                [Page 17]
 
 Internet-Draft                  Expect-CT                 September 2017
 
@@ -1005,4 +1005,4 @@ Internet-Draft                  Expect-CT                 September 2017
 
 
 
-Stark                     Expires March 5, 2018                [Page 18]
+Stark                     Expires March 6, 2018                [Page 18]
