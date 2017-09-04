@@ -4,8 +4,8 @@
 
 HTTP Working Group                                             P-H. Kamp
 Internet-Draft                                 The Varnish Cache Project
-Intended status: Standards Track                       September 2, 2017
-Expires: March 6, 2018
+Intended status: Standards Track                       September 4, 2017
+Expires: March 8, 2018
 
 
                       HTTP Header Common Structure
@@ -20,11 +20,12 @@ Note to Readers
 
    Discussion of this draft takes place on the HTTP working group
    mailing list (ietf-http-wg@w3.org), which is archived at
-   https://lists.w3.org/Archives/Public/ietf-http-wg/.
+   https://lists.w3.org/Archives/Public/ietf-http-wg/ [1].
 
-   Working Group information can be found at http://httpwg.github.io/;
-   source code and issues list for this draft can be found at
-   https://github.com/httpwg/http-extensions/labels/header-structure.
+   Working Group information can be found at http://httpwg.github.io/
+   [2]; source code and issues list for this draft can be found at
+   https://github.com/httpwg/http-extensions/labels/header-structure
+   [3].
 
 Status of This Memo
 
@@ -34,31 +35,32 @@ Status of This Memo
    Internet-Drafts are working documents of the Internet Engineering
    Task Force (IETF).  Note that other groups may also distribute
    working documents as Internet-Drafts.  The list of current Internet-
-   Drafts is at http://datatracker.ietf.org/drafts/current/.
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
 
    Internet-Drafts are draft documents valid for a maximum of six months
    and may be updated, replaced, or obsoleted by other documents at any
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on March 6, 2018.
+   This Internet-Draft will expire on March 8, 2018.
 
 Copyright Notice
 
    Copyright (c) 2017 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
-   This document is subject to BCP 78 and the IETF Trust's Legal
-   Provisions Relating to IETF Documents
 
 
 
-Kamp                      Expires March 6, 2018                 [Page 1]
+
+Kamp                      Expires March 8, 2018                 [Page 1]
 
 Internet-Draft        HTTP Header Common Structure        September 2017
 
 
-   (http://trustee.ietf.org/license-info) in effect on the date of
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (https://trustee.ietf.org/license-info) in effect on the date of
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
@@ -103,16 +105,18 @@ Internet-Draft        HTTP Header Common Structure        September 2017
    to not violate field-value's ABNF, and then workarounds added to
    reintroduce the features just lost, for instance UNICODE strings.
 
-   The post-surgery format is no longer JSON, and it experience
-   indicates that almost-but-not-quite compatibility is worse than no
-   compatibility.
 
 
 
-Kamp                      Expires March 6, 2018                 [Page 2]
+
+Kamp                      Expires March 8, 2018                 [Page 2]
 
 Internet-Draft        HTTP Header Common Structure        September 2017
 
+
+   The post-surgery format is no longer JSON, and it experience
+   indicates that almost-but-not-quite compatibility is worse than no
+   compatibility.
 
    This proposal starts from the other end, and builds and generalizes a
    data structure definition from existing HTTP headers, which means
@@ -144,6 +148,28 @@ Internet-Draft        HTTP Header Common Structure        September 2017
    Common Structure in ABNF (Slightly bastardized relative to RFC5234
    [RFC5234]):
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Kamp                      Expires March 8, 2018                 [Page 3]
+
+Internet-Draft        HTTP Header Common Structure        September 2017
+
+
      import token from RFC7230
      import DIGIT from RFC5234
 
@@ -162,14 +188,6 @@ Internet-Draft        HTTP Header Common Structure        September 2017
 
    Recursion is included as a way to to support deep and more general
    data structures, but its use is highly discouraged and where it is
-
-
-
-Kamp                      Expires March 6, 2018                 [Page 3]
-
-Internet-Draft        HTTP Header Common Structure        September 2017
-
-
    used the depth of recursion SHALL always be explicitly limited in the
    specifications of the HTTP headers which allow it.
 
@@ -201,6 +219,13 @@ Internet-Draft        HTTP Header Common Structure        September 2017
      UNICODE = <U+0000-U+D7FF / U+E000-U+10FFFF>
      # UNICODE nicked from draft-seantek-unicode-in-abnf-02
 
+
+
+Kamp                      Expires March 8, 2018                 [Page 4]
+
+Internet-Draft        HTTP Header Common Structure        September 2017
+
+
    Unicode-strings are unrestricted because there is no sane and/or
    culturally neutral way to subset or otherwise make unicode "safe",
    and Unicode is still evolving new and interesting code points.
@@ -217,14 +242,6 @@ Internet-Draft        HTTP Header Common Structure        September 2017
 
    A timestamp counts seconds since the UNIX time_t epoch, including the
    "invisible leap-seconds" misfeature.
-
-
-
-
-Kamp                      Expires March 6, 2018                 [Page 4]
-
-Internet-Draft        HTTP Header Common Structure        September 2017
-
 
 3.  HTTP/1 Serialization of HTTP Header Common Structure
 
@@ -260,24 +277,7 @@ Internet-Draft        HTTP Header Common Structure        September 2017
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Kamp                      Expires March 6, 2018                 [Page 5]
+Kamp                      Expires March 8, 2018                 [Page 5]
 
 Internet-Draft        HTTP Header Common Structure        September 2017
 
@@ -333,7 +333,7 @@ Internet-Draft        HTTP Header Common Structure        September 2017
 
 
 
-Kamp                      Expires March 6, 2018                 [Page 6]
+Kamp                      Expires March 8, 2018                 [Page 6]
 
 Internet-Draft        HTTP Header Common Structure        September 2017
 
@@ -389,7 +389,7 @@ Internet-Draft        HTTP Header Common Structure        September 2017
 
 
 
-Kamp                      Expires March 6, 2018                 [Page 7]
+Kamp                      Expires March 8, 2018                 [Page 7]
 
 Internet-Draft        HTTP Header Common Structure        September 2017
 
@@ -445,7 +445,7 @@ Internet-Draft        HTTP Header Common Structure        September 2017
 
 
 
-Kamp                      Expires March 6, 2018                 [Page 8]
+Kamp                      Expires March 8, 2018                 [Page 8]
 
 Internet-Draft        HTTP Header Common Structure        September 2017
 
@@ -454,8 +454,8 @@ Internet-Draft        HTTP Header Common Structure        September 2017
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997, <https://www.rfc-
-              editor.org/info/rfc2119>.
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/info/rfc2119>.
 
    [RFC5137]  Klensin, J., "ASCII Escaping of Unicode Characters",
               BCP 137, RFC 5137, DOI 10.17487/RFC5137, February 2008,
@@ -463,8 +463,8 @@ Internet-Draft        HTTP Header Common Structure        September 2017
 
    [RFC5234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
               Specifications: ABNF", STD 68, RFC 5234,
-              DOI 10.17487/RFC5234, January 2008, <https://www.rfc-
-              editor.org/info/rfc5234>.
+              DOI 10.17487/RFC5234, January 2008,
+              <https://www.rfc-editor.org/info/rfc5234>.
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
@@ -475,13 +475,13 @@ Internet-Draft        HTTP Header Common Structure        September 2017
 
    [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
-              DOI 10.17487/RFC7231, June 2014, <https://www.rfc-
-              editor.org/info/rfc7231>.
+              DOI 10.17487/RFC7231, June 2014,
+              <https://www.rfc-editor.org/info/rfc7231>.
 
    [RFC7232]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Conditional Requests", RFC 7232,
-              DOI 10.17487/RFC7232, June 2014, <https://www.rfc-
-              editor.org/info/rfc7232>.
+              DOI 10.17487/RFC7232, June 2014,
+              <https://www.rfc-editor.org/info/rfc7232>.
 
    [RFC7233]  Fielding, R., Ed., Lafon, Y., Ed., and J. Reschke, Ed.,
               "Hypertext Transfer Protocol (HTTP/1.1): Range Requests",
@@ -495,13 +495,13 @@ Internet-Draft        HTTP Header Common Structure        September 2017
 
    [RFC7235]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Authentication", RFC 7235,
-              DOI 10.17487/RFC7235, June 2014, <https://www.rfc-
-              editor.org/info/rfc7235>.
+              DOI 10.17487/RFC7235, June 2014,
+              <https://www.rfc-editor.org/info/rfc7235>.
 
 
 
 
-Kamp                      Expires March 6, 2018                 [Page 9]
+Kamp                      Expires March 8, 2018                 [Page 9]
 
 Internet-Draft        HTTP Header Common Structure        September 2017
 
@@ -512,8 +512,16 @@ Internet-Draft        HTTP Header Common Structure        September 2017
 
    [RFC7694]  Reschke, J., "Hypertext Transfer Protocol (HTTP) Client-
               Initiated Content-Encoding", RFC 7694,
-              DOI 10.17487/RFC7694, November 2015, <https://www.rfc-
-              editor.org/info/rfc7694>.
+              DOI 10.17487/RFC7694, November 2015,
+              <https://www.rfc-editor.org/info/rfc7694>.
+
+10.3.  URIs
+
+   [1] https://lists.w3.org/Archives/Public/ietf-http-wg/
+
+   [2] http://httpwg.github.io/
+
+   [3] https://github.com/httpwg/http-extensions/labels/header-structure
 
 Appendix A.  Do HTTP headers have any common structure ?
 
@@ -545,6 +553,15 @@ A.1.  Survey of HTTP header structure
 
      qualified-token = token-or-asterix [ "/" token-or-asterix ]
 
+
+
+
+
+Kamp                      Expires March 8, 2018                [Page 10]
+
+Internet-Draft        HTTP Header Common Structure        September 2017
+
+
    The second motif is parameterized list elements.  The best known is
    the "q=0.5" weight parameter, but other parameters exist as well.
 
@@ -553,14 +570,6 @@ A.1.  Survey of HTTP header structure
 
    In pidgin ABNF, ignoring white-space for the sake of clarity, the
    HTTP/1.1 serialization of Common Structure is is something like:
-
-
-
-
-Kamp                      Expires March 6, 2018                [Page 10]
-
-Internet-Draft        HTTP Header Common Structure        September 2017
-
 
      token-or-asterix = token from RFC7230, but also allowing "*"
 
@@ -598,6 +607,17 @@ A.2.1.  Numbers
    billions, the high end almost exclusively being POSIX time_t
    timestamps.
 
+
+
+
+
+
+
+Kamp                      Expires March 8, 2018                [Page 11]
+
+Internet-Draft        HTTP Header Common Structure        September 2017
+
+
 A.2.2.  Timestamps
 
    RFC723x text format, but POSIX time_t represented as integer or
@@ -608,15 +628,6 @@ A.2.3.  Strings
    The vast majority are pure ASCII strings, with either no escapes, %xx
    URL-like escapes or C-style back-slash escapes, possibly with the
    addition of \uxxxx UNICODE escapes.
-
-
-
-
-
-Kamp                      Expires March 6, 2018                [Page 11]
-
-Internet-Draft        HTTP Header Common Structure        September 2017
-
 
    Where non-ASCII character sets are used, they are almost always
    implicit, rather than explicit.  UTF8 and ISO-8859-1 seem to be most
@@ -655,6 +666,14 @@ A.3.  Is this actually a useful thing to generalize ?
 
    Ideally a machine readable "data dictionary" which makes it possibly
    to copy that text out of RFCs, run it through a code generator which
+
+
+
+Kamp                      Expires March 8, 2018                [Page 12]
+
+Internet-Draft        HTTP Header Common Structure        September 2017
+
+
    spits out validation code which operates on the output of the common
    parser.
 
@@ -665,14 +684,6 @@ A.3.  Is this actually a useful thing to generalize ?
    been wisely limited, it seems to be possible.
 
    So file that idea under "future work".
-
-
-
-
-Kamp                      Expires March 6, 2018                [Page 12]
-
-Internet-Draft        HTTP Header Common Structure        September 2017
-
 
 A.4.  RFC723x headers with "common structure"
 
@@ -712,6 +723,13 @@ A.4.  RFC723x headers with "common structure"
 
    o  Upgrade [RFC7230], Section 6.7
 
+
+
+Kamp                      Expires March 8, 2018                [Page 13]
+
+Internet-Draft        HTTP Header Common Structure        September 2017
+
+
    o  Vary [RFC7231], Section 7.1.4
 
 A.5.  RFC723x headers with "uncommon structure"
@@ -722,13 +740,6 @@ A.5.  RFC723x headers with "uncommon structure"
    o  Close [RFC7230], Section 8.1
 
    5 of the RFC723x headers are HTTP dates:
-
-
-
-Kamp                      Expires March 6, 2018                [Page 13]
-
-Internet-Draft        HTTP Header Common Structure        September 2017
-
 
    o  Date [RFC7231], Section 7.1.1.2
 
@@ -767,6 +778,14 @@ Internet-Draft        HTTP Header Common Structure        September 2017
 
    o  ETag [RFC7232], Section 2.3
 
+
+
+
+Kamp                      Expires March 8, 2018                [Page 14]
+
+Internet-Draft        HTTP Header Common Structure        September 2017
+
+
       *  entity-tag
 
    o  Forwarded [RFC7239]
@@ -778,13 +797,6 @@ Internet-Draft        HTTP Header Common Structure        September 2017
       *  mailbox
 
    o  If-Match [RFC7232], Section 3.1
-
-
-
-Kamp                      Expires March 6, 2018                [Page 14]
-
-Internet-Draft        HTTP Header Common Structure        September 2017
-
 
    o  If-None-Match [RFC7232], Section 3.2
 
@@ -822,6 +834,14 @@ Internet-Draft        HTTP Header Common Structure        September 2017
 
    o  User-Agent [RFC7231], Section 5.5.3
 
+
+
+
+Kamp                      Expires March 8, 2018                [Page 15]
+
+Internet-Draft        HTTP Header Common Structure        September 2017
+
+
       *  product *( RWS ( product / comment ) )
 
    o  Via [RFC7230], Section 5.7.1
@@ -833,14 +853,6 @@ Internet-Draft        HTTP Header Common Structure        September 2017
       *  1#warning-value
 
    o  Proxy-Authenticate [RFC7235], Section 4.3
-
-
-
-
-Kamp                      Expires March 6, 2018                [Page 15]
-
-Internet-Draft        HTTP Header Common Structure        September 2017
-
 
    o  WWW-Authenticate [RFC7235], Section 4.1
 
@@ -881,16 +893,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-Kamp                      Expires March 6, 2018                [Page 16]
+Kamp                      Expires March 8, 2018                [Page 16]

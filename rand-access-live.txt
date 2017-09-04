@@ -5,10 +5,10 @@
 HTTP                                                            C. Pratt
 Internet-Draft                                                 CableLabs
 Intended status: Experimental                                   B. Stark
-Expires: March 6, 2018                                              AT&T
+Expires: March 8, 2018                                              AT&T
                                                               D. Thakore
                                                                CableLabs
-                                                       September 2, 2017
+                                                       September 4, 2017
 
 
                   HTTP Random Access and Live Content
@@ -40,20 +40,20 @@ Status of This Memo
    Internet-Drafts are working documents of the Internet Engineering
    Task Force (IETF).  Note that other groups may also distribute
    working documents as Internet-Drafts.  The list of current Internet-
-   Drafts is at http://datatracker.ietf.org/drafts/current/.
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
 
    Internet-Drafts are draft documents valid for a maximum of six months
    and may be updated, replaced, or obsoleted by other documents at any
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on March 6, 2018.
+   This Internet-Draft will expire on March 8, 2018.
 
 
 
 
 
-Pratt, et al.             Expires March 6, 2018                 [Page 1]
+Pratt, et al.             Expires March 8, 2018                 [Page 1]
 
 Internet-Draft            http-rand-access-live           September 2017
 
@@ -65,7 +65,7 @@ Copyright Notice
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
-   (http://trustee.ietf.org/license-info) in effect on the date of
+   (https://trustee.ietf.org/license-info) in effect on the date of
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Pratt, et al.             Expires March 6, 2018                 [Page 2]
+Pratt, et al.             Expires March 8, 2018                 [Page 2]
 
 Internet-Draft            http-rand-access-live           September 2017
 
@@ -165,7 +165,7 @@ Internet-Draft            http-rand-access-live           September 2017
 
 
 
-Pratt, et al.             Expires March 6, 2018                 [Page 3]
+Pratt, et al.             Expires March 8, 2018                 [Page 3]
 
 Internet-Draft            http-rand-access-live           September 2017
 
@@ -221,7 +221,7 @@ Internet-Draft            http-rand-access-live           September 2017
 
 
 
-Pratt, et al.             Expires March 6, 2018                 [Page 4]
+Pratt, et al.             Expires March 8, 2018                 [Page 4]
 
 Internet-Draft            http-rand-access-live           September 2017
 
@@ -277,7 +277,7 @@ Internet-Draft            http-rand-access-live           September 2017
 
 
 
-Pratt, et al.             Expires March 6, 2018                 [Page 5]
+Pratt, et al.             Expires March 8, 2018                 [Page 5]
 
 Internet-Draft            http-rand-access-live           September 2017
 
@@ -333,7 +333,7 @@ Internet-Draft            http-rand-access-live           September 2017
 
 
 
-Pratt, et al.             Expires March 6, 2018                 [Page 6]
+Pratt, et al.             Expires March 8, 2018                 [Page 6]
 
 Internet-Draft            http-rand-access-live           September 2017
 
@@ -389,7 +389,7 @@ Internet-Draft            http-rand-access-live           September 2017
 
 
 
-Pratt, et al.             Expires March 6, 2018                 [Page 7]
+Pratt, et al.             Expires March 8, 2018                 [Page 7]
 
 Internet-Draft            http-rand-access-live           September 2017
 
@@ -410,8 +410,8 @@ Internet-Draft            http-rand-access-live           September 2017
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997, <https://www.rfc-
-              editor.org/info/rfc2119>.
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/info/rfc2119>.
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
@@ -445,7 +445,7 @@ Appendix A.  Acknowledgements
 
 
 
-Pratt, et al.             Expires March 6, 2018                 [Page 8]
+Pratt, et al.             Expires March 8, 2018                 [Page 8]
 
 Internet-Draft            http-rand-access-live           September 2017
 
@@ -501,4 +501,4 @@ Authors' Addresses
 
 
 
-Pratt, et al.             Expires March 6, 2018                 [Page 9]
+Pratt, et al.             Expires March 8, 2018                 [Page 9]

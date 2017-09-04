@@ -5,8 +5,8 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Standards Track                               E. Nygren
-Expires: March 6, 2018                                            Akamai
-                                                       September 2, 2017
+Expires: March 8, 2018                                            Akamai
+                                                       September 4, 2017
 
 
                         The ORIGIN HTTP/2 Frame
@@ -21,11 +21,11 @@ Note to Readers
 
    Discussion of this draft takes place on the HTTP working group
    mailing list (ietf-http-wg@w3.org), which is archived at
-   https://lists.w3.org/Archives/Public/ietf-http-wg/.
+   https://lists.w3.org/Archives/Public/ietf-http-wg/ [1].
 
-   Working Group information can be found at http://httpwg.github.io/;
-   source code and issues list for this draft can be found at
-   https://github.com/httpwg/http-extensions/labels/origin-frame.
+   Working Group information can be found at http://httpwg.github.io/
+   [2]; source code and issues list for this draft can be found at
+   https://github.com/httpwg/http-extensions/labels/origin-frame [3].
 
 Status of This Memo
 
@@ -35,14 +35,14 @@ Status of This Memo
    Internet-Drafts are working documents of the Internet Engineering
    Task Force (IETF).  Note that other groups may also distribute
    working documents as Internet-Drafts.  The list of current Internet-
-   Drafts is at http://datatracker.ietf.org/drafts/current/.
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
 
    Internet-Drafts are draft documents valid for a maximum of six months
    and may be updated, replaced, or obsoleted by other documents at any
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on March 6, 2018.
+   This Internet-Draft will expire on March 8, 2018.
 
 Copyright Notice
 
@@ -53,14 +53,14 @@ Copyright Notice
 
 
 
-Nottingham & Nygren       Expires March 6, 2018                 [Page 1]
+Nottingham & Nygren       Expires March 8, 2018                 [Page 1]
 
 Internet-Draft                ORIGIN Frames               September 2017
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
-   (http://trustee.ietf.org/license-info) in effect on the date of
+   (https://trustee.ietf.org/license-info) in effect on the date of
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
@@ -82,6 +82,7 @@ Table of Contents
    5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   7
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   7
      5.2.  Informative References  . . . . . . . . . . . . . . . . .   8
+     5.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   8
    Appendix A.  Non-Normative Processing Algorithm . . . . . . . . .   8
    Appendix B.  Operational Considerations for Servers . . . . . . .   9
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  10
@@ -104,15 +105,17 @@ Table of Contents
    establish server authority using both DNS and the server's
    certificate is onerous.  This specification relaxes the requirement
    to check DNS when the ORIGIN frame is in use.  Doing so has
-   additional benefits, such as removing the latency associated with
-   some DNS lookups.
 
 
 
-Nottingham & Nygren       Expires March 6, 2018                 [Page 2]
+
+Nottingham & Nygren       Expires March 8, 2018                 [Page 2]
 
 Internet-Draft                ORIGIN Frames               September 2017
 
+
+   additional benefits, such as removing the latency associated with
+   some DNS lookups.
 
 1.1.  Notational Conventions
 
@@ -159,16 +162,17 @@ Internet-Draft                ORIGIN Frames               September 2017
    The ORIGIN frame is a non-critical extension to HTTP/2.  Endpoints
    that do not support this frame can safely ignore it upon receipt.
 
-   When received by an implementing client, it is used to initialise and
-   manipulate the Origin Set (see Section 2.3), thereby changing how the
-   client establishes authority for origin servers (see Section 2.4).
 
 
 
-Nottingham & Nygren       Expires March 6, 2018                 [Page 3]
+Nottingham & Nygren       Expires March 8, 2018                 [Page 3]
 
 Internet-Draft                ORIGIN Frames               September 2017
 
+
+   When received by an implementing client, it is used to initialise and
+   manipulate the Origin Set (see Section 2.3), thereby changing how the
+   client establishes authority for origin servers (see Section 2.4).
 
    The origin frame MUST be sent on stream 0; an ORIGIN frame on any
    other stream is invalid and MUST be ignored.
@@ -214,17 +218,15 @@ Internet-Draft                ORIGIN Frames               September 2017
    o  Host: the value sent in Server Name Indication (SNI, [RFC6066]
       Section 3), converted to lower case
 
-   o  Port: the remote port of the connection (i.e., the server's port)
 
 
 
-
-
-
-Nottingham & Nygren       Expires March 6, 2018                 [Page 4]
+Nottingham & Nygren       Expires March 8, 2018                 [Page 4]
 
 Internet-Draft                ORIGIN Frames               September 2017
 
+
+   o  Port: the remote port of the connection (i.e., the server's port)
 
    The contents of that ORIGIN frame (and subsequent ones) allows the
    server to incrementally add new origins to the Origin Set, as
@@ -272,16 +274,15 @@ Internet-Draft                ORIGIN Frames               September 2017
    that implement this specification use it to help determine what the
    connection is authoritative for.  Specifically, such clients MUST NOT
    consider a connection to be authoritative for an origin not present
-   in the Origin Set, and SHOULD use the connection for all requests to
 
 
 
-
-Nottingham & Nygren       Expires March 6, 2018                 [Page 5]
+Nottingham & Nygren       Expires March 8, 2018                 [Page 5]
 
 Internet-Draft                ORIGIN Frames               September 2017
 
 
+   in the Origin Set, and SHOULD use the connection for all requests to
    origins in the Origin Set for which the connection is authoritative,
    unless there are operational reasons for opening a new connection.
 
@@ -332,8 +333,7 @@ Internet-Draft                ORIGIN Frames               September 2017
 
 
 
-
-Nottingham & Nygren       Expires March 6, 2018                 [Page 6]
+Nottingham & Nygren       Expires March 8, 2018                 [Page 6]
 
 Internet-Draft                ORIGIN Frames               September 2017
 
@@ -363,12 +363,12 @@ Internet-Draft                ORIGIN Frames               September 2017
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997, <https://www.rfc-
-              editor.org/info/rfc2119>.
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/info/rfc2119>.
 
    [RFC2818]  Rescorla, E., "HTTP Over TLS", RFC 2818,
-              DOI 10.17487/RFC2818, May 2000, <https://www.rfc-
-              editor.org/info/rfc2818>.
+              DOI 10.17487/RFC2818, May 2000,
+              <https://www.rfc-editor.org/info/rfc2818>.
 
    [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
               Housley, R., and W. Polk, "Internet X.509 Public Key
@@ -378,37 +378,37 @@ Internet-Draft                ORIGIN Frames               September 2017
 
    [RFC6066]  Eastlake 3rd, D., "Transport Layer Security (TLS)
               Extensions: Extension Definitions", RFC 6066,
-              DOI 10.17487/RFC6066, January 2011, <https://www.rfc-
-              editor.org/info/rfc6066>.
+              DOI 10.17487/RFC6066, January 2011,
+              <https://www.rfc-editor.org/info/rfc6066>.
 
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
-              DOI 10.17487/RFC6454, December 2011, <https://www.rfc-
-              editor.org/info/rfc6454>.
+              DOI 10.17487/RFC6454, December 2011,
+              <https://www.rfc-editor.org/info/rfc6454>.
 
 
 
 
 
-Nottingham & Nygren       Expires March 6, 2018                 [Page 7]
+Nottingham & Nygren       Expires March 8, 2018                 [Page 7]
 
 Internet-Draft                ORIGIN Frames               September 2017
 
 
    [RFC7540]  Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
               Transfer Protocol Version 2 (HTTP/2)", RFC 7540,
-              DOI 10.17487/RFC7540, May 2015, <https://www.rfc-
-              editor.org/info/rfc7540>.
+              DOI 10.17487/RFC7540, May 2015,
+              <https://www.rfc-editor.org/info/rfc7540>.
 
 5.2.  Informative References
 
    [RFC5988]  Nottingham, M., "Web Linking", RFC 5988,
-              DOI 10.17487/RFC5988, October 2010, <https://www.rfc-
-              editor.org/info/rfc5988>.
+              DOI 10.17487/RFC5988, October 2010,
+              <https://www.rfc-editor.org/info/rfc5988>.
 
    [RFC6929]  DeKok, A. and A. Lior, "Remote Authentication Dial In User
               Service (RADIUS) Protocol Extensions", RFC 6929,
-              DOI 10.17487/RFC6929, April 2013, <https://www.rfc-
-              editor.org/info/rfc6929>.
+              DOI 10.17487/RFC6929, April 2013,
+              <https://www.rfc-editor.org/info/rfc6929>.
 
    [RFC6960]  Santesson, S., Myers, M., Ankney, R., Malpani, A.,
               Galperin, S., and C. Adams, "X.509 Internet Public Key
@@ -425,6 +425,14 @@ Internet-Draft                ORIGIN Frames               September 2017
               Alternative Services", RFC 7838, DOI 10.17487/RFC7838,
               April 2016, <https://www.rfc-editor.org/info/rfc7838>.
 
+5.3.  URIs
+
+   [1] https://lists.w3.org/Archives/Public/ietf-http-wg/
+
+   [2] http://httpwg.github.io/
+
+   [3] https://github.com/httpwg/http-extensions/labels/origin-frame
+
 Appendix A.  Non-Normative Processing Algorithm
 
    The following algorithm illustrates how a client could handle
@@ -432,6 +440,15 @@ Appendix A.  Non-Normative Processing Algorithm
 
    1.  If the client is configured to use a proxy for the connection,
        ignore the frame and stop processing.
+
+
+
+
+
+Nottingham & Nygren       Expires March 8, 2018                 [Page 8]
+
+Internet-Draft                ORIGIN Frames               September 2017
+
 
    2.  If the connection is not identified with the "h2" protocol
        identifier or another protocol that has explicitly opted into
@@ -442,13 +459,6 @@ Appendix A.  Non-Normative Processing Algorithm
 
    4.  If any of the flags 0x1, 0x2, 0x4 or 0x8 are set, ignore the
        frame and stop processing.
-
-
-
-Nottingham & Nygren       Expires March 6, 2018                 [Page 8]
-
-Internet-Draft                ORIGIN Frames               September 2017
-
 
    5.  If no previous ORIGIN frame on the connection has reached this
        step, initialise the Origin Set as per Section 2.3.
@@ -487,6 +497,15 @@ Appendix B.  Operational Considerations for Servers
    with a connection, doing so might introduce end-user perceived
    latency, due to their size.  As a result, it might be necessary to
    select a "core" set of origins to send initially, expanding the set
+
+
+
+
+Nottingham & Nygren       Expires March 8, 2018                 [Page 9]
+
+Internet-Draft                ORIGIN Frames               September 2017
+
+
    of origins the connection is used for with subsequent ORIGIN frames
    later (e.g., when the connection is idle).
 
@@ -497,14 +516,6 @@ Appendix B.  Operational Considerations for Servers
 
    Senders take note that, as per [RFC6454] Section 4, the values in an
    ORIGIN header need to be case-normalised before serialisation.
-
-
-
-
-Nottingham & Nygren       Expires March 6, 2018                 [Page 9]
-
-Internet-Draft                ORIGIN Frames               September 2017
-
 
    Finally, servers that host alternative services [RFC7838] will need
    to explicitly advertise their origins when sending ORIGIN, because
@@ -546,15 +557,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-Nottingham & Nygren       Expires March 6, 2018                [Page 10]
+Nottingham & Nygren       Expires March 8, 2018                [Page 10]

@@ -4,8 +4,8 @@
 
 HTTP Working Group                                            P. McManus
 Internet-Draft                                                   Mozilla
-Intended status: Standards Track                       September 2, 2017
-Expires: March 6, 2018
+Intended status: Standards Track                       September 4, 2017
+Expires: March 8, 2018
 
 
                         HTTP Immutable Responses
@@ -22,11 +22,11 @@ Note to Readers
 
    Discussion of this draft takes place on the HTTP working group
    mailing list (ietf-http-wg@w3.org), which is archived at
-   https://lists.w3.org/Archives/Public/ietf-http-wg/.
+   https://lists.w3.org/Archives/Public/ietf-http-wg/ [1].
 
-   Working Group information can be found at http://httpwg.github.io/;
-   source code and issues list for this draft can be found at
-   https://github.com/httpwg/http-extensions/labels/immutable.
+   Working Group information can be found at http://httpwg.github.io/
+   [2]; source code and issues list for this draft can be found at
+   https://github.com/httpwg/http-extensions/labels/immutable [3].
 
 Status of This Memo
 
@@ -36,14 +36,14 @@ Status of This Memo
    Internet-Drafts are working documents of the Internet Engineering
    Task Force (IETF).  Note that other groups may also distribute
    working documents as Internet-Drafts.  The list of current Internet-
-   Drafts is at http://datatracker.ietf.org/drafts/current/.
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
 
    Internet-Drafts are draft documents valid for a maximum of six months
    and may be updated, replaced, or obsoleted by other documents at any
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on March 6, 2018.
+   This Internet-Draft will expire on March 8, 2018.
 
 Copyright Notice
 
@@ -53,14 +53,14 @@ Copyright Notice
 
 
 
-McManus                   Expires March 6, 2018                 [Page 1]
+McManus                   Expires March 8, 2018                 [Page 1]
 
 Internet-Draft          HTTP Immutable Responses          September 2017
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
-   (http://trustee.ietf.org/license-info) in effect on the date of
+   (https://trustee.ietf.org/license-info) in effect on the date of
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
@@ -109,7 +109,7 @@ Internet-Draft          HTTP Immutable Responses          September 2017
 
 
 
-McManus                   Expires March 6, 2018                 [Page 2]
+McManus                   Expires March 8, 2018                 [Page 2]
 
 Internet-Draft          HTTP Immutable Responses          September 2017
 
@@ -165,7 +165,7 @@ Internet-Draft          HTTP Immutable Responses          September 2017
 
 
 
-McManus                   Expires March 6, 2018                 [Page 3]
+McManus                   Expires March 8, 2018                 [Page 3]
 
 Internet-Draft          HTTP Immutable Responses          September 2017
 
@@ -221,7 +221,7 @@ Internet-Draft          HTTP Immutable Responses          September 2017
 
 
 
-McManus                   Expires March 6, 2018                 [Page 4]
+McManus                   Expires March 8, 2018                 [Page 4]
 
 Internet-Draft          HTTP Immutable Responses          September 2017
 
@@ -232,13 +232,13 @@ Internet-Draft          HTTP Immutable Responses          September 2017
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997, <https://www.rfc-
-              editor.org/info/rfc2119>.
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/info/rfc2119>.
 
    [RFC7232]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Conditional Requests", RFC 7232,
-              DOI 10.17487/RFC7232, June 2014, <https://www.rfc-
-              editor.org/info/rfc7232>.
+              DOI 10.17487/RFC7232, June 2014,
+              <https://www.rfc-editor.org/info/rfc7232>.
 
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
@@ -250,6 +250,14 @@ Internet-Draft          HTTP Immutable Responses          September 2017
    [REQPERPAGE]
               "HTTP Archive", n.d.,
               <http://httparchive.org/interesting.php#reqTotal>.
+
+6.3.  URIs
+
+   [1] https://lists.w3.org/Archives/Public/ietf-http-wg/
+
+   [2] http://httpwg.github.io/
+
+   [3] https://github.com/httpwg/http-extensions/labels/immutable
 
 Author's Address
 
@@ -269,12 +277,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-McManus                   Expires March 6, 2018                 [Page 5]
+McManus                   Expires March 8, 2018                 [Page 5]

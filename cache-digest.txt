@@ -5,7 +5,7 @@
 HTTP Working Group                                                K. Oku
 Internet-Draft                                             DeNA Co, Ltd.
 Intended status: Experimental                              M. Nottingham
-Expires: March 6, 2018                                 September 2, 2017
+Expires: March 8, 2018                                 September 4, 2017
 
 
                         Cache Digests for HTTP/2
@@ -21,11 +21,11 @@ Note to Readers
 
    Discussion of this draft takes place on the HTTP working group
    mailing list (ietf-http-wg@w3.org), which is archived at
-   https://lists.w3.org/Archives/Public/ietf-http-wg/.
+   https://lists.w3.org/Archives/Public/ietf-http-wg/ [1].
 
-   Working Group information can be found at http://httpwg.github.io/;
-   source code and issues list for this draft can be found at
-   https://github.com/httpwg/http-extensions/labels/cache-digest.
+   Working Group information can be found at http://httpwg.github.io/
+   [2]; source code and issues list for this draft can be found at
+   https://github.com/httpwg/http-extensions/labels/cache-digest [3].
 
 Status of This Memo
 
@@ -35,14 +35,14 @@ Status of This Memo
    Internet-Drafts are working documents of the Internet Engineering
    Task Force (IETF).  Note that other groups may also distribute
    working documents as Internet-Drafts.  The list of current Internet-
-   Drafts is at http://datatracker.ietf.org/drafts/current/.
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
 
    Internet-Drafts are draft documents valid for a maximum of six months
    and may be updated, replaced, or obsoleted by other documents at any
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on March 6, 2018.
+   This Internet-Draft will expire on March 8, 2018.
 
 Copyright Notice
 
@@ -53,14 +53,14 @@ Copyright Notice
 
 
 
-Oku & Nottingham          Expires March 6, 2018                 [Page 1]
+Oku & Nottingham          Expires March 8, 2018                 [Page 1]
 
 Internet-Draft          Cache Digests for HTTP/2          September 2017
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
-   (http://trustee.ietf.org/license-info) in effect on the date of
+   (https://trustee.ietf.org/license-info) in effect on the date of
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
@@ -84,13 +84,14 @@ Table of Contents
    6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
      6.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
      6.2.  Informative References  . . . . . . . . . . . . . . . . .  11
+     6.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  12
    Appendix A.  Encoding the CACHE_DIGEST frame as an HTTP Header  .  12
    Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  13
    Appendix C.  Changes  . . . . . . . . . . . . . . . . . . . . . .  13
      C.1.  Since draft-ietf-httpbis-cache-digest-02  . . . . . . . .  13
      C.2.  Since draft-ietf-httpbis-cache-digest-01  . . . . . . . .  13
-     C.3.  Since draft-ietf-httpbis-cache-digest-00  . . . . . . . .  13
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  13
+     C.3.  Since draft-ietf-httpbis-cache-digest-00  . . . . . . . .  14
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  14
 
 1.  Introduction
 
@@ -104,15 +105,17 @@ Table of Contents
    effectively wasted, and represents opportunity cost, because it could
    be used by other, more relevant responses.  HTTP/2 allows a stream to
    be cancelled by a client using a RST_STREAM frame in this situation,
-   but there is still at least one round trip of potentially wasted
-   capacity even then.
 
 
 
-Oku & Nottingham          Expires March 6, 2018                 [Page 2]
+
+Oku & Nottingham          Expires March 8, 2018                 [Page 2]
 
 Internet-Draft          Cache Digests for HTTP/2          September 2017
 
+
+   but there is still at least one round trip of potentially wasted
+   capacity even then.
 
    This specification defines a HTTP/2 frame type to allow clients to
    inform the server of their cache's contents using a Golomb-Rice Coded
@@ -158,17 +161,17 @@ Internet-Draft          Cache Digests for HTTP/2          September 2017
       representation of the cache's state regarding that origin, for the
       type of cached response indicated by the "STALE" flag.
 
-   o  *VALIDATORS* (0x4): When set, indicates that the "validators"
-      boolean in Section 2.1.1 is true.
 
 
 
 
-
-Oku & Nottingham          Expires March 6, 2018                 [Page 3]
+Oku & Nottingham          Expires March 8, 2018                 [Page 3]
 
 Internet-Draft          Cache Digests for HTTP/2          September 2017
 
+
+   o  *VALIDATORS* (0x4): When set, indicates that the "validators"
+      boolean in Section 2.1.1 is true.
 
    o  *STALE* (0x8): When set, indicates that all cached responses
       represented in the digest-value are stale [RFC7234] at the point
@@ -215,17 +218,17 @@ Internet-Draft          Cache Digests for HTTP/2          September 2017
 
    CACHE_DIGEST can be computed to include cached responses' ETags, as
    indicated by the VALIDATORS flag.  This information can be used by
-   servers to decide what kinds of responses to push to clients; for
-   example, a stale response that hasn't changed could be refreshed with
-   a 304 (Not Modified) response; one that has changed can be replaced
 
 
 
-Oku & Nottingham          Expires March 6, 2018                 [Page 4]
+Oku & Nottingham          Expires March 8, 2018                 [Page 4]
 
 Internet-Draft          Cache Digests for HTTP/2          September 2017
 
 
+   servers to decide what kinds of responses to push to clients; for
+   example, a stale response that hasn't changed could be refreshed with
+   a 304 (Not Modified) response; one that has changed can be replaced
    with a 200 (OK) response, whether the cached response was fresh or
    stale.
 
@@ -271,16 +274,17 @@ Internet-Draft          Cache Digests for HTTP/2          September 2017
 
    9.   For each "V" in "hash-values":
 
-        1.  If "V" is equal to "C", continue to the next "V".
-
-        2.  Let "D" be the result of "V - C - 1".
 
 
 
-Oku & Nottingham          Expires March 6, 2018                 [Page 5]
+Oku & Nottingham          Expires March 8, 2018                 [Page 5]
 
 Internet-Draft          Cache Digests for HTTP/2          September 2017
 
+
+        1.  If "V" is equal to "C", continue to the next "V".
+
+        2.  Let "D" be the result of "V - C - 1".
 
         3.  Let "Q" be the integer result of "D / P".
 
@@ -329,11 +333,7 @@ Internet-Draft          Cache Digests for HTTP/2          September 2017
 
 
 
-
-
-
-
-Oku & Nottingham          Expires March 6, 2018                 [Page 6]
+Oku & Nottingham          Expires March 8, 2018                 [Page 6]
 
 Internet-Draft          Cache Digests for HTTP/2          September 2017
 
@@ -389,7 +389,7 @@ Internet-Draft          Cache Digests for HTTP/2          September 2017
 
 
 
-Oku & Nottingham          Expires March 6, 2018                 [Page 7]
+Oku & Nottingham          Expires March 8, 2018                 [Page 7]
 
 Internet-Draft          Cache Digests for HTTP/2          September 2017
 
@@ -445,7 +445,7 @@ Internet-Draft          Cache Digests for HTTP/2          September 2017
 
 
 
-Oku & Nottingham          Expires March 6, 2018                 [Page 8]
+Oku & Nottingham          Expires March 8, 2018                 [Page 8]
 
 Internet-Draft          Cache Digests for HTTP/2          September 2017
 
@@ -501,7 +501,7 @@ Internet-Draft          Cache Digests for HTTP/2          September 2017
 
 
 
-Oku & Nottingham          Expires March 6, 2018                 [Page 9]
+Oku & Nottingham          Expires March 8, 2018                 [Page 9]
 
 Internet-Draft          Cache Digests for HTTP/2          September 2017
 
@@ -534,8 +534,8 @@ Internet-Draft          Cache Digests for HTTP/2          September 2017
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997, <https://www.rfc-
-              editor.org/info/rfc2119>.
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/info/rfc2119>.
 
    [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
               Resource Identifier (URI): Generic Syntax", STD 66,
@@ -544,12 +544,12 @@ Internet-Draft          Cache Digests for HTTP/2          September 2017
 
    [RFC6234]  Eastlake 3rd, D. and T. Hansen, "US Secure Hash Algorithms
               (SHA and SHA-based HMAC and HKDF)", RFC 6234,
-              DOI 10.17487/RFC6234, May 2011, <https://www.rfc-
-              editor.org/info/rfc6234>.
+              DOI 10.17487/RFC6234, May 2011,
+              <https://www.rfc-editor.org/info/rfc6234>.
 
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
-              DOI 10.17487/RFC6454, December 2011, <https://www.rfc-
-              editor.org/info/rfc6454>.
+              DOI 10.17487/RFC6454, December 2011,
+              <https://www.rfc-editor.org/info/rfc6454>.
 
 
 
@@ -557,7 +557,7 @@ Internet-Draft          Cache Digests for HTTP/2          September 2017
 
 
 
-Oku & Nottingham          Expires March 6, 2018                [Page 10]
+Oku & Nottingham          Expires March 8, 2018                [Page 10]
 
 Internet-Draft          Cache Digests for HTTP/2          September 2017
 
@@ -569,8 +569,8 @@ Internet-Draft          Cache Digests for HTTP/2          September 2017
 
    [RFC7232]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Conditional Requests", RFC 7232,
-              DOI 10.17487/RFC7232, June 2014, <https://www.rfc-
-              editor.org/info/rfc7232>.
+              DOI 10.17487/RFC7232, June 2014,
+              <https://www.rfc-editor.org/info/rfc7232>.
 
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
@@ -579,8 +579,8 @@ Internet-Draft          Cache Digests for HTTP/2          September 2017
 
    [RFC7540]  Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
               Transfer Protocol Version 2 (HTTP/2)", RFC 7540,
-              DOI 10.17487/RFC7540, May 2015, <https://www.rfc-
-              editor.org/info/rfc7540>.
+              DOI 10.17487/RFC7540, May 2015,
+              <https://www.rfc-editor.org/info/rfc7540>.
 
 6.2.  Informative References
 
@@ -593,8 +593,8 @@ Internet-Draft          Cache Digests for HTTP/2          September 2017
 
    [RFC3864]  Klyne, G., Nottingham, M., and J. Mogul, "Registration
               Procedures for Message Header Fields", BCP 90, RFC 3864,
-              DOI 10.17487/RFC3864, September 2004, <https://www.rfc-
-              editor.org/info/rfc3864>.
+              DOI 10.17487/RFC3864, September 2004,
+              <https://www.rfc-editor.org/info/rfc3864>.
 
    [RFC4648]  Josefsson, S., "The Base16, Base32, and Base64 Data
               Encodings", RFC 4648, DOI 10.17487/RFC4648, October 2006,
@@ -602,18 +602,18 @@ Internet-Draft          Cache Digests for HTTP/2          September 2017
 
    [RFC5234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
               Specifications: ABNF", STD 68, RFC 5234,
-              DOI 10.17487/RFC5234, January 2008, <https://www.rfc-
-              editor.org/info/rfc5234>.
+              DOI 10.17487/RFC5234, January 2008,
+              <https://www.rfc-editor.org/info/rfc5234>.
 
    [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
-              DOI 10.17487/RFC6265, April 2011, <https://www.rfc-
-              editor.org/info/rfc6265>.
+              DOI 10.17487/RFC6265, April 2011,
+              <https://www.rfc-editor.org/info/rfc6265>.
 
 
 
 
 
-Oku & Nottingham          Expires March 6, 2018                [Page 11]
+Oku & Nottingham          Expires March 8, 2018                [Page 11]
 
 Internet-Draft          Cache Digests for HTTP/2          September 2017
 
@@ -628,8 +628,19 @@ Internet-Draft          Cache Digests for HTTP/2          September 2017
               Russell, A., Song, J., Archibald, J., and M.
               Kruisselbrink, "Service Workers 1", W3C Working Draft WD-
               service-workers-1-20161011, October 2016,
-              <https://www.w3.org/TR/2016/WD-service-workers-
-              1-20161011/>.
+              <https://www.w3.org/TR/2016/
+              WD-service-workers-1-20161011/>.
+
+6.3.  URIs
+
+   [1] https://lists.w3.org/Archives/Public/ietf-http-wg/
+
+   [2] http://httpwg.github.io/
+
+   [3] https://github.com/httpwg/http-extensions/labels/cache-digest
+
+   [4] http://giovanni.bajo.it/post/47119962313/golomb-coded-sets-
+       smaller-than-bloom-filters
 
 Appendix A.  Encoding the CACHE_DIGEST frame as an HTTP Header
 
@@ -654,6 +665,15 @@ Appendix A.  Encoding the CACHE_DIGEST frame as an HTTP Header
    cache-digest-entities.  Each cache-digest-entity corresponds to a
    CACHE_DIGEST frame.
 
+
+
+
+
+Oku & Nottingham          Expires March 8, 2018                [Page 12]
+
+Internet-Draft          Cache Digests for HTTP/2          September 2017
+
+
    Digest-Value is encoded using base64url [RFC4648], Section 5.  Flags
    that are set are encoded as digest-flags by their names that are
    compared case-insensitively.
@@ -665,14 +685,6 @@ Appendix A.  Encoding the CACHE_DIGEST frame as an HTTP Header
 
    The example below contains one digest of fresh resource and has only
    the "COMPLETE" flag set.
-
-
-
-
-Oku & Nottingham          Expires March 6, 2018                [Page 12]
-
-Internet-Draft          Cache Digests for HTTP/2          September 2017
-
 
      Cache-Digest: AfdA; complete
 
@@ -693,7 +705,7 @@ Appendix B.  Acknowledgements
    Thanks to Adam Langley and Giovanni Bajo for their explorations of
    Golomb-coded sets.  In particular, see
    http://giovanni.bajo.it/post/47119962313/golomb-coded-sets-smaller-
-   than-bloom-filters, which refers to sample code.
+   than-bloom-filters [4], which refers to sample code.
 
    Thanks to Stefan Eissing for his suggestions.
 
@@ -711,6 +723,13 @@ C.2.  Since draft-ietf-httpbis-cache-digest-01
 
    o  Change intended status from Standard to Experimental.
 
+
+
+Oku & Nottingham          Expires March 8, 2018                [Page 13]
+
+Internet-Draft          Cache Digests for HTTP/2          September 2017
+
+
 C.3.  Since draft-ietf-httpbis-cache-digest-00
 
    o  Make the scope of a digest frame explicit and shift to stream 0.
@@ -721,13 +740,6 @@ Authors' Addresses
    DeNA Co, Ltd.
 
    Email: kazuhooku@gmail.com
-
-
-
-
-Oku & Nottingham          Expires March 6, 2018                [Page 13]
-
-Internet-Draft          Cache Digests for HTTP/2          September 2017
 
 
    Mark Nottingham
@@ -769,16 +781,4 @@ Internet-Draft          Cache Digests for HTTP/2          September 2017
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-Oku & Nottingham          Expires March 6, 2018                [Page 14]
+Oku & Nottingham          Expires March 8, 2018                [Page 14]

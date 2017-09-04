@@ -4,9 +4,9 @@
 
 HTTP Working Group                                               M. West
 Internet-Draft                                               Google, Inc
-Updates: 6265 (if approved)                            September 2, 2017
+Updates: 6265 (if approved)                            September 4, 2017
 Intended status: Standards Track
-Expires: March 6, 2018
+Expires: March 8, 2018
 
 
    Deprecate modification of 'secure' cookies from non-secure origins
@@ -24,11 +24,11 @@ Note to Readers
 
    Discussion of this draft takes place on the HTTP working group
    mailing list (ietf-http-wg@w3.org), which is archived at
-   https://lists.w3.org/Archives/Public/ietf-http-wg/.
+   https://lists.w3.org/Archives/Public/ietf-http-wg/ [1].
 
-   Working Group information can be found at http://httpwg.github.io/;
-   source code and issues list for this draft can be found at
-   https://github.com/httpwg/http-extensions/labels/cookie-alone.
+   Working Group information can be found at http://httpwg.github.io/
+   [2]; source code and issues list for this draft can be found at
+   https://github.com/httpwg/http-extensions/labels/cookie-alone [3].
 
 Status of This Memo
 
@@ -38,14 +38,14 @@ Status of This Memo
    Internet-Drafts are working documents of the Internet Engineering
    Task Force (IETF).  Note that other groups may also distribute
    working documents as Internet-Drafts.  The list of current Internet-
-   Drafts is at http://datatracker.ietf.org/drafts/current/.
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
 
    Internet-Drafts are draft documents valid for a maximum of six months
    and may be updated, replaced, or obsoleted by other documents at any
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on March 6, 2018.
+   This Internet-Draft will expire on March 8, 2018.
 
 
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-West                      Expires March 6, 2018                 [Page 1]
+West                      Expires March 8, 2018                 [Page 1]
 
 Internet-Draft         Leave Secure Cookies Alone         September 2017
 
@@ -65,7 +65,7 @@ Copyright Notice
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
-   (http://trustee.ietf.org/license-info) in effect on the date of
+   (https://trustee.ietf.org/license-info) in effect on the date of
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
@@ -82,8 +82,9 @@ Table of Contents
    5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   4
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   4
      5.2.  Informative References  . . . . . . . . . . . . . . . . .   5
-   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .   5
-   Appendix B.  Changes  . . . . . . . . . . . . . . . . . . . . . .   5
+     5.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   5
+   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .   6
+   Appendix B.  Changes  . . . . . . . . . . . . . . . . . . . . . .   6
      B.1.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .   6
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   6
 
@@ -108,8 +109,7 @@ Table of Contents
 
 
 
-
-West                      Expires March 6, 2018                 [Page 2]
+West                      Expires March 8, 2018                 [Page 2]
 
 Internet-Draft         Leave Secure Cookies Alone         September 2017
 
@@ -165,7 +165,7 @@ Internet-Draft         Leave Secure Cookies Alone         September 2017
 
 
 
-West                      Expires March 6, 2018                 [Page 3]
+West                      Expires March 8, 2018                 [Page 3]
 
 Internet-Draft         Leave Secure Cookies Alone         September 2017
 
@@ -221,15 +221,15 @@ Internet-Draft         Leave Secure Cookies Alone         September 2017
 
 
 
-West                      Expires March 6, 2018                 [Page 4]
+West                      Expires March 8, 2018                 [Page 4]
 
 Internet-Draft         Leave Secure Cookies Alone         September 2017
 
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997, <https://www.rfc-
-              editor.org/info/rfc2119>.
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/info/rfc2119>.
 
    [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
               Resource Identifier (URI): Generic Syntax", STD 66,
@@ -237,8 +237,8 @@ Internet-Draft         Leave Secure Cookies Alone         September 2017
               <https://www.rfc-editor.org/info/rfc3986>.
 
    [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
-              DOI 10.17487/RFC6265, April 2011, <https://www.rfc-
-              editor.org/info/rfc6265>.
+              DOI 10.17487/RFC6265, April 2011,
+              <https://www.rfc-editor.org/info/rfc6265>.
 
 5.2.  Informative References
 
@@ -251,8 +251,8 @@ Internet-Draft         Leave Secure Cookies Alone         September 2017
 
    [COOKIE-PREFIXES]
               West, M., "Cookie Prefixes", 2016,
-              <https://tools.ietf.org/html/draft-ietf-httpbis-cookie-
-              prefixes>.
+              <https://tools.ietf.org/html/
+              draft-ietf-httpbis-cookie-prefixes>.
 
    [HSTS-PRELOADING]
               "HSTS Preload Submission", n.d.,
@@ -260,8 +260,27 @@ Internet-Draft         Leave Secure Cookies Alone         September 2017
 
    [RFC6797]  Hodges, J., Jackson, C., and A. Barth, "HTTP Strict
               Transport Security (HSTS)", RFC 6797,
-              DOI 10.17487/RFC6797, November 2012, <https://www.rfc-
-              editor.org/info/rfc6797>.
+              DOI 10.17487/RFC6797, November 2012,
+              <https://www.rfc-editor.org/info/rfc6797>.
+
+5.3.  URIs
+
+   [1] https://lists.w3.org/Archives/Public/ietf-http-wg/
+
+   [2] http://httpwg.github.io/
+
+   [3] https://github.com/httpwg/http-extensions/labels/cookie-alone
+
+
+
+
+
+
+
+West                      Expires March 8, 2018                 [Page 5]
+
+Internet-Draft         Leave Secure Cookies Alone         September 2017
+
 
 Appendix A.  Acknowledgements
 
@@ -270,17 +289,6 @@ Appendix A.  Acknowledgements
    [RFC6265] described.
 
 Appendix B.  Changes
-
-
-
-
-
-
-
-West                      Expires March 6, 2018                 [Page 5]
-
-Internet-Draft         Leave Secure Cookies Alone         September 2017
-
 
 B.1.  Since -00
 
@@ -325,12 +333,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-West                      Expires March 6, 2018                 [Page 6]
+West                      Expires March 8, 2018                 [Page 6]

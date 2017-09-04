@@ -4,9 +4,9 @@
 
 HTTP Working Group                                               M. West
 Internet-Draft                                               Google, Inc
-Updates: 6265 (if approved)                            September 2, 2017
+Updates: 6265 (if approved)                            September 4, 2017
 Intended status: Standards Track
-Expires: March 6, 2018
+Expires: March 8, 2018
 
 
                             Cookie Prefixes
@@ -25,11 +25,11 @@ Note to Readers
 
    Discussion of this draft takes place on the HTTP working group
    mailing list (ietf-http-wg@w3.org), which is archived at
-   https://lists.w3.org/Archives/Public/ietf-http-wg/.
+   https://lists.w3.org/Archives/Public/ietf-http-wg/ [1].
 
-   Working Group information can be found at http://httpwg.github.io/;
-   source code and issues list for this draft can be found at
-   https://github.com/httpwg/http-extensions/labels/cookie-prefixes.
+   Working Group information can be found at http://httpwg.github.io/
+   [2]; source code and issues list for this draft can be found at
+   https://github.com/httpwg/http-extensions/labels/cookie-prefixes [3].
 
 Status of This Memo
 
@@ -39,21 +39,21 @@ Status of This Memo
    Internet-Drafts are working documents of the Internet Engineering
    Task Force (IETF).  Note that other groups may also distribute
    working documents as Internet-Drafts.  The list of current Internet-
-   Drafts is at http://datatracker.ietf.org/drafts/current/.
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
 
    Internet-Drafts are draft documents valid for a maximum of six months
    and may be updated, replaced, or obsoleted by other documents at any
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on March 6, 2018.
+   This Internet-Draft will expire on March 8, 2018.
 
 
 
 
 
 
-West                      Expires March 6, 2018                 [Page 1]
+West                      Expires March 8, 2018                 [Page 1]
 
 Internet-Draft               Cookie Prefixes              September 2017
 
@@ -65,7 +65,7 @@ Copyright Notice
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
-   (http://trustee.ietf.org/license-info) in effect on the date of
+   (https://trustee.ietf.org/license-info) in effect on the date of
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
@@ -90,8 +90,9 @@ Table of Contents
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   5
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
      7.2.  Informative References  . . . . . . . . . . . . . . . . .   6
+     7.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   6
    Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .   6
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   6
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   7
 
 1.  Introduction
 
@@ -108,8 +109,7 @@ Table of Contents
 
 
 
-
-West                      Expires March 6, 2018                 [Page 2]
+West                      Expires March 8, 2018                 [Page 2]
 
 Internet-Draft               Cookie Prefixes              September 2017
 
@@ -165,7 +165,7 @@ Internet-Draft               Cookie Prefixes              September 2017
 
 
 
-West                      Expires March 6, 2018                 [Page 3]
+West                      Expires March 8, 2018                 [Page 3]
 
 Internet-Draft               Cookie Prefixes              September 2017
 
@@ -221,7 +221,7 @@ Internet-Draft               Cookie Prefixes              September 2017
 
 
 
-West                      Expires March 6, 2018                 [Page 4]
+West                      Expires March 8, 2018                 [Page 4]
 
 Internet-Draft               Cookie Prefixes              September 2017
 
@@ -267,8 +267,8 @@ Internet-Draft               Cookie Prefixes              September 2017
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997, <https://www.rfc-
-              editor.org/info/rfc2119>.
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/info/rfc2119>.
 
    [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
               Resource Identifier (URI): Generic Syntax", STD 66,
@@ -277,21 +277,21 @@ Internet-Draft               Cookie Prefixes              September 2017
 
 
 
-West                      Expires March 6, 2018                 [Page 5]
+West                      Expires March 8, 2018                 [Page 5]
 
 Internet-Draft               Cookie Prefixes              September 2017
 
 
    [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
-              DOI 10.17487/RFC6265, April 2011, <https://www.rfc-
-              editor.org/info/rfc6265>.
+              DOI 10.17487/RFC6265, April 2011,
+              <https://www.rfc-editor.org/info/rfc6265>.
 
 7.2.  Informative References
 
    [DEPRECATING-HTTP]
               Barnes, R., "Deprecating Non-Secure HTTP", April 2015,
-              <https://blog.mozilla.org/security/2015/04/30/deprecating-
-              non-secure-http/>.
+              <https://blog.mozilla.org/security/2015/04/30/
+              deprecating-non-secure-http/>.
 
    [Lawrence2015]
               Lawrence, E., "Duct Tape and Baling Wire -- Cookie
@@ -309,8 +309,16 @@ Internet-Draft               Cookie Prefixes              September 2017
               <https://www.rfc-editor.org/info/rfc2109>.
 
    [SECURE-CONTEXTS]
-              West, M., "Secure Contexts", 2016, <https://w3c.github.io/
-              webappsec-secure-contexts/>.
+              West, M., "Secure Contexts", 2016,
+              <https://w3c.github.io/webappsec-secure-contexts/>.
+
+7.3.  URIs
+
+   [1] https://lists.w3.org/Archives/Public/ietf-http-wg/
+
+   [2] http://httpwg.github.io/
+
+   [3] https://github.com/httpwg/http-extensions/labels/cookie-prefixes
 
 Appendix A.  Acknowledgements
 
@@ -320,6 +328,15 @@ Appendix A.  Acknowledgements
    pointed out the issues with a leading "$" in the prefixes, and Brian
    Smith provided valuable contributions to the discussion around a
    replacement (ISO C indeed).
+
+
+
+
+
+West                      Expires March 8, 2018                 [Page 6]
+
+Internet-Draft               Cookie Prefixes              September 2017
+
 
 Author's Address
 
@@ -333,4 +350,43 @@ Author's Address
 
 
 
-West                      Expires March 6, 2018                 [Page 6]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+West                      Expires March 8, 2018                 [Page 7]
