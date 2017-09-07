@@ -2446,7 +2446,7 @@ Internet-Draft  Cookies: HTTP State Management Mechanism  September 2017
 
    [RFC3490]  Costello, A., "Internationalizing Domain Names in
               Applications (IDNA)", RFC 3490, DOI 10.17487/RFC3490,
-              March 2003, <http://www.rfc-editor.org/info/rfc3490>.
+              March 2003, <https://www.rfc-editor.org/info/rfc3490>.
 
               See Section 6.3 for an explanation why the normative
               reference to an obsoleted specification is needed.
