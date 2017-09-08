@@ -79,7 +79,7 @@ Table of Contents
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
      8.2.  Informative References  . . . . . . . . . . . . . . . . .  10
-   Appendix A.  Acknowledgments  . . . . . . . . . . . . . . . . . .  10
+   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  10
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  10
 
 1.  Introduction
@@ -521,7 +521,7 @@ Internet-Draft               HTTP Early Data              September 2017
               DOI 10.17487/RFC7540, May 2015,
               <https://www.rfc-editor.org/info/rfc7540>.
 
-Appendix A.  Acknowledgments
+Acknowledgments
 
    This document was not easy to produce.  The following people made
    substantial contributions to the quality and completeness of the
