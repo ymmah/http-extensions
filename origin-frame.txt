@@ -238,7 +238,7 @@ Internet-Draft                ORIGIN Frames               September 2017
    described in Section 2.2.
 
    The Origin Set is also affected by the 421 (Misdirected Request)
-   response status code, defined in Section 9.1.2 of [RFC7540].  Upon
+   response status code, defined in [RFC7540], Section 9.1.2.  Upon
    receipt of a response with this status code, implementing clients
    MUST create the ASCII serialisation of the corresponding request's
    origin (as per [RFC6454], Section 6.2) and remove it from the
@@ -265,7 +265,7 @@ Internet-Draft                ORIGIN Frames               September 2017
 
 2.4.  Authority, Push and Coalescing with ORIGIN
 
-   [RFC7540], Section 10.1 uses both DNS and the presented TLS
+   Section 10.1 of [RFC7540] uses both DNS and the presented TLS
    certificate to establish the origin server(s) that a connection is
    authoritative for, just as HTTP/1.1 does in [RFC7230].
 
@@ -296,7 +296,7 @@ Internet-Draft                ORIGIN Frames               September 2017
 
    Note that for a connection to be considered authoritative for a given
    origin, the client is still required to obtain a certificate that
-   passes suitable checks; see Section 9.1.1 of [RFC7540] for more
+   passes suitable checks; see Section 9.1.1. of [RFC7540] for more
    information.  This includes verifying that the host matches a
    "dNSName" value from the certificate "subjectAltName" field (using
    the rules defined in [RFC2818]; see also [RFC5280], Section 4.2.1.6).
