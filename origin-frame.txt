@@ -5,8 +5,8 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Standards Track                               E. Nygren
-Expires: March 25, 2018                                           Akamai
-                                                      September 21, 2017
+Expires: March 26, 2018                                           Akamai
+                                                      September 22, 2017
 
 
                         The ORIGIN HTTP/2 Frame
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on March 25, 2018.
+   This Internet-Draft will expire on March 26, 2018.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Nottingham & Nygren      Expires March 25, 2018                 [Page 1]
+Nottingham & Nygren      Expires March 26, 2018                 [Page 1]
 
 Internet-Draft                ORIGIN Frames               September 2017
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Nottingham & Nygren      Expires March 25, 2018                 [Page 2]
+Nottingham & Nygren      Expires March 26, 2018                 [Page 2]
 
 Internet-Draft                ORIGIN Frames               September 2017
 
@@ -165,7 +165,7 @@ Internet-Draft                ORIGIN Frames               September 2017
 
 
 
-Nottingham & Nygren      Expires March 25, 2018                 [Page 3]
+Nottingham & Nygren      Expires March 26, 2018                 [Page 3]
 
 Internet-Draft                ORIGIN Frames               September 2017
 
@@ -221,7 +221,7 @@ Internet-Draft                ORIGIN Frames               September 2017
 
 
 
-Nottingham & Nygren      Expires March 25, 2018                 [Page 4]
+Nottingham & Nygren      Expires March 26, 2018                 [Page 4]
 
 Internet-Draft                ORIGIN Frames               September 2017
 
@@ -233,7 +233,7 @@ Internet-Draft                ORIGIN Frames               September 2017
    described in Section 2.2.
 
    The Origin Set is also affected by the 421 (Misdirected Request)
-   response status code, defined in [RFC7540] Section 9.1.2.  Upon
+   response status code, defined in [RFC7540], Section 9.1.2.  Upon
    receipt of a response with this status code, implementing clients
    MUST create the ASCII serialisation of the corresponding request's
    origin (as per [RFC6454], Section 6.2) and remove it from the
@@ -241,14 +241,14 @@ Internet-Draft                ORIGIN Frames               September 2017
 
    Note:  When sending an ORIGIN frame to a connection that is
       initialised as an Alternative Service [RFC7838], the initial
-      origin set Section 2.3 will contain an origin with the appropriate
-      scheme and hostname (since Alternative Services specifies that the
-      origin's hostname be sent in SNI).  However, it is possible that
-      the port will be different than that of the intended origin, since
-      the initial origin set is calculated using the actual port in use,
-      which can be different for the alternative service.  In this case,
-      the intended origin needs to be sent in the ORIGIN frame
-      explicitly.
+      origin set (Section 2.3) will contain an origin with the
+      appropriate scheme and hostname (since Alternative Services
+      specifies that the origin's hostname be sent in SNI).  However, it
+      is possible that the port will be different than that of the
+      intended origin, since the initial origin set is calculated using
+      the actual port in use, which can be different for the alternative
+      service.  In this case, the intended origin needs to be sent in
+      the ORIGIN frame explicitly.
 
       For example, a client making requests for "https://example.com" is
       directed to an alternative service at ("h2", "x.example.net",
@@ -264,7 +264,7 @@ Internet-Draft                ORIGIN Frames               September 2017
    certificate to establish the origin server(s) that a connection is
    authoritative for, just as HTTP/1.1 does in [RFC7230].
 
-   Furthermore, [RFC7540] Section 9.1.1 explicitly allows a connection
+   Furthermore, [RFC7540], Section 9.1.1 explicitly allows a connection
    to be used for more than one origin server, if it is authoritative.
    This affects what requests can be sent on the connection, both in
    HEADERS frame by the client and as PUSH_PROMISE frames from the
@@ -277,7 +277,7 @@ Internet-Draft                ORIGIN Frames               September 2017
 
 
 
-Nottingham & Nygren      Expires March 25, 2018                 [Page 5]
+Nottingham & Nygren      Expires March 26, 2018                 [Page 5]
 
 Internet-Draft                ORIGIN Frames               September 2017
 
@@ -291,16 +291,16 @@ Internet-Draft                ORIGIN Frames               September 2017
    passes suitable checks; see [RFC7540] Section 9.1.1 for more
    information.  This includes verifying that the host matches a
    "dNSName" value from the certificate "subjectAltName" field (using
-   the rules defined in [RFC2818]; see also [RFC5280] Section 4.2.1.6).
+   the rules defined in [RFC2818]; see also [RFC5280], Section 4.2.1.6).
 
    Additionally, clients MAY avoid consulting DNS to establish the
    connection's authority for new requests; however, those that do so
-   face new risks, as explained in Section 4
+   face new risks, as explained in Section 4.
 
    Because ORIGIN can change the set of origins a connection is used for
    over time, it is possible that a client might have more than one
    viable connection to an origin open at any time.  When this occurs,
-   clients SHOULD not emit new requests on any connection whose Origin
+   clients SHOULD NOT emit new requests on any connection whose Origin
    Set is a proper subset of another connection's Origin Set, and SHOULD
    close it once all outstanding requests are satisfied.
 
@@ -333,7 +333,7 @@ Internet-Draft                ORIGIN Frames               September 2017
 
 
 
-Nottingham & Nygren      Expires March 25, 2018                 [Page 6]
+Nottingham & Nygren      Expires March 26, 2018                 [Page 6]
 
 Internet-Draft                ORIGIN Frames               September 2017
 
@@ -389,7 +389,7 @@ Internet-Draft                ORIGIN Frames               September 2017
 
 
 
-Nottingham & Nygren      Expires March 25, 2018                 [Page 7]
+Nottingham & Nygren      Expires March 26, 2018                 [Page 7]
 
 Internet-Draft                ORIGIN Frames               September 2017
 
@@ -445,7 +445,7 @@ Appendix A.  Non-Normative Processing Algorithm
 
 
 
-Nottingham & Nygren      Expires March 25, 2018                 [Page 8]
+Nottingham & Nygren      Expires March 26, 2018                 [Page 8]
 
 Internet-Draft                ORIGIN Frames               September 2017
 
@@ -501,7 +501,7 @@ Appendix B.  Operational Considerations for Servers
 
 
 
-Nottingham & Nygren      Expires March 25, 2018                 [Page 9]
+Nottingham & Nygren      Expires March 26, 2018                 [Page 9]
 
 Internet-Draft                ORIGIN Frames               September 2017
 
@@ -557,4 +557,4 @@ Authors' Addresses
 
 
 
-Nottingham & Nygren      Expires March 25, 2018                [Page 10]
+Nottingham & Nygren      Expires March 26, 2018                [Page 10]
