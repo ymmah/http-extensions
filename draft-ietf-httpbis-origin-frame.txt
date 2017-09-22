@@ -74,7 +74,7 @@ Table of Contents
      1.1.  Notational Conventions  . . . . . . . . . . . . . . . . .   3
    2.  The ORIGIN HTTP/2 Frame . . . . . . . . . . . . . . . . . . .   3
      2.1.  Syntax  . . . . . . . . . . . . . . . . . . . . . . . . .   3
-     2.2.  Processing ORIGIN Frames  . . . . . . . . . . . . . . . .   3
+     2.2.  Processing ORIGIN Frames  . . . . . . . . . . . . . . . .   4
      2.3.  The Origin Set  . . . . . . . . . . . . . . . . . . . . .   4
      2.4.  Authority, Push and Coalescing with ORIGIN  . . . . . . .   5
    3.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
@@ -83,7 +83,7 @@ Table of Contents
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   7
      5.2.  Informative References  . . . . . . . . . . . . . . . . .   8
      5.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   8
-   Appendix A.  Non-Normative Processing Algorithm . . . . . . . . .   8
+   Appendix A.  Non-Normative Processing Algorithm . . . . . . . . .   9
    Appendix B.  Operational Considerations for Servers . . . . . . .   9
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  10
 
@@ -120,8 +120,10 @@ Internet-Draft                ORIGIN Frames               September 2017
 1.1.  Notational Conventions
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-   document are to be interpreted as described in [RFC2119].
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in BCP
+   14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
 
 2.  The ORIGIN HTTP/2 Frame
 
@@ -157,10 +159,8 @@ Internet-Draft                ORIGIN Frames               September 2017
    The ORIGIN frame does not define any flags.  However, future updates
    to this specification MAY define flags.  See Section 2.2.
 
-2.2.  Processing ORIGIN Frames
 
-   The ORIGIN frame is a non-critical extension to HTTP/2.  Endpoints
-   that do not support this frame can safely ignore it upon receipt.
+
 
 
 
@@ -169,6 +169,11 @@ Nottingham & Nygren      Expires March 26, 2018                 [Page 3]
 
 Internet-Draft                ORIGIN Frames               September 2017
 
+
+2.2.  Processing ORIGIN Frames
+
+   The ORIGIN frame is a non-critical extension to HTTP/2.  Endpoints
+   that do not support this frame can safely ignore it upon receipt.
 
    When received by an implementing client, it is used to initialise and
    manipulate the Origin Set (see Section 2.3), thereby changing how the
@@ -213,11 +218,6 @@ Internet-Draft                ORIGIN Frames               September 2017
    client, the connection's Origin Set is defined to contain an initial
    origin.  The initial origin is composed from:
 
-   o  Scheme: "https"
-
-   o  Host: the value sent in Server Name Indication (SNI, [RFC6066]
-      Section 3), converted to lower case
-
 
 
 
@@ -225,6 +225,11 @@ Nottingham & Nygren      Expires March 26, 2018                 [Page 4]
 
 Internet-Draft                ORIGIN Frames               September 2017
 
+
+   o  Scheme: "https"
+
+   o  Host: the value sent in Server Name Indication (SNI, [RFC6066]
+      Section 3), converted to lower case
 
    o  Port: the remote port of the connection (i.e., the server's port)
 
@@ -270,11 +275,6 @@ Internet-Draft                ORIGIN Frames               September 2017
    HEADERS frame by the client and as PUSH_PROMISE frames from the
    server ([RFC7540], Section 8.2.2).
 
-   Once an Origin Set has been initialised for a connection, clients
-   that implement this specification use it to help determine what the
-   connection is authoritative for.  Specifically, such clients MUST NOT
-   consider a connection to be authoritative for an origin not present
-
 
 
 Nottingham & Nygren      Expires March 26, 2018                 [Page 5]
@@ -282,6 +282,10 @@ Nottingham & Nygren      Expires March 26, 2018                 [Page 5]
 Internet-Draft                ORIGIN Frames               September 2017
 
 
+   Once an Origin Set has been initialised for a connection, clients
+   that implement this specification use it to help determine what the
+   connection is authoritative for.  Specifically, such clients MUST NOT
+   consider a connection to be authoritative for an origin not present
    in the Origin Set, and SHOULD use the connection for all requests to
    origins in the Origin Set for which the connection is authoritative,
    unless there are operational reasons for opening a new connection.
@@ -326,10 +330,6 @@ Internet-Draft                ORIGIN Frames               September 2017
 
    Relaxing the requirement to consult DNS when determining authority
    for an origin means that an attacker who possesses a valid
-   certificate no longer needs to be on-path to redirect traffic to
-   them; instead of modifying DNS, they need only convince the user to
-   visit another Web site in order to coalesce connections to the target
-   onto their existing connection.
 
 
 
@@ -337,6 +337,11 @@ Nottingham & Nygren      Expires March 26, 2018                 [Page 6]
 
 Internet-Draft                ORIGIN Frames               September 2017
 
+
+   certificate no longer needs to be on-path to redirect traffic to
+   them; instead of modifying DNS, they need only convince the user to
+   visit another Web site in order to coalesce connections to the target
+   onto their existing connection.
 
    As a result, clients opting not to consult DNS ought to employ some
    alternative means to increase confidence that the certificate is
@@ -381,11 +386,6 @@ Internet-Draft                ORIGIN Frames               September 2017
               DOI 10.17487/RFC6066, January 2011,
               <https://www.rfc-editor.org/info/rfc6066>.
 
-   [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
-              DOI 10.17487/RFC6454, December 2011,
-              <https://www.rfc-editor.org/info/rfc6454>.
-
-
 
 
 
@@ -394,10 +394,18 @@ Nottingham & Nygren      Expires March 26, 2018                 [Page 7]
 Internet-Draft                ORIGIN Frames               September 2017
 
 
+   [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
+              DOI 10.17487/RFC6454, December 2011,
+              <https://www.rfc-editor.org/info/rfc6454>.
+
    [RFC7540]  Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
               Transfer Protocol Version 2 (HTTP/2)", RFC 7540,
               DOI 10.17487/RFC7540, May 2015,
               <https://www.rfc-editor.org/info/rfc7540>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
 5.2.  Informative References
 
@@ -433,14 +441,6 @@ Internet-Draft                ORIGIN Frames               September 2017
 
    [3] https://github.com/httpwg/http-extensions/labels/origin-frame
 
-Appendix A.  Non-Normative Processing Algorithm
-
-   The following algorithm illustrates how a client could handle
-   received ORIGIN frames:
-
-   1.  If the client is configured to use a proxy for the connection,
-       ignore the frame and stop processing.
-
 
 
 
@@ -449,6 +449,14 @@ Nottingham & Nygren      Expires March 26, 2018                 [Page 8]
 
 Internet-Draft                ORIGIN Frames               September 2017
 
+
+Appendix A.  Non-Normative Processing Algorithm
+
+   The following algorithm illustrates how a client could handle
+   received ORIGIN frames:
+
+   1.  If the client is configured to use a proxy for the connection,
+       ignore the frame and stop processing.
 
    2.  If the connection is not identified with the "h2" protocol
        identifier or another protocol that has explicitly opted into
@@ -490,14 +498,6 @@ Appendix B.  Operational Considerations for Servers
    "Link" headers [RFC5988] in a response HEADERS, or links in the
    response body.
 
-   Therefore, the ORIGIN frame ought be sent as soon as possible on a
-   connection, ideally before any HEADERS or PUSH_PROMISE frames.
-
-   However, if it's desirable to associate a large number of origins
-   with a connection, doing so might introduce end-user perceived
-   latency, due to their size.  As a result, it might be necessary to
-   select a "core" set of origins to send initially, expanding the set
-
 
 
 
@@ -506,6 +506,13 @@ Nottingham & Nygren      Expires March 26, 2018                 [Page 9]
 Internet-Draft                ORIGIN Frames               September 2017
 
 
+   Therefore, the ORIGIN frame ought be sent as soon as possible on a
+   connection, ideally before any HEADERS or PUSH_PROMISE frames.
+
+   However, if it's desirable to associate a large number of origins
+   with a connection, doing so might introduce end-user perceived
+   latency, due to their size.  As a result, it might be necessary to
+   select a "core" set of origins to send initially, expanding the set
    of origins the connection is used for with subsequent ORIGIN frames
    later (e.g., when the connection is idle).
 
@@ -535,13 +542,6 @@ Authors' Addresses
    Akamai
 
    Email: nygren@akamai.com
-
-
-
-
-
-
-
 
 
 
