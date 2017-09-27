@@ -343,11 +343,9 @@ Internet-Draft               HTTP Early Data              September 2017
    Early-Data: 1
 
 
-   An intermediary that forwards a request prior to the completion of
-   the TLS handshake MUST send it with the "Early-Data" header field set
-   to "1" (i.e., it adds it if not present in the request).  This is
-   also true if the intermediary might have forwarded the request prior
-   to handshake completion (see Section 6.2 for details).
+   An intermediary that forwards a request received in TLS early data
+   MUST send it with the "Early-Data" header field set to "1" (i.e., it
+   adds it if not present in the request).
 
    An intermediary MUST NOT remove this header field if it is present in
    a request.
@@ -389,6 +387,8 @@ Internet-Draft               HTTP Early Data              September 2017
 
 
 
+
+
 Thomson, et al.          Expires March 31, 2018                 [Page 7]
 
 Internet-Draft               HTTP Early Data              September 2017
@@ -408,22 +408,22 @@ Internet-Draft               HTTP Early Data              September 2017
 6.1.  Gateways and Early Data
 
    A gateway that forwards requests that were received in early data
-   MUST only do so if it knows that the server that receives those
-   requests understands the "Early-Data" header field and will correctly
-   generate a 425 (Too Early) status code.  A gateway that isn't certain
-   about server support SHOULD either delay forwarding the request until
-   the TLS handshake completes, or send a 425 (Too Early) status code in
-   response.  A gateway that is uncertain about whether an origin server
-   supports the "Early-Data" header field SHOULD disable early data.
+   MUST only do so if it knows that the origin server that receives
+   those requests understands the "Early-Data" header field and will
+   correctly generate a 425 (Too Early) status code.  A gateway that
+   isn't certain about origin server support SHOULD either delay
+   forwarding the request until the TLS handshake with its client
+   completes, or send a 425 (Too Early) status code in response.  A
+   gateway that is uncertain about whether an origin server supports the
+   "Early-Data" header field SHOULD disable early data.
 
 6.2.  Consistent Handling of Early Data
 
    Consistent treatment of a request that arrives in - or partially in -
    early data is critical to avoiding inappropriate processing of
    replayed requests.  If a request is not safe to process before the
-   TLS handshake completes, then all instances of the server (including
-   gateways) need to agree and either reject the request or delay
-   processing.
+   TLS handshake completes, then all instances of the server need to
+   agree and either reject the request or delay processing.
 
 6.3.  Denial of Service
 
