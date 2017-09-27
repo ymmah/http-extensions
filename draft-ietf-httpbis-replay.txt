@@ -283,7 +283,7 @@ Internet-Draft               HTTP Early Data              September 2017
 
 
    arrived in early data or arrived with the "Early-Data" header field
-   set to "1".
+   set to "1" (see Section 5.1).
 
 5.  Extensions for Early Data in HTTP
 
