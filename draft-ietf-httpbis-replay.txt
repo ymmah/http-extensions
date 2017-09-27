@@ -75,8 +75,7 @@ Table of Contents
      6.1.  Gateways and Early Data . . . . . . . . . . . . . . . . .   8
      6.2.  Consistent Handling of Early Data . . . . . . . . . . . .   8
      6.3.  Denial of Service . . . . . . . . . . . . . . . . . . . .   8
-     6.4.  Out of Order Delivery . . . . . . . . . . . . . . . . . .   8
-   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
+   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   8
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
      8.2.  Informative References  . . . . . . . . . . . . . . . . .  10
@@ -106,6 +105,7 @@ Table of Contents
    Note that this is different from automated or user-initiated retries;
    replays are initiated by an attacker without the awareness of the
    client.
+
 
 
 
@@ -259,7 +259,7 @@ Internet-Draft               HTTP Early Data              September 2017
    accepts and processes the early data, but allows that connection to
    proceed no further.  The attacker then forwards the same messages
    from the client to another server instance that will reject early
-   data.  The client the retries the request, resulting in the request
+   data.  The client then retries the request, resulting in the request
    being processed twice.  Replays are also possible if there are
    multiple server instances that will accept early data, or if the same
    server accepts early data multiple times (though this would be in
@@ -434,22 +434,6 @@ Internet-Draft               HTTP Early Data              September 2017
    status code often leads to clients retrying requests, which could
    result in increased load.
 
-6.4.  Out of Order Delivery
-
-   In protocols that deliver data out of order (such as QUIC [HQ]) early
-   data can arrive after the handshake completes.  This leads to
-   potential ambiguity about the status of requests and could lead to
-   inconsistent treatment (see Section 6.2).  Implementations MUST
-   either ensure that any early data that is delivered late is either
-   discarded or consistently identified and processed.
-
-
-
-Thomson, et al.          Expires March 31, 2018                 [Page 8]
-
-Internet-Draft               HTTP Early Data              September 2017
-
-
 7.  IANA Considerations
 
    This document registers the "Early-Data" header field in the "Message
@@ -458,6 +442,13 @@ Internet-Draft               HTTP Early Data              September 2017
    Header field name:  Early-Data
 
    Applicable protocol:  http
+
+
+
+Thomson, et al.          Expires March 31, 2018                 [Page 8]
+
+Internet-Draft               HTTP Early Data              September 2017
+
 
    Status:  standard
 
@@ -496,16 +487,6 @@ Internet-Draft               HTTP Early Data              September 2017
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
               <https://www.rfc-editor.org/info/rfc7230>.
 
-
-
-
-
-
-Thomson, et al.          Expires March 31, 2018                 [Page 9]
-
-Internet-Draft               HTTP Early Data              September 2017
-
-
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
@@ -515,6 +496,15 @@ Internet-Draft               HTTP Early Data              September 2017
               Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
               DOI 10.17487/RFC7231, June 2014,
               <https://www.rfc-editor.org/info/rfc7231>.
+
+
+
+
+
+Thomson, et al.          Expires March 31, 2018                 [Page 9]
+
+Internet-Draft               HTTP Early Data              September 2017
+
 
    [TLS13]    Rescorla, E., "The Transport Layer Security (TLS) Protocol
               Version 1.3", draft-ietf-tls-tls13-21 (work in progress),
@@ -552,16 +542,6 @@ Authors' Addresses
    Email: mnot@mnot.net
 
 
-
-
-
-
-
-Thomson, et al.          Expires March 31, 2018                [Page 10]
-
-Internet-Draft               HTTP Early Data              September 2017
-
-
    Willy Tarreau
    HAProxy Technologies
 
@@ -577,40 +557,4 @@ Internet-Draft               HTTP Early Data              September 2017
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Thomson, et al.          Expires March 31, 2018                [Page 11]
+Thomson, et al.          Expires March 31, 2018                [Page 10]
