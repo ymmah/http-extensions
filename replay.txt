@@ -75,7 +75,7 @@ Table of Contents
      6.1.  Gateways and Early Data . . . . . . . . . . . . . . . . .   8
      6.2.  Consistent Handling of Early Data . . . . . . . . . . . .   8
      6.3.  Denial of Service . . . . . . . . . . . . . . . . . . . .   8
-   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
+   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   8
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
      8.2.  Informative References  . . . . . . . . . . . . . . . . .  10
@@ -425,10 +425,6 @@ Internet-Draft               HTTP Early Data              September 2017
    TLS handshake completes, then all instances of the server need to
    agree and either reject the request or delay processing.
 
-   A server MUST NOT act on early data before the handshake completes if
-   it and any other server instance could make a different decision
-   about how to handle the same data.
-
 6.3.  Denial of Service
 
    Accepting early data exposes a server to potential denial of service
@@ -439,8 +435,12 @@ Internet-Draft               HTTP Early Data              September 2017
    status code often leads to clients retrying requests, which could
    result in increased load.
 
+7.  IANA Considerations
 
+   This document registers the "Early-Data" header field in the "Message
+   Headers" registry [HEADERS].
 
+   Header field name:  Early-Data
 
 
 
@@ -449,13 +449,6 @@ Thomson, et al.          Expires March 31, 2018                 [Page 8]
 
 Internet-Draft               HTTP Early Data              September 2017
 
-
-7.  IANA Considerations
-
-   This document registers the "Early-Data" header field in the "Message
-   Headers" registry [HEADERS].
-
-   Header field name:  Early-Data
 
    Applicable protocol:  http
 
@@ -496,16 +489,6 @@ Internet-Draft               HTTP Early Data              September 2017
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
               <https://www.rfc-editor.org/info/rfc7230>.
 
-
-
-
-
-
-Thomson, et al.          Expires March 31, 2018                 [Page 9]
-
-Internet-Draft               HTTP Early Data              September 2017
-
-
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
@@ -515,6 +498,13 @@ Internet-Draft               HTTP Early Data              September 2017
               Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
               DOI 10.17487/RFC7231, June 2014,
               <https://www.rfc-editor.org/info/rfc7231>.
+
+
+
+Thomson, et al.          Expires March 31, 2018                 [Page 9]
+
+Internet-Draft               HTTP Early Data              September 2017
+
 
    [TLS13]    Rescorla, E., "The Transport Layer Security (TLS) Protocol
               Version 1.3", draft-ietf-tls-tls13-21 (work in progress),
@@ -536,7 +526,7 @@ Acknowledgments
    This document was not easy to produce.  The following people made
    substantial contributions to the quality and completeness of the
    document: Subodh Iyengar, Benjamin Kaduk, Ilari Liusavaara, Kazuho
-   Oku, and Victor Vasiliev.
+   Oku, Kyle Rose, and Victor Vasiliev.
 
 Authors' Addresses
 
@@ -550,16 +540,6 @@ Authors' Addresses
    true
 
    Email: mnot@mnot.net
-
-
-
-
-
-
-
-Thomson, et al.          Expires March 31, 2018                [Page 10]
-
-Internet-Draft               HTTP Early Data              September 2017
 
 
    Willy Tarreau
@@ -577,40 +557,4 @@ Internet-Draft               HTTP Early Data              September 2017
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Thomson, et al.          Expires March 31, 2018                [Page 11]
+Thomson, et al.          Expires March 31, 2018                [Page 10]
