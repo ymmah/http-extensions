@@ -75,6 +75,7 @@ Table of Contents
      6.1.  Gateways and Early Data . . . . . . . . . . . . . . . . .   8
      6.2.  Consistent Handling of Early Data . . . . . . . . . . . .   8
      6.3.  Denial of Service . . . . . . . . . . . . . . . . . . . .   8
+     6.4.  Out of Order Delivery . . . . . . . . . . . . . . . . . .   9
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
@@ -105,7 +106,6 @@ Table of Contents
    Note that this is different from automated or user-initiated retries;
    replays are initiated by an attacker without the awareness of the
    client.
-
 
 
 
@@ -450,6 +450,15 @@ Thomson, et al.           Expires April 1, 2018                 [Page 8]
 Internet-Draft               HTTP Early Data              September 2017
 
 
+6.4.  Out of Order Delivery
+
+   In protocols that deliver data out of order (such as QUIC [HQ]) early
+   data can arrive after the handshake completes.  This leads to
+   potential ambiguity about the status of requests and could lead to
+   inconsistent treatment (see Section 6.2).  Implementations MUST
+   either ensure that any early data that is delivered late is either
+   discarded or consistently identified and processed.
+
 7.  IANA Considerations
 
    This document registers the "Early-Data" header field in the "Message
@@ -486,15 +495,6 @@ Internet-Draft               HTTP Early Data              September 2017
               DOI 10.17487/RFC5234, January 2008,
               <https://www.rfc-editor.org/info/rfc5234>.
 
-   [HEADERS]  Klyne, G., Nottingham, M., and J. Mogul, "Registration
-              Procedures for Message Header Fields", BCP 90, RFC 3864,
-              DOI 10.17487/RFC3864, September 2004,
-              <https://www.rfc-editor.org/info/rfc3864>.
-
-   [HTTP]     Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
-              Protocol (HTTP/1.1): Message Syntax and Routing",
-              RFC 7230, DOI 10.17487/RFC7230, June 2014,
-              <https://www.rfc-editor.org/info/rfc7230>.
 
 
 
@@ -505,6 +505,16 @@ Thomson, et al.           Expires April 1, 2018                 [Page 9]
 
 Internet-Draft               HTTP Early Data              September 2017
 
+
+   [HEADERS]  Klyne, G., Nottingham, M., and J. Mogul, "Registration
+              Procedures for Message Header Fields", BCP 90, RFC 3864,
+              DOI 10.17487/RFC3864, September 2004,
+              <https://www.rfc-editor.org/info/rfc3864>.
+
+   [HTTP]     Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
+              Protocol (HTTP/1.1): Message Syntax and Routing",
+              RFC 7230, DOI 10.17487/RFC7230, June 2014,
+              <https://www.rfc-editor.org/info/rfc7230>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -546,32 +556,22 @@ Authors' Addresses
    Email: martin.thomson@gmail.com
 
 
-   Mark Nottingham
-   Fastly
-
-   Email: mnot@mnot.net
-
-
-
-
-
-
 
 Thomson, et al.           Expires April 1, 2018                [Page 10]
 
 Internet-Draft               HTTP Early Data              September 2017
 
 
+   Mark Nottingham
+   Fastly
+
+   Email: mnot@mnot.net
+
+
    Willy Tarreau
    HAProxy Technologies
 
    Email: willy@haproxy.org
-
-
-
-
-
-
 
 
 
