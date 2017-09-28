@@ -5,7 +5,7 @@
 httpbis Working Group                                         M. Thomson
 Internet-Draft                                                   Mozilla
 Intended status: Standards Track                           M. Nottingham
-Expires: April 1, 2018                                              true
+Expires: April 1, 2018                                            Fastly
                                                               W. Tarreau
                                                     HAProxy Technologies
                                                       September 28, 2017
@@ -75,7 +75,7 @@ Table of Contents
      6.1.  Gateways and Early Data . . . . . . . . . . . . . . . . .   8
      6.2.  Consistent Handling of Early Data . . . . . . . . . . . .   8
      6.3.  Denial of Service . . . . . . . . . . . . . . . . . . . .   8
-   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
+   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   8
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
      8.2.  Informative References  . . . . . . . . . . . . . . . . .  10
@@ -343,12 +343,9 @@ Internet-Draft               HTTP Early Data              September 2017
    Early-Data: 1
 
 
-   An intermediary that forwards a request prior to the completion of
-   the TLS handshake MUST send it with the "Early-Data" header field set
-   to "1" (i.e., it adds it if not present in the request).  An
-   intermediary MUST use the "Early-Data" header field if it might have
-   forwarded the request prior to handshake completion (see Section 6.2
-   for details).
+   An intermediary that forwards a request received in TLS early data
+   MUST send it with the "Early-Data" header field set to "1" (i.e., it
+   adds it if not present in the request).
 
    An intermediary MUST NOT remove this header field if it is present in
    a request.
@@ -385,6 +382,9 @@ Internet-Draft               HTTP Early Data              September 2017
 
    The server cannot assume that a client is able to retry a request
    unless the request is received in early data or the "Early-Data"
+   header field is set to "1".  A server SHOULD NOT emit the 425 status
+   code unless one of these conditions is met.
+
 
 
 
@@ -393,9 +393,6 @@ Thomson, et al.           Expires April 1, 2018                 [Page 7]
 
 Internet-Draft               HTTP Early Data              September 2017
 
-
-   header field is set to "1".  A server SHOULD NOT emit the 425 status
-   code unless one of these conditions is met.
 
    The 425 (Too Early) status code is not cacheable by default.  Its
    payload is not the representation of any identified resource.
@@ -425,9 +422,8 @@ Internet-Draft               HTTP Early Data              September 2017
    Consistent treatment of a request that arrives in - or partially in -
    early data is critical to avoiding inappropriate processing of
    replayed requests.  If a request is not safe to process before the
-   TLS handshake completes, then all instances of the server (including
-   gateways) need to agree and either reject the request or delay
-   processing.
+   TLS handshake completes, then all instances of the server need to
+   agree and either reject the request or delay processing.
 
 6.3.  Denial of Service
 
@@ -439,8 +435,12 @@ Internet-Draft               HTTP Early Data              September 2017
    status code often leads to clients retrying requests, which could
    result in increased load.
 
+7.  IANA Considerations
 
+   This document registers the "Early-Data" header field in the "Message
+   Headers" registry [HEADERS].
 
+   Header field name:  Early-Data
 
 
 
@@ -449,13 +449,6 @@ Thomson, et al.           Expires April 1, 2018                 [Page 8]
 
 Internet-Draft               HTTP Early Data              September 2017
 
-
-7.  IANA Considerations
-
-   This document registers the "Early-Data" header field in the "Message
-   Headers" registry [HEADERS].
-
-   Header field name:  Early-Data
 
    Applicable protocol:  http
 
@@ -496,16 +489,6 @@ Internet-Draft               HTTP Early Data              September 2017
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
               <https://www.rfc-editor.org/info/rfc7230>.
 
-
-
-
-
-
-Thomson, et al.           Expires April 1, 2018                 [Page 9]
-
-Internet-Draft               HTTP Early Data              September 2017
-
-
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
@@ -515,6 +498,13 @@ Internet-Draft               HTTP Early Data              September 2017
               Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
               DOI 10.17487/RFC7231, June 2014,
               <https://www.rfc-editor.org/info/rfc7231>.
+
+
+
+Thomson, et al.           Expires April 1, 2018                 [Page 9]
+
+Internet-Draft               HTTP Early Data              September 2017
+
 
    [TLS13]    Rescorla, E., "The Transport Layer Security (TLS) Protocol
               Version 1.3", draft-ietf-tls-tls13-21 (work in progress),
@@ -547,19 +537,9 @@ Authors' Addresses
 
 
    Mark Nottingham
-   true
+   Fastly
 
    Email: mnot@mnot.net
-
-
-
-
-
-
-
-Thomson, et al.           Expires April 1, 2018                [Page 10]
-
-Internet-Draft               HTTP Early Data              September 2017
 
 
    Willy Tarreau
@@ -577,40 +557,4 @@ Internet-Draft               HTTP Early Data              September 2017
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Thomson, et al.           Expires April 1, 2018                [Page 11]
+Thomson, et al.           Expires April 1, 2018                [Page 10]
