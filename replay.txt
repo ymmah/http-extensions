@@ -343,9 +343,12 @@ Internet-Draft               HTTP Early Data              September 2017
    Early-Data: 1
 
 
-   An intermediary that forwards a request received in TLS early data
-   MUST send it with the "Early-Data" header field set to "1" (i.e., it
-   adds it if not present in the request).
+   An intermediary that forwards a request prior to the completion of
+   the TLS handshake MUST send it with the "Early-Data" header field set
+   to "1" (i.e., it adds it if not present in the request).  An
+   intermediary MUST use the "Early-Data" header field if it might have
+   forwarded the request prior to handshake completion (see Section 6.2
+   for details).
 
    An intermediary MUST NOT remove this header field if it is present in
    a request.
@@ -382,9 +385,6 @@ Internet-Draft               HTTP Early Data              September 2017
 
    The server cannot assume that a client is able to retry a request
    unless the request is received in early data or the "Early-Data"
-   header field is set to "1".  A server SHOULD NOT emit the 425 status
-   code unless one of these conditions is met.
-
 
 
 
@@ -393,6 +393,9 @@ Thomson, et al.           Expires April 1, 2018                 [Page 7]
 
 Internet-Draft               HTTP Early Data              September 2017
 
+
+   header field is set to "1".  A server SHOULD NOT emit the 425 status
+   code unless one of these conditions is met.
 
    The 425 (Too Early) status code is not cacheable by default.  Its
    payload is not the representation of any identified resource.
@@ -422,8 +425,9 @@ Internet-Draft               HTTP Early Data              September 2017
    Consistent treatment of a request that arrives in - or partially in -
    early data is critical to avoiding inappropriate processing of
    replayed requests.  If a request is not safe to process before the
-   TLS handshake completes, then all instances of the server need to
-   agree and either reject the request or delay processing.
+   TLS handshake completes, then all instances of the server (including
+   gateways) need to agree and either reject the request or delay
+   processing.
 
    A server MUST NOT act on early data before the handshake completes if
    it and any other server instance could make a different decision
@@ -438,10 +442,6 @@ Internet-Draft               HTTP Early Data              September 2017
    requests.  Generating a 503 (Service Unavailable) or 425 (Too Early)
    status code often leads to clients retrying requests, which could
    result in increased load.
-
-
-
-
 
 
 
