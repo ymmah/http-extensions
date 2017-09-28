@@ -411,13 +411,14 @@ Internet-Draft               HTTP Early Data              September 2017
 6.1.  Gateways and Early Data
 
    A gateway that forwards requests that were received in early data
-   MUST only do so if it knows that the server that receives those
-   requests understands the "Early-Data" header field and will correctly
-   generate a 425 (Too Early) status code.  A gateway that isn't certain
-   about server support SHOULD either delay forwarding the request until
-   the TLS handshake completes, or send a 425 (Too Early) status code in
-   response.  A gateway that is uncertain about whether an origin server
-   supports the "Early-Data" header field SHOULD disable early data.
+   MUST only do so if it knows that the origin server that receives
+   those requests understands the "Early-Data" header field and will
+   correctly generate a 425 (Too Early) status code.  A gateway that
+   isn't certain about origin server support SHOULD either delay
+   forwarding the request until the TLS handshake with its client
+   completes, or send a 425 (Too Early) status code in response.  A
+   gateway that is uncertain about whether an origin server supports the
+   "Early-Data" header field SHOULD disable early data.
 
 6.2.  Consistent Handling of Early Data
 
@@ -437,7 +438,6 @@ Internet-Draft               HTTP Early Data              September 2017
    requests.  Generating a 503 (Service Unavailable) or 425 (Too Early)
    status code often leads to clients retrying requests, which could
    result in increased load.
-
 
 
 
@@ -536,7 +536,7 @@ Acknowledgments
    This document was not easy to produce.  The following people made
    substantial contributions to the quality and completeness of the
    document: Subodh Iyengar, Benjamin Kaduk, Ilari Liusavaara, Kazuho
-   Oku, and Victor Vasiliev.
+   Oku, Kyle Rose, and Victor Vasiliev.
 
 Authors' Addresses
 
