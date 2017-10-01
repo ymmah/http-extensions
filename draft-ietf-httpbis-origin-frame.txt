@@ -511,7 +511,7 @@ Internet-Draft                ORIGIN Frames                 October 2017
 
    Generally, this information is most useful to send before sending any
    part of a response that might initiate a new connection; for example,
-   "Link" headers [RFC5988] in a response HEADERS, or links in the
+   "Link" header fields [RFC5988] in a response HEADERS, or links in the
    response body.
 
    Therefore, the ORIGIN frame ought be sent as soon as possible on a
