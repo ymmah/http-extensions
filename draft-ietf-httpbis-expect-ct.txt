@@ -863,7 +863,8 @@ Internet-Draft                  Expect-CT                   October 2017
 
 9.1.  Since -01
 
-   o  None yet
+   o  Change SCT reporting format to support both RFC 6962 and 6962-bis
+      SCTs.
 
 9.2.  Since -00
 
@@ -886,7 +887,6 @@ Internet-Draft                  Expect-CT                   October 2017
    [HTML]     Hickson, I., Pieters, S., van Kesteren, A., Jaegenstedt,
               P., and D. Denicola, "HTML", n.d.,
               <https://html.spec.whatwg.org/>.
-
 
 
 
