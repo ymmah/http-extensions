@@ -203,7 +203,7 @@ Internet-Draft          Cache Digests for HTTP/2            October 2017
 
    CACHE_DIGEST allows the client to indicate whether the set of URLs
    used to compute the digest represent fresh or stale stored responses,
-   using the STALE flag.  Clients MAY decide whether to only send
+   using the STALE flag.  Clients MAY decide whether to only sent
    CACHE_DIGEST frames representing their fresh stored responses, their
    stale stored responses, or both.
 
@@ -324,7 +324,7 @@ Internet-Draft          Cache Digests for HTTP/2            October 2017
 
        1.  Append "ETag" to "key" as an ASCII string, including both the
            "weak" indicator (if present) and double quotes, as per
-           [RFC7232], Section 2.3.
+           [RFC7232] Section 2.3.
 
    3.  Let "hash-value" be the SHA-256 message digest [RFC6234] of
        "key", expressed as an integer.
@@ -620,16 +620,12 @@ Internet-Draft          Cache Digests for HTTP/2            October 2017
 
    [Rice]     Rice, R. and J. Plaunt, "Adaptive variable-length coding
               for efficient compression of spacecraft television data",
-              IEEE Transactions on Communication Technology 19.6,
-              DOI 10.1109/TCOM.1971.1090789, ISSN 0018-9332, December
-              1971.
+              IEEE Transactions on Communication Technology 19.6 , 1971.
 
    [Service-Workers]
               Russell, A., Song, J., Archibald, J., and M.
-              Kruisselbrink, "Service Workers 1", W3C Working Draft WD-
-              service-workers-1-20161011, October 2016,
-              <https://www.w3.org/TR/2016/
-              WD-service-workers-1-20161011/>.
+              Kruisselbrink, "Service Workers 1", October 2016,
+              <https://www.w3.org/TR/2016/WD-service-workers-1/>.
 
 6.3.  URIs
 
@@ -665,6 +661,10 @@ Appendix A.  Encoding the CACHE_DIGEST frame as an HTTP Header
    cache-digest-entities.  Each cache-digest-entity corresponds to a
    CACHE_DIGEST frame.
 
+   Digest-Value is encoded using base64url [RFC4648], Section 5.  Flags
+   that are set are encoded as digest-flags by their names that are
+   compared case-insensitively.
+
 
 
 
@@ -673,10 +673,6 @@ Oku & Nottingham          Expires April 4, 2018                [Page 12]
 
 Internet-Draft          Cache Digests for HTTP/2            October 2017
 
-
-   Digest-Value is encoded using base64url [RFC4648], Section 5.  Flags
-   that are set are encoded as digest-flags by their names that are
-   compared case-insensitively.
 
    Origin is omitted in the header form.  The value is implied from the
    value of the ":authority" pseudo header.  Client MUST only send
@@ -722,6 +718,10 @@ C.2.  Since draft-ietf-httpbis-cache-digest-01
    o  Introduce ACCEPT_CACHE_DIGEST SETTINGS parameter.
 
    o  Change intended status from Standard to Experimental.
+
+
+
+
 
 
 
