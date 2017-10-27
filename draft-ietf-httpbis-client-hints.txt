@@ -120,6 +120,7 @@ Internet-Draft              HTTP Client Hints               October 2017
      B.4.  Since -03 . . . . . . . . . . . . . . . . . . . . . . . .  13
      B.5.  Since -04 . . . . . . . . . . . . . . . . . . . . . . . .  14
      B.6.  Since -05 . . . . . . . . . . . . . . . . . . . . . . . .  14
+     B.7.  Since -06 . . . . . . . . . . . . . . . . . . . . . . . .  14
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  14
 
 1.  Introduction
@@ -159,7 +160,6 @@ Internet-Draft              HTTP Client Hints               October 2017
    mechanisms if necessary.  By advertising its capabilities within a
    request header field, Client Hints allows for cache friendly and
    proactive content negotiation.
-
 
 
 
@@ -733,9 +733,14 @@ Internet-Draft              HTTP Client Hints               October 2017
 B.5.  Since -04
 
    o  Issue 361: Removed Downlink
-   o  Issue 361: Moved Key to appendix, plus other editorial feedback.
+   o  Issue 361: Moved Key to appendix, plus other editorial feedback
 
 B.6.  Since -05
+
+   o  Issue 372: Scoped CH opt-in and delivery to secure transports
+   o  Issue 373: Bind CH opt-in to origin
+
+B.7.  Since -06
 
    o  None
 
@@ -746,11 +751,6 @@ Author's Address
 
    Email: ilya@igvita.com
    URI:   https://www.igvita.com/
-
-
-
-
-
 
 
 
