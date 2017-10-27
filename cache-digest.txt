@@ -654,7 +654,7 @@ Appendix A.  Encoding the CACHE_DIGEST frame as an HTTP Header
 
    The definition uses the Augmented Backus-Naur Form (ABNF) notation of
    [RFC5234] with the list rule extension defined in [RFC7230],
-   Section 7.
+   Appendix B.
 
      Cache-Digest  = 1#digest-entity
      digest-entity = digest-value *(OWS ";" OWS digest-flag)
