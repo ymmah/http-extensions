@@ -9,7 +9,7 @@ Expires: May 1, 2018
 
 
                 An HTTP Status Code for Indicating Hints
-                   draft-ietf-httpbis-early-hints-05
+                 draft-ietf-httpbis-early-hints-latest
 
 Abstract
 
@@ -80,11 +80,12 @@ Table of Contents
      5.2.  Informative References  . . . . . . . . . . . . . . . . .   6
      5.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   7
    Appendix A.  Changes  . . . . . . . . . . . . . . . . . . . . . .   7
-     A.1.  Since draft-ietf-httpbis-early-hints-04 . . . . . . . . .   7
-     A.2.  Since draft-ietf-httpbis-early-hints-03 . . . . . . . . .   7
-     A.3.  Since draft-ietf-httpbis-early-hints-02 . . . . . . . . .   7
-     A.4.  Since draft-ietf-httpbis-early-hints-01 . . . . . . . . .   7
-     A.5.  Since draft-ietf-httpbis-early-hints-00 . . . . . . . . .   7
+     A.1.  Since draft-ietf-httpbis-early-hints-05 . . . . . . . . .   7
+     A.2.  Since draft-ietf-httpbis-early-hints-04 . . . . . . . . .   7
+     A.3.  Since draft-ietf-httpbis-early-hints-03 . . . . . . . . .   7
+     A.4.  Since draft-ietf-httpbis-early-hints-02 . . . . . . . . .   7
+     A.5.  Since draft-ietf-httpbis-early-hints-01 . . . . . . . . .   7
+     A.6.  Since draft-ietf-httpbis-early-hints-00 . . . . . . . . .   8
    Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .   8
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   8
 
@@ -105,7 +106,6 @@ Table of Contents
 
    The dilemma here is that even though it is preferable for an origin
    server to send some header fields as soon as it receives a request,
-
 
 
 
@@ -348,7 +348,11 @@ Internet-Draft                 Early Hints                  October 2017
 
 Appendix A.  Changes
 
-A.1.  Since draft-ietf-httpbis-early-hints-04
+A.1.  Since draft-ietf-httpbis-early-hints-05
+
+   o  None yet.
+
+A.2.  Since draft-ietf-httpbis-early-hints-04
 
    o  Clarified that the server is allowed to add headers not found in a
       103 response to the final response.
@@ -356,7 +360,7 @@ A.1.  Since draft-ietf-httpbis-early-hints-04
    o  Clarify client's behavior when it receives more than one 103
       response.
 
-A.2.  Since draft-ietf-httpbis-early-hints-03
+A.3.  Since draft-ietf-httpbis-early-hints-03
 
    o  Removed statements that were either redundant or contradictory to
       RFC7230-7234.
@@ -368,20 +372,16 @@ A.2.  Since draft-ietf-httpbis-early-hints-03
 
    o  Editorial Changes.
 
-A.3.  Since draft-ietf-httpbis-early-hints-02
+A.4.  Since draft-ietf-httpbis-early-hints-02
 
    o  Editorial changes.
 
    o  Added an example.
 
-A.4.  Since draft-ietf-httpbis-early-hints-01
+A.5.  Since draft-ietf-httpbis-early-hints-01
 
    o  Editorial changes.
 
-A.5.  Since draft-ietf-httpbis-early-hints-00
-
-   o  Forbid processing the headers of a 103 response as part of the
-      informational response.
 
 
 
@@ -394,6 +394,11 @@ Oku                        Expires May 1, 2018                  [Page 7]
 Internet-Draft                 Early Hints                  October 2017
 
 
+A.6.  Since draft-ietf-httpbis-early-hints-00
+
+   o  Forbid processing the headers of a 103 response as part of the
+      informational response.
+
 Appendix B.  Acknowledgements
 
    Thanks to Tatsuhiro Tsujikawa for coming up with the idea of sending
@@ -405,11 +410,6 @@ Author's Address
    Fastly
 
    Email: kazuhooku@gmail.com
-
-
-
-
-
 
 
 
