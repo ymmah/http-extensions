@@ -554,7 +554,7 @@
     GET /resource HTTP/1.1
     Range: bytes=1230000-999999999999
 </pre>
-<p id="rfc.section.2.2.p.9">could return </p>
+<p id="rfc.section.2.2.p.9">returns </p>
 <pre>
     HTTP/1.1 206 Partial Content
     Content-Range: bytes 1230000-999999999999/*
@@ -609,7 +609,7 @@
     HEAD /resource HTTP/1.1
     Range: bytes=0-
 </pre>
-<p id="rfc.section.3.2.p.3">could return </p>
+<p id="rfc.section.3.2.p.3">returns </p>
 <pre>
     206 Partial Content
     Content-Range: bytes 1000000-1234567/*

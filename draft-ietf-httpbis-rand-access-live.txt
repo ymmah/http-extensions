@@ -291,7 +291,7 @@ Internet-Draft            http-rand-access-live           September 2017
        GET /resource HTTP/1.1
        Range: bytes=1230000-999999999999
 
-   could return
+   returns
 
        HTTP/1.1 206 Partial Content
        Content-Range: bytes 1230000-999999999999/*
@@ -383,7 +383,7 @@ Internet-Draft            http-rand-access-live           September 2017
        HEAD /resource HTTP/1.1
        Range: bytes=0-
 
-   could return
+   returns
 
 
 
