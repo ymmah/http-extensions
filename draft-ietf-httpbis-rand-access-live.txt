@@ -5,10 +5,10 @@
 HTTP                                                            C. Pratt
 Internet-Draft                                                 CableLabs
 Intended status: Experimental                                   B. Stark
-Expires: March 5, 2018                                              AT&T
+Expires: May 18, 2018                                               AT&T
                                                               D. Thakore
                                                                CableLabs
-                                                          September 2017
+                                                       November 14, 2017
 
 
                   HTTP Random Access and Live Content
@@ -47,15 +47,15 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on March 5, 2018.
+   This Internet-Draft will expire on May 18, 2018.
 
 
 
 
 
-Pratt, et al.             Expires March 5, 2018                 [Page 1]
+Pratt, et al.             Expires May 18, 2018                  [Page 1]
 
-Internet-Draft            http-rand-access-live           September 2017
+Internet-Draft            http-rand-access-live            November 2017
 
 
 Copyright Notice
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Pratt, et al.             Expires March 5, 2018                 [Page 2]
+Pratt, et al.             Expires May 18, 2018                  [Page 2]
 
-Internet-Draft            http-rand-access-live           September 2017
+Internet-Draft            http-rand-access-live            November 2017
 
 
    For instance, HTTP clients have the ability to access appended
@@ -165,9 +165,9 @@ Internet-Draft            http-rand-access-live           September 2017
 
 
 
-Pratt, et al.             Expires March 5, 2018                 [Page 3]
+Pratt, et al.             Expires May 18, 2018                  [Page 3]
 
-Internet-Draft            http-rand-access-live           September 2017
+Internet-Draft            http-rand-access-live            November 2017
 
 
    the representation is unknown using the existing Content-Range
@@ -221,9 +221,9 @@ Internet-Draft            http-rand-access-live           September 2017
 
 
 
-Pratt, et al.             Expires March 5, 2018                 [Page 4]
+Pratt, et al.             Expires May 18, 2018                  [Page 4]
 
-Internet-Draft            http-rand-access-live           September 2017
+Internet-Draft            http-rand-access-live            November 2017
 
 
 2.2.  Byte-Range Requests Beyond the Randomly Accessible Byte Range
@@ -277,9 +277,9 @@ Internet-Draft            http-rand-access-live           September 2017
 
 
 
-Pratt, et al.             Expires March 5, 2018                 [Page 5]
+Pratt, et al.             Expires May 18, 2018                  [Page 5]
 
-Internet-Draft            http-rand-access-live           September 2017
+Internet-Draft            http-rand-access-live            November 2017
 
 
    In response, a server may indicate that it is supplying a
@@ -333,9 +333,9 @@ Internet-Draft            http-rand-access-live           September 2017
 
 
 
-Pratt, et al.             Expires March 5, 2018                 [Page 6]
+Pratt, et al.             Expires May 18, 2018                  [Page 6]
 
-Internet-Draft            http-rand-access-live           September 2017
+Internet-Draft            http-rand-access-live            November 2017
 
 
 3.  Other Applications of Random-Access Aggregating Content
@@ -389,9 +389,9 @@ Internet-Draft            http-rand-access-live           September 2017
 
 
 
-Pratt, et al.             Expires March 5, 2018                 [Page 7]
+Pratt, et al.             Expires May 18, 2018                  [Page 7]
 
-Internet-Draft            http-rand-access-live           September 2017
+Internet-Draft            http-rand-access-live            November 2017
 
 
        206 Partial Content
@@ -445,9 +445,9 @@ Internet-Draft            http-rand-access-live           September 2017
 
 
 
-Pratt, et al.             Expires March 5, 2018                 [Page 8]
+Pratt, et al.             Expires May 18, 2018                  [Page 8]
 
-Internet-Draft            http-rand-access-live           September 2017
+Internet-Draft            http-rand-access-live            November 2017
 
 
 5.  References
@@ -501,9 +501,9 @@ Authors' Addresses
 
 
 
-Pratt, et al.             Expires March 5, 2018                 [Page 9]
+Pratt, et al.             Expires May 18, 2018                  [Page 9]
 
-Internet-Draft            http-rand-access-live           September 2017
+Internet-Draft            http-rand-access-live            November 2017
 
 
    Barbara Stark
@@ -557,4 +557,4 @@ Internet-Draft            http-rand-access-live           September 2017
 
 
 
-Pratt, et al.             Expires March 5, 2018                [Page 10]
+Pratt, et al.             Expires May 18, 2018                 [Page 10]
