@@ -2,7 +2,7 @@
 
 
 
-HTTP                                                            C. Pratt
+HTTP Working Group                                              C. Pratt
 Internet-Draft                                                 CableLabs
 Intended status: Experimental                                   B. Stark
 Expires: May 21, 2018                                               AT&T
@@ -471,6 +471,11 @@ Internet-Draft            http-rand-access-live            November 2017
 
 5.2.  Informative References
 
+   [RANGE-UNIT-REGISTRY]
+              IANA, "Hypertext Transfer Protocol (HTTP) Parameters",
+              2016, <http://www.iana.org/assignments/http-parameters/
+              http-parameters.xhtml#range-units>.
+
    [RFC4234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
               Specifications: ABNF", RFC 4234, DOI 10.17487/RFC4234,
               October 2005, <https://www.rfc-editor.org/info/rfc4234>.
@@ -491,12 +496,7 @@ Authors' Addresses
    Email: pratt@acm.org
 
 
-   Barbara Stark
-   AT&T
-   Atlanta, GA
-   US
 
-   Email: barbara.stark@att.com
 
 
 
@@ -506,20 +506,20 @@ Pratt, et al.             Expires May 21, 2018                  [Page 9]
 Internet-Draft            http-rand-access-live            November 2017
 
 
+   Barbara Stark
+   AT&T
+   Atlanta, GA
+   US
+
+   Email: barbara.stark@att.com
+
+
    Darshak Thakore
    CableLabs
    858 Coal Creek Circle
    Louisville, CO  80027
 
    Email: d.thakore@cablelabs.com
-
-
-
-
-
-
-
-
 
 
 
