@@ -89,7 +89,7 @@ Table of Contents
    5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
      5.2.  Informative References  . . . . . . . . . . . . . . . . .   9
-   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .   9
+   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .   9
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   9
 
 1.  Introduction
@@ -471,16 +471,11 @@ Internet-Draft            http-rand-access-live            November 2017
 
 5.2.  Informative References
 
-   [RANGE-UNIT-REGISTRY]
-              IANA, "Hypertext Transfer Protocol (HTTP) Parameters",
-              2016, <http://www.iana.org/assignments/http-parameters/
-              http-parameters.xhtml#range-units>.
-
    [RFC4234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
               Specifications: ABNF", RFC 4234, DOI 10.17487/RFC4234,
               October 2005, <https://www.rfc-editor.org/info/rfc4234>.
 
-Acknowledgements
+Appendix A.  Acknowledgements
 
    Mark Nottingham, Patrick McManus, Julian Reschke, Remy Lebeau, Rodger
    Combs, Thorsten Lohmar, Martin Thompson, Adrien de Croy, K.  Morgan,
@@ -496,7 +491,12 @@ Authors' Addresses
    Email: pratt@acm.org
 
 
+   Barbara Stark
+   AT&T
+   Atlanta, GA
+   US
 
+   Email: barbara.stark@att.com
 
 
 
@@ -506,20 +506,20 @@ Pratt, et al.             Expires May 21, 2018                  [Page 9]
 Internet-Draft            http-rand-access-live            November 2017
 
 
-   Barbara Stark
-   AT&T
-   Atlanta, GA
-   US
-
-   Email: barbara.stark@att.com
-
-
    Darshak Thakore
    CableLabs
    858 Coal Creek Circle
    Louisville, CO  80027
 
    Email: d.thakore@cablelabs.com
+
+
+
+
+
+
+
+
 
 
 
