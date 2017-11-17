@@ -77,6 +77,7 @@ Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
      1.1.  Requirements Language . . . . . . . . . . . . . . . . . .   3
+     1.2.  Notational Conventions  . . . . . . . . . . . . . . . . .   3
    2.  Performing Range requests on Random-Access Aggregating
        ("live") Content  . . . . . . . . . . . . . . . . . . . . . .   3
      2.1.  Establishing the Randomly Accessible Byte Range . . . . .   4
@@ -104,7 +105,6 @@ Table of Contents
    unit using the currently defined byte-range semantics without
    accepting performance or behavior sacrifices which are not acceptable
    for many applications.
-
 
 
 
@@ -148,6 +148,11 @@ Internet-Draft            http-rand-access-live            November 2017
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
    document are to be interpreted as described in RFC 2119 [RFC2119].
 
+1.2.  Notational Conventions
+
+   This document cites productions in Augmented Backus-Naur Form (ABNF)
+   productions from [RFC7233], using the notation defined in [RFC5234].
+
 2.  Performing Range requests on Random-Access Aggregating ("live")
     Content
 
@@ -157,11 +162,6 @@ Internet-Draft            http-rand-access-live            November 2017
    the Content-Range response header fields.  A server cannot know from
    a range request that a client wishes to receive a response that does
    not have a definite end.  More critically, the header fields do not
-   allow the server to signal that a resource has indeterminate length
-   without also providing a fixed portion of the resource.  A client
-   first learns that the resource has a representation of indeterminate
-   length by requesting a range of the resource.  The server responds
-   with the range that is available, but indicates that the length of
 
 
 
@@ -170,6 +170,11 @@ Pratt, et al.             Expires May 21, 2018                  [Page 3]
 Internet-Draft            http-rand-access-live            November 2017
 
 
+   allow the server to signal that a resource has indeterminate length
+   without also providing a fixed portion of the resource.  A client
+   first learns that the resource has a representation of indeterminate
+   length by requesting a range of the resource.  The server responds
+   with the range that is available, but indicates that the length of
    the representation is unknown using the existing Content-Range
    syntax.  See Section 2.1 for details and examples.  Once the client
    knows the resource has indeterminate length, it can request a range
@@ -199,10 +204,8 @@ Internet-Draft            http-rand-access-live            November 2017
    Content) with a Content-Range header indicating the currently
    satisfiable byte range.  For example:
 
-       HEAD /resource HTTP/1.1
-       Host: example.com
-       Range: bytes=0-
-
+         HEAD /resource HTTP/1.1
+         Range: bytes=0-
 
    returns a response of the form:
 
@@ -214,9 +217,6 @@ Internet-Draft            http-rand-access-live            November 2017
    and (2) that only bytes 0-1234567 were accessable at the time the
    request was processed by the server.  The client can infer from this
    response that bytes 0-1234567 of the representation can be requested
-   and returned in a timely fashion (the bytes are immediately
-   available).
-
 
 
 
@@ -225,6 +225,9 @@ Pratt, et al.             Expires May 21, 2018                  [Page 4]
 
 Internet-Draft            http-rand-access-live            November 2017
 
+
+   and returned in a timely fashion (the bytes are immediately
+   available).
 
 2.2.  Byte-Range Requests Beyond the Randomly Accessible Byte Range
 
@@ -266,14 +269,11 @@ Internet-Draft            http-rand-access-live            November 2017
    range GET request of the form:
 
        GET /resource HTTP/1.1
-       Host: example.com
        Range: bytes=1230000-999999999999
-
 
    where the last-byte-pos in the Request is much larger than the last-
    byte-pos returned in response to an open-ended byte-range HEAD
    request, as described above.
-
 
 
 
@@ -289,9 +289,7 @@ Internet-Draft            http-rand-access-live            November 2017
    For example:
 
        GET /resource HTTP/1.1
-       Host: example.com
        Range: bytes=1230000-999999999999
-
 
    returns
 
@@ -309,9 +307,7 @@ Internet-Draft            http-rand-access-live            November 2017
    For example:
 
        GET /resource HTTP/1.1
-       Host: example.com
        Range: bytes=1230000-999999999999
-
 
    will return
 
@@ -329,6 +325,10 @@ Internet-Draft            http-rand-access-live            November 2017
 
    A server that does return a continuously aggregating ("live")
    response should return data using chunked transfer coding and not
+   provide a Content-Length header.  A 0-length chunk indicates the end
+   of the transfer, per section 4.1 of [RFC7230].
+
+
 
 
 
@@ -337,9 +337,6 @@ Pratt, et al.             Expires May 21, 2018                  [Page 6]
 
 Internet-Draft            http-rand-access-live            November 2017
 
-
-   provide a Content-Length header.  A 0-length chunk indicates the end
-   of the transfer, per section 4.1 of [RFC7230].
 
 3.  Other Applications of Random-Access Aggregating Content
 
@@ -351,9 +348,7 @@ Internet-Draft            http-rand-access-live            November 2017
    indeterminate-length transfer.  For example:
 
        HEAD /resource HTTP/1.1
-       Host: example.com
        Range: bytes=0-
-
 
    With the Content-Range response header indicating the (or ranges)
    available.  For example:
@@ -366,9 +361,7 @@ Internet-Draft            http-rand-access-live            November 2017
    only new content.
 
        GET /resource HTTP/1.1
-       Host: example.com
        Range: bytes=1234567-999999999999
-
 
    with a server returning a Content-Range response indicating that an
    indeterminate-length response body will be provided
@@ -387,19 +380,19 @@ Internet-Draft            http-rand-access-live            November 2017
 
    For example a Range request containing:
 
+       HEAD /resource HTTP/1.1
+       Range: bytes=0-
+
+   returns
+
+
+
 
 
 Pratt, et al.             Expires May 21, 2018                  [Page 7]
 
 Internet-Draft            http-rand-access-live            November 2017
 
-
-       HEAD /resource HTTP/1.1
-       Host: example.com
-       Range: bytes=0-
-
-
-   returns
 
        206 Partial Content
        Content-Range: bytes 1000000-1234567/*
@@ -420,9 +413,7 @@ Internet-Draft            http-rand-access-live            November 2017
    The client could then follow-up with a GET Range request containing
 
        GET /resource HTTP/1.1
-       Host: example.com
        Range: bytes=1020000-999999999999
-
 
    with the server returning
 
@@ -442,6 +433,15 @@ Internet-Draft            http-rand-access-live            November 2017
    that the representation will ever exceed 2^^63, a value smaller than
    this value should be used as the Very Large last-byte-pos in a byte-
    seek request or content-range response.  Also, some implementations
+   (e.g.  JavaScript-based clients and servers) are not able to
+   represent all values beyond 2^^53.  So similarly, if there's no
+   expectation that a representation will ever exceed 2^^53 bytes,
+   values smaller than this limit should be used for the last-byte-pos
+   in byte-range requests.
+
+
+
+
 
 
 
@@ -449,12 +449,6 @@ Pratt, et al.             Expires May 21, 2018                  [Page 8]
 
 Internet-Draft            http-rand-access-live            November 2017
 
-
-   (e.g.  JavaScript-based clients and servers) are not able to
-   represent all values beyond 2^^53.  So similarly, if there's no
-   expectation that a representation will ever exceed 2^^53 bytes,
-   values smaller than this limit should be used for the last-byte-pos
-   in byte-range requests.
 
 5.  References
 
@@ -482,9 +476,10 @@ Internet-Draft            http-rand-access-live            November 2017
               2016, <http://www.iana.org/assignments/http-parameters/
               http-parameters.xhtml#range-units>.
 
-   [RFC4234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
-              Specifications: ABNF", RFC 4234, DOI 10.17487/RFC4234,
-              October 2005, <https://www.rfc-editor.org/info/rfc4234>.
+   [RFC5234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
+              Specifications: ABNF", STD 68, RFC 5234,
+              DOI 10.17487/RFC5234, January 2008,
+              <https://www.rfc-editor.org/info/rfc5234>.
 
 Appendix A.  Acknowledgements
 
@@ -494,7 +489,12 @@ Appendix A.  Acknowledgements
 
 Authors' Addresses
 
+   Craig Pratt
+   CableLabs
+   858 Coal Creek Circle
+   Louisville, CO  80027
 
+   Email: pratt@acm.org
 
 
 
@@ -504,14 +504,6 @@ Authors' Addresses
 Pratt, et al.             Expires May 21, 2018                  [Page 9]
 
 Internet-Draft            http-rand-access-live            November 2017
-
-
-   Craig Pratt
-   CableLabs
-   858 Coal Creek Circle
-   Louisville, CO  80027
-
-   Email: pratt@acm.org
 
 
    Barbara Stark
@@ -528,6 +520,14 @@ Internet-Draft            http-rand-access-live            November 2017
    Louisville, CO  80027
 
    Email: d.thakore@cablelabs.com
+
+
+
+
+
+
+
+
 
 
 
