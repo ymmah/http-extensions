@@ -55,7 +55,7 @@ Status of This Memo
 
 Pratt, et al.             Expires May 25, 2018                  [Page 1]
 
-Internet-Draft     HTTP Random Access and Live Content     November 2017
+Internet-Draft            http-rand-access-live            November 2017
 
 
 Copyright Notice
@@ -111,7 +111,7 @@ Table of Contents
 
 Pratt, et al.             Expires May 25, 2018                  [Page 2]
 
-Internet-Draft     HTTP Random Access and Live Content     November 2017
+Internet-Draft            http-rand-access-live            November 2017
 
 
    For instance, HTTP clients have the ability to access appended
@@ -167,7 +167,7 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 Pratt, et al.             Expires May 25, 2018                  [Page 3]
 
-Internet-Draft     HTTP Random Access and Live Content     November 2017
+Internet-Draft            http-rand-access-live            November 2017
 
 
    the representation is unknown using the existing Content-Range
@@ -223,7 +223,7 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 Pratt, et al.             Expires May 25, 2018                  [Page 4]
 
-Internet-Draft     HTTP Random Access and Live Content     November 2017
+Internet-Draft            http-rand-access-live            November 2017
 
 
 2.2.  Byte-Range Requests Beyond the Randomly Accessible Byte Range
@@ -279,7 +279,7 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 Pratt, et al.             Expires May 25, 2018                  [Page 5]
 
-Internet-Draft     HTTP Random Access and Live Content     November 2017
+Internet-Draft            http-rand-access-live            November 2017
 
 
    In response, a server may indicate that it is supplying a
@@ -335,7 +335,7 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 Pratt, et al.             Expires May 25, 2018                  [Page 6]
 
-Internet-Draft     HTTP Random Access and Live Content     November 2017
+Internet-Draft            http-rand-access-live            November 2017
 
 
 3.  Other Applications of Random-Access Aggregating Content
@@ -391,7 +391,7 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 Pratt, et al.             Expires May 25, 2018                  [Page 7]
 
-Internet-Draft     HTTP Random Access and Live Content     November 2017
+Internet-Draft            http-rand-access-live            November 2017
 
 
        206 Partial Content
@@ -447,7 +447,7 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 Pratt, et al.             Expires May 25, 2018                  [Page 8]
 
-Internet-Draft     HTTP Random Access and Live Content     November 2017
+Internet-Draft            http-rand-access-live            November 2017
 
 
 5.  References
@@ -503,7 +503,7 @@ Authors' Addresses
 
 Pratt, et al.             Expires May 25, 2018                  [Page 9]
 
-Internet-Draft     HTTP Random Access and Live Content     November 2017
+Internet-Draft            http-rand-access-live            November 2017
 
 
    Barbara Stark
