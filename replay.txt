@@ -372,12 +372,13 @@ Internet-Draft               HTTP Early Data               November 2017
    A 425 (Too Early) status code indicates that the server is unwilling
    to risk processing a request that might be replayed.
 
-   Clients that sent the request in early data MUST automatically retry
-   the request when receiving a 425 (Too Early) response status code.
-   Such retries MUST NOT be sent in early data.
+   User agents that send a request in early data MUST automatically
+   retry the request when receiving a 425 (Too Early) response status
+   code.  Such retries MUST NOT be sent in early data.
 
-   Intermediaries MUST forward a 425 (Too Early) status code if the
-   request that it received and forwarded contained an "Early-Data"
+   In all cases, an intermediary can forward a 425 (Too Early) status
+   code.  Intermediaries MUST forward a 425 (Too Early) status code if
+   the request that it received and forwarded contained an "Early-Data"
    header field.  An intermediary that receives a request in early data
    MAY automatically retry that request in response to a 425 (Too Early)
    status code, but it MUST wait for the TLS handshake to complete on
@@ -385,7 +386,6 @@ Internet-Draft               HTTP Early Data               November 2017
 
    The server cannot assume that a client is able to retry a request
    unless the request is received in early data or the "Early-Data"
-
 
 
 
