@@ -4,8 +4,8 @@
 
 HTTP Working Group                                                K. Oku
 Internet-Draft                                                    Fastly
-Intended status: Experimental                          November 17, 2017
-Expires: May 21, 2018
+Intended status: Experimental                          November 21, 2017
+Expires: May 25, 2018
 
 
                 An HTTP Status Code for Indicating Hints
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 21, 2018.
+   This Internet-Draft will expire on May 25, 2018.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Oku                       Expires May 21, 2018                  [Page 1]
+Oku                       Expires May 25, 2018                  [Page 1]
 
 Internet-Draft                 Early Hints                 November 2017
 
@@ -80,13 +80,12 @@ Table of Contents
      5.2.  Informative References  . . . . . . . . . . . . . . . . .   6
      5.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   7
    Appendix A.  Changes  . . . . . . . . . . . . . . . . . . . . . .   7
-     A.1.  Since draft-ietf-httpbis-early-hints-05 . . . . . . . . .   7
-     A.2.  Since draft-ietf-httpbis-early-hints-04 . . . . . . . . .   7
-     A.3.  Since draft-ietf-httpbis-early-hints-03 . . . . . . . . .   7
-     A.4.  Since draft-ietf-httpbis-early-hints-02 . . . . . . . . .   7
-     A.5.  Since draft-ietf-httpbis-early-hints-01 . . . . . . . . .   7
-     A.6.  Since draft-ietf-httpbis-early-hints-00 . . . . . . . . .   8
-   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .   8
+     A.1.  Since draft-ietf-httpbis-early-hints-04 . . . . . . . . .   7
+     A.2.  Since draft-ietf-httpbis-early-hints-03 . . . . . . . . .   7
+     A.3.  Since draft-ietf-httpbis-early-hints-02 . . . . . . . . .   7
+     A.4.  Since draft-ietf-httpbis-early-hints-01 . . . . . . . . .   7
+     A.5.  Since draft-ietf-httpbis-early-hints-00 . . . . . . . . .   7
+   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .   7
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   8
 
 1.  Introduction
@@ -109,7 +108,8 @@ Table of Contents
 
 
 
-Oku                       Expires May 21, 2018                  [Page 2]
+
+Oku                       Expires May 25, 2018                  [Page 2]
 
 Internet-Draft                 Early Hints                 November 2017
 
@@ -165,7 +165,7 @@ Internet-Draft                 Early Hints                 November 2017
 
 
 
-Oku                       Expires May 21, 2018                  [Page 3]
+Oku                       Expires May 25, 2018                  [Page 3]
 
 Internet-Draft                 Early Hints                 November 2017
 
@@ -221,7 +221,7 @@ Internet-Draft                 Early Hints                 November 2017
 
 
 
-Oku                       Expires May 21, 2018                  [Page 4]
+Oku                       Expires May 25, 2018                  [Page 4]
 
 Internet-Draft                 Early Hints                 November 2017
 
@@ -277,7 +277,7 @@ Internet-Draft                 Early Hints                 November 2017
 
 
 
-Oku                       Expires May 21, 2018                  [Page 5]
+Oku                       Expires May 25, 2018                  [Page 5]
 
 Internet-Draft                 Early Hints                 November 2017
 
@@ -333,7 +333,7 @@ Internet-Draft                 Early Hints                 November 2017
 
 
 
-Oku                       Expires May 21, 2018                  [Page 6]
+Oku                       Expires May 25, 2018                  [Page 6]
 
 Internet-Draft                 Early Hints                 November 2017
 
@@ -348,19 +348,11 @@ Internet-Draft                 Early Hints                 November 2017
 
 Appendix A.  Changes
 
-A.1.  Since draft-ietf-httpbis-early-hints-05
+A.1.  Since draft-ietf-httpbis-early-hints-04
 
    o  None yet.
 
-A.2.  Since draft-ietf-httpbis-early-hints-04
-
-   o  Clarified that the server is allowed to add headers not found in a
-      103 response to the final response.
-
-   o  Clarify client's behavior when it receives more than one 103
-      response.
-
-A.3.  Since draft-ietf-httpbis-early-hints-03
+A.2.  Since draft-ietf-httpbis-early-hints-03
 
    o  Removed statements that were either redundant or contradictory to
       RFC7230-7234.
@@ -372,29 +364,17 @@ A.3.  Since draft-ietf-httpbis-early-hints-03
 
    o  Editorial Changes.
 
-A.4.  Since draft-ietf-httpbis-early-hints-02
+A.3.  Since draft-ietf-httpbis-early-hints-02
 
    o  Editorial changes.
 
    o  Added an example.
 
-A.5.  Since draft-ietf-httpbis-early-hints-01
+A.4.  Since draft-ietf-httpbis-early-hints-01
 
    o  Editorial changes.
 
-
-
-
-
-
-
-
-Oku                       Expires May 21, 2018                  [Page 7]
-
-Internet-Draft                 Early Hints                 November 2017
-
-
-A.6.  Since draft-ietf-httpbis-early-hints-00
+A.5.  Since draft-ietf-httpbis-early-hints-00
 
    o  Forbid processing the headers of a 103 response as part of the
       informational response.
@@ -403,6 +383,16 @@ Appendix B.  Acknowledgements
 
    Thanks to Tatsuhiro Tsujikawa for coming up with the idea of sending
    the Link header fields using an informational response.
+
+
+
+
+
+
+Oku                       Expires May 25, 2018                  [Page 7]
+
+Internet-Draft                 Early Hints                 November 2017
+
 
 Author's Address
 
@@ -445,4 +435,14 @@ Author's Address
 
 
 
-Oku                       Expires May 21, 2018                  [Page 8]
+
+
+
+
+
+
+
+
+
+
+Oku                       Expires May 25, 2018                  [Page 8]
