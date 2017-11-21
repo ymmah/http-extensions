@@ -17,12 +17,12 @@ Abstract
    capabilities has created a need to deliver optimized content for each
    device.
 
-   This specification defines a set of HTTP request header fields,
-   colloquially known as Client Hints, to address this.  They are
-   intended to be used as input to proactive content negotiation; just
-   as the Accept header field allows user agents to indicate what
-   formats they prefer, Client Hints allow user agents to indicate
-   device and agent specific preferences.
+   This specification defines an extensible and configurable set of HTTP
+   request header fields, colloquially known as Client Hints, to address
+   this.  They are intended to be used as input to proactive content
+   negotiation; just as the Accept header field allows user agents to
+   indicate what formats they prefer, Client Hints allow user agents to
+   indicate device and agent specific preferences.
 
 Note to Readers
 
@@ -85,7 +85,7 @@ Table of Contents
        2.2.3.  Interaction with Caches . . . . . . . . . . . . . . .   6
    3.  Client Hints  . . . . . . . . . . . . . . . . . . . . . . . .   6
      3.1.  The DPR Header Field  . . . . . . . . . . . . . . . . . .   6
-       3.1.1.  Confirming Selected DPR . . . . . . . . . . . . . . .   7
+       3.1.1.  Confirming Selected DPR . . . . . . . . . . . . . . .   6
      3.2.  The Width Header Field  . . . . . . . . . . . . . . . . .   7
      3.3.  The Viewport-Width Header Field . . . . . . . . . . . . .   7
      3.4.  The Save-Data Header Field  . . . . . . . . . . . . . . .   8
@@ -120,6 +120,7 @@ Internet-Draft              HTTP Client Hints              November 2017
      B.4.  Since -03 . . . . . . . . . . . . . . . . . . . . . . . .  13
      B.5.  Since -04 . . . . . . . . . . . . . . . . . . . . . . . .  14
      B.6.  Since -05 . . . . . . . . . . . . . . . . . . . . . . . .  14
+     B.7.  Since -06 . . . . . . . . . . . . . . . . . . . . . . . .  14
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  14
 
 1.  Introduction
@@ -164,7 +165,6 @@ Internet-Draft              HTTP Client Hints              November 2017
 
 
 
-
 Grigorik                  Expires May 25, 2018                  [Page 3]
 
 Internet-Draft              HTTP Client Hints              November 2017
@@ -194,18 +194,15 @@ Internet-Draft              HTTP Client Hints              November 2017
 2.1.  Sending Client Hints
 
    Clients control which Client Hints are sent in requests, based on
-   their default settings, user configuration and/or preferences.
-   Implementers might provide user choice mechanisms so that users may
-   balance privacy concerns with bandwidth limitations.  Implementations
-   specific to certain use cases or threat models might avoid
-   transmitting these header fields altogether, or limit them to secure
-   contexts or authenticated sessions.  Implementers should be aware
-   that explaining the privacy implications of passive fingerprinting or
-   network information disclosure may be challenging.
+   their default settings, user configuration and/or preferences.  The
+   client and server can use an opt-in mechanism outlined below to
+   negotiate which fields should be sent to allow for efficient content
+   adaption.
 
-   The client and server, or an intermediate proxy, can use an opt-in
-   mechanism to negotiate which fields should be reported to allow for
-   efficient content adaption.
+   Implementers should be aware of the passive fingerprinting and
+   network information disclosure implications when implementing support
+   for Client Hints, and follow the considerations outlined in "Security
+   Considerations" section of this document.
 
 2.2.  Server Processing of Client Hints
 
@@ -217,6 +214,9 @@ Internet-Draft              HTTP Client Hints              November 2017
    selected response and whether the selected response is appropriate
    for a later request.
 
+   Further, depending on the hint used, the server can generate
+   additional response header fields to convey related values to aid
+   client processing.  For example, this specification defines the
 
 
 
@@ -226,9 +226,6 @@ Grigorik                  Expires May 25, 2018                  [Page 4]
 Internet-Draft              HTTP Client Hints              November 2017
 
 
-   Further, depending on the hint used, the server can generate
-   additional response header fields to convey related values to aid
-   client processing.  For example, this specification defines the
    "Content-DPR" response header field that needs to be returned by the
    server when the "DPR" hint is used to select the response.
 
@@ -244,36 +241,39 @@ Internet-Draft              HTTP Client Hints              November 2017
 
      Accept-CH: DPR, Width, Viewport-Width
 
-   When a client receives Accept-CH, or if it is capable of processing
-   the HTML response and finds an equivalent HTML meta element, it can
-   treat it as a signal that the application is interested in receiving
-   specified request header fields that match the advertised field-
-   values; subresource requests initiated as a result of processing the
-   response from the server that includes the Accept-CH opt-in can
-   include the request header fields that match the advertised field-
-   values.
+   When a client receives an HTTP response advertising support for
+   Client Hints, it should process it as origin ([RFC6454]) opt-in to
+   receive Client Hint header fields advertised in the field-value.  The
+   opt-in MUST be delivered over a secure transport.
 
    For example, based on Accept-CH example above, a user agent could
-   append DPR, Width, and Viewport-Width header fields to all
-   subresource requests initiated by the page constructed from the
+   append DPR, Width, and Viewport-Width header fields to all same-
+   origin resource requests initiated by the page constructed from the
    response.
 
 2.2.2.  The Accept-CH-Lifetime Header Field
 
-   Servers can ask the client to remember an origin-wide Accept-CH
-   preference for a specified period of time to enable delivery of
-   Client Hints on all subsequent requests to the origin ([RFC6454]),
-   and on any requests initiated as a result of processing a response
-   from the origin.
+   Servers can ask the client to remember the set of Client Hints that
+   the server supports for a specified period of time, to enable
+   delivery of Client Hints on subsequent requests to the server's
+   origin ([RFC6454]).
 
      Accept-CH-Lifetime = #delta-seconds
 
-   The field-value indicates that the Accept-CH preference SHOULD be
-   considered stale after its age is greater than the specified number
-   of seconds.
+   When a client receives an HTTP response that contains Accept-CH-
+   Lifetime header field, the field-value indicates that the Accept-CH
+   preference SHOULD be persisted and bound to the origin, and be
+   considered stale after response's age ([RFC7234], section 4.2) is
+   greater than the specified number of seconds.  The preference MUST be
+   delivered over a secure transport, and MUST NOT be persisted for an
+   origin that isn't HTTPS.
 
+     Accept-CH: DPR, Width
+     Accept-CH: Viewport-Width
+     Accept-CH-Lifetime: 86400
 
-
+   For example, based on the Accept-CH and Accept-CH-Lifetime example
+   above, which is received from "https://bar.example.com" in response
 
 
 
@@ -282,19 +282,13 @@ Grigorik                  Expires May 25, 2018                  [Page 5]
 Internet-Draft              HTTP Client Hints              November 2017
 
 
-     Accept-CH: DPR, Width
-     Accept-CH: Viewport-Width
-     Accept-CH-Lifetime: 86400
-
-   For example, based on the Accept-CH and Accept-CH-Lifetime example
-   above, a user agent could persist an origin-wide Accept-CH preference
-   for up to 86400 seconds (1 day).  Then, if a request is initiated to
-   the same origin before the preference is stale (e.g. as a result of a
-   navigation to the origin, or fetching a subresource from the origin)
-   the client could append the requested header fields (DPR, Width, and
-   Viewport-Width in this example) to the request and any subresource
-   requests initiated as a result of processing a response from same
-   origin.
+   to a resource request initiated by "https://foo.example.com", both
+   delivered over a secure transport: a user agent SHOULD persist an
+   Accept-CH preference bound to "https://foo.example.com", for requests
+   initiated to "https://bar.example.com" from
+   "https://foo.example.com", for up to 86400 seconds (1 day).  This
+   preference SHOULD NOT extend to requests initiated to
+   "https://bar.example.com" from other origins.
 
    If Accept-CH-Lifetime occurs in a message more than once, the last
    value overrides all previous occurrences.
@@ -331,18 +325,18 @@ Internet-Draft              HTTP Client Hints              November 2017
    If DPR occurs in a message more than once, the last value overrides
    all previous occurrences.
 
+3.1.1.  Confirming Selected DPR
+
+   The "Content-DPR" response header field is a number that indicates
+   the ratio between physical pixels over CSS px of the selected image
+   response.
+
 
 
 Grigorik                  Expires May 25, 2018                  [Page 6]
 
 Internet-Draft              HTTP Client Hints              November 2017
 
-
-3.1.1.  Confirming Selected DPR
-
-   The "Content-DPR" response header field is a number that indicates
-   the ratio between physical pixels over CSS px of the selected image
-   response.
 
      Content-DPR = 1*DIGIT [ "." 1*DIGIT ]
 
@@ -387,15 +381,18 @@ Internet-Draft              HTTP Client Hints              November 2017
 
      Viewport-Width = 1*DIGIT
 
+   If Viewport-Width occurs in a message more than once, the last value
+   overrides all previous occurrences.
+
+
+
+
 
 
 Grigorik                  Expires May 25, 2018                  [Page 7]
 
 Internet-Draft              HTTP Client Hints              November 2017
 
-
-   If Viewport-Width occurs in a message more than once, the last value
-   overrides all previous occurrences.
 
 3.4.  The Save-Data Header Field
 
@@ -442,6 +439,9 @@ Internet-Draft              HTTP Client Hints              November 2017
    The Content-DPR response header field indicates to the client that
    the server has selected resource with DPR ratio of 1.0.  The client
    can use this information to perform additional processing on the
+   resource - for example, calculate the appropriate intrinsic size of
+   the image resource such that it is displayed at the correct
+   resolution.
 
 
 
@@ -450,46 +450,43 @@ Grigorik                  Expires May 25, 2018                  [Page 8]
 Internet-Draft              HTTP Client Hints              November 2017
 
 
-   resource - for example, calculate the appropriate intrinsic size of
-   the image resource such that it is displayed at the correct
-   resolution.
-
 5.  Security Considerations
 
-   The request header fields defined in this specification expose
-   information that is already available to Web applications in the
-   browser runtime itself (e.g., using JavaScript and CSS).  For
-   example, the application can obtain viewport width, image display
-   width, and device pixel ratio via JavaScript, or through the use of
-   CSS media queries and unique resource URLs even if JavaScript is
-   disabled.  However, servers that gather this information through such
-   mechanisms are typically observable (e.g., you can see that they're
-   using JavaScript to gather it), whereas servers' use of the header
-   fields introduced by this specification is not observable.
-   Section 2.1 discusses potential mitigations.
+   The request header fields defined in this specification, and those
+   that extend it, expose information about the user's environment to
+   enable proactive content negotiation.  Such information may reveal
+   new information about the user and implementers ought to consider the
+   following considerations, recommendations, and best practices.
 
-   For example, sending Client Hints on all requests can make
-   information about the user's environment available to origins that
-   otherwise did not have access to this data, which may or may not be
-   the desired outcome - e.g. this may enable an image optimization
-   service to deliver a tailored asset, and it may reveal same
-   information about the user to other origins that may not have had
-   access to it before.  Similarly, sending highly granular data, such
-   as image and viewport width may help identify users across multiple
-   requests.  Restricting such field values to an enumerated range,
-   where the user agent advertises a threshold value that is close but
-   is not an exact representation of the current value, can help
-   mitigate the risk of such fingerprinting.
+   Transmitted Client Hints header fields SHOULD NOT provide new
+   information that is otherwise not available to the application via
+   other means, such as using HTML, CSS, or JavaScript.  Further,
+   sending highly granular data, such as image and viewport width may
+   help identify users across multiple requests.  Reducing the set of
+   field values that can be expressed, or restricting them to an
+   enumerated range where the advertised value is close but is not an
+   exact representation of the current value, can improve privacy and
+   reduce risk of linkability by ensuring that the same value is sent by
+   multiple users.  However, such precautions can still be insufficient
+   for some types of data, especially data that can change over time.
 
-   Implementers ought to provide mechanisms and policies to control how
-   and when such hints are advertised.  For example, they could require
-   origin opt-in via Accept-CH; clear remembered opt-in, as set by
-   Accept-CH-Lifetime, when site data, browsing history, browsing cache,
-   or similar, are cleared; restrict delivery to same origin
-   subrequests; limit delivery to requests that already carry
-   identifying information (e.g. cookies); modify delivery policy when
-   in an "incognito" or a similar privacy mode; enable user
-   configuration and opt in, and so on.
+   Implementers ought to consider both user and server controlled
+   mechanisms and policies to control which Client Hints header fields
+   are advertised:
+
+   o  Implementers MAY provide user choice mechanisms so that users may
+      balance privacy concerns with bandwidth limitations.  However,
+      implementers should also be aware that explaining the privacy
+      implications of passive fingerprinting or network information
+      disclosure to users may be challenging.
+   o  Implementations specific to certain use cases or threat models MAY
+      avoid transmitting some or all of Client Hints header fields.  For
+      example, avoid transmission of header fields that can carry higher
+      risks of linkability.
+
+   Implementers SHOULD support Client Hints opt-in mechanisms and MUST
+   clear persisted opt-in preferences when site data, browsing history,
+   browsing cache, or similar, are cleared.
 
 6.  IANA Considerations
 
@@ -497,6 +494,9 @@ Internet-Draft              HTTP Client Hints              November 2017
    Width", and "Width" HTTP request fields, "Accept-CH", "Accept-CH-
    Lifetime", and "Content-DPR" HTTP response field, and registers them
    in the Permanent Message Header Fields registry.
+
+
+
 
 
 
@@ -733,9 +733,14 @@ Internet-Draft              HTTP Client Hints              November 2017
 B.5.  Since -04
 
    o  Issue 361: Removed Downlink
-   o  Issue 361: Moved Key to appendix, plus other editorial feedback.
+   o  Issue 361: Moved Key to appendix, plus other editorial feedback
 
 B.6.  Since -05
+
+   o  Issue 372: Scoped CH opt-in and delivery to secure transports
+   o  Issue 373: Bind CH opt-in to origin
+
+B.7.  Since -06
 
    o  None
 
@@ -746,11 +751,6 @@ Author's Address
 
    Email: ilya@igvita.com
    URI:   https://www.igvita.com/
-
-
-
-
-
 
 
 
