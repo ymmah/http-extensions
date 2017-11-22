@@ -623,7 +623,7 @@ Internet-Draft         Structured Headers for HTTP         November 2017
    For example, a header field whose value is defined as a dictionary
    could look like:
 
-   ExampleDictHeader: foo=1.23, da="Applepie", en=*w4ZibGV0w6ZydGUK
+   ExampleDictHeader: foo=1.23, en="Applepie", da=*w4ZibGV0w6ZydGUK
 
    Typically, a header field specification will define the semantics of
    individual keys, as well as whether their presence is required or
