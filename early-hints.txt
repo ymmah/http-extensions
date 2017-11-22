@@ -4,8 +4,8 @@
 
 HTTP Working Group                                                K. Oku
 Internet-Draft                                                    Fastly
-Intended status: Experimental                          November 21, 2017
-Expires: May 25, 2018
+Intended status: Experimental                          November 22, 2017
+Expires: May 26, 2018
 
 
                 An HTTP Status Code for Indicating Hints
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 25, 2018.
+   This Internet-Draft will expire on May 26, 2018.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Oku                       Expires May 25, 2018                  [Page 1]
+Oku                       Expires May 26, 2018                  [Page 1]
 
 Internet-Draft                 Early Hints                 November 2017
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Oku                       Expires May 25, 2018                  [Page 2]
+Oku                       Expires May 26, 2018                  [Page 2]
 
 Internet-Draft                 Early Hints                 November 2017
 
@@ -165,7 +165,7 @@ Internet-Draft                 Early Hints                 November 2017
 
 
 
-Oku                       Expires May 25, 2018                  [Page 3]
+Oku                       Expires May 26, 2018                  [Page 3]
 
 Internet-Draft                 Early Hints                 November 2017
 
@@ -221,7 +221,7 @@ Internet-Draft                 Early Hints                 November 2017
 
 
 
-Oku                       Expires May 25, 2018                  [Page 4]
+Oku                       Expires May 26, 2018                  [Page 4]
 
 Internet-Draft                 Early Hints                 November 2017
 
@@ -277,7 +277,7 @@ Internet-Draft                 Early Hints                 November 2017
 
 
 
-Oku                       Expires May 25, 2018                  [Page 5]
+Oku                       Expires May 26, 2018                  [Page 5]
 
 Internet-Draft                 Early Hints                 November 2017
 
@@ -333,7 +333,7 @@ Internet-Draft                 Early Hints                 November 2017
 
 
 
-Oku                       Expires May 25, 2018                  [Page 6]
+Oku                       Expires May 26, 2018                  [Page 6]
 
 Internet-Draft                 Early Hints                 November 2017
 
@@ -389,7 +389,7 @@ A.5.  Since draft-ietf-httpbis-early-hints-01
 
 
 
-Oku                       Expires May 25, 2018                  [Page 7]
+Oku                       Expires May 26, 2018                  [Page 7]
 
 Internet-Draft                 Early Hints                 November 2017
 
@@ -445,4 +445,4 @@ Author's Address
 
 
 
-Oku                       Expires May 25, 2018                  [Page 8]
+Oku                       Expires May 26, 2018                  [Page 8]
