@@ -5,10 +5,10 @@
 HTTP Working Group                                              C. Pratt
 Internet-Draft                                                 CableLabs
 Intended status: Experimental                                   B. Stark
-Expires: May 28, 2018                                               AT&T
+Expires: May 29, 2018                                               AT&T
                                                               D. Thakore
                                                                CableLabs
-                                                       November 24, 2017
+                                                       November 25, 2017
 
 
                   HTTP Random Access and Live Content
@@ -47,13 +47,13 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 28, 2018.
+   This Internet-Draft will expire on May 29, 2018.
 
 
 
 
 
-Pratt, et al.             Expires May 28, 2018                  [Page 1]
+Pratt, et al.             Expires May 29, 2018                  [Page 1]
 
 Internet-Draft            http-rand-access-live            November 2017
 
@@ -89,7 +89,7 @@ Table of Contents
    5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
      5.2.  Informative References  . . . . . . . . . . . . . . . . .   9
-   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .   9
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .   9
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   9
 
 1.  Introduction
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Pratt, et al.             Expires May 28, 2018                  [Page 2]
+Pratt, et al.             Expires May 29, 2018                  [Page 2]
 
 Internet-Draft            http-rand-access-live            November 2017
 
@@ -165,7 +165,7 @@ Internet-Draft            http-rand-access-live            November 2017
 
 
 
-Pratt, et al.             Expires May 28, 2018                  [Page 3]
+Pratt, et al.             Expires May 29, 2018                  [Page 3]
 
 Internet-Draft            http-rand-access-live            November 2017
 
@@ -221,7 +221,7 @@ Internet-Draft            http-rand-access-live            November 2017
 
 
 
-Pratt, et al.             Expires May 28, 2018                  [Page 4]
+Pratt, et al.             Expires May 29, 2018                  [Page 4]
 
 Internet-Draft            http-rand-access-live            November 2017
 
@@ -277,7 +277,7 @@ Internet-Draft            http-rand-access-live            November 2017
 
 
 
-Pratt, et al.             Expires May 28, 2018                  [Page 5]
+Pratt, et al.             Expires May 29, 2018                  [Page 5]
 
 Internet-Draft            http-rand-access-live            November 2017
 
@@ -333,7 +333,7 @@ Internet-Draft            http-rand-access-live            November 2017
 
 
 
-Pratt, et al.             Expires May 28, 2018                  [Page 6]
+Pratt, et al.             Expires May 29, 2018                  [Page 6]
 
 Internet-Draft            http-rand-access-live            November 2017
 
@@ -389,7 +389,7 @@ Internet-Draft            http-rand-access-live            November 2017
 
 
 
-Pratt, et al.             Expires May 28, 2018                  [Page 7]
+Pratt, et al.             Expires May 29, 2018                  [Page 7]
 
 Internet-Draft            http-rand-access-live            November 2017
 
@@ -445,7 +445,7 @@ Internet-Draft            http-rand-access-live            November 2017
 
 
 
-Pratt, et al.             Expires May 28, 2018                  [Page 8]
+Pratt, et al.             Expires May 29, 2018                  [Page 8]
 
 Internet-Draft            http-rand-access-live            November 2017
 
@@ -480,7 +480,7 @@ Internet-Draft            http-rand-access-live            November 2017
               Specifications: ABNF", RFC 4234, DOI 10.17487/RFC4234,
               October 2005, <https://www.rfc-editor.org/info/rfc4234>.
 
-Appendix A.  Acknowledgements
+Acknowledgements
 
    Mark Nottingham, Patrick McManus, Julian Reschke, Remy Lebeau, Rodger
    Combs, Thorsten Lohmar, Martin Thompson, Adrien de Croy, K.  Morgan,
@@ -501,7 +501,7 @@ Authors' Addresses
 
 
 
-Pratt, et al.             Expires May 28, 2018                  [Page 9]
+Pratt, et al.             Expires May 29, 2018                  [Page 9]
 
 Internet-Draft            http-rand-access-live            November 2017
 
@@ -557,4 +557,4 @@ Internet-Draft            http-rand-access-live            November 2017
 
 
 
-Pratt, et al.             Expires May 28, 2018                 [Page 10]
+Pratt, et al.             Expires May 29, 2018                 [Page 10]
