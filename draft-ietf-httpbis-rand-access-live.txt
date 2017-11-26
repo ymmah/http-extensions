@@ -55,7 +55,7 @@ Status of This Memo
 
 Pratt, et al.             Expires May 30, 2018                  [Page 1]
 
-Internet-Draft     HTTP Random Access and Live Content     November 2017
+Internet-Draft            http-rand-access-live            November 2017
 
 
 Copyright Notice
@@ -77,7 +77,6 @@ Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
      1.1.  Requirements Language . . . . . . . . . . . . . . . . . .   3
-     1.2.  Notational Conventions  . . . . . . . . . . . . . . . . .   3
    2.  Performing Range requests on Random-Access Aggregating
        ("live") Content  . . . . . . . . . . . . . . . . . . . . . .   3
      2.1.  Establishing the Randomly Accessible Byte Range . . . . .   4
@@ -90,7 +89,7 @@ Table of Contents
    5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
      5.2.  Informative References  . . . . . . . . . . . . . . . . .   9
-   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .   9
+   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .   9
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   9
 
 1.  Introduction
@@ -109,9 +108,10 @@ Table of Contents
 
 
 
+
 Pratt, et al.             Expires May 30, 2018                  [Page 2]
 
-Internet-Draft     HTTP Random Access and Live Content     November 2017
+Internet-Draft            http-rand-access-live            November 2017
 
 
    For instance, HTTP clients have the ability to access appended
@@ -148,11 +148,6 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
    document are to be interpreted as described in RFC 2119 [RFC2119].
 
-1.2.  Notational Conventions
-
-   This document cites productions in Augmented Backus-Naur Form (ABNF)
-   productions from [RFC7233], using the notation defined in [RFC5234].
-
 2.  Performing Range requests on Random-Access Aggregating ("live")
     Content
 
@@ -162,19 +157,19 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
    the Content-Range response header fields.  A server cannot know from
    a range request that a client wishes to receive a response that does
    not have a definite end.  More critically, the header fields do not
-
-
-
-Pratt, et al.             Expires May 30, 2018                  [Page 3]
-
-Internet-Draft     HTTP Random Access and Live Content     November 2017
-
-
    allow the server to signal that a resource has indeterminate length
    without also providing a fixed portion of the resource.  A client
    first learns that the resource has a representation of indeterminate
    length by requesting a range of the resource.  The server responds
    with the range that is available, but indicates that the length of
+
+
+
+Pratt, et al.             Expires May 30, 2018                  [Page 3]
+
+Internet-Draft            http-rand-access-live            November 2017
+
+
    the representation is unknown using the existing Content-Range
    syntax.  See Section 2.1 for details and examples.  Once the client
    knows the resource has indeterminate length, it can request a range
@@ -217,17 +212,19 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
    and (2) that only bytes 0-1234567 were accessable at the time the
    request was processed by the server.  The client can infer from this
    response that bytes 0-1234567 of the representation can be requested
+   and returned in a timely fashion (the bytes are immediately
+   available).
+
+
+
 
 
 
 
 Pratt, et al.             Expires May 30, 2018                  [Page 4]
 
-Internet-Draft     HTTP Random Access and Live Content     November 2017
+Internet-Draft            http-rand-access-live            November 2017
 
-
-   and returned in a timely fashion (the bytes are immediately
-   available).
 
 2.2.  Byte-Range Requests Beyond the Randomly Accessible Byte Range
 
@@ -277,9 +274,12 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 
 
+
+
+
 Pratt, et al.             Expires May 30, 2018                  [Page 5]
 
-Internet-Draft     HTTP Random Access and Live Content     November 2017
+Internet-Draft            http-rand-access-live            November 2017
 
 
    In response, a server may indicate that it is supplying a
@@ -335,7 +335,7 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 Pratt, et al.             Expires May 30, 2018                  [Page 6]
 
-Internet-Draft     HTTP Random Access and Live Content     November 2017
+Internet-Draft            http-rand-access-live            November 2017
 
 
 3.  Other Applications of Random-Access Aggregating Content
@@ -391,7 +391,7 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 Pratt, et al.             Expires May 30, 2018                  [Page 7]
 
-Internet-Draft     HTTP Random Access and Live Content     November 2017
+Internet-Draft            http-rand-access-live            November 2017
 
 
        206 Partial Content
@@ -447,7 +447,7 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 Pratt, et al.             Expires May 30, 2018                  [Page 8]
 
-Internet-Draft     HTTP Random Access and Live Content     November 2017
+Internet-Draft            http-rand-access-live            November 2017
 
 
 5.  References
@@ -471,12 +471,16 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 5.2.  Informative References
 
-   [RFC5234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
-              Specifications: ABNF", STD 68, RFC 5234,
-              DOI 10.17487/RFC5234, January 2008,
-              <https://www.rfc-editor.org/info/rfc5234>.
+   [RANGE-UNIT-REGISTRY]
+              IANA, "Hypertext Transfer Protocol (HTTP) Parameters",
+              2016, <http://www.iana.org/assignments/http-parameters/
+              http-parameters.xhtml#range-units>.
 
-Acknowledgements
+   [RFC4234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
+              Specifications: ABNF", RFC 4234, DOI 10.17487/RFC4234,
+              October 2005, <https://www.rfc-editor.org/info/rfc4234>.
+
+Appendix A.  Acknowledgements
 
    Mark Nottingham, Patrick McManus, Julian Reschke, Remy Lebeau, Rodger
    Combs, Thorsten Lohmar, Martin Thompson, Adrien de Croy, K.  Morgan,
@@ -492,6 +496,16 @@ Authors' Addresses
    Email: pratt@acm.org
 
 
+
+
+
+
+
+Pratt, et al.             Expires May 30, 2018                  [Page 9]
+
+Internet-Draft            http-rand-access-live            November 2017
+
+
    Barbara Stark
    AT&T
    Atlanta, GA
@@ -500,26 +514,12 @@ Authors' Addresses
    Email: barbara.stark@att.com
 
 
-
-Pratt, et al.             Expires May 30, 2018                  [Page 9]
-
-Internet-Draft     HTTP Random Access and Live Content     November 2017
-
-
    Darshak Thakore
    CableLabs
    858 Coal Creek Circle
    Louisville, CO  80027
 
    Email: d.thakore@cablelabs.com
-
-
-
-
-
-
-
-
 
 
 
