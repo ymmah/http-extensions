@@ -127,12 +127,13 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
    bytes Range requests in this fashion (polling) introduces latency
    since the client will necessarily be somewhat behind the aggregated
    content - mimicking the behavior (and latency) of segmented content
-   representations such as HLS or MPEG-DASH.  And while performing these
-   Range requests at higher frequency can reduce this latency, it also
-   incurs more processing overhead and HTTP exchanges as many of the
-   requests will return no content - since content is usually aggregated
-   in groups of bytes (e.g. a video frame, audio sample, block, or log
-   entry).
+   representations such as "HTTP Live Streaming" (HLS, [RFC8216]) or
+   "Dynamic Adaptive Streaming over HTTP" (MPEG-DASH, [DASH]).  And
+   while performing these Range requests at higher frequency can reduce
+   this latency, it also incurs more processing overhead and HTTP
+   exchanges as many of the requests will return no content - since
+   content is usually aggregated in groups of bytes (e.g. a video frame,
+   audio sample, block, or log entry).
 
    This document describes a usage model for range requests which
    enables efficient retrieval of representations that are appended to
@@ -157,11 +158,10 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
     Content
 
    This document recommends a two-step process for accessing resources
-   that have indeterminate length representations.
-
-   Two steps are necessary because of limitations with the Range request
-   header and the Content-Range response header fields.  A server cannot
-   know from a range request that a client wishes to receive a response
+   that have indeterminate length representations.  Two steps are
+   necessary because of limitations with the Range request header and
+   the Content-Range response header fields.  A server cannot know from
+   a range request that a client wishes to receive a response that does
 
 
 
@@ -170,26 +170,23 @@ Pratt, et al.             Expires May 30, 2018                  [Page 3]
 Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 
-   that does not have a definite end.  More critically, the header
-   fields do not allow the server to signal that a resource has
-   indeterminate length without also providing a fixed portion of the
-   resource.
-
-   A client first learns that the resource has a representation of
-   indeterminate length by requesting a range of the resource.  The
-   server responds with the range that is available, but indicates that
-   the length of the representation is unknown using the existing
-   Content-Range syntax.  See Section 2.1 for details and examples.
-
-   Once the client knows the resource has indeterminate length, it can
-   request a range with a very large end position from the resource.
-   The client chooses an explicit end value larger than can be
-   transferred in the foreseeable term.  A server which supports range
-   requests of indeterminate length signals its understanding of the
-   client's indeterminate range request by indicating that the range it
-   is providing has a range end that exactly matches the client's
-   requested range end rather than a range that is bounded by what is
-   currently available.  See Section 2.2 for details.
+   not have a definite end.  More critically, the header fields do not
+   allow the server to signal that a resource has indeterminate length
+   without also providing a fixed portion of the resource.  A client
+   first learns that the resource has a representation of indeterminate
+   length by requesting a range of the resource.  The server responds
+   with the range that is available, but indicates that the length of
+   the representation is unknown using the existing Content-Range
+   syntax.  See Section 2.1 for details and examples.  Once the client
+   knows the resource has indeterminate length, it can request a range
+   with a very large end position from the resource.  The client chooses
+   an explicit end value larger than can be transferred in the
+   foreseeable term.  A server which supports range requests of
+   indeterminate length signals its understanding of the client's
+   indeterminate range request by indicating that the range it is
+   providing has a range end that exactly matches the client's requested
+   range end rather than a range that is bounded by what is currently
+   available.  See Section 2.2 for details.
 
 2.1.  Establishing the Randomly Accessible Byte Range
 
@@ -218,6 +215,9 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
    from the server indicating that (1) the complete representation
    length is unknown (via the "*" in place of the complete-length field)
+   and (2) that only bytes 0-1234567 were accessable at the time the
+   request was processed by the server.  The client can infer from this
+   response that bytes 0-1234567 of the representation can be requested
 
 
 
@@ -226,9 +226,6 @@ Pratt, et al.             Expires May 30, 2018                  [Page 4]
 Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 
-   and (2) that only bytes 0-1234567 were accessable at the time the
-   request was processed by the server.  The client can infer from this
-   response that bytes 0-1234567 of the representation can be requested
    and returned in a timely fashion (the bytes are immediately
    available).
 
@@ -274,6 +271,9 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
        GET /resource HTTP/1.1
        Range: bytes=1230000-999999999999
 
+   where the last-byte-pos in the Request is much larger than the last-
+   byte-pos returned in response to an open-ended byte-range HEAD
+   request, as described above.
 
 
 
@@ -281,10 +281,6 @@ Pratt, et al.             Expires May 30, 2018                  [Page 5]
 
 Internet-Draft     HTTP Random Access and Live Content     November 2017
 
-
-   where the last-byte-pos in the Request is much larger than the last-
-   byte-pos returned in response to an open-ended byte-range HEAD
-   request, as described above.
 
    In response, a server may indicate that it is supplying a
    continuously aggregating ("live") response by supplying the client
@@ -329,6 +325,10 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
    A server that does return a continuously aggregating ("live")
    response should return data using chunked transfer coding and not
+   provide a Content-Length header.  A 0-length chunk indicates the end
+   of the transfer, per section 4.1 of [RFC7230].
+
+
 
 
 
@@ -337,9 +337,6 @@ Pratt, et al.             Expires May 30, 2018                  [Page 6]
 
 Internet-Draft     HTTP Random Access and Live Content     November 2017
 
-
-   provide a Content-Length header.  A 0-length chunk indicates the end
-   of the transfer, per section 4.1 of [RFC7230].
 
 3.  Other Applications of Random-Access Aggregating Content
 
@@ -386,6 +383,9 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
        HEAD /resource HTTP/1.1
        Range: bytes=0-
 
+   returns
+
+
 
 
 
@@ -393,8 +393,6 @@ Pratt, et al.             Expires May 30, 2018                  [Page 7]
 
 Internet-Draft     HTTP Random Access and Live Content     November 2017
 
-
-   returns
 
        206 Partial Content
        Content-Range: bytes 1000000-1234567/*
@@ -445,6 +443,8 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 
 
+
+
 Pratt, et al.             Expires May 30, 2018                  [Page 8]
 
 Internet-Draft     HTTP Random Access and Live Content     November 2017
@@ -471,10 +471,20 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 5.2.  Informative References
 
+   [DASH]     ISO, "Information technology -- Dynamic adaptive streaming
+              over HTTP (DASH) -- Part 1: Media presentation description
+              and segment formats", ISO/IEC 23009-1:2014, May 2014,
+              <http://standards.iso.org/ittf/PubliclyAvailableStandards/
+              c065274_ISO_IEC_23009-1_2014.zip>.
+
    [RFC5234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
               Specifications: ABNF", STD 68, RFC 5234,
               DOI 10.17487/RFC5234, January 2008,
               <https://www.rfc-editor.org/info/rfc5234>.
+
+   [RFC8216]  Pantos, R., Ed. and W. May, "HTTP Live Streaming",
+              RFC 8216, DOI 10.17487/RFC8216, August 2017,
+              <https://www.rfc-editor.org/info/rfc8216>.
 
 Acknowledgements
 
@@ -483,6 +493,18 @@ Acknowledgements
    Roy T.  Fielding, Jeremy Poulter.
 
 Authors' Addresses
+
+
+
+
+
+
+
+
+Pratt, et al.             Expires May 30, 2018                  [Page 9]
+
+Internet-Draft     HTTP Random Access and Live Content     November 2017
+
 
    Craig Pratt
    CableLabs
@@ -500,34 +522,12 @@ Authors' Addresses
    Email: barbara.stark@att.com
 
 
-
-Pratt, et al.             Expires May 30, 2018                  [Page 9]
-
-Internet-Draft     HTTP Random Access and Live Content     November 2017
-
-
    Darshak Thakore
    CableLabs
    858 Coal Creek Circle
    Louisville, CO  80027
 
    Email: d.thakore@cablelabs.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
