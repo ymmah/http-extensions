@@ -5,10 +5,10 @@
 HTTP Working Group                                              C. Pratt
 Internet-Draft                                                 CableLabs
 Intended status: Experimental                                   B. Stark
-Expires: May 29, 2018                                               AT&T
+Expires: May 30, 2018                                               AT&T
                                                               D. Thakore
                                                                CableLabs
-                                                       November 25, 2017
+                                                       November 26, 2017
 
 
                   HTTP Random Access and Live Content
@@ -47,13 +47,13 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 29, 2018.
+   This Internet-Draft will expire on May 30, 2018.
 
 
 
 
 
-Pratt, et al.             Expires May 29, 2018                  [Page 1]
+Pratt, et al.             Expires May 30, 2018                  [Page 1]
 
 Internet-Draft     HTTP Random Access and Live Content     November 2017
 
@@ -97,19 +97,19 @@ Table of Contents
 
    Some Hypertext Transfer Protocol (HTTP) clients use byte-range
    requests (Range requests using the "bytes" Range Unit) to transfer
-   select portions of large representations.  And in some cases large
-   representations require content to be continuously or periodically
-   appended - such as representations consisting of live audio or video
-   sources, blockchain databases, and log files.  Clients cannot access
-   the appended/live content using a Range request with the bytes range
-   unit using the currently defined byte-range semantics without
-   accepting performance or behavior sacrifices which are not acceptable
-   for many applications.
+   select portions of large representations ([RFC7233]).  And in some
+   cases large representations require content to be continuously or
+   periodically appended - such as representations consisting of live
+   audio or video sources, blockchain databases, and log files.  Clients
+   cannot access the appended/live content using a Range request with
+   the bytes range unit using the currently defined byte-range semantics
+   without accepting performance or behavior sacrifices which are not
+   acceptable for many applications.
 
 
 
 
-Pratt, et al.             Expires May 29, 2018                  [Page 2]
+Pratt, et al.             Expires May 30, 2018                  [Page 2]
 
 Internet-Draft     HTTP Random Access and Live Content     November 2017
 
@@ -165,7 +165,7 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 
 
-Pratt, et al.             Expires May 29, 2018                  [Page 3]
+Pratt, et al.             Expires May 30, 2018                  [Page 3]
 
 Internet-Draft     HTTP Random Access and Live Content     November 2017
 
@@ -192,8 +192,8 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
    Establishing if a representation is continuously aggregating ("live")
    and determining the randomly-accessible byte range can both be
    determined using the existing definition for an open-ended byte-range
-   request.  Specifically, [RFC7233] defines a byte-range request of the
-   form:
+   request.  Specifically, Section 2.1 of [RFC7233] defines a byte-range
+   request of the form:
 
       byte-range-spec = first-byte-pos "-" [ last-byte-pos ]
 
@@ -221,7 +221,7 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 
 
-Pratt, et al.             Expires May 29, 2018                  [Page 4]
+Pratt, et al.             Expires May 30, 2018                  [Page 4]
 
 Internet-Draft     HTTP Random Access and Live Content     November 2017
 
@@ -245,7 +245,7 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
    a live video stream.
 
    Unlike a byte-range Range request, a byte-range Content-Range
-   response header cannot be "open ended", per [RFC7233]:
+   response header cannot be "open ended", per Section 4.2 of [RFC7233]:
 
       byte-content-range  = bytes-unit SP
                            ( byte-range-resp / unsatisfied-range )
@@ -277,7 +277,7 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 
 
-Pratt, et al.             Expires May 29, 2018                  [Page 5]
+Pratt, et al.             Expires May 30, 2018                  [Page 5]
 
 Internet-Draft     HTTP Random Access and Live Content     November 2017
 
@@ -326,14 +326,14 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
    A server that does return a continuously aggregating ("live")
    response should return data using chunked transfer coding and not
    provide a Content-Length header.  A 0-length chunk indicates the end
-   of the transfer, per section 4.1 of [RFC7230].
+   of the transfer, per Section 4.1 of [RFC7230].
 
 
 
 
 
 
-Pratt, et al.             Expires May 29, 2018                  [Page 6]
+Pratt, et al.             Expires May 30, 2018                  [Page 6]
 
 Internet-Draft     HTTP Random Access and Live Content     November 2017
 
@@ -389,7 +389,7 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 
 
-Pratt, et al.             Expires May 29, 2018                  [Page 7]
+Pratt, et al.             Expires May 30, 2018                  [Page 7]
 
 Internet-Draft     HTTP Random Access and Live Content     November 2017
 
@@ -445,7 +445,7 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 
 
-Pratt, et al.             Expires May 29, 2018                  [Page 8]
+Pratt, et al.             Expires May 30, 2018                  [Page 8]
 
 Internet-Draft     HTTP Random Access and Live Content     November 2017
 
@@ -501,7 +501,7 @@ Authors' Addresses
 
 
 
-Pratt, et al.             Expires May 29, 2018                  [Page 9]
+Pratt, et al.             Expires May 30, 2018                  [Page 9]
 
 Internet-Draft     HTTP Random Access and Live Content     November 2017
 
@@ -557,4 +557,4 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 
 
-Pratt, et al.             Expires May 29, 2018                 [Page 10]
+Pratt, et al.             Expires May 30, 2018                 [Page 10]
