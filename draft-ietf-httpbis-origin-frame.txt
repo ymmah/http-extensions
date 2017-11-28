@@ -5,8 +5,8 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Standards Track                               E. Nygren
-Expires: May 31, 2018                                             Akamai
-                                                       November 27, 2017
+Expires: June 1, 2018                                             Akamai
+                                                       November 28, 2017
 
 
                         The ORIGIN HTTP/2 Frame
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 31, 2018.
+   This Internet-Draft will expire on June 1, 2018.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Nottingham & Nygren       Expires May 31, 2018                  [Page 1]
+Nottingham & Nygren       Expires June 1, 2018                  [Page 1]
 
 Internet-Draft                ORIGIN Frames                November 2017
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Nottingham & Nygren       Expires May 31, 2018                  [Page 2]
+Nottingham & Nygren       Expires June 1, 2018                  [Page 2]
 
 Internet-Draft                ORIGIN Frames                November 2017
 
@@ -154,7 +154,7 @@ Internet-Draft                ORIGIN Frames                November 2017
 
    Origin:  An OPTIONAL sequence of characters containing the ASCII
       serialization of an origin ([RFC6454], Section 6.2) that the
-      sender believes this connection is or could be authoritative for.
+      sender asserts this connection is or could be authoritative for.
 
    The ORIGIN frame does not define any flags.  However, future updates
    to this specification MAY define flags.  See Section 2.2.
@@ -165,7 +165,7 @@ Internet-Draft                ORIGIN Frames                November 2017
 
 
 
-Nottingham & Nygren       Expires May 31, 2018                  [Page 3]
+Nottingham & Nygren       Expires June 1, 2018                  [Page 3]
 
 Internet-Draft                ORIGIN Frames                November 2017
 
@@ -221,7 +221,7 @@ Internet-Draft                ORIGIN Frames                November 2017
 
 
 
-Nottingham & Nygren       Expires May 31, 2018                  [Page 4]
+Nottingham & Nygren       Expires June 1, 2018                  [Page 4]
 
 Internet-Draft                ORIGIN Frames                November 2017
 
@@ -229,7 +229,8 @@ Internet-Draft                ORIGIN Frames                November 2017
    o  Scheme: "https"
 
    o  Host: the value sent in Server Name Indication (SNI, [RFC6066],
-      Section 3), converted to lower case
+      Section 3), converted to lower case; if SNI is not present, the
+      remote address of the connection (i.e., the server's IP address)
 
    o  Port: the remote port of the connection (i.e., the server's port)
 
@@ -273,15 +274,15 @@ Internet-Draft                ORIGIN Frames                November 2017
    connection to be used for more than one origin server, if it is
    authoritative.  This affects what responses can be considered
    authoritative, both for direct responses to requests and for server
-   push (see [RFC7540], Section 8.2.2).  Indirectly, it also affects
 
 
 
-Nottingham & Nygren       Expires May 31, 2018                  [Page 5]
+Nottingham & Nygren       Expires June 1, 2018                  [Page 5]
 
 Internet-Draft                ORIGIN Frames                November 2017
 
 
+   push (see [RFC7540], Section 8.2.2).  Indirectly, it also affects
    what requests will be sent on a connection, since clients will
    generally only send requests on connections that they believe to be
    authoritative for the origin in question.
@@ -332,8 +333,7 @@ Internet-Draft                ORIGIN Frames                November 2017
 
 
 
-
-Nottingham & Nygren       Expires May 31, 2018                  [Page 6]
+Nottingham & Nygren       Expires June 1, 2018                  [Page 6]
 
 Internet-Draft                ORIGIN Frames                November 2017
 
@@ -389,7 +389,7 @@ Internet-Draft                ORIGIN Frames                November 2017
 
 
 
-Nottingham & Nygren       Expires May 31, 2018                  [Page 7]
+Nottingham & Nygren       Expires June 1, 2018                  [Page 7]
 
 Internet-Draft                ORIGIN Frames                November 2017
 
@@ -445,7 +445,7 @@ Internet-Draft                ORIGIN Frames                November 2017
 
 
 
-Nottingham & Nygren       Expires May 31, 2018                  [Page 8]
+Nottingham & Nygren       Expires June 1, 2018                  [Page 8]
 
 Internet-Draft                ORIGIN Frames                November 2017
 
@@ -501,7 +501,7 @@ Appendix B.  Operational Considerations for Servers
 
 
 
-Nottingham & Nygren       Expires May 31, 2018                  [Page 9]
+Nottingham & Nygren       Expires June 1, 2018                  [Page 9]
 
 Internet-Draft                ORIGIN Frames                November 2017
 
@@ -557,4 +557,4 @@ Authors' Addresses
 
 
 
-Nottingham & Nygren       Expires May 31, 2018                 [Page 10]
+Nottingham & Nygren       Expires June 1, 2018                 [Page 10]
