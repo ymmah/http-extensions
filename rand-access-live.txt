@@ -5,10 +5,10 @@
 HTTP Working Group                                              C. Pratt
 Internet-Draft                                                 CableLabs
 Intended status: Experimental                                   B. Stark
-Expires: June 1, 2018                                               AT&T
+Expires: June 2, 2018                                               AT&T
                                                               D. Thakore
                                                                CableLabs
-                                                       November 28, 2017
+                                                       November 29, 2017
 
 
                   HTTP Random Access and Live Content
@@ -47,13 +47,13 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on June 1, 2018.
+   This Internet-Draft will expire on June 2, 2018.
 
 
 
 
 
-Pratt, et al.             Expires June 1, 2018                  [Page 1]
+Pratt, et al.             Expires June 2, 2018                  [Page 1]
 
 Internet-Draft     HTTP Random Access and Live Content     November 2017
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Pratt, et al.             Expires June 1, 2018                  [Page 2]
+Pratt, et al.             Expires June 2, 2018                  [Page 2]
 
 Internet-Draft     HTTP Random Access and Live Content     November 2017
 
@@ -165,7 +165,7 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 
 
-Pratt, et al.             Expires June 1, 2018                  [Page 3]
+Pratt, et al.             Expires June 2, 2018                  [Page 3]
 
 Internet-Draft     HTTP Random Access and Live Content     November 2017
 
@@ -221,7 +221,7 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 
 
-Pratt, et al.             Expires June 1, 2018                  [Page 4]
+Pratt, et al.             Expires June 2, 2018                  [Page 4]
 
 Internet-Draft     HTTP Random Access and Live Content     November 2017
 
@@ -277,7 +277,7 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 
 
-Pratt, et al.             Expires June 1, 2018                  [Page 5]
+Pratt, et al.             Expires June 2, 2018                  [Page 5]
 
 Internet-Draft     HTTP Random Access and Live Content     November 2017
 
@@ -333,7 +333,7 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 
 
-Pratt, et al.             Expires June 1, 2018                  [Page 6]
+Pratt, et al.             Expires June 2, 2018                  [Page 6]
 
 Internet-Draft     HTTP Random Access and Live Content     November 2017
 
@@ -389,7 +389,7 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 
 
-Pratt, et al.             Expires June 1, 2018                  [Page 7]
+Pratt, et al.             Expires June 2, 2018                  [Page 7]
 
 Internet-Draft     HTTP Random Access and Live Content     November 2017
 
@@ -445,7 +445,7 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 
 
-Pratt, et al.             Expires June 1, 2018                  [Page 8]
+Pratt, et al.             Expires June 2, 2018                  [Page 8]
 
 Internet-Draft     HTTP Random Access and Live Content     November 2017
 
@@ -501,7 +501,7 @@ Authors' Addresses
 
 
 
-Pratt, et al.             Expires June 1, 2018                  [Page 9]
+Pratt, et al.             Expires June 2, 2018                  [Page 9]
 
 Internet-Draft     HTTP Random Access and Live Content     November 2017
 
@@ -557,4 +557,4 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 
 
-Pratt, et al.             Expires June 1, 2018                 [Page 10]
+Pratt, et al.             Expires June 2, 2018                 [Page 10]
