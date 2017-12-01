@@ -135,8 +135,8 @@ Internet-Draft               HTTP Early Data               December 2017
 
 2.  Early Data in HTTP
 
-   Conceptually, early data is concatenated with other application to
-   form a single stream.  This can mean that requests are entirely
+   Conceptually, early data is concatenated with other application data
+   to form a single stream.  This can mean that requests are entirely
    contained within early data, or only part of a request is early.  In
    a multiplexed protocol, like HTTP/2 [RFC7540] or HTTP/QUIC [HQ],
    multiple requests might be partially delivered in early data.
