@@ -5,10 +5,10 @@
 httpbis Working Group                                         M. Thomson
 Internet-Draft                                                   Mozilla
 Intended status: Standards Track                           M. Nottingham
-Expires: June 2, 2018                                             Fastly
+Expires: June 4, 2018                                             Fastly
                                                               W. Tarreau
                                                     HAProxy Technologies
-                                                       November 29, 2017
+                                                       December 01, 2017
 
 
                         Using Early Data in HTTP
@@ -36,7 +36,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on June 2, 2018.
+   This Internet-Draft will expire on June 4, 2018.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Thomson, et al.           Expires June 2, 2018                  [Page 1]
+Thomson, et al.           Expires June 4, 2018                  [Page 1]
 
-Internet-Draft               HTTP Early Data               November 2017
+Internet-Draft               HTTP Early Data               December 2017
 
 
    the Trust Legal Provisions and are provided without warranty as
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Thomson, et al.           Expires June 2, 2018                  [Page 2]
+Thomson, et al.           Expires June 4, 2018                  [Page 2]
 
-Internet-Draft               HTTP Early Data               November 2017
+Internet-Draft               HTTP Early Data               December 2017
 
 
    To help mitigate the risk of replays in HTTP, this document gives an
@@ -165,14 +165,15 @@ Internet-Draft               HTTP Early Data               November 2017
 
 
 
-Thomson, et al.           Expires June 2, 2018                  [Page 3]
+Thomson, et al.           Expires June 4, 2018                  [Page 3]
 
-Internet-Draft               HTTP Early Data               November 2017
+Internet-Draft               HTTP Early Data               December 2017
 
 
    3.  If the server receives multiple requests in early data, it can
        determine whether to defer HTTP processing on a per-request
-       basis.
+       basis.  This may require buffering the responses to preserve
+       ordering in HTTP/1.1.
 
    4.  The server can cause a client to retry a request and not use
        early data by responding with the 425 (Too Early) status code
@@ -191,9 +192,9 @@ Internet-Draft               HTTP Early Data               November 2017
 
    It is RECOMMENDED that origin servers allow resources to explicitly
    configure whether early data is appropriate in requests.  Absent such
-   explicit information, they SHOULD mitigate against early data in
-   requests that have unsafe methods, using the techniques outlined
-   above.
+   explicit information, origin servers MUST either reject early data or
+   implement the techniques described in this document for ensuring that
+   requests are not processed prior to TLS handshake completion.
 
    A request might be sent partially in early data with the remainder of
    the request being sent after the handshake completes.  This does not
@@ -217,15 +218,15 @@ Internet-Draft               HTTP Early Data               November 2017
 
    Note that a server cannot choose to selectively reject early data at
    the TLS layer.  TLS only permits a server to accept all early data,
-   or none of it.  Once a server has decided to accept early data, it
 
 
 
-Thomson, et al.           Expires June 2, 2018                  [Page 4]
+Thomson, et al.           Expires June 4, 2018                  [Page 4]
 
-Internet-Draft               HTTP Early Data               November 2017
+Internet-Draft               HTTP Early Data               December 2017
 
 
+   or none of it.  Once a server has decided to accept early data, it
    MUST process all requests in early data, even if the server rejects
    the request by sending a 425 (Too Early) response.
 
@@ -251,9 +252,10 @@ Internet-Draft               HTTP Early Data               November 2017
    If the server rejects early data at the TLS layer, a client MUST
    start sending again as though the connection was new.  This could
    entail using a different negotiated protocol [ALPN] than the one
-   optimistically used for the early data.  Any requests sent in early
-   data MUST be sent again, unless the client decides to abandon those
-   requests.
+   optimistically used for the early data.  If HTTP/2 is selected after
+   early data is rejected, a client sends another connection preface.
+   Any requests sent in early data MUST be sent again, unless the client
+   decides to abandon those requests.
 
    This automatic retry exposes the request to a potential replay
    attack.  An attacker sends early data to one server instance that
@@ -272,16 +274,16 @@ Internet-Draft               HTTP Early Data               November 2017
    An intermediary MUST NOT use early data when forwarding a request
    unless early data was used on a previous hop, or it knows that the
    request can be retried safely without consequences (typically, using
+
+
+
+Thomson, et al.           Expires June 4, 2018                  [Page 5]
+
+Internet-Draft               HTTP Early Data               December 2017
+
+
    out-of-band configuration).  Absent better information, that means
    that an intermediary can only use early data if the request either
-
-
-
-Thomson, et al.           Expires June 2, 2018                  [Page 5]
-
-Internet-Draft               HTTP Early Data               November 2017
-
-
    arrived in early data or arrived with the "Early-Data" header field
    set to "1" (see Section 5.1).
 
@@ -331,11 +333,9 @@ Internet-Draft               HTTP Early Data               November 2017
 
 
 
-
-
-Thomson, et al.           Expires June 2, 2018                  [Page 6]
+Thomson, et al.           Expires June 4, 2018                  [Page 6]
 
-Internet-Draft               HTTP Early Data               November 2017
+Internet-Draft               HTTP Early Data               December 2017
 
 
    GET /resource HTTP/1.0
@@ -389,9 +389,9 @@ Internet-Draft               HTTP Early Data               November 2017
 
 
 
-Thomson, et al.           Expires June 2, 2018                  [Page 7]
+Thomson, et al.           Expires June 4, 2018                  [Page 7]
 
-Internet-Draft               HTTP Early Data               November 2017
+Internet-Draft               HTTP Early Data               December 2017
 
 
    header field is set to "1".  A server SHOULD NOT emit the 425 status
@@ -413,16 +413,12 @@ Internet-Draft               HTTP Early Data               November 2017
    A gateway that forwards requests that were received in early data
    MUST only do so if it knows that the origin server that receives
    those requests understands the "Early-Data" header field and will
-   correctly generate a 425 (Too Early) status code.  A gateway that is
-   uncertain about origin server support for a given request SHOULD
-   either delay forwarding the request until the TLS handshake with its
-   client completes, or send a 425 (Too Early) status code in response.
-
-   A gateway without at least one potential origin server that supports
-   "Early-Data" header field expends significant effort for what can at
-   best be a modest performance benefit from enabling early data.  If no
-   origin server supports early data, disabling early data entirely is
-   more efficient.
+   correctly generate a 425 (Too Early) status code.  A gateway that
+   isn't certain about origin server support SHOULD either delay
+   forwarding the request until the TLS handshake with its client
+   completes, or send a 425 (Too Early) status code in response.  A
+   gateway that is uncertain about whether an origin server supports the
+   "Early-Data" header field SHOULD disable early data.
 
 6.2.  Consistent Handling of Early Data
 
@@ -442,18 +438,17 @@ Internet-Draft               HTTP Early Data               November 2017
    Accepting early data exposes a server to potential denial of service
    through the replay of requests that are expensive to handle.  A
    server that is under load SHOULD prefer rejecting TLS early data as a
-
-
-
-Thomson, et al.           Expires June 2, 2018                  [Page 8]
-
-Internet-Draft               HTTP Early Data               November 2017
-
-
    whole rather than accepting early data and selectively processing
    requests.  Generating a 503 (Service Unavailable) or 425 (Too Early)
    status code often leads to clients retrying requests, which could
    result in increased load.
+
+
+
+Thomson, et al.           Expires June 4, 2018                  [Page 8]
+
+Internet-Draft               HTTP Early Data               December 2017
+
 
 6.4.  Out of Order Delivery
 
@@ -495,21 +490,21 @@ Internet-Draft               HTTP Early Data               November 2017
 
 8.1.  Normative References
 
-
-
-
-
-
-
-Thomson, et al.           Expires June 2, 2018                  [Page 9]
-
-Internet-Draft               HTTP Early Data               November 2017
-
-
    [ABNF]     Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
               Specifications: ABNF", STD 68, RFC 5234,
               DOI 10.17487/RFC5234, January 2008,
               <https://www.rfc-editor.org/info/rfc5234>.
+
+
+
+
+
+
+
+Thomson, et al.           Expires June 4, 2018                  [Page 9]
+
+Internet-Draft               HTTP Early Data               December 2017
+
 
    [HEADERS]  Klyne, G., Nottingham, M., and J. Mogul, "Registration
               Procedures for Message Header Fields", BCP 90, RFC 3864,
@@ -536,8 +531,8 @@ Internet-Draft               HTTP Early Data               November 2017
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
    [TLS13]    Rescorla, E., "The Transport Layer Security (TLS) Protocol
-              Version 1.3", draft-ietf-tls-tls13-21 (work in progress),
-              July 2017.
+              Version 1.3", draft-ietf-tls-tls13-22 (work in progress),
+              November 2017.
 
 8.2.  Informative References
 
@@ -557,9 +552,14 @@ Internet-Draft               HTTP Early Data               November 2017
 
 
 
-Thomson, et al.           Expires June 2, 2018                 [Page 10]
+
+
+
+
+
+Thomson, et al.           Expires June 4, 2018                 [Page 10]
 
-Internet-Draft               HTTP Early Data               November 2017
+Internet-Draft               HTTP Early Data               December 2017
 
 
 Acknowledgments
@@ -613,4 +613,4 @@ Authors' Addresses
 
 
 
-Thomson, et al.           Expires June 2, 2018                 [Page 11]
+Thomson, et al.           Expires June 4, 2018                 [Page 11]

@@ -4,8 +4,8 @@
 
 HTTP Working Group                                           I. Grigorik
 Internet-Draft                                                    Google
-Intended status: Experimental                          November 29, 2017
-Expires: June 2, 2018
+Intended status: Experimental                           December 1, 2017
+Expires: June 4, 2018
 
 
                            HTTP Client Hints
@@ -49,13 +49,13 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on June 2, 2018.
+   This Internet-Draft will expire on June 4, 2018.
 
 
 
-Grigorik                  Expires June 2, 2018                  [Page 1]
+Grigorik                  Expires June 4, 2018                  [Page 1]
 
-Internet-Draft              HTTP Client Hints              November 2017
+Internet-Draft              HTTP Client Hints              December 2017
 
 
 Copyright Notice
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Grigorik                  Expires June 2, 2018                  [Page 2]
+Grigorik                  Expires June 4, 2018                  [Page 2]
 
-Internet-Draft              HTTP Client Hints              November 2017
+Internet-Draft              HTTP Client Hints              December 2017
 
 
      B.1.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .  13
@@ -165,9 +165,9 @@ Internet-Draft              HTTP Client Hints              November 2017
 
 
 
-Grigorik                  Expires June 2, 2018                  [Page 3]
+Grigorik                  Expires June 4, 2018                  [Page 3]
 
-Internet-Draft              HTTP Client Hints              November 2017
+Internet-Draft              HTTP Client Hints              December 2017
 
 
 1.1.  Notational Conventions
@@ -221,9 +221,9 @@ Internet-Draft              HTTP Client Hints              November 2017
 
 
 
-Grigorik                  Expires June 2, 2018                  [Page 4]
+Grigorik                  Expires June 4, 2018                  [Page 4]
 
-Internet-Draft              HTTP Client Hints              November 2017
+Internet-Draft              HTTP Client Hints              December 2017
 
 
    "Content-DPR" response header field that needs to be returned by the
@@ -277,9 +277,9 @@ Internet-Draft              HTTP Client Hints              November 2017
 
 
 
-Grigorik                  Expires June 2, 2018                  [Page 5]
+Grigorik                  Expires June 4, 2018                  [Page 5]
 
-Internet-Draft              HTTP Client Hints              November 2017
+Internet-Draft              HTTP Client Hints              December 2017
 
 
    to a resource request initiated by "https://foo.example.com", both
@@ -333,9 +333,9 @@ Internet-Draft              HTTP Client Hints              November 2017
 
 
 
-Grigorik                  Expires June 2, 2018                  [Page 6]
+Grigorik                  Expires June 4, 2018                  [Page 6]
 
-Internet-Draft              HTTP Client Hints              November 2017
+Internet-Draft              HTTP Client Hints              December 2017
 
 
      Content-DPR = 1*DIGIT [ "." 1*DIGIT ]
@@ -389,9 +389,9 @@ Internet-Draft              HTTP Client Hints              November 2017
 
 
 
-Grigorik                  Expires June 2, 2018                  [Page 7]
+Grigorik                  Expires June 4, 2018                  [Page 7]
 
-Internet-Draft              HTTP Client Hints              November 2017
+Internet-Draft              HTTP Client Hints              December 2017
 
 
 3.4.  The Save-Data Header Field
@@ -445,9 +445,9 @@ Internet-Draft              HTTP Client Hints              November 2017
 
 
 
-Grigorik                  Expires June 2, 2018                  [Page 8]
+Grigorik                  Expires June 4, 2018                  [Page 8]
 
-Internet-Draft              HTTP Client Hints              November 2017
+Internet-Draft              HTTP Client Hints              December 2017
 
 
 5.  Security Considerations
@@ -501,9 +501,9 @@ Internet-Draft              HTTP Client Hints              November 2017
 
 
 
-Grigorik                  Expires June 2, 2018                  [Page 9]
+Grigorik                  Expires June 4, 2018                  [Page 9]
 
-Internet-Draft              HTTP Client Hints              November 2017
+Internet-Draft              HTTP Client Hints              December 2017
 
 
 6.1.  Accept-CH
@@ -557,9 +557,9 @@ Internet-Draft              HTTP Client Hints              November 2017
 
 
 
-Grigorik                  Expires June 2, 2018                 [Page 10]
+Grigorik                  Expires June 4, 2018                 [Page 10]
 
-Internet-Draft              HTTP Client Hints              November 2017
+Internet-Draft              HTTP Client Hints              December 2017
 
 
 6.6.  Viewport-Width
@@ -613,9 +613,9 @@ Internet-Draft              HTTP Client Hints              November 2017
 
 
 
-Grigorik                  Expires June 2, 2018                 [Page 11]
+Grigorik                  Expires June 4, 2018                 [Page 11]
 
-Internet-Draft              HTTP Client Hints              November 2017
+Internet-Draft              HTTP Client Hints              December 2017
 
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
@@ -669,9 +669,9 @@ Internet-Draft              HTTP Client Hints              November 2017
 
 
 
-Grigorik                  Expires June 2, 2018                 [Page 12]
+Grigorik                  Expires June 4, 2018                 [Page 12]
 
-Internet-Draft              HTTP Client Hints              November 2017
+Internet-Draft              HTTP Client Hints              December 2017
 
 
 Appendix A.  Interaction with Key Response Header Field
@@ -725,9 +725,9 @@ B.4.  Since -03
 
 
 
-Grigorik                  Expires June 2, 2018                 [Page 13]
+Grigorik                  Expires June 4, 2018                 [Page 13]
 
-Internet-Draft              HTTP Client Hints              November 2017
+Internet-Draft              HTTP Client Hints              December 2017
 
 
 B.5.  Since -04
@@ -781,4 +781,4 @@ Author's Address
 
 
 
-Grigorik                  Expires June 2, 2018                 [Page 14]
+Grigorik                  Expires June 4, 2018                 [Page 14]

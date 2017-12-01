@@ -5,8 +5,8 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Standards Track                               E. Nygren
-Expires: June 2, 2018                                             Akamai
-                                                       November 29, 2017
+Expires: June 4, 2018                                             Akamai
+                                                        December 1, 2017
 
 
                         The ORIGIN HTTP/2 Frame
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on June 2, 2018.
+   This Internet-Draft will expire on June 4, 2018.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Nottingham & Nygren       Expires June 2, 2018                  [Page 1]
+Nottingham & Nygren       Expires June 4, 2018                  [Page 1]
 
-Internet-Draft                ORIGIN Frames                November 2017
+Internet-Draft                ORIGIN Frames                December 2017
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Nottingham & Nygren       Expires June 2, 2018                  [Page 2]
+Nottingham & Nygren       Expires June 4, 2018                  [Page 2]
 
-Internet-Draft                ORIGIN Frames                November 2017
+Internet-Draft                ORIGIN Frames                December 2017
 
 
    additional benefits, such as removing the latency associated with
@@ -165,9 +165,9 @@ Internet-Draft                ORIGIN Frames                November 2017
 
 
 
-Nottingham & Nygren       Expires June 2, 2018                  [Page 3]
+Nottingham & Nygren       Expires June 4, 2018                  [Page 3]
 
-Internet-Draft                ORIGIN Frames                November 2017
+Internet-Draft                ORIGIN Frames                December 2017
 
 
 2.2.  Processing ORIGIN Frames
@@ -221,9 +221,9 @@ Internet-Draft                ORIGIN Frames                November 2017
 
 
 
-Nottingham & Nygren       Expires June 2, 2018                  [Page 4]
+Nottingham & Nygren       Expires June 4, 2018                  [Page 4]
 
-Internet-Draft                ORIGIN Frames                November 2017
+Internet-Draft                ORIGIN Frames                December 2017
 
 
    o  Scheme: "https"
@@ -277,9 +277,9 @@ Internet-Draft                ORIGIN Frames                November 2017
 
 
 
-Nottingham & Nygren       Expires June 2, 2018                  [Page 5]
+Nottingham & Nygren       Expires June 4, 2018                  [Page 5]
 
-Internet-Draft                ORIGIN Frames                November 2017
+Internet-Draft                ORIGIN Frames                December 2017
 
 
    push (see [RFC7540], Section 8.2.2).  Indirectly, it also affects
@@ -333,9 +333,9 @@ Internet-Draft                ORIGIN Frames                November 2017
 
 
 
-Nottingham & Nygren       Expires June 2, 2018                  [Page 6]
+Nottingham & Nygren       Expires June 4, 2018                  [Page 6]
 
-Internet-Draft                ORIGIN Frames                November 2017
+Internet-Draft                ORIGIN Frames                December 2017
 
 
 4.  Security Considerations
@@ -389,9 +389,9 @@ Internet-Draft                ORIGIN Frames                November 2017
 
 
 
-Nottingham & Nygren       Expires June 2, 2018                  [Page 7]
+Nottingham & Nygren       Expires June 4, 2018                  [Page 7]
 
-Internet-Draft                ORIGIN Frames                November 2017
+Internet-Draft                ORIGIN Frames                December 2017
 
 
    [RFC6066]  Eastlake 3rd, D., "Transport Layer Security (TLS)
@@ -445,9 +445,9 @@ Internet-Draft                ORIGIN Frames                November 2017
 
 
 
-Nottingham & Nygren       Expires June 2, 2018                  [Page 8]
+Nottingham & Nygren       Expires June 4, 2018                  [Page 8]
 
-Internet-Draft                ORIGIN Frames                November 2017
+Internet-Draft                ORIGIN Frames                December 2017
 
 
 5.3.  URIs
@@ -501,9 +501,9 @@ Appendix B.  Operational Considerations for Servers
 
 
 
-Nottingham & Nygren       Expires June 2, 2018                  [Page 9]
+Nottingham & Nygren       Expires June 4, 2018                  [Page 9]
 
-Internet-Draft                ORIGIN Frames                November 2017
+Internet-Draft                ORIGIN Frames                December 2017
 
 
    ORIGIN frame.  Or, a larger number of origins can be indicated by
@@ -557,4 +557,4 @@ Authors' Addresses
 
 
 
-Nottingham & Nygren       Expires June 2, 2018                 [Page 10]
+Nottingham & Nygren       Expires June 4, 2018                 [Page 10]
