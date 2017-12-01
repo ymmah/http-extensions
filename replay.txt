@@ -466,8 +466,9 @@ Internet-Draft               HTTP Early Data               December 2017
    data can arrive after the handshake completes.  This leads to
    potential ambiguity about the status of requests and could lead to
    inconsistent treatment (see Section 6.2).  Implementations MUST
-   either ensure that any early data that is delivered late is either
-   discarded or consistently identified and processed.
+   either ensure that any early data that is delivered after the TLS
+   handshake completes is either discarded or consistently identified as
+   early and processed.
 
 7.  IANA Considerations
 
@@ -495,7 +496,6 @@ Internet-Draft               HTTP Early Data               December 2017
    Description:  Too Early
 
    Reference:  This document
-
 
 
 
