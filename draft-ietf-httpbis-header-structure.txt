@@ -677,7 +677,7 @@ Internet-Draft         Structured Headers for HTTP         December 2017
 4.8.  Lists
 
    Lists are arrays of items (Section 4.6) or parameterised labels
-   (Section 4.4, with one to 1024 members.
+   (Section 4.4), with one to 1024 members.
 
    In the textual HTTP serialisation, each member is separated by a
    comma and optional whitespace.
