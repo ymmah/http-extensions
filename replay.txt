@@ -575,8 +575,9 @@ Acknowledgments
 
    This document was not easy to produce.  The following people made
    substantial contributions to the quality and completeness of the
-   document: Subodh Iyengar, Benjamin Kaduk, Ilari Liusavaara, Kazuho
-   Oku, Eric Rescorla, Kyle Rose, and Victor Vasiliev.
+   document: David Benjamin, Subodh Iyengar, Benjamin Kaduk, Ilari
+   Liusavaara, Kazuho Oku, Eric Rescorla, Kyle Rose, and Victor
+   Vasiliev.
 
 Authors' Addresses
 
@@ -596,7 +597,6 @@ Authors' Addresses
    HAProxy Technologies
 
    Email: willy@haproxy.org
-
 
 
 
