@@ -2,10 +2,10 @@
 
 
 
-HTTP Working Group                                           I. Grigorik
+HTTP                                                         I. Grigorik
 Internet-Draft                                                    Google
-Intended status: Experimental                          December 11, 2017
-Expires: June 14, 2018
+Intended status: Experimental                          December 12, 2017
+Expires: June 15, 2018
 
 
                            HTTP Client Hints
@@ -49,11 +49,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on June 14, 2018.
+   This Internet-Draft will expire on June 15, 2018.
 
 
 
-Grigorik                  Expires June 14, 2018                 [Page 1]
+Grigorik                  Expires June 15, 2018                 [Page 1]
 
 Internet-Draft              HTTP Client Hints              December 2017
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Grigorik                  Expires June 14, 2018                 [Page 2]
+Grigorik                  Expires June 15, 2018                 [Page 2]
 
 Internet-Draft              HTTP Client Hints              December 2017
 
@@ -117,7 +117,7 @@ Internet-Draft              HTTP Client Hints              December 2017
      B.1.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .  13
      B.2.  Since -01 . . . . . . . . . . . . . . . . . . . . . . . .  13
      B.3.  Since -02 . . . . . . . . . . . . . . . . . . . . . . . .  13
-     B.4.  Since -03 . . . . . . . . . . . . . . . . . . . . . . . .  13
+     B.4.  Since -03 . . . . . . . . . . . . . . . . . . . . . . . .  14
      B.5.  Since -04 . . . . . . . . . . . . . . . . . . . . . . . .  14
      B.6.  Since -05 . . . . . . . . . . . . . . . . . . . . . . . .  14
      B.7.  Since -06 . . . . . . . . . . . . . . . . . . . . . . . .  14
@@ -165,7 +165,7 @@ Internet-Draft              HTTP Client Hints              December 2017
 
 
 
-Grigorik                  Expires June 14, 2018                 [Page 3]
+Grigorik                  Expires June 15, 2018                 [Page 3]
 
 Internet-Draft              HTTP Client Hints              December 2017
 
@@ -221,7 +221,7 @@ Internet-Draft              HTTP Client Hints              December 2017
 
 
 
-Grigorik                  Expires June 14, 2018                 [Page 4]
+Grigorik                  Expires June 15, 2018                 [Page 4]
 
 Internet-Draft              HTTP Client Hints              December 2017
 
@@ -277,7 +277,7 @@ Internet-Draft              HTTP Client Hints              December 2017
 
 
 
-Grigorik                  Expires June 14, 2018                 [Page 5]
+Grigorik                  Expires June 15, 2018                 [Page 5]
 
 Internet-Draft              HTTP Client Hints              December 2017
 
@@ -333,7 +333,7 @@ Internet-Draft              HTTP Client Hints              December 2017
 
 
 
-Grigorik                  Expires June 14, 2018                 [Page 6]
+Grigorik                  Expires June 15, 2018                 [Page 6]
 
 Internet-Draft              HTTP Client Hints              December 2017
 
@@ -389,7 +389,7 @@ Internet-Draft              HTTP Client Hints              December 2017
 
 
 
-Grigorik                  Expires June 14, 2018                 [Page 7]
+Grigorik                  Expires June 15, 2018                 [Page 7]
 
 Internet-Draft              HTTP Client Hints              December 2017
 
@@ -445,7 +445,7 @@ Internet-Draft              HTTP Client Hints              December 2017
 
 
 
-Grigorik                  Expires June 14, 2018                 [Page 8]
+Grigorik                  Expires June 15, 2018                 [Page 8]
 
 Internet-Draft              HTTP Client Hints              December 2017
 
@@ -501,7 +501,7 @@ Internet-Draft              HTTP Client Hints              December 2017
 
 
 
-Grigorik                  Expires June 14, 2018                 [Page 9]
+Grigorik                  Expires June 15, 2018                 [Page 9]
 
 Internet-Draft              HTTP Client Hints              December 2017
 
@@ -557,7 +557,7 @@ Internet-Draft              HTTP Client Hints              December 2017
 
 
 
-Grigorik                  Expires June 14, 2018                [Page 10]
+Grigorik                  Expires June 15, 2018                [Page 10]
 
 Internet-Draft              HTTP Client Hints              December 2017
 
@@ -613,7 +613,7 @@ Internet-Draft              HTTP Client Hints              December 2017
 
 
 
-Grigorik                  Expires June 14, 2018                [Page 11]
+Grigorik                  Expires June 15, 2018                [Page 11]
 
 Internet-Draft              HTTP Client Hints              December 2017
 
@@ -647,6 +647,10 @@ Internet-Draft              HTTP Client Hints              December 2017
               RFC 7234, DOI 10.17487/RFC7234, June 2014,
               <https://www.rfc-editor.org/info/rfc7234>.
 
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+
 8.2.  Informative References
 
    [KEY]      Fielding, R. and M. Nottingham, "The Key HTTP Response
@@ -663,16 +667,14 @@ Internet-Draft              HTTP Client Hints              December 2017
 
    [2] http://httpwg.github.io/
 
-   [3] https://github.com/httpwg/http-extensions/labels/client-hints
 
 
-
-
-
-Grigorik                  Expires June 14, 2018                [Page 12]
+Grigorik                  Expires June 15, 2018                [Page 12]
 
 Internet-Draft              HTTP Client Hints              December 2017
 
+
+   [3] https://github.com/httpwg/http-extensions/labels/client-hints
 
 Appendix A.  Interaction with Key Response Header Field
 
@@ -716,19 +718,23 @@ B.3.  Since -02
    o  Issue 241: Consistency in IANA considerations
    o  Issue 250: Clarified Accept-CH
 
+
+
+
+
+
+
+
+Grigorik                  Expires June 15, 2018                [Page 13]
+
+Internet-Draft              HTTP Client Hints              December 2017
+
+
 B.4.  Since -03
 
    o  Issue 284: Extended guidance for Accept-CH
    o  Issue 308: Editorial cleanup
    o  Issue 306: Define Accept-CH-Lifetime
-
-
-
-
-Grigorik                  Expires June 14, 2018                [Page 13]
-
-Internet-Draft              HTTP Client Hints              December 2017
-
 
 B.5.  Since -04
 
@@ -775,10 +781,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-Grigorik                  Expires June 14, 2018                [Page 14]
+Grigorik                  Expires June 15, 2018                [Page 14]

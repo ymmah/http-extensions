@@ -2,7 +2,7 @@
 
 
 
-HTTP Working Group                                              C. Pratt
+HTTP                                                            C. Pratt
 Internet-Draft                                                 CableLabs
 Intended status: Experimental                                   B. Stark
 Expires: May 5, 2018                                                AT&T
