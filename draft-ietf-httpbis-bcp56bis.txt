@@ -831,7 +831,7 @@ Internet-Draft      On the use of HTTP as a Substrate      December 2017
 
 7.2.  Informative References
 
-   [FETCH]    various, ., "Fetch - Living Standard", September 2017,
+   [FETCH]    WHATWG, "Fetch - Living Standard", n.d.,
               <https://fetch.spec.whatwg.org>.
 
 
@@ -842,7 +842,7 @@ Nottingham                Expires June 16, 2018                [Page 15]
 Internet-Draft      On the use of HTTP as a Substrate      December 2017
 
 
-   [HTML5]    various, ., "HTML - Living Standard", September 2017,
+   [HTML5]    WHATWG, "HTML - Living Standard", n.d.,
               <https://html.spec.whatwg.org>.
 
    [RFC0793]  Postel, J., "Transmission Control Protocol", STD 7,
