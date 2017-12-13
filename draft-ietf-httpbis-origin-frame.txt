@@ -2,11 +2,11 @@
 
 
 
-HTTP                                                       M. Nottingham
+HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Standards Track                               E. Nygren
-Expires: June 15, 2018                                            Akamai
-                                                       December 12, 2017
+Expires: June 16, 2018                                            Akamai
+                                                       December 13, 2017
 
 
                         The ORIGIN HTTP/2 Frame
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on June 15, 2018.
+   This Internet-Draft will expire on June 16, 2018.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Nottingham & Nygren       Expires June 15, 2018                 [Page 1]
+Nottingham & Nygren       Expires June 16, 2018                 [Page 1]
 
 Internet-Draft                ORIGIN Frames                December 2017
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Nottingham & Nygren       Expires June 15, 2018                 [Page 2]
+Nottingham & Nygren       Expires June 16, 2018                 [Page 2]
 
 Internet-Draft                ORIGIN Frames                December 2017
 
@@ -165,7 +165,7 @@ Internet-Draft                ORIGIN Frames                December 2017
 
 
 
-Nottingham & Nygren       Expires June 15, 2018                 [Page 3]
+Nottingham & Nygren       Expires June 16, 2018                 [Page 3]
 
 Internet-Draft                ORIGIN Frames                December 2017
 
@@ -179,7 +179,7 @@ Internet-Draft                ORIGIN Frames                December 2017
    manipulate the Origin Set (see Section 2.3), thereby changing how the
    client establishes authority for origin servers (see Section 2.4).
 
-   The origin frame MUST be sent on stream 0; an ORIGIN frame on any
+   The ORIGIN frame MUST be sent on stream 0; an ORIGIN frame on any
    other stream is invalid and MUST be ignored.
 
    Likewise, the ORIGIN frame is only valid on connections with the "h2"
@@ -221,7 +221,7 @@ Internet-Draft                ORIGIN Frames                December 2017
 
 
 
-Nottingham & Nygren       Expires June 15, 2018                 [Page 4]
+Nottingham & Nygren       Expires June 16, 2018                 [Page 4]
 
 Internet-Draft                ORIGIN Frames                December 2017
 
@@ -277,7 +277,7 @@ Internet-Draft                ORIGIN Frames                December 2017
 
 
 
-Nottingham & Nygren       Expires June 15, 2018                 [Page 5]
+Nottingham & Nygren       Expires June 16, 2018                 [Page 5]
 
 Internet-Draft                ORIGIN Frames                December 2017
 
@@ -333,7 +333,7 @@ Internet-Draft                ORIGIN Frames                December 2017
 
 
 
-Nottingham & Nygren       Expires June 15, 2018                 [Page 6]
+Nottingham & Nygren       Expires June 16, 2018                 [Page 6]
 
 Internet-Draft                ORIGIN Frames                December 2017
 
@@ -389,7 +389,7 @@ Internet-Draft                ORIGIN Frames                December 2017
 
 
 
-Nottingham & Nygren       Expires June 15, 2018                 [Page 7]
+Nottingham & Nygren       Expires June 16, 2018                 [Page 7]
 
 Internet-Draft                ORIGIN Frames                December 2017
 
@@ -414,10 +414,6 @@ Internet-Draft                ORIGIN Frames                December 2017
 
 5.2.  Informative References
 
-   [RFC5988]  Nottingham, M., "Web Linking", RFC 5988,
-              DOI 10.17487/RFC5988, October 2010,
-              <https://www.rfc-editor.org/info/rfc5988>.
-
    [RFC6929]  DeKok, A. and A. Lior, "Remote Authentication Dial In User
               Service (RADIUS) Protocol Extensions", RFC 6929,
               DOI 10.17487/RFC6929, April 2013,
@@ -438,6 +434,9 @@ Internet-Draft                ORIGIN Frames                December 2017
               Alternative Services", RFC 7838, DOI 10.17487/RFC7838,
               April 2016, <https://www.rfc-editor.org/info/rfc7838>.
 
+   [RFC8288]  Nottingham, M., "Web Linking", RFC 8288,
+              DOI 10.17487/RFC8288, October 2017,
+              <https://www.rfc-editor.org/info/rfc8288>.
 
 
 
@@ -445,7 +444,8 @@ Internet-Draft                ORIGIN Frames                December 2017
 
 
 
-Nottingham & Nygren       Expires June 15, 2018                 [Page 8]
+
+Nottingham & Nygren       Expires June 16, 2018                 [Page 8]
 
 Internet-Draft                ORIGIN Frames                December 2017
 
@@ -501,7 +501,7 @@ Appendix B.  Operational Considerations for Servers
 
 
 
-Nottingham & Nygren       Expires June 15, 2018                 [Page 9]
+Nottingham & Nygren       Expires June 16, 2018                 [Page 9]
 
 Internet-Draft                ORIGIN Frames                December 2017
 
@@ -511,7 +511,7 @@ Internet-Draft                ORIGIN Frames                December 2017
 
    Generally, this information is most useful to send before sending any
    part of a response that might initiate a new connection; for example,
-   "Link" header fields [RFC5988] in a response HEADERS, or links in the
+   "Link" header fields [RFC8288] in a response HEADERS, or links in the
    response body.
 
    Therefore, the ORIGIN frame ought be sent as soon as possible on a
@@ -529,8 +529,9 @@ Internet-Draft                ORIGIN Frames                December 2017
    decisions about creating connections on the fly, and if the origin
    set is split across many frames, their behaviour might be suboptimal.
 
-   Senders take note that, as per Section 4 of [RFC6454], the values in
-   an ORIGIN header need to be case-normalised before serialisation.
+   Senders take note that, as per Section 4, Step 5 of [RFC6454], the
+   values in an ORIGIN header need to be case-normalised before
+   serialisation.
 
    Finally, servers that host alternative services [RFC7838] will need
    to explicitly advertise their origins when sending ORIGIN, because
@@ -556,5 +557,4 @@ Authors' Addresses
 
 
 
-
-Nottingham & Nygren       Expires June 15, 2018                [Page 10]
+Nottingham & Nygren       Expires June 16, 2018                [Page 10]
