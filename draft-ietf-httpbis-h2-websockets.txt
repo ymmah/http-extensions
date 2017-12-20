@@ -16,6 +16,16 @@ Abstract
    This document defines a mechanism for running the WebSocket Protocol
    [RFC6455] over a single stream of an HTTP/2 connection.
 
+Note to Readers
+
+   Discussion of this draft takes place on the HTTP working group
+   mailing list (ietf-http-wg@w3.org), which is archived at
+   https://lists.w3.org/Archives/Public/ietf-http-wg/ [1].
+
+   Working Group information can be found at http://httpwg.github.io/
+   [2]; source code and issues list for this draft can be found at
+   https://github.com/httpwg/http-extensions/labels/h2-websockets [3].
+
 Status of This Memo
 
    This Internet-Draft is submitted in full conformance with the
@@ -40,16 +50,6 @@ Copyright Notice
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
-   (https://trustee.ietf.org/license-info) in effect on the date of
-   publication of this document.  Please review these documents
-   carefully, as they describe your rights and restrictions with respect
-   to this document.  Code Components extracted from this document must
-   include Simplified BSD License text as described in Section 4.e of
-   the Trust Legal Provisions and are provided without warranty as
-   described in the Simplified BSD License.
-
-
-
 
 
 
@@ -58,20 +58,30 @@ McManus                   Expires June 22, 2018                 [Page 1]
 Internet-Draft                H2 Websockets                December 2017
 
 
+   (https://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   3
    3.  The ENABLE_CONNECT_PROTOCOL SETTINGS Parameter  . . . . . . .   3
-   4.  The Extended CONNECT Method . . . . . . . . . . . . . . . . .   3
+   4.  The Extended CONNECT Method . . . . . . . . . . . . . . . . .   4
    5.  Using Extended CONNECT To Bootstrap The WebSocket Protocol  .   4
      5.1.  Example . . . . . . . . . . . . . . . . . . . . . . . . .   5
-   6.  Design Considerations . . . . . . . . . . . . . . . . . . . .   5
-   7.  About Intermediaries  . . . . . . . . . . . . . . . . . . . .   5
+   6.  Design Considerations . . . . . . . . . . . . . . . . . . . .   6
+   7.  About Intermediaries  . . . . . . . . . . . . . . . . . . . .   6
    8.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
    9.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
-   10. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   6
-   11. Normative References  . . . . . . . . . . . . . . . . . . . .   6
+   10. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   7
+   11. References  . . . . . . . . . . . . . . . . . . . . . . . . .   7
+     11.1.  Normative References . . . . . . . . . . . . . . . . . .   7
+     11.2.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .   7
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   7
 
 1.  Introduction
@@ -96,6 +106,14 @@ Table of Contents
 
    This document extends the HTTP/2 CONNECT method.  The extension
    allows the substitution of a new protocol name to connect to rather
+
+
+
+McManus                   Expires June 22, 2018                 [Page 2]
+
+Internet-Draft                H2 Websockets                December 2017
+
+
    than the external host normally used by CONNECT.  The result is a
    tunnel on a single HTTP/2 stream that can carry data for WebSockets
    (or any other protocol).  The other streams on the connection may
@@ -105,14 +123,6 @@ Table of Contents
    This tunneled stream will be multiplexed with other regular streams
    on the connection and enjoys the normal priority, cancellation, and
    flow control features of HTTP/2.
-
-
-
-
-McManus                   Expires June 22, 2018                 [Page 2]
-
-Internet-Draft                H2 Websockets                December 2017
-
 
    Streams that successfully establish a WebSocket connection using a
    tunneled stream and the modifications to the opening handshake
@@ -150,6 +160,16 @@ Internet-Draft                H2 Websockets                December 2017
    receiving a ENABLE_CONNECT_PROTOCOL parameter with the value of 1 it
    would be a protocol violation.
 
+
+
+
+
+
+McManus                   Expires June 22, 2018                 [Page 3]
+
+Internet-Draft                H2 Websockets                December 2017
+
+
 4.  The Extended CONNECT Method
 
    The CONNECT Method of [RFC7540] Section 8.3 is modified in the
@@ -162,13 +182,6 @@ Internet-Draft                H2 Websockets                December 2017
 
    o  On requests bearing the :protocol pseudo-header, the :scheme and
       :path pseudo-header fields MUST be included.
-
-
-
-McManus                   Expires June 22, 2018                 [Page 3]
-
-Internet-Draft                H2 Websockets                December 2017
-
 
    o  On requests bearing the :protocol pseudo-header, the :authority
       pseudo-header field is interpreted according to [RFC7540]
@@ -205,6 +218,14 @@ Internet-Draft                H2 Websockets                December 2017
 
    Implementations using this extended CONNECT to bootstrap WebSockets
    do not do the processing of the [RFC6455] Sec-WebSocket-Key and Sec-
+
+
+
+McManus                   Expires June 22, 2018                 [Page 4]
+
+Internet-Draft                H2 Websockets                December 2017
+
+
    WebSocket-Accept headers as that functionality has been superceded by
    the :protocol pseudo-header.
 
@@ -217,15 +238,6 @@ Internet-Draft                H2 Websockets                December 2017
    After successfully processing the opening handshake the peers should
    proceed with The WebSocket Protocol [RFC6455] using the HTTP/2 stream
    from the CONNECT transaction as if it were the TCP connection
-
-
-
-
-McManus                   Expires June 22, 2018                 [Page 4]
-
-Internet-Draft                H2 Websockets                December 2017
-
-
    referred to in [RFC6455].  The state of the WebSocket connection at
    this point is OPEN as defined by [RFC6455] Section 4.1.
 
@@ -260,6 +272,16 @@ Internet-Draft                H2 Websockets                December 2017
    DATA + END_STREAM
    WebSocket Data
 
+
+
+
+
+
+McManus                   Expires June 22, 2018                 [Page 5]
+
+Internet-Draft                H2 Websockets                December 2017
+
+
 6.  Design Considerations
 
    A more native integration with HTTP/2 is certainly possible with
@@ -274,13 +296,6 @@ Internet-Draft                H2 Websockets                December 2017
    to a HTTP proxy it should continue to use a traditional (i.e. not
    with a :protocol pseudo-header) CONNECT to tunnel through that proxy
    to the WebSocket server via HTTP.
-
-
-
-McManus                   Expires June 22, 2018                 [Page 5]
-
-Internet-Draft                H2 Websockets                December 2017
-
 
    The resulting version of HTTP on that tunnel determines whether
    WebSockets is initiated directly or via a modified CONNECT request
@@ -313,13 +328,25 @@ Internet-Draft                H2 Websockets                December 2017
 
    Specification: This document
 
+
+
+
+
+
+McManus                   Expires June 22, 2018                 [Page 6]
+
+Internet-Draft                H2 Websockets                December 2017
+
+
 10.  Acknowledgments
 
    The 2017 HTTP Workshop had a very productive discussion that helped
    determine the key problem and acceptable level of solution
    complexity.
 
-11.  Normative References
+11.  References
+
+11.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -329,14 +356,6 @@ Internet-Draft                H2 Websockets                December 2017
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
               DOI 10.17487/RFC6454, December 2011,
               <https://www.rfc-editor.org/info/rfc6454>.
-
-
-
-
-McManus                   Expires June 22, 2018                 [Page 6]
-
-Internet-Draft                H2 Websockets                December 2017
-
 
    [RFC6455]  Fette, I. and A. Melnikov, "The WebSocket Protocol",
               RFC 6455, DOI 10.17487/RFC6455, December 2011,
@@ -352,39 +371,20 @@ Internet-Draft                H2 Websockets                December 2017
               DOI 10.17487/RFC7540, May 2015,
               <https://www.rfc-editor.org/info/rfc7540>.
 
+11.2.  URIs
+
+   [1] https://lists.w3.org/Archives/Public/ietf-http-wg/
+
+   [2] http://httpwg.github.io/
+
+   [3] https://github.com/httpwg/http-extensions/labels/h2-websockets
+
 Author's Address
 
    Patrick McManus
    Mozilla
 
    Email: mcmanus@ducksong.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
