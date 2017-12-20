@@ -3,7 +3,7 @@
 
 
 HTTP Working Group                                              C. Pratt
-Internet-Draft                                                 CableLabs
+Internet-Draft
 Intended status: Experimental                                   B. Stark
 Expires: May 5, 2018                                                AT&T
                                                               D. Thakore
@@ -524,9 +524,8 @@ Acknowledgements
 Authors' Addresses
 
    Craig Pratt
-   CableLabs
-   858 Coal Creek Circle
-   Louisville, CO  80027
+   Portland, OR  97229
+   US
 
    Email: pratt@acm.org
 
@@ -545,6 +544,7 @@ Authors' Addresses
    Louisville, CO  80027
 
    Email: d.thakore@cablelabs.com
+
 
 
 
