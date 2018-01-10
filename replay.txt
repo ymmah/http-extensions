@@ -2,7 +2,7 @@
 
 
 
-httpbis Working Group                                         M. Thomson
+HTTP Working Group                                            M. Thomson
 Internet-Draft                                                   Mozilla
 Intended status: Standards Track                           M. Nottingham
 Expires: July 14, 2018                                            Fastly
