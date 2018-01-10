@@ -2,7 +2,7 @@
 
 
 
-HTTPbis Working Group                                         P. McManus
+HTTP Working Group                                            P. McManus
 Internet-Draft                                                   Mozilla
 Intended status: Standards Track                        January 10, 2018
 Expires: July 14, 2018
