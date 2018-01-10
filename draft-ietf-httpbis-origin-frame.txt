@@ -82,7 +82,7 @@ Table of Contents
    5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   7
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   7
      5.2.  Informative References  . . . . . . . . . . . . . . . . .   8
-     5.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   9
+     5.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   8
    Appendix A.  Non-Normative Processing Algorithm . . . . . . . . .   9
    Appendix B.  Operational Considerations for Servers . . . . . . .   9
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  10
@@ -355,7 +355,7 @@ Internet-Draft                ORIGIN Frames                 January 2018
    alternative means to establish a high degree of confidence that the
    certificate is legitimate.  For example, clients might skip
    consulting DNS only if they receive proof of inclusion in a
-   Certificate Transparency log [RFC6929] or they have a recent OCSP
+   Certificate Transparency log [RFC6962] or they have a recent OCSP
    response [RFC6960] (possibly using the "status_request" TLS extension
    [RFC6066]) showing that the certificate was not revoked.
 
@@ -414,16 +414,15 @@ Internet-Draft                ORIGIN Frames                 January 2018
 
 5.2.  Informative References
 
-   [RFC6929]  DeKok, A. and A. Lior, "Remote Authentication Dial In User
-              Service (RADIUS) Protocol Extensions", RFC 6929,
-              DOI 10.17487/RFC6929, April 2013,
-              <https://www.rfc-editor.org/info/rfc6929>.
-
    [RFC6960]  Santesson, S., Myers, M., Ankney, R., Malpani, A.,
               Galperin, S., and C. Adams, "X.509 Internet Public Key
               Infrastructure Online Certificate Status Protocol - OCSP",
               RFC 6960, DOI 10.17487/RFC6960, June 2013,
               <https://www.rfc-editor.org/info/rfc6960>.
+
+   [RFC6962]  Laurie, B., Langley, A., and E. Kasper, "Certificate
+              Transparency", RFC 6962, DOI 10.17487/RFC6962, June 2013,
+              <https://www.rfc-editor.org/info/rfc6962>.
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
@@ -438,10 +437,11 @@ Internet-Draft                ORIGIN Frames                 January 2018
               DOI 10.17487/RFC8288, October 2017,
               <https://www.rfc-editor.org/info/rfc8288>.
 
+5.3.  URIs
 
+   [1] https://lists.w3.org/Archives/Public/ietf-http-wg/
 
-
-
+   [2] http://httpwg.github.io/
 
 
 
@@ -449,12 +449,6 @@ Nottingham & Nygren       Expires July 14, 2018                 [Page 8]
 
 Internet-Draft                ORIGIN Frames                 January 2018
 
-
-5.3.  URIs
-
-   [1] https://lists.w3.org/Archives/Public/ietf-http-wg/
-
-   [2] http://httpwg.github.io/
 
    [3] https://github.com/httpwg/http-extensions/labels/origin-frame
 
@@ -498,6 +492,12 @@ Appendix B.  Operational Considerations for Servers
 
    For example, it can be used to inform the client that the connection
    is to only be used for the SNI-based origin, by sending an empty
+   ORIGIN frame.  Or, a larger number of origins can be indicated by
+   including a payload.
+
+   Generally, this information is most useful to send before sending any
+   part of a response that might initiate a new connection; for example,
+
 
 
 
@@ -506,11 +506,6 @@ Nottingham & Nygren       Expires July 14, 2018                 [Page 9]
 Internet-Draft                ORIGIN Frames                 January 2018
 
 
-   ORIGIN frame.  Or, a larger number of origins can be indicated by
-   including a payload.
-
-   Generally, this information is most useful to send before sending any
-   part of a response that might initiate a new connection; for example,
    "Link" header fields [RFC8288] in a response HEADERS, or links in the
    response body.
 
@@ -551,6 +546,11 @@ Authors' Addresses
    Akamai
 
    Email: nygren@akamai.com
+
+
+
+
+
 
 
 
