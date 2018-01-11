@@ -208,8 +208,8 @@ Internet-Draft                ORIGIN Frames                 January 2018
 
    Note that the ORIGIN frame does not support wildcard names (e.g.,
    "*.example.com") in Origin-Entry.  As a result, sending ORIGIN when a
-   wildcard certificate in use effectively disables any origins that are
-   not explicitly listed in the ORIGIN frame(s).
+   wildcard certificate is in use effectively disables any origins that
+   are not explicitly listed in the ORIGIN frame(s).
 
    See Appendix A for an illustrative algorithm for processing ORIGIN
    frames.
