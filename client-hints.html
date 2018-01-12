@@ -75,13 +75,12 @@ window.addEventListener('DOMContentLoaded', anchorRewrite);
 }
 
 body {
-  font: 15px "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font: 16px "Helvetica Neue",Helvetica,Arial,sans-serif;
   color: #333;
   font-size-adjust: 0.5;
-  line-height: 23px;
+  line-height: 24px;
   margin: 75px auto;
   max-width: 724px;
-  font-weight: 300;
 }
 
 .title, .filename, h1, h2, h3, h4 {
@@ -345,5 +344,4 @@ address {
   Key: DPR;partition=1.5:2.5:4.0
 </pre></div><div id="rfc.section.A.p.2"><p>Above example indicates that the cache key needs to include the value of the DPR header field with three segments: less than 1.5, 1.5 to less than 2.5, and 4.0 or greater.</p></div><div id="rfc.figure.u.15"><pre class="text">
   Key: Width;div=320
-  <div class="github-fork-ribbon-wrapper"><div class="github-fork-ribbon"><a href="https://github.com/httpwg/http-extensions">Fork me on GitHub</a></div></div>
 </pre></div><div id="rfc.section.A.p.3"><p>Above example indicates that the cache key needs to include the value of the Width header field and be partitioned into groups of 320: 0-320, 320-640, and so on.</p></div></section><section id="changes"><h2 id="rfc.section.B"><a href="#rfc.section.B">B.</a> <a href="#changes">Changes</a></h2><section id="since-00"><h3 id="rfc.section.B.1"><a href="#rfc.section.B.1">B.1.</a> <a href="#since-00">Since -00</a></h3><div id="rfc.section.B.1.p.1"><ul><li>Issue 168 (make Save-Data extensible) updated ABNF.</li><li>Issue 163 (CH review feedback) editorial feedback from httpwg list.</li><li>Issue 153 (NetInfo API citation) added normative reference.</li></ul></div></section><section id="since-01"><h3 id="rfc.section.B.2"><a href="#rfc.section.B.2">B.2.</a> <a href="#since-01">Since -01</a></h3><div id="rfc.section.B.2.p.1"><ul><li>Issue 200: Moved Key reference to informative.</li><li>Issue 215: Extended passive fingerprinting and mitigation considerations.</li><li>Changed document status to experimental.</li></ul></div></section><section id="since-02"><h3 id="rfc.section.B.3"><a href="#rfc.section.B.3">B.3.</a> <a href="#since-02">Since -02</a></h3><div id="rfc.section.B.3.p.1"><ul><li>Issue 239: Updated reference to CR-css-values-3</li><li>Issue 240: Updated reference for Network Information API</li><li>Issue 241: Consistency in IANA considerations</li><li>Issue 250: Clarified Accept-CH</li></ul></div></section><section id="since-03"><h3 id="rfc.section.B.4"><a href="#rfc.section.B.4">B.4.</a> <a href="#since-03">Since -03</a></h3><div id="rfc.section.B.4.p.1"><ul><li>Issue 284: Extended guidance for Accept-CH</li><li>Issue 308: Editorial cleanup</li><li>Issue 306: Define Accept-CH-Lifetime</li></ul></div></section><section id="since-04"><h3 id="rfc.section.B.5"><a href="#rfc.section.B.5">B.5.</a> <a href="#since-04">Since -04</a></h3><div id="rfc.section.B.5.p.1"><ul><li>Issue 361: Removed Downlink</li><li>Issue 361: Moved Key to appendix, plus other editorial feedback</li></ul></div></section><section id="since-05"><h3 id="rfc.section.B.6"><a href="#rfc.section.B.6">B.6.</a> <a href="#since-05">Since -05</a></h3><div id="rfc.section.B.6.p.1"><ul><li>Issue 372: Scoped CH opt-in and delivery to secure transports</li><li>Issue 373: Bind CH opt-in to origin</li></ul></div></section><section id="since-06"><h3 id="rfc.section.B.7"><a href="#rfc.section.B.7">B.7.</a> <a href="#since-06">Since -06</a></h3><div id="rfc.section.B.7.p.1"><ul><li>None</li></ul></div></section></section><section id="rfc.authors" class="avoidbreakinside"><h2><a href="#rfc.authors">Author's Address</a></h2><address><b>Ilya Grigorik</b><br>Google<br>EMail: <a href="mailto:ilya@igvita.com">ilya@igvita.com</a><br>URI: <a href="https://www.igvita.com/">https://www.igvita.com/</a></address></section></body></html>
