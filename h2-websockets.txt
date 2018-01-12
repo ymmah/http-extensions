@@ -70,7 +70,7 @@ Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   3
-   3.  The ENABLE_CONNECT_PROTOCOL SETTINGS Parameter  . . . . . . .   3
+   3.  The SETTINGS_ENABLE_CONNECT_PROTOCOL SETTINGS Parameter . . .   3
    4.  The Extended CONNECT Method . . . . . . . . . . . . . . . . .   4
    5.  Using Extended CONNECT To Bootstrap The WebSocket Protocol  .   4
      5.1.  Example . . . . . . . . . . . . . . . . . . . . . . . . .   5
@@ -137,28 +137,28 @@ Internet-Draft                H2 Websockets                 January 2018
    and "OPTIONAL" are to be interpreted as described in BCP 14,
    [RFC2119].
 
-3.  The ENABLE_CONNECT_PROTOCOL SETTINGS Parameter
+3.  The SETTINGS_ENABLE_CONNECT_PROTOCOL SETTINGS Parameter
 
    This document adds a new SETTINGS Parameter to those defined by
    [RFC7540], Section 6.5.2.
 
-   The new parameter is ENABLE_CONNECT_PROTOCOL (type = 0x8).  The value
-   of the parameter MUST be 0 or 1.
+   The new parameter name is SETTINGS_ENABLE_CONNECT_PROTOCOL.  The
+   value of the parameter MUST be 0 or 1.
 
-   Upon receipt of ENABLE_CONNECT_PROTOCOL with a value of 1 a client
-   MAY use the Extended CONNECT definition of this document when
+   Upon receipt of SETTINGS_ENABLE_CONNECT_PROTOCOL with a value of 1 a
+   client MAY use the Extended CONNECT definition of this document when
    creating new streams.  Receipt of this parameter by a server does not
    have any impact.
 
-   A sender MUST NOT send a ENABLE_CONNECT_PROTOCOL parameter with the
-   value of 0 after previously sending a value of 1.
+   A sender MUST NOT send a SETTINGS_ENABLE_CONNECT_PROTOCOL parameter
+   with the value of 0 after previously sending a value of 1.
 
    The use of a SETTINGS Parameter to opt-in to an otherwise
    incompatible protocol change is a use of "Extending HTTP/2" defined
    by Section 5.5 of [RFC7540].  If a client were to use the provisions
    of the extended CONNECT method defined in this document without first
-   receiving a ENABLE_CONNECT_PROTOCOL parameter with the value of 1 it
-   would be a protocol violation.
+   receiving a SETTINGS_ENABLE_CONNECT_PROTOCOL parameter with the value
+   of 1 it would be a protocol violation.
 
 
 
@@ -243,34 +243,34 @@ Internet-Draft                H2 Websockets                 January 2018
 
 5.1.  Example
 
-   [[ From Client ]]                       [[ From Server ]]
+[[ From Client ]]                       [[ From Server ]]
 
-                                           SETTINGS
-                                           ENABLE_CONNECT_PROTOCOL = 1
+                                        SETTINGS
+                                        SETTINGS_ENABLE_CONNECT_PROTOCOL = 1
 
-   HEADERS + END_HEADERS
-   :method = CONNECT
-   :protocol = websocket
-   :scheme = https
-   :path = /chat
-   :authority = server.example.com:443
-   sec-websocket-protocol = chat, superchat
-   sec-websocket-extensions = permessage-deflate
-   sec-websocket-version = 13
-   origin = http://www.example.com
+HEADERS + END_HEADERS
+:method = CONNECT
+:protocol = websocket
+:scheme = https
+:path = /chat
+:authority = server.example.com:443
+sec-websocket-protocol = chat, superchat
+sec-websocket-extensions = permessage-deflate
+sec-websocket-version = 13
+origin = http://www.example.com
 
-                                           HEADERS + END_HEADERS
-                                           :status = 200
-                                           sec-websocket-protocol = chat
+                                        HEADERS + END_HEADERS
+                                        :status = 200
+                                        sec-websocket-protocol = chat
 
-   DATA
-   WebSocket Data
+DATA
+WebSocket Data
 
-                                           DATA + END_STREAM
-                                           WebSocket Data
+                                        DATA + END_STREAM
+                                        WebSocket Data
 
-   DATA + END_STREAM
-   WebSocket Data
+DATA + END_STREAM
+WebSocket Data
 
 
 
@@ -317,10 +317,10 @@ Internet-Draft                H2 Websockets                 January 2018
 
 9.  IANA Considerations
 
-   This document establishes a entry for the HTTP/2 Settings Registry
+   This document establishes an entry for the HTTP/2 Settings Registry
    that was established by Section 11.3 of [RFC7540].
 
-   Name: ENABLE_CONNECT_PROTOCOL
+   Name: SETTINGS_ENABLE_CONNECT_PROTOCOL
 
    Code: 0x8
 
