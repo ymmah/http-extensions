@@ -5,8 +5,8 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft
 Intended status: Standards Track                               E. Nygren
-Expires: July 17, 2018                                            Akamai
-                                                        January 13, 2018
+Expires: July 26, 2018                                            Akamai
+                                                        January 22, 2018
 
 
                         The ORIGIN HTTP/2 Frame
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on July 17, 2018.
+   This Internet-Draft will expire on July 26, 2018.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Nottingham & Nygren       Expires July 17, 2018                 [Page 1]
+Nottingham & Nygren       Expires July 26, 2018                 [Page 1]
 
 Internet-Draft                ORIGIN Frames                 January 2018
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Nottingham & Nygren       Expires July 17, 2018                 [Page 2]
+Nottingham & Nygren       Expires July 26, 2018                 [Page 2]
 
 Internet-Draft                ORIGIN Frames                 January 2018
 
@@ -165,7 +165,7 @@ Internet-Draft                ORIGIN Frames                 January 2018
 
 
 
-Nottingham & Nygren       Expires July 17, 2018                 [Page 3]
+Nottingham & Nygren       Expires July 26, 2018                 [Page 3]
 
 Internet-Draft                ORIGIN Frames                 January 2018
 
@@ -221,7 +221,7 @@ Internet-Draft                ORIGIN Frames                 January 2018
 
 
 
-Nottingham & Nygren       Expires July 17, 2018                 [Page 4]
+Nottingham & Nygren       Expires July 26, 2018                 [Page 4]
 
 Internet-Draft                ORIGIN Frames                 January 2018
 
@@ -277,7 +277,7 @@ Internet-Draft                ORIGIN Frames                 January 2018
 
 
 
-Nottingham & Nygren       Expires July 17, 2018                 [Page 5]
+Nottingham & Nygren       Expires July 26, 2018                 [Page 5]
 
 Internet-Draft                ORIGIN Frames                 January 2018
 
@@ -333,7 +333,7 @@ Internet-Draft                ORIGIN Frames                 January 2018
 
 
 
-Nottingham & Nygren       Expires July 17, 2018                 [Page 6]
+Nottingham & Nygren       Expires July 26, 2018                 [Page 6]
 
 Internet-Draft                ORIGIN Frames                 January 2018
 
@@ -389,7 +389,7 @@ Internet-Draft                ORIGIN Frames                 January 2018
 
 
 
-Nottingham & Nygren       Expires July 17, 2018                 [Page 7]
+Nottingham & Nygren       Expires July 26, 2018                 [Page 7]
 
 Internet-Draft                ORIGIN Frames                 January 2018
 
@@ -445,7 +445,7 @@ Internet-Draft                ORIGIN Frames                 January 2018
 
 
 
-Nottingham & Nygren       Expires July 17, 2018                 [Page 8]
+Nottingham & Nygren       Expires July 26, 2018                 [Page 8]
 
 Internet-Draft                ORIGIN Frames                 January 2018
 
@@ -501,7 +501,7 @@ Appendix B.  Operational Considerations for Servers
 
 
 
-Nottingham & Nygren       Expires July 17, 2018                 [Page 9]
+Nottingham & Nygren       Expires July 26, 2018                 [Page 9]
 
 Internet-Draft                ORIGIN Frames                 January 2018
 
@@ -557,4 +557,4 @@ Authors' Addresses
 
 
 
-Nottingham & Nygren       Expires July 17, 2018                [Page 10]
+Nottingham & Nygren       Expires July 26, 2018                [Page 10]

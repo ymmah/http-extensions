@@ -89,7 +89,7 @@ Table of Contents
    4.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
    5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
      5.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
-     5.2.  Informative References  . . . . . . . . . . . . . . . . .   9
+     5.2.  Informative References  . . . . . . . . . . . . . . . . .  10
    Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  10
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  10
 
@@ -454,6 +454,27 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
    and aggregated ("live") data being returned as the content is
    aggregated.
 
+   A server that doesn't support or supply a continuously aggregating
+   ("live") response will supply the currently satisfiable byte range,
+   as it would with an open-ended byte request.
+
+   For example:
+
+       GET /resource HTTP/1.1
+       Host: example.com
+       Range: bytes=0-999999999999
+
+
+   will return
+
+       HTTP/1.1 206 Partial Content
+       Content-Range: bytes 1020000-1254567/*
+
+   from the server to indicate that the response will start at byte
+   1020000, end at byte 1254567, and will not include any aggregated
+   content.  This is the response expected from a typical HTTP server -
+   one that doesn't support byte-range requests on aggregating content.
+
 4.  Security Considerations
 
    One potential issue with this recommendation is related to the use of
@@ -478,6 +499,13 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
+
+
+Pratt, et al.              Expires May 5, 2018                  [Page 9]
+
+Internet-Draft     HTTP Random Access and Live Content     November 2017
+
+
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
@@ -495,16 +523,6 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
               and segment formats", ISO/IEC 23009-1:2014, May 2014,
               <http://standards.iso.org/ittf/PubliclyAvailableStandards/
               c065274_ISO_IEC_23009-1_2014.zip>.
-
-
-
-
-
-
-Pratt, et al.              Expires May 5, 2018                  [Page 9]
-
-Internet-Draft     HTTP Random Access and Live Content     November 2017
-
 
    [RFC5234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
               Specifications: ABNF", STD 68, RFC 5234,
@@ -538,6 +556,12 @@ Authors' Addresses
    Email: barbara.stark@att.com
 
 
+
+Pratt, et al.              Expires May 5, 2018                 [Page 10]
+
+Internet-Draft     HTTP Random Access and Live Content     November 2017
+
+
    Darshak Thakore
    CableLabs
    858 Coal Creek Circle
@@ -557,4 +581,36 @@ Authors' Addresses
 
 
 
-Pratt, et al.              Expires May 5, 2018                 [Page 10]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Pratt, et al.              Expires May 5, 2018                 [Page 11]
