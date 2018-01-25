@@ -4,8 +4,8 @@
 
 HTTP Working Group                                           I. Grigorik
 Internet-Draft                                                    Google
-Intended status: Experimental                           January 22, 2018
-Expires: July 26, 2018
+Intended status: Experimental                           January 25, 2018
+Expires: July 29, 2018
 
 
                            HTTP Client Hints
@@ -49,11 +49,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on July 26, 2018.
+   This Internet-Draft will expire on July 29, 2018.
 
 
 
-Grigorik                  Expires July 26, 2018                 [Page 1]
+Grigorik                  Expires July 29, 2018                 [Page 1]
 
 Internet-Draft              HTTP Client Hints               January 2018
 
@@ -85,13 +85,13 @@ Table of Contents
        2.2.3.  Interaction with Caches . . . . . . . . . . . . . . .   6
    3.  Client Hints  . . . . . . . . . . . . . . . . . . . . . . . .   6
      3.1.  The DPR Header Field  . . . . . . . . . . . . . . . . . .   6
-       3.1.1.  Confirming Selected DPR . . . . . . . . . . . . . . .   6
+       3.1.1.  Confirming Selected DPR . . . . . . . . . . . . . . .   7
      3.2.  The Width Header Field  . . . . . . . . . . . . . . . . .   7
      3.3.  The Viewport-Width Header Field . . . . . . . . . . . . .   7
      3.4.  The Save-Data Header Field  . . . . . . . . . . . . . . .   8
    4.  Examples  . . . . . . . . . . . . . . . . . . . . . . . . . .   8
    5.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  10
      6.1.  Accept-CH . . . . . . . . . . . . . . . . . . . . . . . .  10
      6.2.  Accept-CH-Lifetime  . . . . . . . . . . . . . . . . . . .  10
      6.3.  Content-DPR . . . . . . . . . . . . . . . . . . . . . . .  10
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Grigorik                  Expires July 26, 2018                 [Page 2]
+Grigorik                  Expires July 29, 2018                 [Page 2]
 
 Internet-Draft              HTTP Client Hints               January 2018
 
@@ -165,7 +165,7 @@ Internet-Draft              HTTP Client Hints               January 2018
 
 
 
-Grigorik                  Expires July 26, 2018                 [Page 3]
+Grigorik                  Expires July 29, 2018                 [Page 3]
 
 Internet-Draft              HTTP Client Hints               January 2018
 
@@ -194,10 +194,12 @@ Internet-Draft              HTTP Client Hints               January 2018
 2.1.  Sending Client Hints
 
    Clients control which Client Hints are sent in requests, based on
-   their default settings, user configuration and/or preferences.  The
-   client and server can use an opt-in mechanism outlined below to
+   their default settings, user configuration, and server preferences.
+   The client and server can use an opt-in mechanism outlined below to
    negotiate which fields should be sent to allow for efficient content
-   adaption.
+   adaption, and optinally use additional mechanisms to negotiate
+   delegation policies that control access of third parties to same
+   fields.
 
    Implementers should be aware of the passive fingerprinting and
    network information disclosure implications when implementing support
@@ -216,16 +218,15 @@ Internet-Draft              HTTP Client Hints               January 2018
 
    Further, depending on the hint used, the server can generate
    additional response header fields to convey related values to aid
-   client processing.  For example, this specification defines the
 
 
 
-
-Grigorik                  Expires July 26, 2018                 [Page 4]
+Grigorik                  Expires July 29, 2018                 [Page 4]
 
 Internet-Draft              HTTP Client Hints               January 2018
 
 
+   client processing.  For example, this specification defines the
    "Content-DPR" response header field that needs to be returned by the
    server when the "DPR" hint is used to select the response.
 
@@ -272,16 +273,17 @@ Internet-Draft              HTTP Client Hints               January 2018
      Accept-CH: Viewport-Width
      Accept-CH-Lifetime: 86400
 
-   For example, based on the Accept-CH and Accept-CH-Lifetime example
-   above, which is received from "https://bar.example.com" in response
 
 
 
-Grigorik                  Expires July 26, 2018                 [Page 5]
+
+Grigorik                  Expires July 29, 2018                 [Page 5]
 
 Internet-Draft              HTTP Client Hints               January 2018
 
 
+   For example, based on the Accept-CH and Accept-CH-Lifetime example
+   above, which is received from "https://bar.example.com" in response
    to a resource request initiated by "https://foo.example.com", both
    delivered over a secure transport: a user agent SHOULD persist an
    Accept-CH preference bound to "https://foo.example.com", for requests
@@ -325,18 +327,22 @@ Internet-Draft              HTTP Client Hints               January 2018
    If DPR occurs in a message more than once, the last value overrides
    all previous occurrences.
 
+
+
+
+
+
+
+Grigorik                  Expires July 29, 2018                 [Page 6]
+
+Internet-Draft              HTTP Client Hints               January 2018
+
+
 3.1.1.  Confirming Selected DPR
 
    The "Content-DPR" response header field is a number that indicates
    the ratio between physical pixels over CSS px of the selected image
    response.
-
-
-
-Grigorik                  Expires July 26, 2018                 [Page 6]
-
-Internet-Draft              HTTP Client Hints               January 2018
-
 
      Content-DPR = 1*DIGIT [ "." 1*DIGIT ]
 
@@ -381,18 +387,15 @@ Internet-Draft              HTTP Client Hints               January 2018
 
      Viewport-Width = 1*DIGIT
 
-   If Viewport-Width occurs in a message more than once, the last value
-   overrides all previous occurrences.
 
 
-
-
-
-
-Grigorik                  Expires July 26, 2018                 [Page 7]
+Grigorik                  Expires July 29, 2018                 [Page 7]
 
 Internet-Draft              HTTP Client Hints               January 2018
 
+
+   If Viewport-Width occurs in a message more than once, the last value
+   overrides all previous occurrences.
 
 3.4.  The Save-Data Header Field
 
@@ -439,16 +442,17 @@ Internet-Draft              HTTP Client Hints               January 2018
    The Content-DPR response header field indicates to the client that
    the server has selected resource with DPR ratio of 1.0.  The client
    can use this information to perform additional processing on the
-   resource - for example, calculate the appropriate intrinsic size of
-   the image resource such that it is displayed at the correct
-   resolution.
 
 
 
-Grigorik                  Expires July 26, 2018                 [Page 8]
+Grigorik                  Expires July 29, 2018                 [Page 8]
 
 Internet-Draft              HTTP Client Hints               January 2018
 
+
+   resource - for example, calculate the appropriate intrinsic size of
+   the image resource such that it is displayed at the correct
+   resolution.
 
 5.  Security Considerations
 
@@ -474,6 +478,10 @@ Internet-Draft              HTTP Client Hints               January 2018
    mechanisms and policies to control which Client Hints header fields
    are advertised:
 
+   o  Implementers SHOULD restrict delivery of some or all Client Hints
+      header fields to the opt-in origin only, unless the opt-in origin
+      has explicitly delegated permission to another origin to request
+      Client Hints header fields.
    o  Implementers MAY provide user choice mechanisms so that users may
       balance privacy concerns with bandwidth limitations.  However,
       implementers should also be aware that explaining the privacy
@@ -488,23 +496,22 @@ Internet-Draft              HTTP Client Hints               January 2018
    clear persisted opt-in preferences when site data, browsing history,
    browsing cache, or similar, are cleared.
 
+
+
+
+
+
+Grigorik                  Expires July 29, 2018                 [Page 9]
+
+Internet-Draft              HTTP Client Hints               January 2018
+
+
 6.  IANA Considerations
 
    This document defines the "Accept-CH", "DPR", "Save-Data", "Viewport-
    Width", and "Width" HTTP request fields, "Accept-CH", "Accept-CH-
    Lifetime", and "Content-DPR" HTTP response field, and registers them
    in the Permanent Message Header Fields registry.
-
-
-
-
-
-
-
-Grigorik                  Expires July 26, 2018                 [Page 9]
-
-Internet-Draft              HTTP Client Hints               January 2018
-
 
 6.1.  Accept-CH
 
@@ -547,20 +554,17 @@ Internet-Draft              HTTP Client Hints               January 2018
    o  Header field name: Save-Data
    o  Applicable protocol: HTTP
    o  Status: standard
-   o  Author/Change controller: IETF
-   o  Specification document(s): Section 3.4 of this document
-   o  Related information: for Client Hints
 
 
 
-
-
-
-
-Grigorik                  Expires July 26, 2018                [Page 10]
+Grigorik                  Expires July 29, 2018                [Page 10]
 
 Internet-Draft              HTTP Client Hints               January 2018
 
+
+   o  Author/Change controller: IETF
+   o  Specification document(s): Section 3.4 of this document
+   o  Related information: for Client Hints
 
 6.6.  Viewport-Width
 
@@ -609,11 +613,7 @@ Internet-Draft              HTTP Client Hints               January 2018
 
 
 
-
-
-
-
-Grigorik                  Expires July 26, 2018                [Page 11]
+Grigorik                  Expires July 29, 2018                [Page 11]
 
 Internet-Draft              HTTP Client Hints               January 2018
 
@@ -669,7 +669,7 @@ Internet-Draft              HTTP Client Hints               January 2018
 
 
 
-Grigorik                  Expires July 26, 2018                [Page 12]
+Grigorik                  Expires July 29, 2018                [Page 12]
 
 Internet-Draft              HTTP Client Hints               January 2018
 
@@ -725,7 +725,7 @@ B.3.  Since -02
 
 
 
-Grigorik                  Expires July 26, 2018                [Page 13]
+Grigorik                  Expires July 29, 2018                [Page 13]
 
 Internet-Draft              HTTP Client Hints               January 2018
 
@@ -781,4 +781,4 @@ Author's Address
 
 
 
-Grigorik                  Expires July 26, 2018                [Page 14]
+Grigorik                  Expires July 29, 2018                [Page 14]
