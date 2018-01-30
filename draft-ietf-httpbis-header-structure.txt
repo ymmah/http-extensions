@@ -14,11 +14,11 @@ Expires: August 3, 2018                        The Varnish Cache Project
 
 Abstract
 
-   This document describes Structured Headers, a way of simplifying HTTP
-   header field definition and parsing.  It is intended for use by new
-   specifications of HTTP header fields.  This includes revisions of
-   existing specifications when doing so does not cause interoperability
-   issues.
+   This document describes Structured Headers, a way of defining HTTP
+   header fields in a way that simplifies parsing and generation.  It is
+   intended for use by new specifications of HTTP header fields as well
+   as revisions of existing header field specifications when doing so
+   does not cause interoperability issues.
 
 Note to Readers
 
@@ -80,15 +80,16 @@ Copyright Notice
    decisions - and pitfalls - for a prospective HTTP header field
    author.
 
-   Likewise, bespoke parsers often need to be written for specific HTTP
-   headers, because each has slightly different handling of what looks
-   like common syntax.
+   Once a header field is defined, bespoke parsers for it often need to
+   be written, because each header has slightly different handling of
+   what looks like common syntax.
 
    This document introduces structured HTTP header field values
    (hereafter, Structured Headers) to address these problems.
-   Structured Headers define a generic, abstract model for data, along
-   with a concrete serialisation for expressing that model in textual
-   HTTP headers, as used by HTTP/1 [RFC7230] and HTTP/2 [RFC7540].
+   Structured Headers define a generic, abstract model for header field
+   values, along with a concrete serialisation for expressing that model
+   in textual HTTP headers, as used by HTTP/1 [RFC7230] and HTTP/2
+   [RFC7540].
 
    HTTP headers that are defined as Structured Headers use the types
    defined in this specification to define their syntax and basic
@@ -104,8 +105,7 @@ Copyright Notice
    existing HTTP headers; the mechanisms described herein are only
    intended to be used with headers that explicitly opt into them.
 
-   To specify a header field that uses Structured Headers, see
-   Section 2.
+
 
 
 
@@ -113,6 +113,9 @@ Nottingham & Kamp        Expires August 3, 2018                 [Page 2]
 
 Internet-Draft         Structured Headers for HTTP          January 2018
 
+
+   To specify a header field that uses Structured Headers, see
+   Section 2.
 
    Section 4 defines a number of abstract data types that can be used in
    Structured Headers, of which only three are allowed at the "top"
@@ -154,9 +157,6 @@ Internet-Draft         Structured Headers for HTTP          January 2018
    constraints are violated.
 
    For example:
-
-
-
 
 
 
@@ -824,16 +824,16 @@ A.1.  Since draft-ietf-httpbis-header-structure-02
 
    o  Split Numbers into Integers and Floats.
 
+   o  Define number parsing.
+
 A.2.  Since draft-ietf-httpbis-header-structure-01
 
    o  Replaced with draft-nottingham-structured-headers.
 
-A.3.  Since draft-ietf-httpbis-header-structure-00
 
-   o  Added signed 64bit integer type.
 
-   o  Drop UTF8, and settle on BCP137 ::EmbeddedUnicodeChar for h1-
-      unicode-string.
+
+
 
 
 
@@ -841,6 +841,13 @@ Nottingham & Kamp        Expires August 3, 2018                [Page 15]
 
 Internet-Draft         Structured Headers for HTTP          January 2018
 
+
+A.3.  Since draft-ietf-httpbis-header-structure-00
+
+   o  Added signed 64bit integer type.
+
+   o  Drop UTF8, and settle on BCP137 ::EmbeddedUnicodeChar for h1-
+      unicode-string.
 
    o  Change h1_blob delimiter to ":" since "'" is valid t_char
 
@@ -857,13 +864,6 @@ Authors' Addresses
    The Varnish Cache Project
 
    Email: phk@varnish-cache.org
-
-
-
-
-
-
-
 
 
 
