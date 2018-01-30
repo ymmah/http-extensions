@@ -192,7 +192,7 @@ Internet-Draft         Structured Headers for HTTP          January 2018
    Note that empty header field values are not allowed by the syntax,
    and therefore will be considered errors.
 
-3.  Parsing Requirements for Textual Headers
+3.  Parsing Textual Headers into Structured Headers
 
    When a receiving implementation parses textual HTTP header fields
    (e.g., in HTTP/1 or HTTP/2) that are known to be Structured Headers,
