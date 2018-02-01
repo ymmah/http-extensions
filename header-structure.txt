@@ -201,9 +201,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
    This section specifies the algorithm for doing so.
 
    Given an ASCII string input_string that represents the chosen
-   header's field-value, return the parsed header value.  Note that
-   input_string will incorporate multiple header lines combined into one
-   comma-separated field-value, as per [RFC7230], Section 3.2.2.
+   header's field-value, return the parsed header value.
 
    1.  Discard any OWS from the beginning of input_string.
 
@@ -218,6 +216,8 @@ Internet-Draft         Structured Headers for HTTP         February 2018
        the result of Parsing a Parameterised Label from Textual headers
        (Section 4.3.1).
 
+   5.  Otherwise, return the result of Parsing an Item from Textual
+       Headers (Section 4.4.1).
 
 
 
@@ -226,14 +226,16 @@ Nottingham & Kamp        Expires August 5, 2018                 [Page 4]
 Internet-Draft         Structured Headers for HTTP         February 2018
 
 
-   5.  Otherwise, return the result of Parsing an Item from Textual
-       Headers (Section 4.4.1).
+   When generating input_string for a given header field, parsers MUST
+   combine all instances of it into one comma-separated field-value, as
+   per [RFC7230], Section 3.2.2; this assures that the header is
+   processed correctly.
 
    Note that in the case of lists and dictionaries, this has the effect
-   of combining multiple instances of the header field into one.
-   However, for singular items and parameterised labels, it has the
-   effect of selecting the first value and ignoring any subsequent
-   instances of the field, as well as extraneous text afterwards.
+   of coalescing all of the values for that field.  However, for
+   singular items and parameterised labels, it has the effect of
+   selecting the first value and ignoring any subsequent instances of
+   the field, as well as extraneous text afterwards.
 
    Additionally, note that the effect of the parsing algorithms as
    specified is generally intolerant of syntax errors; if one is
@@ -270,8 +272,6 @@ Internet-Draft         Structured Headers for HTTP         February 2018
    individual keys, as well as whether their presence is required or
    optional.  Recipients MUST ignore keys that are undefined or unknown,
    unless the header field's specification specifically disallows them.
-
-
 
 
 
@@ -883,11 +883,11 @@ A.1.  Since draft-ietf-httpbis-header-structure-02
 
    o  Improve limits in algorithms.
 
+   o  Require parsers to combine header fields before processing.
+
 A.2.  Since draft-ietf-httpbis-header-structure-01
 
    o  Replaced with draft-nottingham-structured-headers.
-
-
 
 
 
