@@ -81,25 +81,25 @@ Table of Contents
    3.  Parsing Text into Structured Headers  . . . . . . . . . . . .   5
    4.  Structured Header Data Types  . . . . . . . . . . . . . . . .   6
      4.1.  Dictionaries  . . . . . . . . . . . . . . . . . . . . . .   6
-     4.2.  Lists . . . . . . . . . . . . . . . . . . . . . . . . . .   7
-     4.3.  Parameterised Labels  . . . . . . . . . . . . . . . . . .   8
-     4.4.  Items . . . . . . . . . . . . . . . . . . . . . . . . . .   9
-     4.5.  Integers  . . . . . . . . . . . . . . . . . . . . . . . .  10
+     4.2.  Lists . . . . . . . . . . . . . . . . . . . . . . . . . .   8
+     4.3.  Parameterised Labels  . . . . . . . . . . . . . . . . . .   9
+     4.4.  Items . . . . . . . . . . . . . . . . . . . . . . . . . .  10
+     4.5.  Integers  . . . . . . . . . . . . . . . . . . . . . . . .  11
      4.6.  Floats  . . . . . . . . . . . . . . . . . . . . . . . . .  11
      4.7.  Strings . . . . . . . . . . . . . . . . . . . . . . . . .  12
-     4.8.  Labels  . . . . . . . . . . . . . . . . . . . . . . . . .  13
-     4.9.  Binary Content  . . . . . . . . . . . . . . . . . . . . .  14
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  15
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
-   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
-     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  15
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .  16
-     7.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  16
+     4.8.  Labels  . . . . . . . . . . . . . . . . . . . . . . . . .  14
+     4.9.  Binary Content  . . . . . . . . . . . . . . . . . . . . .  15
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  16
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  16
+   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  16
+     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  16
+     7.2.  Informative References  . . . . . . . . . . . . . . . . .  17
+     7.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  17
    Appendix A.  Changes  . . . . . . . . . . . . . . . . . . . . . .  17
      A.1.  Since draft-ietf-httpbis-header-structure-02  . . . . . .  17
-     A.2.  Since draft-ietf-httpbis-header-structure-01  . . . . . .  17
-     A.3.  Since draft-ietf-httpbis-header-structure-00  . . . . . .  17
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  17
+     A.2.  Since draft-ietf-httpbis-header-structure-01  . . . . . .  18
+     A.3.  Since draft-ietf-httpbis-header-structure-00  . . . . . .  18
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  18
 
 1.  Introduction
 
@@ -176,8 +176,8 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
 2.  Specifying Structured Headers
 
-   HTTP headers that use Structured Headers need to be defined to do so
-   explicitly; recipients and generators need to know that the
+   A HTTP header that uses Structured Headers need to be defined to do
+   so explicitly; recipients and generators need to know that the
    requirements of this document are in effect.  The simplest way to do
    that is by referencing this document in its definition.
 
@@ -185,39 +185,39 @@ Internet-Draft         Structured Headers for HTTP         February 2018
    allowed syntax, in terms of the types described in Section 4, along
    with their associated semantics.
 
-   Field definitions MUST NOT relax or otherwise modify the requirements
-   of this specification; doing so would preclude handling by generic
-   software.
+   A header field definition cannot relax or otherwise modify the
+   requirements of this specification; doing so would preclude handling
+   by generic software.
 
-   However, field definitions are encouraged to clearly state additional
-   constraints upon the syntax, as well as the consequences when those
-   constraints are violated.  Such additional constraints could include
-   additional structure (e.g., a list of strings, URLs [RFC3986], etc.)
-   that cannot be expressed using the primitives defined here.
+   However, header field authors are encouraged to clearly state
+   additional constraints upon the syntax, as well as the consequences
+   when those constraints are violated.  Such additional constraints
+   could include additional structure (e.g., a list of URLs [RFC3986]
+   inside a string) that cannot be expressed using the primitives
+   defined here.
 
    For example:
 
-   # FooExample Header
 
-   The FooExample HTTP header field conveys a list of integers about how
-   much Foo the sender has.
 
-   FooExample is a Structured header [RFCxxxx]. Its value MUST be a
-   dictionary ([RFCxxxx], Section Y.Y).
 
-   The dictionary MUST contain:
 
-   * A member whose key is "foo", and whose value is an integer
-     ([RFCxxxx], Section Y.Y), indicating the number of foos in
-     the message.
-   * A member whose key is "bar", and whose value is a string
-     ([RFCxxxx], Section Y.Y), conveying the characteristic bar-ness
-     of the message.
 
-   If the parsed header field does not contain both, it MUST be ignored.
 
-   Note that empty header field values are not allowed by the syntax,
-   and therefore will be considered errors.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -225,6 +225,38 @@ Nottingham & Kamp        Expires August 5, 2018                 [Page 4]
 
 Internet-Draft         Structured Headers for HTTP         February 2018
 
+
+# FooExample Header
+
+The FooExample HTTP header field conveys a list of integers about how
+much Foo the sender has.
+
+FooExample is a Structured header [RFCxxxx]. Its value MUST be a
+dictionary ([RFCxxxx], Section Y.Y).
+
+The dictionary MUST contain:
+
+* A member whose key is "foo", and whose value is an integer
+  ([RFCxxxx], Section Y.Y), indicating the number of foos in
+  the message.
+* A member whose key is "barUrls", and whose value is a string
+  ([RFCxxxx], Section Y.Y), conveying the Bar URLs for the message.
+  See below for processing requirements.
+
+If the parsed header field does not contain both, it MUST be ignored.
+
+"barUrls" contains a space-separated list of URI-references ([RFC3986],
+Section 4.1):
+
+   barURLs = URI-reference *( 1*SP URI-reference )
+
+If a member of barURLs is not a valid URI-reference, it MUST be ignored.
+
+If a member of barURLs is a relative reference ([RFC3986], Section 4.2),
+it MUST be resolved ([RFC3986], Section 5) before being used.
+
+   Note that empty header field values are not allowed by the syntax,
+   and therefore will be considered errors.
 
 3.  Parsing Text into Structured Headers
 
@@ -242,6 +274,13 @@ Internet-Draft         Structured Headers for HTTP         February 2018
    2.  If the field-value is defined to be a dictionary, let output be
        the result of Parsing a Dictionary from Textual headers
        (Section 4.1.1).
+
+
+
+Nottingham & Kamp        Expires August 5, 2018                 [Page 5]
+
+Internet-Draft         Structured Headers for HTTP         February 2018
+
 
    3.  If the field-value is defined to be a list, let output be the
        result of Parsing a List from Text (Section 4.2.1).
@@ -275,13 +314,6 @@ Internet-Draft         Structured Headers for HTTP         February 2018
    discarding the entire header field value.  This includes any non-
    ASCII characters in input_string.
 
-
-
-Nottingham & Kamp        Expires August 5, 2018                 [Page 5]
-
-Internet-Draft         Structured Headers for HTTP         February 2018
-
-
 4.  Structured Header Data Types
 
    This section defines the abstract value types that can be composed
@@ -297,6 +329,15 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
    In the textual HTTP serialisation, keys and values are separated by
    "=" (without whitespace), and key/value pairs are separated by a
+
+
+
+
+Nottingham & Kamp        Expires August 5, 2018                 [Page 6]
+
+Internet-Draft         Structured Headers for HTTP         February 2018
+
+
    comma with optional whitespace.  Duplicate keys MUST be considered an
    error.
 
@@ -330,14 +371,6 @@ Internet-Draft         Structured Headers for HTTP         February 2018
        3.   Consume a "=" from input_string; if none is present, throw
             an error.
 
-
-
-
-Nottingham & Kamp        Expires August 5, 2018                 [Page 6]
-
-Internet-Draft         Structured Headers for HTTP         February 2018
-
-
        4.   Let this_value be the result of running Parse Item from Text
             (Section 4.4.1) with input_string.  If an error is
             encountered, throw it.
@@ -352,6 +385,14 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
        9.   Consume a COMMA from input_string; if no comma is present,
             throw an error.
+
+
+
+
+Nottingham & Kamp        Expires August 5, 2018                 [Page 7]
+
+Internet-Draft         Structured Headers for HTTP         February 2018
+
 
        10.  Discard any leading OWS from input_string.
 
@@ -387,13 +428,6 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
    2.  While input_string is not empty:
 
-
-
-Nottingham & Kamp        Expires August 5, 2018                 [Page 7]
-
-Internet-Draft         Structured Headers for HTTP         February 2018
-
-
        1.  Let item be the result of running Parse Item from Text
            (Section 4.4.1) with input_string.  If an error is
            encountered, throw it.
@@ -408,6 +442,13 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
        6.  Consume a COMMA from input_string; if no comma is present,
            throw an error.
+
+
+
+Nottingham & Kamp        Expires August 5, 2018                 [Page 8]
+
+Internet-Draft         Structured Headers for HTTP         February 2018
+
 
        7.  Discard any leading OWS from input_string.
 
@@ -442,14 +483,6 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
    3.  In a loop:
 
-
-
-
-Nottingham & Kamp        Expires August 5, 2018                 [Page 8]
-
-Internet-Draft         Structured Headers for HTTP         February 2018
-
-
        1.   Discard any leading OWS from input_string.
 
        2.   If the first character of input_string is not ";", exit the
@@ -464,6 +497,14 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
        6.   If param_name is already present in parameters, throw an
             error.
+
+
+
+
+Nottingham & Kamp        Expires August 5, 2018                 [Page 9]
+
+Internet-Draft         Structured Headers for HTTP         February 2018
+
 
        7.   Let param_value be a null value.
 
@@ -496,16 +537,6 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
    1.  Discard any leading OWS from input_string.
 
-
-
-
-
-
-Nottingham & Kamp        Expires August 5, 2018                 [Page 9]
-
-Internet-Draft         Structured Headers for HTTP         February 2018
-
-
    2.  If the first character of input_string is a "-" or a DIGIT,
        process input_string as a number (Section 4.5.1) and return the
        result, throwing any errors encountered.
@@ -523,6 +554,13 @@ Internet-Draft         Structured Headers for HTTP         February 2018
        throwing any errors encountered.
 
    6.  Otherwise, throw an error.
+
+
+
+Nottingham & Kamp        Expires August 5, 2018                [Page 10]
+
+Internet-Draft         Structured Headers for HTTP         February 2018
+
 
 4.5.  Integers
 
@@ -553,15 +591,6 @@ Internet-Draft         Structured Headers for HTTP         February 2018
        (but not including) the first character that is not in DIGIT,
        "-", and ".".
 
-
-
-
-
-Nottingham & Kamp        Expires August 5, 2018                [Page 10]
-
-Internet-Draft         Structured Headers for HTTP         February 2018
-
-
    3.  If input_number contains ".", parse it as a floating point number
        and let output_number be the result.
 
@@ -581,6 +610,13 @@ Internet-Draft         Structured Headers for HTTP         February 2018
    digits between the integer and fractional part, with at least one
    required on each side, along with an optional "-" indicating negative
    numbers.
+
+
+
+Nottingham & Kamp        Expires August 5, 2018                [Page 11]
+
+Internet-Draft         Structured Headers for HTTP         February 2018
+
 
    float    = ["-"] (
                 DIGIT "." 1*14DIGIT /
@@ -608,16 +644,6 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
    See Section 4.5.1 for the parsing algorithm for floats.
 
-
-
-
-
-
-Nottingham & Kamp        Expires August 5, 2018                [Page 11]
-
-Internet-Draft         Structured Headers for HTTP         February 2018
-
-
 4.7.  Strings
 
    Abstractly, strings are ASCII strings [RFC0020], excluding control
@@ -637,6 +663,16 @@ Internet-Draft         Structured Headers for HTTP         February 2018
    like:
 
    ExampleStringHeader: "hello world"
+
+
+
+
+
+
+Nottingham & Kamp        Expires August 5, 2018                [Page 12]
+
+Internet-Draft         Structured Headers for HTTP         February 2018
+
 
    Note that strings only use DQUOTE as a delimiter; single quotes do
    not delimit strings.  Furthermore, only DQUOTE and "" can be escaped;
@@ -667,13 +703,6 @@ Internet-Draft         Structured Headers for HTTP         February 2018
        1.  Let char be the result of removing the first character of
            input_string.
 
-
-
-Nottingham & Kamp        Expires August 5, 2018                [Page 12]
-
-Internet-Draft         Structured Headers for HTTP         February 2018
-
-
        2.  If char is a backslash ("\"):
 
            1.  If input_string is now empty, throw an error.
@@ -693,6 +722,13 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
        5.  If output_string contains more than 1024 characters, throw an
            error.
+
+
+
+Nottingham & Kamp        Expires August 5, 2018                [Page 13]
+
+Internet-Draft         Structured Headers for HTTP         February 2018
+
 
    5.  Otherwise, throw an error.
 
@@ -722,14 +758,6 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
    2.  Let output_string be an empty string.
 
-
-
-
-Nottingham & Kamp        Expires August 5, 2018                [Page 13]
-
-Internet-Draft         Structured Headers for HTTP         February 2018
-
-
    3.  While input_string is not empty:
 
        1.  Let char be the result of removing the first character of
@@ -747,6 +775,16 @@ Internet-Draft         Structured Headers for HTTP         February 2018
            error.
 
    4.  Return output_string.
+
+
+
+
+
+
+Nottingham & Kamp        Expires August 5, 2018                [Page 14]
+
+Internet-Draft         Structured Headers for HTTP         February 2018
+
 
 4.9.  Binary Content
 
@@ -776,16 +814,6 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
    ExampleBinaryHeader: *cHJldGVuZCB0aGlzIGlzIGJpbmFyeSBjb250ZW50Lg*
 
-
-
-
-
-
-Nottingham & Kamp        Expires August 5, 2018                [Page 14]
-
-Internet-Draft         Structured Headers for HTTP         February 2018
-
-
 4.9.1.  Parsing Binary Content from Text
 
    Given an ASCII string input_string, return binary content.
@@ -804,6 +832,15 @@ Internet-Draft         Structured Headers for HTTP         February 2018
    4.  Consume the "*" character at the beginning of input_string.
 
    5.  If b64_content is has more than 21846 characters, throw an error.
+
+
+
+
+
+Nottingham & Kamp        Expires August 5, 2018                [Page 15]
+
+Internet-Draft         Structured Headers for HTTP         February 2018
+
 
    6.  Let binary_content be the result of Base 64 Decoding [RFC4648]
        b64_content, synthesising padding if necessary.  If an error is
@@ -833,15 +870,6 @@ Internet-Draft         Structured Headers for HTTP         February 2018
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
-
-
-
-
-Nottingham & Kamp        Expires August 5, 2018                [Page 15]
-
-Internet-Draft         Structured Headers for HTTP         February 2018
-
-
    [RFC4648]  Josefsson, S., "The Base16, Base32, and Base64 Data
               Encodings", RFC 4648, DOI 10.17487/RFC4648, October 2006,
               <https://www.rfc-editor.org/info/rfc4648>.
@@ -859,6 +887,16 @@ Internet-Draft         Structured Headers for HTTP         February 2018
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+
+
+
+
+
+
+Nottingham & Kamp        Expires August 5, 2018                [Page 16]
+
+Internet-Draft         Structured Headers for HTTP         February 2018
+
 
 7.2.  Informative References
 
@@ -888,16 +926,6 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
    [3] https://github.com/httpwg/http-extensions/labels/header-structure
 
-
-
-
-
-
-Nottingham & Kamp        Expires August 5, 2018                [Page 16]
-
-Internet-Draft         Structured Headers for HTTP         February 2018
-
-
 Appendix A.  Changes
 
 A.1.  Since draft-ietf-httpbis-header-structure-02
@@ -917,6 +945,14 @@ A.1.  Since draft-ietf-httpbis-header-structure-02
    o  Improve limits in algorithms.
 
    o  Require parsers to combine header fields before processing.
+
+
+
+
+Nottingham & Kamp        Expires August 5, 2018                [Page 17]
+
+Internet-Draft         Structured Headers for HTTP         February 2018
+
 
    o  Throw an error on trailing garbage.
 
@@ -949,4 +985,24 @@ Authors' Addresses
 
 
 
-Nottingham & Kamp        Expires August 5, 2018                [Page 17]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Nottingham & Kamp        Expires August 5, 2018                [Page 18]
