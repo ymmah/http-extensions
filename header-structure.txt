@@ -203,21 +203,21 @@ Internet-Draft         Structured Headers for HTTP         February 2018
    Given an ASCII string input_string that represents the chosen
    header's field-value, return the parsed header value.
 
-   1.  Discard any OWS from the beginning of input_string.
+   1.  Discard any leading OWS from input_string.
 
-   2.  If the field-value is defined to be a dictionary, return the
-       result of Parsing a Dictionary from Textual headers
+   2.  If the field-value is defined to be a dictionary, let output be
+       the result of Parsing a Dictionary from Textual headers
        (Section 4.1.1).
 
-   3.  If the field-value is defined to be a list, return the result of
-       Parsing a List from Textual Headers (Section 4.2.1).
+   3.  If the field-value is defined to be a list, let output be the
+       result of Parsing a List from Textual Headers (Section 4.2.1).
 
-   4.  If the field-value is defined to be a parameterised label, return
-       the result of Parsing a Parameterised Label from Textual headers
-       (Section 4.3.1).
+   4.  If the field-value is defined to be a parameterised label, let
+       output be the result of Parsing a Parameterised Label from
+       Textual headers (Section 4.3.1).
 
-   5.  Otherwise, return the result of Parsing an Item from Textual
-       Headers (Section 4.4.1).
+   5.  Otherwise, let output be the result of Parsing an Item from
+       Textual Headers (Section 4.4.1).
 
 
 
@@ -226,6 +226,12 @@ Nottingham & Kamp        Expires August 5, 2018                 [Page 4]
 Internet-Draft         Structured Headers for HTTP         February 2018
 
 
+   6.  Discard any leading OWS from input_string.
+
+   7.  If input_string is not empty, throw an error.
+
+   8.  Otherwise, return output.
+
    When generating input_string for a given header field, parsers MUST
    combine all instances of it into one comma-separated field-value, as
    per [RFC7230], Section 3.2.2; this assures that the header is
@@ -233,9 +239,8 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
    Note that in the case of lists and dictionaries, this has the effect
    of coalescing all of the values for that field.  However, for
-   singular items and parameterised labels, it has the effect of
-   selecting the first value and ignoring any subsequent instances of
-   the field, as well as extraneous text afterwards.
+   singular items and parameterised labels, it will result in an error
+   being thrown.
 
    Additionally, note that the effect of the parsing algorithms as
    specified is generally intolerant of syntax errors; if one is
@@ -268,11 +273,6 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
    ExampleDictHeader: foo=1.23, en="Applepie", da=*w4ZibGV0w6ZydGUK
 
-   Typically, a header field specification will define the semantics of
-   individual keys, as well as whether their presence is required or
-   optional.  Recipients MUST ignore keys that are undefined or unknown,
-   unless the header field's specification specifically disallows them.
-
 
 
 
@@ -281,6 +281,11 @@ Nottingham & Kamp        Expires August 5, 2018                 [Page 5]
 
 Internet-Draft         Structured Headers for HTTP         February 2018
 
+
+   Typically, a header field specification will define the semantics of
+   individual keys, as well as whether their presence is required or
+   optional.  Recipients MUST ignore keys that are undefined or unknown,
+   unless the header field's specification specifically disallows them.
 
 4.1.1.  Parsing a Dictionary from Textual Headers
 
@@ -324,11 +329,6 @@ Internet-Draft         Structured Headers for HTTP         February 2018
    Lists are arrays of items (Section 4.4) or parameterised labels
    (Section 4.3), with one to 1024 members.
 
-   In the textual HTTP serialisation, each member is separated by a
-   comma and optional whitespace.
-
-   list = list_member 1*1024( OWS "," OWS list_member )
-   list_member = item / parameterised
 
 
 
@@ -337,6 +337,12 @@ Nottingham & Kamp        Expires August 5, 2018                 [Page 6]
 
 Internet-Draft         Structured Headers for HTTP         February 2018
 
+
+   In the textual HTTP serialisation, each member is separated by a
+   comma and optional whitespace.
+
+   list = list_member 1*1024( OWS "," OWS list_member )
+   list_member = item / parameterised
 
    For example, a header field whose value is defined as a list of
    labels could look like:
@@ -376,6 +382,18 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
    3.  Return items.
 
+
+
+
+
+
+
+
+Nottingham & Kamp        Expires August 5, 2018                 [Page 7]
+
+Internet-Draft         Structured Headers for HTTP         February 2018
+
+
 4.3.  Parameterised Labels
 
    Parameterised Labels are labels (Section 4.8) with up to 256
@@ -386,13 +404,6 @@ Internet-Draft         Structured Headers for HTTP         February 2018
    The textual HTTP serialisation uses semicolons (";") to delimit the
    parameters from each other, and equals ("=") to delimit the parameter
    name from its value.
-
-
-
-Nottingham & Kamp        Expires August 5, 2018                 [Page 7]
-
-Internet-Draft         Structured Headers for HTTP         February 2018
-
 
    parameterised = label *256( OWS ";" OWS label [ "=" item ] )
 
@@ -412,14 +423,14 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
    3.  In a loop:
 
-       1.   Consume any OWS from the beginning of input_string.
+       1.   Discard any leading OWS from input_string.
 
        2.   If the first character of input_string is not ";", exit the
             loop.
 
        3.   Consume a ";" character from the beginning of input_string.
 
-       4.   Consume any OWS from the beginning of input_string.
+       4.   Discard any leading OWS from input_string.
 
        5.   let param_name be the result of Parsing a Label from Textual
             Headers (Section 4.8.1) from input_string.
@@ -430,6 +441,14 @@ Internet-Draft         Structured Headers for HTTP         February 2018
        7.   Let param_value be a null value.
 
        8.   If the first character of input_string is "=":
+
+
+
+
+Nottingham & Kamp        Expires August 5, 2018                 [Page 8]
+
+Internet-Draft         Structured Headers for HTTP         February 2018
+
 
             1.  Consume the "=" character at the beginning of
                 input_string.
@@ -442,13 +461,6 @@ Internet-Draft         Structured Headers for HTTP         February 2018
        10.  Add param_name to parameters with the value param_value.
 
    4.  Return the tuple (primary_label, parameters).
-
-
-
-Nottingham & Kamp        Expires August 5, 2018                 [Page 8]
-
-Internet-Draft         Structured Headers for HTTP         February 2018
-
 
 4.4.  Items
 
@@ -463,7 +475,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
    Given an ASCII string input_string, return an item. input_string is
    modified to remove the parsed value.
 
-   1.  Discard any OWS from the beginning of input_string.
+   1.  Discard any leading OWS from input_string.
 
    2.  If the first character of input_string is a "-" or a DIGIT,
        process input_string as a number (Section 4.5.1) and return the
@@ -483,6 +495,17 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
    6.  Otherwise, throw an error.
 
+
+
+
+
+
+
+Nottingham & Kamp        Expires August 5, 2018                 [Page 9]
+
+Internet-Draft         Structured Headers for HTTP         February 2018
+
+
 4.5.  Integers
 
    Abstractly, integers have a range of -9,223,372,036,854,775,808 to
@@ -497,14 +520,6 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
    For example, a header whose value is defined as a integer could look
    like:
-
-
-
-
-Nottingham & Kamp        Expires August 5, 2018                 [Page 9]
-
-Internet-Draft         Structured Headers for HTTP         February 2018
-
 
    ExampleIntegerHeader: 42
 
@@ -539,21 +554,6 @@ Internet-Draft         Structured Headers for HTTP         February 2018
    digits between the integer and fractional part, with at least one
    required on each side, along with an optional "-" indicating negative
    numbers.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
