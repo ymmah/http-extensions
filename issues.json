@@ -1,5 +1,51 @@
 [
   {
+    "url": "https://api.github.com/repos/httpwg/http-extensions/issues/474",
+    "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
+    "labels_url": "https://api.github.com/repos/httpwg/http-extensions/issues/474/labels{/name}",
+    "comments_url": "https://api.github.com/repos/httpwg/http-extensions/issues/474/comments",
+    "events_url": "https://api.github.com/repos/httpwg/http-extensions/issues/474/events",
+    "html_url": "https://github.com/httpwg/http-extensions/issues/474",
+    "id": 292861979,
+    "number": 474,
+    "title": "0-length binary content?",
+    "user": {
+      "login": "jyasskin",
+      "id": 83420,
+      "avatar_url": "https://avatars1.githubusercontent.com/u/83420?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/jyasskin",
+      "html_url": "https://github.com/jyasskin",
+      "followers_url": "https://api.github.com/users/jyasskin/followers",
+      "following_url": "https://api.github.com/users/jyasskin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/jyasskin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/jyasskin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/jyasskin/subscriptions",
+      "organizations_url": "https://api.github.com/users/jyasskin/orgs",
+      "repos_url": "https://api.github.com/users/jyasskin/repos",
+      "events_url": "https://api.github.com/users/jyasskin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/jyasskin/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2018-01-30T17:05:15Z",
+    "updated_at": "2018-01-30T17:05:15Z",
+    "closed_at": null,
+    "author_association": "CONTRIBUTOR",
+    "body": "https://tools.ietf.org/html/draft-yasskin-http-origin-signed-responses-02#section-3.8.3 would like to allow clients to pass a 0-length binary string (as a prefix that matches anything), but https://tools.ietf.org/html/draft-ietf-httpbis-header-structure-02#section-4.5 requires at least 1 base64 character. Does it make sense to allow 0-length content?\r\n\r\n(If not, you should at least start with 2 characters, since 1 character isn't valid base64 since it doesn't specify a whole octet.)"
+  },
+  {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/473",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
     "labels_url": "https://api.github.com/repos/httpwg/http-extensions/issues/473/labels{/name}",
@@ -44,17 +90,17 @@
         "default": false
       }
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 8,
     "created_at": "2018-01-19T19:17:00Z",
-    "updated_at": "2018-01-30T00:02:51Z",
-    "closed_at": null,
+    "updated_at": "2018-02-01T06:42:12Z",
+    "closed_at": "2018-02-01T06:41:43Z",
     "author_association": "CONTRIBUTOR",
     "body": "http://httpwg.org/http-extensions/draft-ietf-httpbis-header-structure.html#binary says to \r\n> Let binary_content be the result of Base 64 Decoding [RFC4648] b64_content, synthesising padding if necessary.\r\n\r\nHowever, https://tools.ietf.org/html/rfc4648#section-3.5 says\r\n> decoders MAY chose to reject an encoding if the pad bits have not been set to zero.\r\n\r\nStructured headers should specify whether to reject these encodings. For example, do both `iZ` and `iQ` decode to 0x89 or is `iZ` an error?"
   },
@@ -1100,7 +1146,7 @@
         "default": false
       }
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -1109,8 +1155,8 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2017-12-14T01:41:12Z",
-    "updated_at": "2017-12-14T01:41:12Z",
-    "closed_at": null,
+    "updated_at": "2018-01-30T01:42:49Z",
+    "closed_at": "2018-01-30T01:42:49Z",
     "author_association": "CONTRIBUTOR",
     "body": "The bcp56bis draft currently says:\r\n\r\n“https” is preferred to mitigate pervasive monitoring attacks [RFC7258].\r\nThis implies that this is the only reason. The best reasons are not even mentioned: authentication, confidentiality, and integrity.\r\n\r\n(from @martinthomson)"
   },
@@ -1717,7 +1763,8 @@
     "closed_at": "2017-12-09T07:54:50Z",
     "author_association": "CONTRIBUTOR",
     "body": "...are not supposed to be there:\r\n\r\nhttps://tools.ietf.org/idnits?url=https://tools.ietf.org/id/draft-ietf-httpbis-http2-secondary-certs-00.txt"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/444",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -1769,8 +1816,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/444.patch"
     },
     "body": ""
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/443",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -3861,7 +3907,8 @@
     "closed_at": "2017-11-25T04:32:04Z",
     "author_association": "CONTRIBUTOR",
     "body": "1) It should be RFC 5234, not RFC 4234\r\n2) If it's there, it should actually be mentioned somewhere in the spec."
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/414",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -3949,8 +3996,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/414.patch"
     },
     "body": "Also added a new Security Consideration for JavaScript-based clients and servers."
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/413",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -5817,7 +5863,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/385.patch"
     },
     "body": ""
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/384",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -5918,8 +5965,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/384.patch"
     },
     "body": "Make references consistent (both within the doc and across WG documents)"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/383",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -7763,7 +7809,8 @@
     "closed_at": "2017-07-31T04:07:34Z",
     "author_association": "CONTRIBUTOR",
     "body": "#349 made me realise that, from the server's perspective, they don't have hard information about whether the client supports ORIGIN at the time they send the ORIGIN frame. \r\n\r\nWhile they might gather this based upon the requests that the client subsequently sends, this isn't information you'd want to rely upon.\r\n\r\nThis is especially relevant to Server Push. Right now, ORIGIN is defined to affect what the client is able to push, but (as above), the server doesn't have a firm idea about the origins that are actually valid to use on the connection at any given time. \r\n\r\nA number of potential solutions:\r\n\r\n1. The server just speculatively pushes and figures it out based upon the responses (i.e. no change)\r\n2. We create an explicit signal from the client to the server (e.g., \"I will process ORIGIN\", probably a SETTING, or \"I have processed ORIGIN\", probably a frame)\r\n3. ORIGIN doesn't constrain Server Push\r\n\r\nNote that 1 is not optimal (wasted bytes), and 3 might collide badly with future uses of ORIGIN."
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/354",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -7821,8 +7868,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/354.patch"
     },
     "body": "Adds an example showing how 103 can be used."
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/353",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -9909,7 +9955,8 @@
     "closed_at": "2017-05-03T01:55:07Z",
     "author_association": "CONTRIBUTOR",
     "body": "Just wondering out loud -- should immutable have any consideration of whether the response is incomplete, or potentially incomplete (i.e., close-delimited, rather than byte-counted or chunked or h2)?\r\n\r\nOne of the reasons people hit 'reload' is when something on the page seems corrupted.\r\n\r\n@mcmanus any thoughts?"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/324",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -9961,8 +10008,7 @@
     "closed_at": "2017-04-19T01:34:14Z",
     "author_association": "CONTRIBUTOR",
     "body": "pull #323 "
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/323",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -11669,7 +11715,8 @@
     "closed_at": "2017-08-07T13:08:54Z",
     "author_association": "CONTRIBUTOR",
     "body": "See discussion in <https://issues.apache.org/jira/browse/HTTPCLIENT-1006> -- I believe the spec needs to be clearer about this."
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/294",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -11764,8 +11811,7 @@
     "closed_at": "2017-05-25T03:36:48Z",
     "author_association": "CONTRIBUTOR",
     "body": "I want to address these issues that were filed in the old repo https://github.com/bifurcation/expect-ct/:\r\n\r\n- [x] https://github.com/bifurcation/expect-ct/issues/18\r\n- [x] https://github.com/bifurcation/expect-ct/issues/16\r\n- [x] https://github.com/bifurcation/expect-ct/issues/7\r\n- [x] https://github.com/bifurcation/expect-ct/issues/6\r\n- [x] https://github.com/bifurcation/expect-ct/issues/4"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/293",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -13533,7 +13579,8 @@
     "closed_at": "2016-12-22T03:31:38Z",
     "author_association": "CONTRIBUTOR",
     "body": "@ekr suggests that we remove this.  This is probably justified by recent developments.  Simplicity suggests that it is worth cutting as well."
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/264",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -13592,8 +13639,7 @@
     "closed_at": "2017-04-26T03:29:24Z",
     "author_association": "NONE",
     "body": "(Originally misfiled at https://github.com/mnot/I-D/issues/204)\r\n\r\nI believe the algorithm may be improved to increase speed and reduce digest size.\r\n\r\n#### De-dupe URLs before hashing them\r\n\r\nWastes time sorting and skipping through the list in a later stage.\r\nInflates value of N, needlessly increasing size of the entire digest.\r\n\r\n#### Trim URL origin\r\n\r\nEvery URL has identical origin. Hashing this repetitive data is wasted effort."
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/263",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -15308,7 +15354,8 @@
     "closed_at": "2016-11-21T02:13:00Z",
     "author_association": "CONTRIBUTOR",
     "body": "2] /.well-known/http-opportunistic should always be required. The current doc is actually a little fuzzy on this, I think by accident. It refers to this as an \"additional mechanism\" in addition to authentication. But .wk does not really play the same role - it allows the server to opt-in to being an alternate for specific origins on specific ports. So if we're going to use it - we should always use it. (This has no bearing on https:// alt-svc, this is just about http:// as that is all this doc governs).\n\n[There is further discussion of this on list]\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/234",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -15360,8 +15407,7 @@
     "closed_at": "2016-11-21T02:13:14Z",
     "author_association": "CONTRIBUTOR",
     "body": "1] opportunistic security should require TLS authentication. Any other approach undermines the opt-in mechanism of .wk. As the PKI market has matured to allow truly free and automated certs certificate availability is no longer the chief barrier to https, and so opportunistic security should feel comfortable requiring real authentication. (THERE IS NO PROPOSED CHANGE IN THE SECURITY MODEL - HTTP:// IS STILL HTTP:// AND NOT GRANTED HTTPS:// STATUS AT ALL). The biggest barrier to https:// at this point seems to be mixed content.\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/233",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -17297,7 +17343,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/205.patch"
     },
     "body": "Raised on list by Kari Hurtta.  Option 6.\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/204",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -17392,8 +17439,7 @@
     "closed_at": "2017-08-07T13:08:54Z",
     "author_association": "NONE",
     "body": "a suggestion for 6265bis' title such that the term \"cookies\" is included...\n\n```\nCookies: HTTP State Management Mechanism\n```\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/203",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -19012,7 +19058,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/175.patch"
     },
     "body": "Putting the meat of the document in Section 1.2 was a bit odd.  Also, the fields descriptions were glommed together.\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/174",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -19058,8 +19105,7 @@
     "closed_at": "2016-04-26T02:58:20Z",
     "author_association": "NONE",
     "body": "Unsure if this is the right place to ask. Is there an existing effort to make a header for HTTP/2's PUSH promises able to sync dependency trees?\n\nConsider:\n\n``` html\n<!-- index.html -->\n<script type=\"module\" src=\"a\"></script>\n```\n\n``` js\n// a\nimport \"b\";\n```\n\n``` js\n// b\nimport \"c\";\n```\n\nAnd so on...\n\nRight now we can PUSH `a`, `b`, etc. when `index.html` is requested. However, when we receive an etag for `index.html` we are unsure what revision of dependencies are in the cache for `a`, `b`, etc.\n\nI saw CACHE_DIGEST, but was wondering if there was an effort to make dependency tree caching available to reduce chatter for PUSH of large/deep resources as are common in JS applications.\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/173",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -20653,7 +20699,8 @@
     "closed_at": "2016-03-17T01:06:50Z",
     "author_association": "CONTRIBUTOR",
     "body": "[Section 5](https://httpwg.github.io/http-extensions/encryption.html#http-tls) roughly sketches the `HTTP-TLS` header. \n\nWe need to decide if this should be included (is it implemented?).\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/144",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -20712,8 +20759,7 @@
     "closed_at": "2016-03-17T01:06:28Z",
     "author_association": "CONTRIBUTOR",
     "body": "When an attacker has the ability to:\n\n1) inject a HTTP header in any response from an origin\n2) listen to a port on the same host\n\nthey can effectively hijack the origin, for browsers that implement OppSec.\n\nE.g., someone on a shared Web host that also offers shell access.\n\nPreviously, Alt-Svc used the port number as a way to mitigate this; however, in #139 we dropped that, because on many systems this is no longer a meaningful way to segment privileged applications. \n\nIn discussion, it was suggested that the origin should opt into OppSec explicitly, e.g., with a `.well-known` file. \n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/143",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -22325,7 +22371,8 @@
     "closed_at": "2016-09-02T16:35:28Z",
     "author_association": "CONTRIBUTOR",
     "body": "The specification still refers to RFC 2616 when extending that spec's \"parameter\" production. This needs to be updated, in particular as there isn't really a generic \"parameter\" ABNF specs can rely on in HTTP.\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/114",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -22384,8 +22431,7 @@
     "closed_at": "2015-11-04T07:30:48Z",
     "author_association": "CONTRIBUTOR",
     "body": ""
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/113",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -24112,7 +24158,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/85.patch"
     },
     "body": "- consistent use of `http` instead of \"http\"\n- make S1.1, P3 a bit more readable\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/84",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -24171,8 +24218,7 @@
     "closed_at": "2015-06-08T19:10:24Z",
     "author_association": "CONTRIBUTOR",
     "body": "\"The ABNF (Augmented Backus-Naur Form) syntax for the ALPN header field is given below. It is based on the Generic Grammar defined in Section 2 of [RFC7230].\"\n\nThis needs to say something like\n\n\"The ABNF (Augmented Backus-Naur Form) syntax for the ALPN header field value is given below. It uses the syntax defined in Section 1.2 of [RFC7230].\" \n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/83",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -26063,7 +26109,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/55.patch"
     },
     "body": "for encryption.\n\nI had these in my local repo.  They weren't pushed, but I wanted to make sure that they are OK before merging them.\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/54",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -26121,8 +26168,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/54.patch"
     },
     "body": "This adds a section regarding falsification of Tunnel-Protocol.  I didn't expand this to note that WebRTC won't suffer from this problem because the application won't be able to set the header field.  That seemed like too much detail.\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/53",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -27863,7 +27909,8 @@
     "closed_at": "2014-08-19T18:18:32Z",
     "author_association": "CONTRIBUTOR",
     "body": "Second para of 3. Server Authentication starts:\n\n> When connecting to an alternative service for an \"http\" URI, clients are required to perform the server authentication procedure descriptor in Section 3.1 of [RFC2818].\n\nIs this merely a missing \"not\"? If that isn't the case, this is a design issue...\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/24",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -27921,8 +27968,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/24.patch"
     },
     "body": "Editorial suggestions for opp-sec; please review carefully.\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/23",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
