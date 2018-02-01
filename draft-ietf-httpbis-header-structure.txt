@@ -22,11 +22,11 @@ Abstract
 
 Note to Readers
 
+   _RFC EDITOR: please remove this section before publication_
+
    Discussion of this draft takes place on the HTTP working group
    mailing list (ietf-http-wg@w3.org), which is archived at
    https://lists.w3.org/Archives/Public/ietf-http-wg/ [1].
-
-   _RFC EDITOR: please remove this section before publication_
 
    Working Group information can be found at https://httpwg.github.io/
    [2]; source code and issues list for this draft can be found at
@@ -78,25 +78,25 @@ Table of Contents
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
      1.1.  Notational Conventions  . . . . . . . . . . . . . . . . .   4
    2.  Specifying Structured Headers . . . . . . . . . . . . . . . .   4
-   3.  Parsing Textual Headers into Structured Headers . . . . . . .   5
+   3.  Parsing Text into Structured Headers  . . . . . . . . . . . .   5
    4.  Structured Header Data Types  . . . . . . . . . . . . . . . .   6
      4.1.  Dictionaries  . . . . . . . . . . . . . . . . . . . . . .   6
-       4.1.1.  Parsing a Dictionary from Textual Headers . . . . . .   7
+       4.1.1.  Parsing a Dictionary from Text  . . . . . . . . . . .   7
      4.2.  Lists . . . . . . . . . . . . . . . . . . . . . . . . . .   7
-       4.2.1.  Parsing a List from Textual Headers . . . . . . . . .   8
+       4.2.1.  Parsing a List from Text  . . . . . . . . . . . . . .   8
      4.3.  Parameterised Labels  . . . . . . . . . . . . . . . . . .   9
-       4.3.1.  Parsing a Parameterised Label from Textual Headers  .   9
+       4.3.1.  Parsing a Parameterised Label from Text . . . . . . .   9
      4.4.  Items . . . . . . . . . . . . . . . . . . . . . . . . . .  10
-       4.4.1.  Parsing an Item from Textual Headers  . . . . . . . .  10
+       4.4.1.  Parsing an Item from Text . . . . . . . . . . . . . .  10
      4.5.  Integers  . . . . . . . . . . . . . . . . . . . . . . . .  11
-       4.5.1.  Parsing a Number from Textual Headers . . . . . . . .  11
+       4.5.1.  Parsing a Number from Text  . . . . . . . . . . . . .  11
      4.6.  Floats  . . . . . . . . . . . . . . . . . . . . . . . . .  11
      4.7.  Strings . . . . . . . . . . . . . . . . . . . . . . . . .  12
-       4.7.1.  Parsing a String from Textual Headers . . . . . . . .  13
+       4.7.1.  Parsing a String from Text  . . . . . . . . . . . . .  13
      4.8.  Labels  . . . . . . . . . . . . . . . . . . . . . . . . .  14
-       4.8.1.  Parsing a Label from Textual Headers  . . . . . . . .  14
+       4.8.1.  Parsing a Label from Text . . . . . . . . . . . . . .  14
      4.9.  Binary Content  . . . . . . . . . . . . . . . . . . . . .  15
-       4.9.1.  Parsing Binary Content from Textual Headers . . . . .  15
+       4.9.1.  Parsing Binary Content from Text  . . . . . . . . . .  15
    5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  16
    6.  Security Considerations . . . . . . . . . . . . . . . . . . .  16
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  16
@@ -248,7 +248,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
    Note that empty header field values are not allowed by the syntax,
    and therefore will be considered errors.
 
-3.  Parsing Textual Headers into Structured Headers
+3.  Parsing Text into Structured Headers
 
    When a receiving implementation parses textual HTTP header fields
    (e.g., in HTTP/1 or HTTP/2) that are known to be Structured Headers,
@@ -266,14 +266,14 @@ Internet-Draft         Structured Headers for HTTP         February 2018
        (Section 4.1.1).
 
    3.  If the field-value is defined to be a list, let output be the
-       result of Parsing a List from Textual Headers (Section 4.2.1).
+       result of Parsing a List from Text (Section 4.2.1).
 
    4.  If the field-value is defined to be a parameterised label, let
        output be the result of Parsing a Parameterised Label from
        Textual headers (Section 4.3.1).
 
-   5.  Otherwise, let output be the result of Parsing an Item from
-       Textual Headers (Section 4.4.1).
+   5.  Otherwise, let output be the result of Parsing an Item from Text
+       (Section 4.4.1).
 
 
 
@@ -343,7 +343,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
    optional.  Recipients MUST ignore keys that are undefined or unknown,
    unless the header field's specification specifically disallows them.
 
-4.1.1.  Parsing a Dictionary from Textual Headers
+4.1.1.  Parsing a Dictionary from Text
 
    Given an ASCII string input_string, return a mapping of (label,
    item). input_string is modified to remove the parsed value.
@@ -352,18 +352,18 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
    2.  While input_string is not empty:
 
-       1.   Let this_key be the result of running Parse Label from
-            Textual Headers (Section 4.8.1) with input_string.  If an
-            error is encountered, throw it.
+       1.   Let this_key be the result of running Parse Label from Text
+            (Section 4.8.1) with input_string.  If an error is
+            encountered, throw it.
 
        2.   If dictionary already contains this_key, throw an error.
 
        3.   Consume a "=" from input_string; if none is present, throw
             an error.
 
-       4.   Let this_value be the result of running Parse Item from
-            Textual Headers (Section 4.4.1) with input_string.  If an
-            error is encountered, throw it.
+       4.   Let this_value be the result of running Parse Item from Text
+            (Section 4.4.1) with input_string.  If an error is
+            encountered, throw it.
 
        5.   Add key this_key with value this_value to dictionary.
 
@@ -410,7 +410,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
    ExampleParamListHeader: abc/def; g="hi";j, klm/nop
 
-4.2.1.  Parsing a List from Textual Headers
+4.2.1.  Parsing a List from Text
 
    Given an ASCII string input_string, return a list of items.
    input_string is modified to remove the parsed value.
@@ -419,8 +419,8 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
    2.  While input_string is not empty:
 
-       1.  Let item be the result of running Parse Item from Textual
-           Headers (Section 4.4.1) with input_string.  If an error is
+       1.  Let item be the result of running Parse Item from Text
+           (Section 4.4.1) with input_string.  If an error is
            encountered, throw it.
 
        2.  Append item to items.
@@ -467,13 +467,13 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
    ExampleParamHeader: abc_123;a=1;b=2; c
 
-4.3.1.  Parsing a Parameterised Label from Textual Headers
+4.3.1.  Parsing a Parameterised Label from Text
 
    Given an ASCII string input_string, return a label with an mapping of
    parameters. input_string is modified to remove the parsed value.
 
-   1.  Let primary_label be the result of Parsing a Label from Textual
-       Headers (Section 4.8.1) from input_string.
+   1.  Let primary_label be the result of Parsing a Label from Text
+       (Section 4.8.1) from input_string.
 
    2.  Let parameters be an empty, unordered mapping.
 
@@ -488,8 +488,8 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
        4.   Discard any leading OWS from input_string.
 
-       5.   let param_name be the result of Parsing a Label from Textual
-            Headers (Section 4.8.1) from input_string.
+       5.   let param_name be the result of Parsing a Label from Text
+            (Section 4.8.1) from input_string.
 
        6.   If param_name is already present in parameters, throw an
             error.
@@ -510,7 +510,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
                 input_string.
 
             2.  Let param_value be the result of Parsing an Item from
-                Textual Headers (Section 4.4.1) from input_string.
+                Text (Section 4.4.1) from input_string.
 
        9.   If parameters has more than 255 members, throw an error.
 
@@ -526,7 +526,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
    item = integer / float / string / label / binary
 
-4.4.1.  Parsing an Item from Textual Headers
+4.4.1.  Parsing an Item from Text
 
    Given an ASCII string input_string, return an item. input_string is
    modified to remove the parsed value.
@@ -579,7 +579,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
    ExampleIntegerHeader: 42
 
-4.5.1.  Parsing a Number from Textual Headers
+4.5.1.  Parsing a Number from Text
 
    NOTE: This algorithm parses both Integers and Floats Section 4.6, and
    returns the corresponding structure.
@@ -686,7 +686,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
    content, binary content (Section 4.9) SHOULD be specified, along with
    a character encoding (most likely, UTF-8).
 
-4.7.1.  Parsing a String from Textual Headers
+4.7.1.  Parsing a String from Text
 
    Given an ASCII string input_string, return an unquoted string.
    input_string is modified to remove the parsed value.
@@ -748,7 +748,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
    ExampleLabelHeader: foo/bar
 
-4.8.1.  Parsing a Label from Textual Headers
+4.8.1.  Parsing a Label from Text
 
    Given an ASCII string input_string, return a label. input_string is
    modified to remove the parsed value.
@@ -814,7 +814,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
    ExampleBinaryHeader: *cHJldGVuZCB0aGlzIGlzIGJpbmFyeSBjb250ZW50Lg*
 
-4.9.1.  Parsing Binary Content from Textual Headers
+4.9.1.  Parsing Binary Content from Text
 
    Given an ASCII string input_string, return binary content.
    input_string is modified to remove the parsed value.
