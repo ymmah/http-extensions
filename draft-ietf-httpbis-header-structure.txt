@@ -803,8 +803,8 @@ Internet-Draft         Structured Headers for HTTP         February 2018
    bits an error.  See [RFC4648], Section 3.5.
 
    This specification does not relax the requirements in [RFC4648],
-   Section 3.1 and 3.3; therefore, parsers MUST consider line feeds and
-   non-alphabetic characters in encoded data as errors.
+   Section 3.1 and 3.3; therefore, parsers MUST consider characters
+   outside the base64 alphabet and line feeds in encoded data as errors.
 
    binary = "*" 0*21846(base64) "*"
    base64 = ALPHA / DIGIT / "+" / "/"
