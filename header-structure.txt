@@ -495,7 +495,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
    1.  Let primary_label be the result of Parsing a Label from Textual
        Headers (Section 4.4.1) from input_string.
 
-   2.  Let parameters be an empty mapping.
+   2.  Let parameters be an empty, unordered mapping.
 
    3.  In a loop:
 
@@ -665,7 +665,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
    Given an ASCII string input_string, return a mapping of (label,
    item). input_string is modified to remove the parsed value.
 
-   1.  Let dictionary be an empty mapping.
+   1.  Let dictionary be an empty, unordered mapping.
 
 
 
