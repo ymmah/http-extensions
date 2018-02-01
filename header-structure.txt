@@ -14,11 +14,12 @@ Expires: August 5, 2018                        The Varnish Cache Project
 
 Abstract
 
-   This document describes Structured Headers, a way of defining HTTP
-   header fields in a way that simplifies parsing and generation.  It is
-   intended for use by new specifications of HTTP header fields as well
-   as revisions of existing header field specifications when doing so
-   does not cause interoperability issues.
+   This document describes a set of data types and parsing algorithms
+   associated with them that are intended to make it easier and safer to
+   define and handle HTTP header fields.  It is intended for use by new
+   specifications of HTTP header fields as well as revisions of existing
+   header field specifications when doing so does not cause
+   interoperability issues.
 
 Note to Readers
 
@@ -49,7 +50,6 @@ Status of This Memo
    material or to cite them other than as "work in progress."
 
    This Internet-Draft will expire on August 5, 2018.
-
 
 
 
@@ -146,8 +146,9 @@ Internet-Draft         Structured Headers for HTTP         February 2018
    Section 2.
 
    Section 4 defines a number of abstract data types that can be used in
-   Structured Headers, of which only three are allowed at the "top"
-   level: lists, dictionaries, or items.
+   Structured Headers.  Dictionaries and lists are only usable at the
+   "top" level, while the remaining types can be specified appear at the
+   top level or inside those structures.
 
    Those abstract types can be serialised into textual headers - such as
    those used in HTTP/1 and HTTP/2 - using the algorithms described in
@@ -160,7 +161,6 @@ Internet-Draft         Structured Headers for HTTP         February 2018
    "OPTIONAL" in this document are to be interpreted as described in BCP
    14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
-
 
 
 
@@ -365,7 +365,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
    In the textual HTTP serialisation, each member is separated by a
    comma and optional whitespace.
 
-   list = list_member 1*1024( OWS "," OWS list_member )
+   list = list_member 0*1023( OWS "," OWS list_member )
    list_member = item / parameterised
 
    For example, a header field whose value is defined as a list of
