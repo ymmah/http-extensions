@@ -73,6 +73,50 @@ Copyright Notice
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
+Table of Contents
+
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
+     1.1.  Notational Conventions  . . . . . . . . . . . . . . . . .   4
+   2.  Specifying Structured Headers . . . . . . . . . . . . . . . .   4
+   3.  Parsing Textual Headers into Structured Headers . . . . . . .   5
+   4.  Structured Header Data Types  . . . . . . . . . . . . . . . .   6
+     4.1.  Dictionaries  . . . . . . . . . . . . . . . . . . . . . .   6
+       4.1.1.  Parsing a Dictionary from Textual Headers . . . . . .   7
+     4.2.  Lists . . . . . . . . . . . . . . . . . . . . . . . . . .   7
+       4.2.1.  Parsing a List from Textual Headers . . . . . . . . .   8
+     4.3.  Parameterised Labels  . . . . . . . . . . . . . . . . . .   9
+       4.3.1.  Parsing a Parameterised Label from Textual Headers  .   9
+     4.4.  Items . . . . . . . . . . . . . . . . . . . . . . . . . .  10
+       4.4.1.  Parsing an Item from Textual Headers  . . . . . . . .  10
+     4.5.  Integers  . . . . . . . . . . . . . . . . . . . . . . . .  11
+       4.5.1.  Parsing a Number from Textual Headers . . . . . . . .  11
+     4.6.  Floats  . . . . . . . . . . . . . . . . . . . . . . . . .  11
+     4.7.  Strings . . . . . . . . . . . . . . . . . . . . . . . . .  12
+       4.7.1.  Parsing a String from Textual Headers . . . . . . . .  13
+     4.8.  Labels  . . . . . . . . . . . . . . . . . . . . . . . . .  14
+       4.8.1.  Parsing a Label from Textual Headers  . . . . . . . .  14
+     4.9.  Binary Content  . . . . . . . . . . . . . . . . . . . . .  15
+       4.9.1.  Parsing Binary Content from Textual Headers . . . . .  15
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  16
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  16
+   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  16
+     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  16
+     7.2.  Informative References  . . . . . . . . . . . . . . . . .  16
+     7.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  17
+   Appendix A.  Changes  . . . . . . . . . . . . . . . . . . . . . .  17
+     A.1.  Since draft-ietf-httpbis-header-structure-02  . . . . . .  17
+     A.2.  Since draft-ietf-httpbis-header-structure-01  . . . . . .  18
+
+
+
+Nottingham & Kamp        Expires August 5, 2018                 [Page 2]
+
+Internet-Draft         Structured Headers for HTTP         February 2018
+
+
+     A.3.  Since draft-ietf-httpbis-header-structure-00  . . . . . .  18
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  18
+
 1.  Introduction
 
    Specifying the syntax of new HTTP header fields is an onerous task;
@@ -105,15 +149,6 @@ Copyright Notice
    existing HTTP headers; the mechanisms described herein are only
    intended to be used with headers that explicitly opt into them.
 
-
-
-
-
-Nottingham & Kamp        Expires August 5, 2018                 [Page 2]
-
-Internet-Draft         Structured Headers for HTTP         February 2018
-
-
    To specify a header field that uses Structured Headers, see
    Section 2.
 
@@ -124,6 +159,16 @@ Internet-Draft         Structured Headers for HTTP         February 2018
    Those abstract types can be serialised into textual headers - such as
    those used in HTTP/1 and HTTP/2 - using the algorithms described in
    Section 3.
+
+
+
+
+
+
+Nottingham & Kamp        Expires August 5, 2018                 [Page 3]
+
+Internet-Draft         Structured Headers for HTTP         February 2018
+
 
 1.1.  Notational Conventions
 
@@ -165,7 +210,18 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
 
 
-Nottingham & Kamp        Expires August 5, 2018                 [Page 3]
+
+
+
+
+
+
+
+
+
+
+
+Nottingham & Kamp        Expires August 5, 2018                 [Page 4]
 
 Internet-Draft         Structured Headers for HTTP         February 2018
 
@@ -221,7 +277,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
 
 
-Nottingham & Kamp        Expires August 5, 2018                 [Page 4]
+Nottingham & Kamp        Expires August 5, 2018                 [Page 5]
 
 Internet-Draft         Structured Headers for HTTP         February 2018
 
@@ -277,7 +333,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
 
 
-Nottingham & Kamp        Expires August 5, 2018                 [Page 5]
+Nottingham & Kamp        Expires August 5, 2018                 [Page 6]
 
 Internet-Draft         Structured Headers for HTTP         February 2018
 
@@ -333,7 +389,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
 
 
-Nottingham & Kamp        Expires August 5, 2018                 [Page 6]
+Nottingham & Kamp        Expires August 5, 2018                 [Page 7]
 
 Internet-Draft         Structured Headers for HTTP         February 2018
 
@@ -389,7 +445,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
 
 
-Nottingham & Kamp        Expires August 5, 2018                 [Page 7]
+Nottingham & Kamp        Expires August 5, 2018                 [Page 8]
 
 Internet-Draft         Structured Headers for HTTP         February 2018
 
@@ -445,7 +501,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
 
 
-Nottingham & Kamp        Expires August 5, 2018                 [Page 8]
+Nottingham & Kamp        Expires August 5, 2018                 [Page 9]
 
 Internet-Draft         Structured Headers for HTTP         February 2018
 
@@ -501,7 +557,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
 
 
-Nottingham & Kamp        Expires August 5, 2018                 [Page 9]
+Nottingham & Kamp        Expires August 5, 2018                [Page 10]
 
 Internet-Draft         Structured Headers for HTTP         February 2018
 
@@ -557,7 +613,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
 
 
-Nottingham & Kamp        Expires August 5, 2018                [Page 10]
+Nottingham & Kamp        Expires August 5, 2018                [Page 11]
 
 Internet-Draft         Structured Headers for HTTP         February 2018
 
@@ -613,7 +669,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
 
 
-Nottingham & Kamp        Expires August 5, 2018                [Page 11]
+Nottingham & Kamp        Expires August 5, 2018                [Page 12]
 
 Internet-Draft         Structured Headers for HTTP         February 2018
 
@@ -669,7 +725,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
 
 
-Nottingham & Kamp        Expires August 5, 2018                [Page 12]
+Nottingham & Kamp        Expires August 5, 2018                [Page 13]
 
 Internet-Draft         Structured Headers for HTTP         February 2018
 
@@ -725,7 +781,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
 
 
-Nottingham & Kamp        Expires August 5, 2018                [Page 13]
+Nottingham & Kamp        Expires August 5, 2018                [Page 14]
 
 Internet-Draft         Structured Headers for HTTP         February 2018
 
@@ -781,7 +837,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
 
 
-Nottingham & Kamp        Expires August 5, 2018                [Page 14]
+Nottingham & Kamp        Expires August 5, 2018                [Page 15]
 
 Internet-Draft         Structured Headers for HTTP         February 2018
 
@@ -837,7 +893,7 @@ Internet-Draft         Structured Headers for HTTP         February 2018
 
 
 
-Nottingham & Kamp        Expires August 5, 2018                [Page 15]
+Nottingham & Kamp        Expires August 5, 2018                [Page 16]
 
 Internet-Draft         Structured Headers for HTTP         February 2018
 
@@ -885,18 +941,22 @@ A.1.  Since draft-ietf-httpbis-header-structure-02
 
    o  Require parsers to combine header fields before processing.
 
-A.2.  Since draft-ietf-httpbis-header-structure-01
-
-   o  Replaced with draft-nottingham-structured-headers.
+   o  Throw an error on trailing garbage.
 
 
 
 
 
-Nottingham & Kamp        Expires August 5, 2018                [Page 16]
+
+
+Nottingham & Kamp        Expires August 5, 2018                [Page 17]
 
 Internet-Draft         Structured Headers for HTTP         February 2018
 
+
+A.2.  Since draft-ietf-httpbis-header-structure-01
+
+   o  Replaced with draft-nottingham-structured-headers.
 
 A.3.  Since draft-ietf-httpbis-header-structure-00
 
@@ -945,8 +1005,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-Nottingham & Kamp        Expires August 5, 2018                [Page 17]
+Nottingham & Kamp        Expires August 5, 2018                [Page 18]
