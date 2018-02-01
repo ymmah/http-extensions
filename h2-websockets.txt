@@ -4,8 +4,8 @@
 
 HTTP Working Group                                            P. McManus
 Internet-Draft                                                   Mozilla
-Intended status: Standards Track                        January 30, 2018
-Expires: August 3, 2018
+Intended status: Standards Track                        February 1, 2018
+Expires: August 5, 2018
 
 
                   Bootstrapping WebSockets with HTTP/2
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 3, 2018.
+   This Internet-Draft will expire on August 5, 2018.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-McManus                  Expires August 3, 2018                 [Page 1]
+McManus                  Expires August 5, 2018                 [Page 1]
 
-Internet-Draft                H2 Websockets                 January 2018
+Internet-Draft                H2 Websockets                February 2018
 
 
    (https://trustee.ietf.org/license-info) in effect on the date of
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-McManus                  Expires August 3, 2018                 [Page 2]
+McManus                  Expires August 5, 2018                 [Page 2]
 
-Internet-Draft                H2 Websockets                 January 2018
+Internet-Draft                H2 Websockets                February 2018
 
 
    than the external host normally used by CONNECT.  The result is a
@@ -165,9 +165,9 @@ Internet-Draft                H2 Websockets                 January 2018
 
 
 
-McManus                  Expires August 3, 2018                 [Page 3]
+McManus                  Expires August 5, 2018                 [Page 3]
 
-Internet-Draft                H2 Websockets                 January 2018
+Internet-Draft                H2 Websockets                February 2018
 
 
 4.  The Extended CONNECT Method
@@ -221,9 +221,9 @@ Internet-Draft                H2 Websockets                 January 2018
 
 
 
-McManus                  Expires August 3, 2018                 [Page 4]
+McManus                  Expires August 5, 2018                 [Page 4]
 
-Internet-Draft                H2 Websockets                 January 2018
+Internet-Draft                H2 Websockets                February 2018
 
 
    WebSocket-Accept headers as that functionality has been superseded by
@@ -277,9 +277,9 @@ WebSocket Data
 
 
 
-McManus                  Expires August 3, 2018                 [Page 5]
+McManus                  Expires August 5, 2018                 [Page 5]
 
-Internet-Draft                H2 Websockets                 January 2018
+Internet-Draft                H2 Websockets                February 2018
 
 
 6.  Design Considerations
@@ -333,9 +333,9 @@ Internet-Draft                H2 Websockets                 January 2018
 
 
 
-McManus                  Expires August 3, 2018                 [Page 6]
+McManus                  Expires August 5, 2018                 [Page 6]
 
-Internet-Draft                H2 Websockets                 January 2018
+Internet-Draft                H2 Websockets                February 2018
 
 
 10.  Acknowledgments
@@ -389,4 +389,4 @@ Author's Address
 
 
 
-McManus                  Expires August 3, 2018                 [Page 7]
+McManus                  Expires August 5, 2018                 [Page 7]
