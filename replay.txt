@@ -459,6 +459,15 @@ Internet-Draft               HTTP Early Data               February 2018
    gateways) need to agree and either reject the request or delay
    processing.
 
+   Disabling early data, delaying requests, or rejecting requests with
+   the 425 (Too Early) status code are all equally good measures for
+   mitigating replay attacks on requests that might be vulnerable to
+   replay.  Server instances can implement any of these measures and be
+   considered to be consistent, even if different instances use
+   different methods.  Critically, this means that it is possible to
+   employ different mitigations in reaction to other conditions, such as
+   server load.
+
    A server MUST NOT act on early data before the handshake completes if
    it and any other server instance could make a different decision
    about how to handle the same data.
@@ -476,11 +485,10 @@ Internet-Draft               HTTP Early Data               February 2018
 6.4.  Out of Order Delivery
 
    In protocols that deliver data out of order (such as QUIC [HQ]) early
-   data can arrive after the handshake completes.  This leads to
-   potential ambiguity about the status of requests and could lead to
-   inconsistent treatment (see Section 6.2).  Implementations MUST
-   either ensure that any early data that is delivered late is either
-   discarded or consistently identified and processed.
+   data can arrive after the handshake completes.  A server MAY process
+   requests received in early data after handshake completion if it can
+   rely on other instances correctly handling replays of the same
+   requests.
 
 7.  IANA Considerations
 
@@ -491,6 +499,13 @@ Internet-Draft               HTTP Early Data               February 2018
 
    Applicable protocol:  http
 
+
+
+Thomson, et al.          Expires August 6, 2018                 [Page 9]
+
+Internet-Draft               HTTP Early Data               February 2018
+
+
    Status:  standard
 
    Author/Change controller:  IETF
@@ -498,13 +513,6 @@ Internet-Draft               HTTP Early Data               February 2018
    Specification document(s):  This document
 
    Related information:  (empty)
-
-
-
-Thomson, et al.          Expires August 6, 2018                 [Page 9]
-
-Internet-Draft               HTTP Early Data               February 2018
-
 
    This document registers the 425 (Too Early) status code in the
    "Hypertext Transfer Protocol (HTTP) Status Code" registry established
@@ -545,14 +553,6 @@ Internet-Draft               HTTP Early Data               February 2018
               DOI 10.17487/RFC7231, June 2014,
               <https://www.rfc-editor.org/info/rfc7231>.
 
-   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
-              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
-              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
-
-   [TLS13]    Rescorla, E., "The Transport Layer Security (TLS) Protocol
-              Version 1.3", draft-ietf-tls-tls13-22 (work in progress),
-              November 2017.
-
 
 
 
@@ -561,6 +561,14 @@ Thomson, et al.          Expires August 6, 2018                [Page 10]
 
 Internet-Draft               HTTP Early Data               February 2018
 
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+
+   [TLS13]    Rescorla, E., "The Transport Layer Security (TLS) Protocol
+              Version 1.3", draft-ietf-tls-tls13-22 (work in progress),
+              November 2017.
 
 8.2.  Informative References
 
@@ -590,8 +598,9 @@ Acknowledgments
 
    This document was not easy to produce.  The following people made
    substantial contributions to the quality and completeness of the
-   document: Subodh Iyengar, Benjamin Kaduk, Ilari Liusavaara, Kazuho
-   Oku, Eric Rescorla, Kyle Rose, and Victor Vasiliev.
+   document: David Benjamin, Subodh Iyengar, Benjamin Kaduk, Ilari
+   Liusavaara, Kazuho Oku, Eric Rescorla, Kyle Rose, and Victor
+   Vasiliev.
 
 Authors' Addresses
 
@@ -599,15 +608,6 @@ Authors' Addresses
    Mozilla
 
    Email: martin.thomson@gmail.com
-
-
-   Mark Nottingham
-   Fastly
-
-   Email: mnot@mnot.net
-
-
-
 
 
 
@@ -618,16 +618,16 @@ Thomson, et al.          Expires August 6, 2018                [Page 11]
 Internet-Draft               HTTP Early Data               February 2018
 
 
+   Mark Nottingham
+   Fastly
+
+   Email: mnot@mnot.net
+
+
    Willy Tarreau
    HAProxy Technologies
 
    Email: willy@haproxy.org
-
-
-
-
-
-
 
 
 
