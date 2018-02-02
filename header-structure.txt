@@ -827,8 +827,8 @@ Internet-Draft         Structured Headers for HTTP         February 2018
    2.  Discard the first character of input_string.
 
    3.  Let b64_content be the result of removing content of input_string
-       up to but not including the first instance of the character "_".
-       If there is not a "_" character before the end of input_string,
+       up to but not including the first instance of the character "*".
+       If there is not a "*" character before the end of input_string,
        throw an error.
 
    4.  Consume the "*" character at the beginning of input_string.
