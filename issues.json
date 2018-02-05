@@ -51,9 +51,9 @@
 
     ],
     "milestone": null,
-    "comments": 3,
+    "comments": 5,
     "created_at": "2018-02-03T00:20:44Z",
-    "updated_at": "2018-02-04T22:54:11Z",
+    "updated_at": "2018-02-05T07:21:27Z",
     "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "body": "The dict parsing algorithm currently allows a trailing comma (and OWS). \r\n\r\nIs the comma intentional?"
@@ -2278,9 +2278,9 @@
 
     ],
     "milestone": null,
-    "comments": 3,
+    "comments": 6,
     "created_at": "2017-12-04T20:46:26Z",
-    "updated_at": "2018-02-04T22:48:50Z",
+    "updated_at": "2018-02-05T06:57:36Z",
     "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "body": "http://httpwg.org/http-extensions/header-structure.html#parsing-a-list-from-textual-headers only parses items, while http://httpwg.org/http-extensions/header-structure.html#list says it should allow parameterised labels too."
