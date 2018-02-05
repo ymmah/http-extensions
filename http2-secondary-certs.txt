@@ -93,7 +93,7 @@ Copyright Notice
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
-     1.1.  Server Certificate Authentication . . . . . . . . . . . .   3
+     1.1.  Server Certificate Authentication . . . . . . . . . . . .   4
      1.2.  Client Certificate Authentication . . . . . . . . . . . .   4
        1.2.1.  HTTP/1.1 using TLS 1.2 and previous . . . . . . . . .   5
        1.2.2.  HTTP/1.1 using TLS 1.3  . . . . . . . . . . . . . . .   6
@@ -130,12 +130,15 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
      6.1.  HTTP/2 SETTINGS_HTTP_CERT_AUTH Setting  . . . . . . . . .  19
      6.2.  New HTTP/2 Frames . . . . . . . . . . . . . . . . . . . .  19
      6.3.  New HTTP/2 Error Codes  . . . . . . . . . . . . . . . . .  19
-   7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  20
-   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  20
-     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  20
-     8.2.  Informative References  . . . . . . . . . . . . . . . . .  21
-     8.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  21
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  21
+   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  20
+     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  20
+     7.2.  Informative References  . . . . . . . . . . . . . . . . .  21
+     7.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  21
+   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .  21
+   Appendix B.  Change Log . . . . . . . . . . . . . . . . . . . . .  21
+     B.1.  Since draft-ietf-httpbis-http2-secondary-certs-00:  . . .  21
+     B.2.  Since draft-bishop-httpbis-http2-additional-certs-05: . .  22
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  22
 
 1.  Introduction
 
@@ -156,12 +159,9 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
    connection.  These certificates may contain multiple identities, but
    only one certificate may be provided.
 
-1.1.  Server Certificate Authentication
 
-   Section 9.1.1 of [RFC7540] describes how connections may be used to
-   make requests from multiple origins as long as the server is
-   authoritative for both.  A server is considered authoritative for an
-   origin if DNS resolves the origin to the IP address of the server and
+
+
 
 
 
@@ -170,6 +170,12 @@ Bishop, et al.           Expires August 9, 2018                 [Page 3]
 Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
 
 
+1.1.  Server Certificate Authentication
+
+   Section 9.1.1 of [RFC7540] describes how connections may be used to
+   make requests from multiple origins as long as the server is
+   authoritative for both.  A server is considered authoritative for an
+   origin if DNS resolves the origin to the IP address of the server and
    (for TLS) if the certificate presented by the server contains the
    origin in the Subject Alternative Names field.
 
@@ -213,12 +219,6 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
    experience, particularly when sent to a client that does not expect
    the request.
 
-   The TLS 1.3 CertificateRequest can be used by servers to give clients
-   hints about which certificate to offer.  Servers that rely on
-   certificate-based authentication might request different certificates
-   for different resources.  Such a server cannot use contextual
-
-
 
 
 Bishop, et al.           Expires August 9, 2018                 [Page 4]
@@ -226,6 +226,10 @@ Bishop, et al.           Expires August 9, 2018                 [Page 4]
 Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
 
 
+   The TLS 1.3 CertificateRequest can be used by servers to give clients
+   hints about which certificate to offer.  Servers that rely on
+   certificate-based authentication might request different certificates
+   for different resources.  Such a server cannot use contextual
    information about the resource to construct an appropriate TLS
    CertificateRequest message during the initial handshake.
 
@@ -268,12 +272,8 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
    using a client certificate and that no such certificate has been
    provided.
 
-   The server initiates TLS renegotiation by sending a TLS HelloRequest
-   (at *2).  The client then initiates a TLS handshake.  Note that some
-   TLS messages are elided from the figure for the sake of brevity.
 
-   The critical messages for this example are the server requesting a
-   certificate with a TLS CertificateRequest (*3); this request might
+
 
 
 
@@ -282,6 +282,12 @@ Bishop, et al.           Expires August 9, 2018                 [Page 5]
 Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
 
 
+   The server initiates TLS renegotiation by sending a TLS HelloRequest
+   (at *2).  The client then initiates a TLS handshake.  Note that some
+   TLS messages are elided from the figure for the sake of brevity.
+
+   The critical messages for this example are the server requesting a
+   certificate with a TLS CertificateRequest (*3); this request might
    use information about the request or resource.  The client then
    provides a certificate and proof of possession of the private key in
    Certificate and CertificateVerify messages (*4).
@@ -325,18 +331,18 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
    some sort of correlation information, a client is unable to identify
    which request caused the server to request a certificate.
 
-   Thus, the minimum necessary mechanism to support reactive certificate
-   authentication in HTTP/2 is an identifier that can be use to
-   correlate an HTTP request with a request for a certificate.  Since
-   streams are used for individual requests, correlation with a stream
-   is sufficient.
-
 
 
 Bishop, et al.           Expires August 9, 2018                 [Page 6]
 
 Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
 
+
+   Thus, the minimum necessary mechanism to support reactive certificate
+   authentication in HTTP/2 is an identifier that can be use to
+   correlate an HTTP request with a request for a certificate.  Since
+   streams are used for individual requests, correlation with a stream
+   is sufficient.
 
    [RFC7540] prohibits renegotiation after any application data has been
    sent.  This completely blocks reactive certificate authentication in
@@ -380,12 +386,6 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
    with verified possession of the corresponding private key, which can
    be supplied into a collection of available certificates.  Likewise,
    descriptions of desired certificates can be supplied into these
-   collections.  These pre-supplied elements are then available for
-   automatic use (in some situations) or for reference by individual
-   streams.
-
-   Section 2 describes how the feature is employed, defining means to
-   detect support in peers (Section 2.1), make certificates and requests
 
 
 
@@ -394,6 +394,12 @@ Bishop, et al.           Expires August 9, 2018                 [Page 7]
 Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
 
 
+   collections.  These pre-supplied elements are then available for
+   automatic use (in some situations) or for reference by individual
+   streams.
+
+   Section 2 describes how the feature is employed, defining means to
+   detect support in peers (Section 2.1), make certificates and requests
    available (Section 2.2), and indicate when streams are blocked
    waiting on an appropriate certificate (Section 2.3).  Section 3
    defines the required frame types, which parallel the TLS 1.3 message
@@ -435,12 +441,6 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
    certificate authentication indicate this using the HTTP/2
    "SETTINGS_HTTP_CERT_AUTH" (0xSETTING-TBD) setting.
 
-   The initial value for the "SETTINGS_HTTP_CERT_AUTH" setting is 0,
-   indicating that the peer does not support HTTP-layer certificate
-   authentication.  If a peer does support HTTP-layer certificate
-   authentication, the value is 1.
-
-
 
 
 
@@ -449,6 +449,11 @@ Bishop, et al.           Expires August 9, 2018                 [Page 8]
 
 Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
 
+
+   The initial value for the "SETTINGS_HTTP_CERT_AUTH" setting is 0,
+   indicating that the peer does not support HTTP-layer certificate
+   authentication.  If a peer does support HTTP-layer certificate
+   authentication, the value is 1.
 
 2.2.  Making certificates or requests available
 
@@ -493,11 +498,6 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
    As defined in [RFC7540], when a client finds that a https:// origin
    (or Alternative Service [RFC7838]) to which it needs to make a
    request has the same IP address as a server to which it is already
-   connected, it MAY check whether the TLS certificate provided contains
-   the new origin as well, and if so, reuse the connection.
-
-   If the TLS certificate does not contain the new origin, but the
-   server has claimed support for that origin (with an ORIGIN frame, see
 
 
 
@@ -506,6 +506,11 @@ Bishop, et al.           Expires August 9, 2018                 [Page 9]
 Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
 
 
+   connected, it MAY check whether the TLS certificate provided contains
+   the new origin as well, and if so, reuse the connection.
+
+   If the TLS certificate does not contain the new origin, but the
+   server has claimed support for that origin (with an ORIGIN frame, see
    [I-D.ietf-httpbis-origin-frame]) and advertised support for HTTP-
    layer certificates (see Section 2.1), it MAY send a
    "CERTIFICATE_NEEDED" frame on the stream it will use to make the
@@ -549,11 +554,6 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
    certificate to use.  If the request parameters or the responding
    certificate are not already available, they will need to be sent as
    described in Section 2.2 as part of this exchange.
-
-
-
-
-
 
 
 
@@ -1080,17 +1080,9 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
         | CERTIFICATE_GENERAL     | 0xERROR-TBD5 | Section 4     |
         +-------------------------+--------------+---------------+
 
-7.  Acknowledgements
+7.  References
 
-   Eric Rescorla pointed out several failings in an earlier revision.
-   Andrei Popov contributed to the TLS considerations.
-
-   A substantial portion of Mike's work on this draft was supported by
-   Microsoft during his employment there.
-
-8.  References
-
-8.1.  Normative References
+7.1.  Normative References
 
    [I-D.ietf-tls-exported-authenticator]
               Sullivan, N., "Exported Authenticators in TLS", draft-
@@ -1112,16 +1104,6 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
               DOI 10.17487/RFC5246, August 2008,
               <https://www.rfc-editor.org/info/rfc5246>.
 
-
-
-
-
-
-Bishop, et al.           Expires August 9, 2018                [Page 20]
-
-Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
-
-
    [RFC6066]  Eastlake 3rd, D., "Transport Layer Security (TLS)
               Extensions: Extension Definitions", RFC 6066,
               DOI 10.17487/RFC6066, January 2011,
@@ -1132,6 +1114,14 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
               <https://www.rfc-editor.org/info/rfc7230>.
 
+
+
+
+Bishop, et al.           Expires August 9, 2018                [Page 20]
+
+Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
+
+
    [RFC7540]  Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
               Transfer Protocol Version 2 (HTTP/2)", RFC 7540,
               DOI 10.17487/RFC7540, May 2015,
@@ -1141,7 +1131,7 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
-8.2.  Informative References
+7.2.  Informative References
 
    [I-D.ietf-httpbis-origin-frame]
               Nottingham, M. and E. Nygren, "The ORIGIN HTTP/2 Frame",
@@ -1152,7 +1142,7 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
               Alternative Services", RFC 7838, DOI 10.17487/RFC7838,
               April 2016, <https://www.rfc-editor.org/info/rfc7838>.
 
-8.3.  URIs
+7.3.  URIs
 
    [1] https://lists.w3.org/Archives/Public/ietf-http-wg/
 
@@ -1160,12 +1150,22 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
 
    [3] https://github.com/httpwg/http-extensions/labels/secondary-certs
 
-Authors' Addresses
+Appendix A.  Acknowledgements
 
-   Mike Bishop
-   Akamai
+   Eric Rescorla pointed out several failings in an earlier revision.
+   Andrei Popov contributed to the TLS considerations.
 
-   Email: mbishop@evequefou.be
+   A substantial portion of Mike's work on this draft was supported by
+   Microsoft during his employment there.
+
+Appendix B.  Change Log
+
+      *RFC Editor's Note:* Please remove this section prior to
+      publication of a final version of this document.
+
+B.1.  Since draft-ietf-httpbis-http2-secondary-certs-00:
+
+   Nothing yet.
 
 
 
@@ -1178,6 +1178,18 @@ Bishop, et al.           Expires August 9, 2018                [Page 21]
 Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
 
 
+B.2.  Since draft-bishop-httpbis-http2-additional-certs-05:
+
+   o  Adopted as draft-ietf-httpbis-http2-secondary-certs
+
+Authors' Addresses
+
+   Mike Bishop
+   Akamai
+
+   Email: mbishop@evequefou.be
+
+
    Nick Sullivan
    Cloudflare
 
@@ -1188,18 +1200,6 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
    Mozilla
 
    Email: martin.thomson@gmail.com
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
