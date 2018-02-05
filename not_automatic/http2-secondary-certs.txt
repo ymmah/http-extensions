@@ -119,7 +119,6 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
      3.1.  The CERTIFICATE_NEEDED frame  . . . . . . . . . . . . . .  12
      3.2.  The USE_CERTIFICATE Frame . . . . . . . . . . . . . . . .  13
      3.3.  The CERTIFICATE_REQUEST Frame . . . . . . . . . . . . . .  14
-       3.3.1.  Exported Authenticator Request Characteristics  . . .  14
      3.4.  The CERTIFICATE Frame . . . . . . . . . . . . . . . . . .  15
        3.4.1.  Exported Authenticator Characteristics  . . . . . . .  16
    4.  Indicating failures during HTTP-Layer Certificate
@@ -129,7 +128,7 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
      5.2.  Fingerprinting  . . . . . . . . . . . . . . . . . . . . .  17
      5.3.  Denial of Service . . . . . . . . . . . . . . . . . . . .  18
      5.4.  Confusion About State . . . . . . . . . . . . . . . . . .  18
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  18
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  19
      6.1.  HTTP/2 SETTINGS_HTTP_CERT_AUTH Setting  . . . . . . . . .  19
      6.2.  New HTTP/2 Frames . . . . . . . . . . . . . . . . . . . .  19
      6.3.  New HTTP/2 Error Codes  . . . . . . . . . . . . . . . . .  19
@@ -158,6 +157,7 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
    TLS 1.2 [RFC5246] supports one server and one client certificate on a
    connection.  These certificates may contain multiple identities, but
    only one certificate may be provided.
+
 
 
 
@@ -712,15 +712,15 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
 
    The referenced certificate chain MUST conform to the requirements
    expressed in the "CERTIFICATE_REQUEST" to the best of the sender's
-   ability.
+   ability.  Specifically, if the "CERTIFICATE_REQUEST" contained a non-
+   empty "Cert-Extensions" element, the end-entity certificate MUST
+   match with regard to the extensions recognized by the sender.
 
    If these requirements are not satisfied, the recipient MAY at its
    discretion either return an error at the HTTP semantic layer, or
    respond with a stream error [RFC7540] on any stream where the
    certificate is used.  Section 4 defines certificate-related error
    codes which might be applicable.
-
-
 
 
 
@@ -732,10 +732,12 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
 
 3.3.  The CERTIFICATE_REQUEST Frame
 
-   The "CERTIFICATE_REQUEST" frame (id=0xFRAME-TBD2) provides a exported
-   authenticator request message from the TLS layer that specifies a
-   desired certificate.  This describes the certificate the sender
-   wishes to have presented.
+   TLS 1.3 defines the "CertificateRequest" message, which prompts the
+   client to provide a certificate which conforms to certain properties
+   specified by the server.  This draft defines the
+   "CERTIFICATE_REQUEST" frame (0xFRAME-TBD2), which uses the same set
+   of extensions to specify a desired certificate, but can be sent over
+   any TLS version and can be sent by either peer.
 
    The "CERTIFICATE_REQUEST" frame SHOULD NOT be sent to a peer which
    has not advertised support for HTTP-layer certificate authentication.
@@ -747,7 +749,9 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
      0                   1                   2                   3
      0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
     +-------------------------------+-------------------------------+
-    |        Request-ID (16)        |          Request (?)        ...
+    |        Request-ID (16)        |      Extension-Count (16)     |
+    +-------------------------------+-------------------------------+
+    |                          Extensions(?)                      ...
     +---------------------------------------------------------------+
 
                 Figure 8: CERTIFICATE_REQUEST frame payload
@@ -758,26 +762,22 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
       correlate subsequent certificate-related frames with this request.
       The identifier MUST be unique in the session for the sender.
 
-   Request:  An exported authenticator request, generated using the
-      "request" API described in [I-D.ietf-tls-exported-authenticator].
-      See Section 3.4.1 for more details on the input to this API.
+   Extension-Count and Extensions:  A list of certificate selection
+      criteria, represented in a series of "Extension" structures (see
+      [I-D.ietf-tls-tls13] section 4.2).  This criteria MUST be used in
+      certificate selection as described in [I-D.ietf-tls-tls13].  The
+      number of "Extension" structures is given by the 16-bit
+      "Extension-Count" field, which MAY be zero.
 
-3.3.1.  Exported Authenticator Request Characteristics
+   Some extensions used for certificate selection allow multiple values
+   (e.g.  oid_filters on Extended Key Usage).  If the sender has
+   included a non-empty Extensions list, the certificate MUST match all
+   criteria specified by extensions the recipient recognizes.  However,
+   the recipient MUST ignore and skip any unrecognized certificate
+   selection extensions.
 
-   The Exported Authenticator "request" API defined in
-   [I-D.ietf-tls-exported-authenticator] takes as input a set of desired
-   certificate characteristics and a "certificate_request_context".
-   When generating exported authenticators for use with this extension,
-   the "certificate_request_context" MUST be the two-octet Request-ID.
-
-   The TLS library on the authenticating peer will provide mechanisms to
-   select an appropriate certificate to respond to the transported
-   request.  TLS libraries on servers MUST be able to recognize the
-   "server_name" extension ([RFC6066]) at a minimum.  Clients MUST
-   always specify the desired origin using this extension, though other
-   extensions MAY also be included.
-
-
+   Servers MUST be able to recognize the "server_name" extension
+   ([RFC6066]) at a minimum.  Clients MUST always specify the desired
 
 
 
@@ -785,6 +785,9 @@ Bishop, et al.           Expires August 9, 2018                [Page 14]
 
 Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
 
+
+   origin using this extension, though other extensions MAY also be
+   included.
 
 3.4.  The CERTIFICATE Frame
 
@@ -834,9 +837,6 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
 
 
 
-
-
-
 Bishop, et al.           Expires August 9, 2018                [Page 15]
 
 Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
@@ -845,18 +845,20 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
 3.4.1.  Exported Authenticator Characteristics
 
    The Exported Authenticator API defined in
-   [I-D.ietf-tls-exported-authenticator] takes as input a request, a set
-   of certificates, and supporting information about the certificate
-   (OCSP, SCT, etc.).
+   [I-D.ietf-tls-exported-authenticator] takes as input a certificate,
+   supporting information about the certificate (OCSP, SCT, etc.), and
+   an optional "certificate_request_context".  When generating exported
+   authenticators for use with this extension, the
+   "certificate_request_context" MUST be the two-octet Cert-ID.
 
-   Upon receipt of a completed authenticator, an endpoint MUST perform
-   the following steps: - Using the "get context" API, retrieve the
-   "certificate_request_context" used to generate the authenticator, if
-   any.  - Verify that the "certificate_request_context" is the Request-
-   ID of a previously-sent "CERTIFICATE_REQUEST" frame.  Alternatively,
-   on clients the "certificate_request_context" MAY also be empty.  -
-   Use the "validate" API to confirm the validity of the authenticator
-   with regard to the generated request (if any).
+   Upon receipt of a completed authenticator, an endpoint MUST check
+   that:
+
+   o  the "validate" API confirms the validity of the authenticator
+      itself
+
+   o  the "certificate_request_context" matches the Cert-ID of the
+      frame(s) in which it was received
 
    Once the authenticator is accepted, the endpoint can perform any
    other checks for the acceptability of the certificate itself.
@@ -887,9 +889,7 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
    NEEDED_DIFFERENT_CERT (0xERROR-TBD6):  A different certificate was
       expected for the current request
 
-   As described in [RFC7540], implementations MAY choose to treat a
-   stream error as a connection error at any time.  Of particular note,
-   a stream error cannot occur on stream 0, which means that
+
 
 
 
@@ -898,6 +898,9 @@ Bishop, et al.           Expires August 9, 2018                [Page 16]
 Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
 
 
+   As described in [RFC7540], implementations MAY choose to treat a
+   stream error as a connection error at any time.  Of particular note,
+   a stream error cannot occur on stream 0, which means that
    implementations cannot send non-session errors in response to
    "CERTIFICATE_REQUEST", and "CERTIFICATE" frames.  Implementations
    which do not wish to terminate the connection MAY either send
@@ -943,9 +946,6 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
    impose similar denial-of-service mitigations (e.g. request rate
    limits) to "CERTIFICATE_REQUEST" frames as to new TLS connections.
 
-   While the extensions in the "CERTIFICATE_REQUEST" frame permit the
-   sender to enumerate the acceptable Certificate Authorities for the
-   requested certificate, it might not be prudent (either for security
 
 
 
@@ -954,6 +954,9 @@ Bishop, et al.           Expires August 9, 2018                [Page 17]
 Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
 
 
+   While the extensions in the "CERTIFICATE_REQUEST" frame permit the
+   sender to enumerate the acceptable Certificate Authorities for the
+   requested certificate, it might not be prudent (either for security
    or data consumption) to include the full list of trusted Certificate
    Authorities in every request.  Senders, particularly clients, SHOULD
    send only the extensions that narrowly specify which certificates
@@ -995,13 +998,10 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
    future requests on the same connection which they are not willing to
    have associated with the provided certificate.
 
-6.  IANA Considerations
 
-   This draft adds entries in three registries.
 
-   The HTTP/2 "SETTINGS_HTTP_CERT_AUTH" setting is registered in
-   Section 6.1.  Four frame types are registered in Section 6.2.  Six
-   error codes are registered in Section 6.3.
+
+
 
 
 
@@ -1009,6 +1009,14 @@ Bishop, et al.           Expires August 9, 2018                [Page 18]
 
 Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
 
+
+6.  IANA Considerations
+
+   This draft adds entries in three registries.
+
+   The HTTP/2 "SETTINGS_HTTP_CERT_AUTH" setting is registered in
+   Section 6.1.  Four frame types are registered in Section 6.2.  Six
+   error codes are registered in Section 6.3.
 
 6.1.  HTTP/2 SETTINGS_HTTP_CERT_AUTH Setting
 
@@ -1046,14 +1054,6 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
    Six new error codes are registered in the "HTTP/2 Error Code"
    registry established in [RFC7540].  The entries in the following
    table are registered by this document.
-
-
-
-
-
-
-
-
 
 
 
