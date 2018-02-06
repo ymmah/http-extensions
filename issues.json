@@ -1,5 +1,402 @@
 [
   {
+    "url": "https://api.github.com/repos/httpwg/http-extensions/issues/486",
+    "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
+    "labels_url": "https://api.github.com/repos/httpwg/http-extensions/issues/486/labels{/name}",
+    "comments_url": "https://api.github.com/repos/httpwg/http-extensions/issues/486/comments",
+    "events_url": "https://api.github.com/repos/httpwg/http-extensions/issues/486/events",
+    "html_url": "https://github.com/httpwg/http-extensions/issues/486",
+    "id": 294591240,
+    "number": 486,
+    "title": "Add Request-ID to CERTIFICATE",
+    "user": {
+      "login": "martinthomson",
+      "id": 67641,
+      "avatar_url": "https://avatars1.githubusercontent.com/u/67641?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/martinthomson",
+      "html_url": "https://github.com/martinthomson",
+      "followers_url": "https://api.github.com/users/martinthomson/followers",
+      "following_url": "https://api.github.com/users/martinthomson/following{/other_user}",
+      "gists_url": "https://api.github.com/users/martinthomson/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/martinthomson/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/martinthomson/subscriptions",
+      "organizations_url": "https://api.github.com/users/martinthomson/orgs",
+      "repos_url": "https://api.github.com/users/martinthomson/repos",
+      "events_url": "https://api.github.com/users/martinthomson/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/martinthomson/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 109132722,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
+        "name": "design",
+        "color": "02d7e1",
+        "default": false
+      },
+      {
+        "id": 772216980,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/secondary-certs",
+        "name": "secondary-certs",
+        "color": "fbca04",
+        "default": false
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2018-02-06T00:32:11Z",
+    "updated_at": "2018-02-06T00:32:11Z",
+    "closed_at": null,
+    "author_association": "CONTRIBUTOR",
+    "body": "I think that it would be better to explicitly reference CERTIFICATE_REQUEST in the cases where a CERTIFICATE is generated directly in response to one.  Using the \"get context\" API from exported authenticators is ugly.\r\n\r\nThis is more important now that exported authenticators folds the request into the response.\r\n\r\nWe probably want to use a flag for whether this is spontaneous so that we can avoid reserving a Request-ID for spontaneous CERTIFICATE messages."
+  },
+  {
+    "url": "https://api.github.com/repos/httpwg/http-extensions/issues/485",
+    "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
+    "labels_url": "https://api.github.com/repos/httpwg/http-extensions/issues/485/labels{/name}",
+    "comments_url": "https://api.github.com/repos/httpwg/http-extensions/issues/485/comments",
+    "events_url": "https://api.github.com/repos/httpwg/http-extensions/issues/485/events",
+    "html_url": "https://github.com/httpwg/http-extensions/issues/485",
+    "id": 294590932,
+    "number": 485,
+    "title": "Explain identifiers better",
+    "user": {
+      "login": "martinthomson",
+      "id": 67641,
+      "avatar_url": "https://avatars1.githubusercontent.com/u/67641?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/martinthomson",
+      "html_url": "https://github.com/martinthomson",
+      "followers_url": "https://api.github.com/users/martinthomson/followers",
+      "following_url": "https://api.github.com/users/martinthomson/following{/other_user}",
+      "gists_url": "https://api.github.com/users/martinthomson/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/martinthomson/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/martinthomson/subscriptions",
+      "organizations_url": "https://api.github.com/users/martinthomson/orgs",
+      "repos_url": "https://api.github.com/users/martinthomson/repos",
+      "events_url": "https://api.github.com/users/martinthomson/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/martinthomson/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 111000923,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/editorial",
+        "name": "editorial",
+        "color": "009800",
+        "default": false
+      },
+      {
+        "id": 772216980,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/secondary-certs",
+        "name": "secondary-certs",
+        "color": "fbca04",
+        "default": false
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2018-02-06T00:30:24Z",
+    "updated_at": "2018-02-06T00:30:24Z",
+    "closed_at": null,
+    "author_association": "CONTRIBUTOR",
+    "body": "CERTIFICATE_NEEDED and USE_CERTIFICATE use different identifiers.  The potential for confusion about these is immense.\r\n\r\nAs I understand it, there is no direct need for correlation between these.  This is largely because we hope that a response (or acceptance thereof) is largely conditioned on the set of certificates available, not the way that those certificate were requested, and so correlating CERTIFICATE_NEEDED isn't important.  (In light of this, the text on confusion of clients the the description of CERTIFICATE_NEEDED is just confusing to me.)\r\n\r\n* CERTIFICATE_NEEDED includes a Request-ID, which is also used in a CERTIFICATE_REQUEST.\r\n* CERTIFICATE_REQUEST includes an authenticator request, which also includes the Request-ID (and some extra entropy now).\r\n* CERTIFICATE includes a Cert-ID.  This is bound back to a CERTIFICATE_REQUEST using the contents of the authenticator itself (the exported authenticator \"get context\" API).\r\n* USE_CERTIFICATE includes a Cert-ID.\r\n\r\nThus, it is possible to follow the process full-circle, but it is generally not necessary.  A server should determine what response it wants to provide based on the certificates it has, not on how they were requested.  The same goes for a client that is accepting a response."
+  },
+  {
+    "url": "https://api.github.com/repos/httpwg/http-extensions/issues/484",
+    "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
+    "labels_url": "https://api.github.com/repos/httpwg/http-extensions/issues/484/labels{/name}",
+    "comments_url": "https://api.github.com/repos/httpwg/http-extensions/issues/484/comments",
+    "events_url": "https://api.github.com/repos/httpwg/http-extensions/issues/484/events",
+    "html_url": "https://github.com/httpwg/http-extensions/issues/484",
+    "id": 294589761,
+    "number": 484,
+    "title": "Include pictures for all frames",
+    "user": {
+      "login": "martinthomson",
+      "id": 67641,
+      "avatar_url": "https://avatars1.githubusercontent.com/u/67641?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/martinthomson",
+      "html_url": "https://github.com/martinthomson",
+      "followers_url": "https://api.github.com/users/martinthomson/followers",
+      "following_url": "https://api.github.com/users/martinthomson/following{/other_user}",
+      "gists_url": "https://api.github.com/users/martinthomson/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/martinthomson/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/martinthomson/subscriptions",
+      "organizations_url": "https://api.github.com/users/martinthomson/orgs",
+      "repos_url": "https://api.github.com/users/martinthomson/repos",
+      "events_url": "https://api.github.com/users/martinthomson/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/martinthomson/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 111000923,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/editorial",
+        "name": "editorial",
+        "color": "009800",
+        "default": false
+      },
+      {
+        "id": 772216980,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/secondary-certs",
+        "name": "secondary-certs",
+        "color": "fbca04",
+        "default": false
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2018-02-06T00:23:33Z",
+    "updated_at": "2018-02-06T00:42:06Z",
+    "closed_at": null,
+    "author_association": "CONTRIBUTOR",
+    "body": "The pictures are great anchors for finding frames.  Omitting them makes it harder to read the document."
+  },
+  {
+    "url": "https://api.github.com/repos/httpwg/http-extensions/issues/483",
+    "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
+    "labels_url": "https://api.github.com/repos/httpwg/http-extensions/issues/483/labels{/name}",
+    "comments_url": "https://api.github.com/repos/httpwg/http-extensions/issues/483/comments",
+    "events_url": "https://api.github.com/repos/httpwg/http-extensions/issues/483/events",
+    "html_url": "https://github.com/httpwg/http-extensions/issues/483",
+    "id": 294498670,
+    "number": 483,
+    "title": "Request-ID Unpredictability",
+    "user": {
+      "login": "MikeBishop",
+      "id": 4273797,
+      "avatar_url": "https://avatars0.githubusercontent.com/u/4273797?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/MikeBishop",
+      "html_url": "https://github.com/MikeBishop",
+      "followers_url": "https://api.github.com/users/MikeBishop/followers",
+      "following_url": "https://api.github.com/users/MikeBishop/following{/other_user}",
+      "gists_url": "https://api.github.com/users/MikeBishop/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/MikeBishop/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/MikeBishop/subscriptions",
+      "organizations_url": "https://api.github.com/users/MikeBishop/orgs",
+      "repos_url": "https://api.github.com/users/MikeBishop/repos",
+      "events_url": "https://api.github.com/users/MikeBishop/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/MikeBishop/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 772216980,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/secondary-certs",
+        "name": "secondary-certs",
+        "color": "fbca04",
+        "default": false
+      }
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2018-02-05T18:39:51Z",
+    "updated_at": "2018-02-06T00:10:18Z",
+    "closed_at": "2018-02-06T00:10:18Z",
+    "author_association": "CONTRIBUTOR",
+    "body": "In comments on https://github.com/MikeBishop/http2-certs/pull/18, @martinthomson pointed out that the context inside an exported authenticator/request is supposed to be unpredictable.  We should look at the use in Secondary Certs and how we can avoid compromising security goals with the exported authenticator."
+  },
+  {
+    "url": "https://api.github.com/repos/httpwg/http-extensions/issues/482",
+    "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
+    "labels_url": "https://api.github.com/repos/httpwg/http-extensions/issues/482/labels{/name}",
+    "comments_url": "https://api.github.com/repos/httpwg/http-extensions/issues/482/comments",
+    "events_url": "https://api.github.com/repos/httpwg/http-extensions/issues/482/events",
+    "html_url": "https://github.com/httpwg/http-extensions/issues/482",
+    "id": 294498061,
+    "number": 482,
+    "title": "Frames on Closed Streams",
+    "user": {
+      "login": "MikeBishop",
+      "id": 4273797,
+      "avatar_url": "https://avatars0.githubusercontent.com/u/4273797?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/MikeBishop",
+      "html_url": "https://github.com/MikeBishop",
+      "followers_url": "https://api.github.com/users/MikeBishop/followers",
+      "following_url": "https://api.github.com/users/MikeBishop/following{/other_user}",
+      "gists_url": "https://api.github.com/users/MikeBishop/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/MikeBishop/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/MikeBishop/subscriptions",
+      "organizations_url": "https://api.github.com/users/MikeBishop/orgs",
+      "repos_url": "https://api.github.com/users/MikeBishop/repos",
+      "events_url": "https://api.github.com/users/MikeBishop/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/MikeBishop/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 772216980,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/secondary-certs",
+        "name": "secondary-certs",
+        "color": "fbca04",
+        "default": false
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2018-02-05T18:37:46Z",
+    "updated_at": "2018-02-05T18:37:46Z",
+    "closed_at": null,
+    "author_association": "CONTRIBUTOR",
+    "body": "As highlighted by #480, the Secondary Certs draft currently involves sending frames on closed streams.  This is poor form in HTTP/2, but impossible in HTTP/QUIC (where we hope this will be easily portable).  We should find an alternative.\r\n\r\nThis may mean that on-stream frames actually move to Stream 0 and simply carry a stream number as part of the frame.  Loses a few bytes, but seems like the best path forward."
+  },
+  {
+    "url": "https://api.github.com/repos/httpwg/http-extensions/issues/481",
+    "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
+    "labels_url": "https://api.github.com/repos/httpwg/http-extensions/issues/481/labels{/name}",
+    "comments_url": "https://api.github.com/repos/httpwg/http-extensions/issues/481/comments",
+    "events_url": "https://api.github.com/repos/httpwg/http-extensions/issues/481/events",
+    "html_url": "https://github.com/httpwg/http-extensions/pull/481",
+    "id": 294495020,
+    "number": 481,
+    "title": "Incorporate exported authenticator requests",
+    "user": {
+      "login": "MikeBishop",
+      "id": 4273797,
+      "avatar_url": "https://avatars0.githubusercontent.com/u/4273797?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/MikeBishop",
+      "html_url": "https://github.com/MikeBishop",
+      "followers_url": "https://api.github.com/users/MikeBishop/followers",
+      "following_url": "https://api.github.com/users/MikeBishop/following{/other_user}",
+      "gists_url": "https://api.github.com/users/MikeBishop/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/MikeBishop/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/MikeBishop/subscriptions",
+      "organizations_url": "https://api.github.com/users/MikeBishop/orgs",
+      "repos_url": "https://api.github.com/users/MikeBishop/repos",
+      "events_url": "https://api.github.com/users/MikeBishop/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/MikeBishop/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 772216980,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/secondary-certs",
+        "name": "secondary-certs",
+        "color": "fbca04",
+        "default": false
+      }
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2018-02-05T18:27:31Z",
+    "updated_at": "2018-02-06T00:10:39Z",
+    "closed_at": "2018-02-06T00:10:16Z",
+    "author_association": "CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/httpwg/http-extensions/pulls/481",
+      "html_url": "https://github.com/httpwg/http-extensions/pull/481",
+      "diff_url": "https://github.com/httpwg/http-extensions/pull/481.diff",
+      "patch_url": "https://github.com/httpwg/http-extensions/pull/481.patch"
+    },
+    "body": "Tracking changes from tlswg/tls-exported-authenticator#9 to create an exported authenticator request message at the TLS layer as well.\r\n\r\nThis is a straight port of https://github.com/MikeBishop/http2-certs/pull/18/; feedback there has already been addressed, modulo one issue I'll be adding to this repo."
+  },
+  {
+    "url": "https://api.github.com/repos/httpwg/http-extensions/issues/480",
+    "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
+    "labels_url": "https://api.github.com/repos/httpwg/http-extensions/issues/480/labels{/name}",
+    "comments_url": "https://api.github.com/repos/httpwg/http-extensions/issues/480/comments",
+    "events_url": "https://api.github.com/repos/httpwg/http-extensions/issues/480/events",
+    "html_url": "https://github.com/httpwg/http-extensions/pull/480",
+    "id": 294494381,
+    "number": 480,
+    "title": "Remove AUTOMATIC_USE",
+    "user": {
+      "login": "MikeBishop",
+      "id": 4273797,
+      "avatar_url": "https://avatars0.githubusercontent.com/u/4273797?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/MikeBishop",
+      "html_url": "https://github.com/MikeBishop",
+      "followers_url": "https://api.github.com/users/MikeBishop/followers",
+      "following_url": "https://api.github.com/users/MikeBishop/following{/other_user}",
+      "gists_url": "https://api.github.com/users/MikeBishop/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/MikeBishop/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/MikeBishop/subscriptions",
+      "organizations_url": "https://api.github.com/users/MikeBishop/orgs",
+      "repos_url": "https://api.github.com/users/MikeBishop/repos",
+      "events_url": "https://api.github.com/users/MikeBishop/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/MikeBishop/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 772216980,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/secondary-certs",
+        "name": "secondary-certs",
+        "color": "fbca04",
+        "default": false
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2018-02-05T18:25:17Z",
+    "updated_at": "2018-02-05T23:15:28Z",
+    "closed_at": null,
+    "author_association": "CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/httpwg/http-extensions/pulls/480",
+      "html_url": "https://github.com/httpwg/http-extensions/pull/480",
+      "diff_url": "https://github.com/httpwg/http-extensions/pull/480.diff",
+      "patch_url": "https://github.com/httpwg/http-extensions/pull/480.patch"
+    },
+    "body": "Implements Kazuho's suggestion to remove AUTOMATIC_USE and replace it with the ability to send USE_CERTIFICATE as part of the request.\r\n\r\n(Note that this runs headlong into the frames-on-closed-streams problem and might need to be delayed until we fix that.)\r\n\r\nThis is a straight port of https://github.com/MikeBishop/http2-certs/pull/17; I'll address the feedback from that PR shortly."
+  },
+  {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/479",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
     "labels_url": "https://api.github.com/repos/httpwg/http-extensions/issues/479/labels{/name}",
@@ -1355,7 +1752,8 @@
     "closed_at": "2018-02-05T00:25:59Z",
     "author_association": "CONTRIBUTOR",
     "body": "Digest authentication is laughably weak; anything that uses it over HTTP is asking for trouble.\r\n\r\n(from @martinthomson)"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/456",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -1802,8 +2200,7 @@
     "closed_at": "2017-12-13T21:18:48Z",
     "author_association": "CONTRIBUTOR",
     "body": "As it's repellant. "
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/449",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -3243,7 +3640,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/427.patch"
     },
     "body": ""
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/426",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -3865,8 +4263,7 @@
     "closed_at": null,
     "author_association": "NONE",
     "body": "It would provide immense security value and ease of deployment.\r\n\r\nCookies are sent across all sub domains; so if example.com has auth cookies, a malicious actor can compromise a CA and create a \"$random.example.com\" cert and serve it to get a user's cookies. Since example.com never knew about nor had ever served $random.example.com, the UA won't enforce CT requirement on this domain. This would mean a cert that's not on a CT log would work fine to get the user's cookies.\r\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/419",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -5459,7 +5856,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/397.patch"
     },
     "body": ""
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/396",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -5956,8 +6354,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/390.patch"
     },
     "body": "Since our chairs have not seen the wisdom of separate repositories, I will acquiesce."
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/389",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -7433,7 +7830,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/367.patch"
     },
     "body": ""
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/366",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -7852,8 +8250,7 @@
     "closed_at": "2017-07-21T15:05:29Z",
     "author_association": "CONTRIBUTOR",
     "body": "From thread at <http://www.w3.org/mid/20170419164106.EFBCF24249@welho-filter4.welho.com>:\r\n\r\n> Is it assumed that \"Accept-CH\" is given in http-equiv attribute, but \"Accept-CH-Lifetime\" on http response ?\r\n\r\nYes. \r\n\r\n> Or is that needed so that \"Accept-CH\" can be given on several times?\r\n\r\nNo, that's implicit in its definition as a comma separated list of values. Correct me if I'm wrong, but my understanding is that default semantics allow multiple headers with same field-name, as long as the field-value is defined as a comma separated list.. Meaning, there can be multiple Accept-CH header fields and they can be combined into a single list.\r\n \r\n> What happens if there is several \"Accept-CH-Lifetime\" on response?\r\n\r\nFor Accept-CH-Lifetime, I guess we just need to specify which one wins, correct? Any defaults I can point to or reuse? Last one wins?\r\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/359",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -9544,7 +9941,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/337.patch"
     },
     "body": ""
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/336",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -10055,8 +10453,7 @@
     "closed_at": "2017-09-12T00:42:58Z",
     "author_association": "CONTRIBUTOR",
     "body": "The current ORIGIN frame draft (as of the changes introduced from #212) now prohibits consulting DNS when establishing a connection's authority, as long as the TLS certificate is consulted:\r\n\r\n> Clients MUST NOT consult DNS to establish the connection's authority for new requests.  The TLS certificate MUST stil be used to do so, as described in [RFC7540] Section 9.1.1.\r\n\r\nAs @MikeBishop pointed out during discussion in Chicago, this is the first draft that explicitly removes DNS from the loop as a factor, rather than just delegating DNS.  I did not get the sense that strong consensus exists yet for removing DNS as a factor without an additional authenticator.\r\n\r\nParticular concerns (some of which are highlighted in the Security Considerations) include:\r\n\r\n* When a cert (or validation behavior) is compromised, currently active MitM or DNS poisoning is required to exploit.  This new behavior enables vulnerabilities here to be exploited by simply getting a client to follow a link to a malicious server that can expand the ORIGIN set to cover the origins it wants to hijack (and which are covered by the compromised cert or compromised validation behavior).\r\n* This has the change has potential to significantly change the operational behavior of clients.  Rather than clients always following DNS, clients may now aggregate origins onto a connection to a server that was never handed out in the DNS for that name.  This may have unintended consequences, such as allowing a non-production server sharing a cert with a production name to accidentally hijack production traffic; or otherwise giving a server operator with a cert covering a name the power to pull in client traffic for that name without this being explicitly configured through the DNS.\r\n\r\nThis change (to not follow the DNS) also becomes much more powerful (and more useful and more potentially perilous) when combined with any future pushed certificate functionality.  I'm not convinced that the having to follow the DNS name is \"onerous\" enough to justify the security impact.\r\n\r\nSome options appear to be:\r\n\r\n1) Remove this \"Clients MUST NOT consult DNS\" clause.  This doesn't prohibit the expansion of ORIGIN sets, but does mean that existing DNS service discovery and DNS following behavior must still be followed.  This change could be introduced in a subsequent draft that much more explicitly worked through the security considerations and mitigations.\r\n2) Leave the language as-is, possibly expand on security considerations, and do a more detailed security analysis (especially for how this might interact with future pushed server certs).\r\n3) Specify additional mitigations that should replace consulting DNS, such as a pushed DNSSEC record chain terminating in the server IP, signed Alt-Service records, or similar.  Most of these would require subsequent drafts to define in-detail, along with a corresponding security analysis.\r\n\r\n(Regardless, we may wish to clarify the subsequent bullet to make it clear that clients MAY consult the DNS to determine whether an existing connection can be reused or whether a new connection should be established.  While the existing \"MUST NOT consult DNS\" phrasing does not prohibit this, it is misleading on a first reading.)\r\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/329",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -11429,7 +11826,8 @@
     "closed_at": "2017-03-26T17:31:00Z",
     "author_association": "CONTRIBUTOR",
     "body": "The `Accept-CH` response header is defined as:\r\n\r\n> When a client receives Accept-CH, or if it is capable of processing the HTML response and finds an equivalent HTML meta element, it can treat it as a signal that the server is interested in receiving the Client-Hint header fields that match the advertised field-values; subsequent requests initiated to the same server and, optionally any subresource requests initiated as a result of processing the response from the server that includes the Accept-CH opt-in, can include the Client-Hint header fields that match the advertised field-values.\r\n>\r\n> For example, based on Accept-CH example above, a user agent could append DPR, Width, Viewport-Width, and Downlink header fields to all subresource requests initiated by the page constructed from the response. Alternatively, a client can treat advertised support as a persistent origin preference and append same header fields on all future requests initiated to and by the resources associated with that origin.\r\n\r\n\"All future requests\" is a long time indeed. While of course the client isn't going to literally do that (eventually it'll be garbage collected, or the user will reset state, or the machine will be recycled), from a server-side perspective, it'd be nice to have *some* level of control over how bloated your requests get.\r\n\r\nAdditionally, having `Accept-CH` possibly indicate that future references *to* **and** *from* this origin seems like a pretty broad brush to be painting with. While Chrome might make some reasonable decisions about tradeoffs here (and probably needs some wiggle room), if this ever does get implemented elsewhere, this broadness and freedom is a recipe for bad interop and worse server-side headaches.\r\n\r\nSo, can we nail this down at all? \r\n\r\nThe most conservative approach is:\r\n\r\n\"Send CH headers on subrequests generated by this content, please.\"\r\n\r\nHowever, the above also says \"subsequent requests initiated to the same server\" in the primary spot; the case above is relegated to \"optionally.\"\r\n\r\nPersonally, my preference would be to drop \"subsequent requests initiated to the same server and, optionally\" and the corresponding text in the example below it. The primary use case for CH as I understand it is serving appropriate subresources, NOT dynamically modifying HTML, so that should do the trick.\r\n\r\nAm I missing something, @igrigorik?\r\n\r\nRegardless of that, \"server\" is used very loosely above; I think you mean \"origin\", right? And \"can\" should probably be \"MAY\".\r\n\r\nCC @yoavweiss"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/306",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -11857,8 +12255,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/300.patch"
     },
     "body": ""
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/299",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -13296,7 +13693,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/277.patch"
     },
     "body": ""
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/276",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -13693,8 +14091,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/270.patch"
     },
     "body": "This is kinda silly, but it seems like adding support for coalescing is\r\nsomething we could fix later.\r\n\r\nCloses #269 with the nuclear option."
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/269",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -15094,7 +15491,8 @@
     "closed_at": "2016-10-12T07:53:14Z",
     "author_association": "CONTRIBUTOR",
     "body": "1) \"The permanent message header field registry (see [RFC3864]) has been updated with the following registrations.\" -> \"The permanent message header field registry (see [RFC3864]) needs to be updated with the following registrations.\"\n\n2) Remove the entries related to Set-Cookie2.\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/246",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -15490,8 +15888,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/240.patch"
     },
     "body": ""
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/239",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -16976,7 +17373,8 @@
     "closed_at": "2016-09-28T06:58:18Z",
     "author_association": "CONTRIBUTOR",
     "body": "minor editorial issue: draft-ietf-httpbis-encryption-encoding seems to be using \"Content Encoding\" and \"Content Coding\" and \"Content-Coding\" synonymously. maybe settle on one of those terms? \"Content Coding\" might be best because that's what RFC 7231 uses.\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/216",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -17417,8 +17815,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/210.patch"
     },
     "body": "Crypto-Key is a composite data field. Curretly both draft ECE and draft\nVAPID use Crypto-Key to store information. This has lead to some\nconfusion regarding how data should be stored and accessed.\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/209",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -18769,7 +19166,8 @@
     "closed_at": null,
     "author_association": "NONE",
     "body": "It could be better for some implementers if the lifetime of the Key headers is the same as the Cache-Control: from the response wherein the Key header was seen. The spec today says that the Key header used should be the last one seen, but this can cause some complex, and/or performance expensive issues for certain cache implementations.\n\nUnless the intent here is that I can purge old variants from the cache, that are still fresh, by changing the Key header for subsequent variants?\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/186",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -19180,8 +19578,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/180.patch"
     },
     "body": "'specially Mike.\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/179",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -20442,7 +20839,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/157.patch"
     },
     "body": "Second round on this one, small tweaks and a small amount of restructuring.\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/156",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -20834,8 +21232,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/150.patch"
     },
     "body": ""
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/149",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -22086,7 +22483,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/127.patch"
     },
     "body": "Even a pull request feels heavy-weight for this....\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/126",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -22498,8 +22896,7 @@
     "closed_at": "2015-11-21T08:43:32Z",
     "author_association": "CONTRIBUTOR",
     "body": "[Section 5](https://httpwg.github.io/http-extensions/alt-svc.html#indicator) \n\n> When using an alternative service, clients SHOULD include a Alt-Used header field in all requests. \n\nShould be `an Alt-Used`?\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/119",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -23869,7 +24266,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/97.patch"
     },
     "body": "Proposes additional text in security considerations around changing from privileged to non-privileged ports; addresses #73.\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/96",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -24280,8 +24678,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/90.patch"
     },
     "body": "Allow empty list of alternative services both in header field value and in\nframe.  See\nhttps://github.com/httpwg/http-extensions/issues/16#issuecomment-123273055.\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/89",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -25808,7 +26205,8 @@
     "closed_at": "2016-03-17T01:07:15Z",
     "author_association": "CONTRIBUTOR",
     "body": "Or, for \"parameter\", reference the alt-svc spec.\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/66",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -26218,8 +26616,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/60.patch"
     },
     "body": ""
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/59",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -27589,7 +27986,8 @@
     "closed_at": "2014-11-30T21:51:12Z",
     "author_association": "CONTRIBUTOR",
     "body": "1. allow the frame to carry multiple indicators\n2. while doing so, use the same payload formats for both\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/36",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -28024,8 +28422,7 @@
     "closed_at": "2014-12-16T00:17:01Z",
     "author_association": "CONTRIBUTOR",
     "body": "What does that even mean?\n\nI think that we can be a little clearer and more precise about this statement.\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/29",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -29442,7 +29839,8 @@
     "closed_at": "2014-07-23T14:58:16Z",
     "author_association": "CONTRIBUTOR",
     "body": "<a href=\"https://github.com/martinthomson\"><img src=\"https://avatars.githubusercontent.com/u/67641?\" align=\"left\" width=\"96\" height=\"96\" hspace=\"10\"></img></a> **Issue by [martinthomson](https://github.com/martinthomson)**\n_Thursday Jun 12, 2014 at 17:56 GMT_\n_Originally opened as https://github.com/http2/http2-spec/issues/521_\n\n---\n\nThe Alt-Svc header field permits multiple entries.  How does a client select between them when there are multiple options that are acceptable to the client?\n1. Add a q= parameter.\n2. Select the first acceptable option.\n3. Something else.\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/6",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
