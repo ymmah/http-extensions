@@ -135,10 +135,10 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .  19
      7.2.  Informative References  . . . . . . . . . . . . . . . . .  20
      7.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  21
-   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .  21
-   Appendix B.  Change Log . . . . . . . . . . . . . . . . . . . . .  21
-     B.1.  Since draft-ietf-httpbis-http2-secondary-certs-00:  . . .  21
-     B.2.  Since draft-bishop-httpbis-http2-additional-certs-05: . .  21
+   Appendix A.  Change Log . . . . . . . . . . . . . . . . . . . . .  21
+     A.1.  Since draft-ietf-httpbis-http2-secondary-certs-00:  . . .  21
+     A.2.  Since draft-bishop-httpbis-http2-additional-certs-05: . .  21
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  21
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  21
 
 1.  Introduction
@@ -1130,26 +1130,26 @@ Internet-Draft        Secondary Cert Auth in HTTP/2        February 2018
 
    [3] https://github.com/httpwg/http-extensions/labels/secondary-certs
 
-Appendix A.  Acknowledgements
+Appendix A.  Change Log
+
+      *RFC Editor's Note:* Please remove this section prior to
+      publication of a final version of this document.
+
+A.1.  Since draft-ietf-httpbis-http2-secondary-certs-00:
+
+   Nothing yet.
+
+A.2.  Since draft-bishop-httpbis-http2-additional-certs-05:
+
+   o  Adopted as draft-ietf-httpbis-http2-secondary-certs
+
+Acknowledgements
 
    Eric Rescorla pointed out several failings in an earlier revision.
    Andrei Popov contributed to the TLS considerations.
 
    A substantial portion of Mike's work on this draft was supported by
    Microsoft during his employment there.
-
-Appendix B.  Change Log
-
-      *RFC Editor's Note:* Please remove this section prior to
-      publication of a final version of this document.
-
-B.1.  Since draft-ietf-httpbis-http2-secondary-certs-00:
-
-   Nothing yet.
-
-B.2.  Since draft-bishop-httpbis-http2-additional-certs-05:
-
-   o  Adopted as draft-ietf-httpbis-http2-secondary-certs
 
 Authors' Addresses
 
