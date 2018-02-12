@@ -1,5 +1,109 @@
 [
   {
+    "url": "https://api.github.com/repos/httpwg/http-extensions/issues/488",
+    "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
+    "labels_url": "https://api.github.com/repos/httpwg/http-extensions/issues/488/labels{/name}",
+    "comments_url": "https://api.github.com/repos/httpwg/http-extensions/issues/488/comments",
+    "events_url": "https://api.github.com/repos/httpwg/http-extensions/issues/488/events",
+    "html_url": "https://github.com/httpwg/http-extensions/pull/488",
+    "id": 296376902,
+    "number": 488,
+    "title": "move acks to end and make them unnumbered",
+    "user": {
+      "login": "reschke",
+      "id": 332994,
+      "avatar_url": "https://avatars3.githubusercontent.com/u/332994?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/reschke",
+      "html_url": "https://github.com/reschke",
+      "followers_url": "https://api.github.com/users/reschke/followers",
+      "following_url": "https://api.github.com/users/reschke/following{/other_user}",
+      "gists_url": "https://api.github.com/users/reschke/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/reschke/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/reschke/subscriptions",
+      "organizations_url": "https://api.github.com/users/reschke/orgs",
+      "repos_url": "https://api.github.com/users/reschke/repos",
+      "events_url": "https://api.github.com/users/reschke/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/reschke/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2018-02-12T13:36:55Z",
+    "updated_at": "2018-02-12T13:36:55Z",
+    "closed_at": null,
+    "author_association": "CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/httpwg/http-extensions/pulls/488",
+      "html_url": "https://github.com/httpwg/http-extensions/pull/488",
+      "diff_url": "https://github.com/httpwg/http-extensions/pull/488.diff",
+      "patch_url": "https://github.com/httpwg/http-extensions/pull/488.patch"
+    },
+    "body": ""
+  },
+  {
+    "url": "https://api.github.com/repos/httpwg/http-extensions/issues/487",
+    "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
+    "labels_url": "https://api.github.com/repos/httpwg/http-extensions/issues/487/labels{/name}",
+    "comments_url": "https://api.github.com/repos/httpwg/http-extensions/issues/487/comments",
+    "events_url": "https://api.github.com/repos/httpwg/http-extensions/issues/487/events",
+    "html_url": "https://github.com/httpwg/http-extensions/pull/487",
+    "id": 294717921,
+    "number": 487,
+    "title": "move acks to the end and make them unnumbered",
+    "user": {
+      "login": "reschke",
+      "id": 332994,
+      "avatar_url": "https://avatars3.githubusercontent.com/u/332994?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/reschke",
+      "html_url": "https://github.com/reschke",
+      "followers_url": "https://api.github.com/users/reschke/followers",
+      "following_url": "https://api.github.com/users/reschke/following{/other_user}",
+      "gists_url": "https://api.github.com/users/reschke/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/reschke/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/reschke/subscriptions",
+      "organizations_url": "https://api.github.com/users/reschke/orgs",
+      "repos_url": "https://api.github.com/users/reschke/repos",
+      "events_url": "https://api.github.com/users/reschke/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/reschke/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2018-02-06T11:03:46Z",
+    "updated_at": "2018-02-06T17:30:12Z",
+    "closed_at": "2018-02-06T17:26:56Z",
+    "author_association": "CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/httpwg/http-extensions/pulls/487",
+      "html_url": "https://github.com/httpwg/http-extensions/pull/487",
+      "diff_url": "https://github.com/httpwg/http-extensions/pull/487.diff",
+      "patch_url": "https://github.com/httpwg/http-extensions/pull/487.patch"
+    },
+    "body": "...which is how the RFC Editor likes it."
+  },
+  {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/486",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
     "labels_url": "https://api.github.com/repos/httpwg/http-extensions/issues/486/labels{/name}",
@@ -33,7 +137,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -430,7 +534,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -485,7 +589,13 @@
       "site_admin": false
     },
     "labels": [
-
+      {
+        "id": 777410970,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/bcp56bis",
+        "name": "bcp56bis",
+        "color": "fbca04",
+        "default": false
+      }
     ],
     "state": "open",
     "locked": false,
@@ -496,7 +606,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2018-02-02T22:54:34Z",
-    "updated_at": "2018-02-02T22:54:34Z",
+    "updated_at": "2018-02-11T23:42:56Z",
     "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "pull_request": {
@@ -600,7 +710,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -718,7 +828,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -777,7 +887,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -849,7 +959,7 @@
     "milestone": null,
     "comments": 1,
     "created_at": "2018-01-17T21:13:05Z",
-    "updated_at": "2018-02-01T23:31:52Z",
+    "updated_at": "2018-02-07T19:09:25Z",
     "closed_at": "2018-02-01T23:31:52Z",
     "author_association": "CONTRIBUTOR",
     "pull_request": {
@@ -1634,7 +1744,8 @@
     "closed_at": "2018-02-01T07:25:08Z",
     "author_association": "CONTRIBUTOR",
     "body": "Many of the algorithms in structured-headers are defined as taking input_string and returning a parsed X after modifying input_string to remove the X.  This is a pretty common way of building an inline parser.\r\n\r\nTake label, which describes an initial step of:\r\n\r\n> If input_string contains more than 256 characters, throw an error.\r\n\r\nBut a label can be followed by other things that will cause the overall string to exceed this length.  So this check is invalid.\r\n\r\nI'd recommend moving the size checks into the algorithm body.  If X exceeds length maxlen(X), then throw as you are scrubbing through.\r\n\r\n\r\n(from @martinthomson)"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/458",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -1676,7 +1787,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -1735,7 +1846,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -1752,8 +1863,7 @@
     "closed_at": "2018-02-05T00:25:59Z",
     "author_association": "CONTRIBUTOR",
     "body": "Digest authentication is laughably weak; anything that uses it over HTTP is asking for trouble.\r\n\r\n(from @martinthomson)"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/456",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -1854,7 +1964,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -2657,7 +2767,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -2781,7 +2891,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -2989,7 +3099,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -3048,7 +3158,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -3107,7 +3217,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -3166,7 +3276,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -3225,7 +3335,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -3481,7 +3591,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/429.patch"
     },
     "body": "I think that these are the main places where we weren't clear enough about the relevant TLS role."
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/428",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -3640,8 +3751,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/427.patch"
     },
     "body": ""
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/426",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -4239,7 +4349,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -4500,7 +4610,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -4595,7 +4705,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -4895,7 +5005,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -5013,7 +5123,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -5024,9 +5134,9 @@
 
     ],
     "milestone": null,
-    "comments": 7,
+    "comments": 8,
     "created_at": "2017-09-30T05:57:57Z",
-    "updated_at": "2018-02-02T05:38:02Z",
+    "updated_at": "2018-02-12T00:48:01Z",
     "closed_at": null,
     "author_association": "NONE",
     "body": "While discussing this, I heard raised concerns that:\r\n* Adding cache digest support as currently specced may result in sending the digest even in cases where it is not used. Since initially this is likely to be most cases, shipping support is likely to result in performance regressions.\r\n* OTOH, a digest negotiation mechanism is likely to result in an RTT worth of delay before the digest reaches the server.\r\n\r\nA mechanism to solve this may look something like:\r\n* Client SETTING parameter that tells the server \"I'm going to send a cache digest, wait for it\". If this setting is not present, the server should not wait for a digest before pushing.\r\n* Server SETTING parameter that tells the client \"I really like to get a cache digest next time around\"\r\n* Client implementations SHOULD/MUST maintain server preference for future sessions, and MAY not send a cache digest if a past session with that server did not include a \"I want a digest\" SETTING parameter.\r\n* On the very first connection to a server, the client's cache is empty, so not sending the digest in that case has no penalty.\r\n"
@@ -5733,7 +5843,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/399.patch"
     },
     "body": ""
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/398",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -5856,8 +5967,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/397.patch"
     },
     "body": ""
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/396",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -7453,7 +7563,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -7695,7 +7805,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -7719,7 +7829,8 @@
     "closed_at": "2017-07-31T04:36:03Z",
     "author_association": "CONTRIBUTOR",
     "body": "From Lucas:\r\n\r\nIf my interpretation of the specification is correct, the Origin Set is currently unbounded. While the size of an individual H2 frame is bounded and negotiated, the Origin set can seemingly be added to ad nauseam. Even in the default size case, for a short ASCII-Origin such as http://dk, if might be possible to create an Origin set with ~1500 entries. I like the fact that ORIGIN frame extension doesn’t need any negotiation, so perhaps some guidance for client-side implementations would help e.g. be aware of the Origin Set size and be prepared to close the connection if you’re getting unhappy."
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/368",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -7830,8 +7941,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/367.patch"
     },
     "body": ""
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/366",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -8197,7 +8307,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -8380,7 +8490,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -8533,7 +8643,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -8592,7 +8702,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -9753,7 +9863,8 @@
     "closed_at": "2017-06-20T00:05:17Z",
     "author_association": "NONE",
     "body": "When investigating http extensions, I came across the `ORIGIN` frame draft here.\r\n\r\nAlthough I think the goals set out for it are good, there are some inherent issues with adding this extension:\r\n- Service exposure on servers: the `ORIGIN` frame will potentially expose previously unknown services on the same host (e.g. administration interfaces on different ports) that should not be advertised.\r\n- Shared-host exposure: the frame will (by design) expose other domains/hosts served by the same server. For shared hosts, this can cause severe privacy issues by exposing which other domains/hosts are served by the same server.\r\n- Origin IP exposure: unless explicitly filtered out, any reverse-proxied connection can expose the origin server's IP to a connecting client, due to the previous point's type of exposure. \r\ne.g. `example.com` is proxied, `example2.com` is not proxied. Connecting to `example.com` connects to the proxy, exposes `example2.com` also being hosted in the `ORIGIN` frame. Looking up `example2.com` in DNS then exposes the origin IP of `example.com`."
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/338",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -9941,8 +10052,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/337.patch"
     },
     "body": ""
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/336",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -10429,7 +10539,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -10738,7 +10848,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -11234,7 +11344,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -11293,7 +11403,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -11352,7 +11462,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -11672,7 +11782,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/309.patch"
     },
     "body": "Closes https://github.com/httpwg/http-extensions/issues/308."
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/308",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -11809,7 +11920,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -11826,8 +11937,7 @@
     "closed_at": "2017-03-26T17:31:00Z",
     "author_association": "CONTRIBUTOR",
     "body": "The `Accept-CH` response header is defined as:\r\n\r\n> When a client receives Accept-CH, or if it is capable of processing the HTML response and finds an equivalent HTML meta element, it can treat it as a signal that the server is interested in receiving the Client-Hint header fields that match the advertised field-values; subsequent requests initiated to the same server and, optionally any subresource requests initiated as a result of processing the response from the server that includes the Accept-CH opt-in, can include the Client-Hint header fields that match the advertised field-values.\r\n>\r\n> For example, based on Accept-CH example above, a user agent could append DPR, Width, Viewport-Width, and Downlink header fields to all subresource requests initiated by the page constructed from the response. Alternatively, a client can treat advertised support as a persistent origin preference and append same header fields on all future requests initiated to and by the resources associated with that origin.\r\n\r\n\"All future requests\" is a long time indeed. While of course the client isn't going to literally do that (eventually it'll be garbage collected, or the user will reset state, or the machine will be recycled), from a server-side perspective, it'd be nice to have *some* level of control over how bloated your requests get.\r\n\r\nAdditionally, having `Accept-CH` possibly indicate that future references *to* **and** *from* this origin seems like a pretty broad brush to be painting with. While Chrome might make some reasonable decisions about tradeoffs here (and probably needs some wiggle room), if this ever does get implemented elsewhere, this broadness and freedom is a recipe for bad interop and worse server-side headaches.\r\n\r\nSo, can we nail this down at all? \r\n\r\nThe most conservative approach is:\r\n\r\n\"Send CH headers on subrequests generated by this content, please.\"\r\n\r\nHowever, the above also says \"subsequent requests initiated to the same server\" in the primary spot; the case above is relegated to \"optionally.\"\r\n\r\nPersonally, my preference would be to drop \"subsequent requests initiated to the same server and, optionally\" and the corresponding text in the example below it. The primary use case for CH as I understand it is serving appropriate subresources, NOT dynamically modifying HTML, so that should do the trick.\r\n\r\nAm I missing something, @igrigorik?\r\n\r\nRegardless of that, \"server\" is used very loosely above; I think you mean \"origin\", right? And \"can\" should probably be \"MAY\".\r\n\r\nCC @yoavweiss"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/306",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -11869,7 +11979,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -12032,7 +12142,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -12557,7 +12667,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -12798,7 +12908,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -12952,7 +13062,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -13011,7 +13121,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -13253,7 +13363,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -13305,7 +13415,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -13370,7 +13480,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -13429,7 +13539,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -13583,7 +13693,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/279.patch"
     },
     "body": ""
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/278",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -13693,8 +13804,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/277.patch"
     },
     "body": ""
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/276",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -13833,7 +13943,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -14061,7 +14171,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -14126,7 +14236,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -14192,7 +14302,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -14362,7 +14472,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -14428,7 +14538,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -14532,7 +14642,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -14962,7 +15072,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -15014,7 +15124,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -15138,7 +15248,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -15337,7 +15447,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/249.patch"
     },
     "body": "I think that these are all editorial.\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/248",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -15491,8 +15602,7 @@
     "closed_at": "2016-10-12T07:53:14Z",
     "author_association": "CONTRIBUTOR",
     "body": "1) \"The permanent message header field registry (see [RFC3864]) has been updated with the following registrations.\" -> \"The permanent message header field registry (see [RFC3864]) needs to be updated with the following registrations.\"\n\n2) Remove the entries related to Set-Cookie2.\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/246",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -15988,7 +16098,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -16248,7 +16358,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -16307,7 +16417,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -16366,7 +16476,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -16491,7 +16601,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -16550,7 +16660,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -16609,7 +16719,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -16668,7 +16778,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -16955,7 +17065,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -17144,7 +17254,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -17249,7 +17359,8 @@
     "closed_at": null,
     "author_association": "NONE",
     "body": "That would make it easier to watch and participate in just what is of interest to you.\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/218",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -17284,7 +17395,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -17373,8 +17484,7 @@
     "closed_at": "2016-09-28T06:58:18Z",
     "author_association": "CONTRIBUTOR",
     "body": "minor editorial issue: draft-ietf-httpbis-encryption-encoding seems to be using \"Content Encoding\" and \"Content Coding\" and \"Content-Coding\" synonymously. maybe settle on one of those terms? \"Content Coding\" might be best because that's what RFC 7231 uses.\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/216",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -17416,7 +17526,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -17475,7 +17585,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -17681,7 +17791,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -17990,7 +18100,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -18120,7 +18230,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -18502,7 +18612,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -18854,7 +18964,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -19031,7 +19141,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -19048,7 +19158,8 @@
     "closed_at": "2016-06-07T06:38:09Z",
     "author_association": "CONTRIBUTOR",
     "body": "\"Servers can advertise support for Client Hints using the Accept-CH header field or an equivalent HTML meta element with http-equiv attribute ([W3C.REC-html5-20141028]).\"\n\nIn which case it should be added to https://wiki.whatwg.org/wiki/PragmaExtensions  (like it or not).\n\n\"When a client receives Accept-CH, it SHOULD append the Client Hint header fields that match the advertised field-values. For example, based on Accept-CH example above, the client would append DPR, Width, Viewport-Width, and Downlink header fields to all subsequent requests.\"\n\nQ: does the SHOULD also apply to the HTML http-equiv variant?\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/188",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -19083,7 +19194,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -19142,7 +19253,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -19166,8 +19277,7 @@
     "closed_at": null,
     "author_association": "NONE",
     "body": "It could be better for some implementers if the lifetime of the Key headers is the same as the Cache-Control: from the response wherein the Key header was seen. The spec today says that the Key header used should be the last one seen, but this can cause some complex, and/or performance expensive issues for certain cache implementations.\n\nUnless the intent here is that I can purge old variants from the cache, that are still fresh, by changing the Key header for subsequent variants?\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/186",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -19665,7 +19775,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -19724,7 +19834,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -20253,7 +20363,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -20534,7 +20644,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -20593,7 +20703,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -20652,7 +20762,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -20718,7 +20828,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -20735,7 +20845,8 @@
     "closed_at": null,
     "author_association": "NONE",
     "body": "As a part of discussion in whatwg/html#804 I've made a [research](http://inikulin.github.io/cookie-compat/) of the modern browsers compatibility with the RFC 6265. It appears that all browsers nowadays allows cookies without key or (in case of Safari) without value, thus making it de facto standard. However, it's debatable how cookies like `foo;` should be treated: as the cookie without value or without key. Thinking of cookie jar as some kind of key/value store makes it more logical to treat such cookie as cookies without value, but on the other hand, currently most implementers treats them as the cookies with the special empty key.\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/158",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -20839,8 +20950,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/157.patch"
     },
     "body": "Second round on this one, small tweaks and a small amount of restructuring.\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/156",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -20882,7 +20992,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -20941,7 +21051,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -21326,7 +21436,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -21482,7 +21592,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -21541,7 +21651,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -21815,7 +21925,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -22029,7 +22139,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -22140,7 +22250,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -22379,7 +22489,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/129.patch"
     },
     "body": ""
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/128",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -22483,8 +22594,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/127.patch"
     },
     "body": "Even a pull request feels heavy-weight for this....\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/126",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -23161,7 +23271,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -23501,7 +23611,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -23560,7 +23670,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -23619,7 +23729,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -23678,7 +23788,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -23737,7 +23847,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -23796,7 +23906,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -23862,14 +23972,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
-        "default": false
-      },
-      {
-        "id": 109132737,
-        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/editor-ready",
-        "name": "editor-ready",
-        "color": "0b02e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -24023,7 +24126,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -24156,7 +24259,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/99.patch"
     },
     "body": "An alternate can send an Alt-Svc field that overrides that sent by the origin and is cached on an equal basis.\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/98",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -24266,8 +24370,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/97.patch"
     },
     "body": "Proposes additional text in security considerations around changing from privileged to non-privileged ports; addresses #73.\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/96",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -24309,7 +24412,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -24537,14 +24640,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
-        "default": false
-      },
-      {
-        "id": 109132737,
-        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/editor-ready",
-        "name": "editor-ready",
-        "color": "0b02e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -24720,7 +24816,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -24837,14 +24933,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
-        "default": false
-      },
-      {
-        "id": 109132737,
-        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/editor-ready",
-        "name": "editor-ready",
-        "color": "0b02e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -25066,7 +25155,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -25159,7 +25248,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -25277,14 +25366,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
-        "default": false
-      },
-      {
-        "id": 109132737,
-        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/editor-ready",
-        "name": "editor-ready",
-        "color": "0b02e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -25548,14 +25630,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
-        "default": false
-      },
-      {
-        "id": 109132737,
-        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/editor-ready",
-        "name": "editor-ready",
-        "color": "0b02e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -25614,14 +25689,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
-        "default": false
-      },
-      {
-        "id": 109132737,
-        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/editor-ready",
-        "name": "editor-ready",
-        "color": "0b02e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -25680,14 +25748,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
-        "default": false
-      },
-      {
-        "id": 109132737,
-        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/editor-ready",
-        "name": "editor-ready",
-        "color": "0b02e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -25780,14 +25841,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
-        "default": false
-      },
-      {
-        "id": 109132737,
-        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/editor-ready",
-        "name": "editor-ready",
-        "color": "0b02e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -25880,14 +25934,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
-        "default": false
-      },
-      {
-        "id": 109132737,
-        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/editor-ready",
-        "name": "editor-ready",
-        "color": "0b02e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -25946,14 +25993,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
-        "default": false
-      },
-      {
-        "id": 109132737,
-        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/editor-ready",
-        "name": "editor-ready",
-        "color": "0b02e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -26070,14 +26110,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
-        "default": false
-      },
-      {
-        "id": 109132737,
-        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/editor-ready",
-        "name": "editor-ready",
-        "color": "0b02e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -26094,7 +26127,8 @@
     "closed_at": "2015-09-20T09:05:05Z",
     "author_association": "CONTRIBUTOR",
     "body": "must ignore? how to register new ones? IANA registry?\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/68",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -26205,8 +26239,7 @@
     "closed_at": "2016-03-17T01:07:15Z",
     "author_association": "CONTRIBUTOR",
     "body": "Or, for \"parameter\", reference the alt-svc spec.\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/66",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -26476,14 +26509,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
-        "default": false
-      },
-      {
-        "id": 109132737,
-        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/editor-ready",
-        "name": "editor-ready",
-        "color": "0b02e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -26716,14 +26742,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
-        "default": false
-      },
-      {
-        "id": 109132737,
-        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/editor-ready",
-        "name": "editor-ready",
-        "color": "0b02e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -26775,7 +26794,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -27162,7 +27181,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -27221,7 +27240,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -27280,7 +27299,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -27541,7 +27560,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -27600,14 +27619,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
-        "default": false
-      },
-      {
-        "id": 109132737,
-        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/editor-ready",
-        "name": "editor-ready",
-        "color": "0b02e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -27832,7 +27844,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/39.patch"
     },
     "body": "A possible implementation of http://lists.w3.org/Archives/Public/ietf-http-wg/2015JanMar/0062.html.\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/38",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -27874,7 +27887,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -27933,7 +27946,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -27986,8 +27999,7 @@
     "closed_at": "2014-11-30T21:51:12Z",
     "author_association": "CONTRIBUTOR",
     "body": "1. allow the frame to carry multiple indicators\n2. while doing so, use the same payload formats for both\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/36",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -28170,7 +28182,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -28633,7 +28645,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -29162,7 +29174,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -29221,14 +29233,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
-        "default": false
-      },
-      {
-        "id": 109132737,
-        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/editor-ready",
-        "name": "editor-ready",
-        "color": "0b02e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -29456,14 +29461,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
-        "default": false
-      },
-      {
-        "id": 109132737,
-        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/editor-ready",
-        "name": "editor-ready",
-        "color": "0b02e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -29661,7 +29659,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       },
       {
@@ -29685,7 +29683,8 @@
     "closed_at": "2014-08-15T04:00:07Z",
     "author_association": "CONTRIBUTOR",
     "body": "We need to define how a client using OppSec connects to a configured proxy; e.g., does it CONNECT, or does it downgrade? Does the answer change if the proxy is http vs https? Can the proxy advertise OppSec?\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/8",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -29727,7 +29726,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -29822,7 +29821,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -29839,8 +29838,7 @@
     "closed_at": "2014-07-23T14:58:16Z",
     "author_association": "CONTRIBUTOR",
     "body": "<a href=\"https://github.com/martinthomson\"><img src=\"https://avatars.githubusercontent.com/u/67641?\" align=\"left\" width=\"96\" height=\"96\" hspace=\"10\"></img></a> **Issue by [martinthomson](https://github.com/martinthomson)**\n_Thursday Jun 12, 2014 at 17:56 GMT_\n_Originally opened as https://github.com/http2/http2-spec/issues/521_\n\n---\n\nThe Alt-Svc header field permits multiple entries.  How does a client select between them when there are multiple options that are acceptable to the client?\n1. Add a q= parameter.\n2. Select the first acceptable option.\n3. Something else.\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/6",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -29882,14 +29880,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
-        "default": false
-      },
-      {
-        "id": 109132737,
-        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/editor-ready",
-        "name": "editor-ready",
-        "color": "0b02e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -29948,14 +29939,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
-        "default": false
-      },
-      {
-        "id": 109132737,
-        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/editor-ready",
-        "name": "editor-ready",
-        "color": "0b02e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -30014,14 +29998,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
-        "default": false
-      },
-      {
-        "id": 109132737,
-        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/editor-ready",
-        "name": "editor-ready",
-        "color": "0b02e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -30080,7 +30057,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -30139,14 +30116,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
-        "default": false
-      },
-      {
-        "id": 109132737,
-        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/editor-ready",
-        "name": "editor-ready",
-        "color": "0b02e1",
+        "color": "0052cc",
         "default": false
       }
     ],
@@ -30205,7 +30175,7 @@
         "id": 109132722,
         "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
         "name": "design",
-        "color": "02d7e1",
+        "color": "0052cc",
         "default": false
       }
     ],
