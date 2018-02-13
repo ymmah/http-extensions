@@ -88,17 +88,17 @@ Table of Contents
      4.5.  HTTP Status Codes . . . . . . . . . . . . . . . . . . . .  12
      4.6.  HTTP Header Fields  . . . . . . . . . . . . . . . . . . .  13
      4.7.  Defining Message Payloads . . . . . . . . . . . . . . . .  14
-     4.8.  Ensuring Browser Interoperability . . . . . . . . . . . .  14
-     4.9.  Access Control  . . . . . . . . . . . . . . . . . . . . .  14
-     4.10. Authentication and Application State  . . . . . . . . . .  14
+     4.8.  Authentication and Application State  . . . . . . . . . .  14
+     4.9.  Co-Existing with Web Browsing . . . . . . . . . . . . . .  14
+     4.10. Co-Existing with Other Applications . . . . . . . . . . .  15
    5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  15
    6.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
-   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
-     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  15
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .  17
-     7.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  19
-   Appendix A.  Changes from RFC3205 . . . . . . . . . . . . . . . .  19
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  19
+   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  16
+     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  16
+     7.2.  Informative References  . . . . . . . . . . . . . . . . .  18
+     7.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  20
+   Appendix A.  Changes from RFC3205 . . . . . . . . . . . . . . . .  20
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  20
 
 1.  Introduction
 
@@ -718,7 +718,7 @@ Internet-Draft      On the use of HTTP as a Substrate      February 2018
    that the "Location" header has a special meaning in a certain
    context.
 
-   See Section 4.10 for requirements regarding header fields that carry
+   See Section 4.8 for requirements regarding header fields that carry
    application state (e.g,. Cookie).
 
 
@@ -740,19 +740,7 @@ Internet-Draft      On the use of HTTP as a Substrate      February 2018
    they define; this makes it possible to identify them unambiguously
    and negotiate for their use.  See [RFC6838] for more information.
 
-4.8.  Ensuring Browser Interoperability
-
-   TBD
-
-4.9.  Access Control
-
-   Modern Web browsers constrain the ability of content from one origin
-   (as defined by [RFC6454]) to access resources from another, to avoid
-   the "confused deputy" problem.  As a result, applications that wish
-   to expose cross-origin data to browsers will need to implement
-   [W3C.REC-cors-20140116].
-
-4.10.  Authentication and Application State
+4.8.  Authentication and Application State
 
    Applications that use HTTP MAY use stateful cookies [RFC6265] to
    identify a client and/or store client-specific data to contextualise
@@ -775,6 +763,18 @@ Internet-Draft      On the use of HTTP as a Substrate      February 2018
    cause problems in interoperability, security, operability and
    evolution.
 
+4.9.  Co-Existing with Web Browsing
+
+   Even if there is not an intent for an application that uses HTTP to
+   be used with a Web browser, its resources will remain available to
+   browsers and other HTTP clients.
+
+   This means that all such applications need to consider how browsers
+   will interact with them, particularly regarding security.
+
+   For example, if an application's state can be changed using a POST
+   request, a Web browser can easily be coaxed into making that request
+   by a HTML form on an arbitrary Web site.
 
 
 
@@ -786,18 +786,68 @@ Nottingham               Expires August 17, 2018               [Page 14]
 Internet-Draft      On the use of HTTP as a Substrate      February 2018
 
 
+   Or, if a resource reflects data from the request into a response,
+   that can be used to perform a Cross-Site Scripting attack on Web
+   browsers directed to it.
+
+   This is only a small sample of the kinds of issues that applications
+   using HTTP must consider.  Generally, the best approach is to
+   consider the application _as_ a Web application, and to follow best
+   practices for their secure development.
+
+   A complete enumeration of such practices is out of scope for this
+   document.  External resources are numerous; e.g.,
+   https://www.owasp.org/index.php/OWASP_Guide_Project [4].
+
+4.10.  Co-Existing with Other Applications
+
+   Because the origin [RFC6454] is how many HTTP capabilities are
+   scoped, applications also need to consider how deployments might
+   interact with other applications (including Web browsing) on the same
+   origin.
+
+   For example, if Cookies [RFC6265] are used to carry application
+   state, they will be sent with all requests to the origin by default,
+   unless scoped by path, and the application might receive cookies from
+   other applications on the origin.  This can lead to security issues,
+   as well as collisions in cookie name.
+
+   As a result, when specifying the use of Cookies, HTTP authentication
+   [RFC7235], or other origin-wide HTTP mechanisms, applications using
+   HTTP SHOULD NOT mandate the use of a particular identifier, but
+   instead let deployments configure them.
+
+   Note that dedicating a hostname to a single application is not a
+   solution to the issues above; see [RFC7320].
+
+   Modern Web browsers constrain the ability of content from one origin
+   to access resources from another, to avoid the "confused deputy"
+   problem.  As a result, applications that wish to expose cross-origin
+   data to browsers will need to implement [W3C.REC-cors-20140116].
+
 5.  IANA Considerations
 
    This document has no requirements for IANA.
 
 6.  Security Considerations
 
-   Section 4.10 discusses the impact of using stateful mechanisms in the
+   Section 4.8 discusses the impact of using stateful mechanisms in the
    protocol as ambient authority, and suggests a mitigation.
+
+
+
+
+Nottingham               Expires August 17, 2018               [Page 15]
+
+Internet-Draft      On the use of HTTP as a Substrate      February 2018
+
 
    Section 4.3.2 requires support for 'https' URLs, and discourages the
    use of 'http' URLs, to provide authentication, integrity and
    confidentiality, as well as mitigate pervasive monitoring attacks.
+
+   Section 4.9 highlights the implications of Web browsers' capabilities
+   on applications that use HTTP.
 
    Applications that use HTTP in a manner that involves modification of
    implementations - for example, requiring support for a new URL
@@ -824,6 +874,10 @@ Internet-Draft      On the use of HTTP as a Substrate      February 2018
               DOI 10.17487/RFC5988, October 2010,
               <https://www.rfc-editor.org/info/rfc5988>.
 
+   [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
+              DOI 10.17487/RFC6454, December 2011,
+              <https://www.rfc-editor.org/info/rfc6454>.
+
    [RFC6648]  Saint-Andre, P., Crocker, D., and M. Nottingham,
               "Deprecating the "X-" Prefix and Similar Constructs in
               Application Protocols", BCP 178, RFC 6648,
@@ -837,7 +891,9 @@ Internet-Draft      On the use of HTTP as a Substrate      February 2018
 
 
 
-Nottingham               Expires August 17, 2018               [Page 15]
+
+
+Nottingham               Expires August 17, 2018               [Page 16]
 
 Internet-Draft      On the use of HTTP as a Substrate      February 2018
 
@@ -893,7 +949,7 @@ Internet-Draft      On the use of HTTP as a Substrate      February 2018
 
 
 
-Nottingham               Expires August 17, 2018               [Page 16]
+Nottingham               Expires August 17, 2018               [Page 17]
 
 Internet-Draft      On the use of HTTP as a Substrate      February 2018
 
@@ -949,14 +1005,10 @@ Internet-Draft      On the use of HTTP as a Substrate      February 2018
 
 
 
-Nottingham               Expires August 17, 2018               [Page 17]
+Nottingham               Expires August 17, 2018               [Page 18]
 
 Internet-Draft      On the use of HTTP as a Substrate      February 2018
 
-
-   [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
-              DOI 10.17487/RFC6454, December 2011,
-              <https://www.rfc-editor.org/info/rfc6454>.
 
    [RFC6455]  Fette, I. and A. Melnikov, "The WebSocket Protocol",
               RFC 6455, DOI 10.17487/RFC6455, December 2011,
@@ -998,24 +1050,21 @@ Internet-Draft      On the use of HTTP as a Substrate      February 2018
               CR-secure-contexts-20160915, September 2016,
               <https://www.w3.org/TR/2016/CR-secure-contexts-20160915>.
 
-
-
-
-
-
-
-
-Nottingham               Expires August 17, 2018               [Page 18]
-
-Internet-Draft      On the use of HTTP as a Substrate      February 2018
-
-
    [W3C.REC-xml-20081126]
               Bray, T., Paoli, J., Sperberg-McQueen, M., Maler, E., and
               F. Yergeau, "Extensible Markup Language (XML) 1.0 (Fifth
               Edition)", World Wide Web Consortium Recommendation REC-
               xml-20081126, November 2008,
               <http://www.w3.org/TR/2008/REC-xml-20081126>.
+
+
+
+
+
+Nottingham               Expires August 17, 2018               [Page 19]
+
+Internet-Draft      On the use of HTTP as a Substrate      February 2018
+
 
 7.3.  URIs
 
@@ -1024,6 +1073,8 @@ Internet-Draft      On the use of HTTP as a Substrate      February 2018
    [2] http://httpwg.github.io/
 
    [3] https://github.com/httpwg/http-extensions/labels/bcp56bis
+
+   [4] https://www.owasp.org/index.php/OWASP_Guide_Project
 
 Appendix A.  Changes from RFC3205
 
@@ -1061,4 +1112,9 @@ Author's Address
 
 
 
-Nottingham               Expires August 17, 2018               [Page 19]
+
+
+
+
+
+Nottingham               Expires August 17, 2018               [Page 20]
