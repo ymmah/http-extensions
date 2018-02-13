@@ -10,7 +10,7 @@ Expires: August 17, 2018
 
 
                    On the use of HTTP as a Substrate
-                     draft-ietf-httpbis-bcp56bis-00
+                   draft-ietf-httpbis-bcp56bis-latest
 
 Abstract
 
