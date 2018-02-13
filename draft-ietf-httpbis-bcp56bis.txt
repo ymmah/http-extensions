@@ -91,13 +91,13 @@ Table of Contents
      4.8.  Ensuring Browser Interoperability . . . . . . . . . . . .  14
      4.9.  Access Control  . . . . . . . . . . . . . . . . . . . . .  14
      4.10. Authentication and Application State  . . . . . . . . . .  14
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  14
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  14
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  15
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .  15
      7.2.  Informative References  . . . . . . . . . . . . . . . . .  17
-     7.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  18
-   Appendix A.  Changes from RFC3205 . . . . . . . . . . . . . . . .  18
+     7.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  19
+   Appendix A.  Changes from RFC3205 . . . . . . . . . . . . . . . .  19
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  19
 
 1.  Introduction
@@ -732,7 +732,13 @@ Internet-Draft      On the use of HTTP as a Substrate      February 2018
 
 4.7.  Defining Message Payloads
 
-   TBD
+   There are many potential formats for payloads; for example, JSON
+   [RFC8259] and XML [W3C.REC-xml-20081126].  Best practices for their
+   use are out of scope for this document.
+
+   Applications SHOULD register distinct media types for each format
+   they define; this makes it possible to identify them unambiguously
+   and negotiate for their use.  See [RFC6838] for more information.
 
 4.8.  Ensuring Browser Interoperability
 
@@ -769,14 +775,8 @@ Internet-Draft      On the use of HTTP as a Substrate      February 2018
    cause problems in interoperability, security, operability and
    evolution.
 
-5.  IANA Considerations
 
-   This document has no requirements for IANA.
 
-6.  Security Considerations
-
-   Section 4.10 discusses the impact of using stateful mechanisms in the
-   protocol as ambient authority, and suggests a mitigation.
 
 
 
@@ -785,6 +785,15 @@ Nottingham               Expires August 17, 2018               [Page 14]
 
 Internet-Draft      On the use of HTTP as a Substrate      February 2018
 
+
+5.  IANA Considerations
+
+   This document has no requirements for IANA.
+
+6.  Security Considerations
+
+   Section 4.10 discusses the impact of using stateful mechanisms in the
+   protocol as ambient authority, and suggests a mitigation.
 
    Section 4.3.2 requires support for 'https' URLs, and discourages the
    use of 'http' URLs, to provide authentication, integrity and
@@ -826,21 +835,17 @@ Internet-Draft      On the use of HTTP as a Substrate      February 2018
               RFC 6838, DOI 10.17487/RFC6838, January 2013,
               <https://www.rfc-editor.org/info/rfc6838>.
 
-   [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
-              Protocol (HTTP/1.1): Message Syntax and Routing",
-              RFC 7230, DOI 10.17487/RFC7230, June 2014,
-              <https://www.rfc-editor.org/info/rfc7230>.
-
-
-
-
-
 
 
 Nottingham               Expires August 17, 2018               [Page 15]
 
 Internet-Draft      On the use of HTTP as a Substrate      February 2018
 
+
+   [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
+              Protocol (HTTP/1.1): Message Syntax and Routing",
+              RFC 7230, DOI 10.17487/RFC7230, June 2014,
+              <https://www.rfc-editor.org/info/rfc7230>.
 
    [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
@@ -885,11 +890,6 @@ Internet-Draft      On the use of HTTP as a Substrate      February 2018
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
-   [W3C.REC-cors-20140116]
-              Kesteren, A., "Cross-Origin Resource Sharing", World Wide
-              Web Consortium Recommendation REC-cors-20140116, January
-              2014, <http://www.w3.org/TR/2014/REC-cors-20140116>.
-
 
 
 
@@ -897,6 +897,11 @@ Nottingham               Expires August 17, 2018               [Page 16]
 
 Internet-Draft      On the use of HTTP as a Substrate      February 2018
 
+
+   [W3C.REC-cors-20140116]
+              Kesteren, A., "Cross-Origin Resource Sharing", World Wide
+              Web Consortium Recommendation REC-cors-20140116, January
+              2014, <http://www.w3.org/TR/2014/REC-cors-20140116>.
 
 7.2.  Informative References
 
@@ -941,11 +946,6 @@ Internet-Draft      On the use of HTTP as a Substrate      February 2018
               DOI 10.17487/RFC6265, April 2011,
               <https://www.rfc-editor.org/info/rfc6265>.
 
-   [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
-              DOI 10.17487/RFC6454, December 2011,
-              <https://www.rfc-editor.org/info/rfc6454>.
-
-
 
 
 
@@ -953,6 +953,10 @@ Nottingham               Expires August 17, 2018               [Page 17]
 
 Internet-Draft      On the use of HTTP as a Substrate      February 2018
 
+
+   [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
+              DOI 10.17487/RFC6454, December 2011,
+              <https://www.rfc-editor.org/info/rfc6454>.
 
    [RFC6455]  Fette, I. and A. Melnikov, "The WebSocket Protocol",
               RFC 6455, DOI 10.17487/RFC6455, December 2011,
@@ -984,10 +988,34 @@ Internet-Draft      On the use of HTTP as a Substrate      February 2018
               RFC 7617, DOI 10.17487/RFC7617, September 2015,
               <https://www.rfc-editor.org/info/rfc7617>.
 
+   [RFC8259]  Bray, T., Ed., "The JavaScript Object Notation (JSON) Data
+              Interchange Format", STD 90, RFC 8259,
+              DOI 10.17487/RFC8259, December 2017,
+              <https://www.rfc-editor.org/info/rfc8259>.
+
    [W3C.CR-secure-contexts-20160915]
               West, M., "Secure Contexts", World Wide Web Consortium CR
               CR-secure-contexts-20160915, September 2016,
               <https://www.w3.org/TR/2016/CR-secure-contexts-20160915>.
+
+
+
+
+
+
+
+
+Nottingham               Expires August 17, 2018               [Page 18]
+
+Internet-Draft      On the use of HTTP as a Substrate      February 2018
+
+
+   [W3C.REC-xml-20081126]
+              Bray, T., Paoli, J., Sperberg-McQueen, M., Maler, E., and
+              F. Yergeau, "Extensible Markup Language (XML) 1.0 (Fifth
+              Edition)", World Wide Web Consortium Recommendation REC-
+              xml-20081126, November 2008,
+              <http://www.w3.org/TR/2008/REC-xml-20081126>.
 
 7.3.  URIs
 
@@ -1002,14 +1030,6 @@ Appendix A.  Changes from RFC3205
    RFC3205 captured the Best Current Practice in the early 2000's, based
    on the concerns facing protocol designers at the time.  Use of HTTP
    has changed considerably since then, and as a result this document is
-
-
-
-Nottingham               Expires August 17, 2018               [Page 18]
-
-Internet-Draft      On the use of HTTP as a Substrate      February 2018
-
-
    substantially different.  As a result, the changes are too numerous
    to list individually.
 
@@ -1019,26 +1039,6 @@ Author's Address
 
    Email: mnot@mnot.net
    URI:   https://www.mnot.net/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
