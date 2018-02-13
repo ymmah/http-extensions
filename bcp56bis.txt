@@ -90,15 +90,15 @@ Table of Contents
      4.7.  Defining Message Payloads . . . . . . . . . . . . . . . .  14
      4.8.  Ensuring Browser Interoperability . . . . . . . . . . . .  14
      4.9.  Access Control  . . . . . . . . . . . . . . . . . . . . .  14
-       4.9.1.  Authentication and Application State  . . . . . . . .  14
+     4.10. Authentication and Application State  . . . . . . . . . .  14
    5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  14
    6.  Security Considerations . . . . . . . . . . . . . . . . . . .  14
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .  15
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .  16
+     7.2.  Informative References  . . . . . . . . . . . . . . . . .  17
      7.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  18
    Appendix A.  Changes from RFC3205 . . . . . . . . . . . . . . . .  18
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  18
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  19
 
 1.  Introduction
 
@@ -718,7 +718,7 @@ Internet-Draft      On the use of HTTP as a Substrate      February 2018
    that the "Location" header has a special meaning in a certain
    context.
 
-   See Section 4.9.1 for requirements regarding header fields that carry
+   See Section 4.10 for requirements regarding header fields that carry
    application state (e.g,. Cookie).
 
 
@@ -746,7 +746,7 @@ Internet-Draft      On the use of HTTP as a Substrate      February 2018
    to expose cross-origin data to browsers will need to implement
    [W3C.REC-cors-20140116].
 
-4.9.1.  Authentication and Application State
+4.10.  Authentication and Application State
 
    Applications that use HTTP MAY use stateful cookies [RFC6265] to
    identify a client and/or store client-specific data to contextualise
@@ -763,21 +763,21 @@ Internet-Draft      On the use of HTTP as a Substrate      February 2018
    possible.  Mitigations include using a request-specific token to
    assure the intent of the client.
 
+   Applications MUST NOT make assumptions about the relationship between
+   separate requests on a single transport connection; doing so breaks
+   many of the assumptions of HTTP as a stateless protocol, and will
+   cause problems in interoperability, security, operability and
+   evolution.
+
 5.  IANA Considerations
 
    This document has no requirements for IANA.
 
 6.  Security Considerations
 
-   Section 4.9.1 discusses the impact of using stateful mechanisms in
-   the protocol as ambient authority, and suggests a mitigation.
+   Section 4.10 discusses the impact of using stateful mechanisms in the
+   protocol as ambient authority, and suggests a mitigation.
 
-   Section 4.3.2 requires support for 'https' URLs, and discourages the
-   use of 'http' URLs, to provide authentication, integrity and
-   confidentiality, as well as mitigate pervasive monitoring attacks.
-
-   Applications that use HTTP in a manner that involves modification of
-   implementations - for example, requiring support for a new URL
 
 
 
@@ -786,6 +786,12 @@ Nottingham               Expires August 17, 2018               [Page 14]
 Internet-Draft      On the use of HTTP as a Substrate      February 2018
 
 
+   Section 4.3.2 requires support for 'https' URLs, and discourages the
+   use of 'http' URLs, to provide authentication, integrity and
+   confidentiality, as well as mitigate pervasive monitoring attacks.
+
+   Applications that use HTTP in a manner that involves modification of
+   implementations - for example, requiring support for a new URL
    scheme, or a non-standard method - risk having those implementations
    "fork" from their parent HTTP implementations, with the possible
    result that they do not benefit from patches and other security
@@ -825,6 +831,17 @@ Internet-Draft      On the use of HTTP as a Substrate      February 2018
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
               <https://www.rfc-editor.org/info/rfc7230>.
 
+
+
+
+
+
+
+Nottingham               Expires August 17, 2018               [Page 15]
+
+Internet-Draft      On the use of HTTP as a Substrate      February 2018
+
+
    [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
               DOI 10.17487/RFC7231, June 2014,
@@ -834,13 +851,6 @@ Internet-Draft      On the use of HTTP as a Substrate      February 2018
               Protocol (HTTP/1.1): Conditional Requests", RFC 7232,
               DOI 10.17487/RFC7232, June 2014,
               <https://www.rfc-editor.org/info/rfc7232>.
-
-
-
-Nottingham               Expires August 17, 2018               [Page 15]
-
-Internet-Draft      On the use of HTTP as a Substrate      February 2018
-
 
    [RFC7233]  Fielding, R., Ed., Lafon, Y., Ed., and J. Reschke, Ed.,
               "Hypertext Transfer Protocol (HTTP/1.1): Range Requests",
@@ -880,16 +890,6 @@ Internet-Draft      On the use of HTTP as a Substrate      February 2018
               Web Consortium Recommendation REC-cors-20140116, January
               2014, <http://www.w3.org/TR/2014/REC-cors-20140116>.
 
-7.2.  Informative References
-
-   [FETCH]    WHATWG, "Fetch - Living Standard", n.d.,
-              <https://fetch.spec.whatwg.org>.
-
-   [HTML5]    WHATWG, "HTML - Living Standard", n.d.,
-              <https://html.spec.whatwg.org>.
-
-
-
 
 
 
@@ -897,6 +897,14 @@ Nottingham               Expires August 17, 2018               [Page 16]
 
 Internet-Draft      On the use of HTTP as a Substrate      February 2018
 
+
+7.2.  Informative References
+
+   [FETCH]    WHATWG, "Fetch - Living Standard", n.d.,
+              <https://fetch.spec.whatwg.org>.
+
+   [HTML5]    WHATWG, "HTML - Living Standard", n.d.,
+              <https://html.spec.whatwg.org>.
 
    [RFC0793]  Postel, J., "Transmission Control Protocol", STD 7,
               RFC 793, DOI 10.17487/RFC0793, September 1981,
@@ -937,14 +945,6 @@ Internet-Draft      On the use of HTTP as a Substrate      February 2018
               DOI 10.17487/RFC6454, December 2011,
               <https://www.rfc-editor.org/info/rfc6454>.
 
-   [RFC6455]  Fette, I. and A. Melnikov, "The WebSocket Protocol",
-              RFC 6455, DOI 10.17487/RFC6455, December 2011,
-              <https://www.rfc-editor.org/info/rfc6455>.
-
-   [RFC7159]  Bray, T., Ed., "The JavaScript Object Notation (JSON) Data
-              Interchange Format", RFC 7159, DOI 10.17487/RFC7159, March
-              2014, <https://www.rfc-editor.org/info/rfc7159>.
-
 
 
 
@@ -953,6 +953,14 @@ Nottingham               Expires August 17, 2018               [Page 17]
 
 Internet-Draft      On the use of HTTP as a Substrate      February 2018
 
+
+   [RFC6455]  Fette, I. and A. Melnikov, "The WebSocket Protocol",
+              RFC 6455, DOI 10.17487/RFC6455, December 2011,
+              <https://www.rfc-editor.org/info/rfc6455>.
+
+   [RFC7159]  Bray, T., Ed., "The JavaScript Object Notation (JSON) Data
+              Interchange Format", RFC 7159, DOI 10.17487/RFC7159, March
+              2014, <https://www.rfc-editor.org/info/rfc7159>.
 
    [RFC7258]  Farrell, S. and H. Tschofenig, "Pervasive Monitoring Is an
               Attack", BCP 188, RFC 7258, DOI 10.17487/RFC7258, May
@@ -994,14 +1002,6 @@ Appendix A.  Changes from RFC3205
    RFC3205 captured the Best Current Practice in the early 2000's, based
    on the concerns facing protocol designers at the time.  Use of HTTP
    has changed considerably since then, and as a result this document is
-   substantially different.  As a result, the changes are too numerous
-   to list individually.
-
-Author's Address
-
-
-
-
 
 
 
@@ -1010,15 +1010,15 @@ Nottingham               Expires August 17, 2018               [Page 18]
 Internet-Draft      On the use of HTTP as a Substrate      February 2018
 
 
+   substantially different.  As a result, the changes are too numerous
+   to list individually.
+
+Author's Address
+
    Mark Nottingham
 
    Email: mnot@mnot.net
    URI:   https://www.mnot.net/
-
-
-
-
-
 
 
 
