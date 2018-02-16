@@ -5,7 +5,7 @@
 HTTP Working Group                                                K. Oku
 Internet-Draft                                             DeNA Co, Ltd.
 Intended status: Experimental                              M. Nottingham
-Expires: August 17, 2018                               February 13, 2018
+Expires: August 20, 2018                                           2 16,
 
 
                         Cache Digests for HTTP/2
@@ -42,20 +42,20 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 17, 2018.
+   This Internet-Draft will expire on August 20, 2018.
 
 Copyright Notice
 
-   Copyright (c) 2018 IETF Trust and the persons identified as the
-   document authors.  All rights reserved.
+   Copyright (c) IETF Trust and the persons identified as the document
+   authors.  All rights reserved.
 
 
 
 
 
-Oku & Nottingham         Expires August 17, 2018                [Page 1]
+Oku & Nottingham         Expires August 20, 2018                [Page 1]
 
-Internet-Draft          Cache Digests for HTTP/2           February 2018
+Internet-Draft          Cache Digests for HTTP/2                       2
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Oku & Nottingham         Expires August 17, 2018                [Page 2]
+Oku & Nottingham         Expires August 20, 2018                [Page 2]
 
-Internet-Draft          Cache Digests for HTTP/2           February 2018
+Internet-Draft          Cache Digests for HTTP/2                       2
 
 
    but there is still at least one round trip of potentially wasted
@@ -165,9 +165,9 @@ Internet-Draft          Cache Digests for HTTP/2           February 2018
 
 
 
-Oku & Nottingham         Expires August 17, 2018                [Page 3]
+Oku & Nottingham         Expires August 20, 2018                [Page 3]
 
-Internet-Draft          Cache Digests for HTTP/2           February 2018
+Internet-Draft          Cache Digests for HTTP/2                       2
 
 
    o  *VALIDATORS* (0x4): When set, indicates that the "validators"
@@ -221,9 +221,9 @@ Internet-Draft          Cache Digests for HTTP/2           February 2018
 
 
 
-Oku & Nottingham         Expires August 17, 2018                [Page 4]
+Oku & Nottingham         Expires August 20, 2018                [Page 4]
 
-Internet-Draft          Cache Digests for HTTP/2           February 2018
+Internet-Draft          Cache Digests for HTTP/2                       2
 
 
    servers to decide what kinds of responses to push to clients; for
@@ -277,9 +277,9 @@ Internet-Draft          Cache Digests for HTTP/2           February 2018
 
 
 
-Oku & Nottingham         Expires August 17, 2018                [Page 5]
+Oku & Nottingham         Expires August 20, 2018                [Page 5]
 
-Internet-Draft          Cache Digests for HTTP/2           February 2018
+Internet-Draft          Cache Digests for HTTP/2                       2
 
 
         1.  If "V" is equal to "C", continue to the next "V".
@@ -333,9 +333,9 @@ Internet-Draft          Cache Digests for HTTP/2           February 2018
 
 
 
-Oku & Nottingham         Expires August 17, 2018                [Page 6]
+Oku & Nottingham         Expires August 20, 2018                [Page 6]
 
-Internet-Draft          Cache Digests for HTTP/2           February 2018
+Internet-Draft          Cache Digests for HTTP/2                       2
 
 
 2.2.  Server Behavior
@@ -389,9 +389,9 @@ Internet-Draft          Cache Digests for HTTP/2           February 2018
 
 
 
-Oku & Nottingham         Expires August 17, 2018                [Page 7]
+Oku & Nottingham         Expires August 20, 2018                [Page 7]
 
-Internet-Draft          Cache Digests for HTTP/2           February 2018
+Internet-Draft          Cache Digests for HTTP/2                       2
 
 
    1.   Read the first 5 bits of "digest-value" as an integer; let "N"
@@ -445,9 +445,9 @@ Internet-Draft          Cache Digests for HTTP/2           February 2018
 
 
 
-Oku & Nottingham         Expires August 17, 2018                [Page 8]
+Oku & Nottingham         Expires August 20, 2018                [Page 8]
 
-Internet-Draft          Cache Digests for HTTP/2           February 2018
+Internet-Draft          Cache Digests for HTTP/2                       2
 
 
    Some underlying transports allow the server's first flight of
@@ -501,9 +501,9 @@ Internet-Draft          Cache Digests for HTTP/2           February 2018
 
 
 
-Oku & Nottingham         Expires August 17, 2018                [Page 9]
+Oku & Nottingham         Expires August 20, 2018                [Page 9]
 
-Internet-Draft          Cache Digests for HTTP/2           February 2018
+Internet-Draft          Cache Digests for HTTP/2                       2
 
 
 5.  Security Considerations
@@ -557,9 +557,9 @@ Internet-Draft          Cache Digests for HTTP/2           February 2018
 
 
 
-Oku & Nottingham         Expires August 17, 2018               [Page 10]
+Oku & Nottingham         Expires August 20, 2018               [Page 10]
 
-Internet-Draft          Cache Digests for HTTP/2           February 2018
+Internet-Draft          Cache Digests for HTTP/2                       2
 
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
@@ -613,9 +613,9 @@ Internet-Draft          Cache Digests for HTTP/2           February 2018
 
 
 
-Oku & Nottingham         Expires August 17, 2018               [Page 11]
+Oku & Nottingham         Expires August 20, 2018               [Page 11]
 
-Internet-Draft          Cache Digests for HTTP/2           February 2018
+Internet-Draft          Cache Digests for HTTP/2                       2
 
 
    [Rice]     Rice, R. and J. Plaunt, "Adaptive variable-length coding
@@ -669,9 +669,9 @@ Appendix A.  Encoding the CACHE_DIGEST frame as an HTTP Header
 
 
 
-Oku & Nottingham         Expires August 17, 2018               [Page 12]
+Oku & Nottingham         Expires August 20, 2018               [Page 12]
 
-Internet-Draft          Cache Digests for HTTP/2           February 2018
+Internet-Draft          Cache Digests for HTTP/2                       2
 
 
    Digest-Value is encoded using base64url [RFC4648], Section 5.  Flags
@@ -725,9 +725,9 @@ C.2.  Since draft-ietf-httpbis-cache-digest-01
 
 
 
-Oku & Nottingham         Expires August 17, 2018               [Page 13]
+Oku & Nottingham         Expires August 20, 2018               [Page 13]
 
-Internet-Draft          Cache Digests for HTTP/2           February 2018
+Internet-Draft          Cache Digests for HTTP/2                       2
 
 
 C.3.  Since draft-ietf-httpbis-cache-digest-00
@@ -781,4 +781,4 @@ Authors' Addresses
 
 
 
-Oku & Nottingham         Expires August 17, 2018               [Page 14]
+Oku & Nottingham         Expires August 20, 2018               [Page 14]

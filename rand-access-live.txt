@@ -8,7 +8,7 @@ Intended status: Experimental                                   B. Stark
 Expires: May 5, 2018                                                AT&T
                                                               D. Thakore
                                                                CableLabs
-                                                           November 2017
+                                                        November 1, 2017
 
 
                   HTTP Random Access and Live Content
