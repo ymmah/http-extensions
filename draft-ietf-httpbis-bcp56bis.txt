@@ -3,10 +3,10 @@
 
 
 HTTP Working Group                                         M. Nottingham
-Internet-Draft                                                     2 16,
+Internet-Draft                                              February 19,
 Obsoletes: 3205 (if approved)
 Intended status: Best Current Practice
-Expires: August 20, 2018
+Expires: August 23, 2018
 
 
                    On the use of HTTP as a Substrate
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 20, 2018.
+   This Internet-Draft will expire on August 23, 2018.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Nottingham               Expires August 20, 2018                [Page 1]
+Nottingham               Expires August 23, 2018                [Page 1]
 
-Internet-Draft      On the use of HTTP as a Substrate                  2
+Internet-Draft      On the use of HTTP as a Substrate           February
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Nottingham               Expires August 20, 2018                [Page 2]
+Nottingham               Expires August 23, 2018                [Page 2]
 
-Internet-Draft      On the use of HTTP as a Substrate                  2
+Internet-Draft      On the use of HTTP as a Substrate           February
 
 
    o  familiarity by implementers, specifiers, administrators,
@@ -165,9 +165,9 @@ Internet-Draft      On the use of HTTP as a Substrate                  2
 
 
 
-Nottingham               Expires August 20, 2018                [Page 3]
+Nottingham               Expires August 23, 2018                [Page 3]
 
-Internet-Draft      On the use of HTTP as a Substrate                  2
+Internet-Draft      On the use of HTTP as a Substrate           February
 
 
 1.1.  Notational Conventions
@@ -221,9 +221,9 @@ Internet-Draft      On the use of HTTP as a Substrate                  2
 
 
 
-Nottingham               Expires August 20, 2018                [Page 4]
+Nottingham               Expires August 23, 2018                [Page 4]
 
-Internet-Draft      On the use of HTTP as a Substrate                  2
+Internet-Draft      On the use of HTTP as a Substrate           February
 
 
 3.  What's Important About HTTP
@@ -277,9 +277,9 @@ A `200 OK` response means that the widget has successfully been updated.
 
 
 
-Nottingham               Expires August 20, 2018                [Page 5]
+Nottingham               Expires August 23, 2018                [Page 5]
 
-Internet-Draft      On the use of HTTP as a Substrate                  2
+Internet-Draft      On the use of HTTP as a Substrate           February
 
 
    Therefore, applications that use HTTP MUST NOT re-define, refine or
@@ -333,9 +333,9 @@ Internet-Draft      On the use of HTTP as a Substrate                  2
 
 
 
-Nottingham               Expires August 20, 2018                [Page 6]
+Nottingham               Expires August 23, 2018                [Page 6]
 
-Internet-Draft      On the use of HTTP as a Substrate                  2
+Internet-Draft      On the use of HTTP as a Substrate           February
 
 
    o  Definition of an information space using URLs; and
@@ -389,9 +389,9 @@ Internet-Draft      On the use of HTTP as a Substrate                  2
 
 
 
-Nottingham               Expires August 20, 2018                [Page 7]
+Nottingham               Expires August 23, 2018                [Page 7]
 
-Internet-Draft      On the use of HTTP as a Substrate                  2
+Internet-Draft      On the use of HTTP as a Substrate           February
 
 
    Foo Application uses HTTP {{RFC7230}}. Implementations MUST support
@@ -445,9 +445,9 @@ Internet-Draft      On the use of HTTP as a Substrate                  2
 
 
 
-Nottingham               Expires August 20, 2018                [Page 8]
+Nottingham               Expires August 23, 2018                [Page 8]
 
-Internet-Draft      On the use of HTTP as a Substrate                  2
+Internet-Draft      On the use of HTTP as a Substrate           February
 
 
    For example, an application might specify:
@@ -501,9 +501,9 @@ Internet-Draft      On the use of HTTP as a Substrate                  2
 
 
 
-Nottingham               Expires August 20, 2018                [Page 9]
+Nottingham               Expires August 23, 2018                [Page 9]
 
-Internet-Draft      On the use of HTTP as a Substrate                  2
+Internet-Draft      On the use of HTTP as a Substrate           February
 
 
    initial document is at "/foo/v1", they should allow a deployment to
@@ -557,9 +557,9 @@ Internet-Draft      On the use of HTTP as a Substrate                  2
 
 
 
-Nottingham               Expires August 20, 2018               [Page 10]
+Nottingham               Expires August 23, 2018               [Page 10]
 
-Internet-Draft      On the use of HTTP as a Substrate                  2
+Internet-Draft      On the use of HTTP as a Substrate           February
 
 
       Generally, they are designed and implemented with an assumption
@@ -613,9 +613,9 @@ Internet-Draft      On the use of HTTP as a Substrate                  2
 
 
 
-Nottingham               Expires August 20, 2018               [Page 11]
+Nottingham               Expires August 23, 2018               [Page 11]
 
-Internet-Draft      On the use of HTTP as a Substrate                  2
+Internet-Draft      On the use of HTTP as a Substrate           February
 
 
 4.5.  HTTP Status Codes
@@ -669,9 +669,9 @@ Internet-Draft      On the use of HTTP as a Substrate                  2
 
 
 
-Nottingham               Expires August 20, 2018               [Page 12]
+Nottingham               Expires August 23, 2018               [Page 12]
 
-Internet-Draft      On the use of HTTP as a Substrate                  2
+Internet-Draft      On the use of HTTP as a Substrate           February
 
 
    "499" can be safely handled as "400" by clients that don't recognise
@@ -725,9 +725,9 @@ Internet-Draft      On the use of HTTP as a Substrate                  2
 
 
 
-Nottingham               Expires August 20, 2018               [Page 13]
+Nottingham               Expires August 23, 2018               [Page 13]
 
-Internet-Draft      On the use of HTTP as a Substrate                  2
+Internet-Draft      On the use of HTTP as a Substrate           February
 
 
 4.7.  Defining Message Payloads
@@ -781,9 +781,9 @@ Internet-Draft      On the use of HTTP as a Substrate                  2
 
 
 
-Nottingham               Expires August 20, 2018               [Page 14]
+Nottingham               Expires August 23, 2018               [Page 14]
 
-Internet-Draft      On the use of HTTP as a Substrate                  2
+Internet-Draft      On the use of HTTP as a Substrate           February
 
 
    Or, if a resource reflects data from the request into a response,
@@ -837,9 +837,9 @@ Internet-Draft      On the use of HTTP as a Substrate                  2
 
 
 
-Nottingham               Expires August 20, 2018               [Page 15]
+Nottingham               Expires August 23, 2018               [Page 15]
 
-Internet-Draft      On the use of HTTP as a Substrate                  2
+Internet-Draft      On the use of HTTP as a Substrate           February
 
 
    Section 4.3.2 requires support for 'https' URLs, and discourages the
@@ -893,9 +893,9 @@ Internet-Draft      On the use of HTTP as a Substrate                  2
 
 
 
-Nottingham               Expires August 20, 2018               [Page 16]
+Nottingham               Expires August 23, 2018               [Page 16]
 
-Internet-Draft      On the use of HTTP as a Substrate                  2
+Internet-Draft      On the use of HTTP as a Substrate           February
 
 
    [RFC6838]  Freed, N., Klensin, J., and T. Hansen, "Media Type
@@ -949,9 +949,9 @@ Internet-Draft      On the use of HTTP as a Substrate                  2
 
 
 
-Nottingham               Expires August 20, 2018               [Page 17]
+Nottingham               Expires August 23, 2018               [Page 17]
 
-Internet-Draft      On the use of HTTP as a Substrate                  2
+Internet-Draft      On the use of HTTP as a Substrate           February
 
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
@@ -1005,9 +1005,9 @@ Internet-Draft      On the use of HTTP as a Substrate                  2
 
 
 
-Nottingham               Expires August 20, 2018               [Page 18]
+Nottingham               Expires August 23, 2018               [Page 18]
 
-Internet-Draft      On the use of HTTP as a Substrate                  2
+Internet-Draft      On the use of HTTP as a Substrate           February
 
 
    [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
@@ -1061,9 +1061,9 @@ Internet-Draft      On the use of HTTP as a Substrate                  2
 
 
 
-Nottingham               Expires August 20, 2018               [Page 19]
+Nottingham               Expires August 23, 2018               [Page 19]
 
-Internet-Draft      On the use of HTTP as a Substrate                  2
+Internet-Draft      On the use of HTTP as a Substrate           February
 
 
    [W3C.REC-xml-20081126]
@@ -1117,4 +1117,4 @@ Author's Address
 
 
 
-Nottingham               Expires August 20, 2018               [Page 20]
+Nottingham               Expires August 23, 2018               [Page 20]
