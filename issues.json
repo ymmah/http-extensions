@@ -51,9 +51,9 @@
 
     ],
     "milestone": null,
-    "comments": 1,
+    "comments": 3,
     "created_at": "2018-02-17T21:48:21Z",
-    "updated_at": "2018-02-18T21:36:55Z",
+    "updated_at": "2018-02-19T23:21:03Z",
     "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "body": "I'm not sure I understand the ban on '=' in binary content, how can that confuse dictionaries, when the binary content doesn't end until the final '*' ?"
@@ -1127,9 +1127,9 @@
 
     ],
     "milestone": null,
-    "comments": 6,
+    "comments": 8,
     "created_at": "2018-02-01T23:26:06Z",
-    "updated_at": "2018-02-18T22:42:22Z",
+    "updated_at": "2018-02-19T23:04:02Z",
     "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "body": "Right now, Structured Headers allows the following types at the top level:\r\n\r\n* Dictionaries\r\n* Lists\r\n* Parameterised Labels\r\n* Items\r\n\r\nItems' types can be identified by inspecting their first character, and #443 covers parameterised labels.\r\n\r\nHowever, there isn't any easy way for a parser to identify whether the top-level data type is a dictionary or a list. As a result, a parser will need a hint as to what kind of top-level data type is expected for a given header.\r\n\r\nIt seems like the options are:\r\n\r\n1) Make it possible to distinguish these data types on the wire; e.g., dictionaries start with `{`, lists start with `[`.\r\n\r\n2) Require parsers to have external information about what's being parsed, at least at the top level. E.g., the parser could expose four functions, `parseList`, `parseDict`, `parsePlabel`, `parseItem`.\r\n"
@@ -1297,17 +1297,17 @@
         "default": false
       }
     ],
-    "state": "closed",
+    "state": "open",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 8,
+    "comments": 9,
     "created_at": "2018-01-19T19:17:00Z",
-    "updated_at": "2018-02-01T06:42:12Z",
-    "closed_at": "2018-02-01T06:41:43Z",
+    "updated_at": "2018-02-19T23:18:45Z",
+    "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "body": "http://httpwg.org/http-extensions/draft-ietf-httpbis-header-structure.html#binary says to \r\n> Let binary_content be the result of Base 64 Decoding [RFC4648] b64_content, synthesising padding if necessary.\r\n\r\nHowever, https://tools.ietf.org/html/rfc4648#section-3.5 says\r\n> decoders MAY chose to reject an encoding if the pad bits have not been set to zero.\r\n\r\nStructured headers should specify whether to reject these encodings. For example, do both `iZ` and `iQ` decode to 0x89 or is `iZ` an error?"
   },
