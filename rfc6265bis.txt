@@ -161,7 +161,7 @@ Internet-Draft  Cookies: HTTP State Management Mechanism        February
      A.1.  draft-ietf-httpbis-rfc6265bis-00  . . . . . . . . . . . .  48
      A.2.  draft-ietf-httpbis-rfc6265bis-01  . . . . . . . . . . . .  48
      A.3.  draft-ietf-httpbis-rfc6265bis-02  . . . . . . . . . . . .  48
-   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  49
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  49
 
 
 
@@ -2706,7 +2706,7 @@ Internet-Draft  Cookies: HTTP State Management Mechanism        February
          makes sense: https://github.com/httpwg/http-extensions/
          issues/302 [14]
 
-Appendix B.  Acknowledgements
+Acknowledgements
 
    This document is a minor update of RFC 6265, adding small features,
    and aligning the specification with the reality of today's
