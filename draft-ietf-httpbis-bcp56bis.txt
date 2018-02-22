@@ -89,7 +89,7 @@ Table of Contents
      4.6.  HTTP Header Fields  . . . . . . . . . . . . . . . . . . .  13
      4.7.  Defining Message Payloads . . . . . . . . . . . . . . . .  14
      4.8.  Authentication and Application State  . . . . . . . . . .  14
-     4.9.  Co-Existing with Web Browsing . . . . . . . . . . . . . .  14
+     4.9.  Co-Existing with Web Browsing . . . . . . . . . . . . . .  15
      4.10. Co-Existing with Other Applications . . . . . . . . . . .  15
    5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  16
    6.  Security Considerations . . . . . . . . . . . . . . . . . . .  16
@@ -191,8 +191,7 @@ Internet-Draft      On the use of HTTP as a Substrate           February
    o  The ALPN protocol ID [RFC7301] generically identifies HTTP (e.g.,
       "http/1.1", "h2", "h2c"), or
 
-   o  The message formats described in [RFC7230] and/or [RFC7540] are
-      used in conjunction with the IANA registries defined for HTTP.
+   o  The IANA registries defined for HTTP are updated or modified.
 
    When an application is using HTTP, all of the requirements of the
    HTTP protocol suite (including but not limited to [RFC7230],
@@ -215,6 +214,7 @@ Internet-Draft      On the use of HTTP as a Substrate           February
    Protocols that are based upon HTTP MUST NOT reuse HTTP's URL schemes,
    transport ports, ALPN protocol IDs or IANA registries; rather, they
    are encouraged to establish their own.
+
 
 
 
@@ -737,6 +737,10 @@ Internet-Draft      On the use of HTTP as a Substrate           February
    See Section 4.8 for requirements regarding header fields that carry
    application state (e.g,. Cookie).
 
+   Applications that use already-defined HTTP header fields MUST NOT
+   modify their semantics or syntax, unless the definition of that
+   header field explicitly allows it (e.g., with an extension field).
+
 4.7.  Defining Message Payloads
 
    There are many potential formats for payloads; for example, JSON
@@ -772,11 +776,7 @@ Internet-Draft      On the use of HTTP as a Substrate           February
    cause problems in interoperability, security, operability and
    evolution.
 
-4.9.  Co-Existing with Web Browsing
 
-   Even if there is not an intent for an application that uses HTTP to
-   be used with a Web browser, its resources will remain available to
-   browsers and other HTTP clients.
 
 
 
@@ -785,6 +785,12 @@ Nottingham               Expires August 26, 2018               [Page 14]
 
 Internet-Draft      On the use of HTTP as a Substrate           February
 
+
+4.9.  Co-Existing with Web Browsing
+
+   Even if there is not an intent for an application that uses HTTP to
+   be used with a Web browser, its resources will remain available to
+   browsers and other HTTP clients.
 
    This means that all such applications need to consider how browsers
    will interact with them, particularly regarding security.
@@ -827,12 +833,6 @@ Internet-Draft      On the use of HTTP as a Substrate           February
    Note that dedicating a hostname to a single application is not a
    solution to the issues above; see [RFC7320].
 
-   Modern Web browsers constrain the ability of content from one origin
-   to access resources from another, to avoid the "confused deputy"
-   problem.  As a result, applications that wish to expose cross-origin
-   data to browsers will need to implement [W3C.REC-cors-20140116].
-
-
 
 
 
@@ -841,6 +841,11 @@ Nottingham               Expires August 26, 2018               [Page 15]
 
 Internet-Draft      On the use of HTTP as a Substrate           February
 
+
+   Modern Web browsers constrain the ability of content from one origin
+   to access resources from another, to avoid the "confused deputy"
+   problem.  As a result, applications that wish to expose cross-origin
+   data to browsers will need to implement [W3C.REC-cors-20140116].
 
 5.  IANA Considerations
 
@@ -886,17 +891,16 @@ Internet-Draft      On the use of HTTP as a Substrate           February
               DOI 10.17487/RFC5988, October 2010,
               <https://www.rfc-editor.org/info/rfc5988>.
 
-   [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
-              DOI 10.17487/RFC6454, December 2011,
-              <https://www.rfc-editor.org/info/rfc6454>.
-
-
 
 
 Nottingham               Expires August 26, 2018               [Page 16]
 
 Internet-Draft      On the use of HTTP as a Substrate           February
 
+
+   [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
+              DOI 10.17487/RFC6454, December 2011,
+              <https://www.rfc-editor.org/info/rfc6454>.
 
    [RFC6648]  Saint-Andre, P., Crocker, D., and M. Nottingham,
               "Deprecating the "X-" Prefix and Similar Constructs in
@@ -939,10 +943,6 @@ Internet-Draft      On the use of HTTP as a Substrate           February
               DOI 10.17487/RFC7235, June 2014,
               <https://www.rfc-editor.org/info/rfc7235>.
 
-   [RFC7301]  Friedl, S., Popov, A., Langley, A., and E. Stephan,
-              "Transport Layer Security (TLS) Application-Layer Protocol
-              Negotiation Extension", RFC 7301, DOI 10.17487/RFC7301,
-              July 2014, <https://www.rfc-editor.org/info/rfc7301>.
 
 
 
@@ -953,6 +953,11 @@ Nottingham               Expires August 26, 2018               [Page 17]
 
 Internet-Draft      On the use of HTTP as a Substrate           February
 
+
+   [RFC7301]  Friedl, S., Popov, A., Langley, A., and E. Stephan,
+              "Transport Layer Security (TLS) Application-Layer Protocol
+              Negotiation Extension", RFC 7301, DOI 10.17487/RFC7301,
+              July 2014, <https://www.rfc-editor.org/info/rfc7301>.
 
    [RFC7320]  Nottingham, M., "URI Design and Ownership", BCP 190,
               RFC 7320, DOI 10.17487/RFC7320, July 2014,
@@ -996,11 +1001,6 @@ Internet-Draft      On the use of HTTP as a Substrate           February
               RFC 2821, DOI 10.17487/RFC2821, April 2001,
               <https://www.rfc-editor.org/info/rfc2821>.
 
-   [RFC4367]  Rosenberg, J., Ed. and IAB, "What's in a Name: False
-              Assumptions about DNS Names", RFC 4367,
-              DOI 10.17487/RFC4367, February 2006,
-              <https://www.rfc-editor.org/info/rfc4367>.
-
 
 
 
@@ -1009,6 +1009,11 @@ Nottingham               Expires August 26, 2018               [Page 18]
 
 Internet-Draft      On the use of HTTP as a Substrate           February
 
+
+   [RFC4367]  Rosenberg, J., Ed. and IAB, "What's in a Name: False
+              Assumptions about DNS Names", RFC 4367,
+              DOI 10.17487/RFC4367, February 2006,
+              <https://www.rfc-editor.org/info/rfc4367>.
 
    [RFC4791]  Daboo, C., Desruisseaux, B., and L. Dusseault,
               "Calendaring Extensions to WebDAV (CalDAV)", RFC 4791,
@@ -1054,17 +1059,16 @@ Internet-Draft      On the use of HTTP as a Substrate           February
               DOI 10.17487/RFC7616, September 2015,
               <https://www.rfc-editor.org/info/rfc7616>.
 
-   [RFC7617]  Reschke, J., "The 'Basic' HTTP Authentication Scheme",
-              RFC 7617, DOI 10.17487/RFC7617, September 2015,
-              <https://www.rfc-editor.org/info/rfc7617>.
-
-
 
 
 Nottingham               Expires August 26, 2018               [Page 19]
 
 Internet-Draft      On the use of HTTP as a Substrate           February
 
+
+   [RFC7617]  Reschke, J., "The 'Basic' HTTP Authentication Scheme",
+              RFC 7617, DOI 10.17487/RFC7617, September 2015,
+              <https://www.rfc-editor.org/info/rfc7617>.
 
    [RFC8259]  Bray, T., Ed., "The JavaScript Object Notation (JSON) Data
               Interchange Format", STD 90, RFC 8259,
@@ -1107,10 +1111,6 @@ Author's Address
 
    Email: mnot@mnot.net
    URI:   https://www.mnot.net/
-
-
-
-
 
 
 
