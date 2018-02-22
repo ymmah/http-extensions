@@ -91,7 +91,7 @@ Table of Contents
      4.8.  Authentication and Application State  . . . . . . . . . .  14
      4.9.  Co-Existing with Web Browsing . . . . . . . . . . . . . .  14
      4.10. Co-Existing with Other Applications . . . . . . . . . . .  15
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  15
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  16
    6.  Security Considerations . . . . . . . . . . . . . . . . . . .  16
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  16
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .  16
@@ -754,9 +754,11 @@ Internet-Draft      On the use of HTTP as a Substrate           February
    requests.
 
    If it is only necessary to identify clients, applications that use
-   HTTP MAY use HTTP authentication [RFC7235]; if either of the Basic
-   [RFC7617] or Digest [RFC7616] authentication schemes is used, it MUST
-   NOT be used with the 'http' URL scheme.
+   HTTP MAY use HTTP authentication [RFC7235].  If the Basic
+   authentication scheme [RFC7617] is used, it MUST NOT be used with the
+   'http' URL scheme.  If the Digest scheme [RFC7616] is used, it MUST
+   NOT be used with the 'http' URL scheme, unless the chosen hash
+   algorithm is not "MD5".
 
    In either case, it is important to carefully specify the scoping and
    use of these mechanisms; if they expose sensitive data or
@@ -776,8 +778,6 @@ Internet-Draft      On the use of HTTP as a Substrate           February
    be used with a Web browser, its resources will remain available to
    browsers and other HTTP clients.
 
-   This means that all such applications need to consider how browsers
-   will interact with them, particularly regarding security.
 
 
 
@@ -785,6 +785,9 @@ Nottingham               Expires August 26, 2018               [Page 14]
 
 Internet-Draft      On the use of HTTP as a Substrate           February
 
+
+   This means that all such applications need to consider how browsers
+   will interact with them, particularly regarding security.
 
    For example, if an application's state can be changed using a POST
    request, a Web browser can easily be coaxed into making that request
@@ -829,9 +832,6 @@ Internet-Draft      On the use of HTTP as a Substrate           February
    problem.  As a result, applications that wish to expose cross-origin
    data to browsers will need to implement [W3C.REC-cors-20140116].
 
-5.  IANA Considerations
-
-   This document has no requirements for IANA.
 
 
 
@@ -841,6 +841,10 @@ Nottingham               Expires August 26, 2018               [Page 15]
 
 Internet-Draft      On the use of HTTP as a Substrate           February
 
+
+5.  IANA Considerations
+
+   This document has no requirements for IANA.
 
 6.  Security Considerations
 
@@ -885,10 +889,6 @@ Internet-Draft      On the use of HTTP as a Substrate           February
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
               DOI 10.17487/RFC6454, December 2011,
               <https://www.rfc-editor.org/info/rfc6454>.
-
-
-
-
 
 
 
