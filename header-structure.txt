@@ -804,11 +804,15 @@ Internet-Draft         Structured Headers for HTTP              February
    Encoding [RFC4648], Section 4, and surrounds it with a pair of
    asterisks ("*") to delimit from other content.
 
-   Parsers MUST accept encoded data that is padded with "=", as well as
-   encoded data that omits such padding.  See [RFC4648], Section 3.2.
+   The encoded data is required to be padded with "=", as per [RFC4648],
+   Section 3.2.  It is RECOMMENDED that parsers reject encoded data that
+   is not properly padded, although this might not be possible with some
+   base64 implementations.
 
-   Likewise, parsers MUST fail on encoded data that has non-zero pad
-   bits.  See [RFC4648], Section 3.5.
+   Likewise, encoded data is required to have pad bits set to zero, as
+   per [RFC4648], Section 3.5.  It is RECOMMENDED that parsers fail on
+   encoded data that has non-zero pad bits, although this might not be
+   possible with some base64 implementations.
 
    This specification does not relax the requirements in [RFC4648],
    Section 3.1 and 3.3; therefore, parsers MUST fail on characters
@@ -831,10 +835,6 @@ Internet-Draft         Structured Headers for HTTP              February
 
    2.  Discard the first character of input_string.
 
-   3.  Let b64_content be the result of removing content of input_string
-       up to but not including the first instance of the character "*".
-
-
 
 
 Nottingham & Kamp        Expires August 26, 2018               [Page 15]
@@ -842,6 +842,8 @@ Nottingham & Kamp        Expires August 26, 2018               [Page 15]
 Internet-Draft         Structured Headers for HTTP              February
 
 
+   3.  Let b64_content be the result of removing content of input_string
+       up to but not including the first instance of the character "*".
        If there is not a "*" character before the end of input_string,
        fail parsing.
 
@@ -885,10 +887,8 @@ Internet-Draft         Structured Headers for HTTP              February
               DOI 10.17487/RFC5234, January 2008,
               <https://www.rfc-editor.org/info/rfc5234>.
 
-   [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
-              Protocol (HTTP/1.1): Message Syntax and Routing",
-              RFC 7230, DOI 10.17487/RFC7230, June 2014,
-              <https://www.rfc-editor.org/info/rfc7230>.
+
+
 
 
 
@@ -897,6 +897,11 @@ Nottingham & Kamp        Expires August 26, 2018               [Page 16]
 
 Internet-Draft         Structured Headers for HTTP              February
 
+
+   [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
+              Protocol (HTTP/1.1): Message Syntax and Routing",
+              RFC 7230, DOI 10.17487/RFC7230, June 2014,
+              <https://www.rfc-editor.org/info/rfc7230>.
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
@@ -942,17 +947,16 @@ A.2.  Since draft-ietf-httpbis-header-structure-02
 
    o  Define number parsing.
 
-   o  Tighten up binary parsing and give it an explicit end delimiter.
-
-   o  Clarify that mappings are unordered.
-
-
 
 
 Nottingham & Kamp        Expires August 26, 2018               [Page 17]
 
 Internet-Draft         Structured Headers for HTTP              February
 
+
+   o  Tighten up binary parsing and give it an explicit end delimiter.
+
+   o  Clarify that mappings are unordered.
 
    o  Allow zero-length strings.
 
@@ -990,10 +994,6 @@ Authors' Addresses
    The Varnish Cache Project
 
    Email: phk@varnish-cache.org
-
-
-
-
 
 
 
