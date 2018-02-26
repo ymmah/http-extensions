@@ -4,8 +4,8 @@
 
 HTTP Working Group                                              E. Stark
 Internet-Draft                                                    Google
-Intended status: Experimental                               February 22,
-Expires: August 26, 2018
+Intended status: Experimental                               February 26,
+Expires: August 30, 2018
 
 
                       Expect-CT Extension for HTTP
@@ -53,12 +53,12 @@ Status of This Memo
 
 
 
-Stark                    Expires August 26, 2018                [Page 1]
+Stark                    Expires August 30, 2018                [Page 1]
 
 Internet-Draft                  Expect-CT                       February
 
 
-   This Internet-Draft will expire on August 26, 2018.
+   This Internet-Draft will expire on August 30, 2018.
 
 Copyright Notice
 
@@ -104,12 +104,12 @@ Table of Contents
    5.  Privacy Considerations  . . . . . . . . . . . . . . . . . . .  15
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  15
    7.  Usability Considerations  . . . . . . . . . . . . . . . . . .  15
-   8.  Authoring Considerations  . . . . . . . . . . . . . . . . . .  15
+   8.  Authoring Considerations  . . . . . . . . . . . . . . . . . .  16
      8.1.  HTTP Header . . . . . . . . . . . . . . . . . . . . . . .  16
 
 
 
-Stark                    Expires August 26, 2018                [Page 2]
+Stark                    Expires August 30, 2018                [Page 2]
 
 Internet-Draft                  Expect-CT                       February
 
@@ -165,7 +165,7 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-Stark                    Expires August 26, 2018                [Page 3]
+Stark                    Expires August 30, 2018                [Page 3]
 
 Internet-Draft                  Expect-CT                       February
 
@@ -221,7 +221,7 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-Stark                    Expires August 26, 2018                [Page 4]
+Stark                    Expires August 30, 2018                [Page 4]
 
 Internet-Draft                  Expect-CT                       February
 
@@ -277,7 +277,7 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-Stark                    Expires August 26, 2018                [Page 5]
+Stark                    Expires August 30, 2018                [Page 5]
 
 Internet-Draft                  Expect-CT                       February
 
@@ -333,7 +333,7 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-Stark                    Expires August 26, 2018                [Page 6]
+Stark                    Expires August 30, 2018                [Page 6]
 
 Internet-Draft                  Expect-CT                       February
 
@@ -389,7 +389,7 @@ Expect-CT: max-age=86400,report-uri="https://foo.example/report"
 
 
 
-Stark                    Expires August 26, 2018                [Page 7]
+Stark                    Expires August 30, 2018                [Page 7]
 
 Internet-Draft                  Expect-CT                       February
 
@@ -445,7 +445,7 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-Stark                    Expires August 26, 2018                [Page 8]
+Stark                    Expires August 30, 2018                [Page 8]
 
 Internet-Draft                  Expect-CT                       February
 
@@ -501,7 +501,7 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-Stark                    Expires August 26, 2018                [Page 9]
+Stark                    Expires August 30, 2018                [Page 9]
 
 Internet-Draft                  Expect-CT                       February
 
@@ -557,7 +557,7 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-Stark                    Expires August 26, 2018               [Page 10]
+Stark                    Expires August 30, 2018               [Page 10]
 
 Internet-Draft                  Expect-CT                       February
 
@@ -613,7 +613,7 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-Stark                    Expires August 26, 2018               [Page 11]
+Stark                    Expires August 30, 2018               [Page 11]
 
 Internet-Draft                  Expect-CT                       February
 
@@ -669,7 +669,7 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-Stark                    Expires August 26, 2018               [Page 12]
+Stark                    Expires August 30, 2018               [Page 12]
 
 Internet-Draft                  Expect-CT                       February
 
@@ -690,6 +690,12 @@ Internet-Draft                  Expect-CT                       February
          MUST set this value to the base64 encoded [RFC4648] serialized
          "TransItem" structure representing the SCT, as defined in
          Section 4.6 of [I-D.ietf-trans-rfc6962-bis].
+
+   o  "failure-mode": the value indicates whether the Expect-CT report
+      was triggered by an Expect-CT policy in enforce or report-only
+      mode.  The value is provided as a string.  The UA MUST set this
+      value to "enforce" if the Expect-CT metadata indicates an
+      "enforce" configuration, and "report-only" otherwise.
 
 3.2.  Sending a violation report
 
@@ -715,20 +721,17 @@ Internet-Draft                  Expect-CT                       February
        header field of "application/expect-ct-report+json", and an
        entity body consisting of "report body".
 
-   The UA MAY perform other operations as part of sending the HTTP POST
-   request, for example sending a CORS preflight as part of [FETCH].
 
 
 
 
-
-
-
-
-Stark                    Expires August 26, 2018               [Page 13]
+Stark                    Expires August 30, 2018               [Page 13]
 
 Internet-Draft                  Expect-CT                       February
 
+
+   The UA MAY perform other operations as part of sending the HTTP POST
+   request, for example sending a CORS preflight as part of [FETCH].
 
 4.  Security Considerations
 
@@ -775,17 +778,17 @@ Internet-Draft                  Expect-CT                       February
    on many hosts not currently exposing SCTs as a method to cause a
    denial-of-service to the host receiving the reports.  If some highly-
    trafficked websites emitted a non-enforcing Expect-CT header with a
-   "report-uri", implementing UAs' reports could flood the reporting
-   host.  It is noted in Section 2.1.1 that UAs should limit the rate at
-   which they emit reports, but an attacker may alter the Expect-CT
 
 
 
-Stark                    Expires August 26, 2018               [Page 14]
+Stark                    Expires August 30, 2018               [Page 14]
 
 Internet-Draft                  Expect-CT                       February
 
 
+   "report-uri", implementing UAs' reports could flood the reporting
+   host.  It is noted in Section 2.1.1 that UAs should limit the rate at
+   which they emit reports, but an attacker may alter the Expect-CT
    header's fields to induce UAs to submit different reports to
    different URIs to still cause the same effect.
 
@@ -828,19 +831,18 @@ Internet-Draft                  Expect-CT                       February
    CT Policy, users will experience denials of service.  It is advisable
    for UAs to explain the reason why.
 
-8.  Authoring Considerations
 
 
 
 
 
 
-
-
-Stark                    Expires August 26, 2018               [Page 15]
+Stark                    Expires August 30, 2018               [Page 15]
 
 Internet-Draft                  Expect-CT                       February
 
+
+8.  Authoring Considerations
 
 8.1.  HTTP Header
 
@@ -891,9 +893,7 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-
-
-Stark                    Expires August 26, 2018               [Page 16]
+Stark                    Expires August 30, 2018               [Page 16]
 
 Internet-Draft                  Expect-CT                       February
 
@@ -949,7 +949,7 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-Stark                    Expires August 26, 2018               [Page 17]
+Stark                    Expires August 30, 2018               [Page 17]
 
 Internet-Draft                  Expect-CT                       February
 
@@ -1005,4 +1005,4 @@ Author's Address
 
 
 
-Stark                    Expires August 26, 2018               [Page 18]
+Stark                    Expires August 30, 2018               [Page 18]
