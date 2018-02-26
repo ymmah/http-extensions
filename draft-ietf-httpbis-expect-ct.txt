@@ -116,8 +116,9 @@ Internet-Draft                  Expect-CT                       February
 
      8.1.  HTTP Header . . . . . . . . . . . . . . . . . . . . . . .  16
    9.  Changes . . . . . . . . . . . . . . . . . . . . . . . . . . .  16
-     9.1.  Since -01 . . . . . . . . . . . . . . . . . . . . . . . .  16
-     9.2.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .  17
+     9.1.  Since -02 . . . . . . . . . . . . . . . . . . . . . . . .  16
+     9.2.  Since -01 . . . . . . . . . . . . . . . . . . . . . . . .  17
+     9.3.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .  17
    10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  17
      10.1.  Normative References . . . . . . . . . . . . . . . . . .  17
      10.2.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .  18
@@ -157,7 +158,6 @@ Internet-Draft                  Expect-CT                       February
    unlogged certificates after the initial communication, and 2)
    allowing web hosts to be confident that UAs are only trusting
    publicly-auditable certificates.
-
 
 
 
@@ -881,13 +881,13 @@ Internet-Draft                  Expect-CT                       February
 
 9.  Changes
 
-9.1.  Since -01
+9.1.  Since -02
 
-   o  Change SCT reporting format to support both RFC 6962 and 6962-bis
-      SCTs.
+   o  Add concept of test reports and specify that servers must respond
+      with 2xx status codes to valid reports.
 
-
-
+   o  Add "failure-mode" key to reports to allow report servers to
+      distinguish report-only from enforced failures.
 
 
 
@@ -898,7 +898,12 @@ Stark                    Expires August 30, 2018               [Page 16]
 Internet-Draft                  Expect-CT                       February
 
 
-9.2.  Since -00
+9.2.  Since -01
+
+   o  Change SCT reporting format to support both RFC 6962 and 6962-bis
+      SCTs.
+
+9.3.  Since -00
 
    o  Editorial changes
 
@@ -940,11 +945,6 @@ Internet-Draft                  Expect-CT                       February
               RFC 3986, DOI 10.17487/RFC3986, January 2005,
               <https://www.rfc-editor.org/info/rfc3986>.
 
-   [RFC4648]  Josefsson, S., "The Base16, Base32, and Base64 Data
-              Encodings", RFC 4648, DOI 10.17487/RFC4648, October 2006,
-              <https://www.rfc-editor.org/info/rfc4648>.
-
-
 
 
 
@@ -953,6 +953,10 @@ Stark                    Expires August 30, 2018               [Page 17]
 
 Internet-Draft                  Expect-CT                       February
 
+
+   [RFC4648]  Josefsson, S., "The Base16, Base32, and Base64 Data
+              Encodings", RFC 4648, DOI 10.17487/RFC4648, October 2006,
+              <https://www.rfc-editor.org/info/rfc4648>.
 
    [RFC5234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
               Specifications: ABNF", STD 68, RFC 5234,
@@ -999,10 +1003,6 @@ Internet-Draft                  Expect-CT                       February
 
    [2] http://httpwg.github.io/
 
-   [3] https://github.com/httpwg/http-extensions/labels/expect-ct
-
-
-
 
 
 Stark                    Expires August 30, 2018               [Page 18]
@@ -1010,14 +1010,14 @@ Stark                    Expires August 30, 2018               [Page 18]
 Internet-Draft                  Expect-CT                       February
 
 
+   [3] https://github.com/httpwg/http-extensions/labels/expect-ct
+
 Author's Address
 
    Emily Stark
    Google
 
    Email: estark@google.com
-
-
 
 
 
