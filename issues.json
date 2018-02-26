@@ -1,5 +1,64 @@
 [
   {
+    "url": "https://api.github.com/repos/httpwg/http-extensions/issues/497",
+    "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
+    "labels_url": "https://api.github.com/repos/httpwg/http-extensions/issues/497/labels{/name}",
+    "comments_url": "https://api.github.com/repos/httpwg/http-extensions/issues/497/comments",
+    "events_url": "https://api.github.com/repos/httpwg/http-extensions/issues/497/events",
+    "html_url": "https://github.com/httpwg/http-extensions/issues/497",
+    "id": 299596475,
+    "number": 497,
+    "title": "Negotiation vs. pre-arrangement",
+    "user": {
+      "login": "mnot",
+      "id": 74384,
+      "avatar_url": "https://avatars1.githubusercontent.com/u/74384?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mnot",
+      "html_url": "https://github.com/mnot",
+      "followers_url": "https://api.github.com/users/mnot/followers",
+      "following_url": "https://api.github.com/users/mnot/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mnot/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mnot/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mnot/subscriptions",
+      "organizations_url": "https://api.github.com/users/mnot/orgs",
+      "repos_url": "https://api.github.com/users/mnot/repos",
+      "events_url": "https://api.github.com/users/mnot/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mnot/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 777410970,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/bcp56bis",
+        "name": "bcp56bis",
+        "color": "fbca04",
+        "default": false
+      },
+      {
+        "id": 109132722,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
+        "name": "design",
+        "color": "0052cc",
+        "default": false
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2018-02-23T04:36:37Z",
+    "updated_at": "2018-02-23T04:36:37Z",
+    "closed_at": null,
+    "author_association": "OWNER",
+    "body": "Applications should allow features negotiated by HTTP to operate normally, rather than require pre-arranged behaviours. E.g., conneg."
+  },
+  {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/496",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
     "labels_url": "https://api.github.com/repos/httpwg/http-extensions/issues/496/labels{/name}",
@@ -103,17 +162,17 @@
         "default": false
       }
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 3,
+    "comments": 4,
     "created_at": "2018-02-17T21:48:21Z",
-    "updated_at": "2018-02-19T23:21:03Z",
-    "closed_at": null,
+    "updated_at": "2018-02-22T08:20:21Z",
+    "closed_at": "2018-02-22T08:20:21Z",
     "author_association": "CONTRIBUTOR",
     "body": "I'm not sure I understand the ban on '=' in binary content, how can that confuse dictionaries, when the binary content doesn't end until the final '*' ?"
   },
@@ -383,9 +442,15 @@
       "site_admin": false
     },
     "labels": [
-
+      {
+        "id": 329793151,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/6265bis",
+        "name": "6265bis",
+        "color": "fbca04",
+        "default": false
+      }
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -394,8 +459,8 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2018-02-12T13:44:00Z",
-    "updated_at": "2018-02-12T13:44:00Z",
-    "closed_at": null,
+    "updated_at": "2018-02-22T08:39:44Z",
+    "closed_at": "2018-02-22T08:39:44Z",
     "author_association": "CONTRIBUTOR",
     "pull_request": {
       "url": "https://api.github.com/repos/httpwg/http-extensions/pulls/490",
@@ -435,7 +500,13 @@
       "site_admin": false
     },
     "labels": [
-
+      {
+        "id": 533812693,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/expect-ct",
+        "name": "expect-ct",
+        "color": "fbca04",
+        "default": false
+      }
     ],
     "state": "open",
     "locked": false,
@@ -446,7 +517,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2018-02-12T13:41:51Z",
-    "updated_at": "2018-02-12T13:41:51Z",
+    "updated_at": "2018-02-22T08:23:25Z",
     "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "pull_request": {
@@ -487,7 +558,13 @@
       "site_admin": false
     },
     "labels": [
-
+      {
+        "id": 290789441,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/client-hints",
+        "name": "client-hints",
+        "color": "fbca04",
+        "default": false
+      }
     ],
     "state": "open",
     "locked": false,
@@ -498,7 +575,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2018-02-12T13:36:55Z",
-    "updated_at": "2018-02-12T13:36:55Z",
+    "updated_at": "2018-02-22T08:23:44Z",
     "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "pull_request": {
@@ -1179,17 +1256,17 @@
         "default": false
       }
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 8,
+    "comments": 9,
     "created_at": "2018-02-01T23:26:06Z",
-    "updated_at": "2018-02-19T23:04:02Z",
-    "closed_at": null,
+    "updated_at": "2018-02-22T08:21:01Z",
+    "closed_at": "2018-02-22T08:21:01Z",
     "author_association": "OWNER",
     "body": "Right now, Structured Headers allows the following types at the top level:\r\n\r\n* Dictionaries\r\n* Lists\r\n* Parameterised Labels\r\n* Items\r\n\r\nItems' types can be identified by inspecting their first character, and #443 covers parameterised labels.\r\n\r\nHowever, there isn't any easy way for a parser to identify whether the top-level data type is a dictionary or a list. As a result, a parser will need a hint as to what kind of top-level data type is expected for a given header.\r\n\r\nIt seems like the options are:\r\n\r\n1) Make it possible to distinguish these data types on the wire; e.g., dictionaries start with `{`, lists start with `[`.\r\n\r\n2) Require parsers to have external information about what's being parsed, at least at the top level. E.g., the parser could expose four functions, `parseList`, `parseDict`, `parsePlabel`, `parseItem`.\r\n"
   },
@@ -1356,7 +1433,7 @@
         "default": false
       }
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -1365,8 +1442,8 @@
     "milestone": null,
     "comments": 9,
     "created_at": "2018-01-19T19:17:00Z",
-    "updated_at": "2018-02-19T23:18:45Z",
-    "closed_at": null,
+    "updated_at": "2018-02-22T08:39:51Z",
+    "closed_at": "2018-02-22T08:39:51Z",
     "author_association": "CONTRIBUTOR",
     "body": "http://httpwg.org/http-extensions/draft-ietf-httpbis-header-structure.html#binary says to \r\n> Let binary_content be the result of Base 64 Decoding [RFC4648] b64_content, synthesising padding if necessary.\r\n\r\nHowever, https://tools.ietf.org/html/rfc4648#section-3.5 says\r\n> decoders MAY chose to reject an encoding if the pad bits have not been set to zero.\r\n\r\nStructured headers should specify whether to reject these encodings. For example, do both `iZ` and `iQ` decode to 0x89 or is `iZ` an error?"
   },
@@ -1623,7 +1700,8 @@
     "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "body": "The Request-ID and Cert-ID fields are currently matched with the Exported Authenticator context value.  These values are subject to certain randomness requirements:\r\n\r\n> The certificate_request_context MUST be unique within the scope of this connection (thus preventing replay of authenticators). The certificate_request_context SHOULD be chosen to be unpredictable to the peer (e.g., by randomly generating it) in order to prevent an attacker who has temporary access to the peer's private key from pre-computing valid authenticators.\r\n\r\nIn the current draft, Cert-ID and Request-ID are sender-local and required to be unique over the lifetime of a connection, but there's no randomizing/unpredictability requirement.  The simplest way to be unique is to be a counter, which is highly predictable.  To what extent do we need this property and how should we best accomplish it?  (Or do we just declare that it should be unpredictable and leave the issue to implementations?)"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/467",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -1675,8 +1753,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/467.patch"
     },
     "body": "Uses the added feature in https://github.com/martinthomson/i-d-template/pull/129 to drop shortname copies of the drafts in gh-pages to fix the broken links.  These are actual copies, not symlinks, but git keeps those relatively cheap.\r\n\r\nShouldn't break anything to have in the Makefile without that change, either."
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/466",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -2426,7 +2503,7 @@
         "default": false
       }
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -2435,8 +2512,8 @@
     "milestone": null,
     "comments": 1,
     "created_at": "2017-12-14T01:42:12Z",
-    "updated_at": "2018-02-13T04:25:37Z",
-    "closed_at": null,
+    "updated_at": "2018-02-22T05:09:49Z",
+    "closed_at": "2018-02-22T05:09:49Z",
     "author_association": "OWNER",
     "body": "> Applications that use HTTP SHOULD use the default port for the URL scheme in use. \r\n\r\nThis isn't really necessary.  I would instead say that the port number is in the URL and cite [Initial URL Discovery](https://mnot.github.io/I-D/bcp56bis/#initial-url-discovery) for details.\r\n\r\nThen explain that if you are bootstrapping from a bare hostname with `.well-known`, then this should assume the use of the default port for the scheme unless there are very good reasons.  In particular, when it comes to using port numbers other than the default, you can note that there are privacy implications (it makes your protocol distinguishable) and deployment implications (some middleboxes might interfere with the operation of your protocol).\r\n\r\n(from @martinthomson)"
   },
@@ -3243,9 +3320,9 @@
 
     ],
     "milestone": null,
-    "comments": 16,
+    "comments": 17,
     "created_at": "2017-12-04T20:46:26Z",
-    "updated_at": "2018-02-20T04:42:37Z",
+    "updated_at": "2018-02-22T08:18:30Z",
     "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "body": "http://httpwg.org/http-extensions/header-structure.html#parsing-a-list-from-textual-headers only parses items, while http://httpwg.org/http-extensions/header-structure.html#list says it should allow parameterised labels too."
@@ -3522,7 +3599,8 @@
     "closed_at": "2017-11-29T00:32:11Z",
     "author_association": "CONTRIBUTOR",
     "body": "The text in 2.4 says....\r\n\r\n> Once an Origin Set has been initialized... [lots of stuff]\r\n>\r\n> Additionally, clients MAY avoid consulting DNS to establish the connection’s authority for new requests; however, those that do so face new risks, as explained in Section 4.\r\n\r\nI think part of our issue with how Edge implemented coalescing without considering DNS arises from the fact that this \"Additionally\" isn't clearly tied to being something that clients do \"Once an Origin Set has been initialized\" versus something that clients do in addition to the above behavior."
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/437",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -3581,8 +3659,7 @@
     "closed_at": "2018-02-01T07:23:37Z",
     "author_association": "OWNER",
     "body": "From Alex R on list:\r\n\r\nI understand the desire to limit this specification to parsing a single\r\nheader field or equivalent, leaving the Pandora box of combining\r\nsame-name fields closed. However, this honorable approach complicates\r\nplacing interoperability limits on the number of list members: An\r\napplication that parses individual fields (and possibly never combines\r\nthe results!) may not hit the limit that an application combining raw\r\nvalue strings before parsing would hit.\r\n\r\nIMHO, we should explicitly say something (conservative) about this\r\nproblem so that header generators know how the limits may be applied.\r\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/436",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -5079,7 +5156,7 @@
         "default": false
       }
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": {
       "login": "estark37",
@@ -5124,8 +5201,8 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2017-11-12T16:20:01Z",
-    "updated_at": "2017-11-13T17:32:33Z",
-    "closed_at": null,
+    "updated_at": "2018-02-26T21:16:01Z",
+    "closed_at": "2018-02-26T21:16:01Z",
     "author_association": "NONE",
     "body": "From an operational perspective, site operators need to be able to distinguish if Expect-CT failure  caused access to the site to be denied. In any organisation of non-trivial size it's likely that there will be a mixture of sites with report-only and enforcing policies. Thus, not all reports are equal. A failure of enforcing Expect-CT needs to be treated with urgency and perhaps an immediate action. Failures of report-only policies are not urgent and can be reviewed from time to time during normal working hours."
   },
@@ -5714,7 +5791,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/408.patch"
     },
     "body": "This explains how consistent handling of requests can be applied by a gateway."
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/407",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -5772,8 +5850,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/407.patch"
     },
     "body": "The best and easiest plan is to discard, but we know that throwing out\r\nperfectly good packets can have bad effects on performance.  It sends a bad\r\nsignal to a congestion controller for instance.  So we need to say either\r\ndiscard, or ensure that the data is properly attributed and consistently\r\nprocessed.\r\n\r\nCloses #391."
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/406",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -7713,7 +7790,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/378.patch"
     },
     "body": ""
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/377",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -7765,8 +7843,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/377.patch"
     },
     "body": ""
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/376",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -9665,7 +9742,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/348.patch"
     },
     "body": "The consequences for ORIGIN + Alt-Svc with a port change aren't awesome, but this should at least remove any confusion."
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/347",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -9759,8 +9837,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/347.patch"
     },
     "body": ""
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/346",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -11715,7 +11792,8 @@
     "closed_at": "2017-04-20T17:00:48Z",
     "author_association": "CONTRIBUTOR",
     "body": "The convention for HTTP is to define header fields as follows:\r\n\r\n```\r\n<header-field-name> = #<header-field-name>-fields\r\n```\r\n\r\nWhich leads to me suggesting:\r\n\r\n```abnf\r\nExpect-CT = #Expect-CT-Directives\r\nExpect-CT-Directives = [ parameter *( OWS \";\" OWS parameter ) ]\r\n```\r\n\r\nNote that this doesn't follow the common structure, which uses:\r\n\r\n```abnf\r\ncommon-structure = 1* ( identifier dictionary )\r\n```\r\n\r\nIgnore the obvious errors in the common structure syntax, the intent is to have a list of identifiers followed by dictionaries.\r\n\r\nI've marked this as editorial, I think that the outcome will not affect the wire syntax at all."
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/317",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -11767,8 +11845,7 @@
     "closed_at": "2017-04-18T02:05:38Z",
     "author_association": "NONE",
     "body": "A request header for Expect-CT would allow servers to know how many clients actually support Expect-CT and might allow us to deprecate this header in the future. \r\n\r\nSpecifying that you MUST send Expect-CT response unless the header is sent might be nice as well."
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/316",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -13603,7 +13680,8 @@
     "closed_at": "2017-03-14T00:16:21Z",
     "author_association": "OWNER",
     "body": "Chrome currently implements the semantics of `immutable` using a browser heuristic rather than an explicit signal from the server.\r\n\r\nif we define a complimentary CC extension with the inverse semantics of `immutable` -- i.e., roughly, \"always refresh this when the user hits reload\" -- it would allow Chrome to continue using a heuristic, but override it with an explicit signal from the server when the server cares about it.\r\n\r\nIf we do that, I think the CC extension name should be short (e.g., one or two characters)."
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/287",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -13668,8 +13746,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/287.patch"
     },
     "body": "Editorial stuff, mostly line wrapping and adjusting terminology. Happy to chat through it if you like."
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/286",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -15371,7 +15448,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/258.patch"
     },
     "body": "it leads to kramdown warnings (\"overwriting RFC....\")."
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/257",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -15436,8 +15514,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/257.patch"
     },
     "body": "Based on the discussion on-list, the requirement to use the absolute form is a little hard.  This tries to justify it on the basis that the secure server is acting as a proxy.  Maybe that's dishonest, but I think that it's accurate.  I would rather finagle this than have an experimental document update a standards-track one."
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/256",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -17135,7 +17212,8 @@
     "closed_at": "2017-02-07T05:06:38Z",
     "author_association": "OWNER",
     "body": "A few people have noted that SHA-1 is probably overkill.\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/227",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -17194,8 +17272,7 @@
     "closed_at": "2016-10-11T05:46:38Z",
     "author_association": "OWNER",
     "body": "As per recent discussion, this draft should advise readers about whether or not it should be used for new headers, or new parameters on existing headers.\n\nStraw-man:\n- Change the Abstract to:\n\n> RFC5987 defines an encoding for non-ASCII payloads in HTTP header field value parameters, based upon the encoding defined in RFC2231. This document updates that definition and describes how it should (and should not) be used.\n- Change the first paragraph of Introduction to:\n\n> By default, header field values in HTTP messages ([RFC7230]) cannot directly carry characters outside the US-ASCII coded character set ([RFC0020]). RFC 2231 ([RFC2231]) defines an encoding mechanism for use in MIME headers. This specification documents a subset of that encoding that has been used in some HTTP header fields. Its use in new header fields, or new parameters on existing header fields, is NOT RECOMMENDED.\n- Remove section 4 contents (and subsections), replace with:\n\n> The convention defined by this specification allows a parameter fields that have two possible encodings (ASCII without the `*`, UTF-8 with it). This causes considerable complication in the use and implementation of those parameters, since they now have to handle both, and all of the possible permutations and edge conditions implied by this (e.g., how a header field value with both ought to be handled).\n> Furthermore, this encoding can only be used in parameter values, not in other parts of header field values.\n> As a result, use of this encoding is only RECOMMENDED where already defined; new header fields, as well as new parameters on existing header fields, SHOULD NOT use it when non-ASCII content is anticipated. Instead, they SHOULD mandate a character encoding of UTF-8, combined with escaping of non-ASCII characters using a well-defined convention (e.g., percent encoding, as per [RFC3986).\n- Optionally, move the existing contents of section 4 into an appendix, but clarify that they're there merely for the benefit of existing uses.\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/226",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -19139,7 +19216,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/198.patch"
     },
     "body": "Closes #195\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/197",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -19191,8 +19269,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/197.patch"
     },
     "body": "Closes #194\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/196",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -20786,7 +20863,8 @@
     "closed_at": "2016-05-31T14:43:46Z",
     "author_association": "NONE",
     "body": "I understand that the current method has the save-data aspect of client hints as a simple on/off switch.  I wonder, though, about the willingness to consider allowing for some extensibility.  Right now, someone saying \"save-data=on\" is signing up for pretty much anything.   Separating acceptance of data saving for different elements, e.g. agreeing to smaller video resources but not lower fidelity audio, seems like it may be useful.  I suggest that the working group consider making this an extensible field with \"save-date=all\" as the default, with semantics matching the current \"save-data=on\".  Then later extensions can be specified for more granular statements.\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/167",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -20845,8 +20923,7 @@
     "closed_at": "2016-06-02T07:36:47Z",
     "author_association": "CONTRIBUTOR",
     "body": "See https://lists.w3.org/Archives/Public/ietf-http-wg/2016JanMar/0531.html:\n\nWith the latest changes, this now reads:\n\n\"Some HTTP/1.1 implementations use ambient signals to determine if a \nrequest is for an https resource. For example, implementations might \nlook for TLS on the stack or a port number of 443. This is necessary in \nmany cases because the most common form of an HTTP/1.1 request does not \ncarry an explicit indication of the URI scheme. An implementation that \nis serving an opportunistically secured request SHOULD suppress these \nsignals for http resources.\n\nHTTP/1.1 MUST NOT be used to serve opportunistically secured requests. \nHTTP/1.1 can be used to discover an opportunistically secured \nalternative service.\"\n\nThe problem remains that this is not really specific to HTTP/1.1; for \ninstance, code running inside Apache over HTTP/2 may have exactly the \nsame problem (Stefan E. to confirm); so it's more a matter of HTTP \nserver internal APIs, not the on-the-wire protocol.\n\nI believe this needs to be rephrased to better explain the actual \nproblem; and I also remain unconvinced that the conclusion wrt HTTP/1.1 \nmakes sense.\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/166",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -22446,7 +22523,8 @@
     "closed_at": "2016-04-04T16:17:12Z",
     "author_association": "NONE",
     "body": "Maybe @reschke \n\nIn [RFC7538](http://tools.ietf.org/html/rfc7538#section-4) there is a mention of `meta refresh` in HTML. I have seen instances online of a `Refresh` HTTP header. I haven't found any documentation about it in the past (or maybe I missed the appropriate RFC). I [met the header again yesterday](https://bugzilla.mozilla.org/show_bug.cgi?id=668275#c52) in an instance of gmail Web site.\n\nWhen requesting\n`→ http --print hH https://mail.google.com/ 'User-Agent:Mozilla/5.0 (Android 4.4.4; Mobile; rv:44.0) Gecko/44.0 Firefox/44.0' 'Accept-Language:en-US,en;q=0.5'`\n\n``` http\nHTTP/1.1 200 OK\nAlt-Svc: quic=\":443\"; ma=604800; v=\"30,29,28,27,26,25\"\nAlternate-Protocol: 443:quic,p=1\nCache-Control: private, max-age=604800\nContent-Length: 306\nContent-Type: application/xhtml+xml; charset=ISO-8859-1\nDate: Thu, 28 Jan 2016 00:57:39 GMT\nExpires: Thu, 28 Jan 2016 00:57:39 GMT\nRefresh: 0;URL=https://mail.google.com/mail/\nServer: GSE\nX-Content-Type-Options: nosniff\nX-Frame-Options: SAMEORIGIN\nX-XSS-Protection: 1; mode=block\n```\n\nYou might not be able to reproduce gmail has tons of versions depending on the location, devices, headers, etc.\n\nI have started to [test a bit and write about it last year](http://www.otsukare.info/2015/03/26/refresh-http-header). It seems implemented uniformly, but that would require a bit more test. \n\nWhat would be the best course of actions for documenting it? Maybe I can give it a shot. \n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/137",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -22504,8 +22582,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/137.patch"
     },
     "body": "In order to allow existing applications to update from one octet of\npadding per record to two (PR #136, Issue #135), this PR renames\n\"aesgcm128\" to \"aesgcm\" as the value for the Content-Encoding header,\nas well as the parameter name in the Crypto-Key header.\n\nThis also affects the context used for deriving the nonce and the\ncontent encryption key. Examples have been updated.\n\nWhat I did not update is the JWE mapping (currently \"A128GCM\"). Do\nwe wish to change that to \"AGCM\", which may be less descriptive?\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/136",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -24152,7 +24229,8 @@
     "closed_at": "2015-11-24T00:34:50Z",
     "author_association": "OWNER",
     "body": "See:\n  https://github.com/mnot/I-D/issues/132\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/107",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -24211,8 +24289,7 @@
     "closed_at": "2016-03-02T04:33:36Z",
     "author_association": "OWNER",
     "body": "See:\n  https://github.com/mnot/I-D/issues/131\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/106",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -25988,7 +26065,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/78.patch"
     },
     "body": "Assorted:\n- Alt-Svc doesn't introduce 421, just points to RFC 7540\n- Missing \"the\" in overview\n- Requests != connections in HTTP/2; presuming you mean connections throughout\n- Non-normative \"can\" mismatch with normative SHOULD later in the document\n- Clients who wish to avoid tracking are also permitted to just drop Alt-Used; turned to normative MAY to match earlier text\n- Word order in scheme confusion text\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/77",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -26046,8 +26124,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/77.patch"
     },
     "body": "Spec commends the use of Alt-Svc when a server is \"going down for maintenance.\"  But new clients will always be trying to contact the origin server, and existing clients may always fall back to it for various reasons.  Alt-Svc isn't a redundancy strategy for the origin, and I don't think we should present it as one here.  Servers will still need to cluster, anycast, etc. or shed load by changing DNS.\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/76",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -27826,7 +27903,8 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/48.patch"
     },
     "body": "> It is not necessary to notify the mailing list for editorial issues.\n\n:sunglasses: \n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/47",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -27878,8 +27956,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/47.patch"
     },
     "body": ""
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/46",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -29590,7 +29667,8 @@
     "closed_at": "2015-06-21T17:41:00Z",
     "author_association": "OWNER",
     "body": "Section 4 requires PROTOCOL_ERROR on an ALTSVC frame. However, earlier we say that it's a non-critical extension, and can be ignored. Which is it?\n\nYes, we could make a distinction on \"supporting the frame\", but that doesn't seem to helpful.\n\nCan we just drop the requirement and say it doesn't mean anything?\n"
-  },
+  }
+,
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/17",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -29649,8 +29727,7 @@
     "closed_at": "2014-10-25T16:38:37Z",
     "author_association": "OWNER",
     "body": "The field-name for Alt-Svc-Used is 12 characters, and it's required to be sent in every request. \n\nWhile we have header compression in /2, we don't in /1.\n\nCan we make this shorter? Perhaps \"ASU\"?\n"
-  }
-,
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/16",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
