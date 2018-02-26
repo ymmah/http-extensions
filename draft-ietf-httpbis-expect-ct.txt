@@ -78,7 +78,7 @@ Copyright Notice
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
-     1.1.  Requirements Language . . . . . . . . . . . . . . . . . .   3
+     1.1.  Requirements Language . . . . . . . . . . . . . . . . . .   4
      1.2.  Terminology . . . . . . . . . . . . . . . . . . . . . . .   4
    2.  Server and Client Behavior  . . . . . . . . . . . . . . . . .   5
      2.1.  Response Header Field Syntax  . . . . . . . . . . . . . .   5
@@ -98,14 +98,14 @@ Table of Contents
    3.  Reporting Expect-CT Failure . . . . . . . . . . . . . . . . .  11
      3.1.  Generating a violation report . . . . . . . . . . . . . .  11
      3.2.  Sending a violation report  . . . . . . . . . . . . . . .  13
+     3.3.  Receiving a violation report  . . . . . . . . . . . . . .  14
    4.  Security Considerations . . . . . . . . . . . . . . . . . . .  14
-     4.1.  Maximum max-age . . . . . . . . . . . . . . . . . . . . .  14
-     4.2.  Avoiding amplification attacks  . . . . . . . . . . . . .  14
+     4.1.  Maximum max-age . . . . . . . . . . . . . . . . . . . . .  15
+     4.2.  Avoiding amplification attacks  . . . . . . . . . . . . .  15
    5.  Privacy Considerations  . . . . . . . . . . . . . . . . . . .  15
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  15
-   7.  Usability Considerations  . . . . . . . . . . . . . . . . . .  15
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  16
+   7.  Usability Considerations  . . . . . . . . . . . . . . . . . .  16
    8.  Authoring Considerations  . . . . . . . . . . . . . . . . . .  16
-     8.1.  HTTP Header . . . . . . . . . . . . . . . . . . . . . . .  16
 
 
 
@@ -114,13 +114,14 @@ Stark                    Expires August 30, 2018                [Page 2]
 Internet-Draft                  Expect-CT                       February
 
 
+     8.1.  HTTP Header . . . . . . . . . . . . . . . . . . . . . . .  16
    9.  Changes . . . . . . . . . . . . . . . . . . . . . . . . . . .  16
      9.1.  Since -01 . . . . . . . . . . . . . . . . . . . . . . . .  16
-     9.2.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .  16
-   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  16
-     10.1.  Normative References . . . . . . . . . . . . . . . . . .  16
+     9.2.  Since -00 . . . . . . . . . . . . . . . . . . . . . . . .  17
+   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  17
+     10.1.  Normative References . . . . . . . . . . . . . . . . . .  17
      10.2.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .  18
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  18
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  19
 
 1.  Introduction
 
@@ -157,10 +158,9 @@ Internet-Draft                  Expect-CT                       February
    allowing web hosts to be confident that UAs are only trusting
    publicly-auditable certificates.
 
-1.1.  Requirements Language
 
-   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+
+
 
 
 
@@ -170,6 +170,10 @@ Stark                    Expires August 30, 2018                [Page 3]
 Internet-Draft                  Expect-CT                       February
 
 
+1.1.  Requirements Language
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
    "OPTIONAL" in this document are to be interpreted as described in RFC
    2119 [RFC2119].
 
@@ -213,10 +217,6 @@ Internet-Draft                  Expect-CT                       February
 
    Unknown Expect-CT Host  is an Expect-CT Host that the UA has not
       noted.
-
-
-
-
 
 
 
@@ -697,6 +697,12 @@ Internet-Draft                  Expect-CT                       February
       value to "enforce" if the Expect-CT metadata indicates an
       "enforce" configuration, and "report-only" otherwise.
 
+   o  "test-report": the value is set to true if the report is being
+      sent by a testing client to verify that the reporting server
+      behaves correctly.  The value is provided as a boolean, and MUST
+      be set to true if the report serves to test the server's behavior
+      and can be discarded.
+
 3.2.  Sending a violation report
 
    The UA SHOULD report an Expect-CT failure when a connection to a
@@ -717,12 +723,6 @@ Internet-Draft                  Expect-CT                       February
    3.  Let "report-uri" be the value of the "report-uri" directive in
        the Expect-CT header field.
 
-   4.  Send an HTTP POST request to "report-uri" with a "Content-Type"
-       header field of "application/expect-ct-report+json", and an
-       entity body consisting of "report body".
-
-
-
 
 
 Stark                    Expires August 30, 2018               [Page 13]
@@ -730,8 +730,26 @@ Stark                    Expires August 30, 2018               [Page 13]
 Internet-Draft                  Expect-CT                       February
 
 
+   4.  Send an HTTP POST request to "report-uri" with a "Content-Type"
+       header field of "application/expect-ct-report+json", and an
+       entity body consisting of "report body".
+
    The UA MAY perform other operations as part of sending the HTTP POST
    request, for example sending a CORS preflight as part of [FETCH].
+
+3.3.  Receiving a violation report
+
+   Upon receiving an Expect-CT violation report, the report server MUST
+   respond with a 2xx (Successful) status code if it can parse the
+   request body as valid JSON and recognizes the hostname in the
+   "hostname" field of the report.  If the report body cannot be parsed
+   or the report server does not expect to receive reports for the
+   hostname in the "hostname" field, the report server MUST respond with
+   a 4xx (Client Error) status code.
+
+   If the report's "test-report" key is set to true, the server MAY
+   discard the report without further processing but MUST still return a
+   2xx (Successful) status code.
 
 4.  Security Considerations
 
@@ -758,6 +776,16 @@ Internet-Draft                  Expect-CT                       February
    reach its "max-age".  User agents may choose to implement mechanisms
    for users to cure this situation, as noted in Section 7.
 
+
+
+
+
+
+Stark                    Expires August 30, 2018               [Page 14]
+
+Internet-Draft                  Expect-CT                       February
+
+
 4.1.  Maximum max-age
 
    There is a security trade-off in that low maximum values provide a
@@ -778,14 +806,6 @@ Internet-Draft                  Expect-CT                       February
    on many hosts not currently exposing SCTs as a method to cause a
    denial-of-service to the host receiving the reports.  If some highly-
    trafficked websites emitted a non-enforcing Expect-CT header with a
-
-
-
-Stark                    Expires August 30, 2018               [Page 14]
-
-Internet-Draft                  Expect-CT                       February
-
-
    "report-uri", implementing UAs' reports could flood the reporting
    host.  It is noted in Section 2.1.1 that UAs should limit the rate at
    which they emit reports, but an attacker may alter the Expect-CT
@@ -813,6 +833,15 @@ Internet-Draft                  Expect-CT                       February
    the certificate chain that has violated the CT policy.  In some
    cases, such as organization-wide compromise of the end-to-end
    security of TLS, this may include information about the interception
+
+
+
+
+Stark                    Expires August 30, 2018               [Page 15]
+
+Internet-Draft                  Expect-CT                       February
+
+
    tools and design used by the organization that the organization would
    otherwise prefer not be disclosed.
 
@@ -830,17 +859,6 @@ Internet-Draft                  Expect-CT                       February
    When the UA detects a Known Expect-CT Host in violation of the UA's
    CT Policy, users will experience denials of service.  It is advisable
    for UAs to explain the reason why.
-
-
-
-
-
-
-
-Stark                    Expires August 30, 2018               [Page 15]
-
-Internet-Draft                  Expect-CT                       February
-
 
 8.  Authoring Considerations
 
@@ -868,6 +886,18 @@ Internet-Draft                  Expect-CT                       February
    o  Change SCT reporting format to support both RFC 6962 and 6962-bis
       SCTs.
 
+
+
+
+
+
+
+
+Stark                    Expires August 30, 2018               [Page 16]
+
+Internet-Draft                  Expect-CT                       February
+
+
 9.2.  Since -00
 
    o  Editorial changes
@@ -889,14 +919,6 @@ Internet-Draft                  Expect-CT                       February
    [HTML]     Hickson, I., Pieters, S., van Kesteren, A., Jaegenstedt,
               P., and D. Denicola, "HTML", n.d.,
               <https://html.spec.whatwg.org/>.
-
-
-
-
-Stark                    Expires August 30, 2018               [Page 16]
-
-Internet-Draft                  Expect-CT                       February
-
 
    [I-D.ietf-trans-rfc6962-bis]
               Laurie, B., Langley, A., Kasper, E., Messeri, E., and R.
@@ -922,6 +944,16 @@ Internet-Draft                  Expect-CT                       February
               Encodings", RFC 4648, DOI 10.17487/RFC4648, October 2006,
               <https://www.rfc-editor.org/info/rfc4648>.
 
+
+
+
+
+
+Stark                    Expires August 30, 2018               [Page 17]
+
+Internet-Draft                  Expect-CT                       February
+
+
    [RFC5234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
               Specifications: ABNF", STD 68, RFC 5234,
               DOI 10.17487/RFC5234, January 2008,
@@ -946,14 +978,6 @@ Internet-Draft                  Expect-CT                       February
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
               <https://www.rfc-editor.org/info/rfc7230>.
 
-
-
-
-Stark                    Expires August 30, 2018               [Page 17]
-
-Internet-Draft                  Expect-CT                       February
-
-
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
               RFC 7234, DOI 10.17487/RFC7234, June 2014,
@@ -976,6 +1000,15 @@ Internet-Draft                  Expect-CT                       February
    [2] http://httpwg.github.io/
 
    [3] https://github.com/httpwg/http-extensions/labels/expect-ct
+
+
+
+
+
+Stark                    Expires August 30, 2018               [Page 18]
+
+Internet-Draft                  Expect-CT                       February
+
 
 Author's Address
 
@@ -1005,4 +1038,27 @@ Author's Address
 
 
 
-Stark                    Expires August 30, 2018               [Page 18]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Stark                    Expires August 30, 2018               [Page 19]
