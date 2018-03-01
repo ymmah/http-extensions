@@ -82,25 +82,25 @@ Table of Contents
    4.  Structured Header Data Types  . . . . . . . . . . . . . . . .   6
      4.1.  Dictionaries  . . . . . . . . . . . . . . . . . . . . . .   6
      4.2.  Lists . . . . . . . . . . . . . . . . . . . . . . . . . .   8
-     4.3.  Parameterised Labels  . . . . . . . . . . . . . . . . . .   9
-     4.4.  Items . . . . . . . . . . . . . . . . . . . . . . . . . .  10
+     4.3.  Parameterised Lists . . . . . . . . . . . . . . . . . . .   9
+     4.4.  Items . . . . . . . . . . . . . . . . . . . . . . . . . .  11
      4.5.  Integers  . . . . . . . . . . . . . . . . . . . . . . . .  11
      4.6.  Floats  . . . . . . . . . . . . . . . . . . . . . . . . .  12
-     4.7.  Strings . . . . . . . . . . . . . . . . . . . . . . . . .  12
-     4.8.  Identifiers . . . . . . . . . . . . . . . . . . . . . . .  14
-     4.9.  Binary Content  . . . . . . . . . . . . . . . . . . . . .  15
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  16
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  16
-   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  16
-     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  16
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .  17
-     7.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  17
-   Appendix A.  Changes  . . . . . . . . . . . . . . . . . . . . . .  17
-     A.1.  Since draft-ietf-httpbis-header-structure-03  . . . . . .  17
-     A.2.  Since draft-ietf-httpbis-header-structure-02  . . . . . .  17
-     A.3.  Since draft-ietf-httpbis-header-structure-01  . . . . . .  18
-     A.4.  Since draft-ietf-httpbis-header-structure-00  . . . . . .  18
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  18
+     4.7.  Strings . . . . . . . . . . . . . . . . . . . . . . . . .  13
+     4.8.  Identifiers . . . . . . . . . . . . . . . . . . . . . . .  15
+     4.9.  Binary Content  . . . . . . . . . . . . . . . . . . . . .  16
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  17
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  17
+   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  17
+     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  17
+     7.2.  Informative References  . . . . . . . . . . . . . . . . .  18
+     7.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  18
+   Appendix A.  Changes  . . . . . . . . . . . . . . . . . . . . . .  18
+     A.1.  Since draft-ietf-httpbis-header-structure-03  . . . . . .  18
+     A.2.  Since draft-ietf-httpbis-header-structure-02  . . . . . .  18
+     A.3.  Since draft-ietf-httpbis-header-structure-01  . . . . . .  19
+     A.4.  Since draft-ietf-httpbis-header-structure-00  . . . . . .  19
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  19
 
 
 
@@ -285,15 +285,14 @@ Internet-Draft         Structured Headers for HTTP            March 2018
    1.  Discard any leading OWS from input_string.
 
    2.  If the field-value is defined to be a dictionary, let output be
-       the result of Parsing a Dictionary from Textual headers
-       (Section 4.1.1).
+       the result of Parsing a Dictionary from Text (Section 4.1.1).
 
    3.  If the field-value is defined to be a list, let output be the
        result of Parsing a List from Text (Section 4.2.1).
 
-   4.  If the field-value is defined to be a parameterised label, let
-       output be the result of Parsing a Parameterised Label from
-       Textual headers (Section 4.3.1).
+   4.  If the field-value is defined to be a parameterised list, let
+       output be the result of Parsing a Parameterised List from Text
+       (Section 4.3.1).
 
    5.  Otherwise, let output be the result of Parsing an Item from Text
        (Section 4.4.1).
@@ -304,10 +303,10 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
    8.  Otherwise, return output.
 
-   Note that in the case of lists and dictionaries, this has the effect
-   of coalescing all of the values for that field.  However, for
-   singular items and parameterised labels, parsing will fail if more
-   than instance of that header field is present.
+   Note that in the case of lists, parameterised lists and dictionaries,
+   this has the effect of coalescing all of the values for that field.
+   However, for singular items, parsing will fail if more than instance
+   of that header field is present.
 
    If parsing fails, the entire header field's value MUST be discarded.
    This is intentionally strict, to improve interoperability and safety,
@@ -329,6 +328,7 @@ Internet-Draft         Structured Headers for HTTP            March 2018
    are identifiers (Section 4.8) and the values are items (Section 4.4).
    There can be between 1 and 1024 members, and keys are required to be
    unique.
+
 
 
 
@@ -404,24 +404,18 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
 4.2.  Lists
 
-   Lists are arrays of items (Section 4.4) or parameterised labels
-   (Section 4.3), with one to 1024 members.
+   Lists are arrays of items (Section 4.4) with one to 1024 members.
 
    In the textual HTTP serialisation, each member is separated by a
    comma and optional whitespace.
 
    list = list_member 0*1023( OWS "," OWS list_member )
-   list_member = item / parameterised
+   list_member = item
 
    For example, a header field whose value is defined as a list of
    identifiers could look like:
 
    ExampleIdListHeader: foo, bar, baz_45
-
-   and a header field whose value is defined as a list of parameterised
-   labels could look like:
-
-   ExampleParamListHeader: abc/def; g="hi";j, klm/nop
 
 4.2.1.  Parsing a List from Text
 
@@ -443,9 +437,71 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
        5.  If input_string is empty, return items.
 
+       6.  Consume a COMMA from input_string; if no comma is present,
+           fail parsing.
+
+       7.  Discard any leading OWS from input_string.
+
+
 
 
 Nottingham & Kamp       Expires September 2, 2018               [Page 8]
+
+Internet-Draft         Structured Headers for HTTP            March 2018
+
+
+       8.  If input_string is empty, fail parsing.
+
+   3.  If items is empty, fail parsing.
+
+   4.  Return items.
+
+4.3.  Parameterised Lists
+
+   Parameterised Lists are arrays of a parameterised identifiers with 1
+   to 256 members.
+
+   A parameterised identifier is an identifier (Section 4.8) with up to
+   256 parameters, each parameter having a identifier and an optional
+   value that is an item (Section 4.4).  Ordering between parameters is
+   not significant, and duplicate parameters MUST cause parsing to fail.
+
+   In the textual HTTP serialisation, each parameterised identifier is
+   separated by a comma and optional whitespace.  Parameters are
+   delimited from each other using semicolons (";"), and equals ("=")
+   delimits the parameter name from its value.
+
+   param_list = 0*255( OWS "," OWS param_id )
+   param_id   = identifier 0*256( OWS ";" OWS identifier [ "=" item ] )
+
+   For example,
+
+   ExampleParamListHeader: abc_123;a=1;b=2; c, def_456, ghi;q="19";r=foo
+
+4.3.1.  Parsing a Parameterised List from Text
+
+   Given an ASCII string input_string, return a list of parameterised
+   identifiers. input_string is modified to remove the parsed value.
+
+   1.  Let items be an empty array.
+
+   2.  While input_string is not empty:
+
+       1.  Let item be the result of running Parse Parameterised
+           Identifier from Text (Section 4.3.2) with input_string.
+
+       2.  Append item to items.
+
+       3.  If items has more than 1024 members, fail parsing.
+
+       4.  Discard any leading OWS from input_string.
+
+       5.  If input_string is empty, return items.
+
+
+
+
+Nottingham & Kamp       Expires September 2, 2018               [Page 9]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
@@ -461,24 +517,7 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
    4.  Return items.
 
-4.3.  Parameterised Labels
-
-   Parameterised Labels are identifiers (Section 4.8) with up to 256
-   parameters; each parameter has a identifier and an optional value
-   that is an item (Section 4.4).  Ordering between parameters is not
-   significant, and duplicate parameters MUST cause parsing to fail.
-
-   The textual HTTP serialisation uses semicolons (";") to delimit the
-   parameters from each other, and equals ("=") to delimit the parameter
-   name from its value.
-
-  parameterised = identifier *256( OWS ";" OWS identifier [ "=" item ] )
-
-   For example,
-
-   ExampleParamHeader: abc_123;a=1;b=2; c
-
-4.3.1.  Parsing a Parameterised Label from Text
+4.3.2.  Parsing a Parameterised Identifier from Text
 
    Given an ASCII string input_string, return a identifier with an
    mapping of parameters. input_string is modified to remove the parsed
@@ -498,14 +537,6 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
        3.   Consume a ";" character from the beginning of input_string.
 
-
-
-
-Nottingham & Kamp       Expires September 2, 2018               [Page 9]
-
-Internet-Draft         Structured Headers for HTTP            March 2018
-
-
        4.   Discard any leading OWS from input_string.
 
        5.   let param_name be the result of Parsing a Identifier from
@@ -523,6 +554,13 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
             2.  Let param_value be the result of Parsing an Item from
                 Text (Section 4.4.1) from input_string.
+
+
+
+Nottingham & Kamp       Expires September 2, 2018              [Page 10]
+
+Internet-Draft         Structured Headers for HTTP            March 2018
+
 
        9.   If parameters has more than 255 members, fail parsing.
 
@@ -552,16 +590,6 @@ Internet-Draft         Structured Headers for HTTP            March 2018
    3.  If the first character of input_string is a DQUOTE, process
        input_string as a string (Section 4.7.1) and return the result.
 
-
-
-
-
-
-Nottingham & Kamp       Expires September 2, 2018              [Page 10]
-
-Internet-Draft         Structured Headers for HTTP            March 2018
-
-
    4.  If the first character of input_string is "*", process
        input_string as binary content (Section 4.9.1) and return the
        result.
@@ -581,6 +609,15 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
    Parsers that encounter an integer outside the range defined above
    MUST fail parsing.  Therefore, the value "9223372036854775808" would
+
+
+
+
+Nottingham & Kamp       Expires September 2, 2018              [Page 11]
+
+Internet-Draft         Structured Headers for HTTP            March 2018
+
+
    be invalid.  Likewise, values that do not conform to the ABNF above
    are invalid, and MUST fail parsing.
 
@@ -609,15 +646,6 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
    5.  Return output_number.
 
-
-
-
-
-Nottingham & Kamp       Expires September 2, 2018              [Page 11]
-
-Internet-Draft         Structured Headers for HTTP            March 2018
-
-
 4.6.  Floats
 
    Abstractly, floats are integers with a fractional part.  They have a
@@ -629,6 +657,22 @@ Internet-Draft         Structured Headers for HTTP            March 2018
    digits between the integer and fractional part, with at least one
    required on each side, along with an optional "-" indicating negative
    numbers.
+
+
+
+
+
+
+
+
+
+
+
+
+Nottingham & Kamp       Expires September 2, 2018              [Page 12]
+
+Internet-Draft         Structured Headers for HTTP            March 2018
+
 
    float    = ["-"] (
                 DIGIT "." 1*14DIGIT /
@@ -665,15 +709,6 @@ Internet-Draft         Structured Headers for HTTP            March 2018
    The textual HTTP serialisation of strings uses a backslash ("\") to
    escape double quotes and backslashes in strings.
 
-
-
-
-
-Nottingham & Kamp       Expires September 2, 2018              [Page 12]
-
-Internet-Draft         Structured Headers for HTTP            March 2018
-
-
    string    = DQUOTE 0*1024(char) DQUOTE
    char      = unescaped / escape ( DQUOTE / "\" )
    unescaped = %x20-21 / %x23-5B / %x5D-7E
@@ -687,6 +722,13 @@ Internet-Draft         Structured Headers for HTTP            March 2018
    Note that strings only use DQUOTE as a delimiter; single quotes do
    not delimit strings.  Furthermore, only DQUOTE and "\" can be
    escaped; other sequences MUST cause parsing to fail.
+
+
+
+Nottingham & Kamp       Expires September 2, 2018              [Page 13]
+
+Internet-Draft         Structured Headers for HTTP            March 2018
+
 
    Unicode is not directly supported in Structured Headers, because it
    causes a number of interoperability issues, and - with few exceptions
@@ -722,14 +764,6 @@ Internet-Draft         Structured Headers for HTTP            March 2018
                1.  Let next_char be the result of removing the first
                    character of input_string.
 
-
-
-
-Nottingham & Kamp       Expires September 2, 2018              [Page 13]
-
-Internet-Draft         Structured Headers for HTTP            March 2018
-
-
                2.  If next_char is not DQUOTE or "\", fail parsing.
 
                3.  Append next_char to output_string.
@@ -742,6 +776,15 @@ Internet-Draft         Structured Headers for HTTP            March 2018
            parsing.
 
    5.  Otherwise, fail parsing.
+
+
+
+
+
+Nottingham & Kamp       Expires September 2, 2018              [Page 14]
+
+Internet-Draft         Structured Headers for HTTP            March 2018
+
 
 4.8.  Identifiers
 
@@ -778,14 +821,6 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
            1.  Prepend char to input_string.
 
-
-
-
-Nottingham & Kamp       Expires September 2, 2018              [Page 14]
-
-Internet-Draft         Structured Headers for HTTP            March 2018
-
-
            2.  Return output_string.
 
        3.  Append char to output_string.
@@ -794,6 +829,18 @@ Internet-Draft         Structured Headers for HTTP            March 2018
            parsing.
 
    4.  Return output_string.
+
+
+
+
+
+
+
+
+Nottingham & Kamp       Expires September 2, 2018              [Page 15]
+
+Internet-Draft         Structured Headers for HTTP            March 2018
+
 
 4.9.  Binary Content
 
@@ -835,13 +882,6 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
    2.  Discard the first character of input_string.
 
-
-
-Nottingham & Kamp       Expires September 2, 2018              [Page 15]
-
-Internet-Draft         Structured Headers for HTTP            March 2018
-
-
    3.  Let b64_content be the result of removing content of input_string
        up to but not including the first instance of the character "*".
        If there is not a "*" character before the end of input_string,
@@ -850,6 +890,13 @@ Internet-Draft         Structured Headers for HTTP            March 2018
    4.  Consume the "*" character at the beginning of input_string.
 
    5.  If b64_content is has more than 21846 characters, fail parsing.
+
+
+
+Nottingham & Kamp       Expires September 2, 2018              [Page 16]
+
+Internet-Draft         Structured Headers for HTTP            March 2018
+
 
    6.  Let binary_content be the result of Base 64 Decoding [RFC4648]
        b64_content, synthesising padding if necessary (note the
@@ -887,17 +934,6 @@ Internet-Draft         Structured Headers for HTTP            March 2018
               DOI 10.17487/RFC5234, January 2008,
               <https://www.rfc-editor.org/info/rfc5234>.
 
-
-
-
-
-
-
-Nottingham & Kamp       Expires September 2, 2018              [Page 16]
-
-Internet-Draft         Structured Headers for HTTP            March 2018
-
-
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
@@ -906,6 +942,17 @@ Internet-Draft         Structured Headers for HTTP            March 2018
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+
+
+
+
+
+
+
+Nottingham & Kamp       Expires September 2, 2018              [Page 17]
+
+Internet-Draft         Structured Headers for HTTP            March 2018
+
 
 7.2.  Informative References
 
@@ -947,13 +994,6 @@ A.2.  Since draft-ietf-httpbis-header-structure-02
 
    o  Define number parsing.
 
-
-
-Nottingham & Kamp       Expires September 2, 2018              [Page 17]
-
-Internet-Draft         Structured Headers for HTTP            March 2018
-
-
    o  Tighten up binary parsing and give it an explicit end delimiter.
 
    o  Clarify that mappings are unordered.
@@ -961,6 +1001,14 @@ Internet-Draft         Structured Headers for HTTP            March 2018
    o  Allow zero-length strings.
 
    o  Improve string parsing algorithm.
+
+
+
+
+Nottingham & Kamp       Expires September 2, 2018              [Page 18]
+
+Internet-Draft         Structured Headers for HTTP            March 2018
+
 
    o  Improve limits in algorithms.
 
@@ -1005,4 +1053,12 @@ Authors' Addresses
 
 
 
-Nottingham & Kamp       Expires September 2, 2018              [Page 18]
+
+
+
+
+
+
+
+
+Nottingham & Kamp       Expires September 2, 2018              [Page 19]
