@@ -4,8 +4,8 @@
 
 HTTP Working Group                                              E. Stark
 Internet-Draft                                                    Google
-Intended status: Experimental                               February 26,
-Expires: August 30, 2018
+Intended status: Experimental                              March 1, 2018
+Expires: September 2, 2018
 
 
                       Expect-CT Extension for HTTP
@@ -53,17 +53,17 @@ Status of This Memo
 
 
 
-Stark                    Expires August 30, 2018                [Page 1]
+Stark                   Expires September 2, 2018               [Page 1]
 
-Internet-Draft                  Expect-CT                       February
+Internet-Draft                  Expect-CT                     March 2018
 
 
-   This Internet-Draft will expire on August 30, 2018.
+   This Internet-Draft will expire on September 2, 2018.
 
 Copyright Notice
 
-   Copyright (c) IETF Trust and the persons identified as the document
-   authors.  All rights reserved.
+   Copyright (c) 2018 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Stark                    Expires August 30, 2018                [Page 2]
+Stark                   Expires September 2, 2018               [Page 2]
 
-Internet-Draft                  Expect-CT                       February
+Internet-Draft                  Expect-CT                     March 2018
 
 
      8.1.  HTTP Header . . . . . . . . . . . . . . . . . . . . . . .  16
@@ -165,9 +165,9 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-Stark                    Expires August 30, 2018                [Page 3]
+Stark                   Expires September 2, 2018               [Page 3]
 
-Internet-Draft                  Expect-CT                       February
+Internet-Draft                  Expect-CT                     March 2018
 
 
 1.1.  Requirements Language
@@ -221,9 +221,9 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-Stark                    Expires August 30, 2018                [Page 4]
+Stark                   Expires September 2, 2018               [Page 4]
 
-Internet-Draft                  Expect-CT                       February
+Internet-Draft                  Expect-CT                     March 2018
 
 
 2.  Server and Client Behavior
@@ -277,9 +277,9 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-Stark                    Expires August 30, 2018                [Page 5]
+Stark                   Expires September 2, 2018               [Page 5]
 
-Internet-Draft                  Expect-CT                       February
+Internet-Draft                  Expect-CT                     March 2018
 
 
 2.1.1.  The report-uri Directive
@@ -333,9 +333,9 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-Stark                    Expires August 30, 2018                [Page 6]
+Stark                   Expires September 2, 2018               [Page 6]
 
-Internet-Draft                  Expect-CT                       February
+Internet-Draft                  Expect-CT                     March 2018
 
 
    both that compliance to the CT Policy should be enforced and that
@@ -389,9 +389,9 @@ Expect-CT: max-age=86400,report-uri="https://foo.example/report"
 
 
 
-Stark                    Expires August 30, 2018                [Page 7]
+Stark                   Expires September 2, 2018               [Page 7]
 
-Internet-Draft                  Expect-CT                       February
+Internet-Draft                  Expect-CT                     March 2018
 
 
 2.2.1.  HTTP-over-Secure-Transport Request Type
@@ -445,9 +445,9 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-Stark                    Expires August 30, 2018                [Page 8]
+Stark                   Expires September 2, 2018               [Page 8]
 
-Internet-Draft                  Expect-CT                       February
+Internet-Draft                  Expect-CT                     March 2018
 
 
       0, the UA MUST remove its cached Expect-CT information if the host
@@ -501,9 +501,9 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-Stark                    Expires August 30, 2018                [Page 9]
+Stark                   Expires September 2, 2018               [Page 9]
 
-Internet-Draft                  Expect-CT                       February
+Internet-Draft                  Expect-CT                     March 2018
 
 
    Section 3.2.2 of [RFC3986], then the UA MUST NOT note this host as a
@@ -557,9 +557,9 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-Stark                    Expires August 30, 2018               [Page 10]
+Stark                   Expires September 2, 2018              [Page 10]
 
-Internet-Draft                  Expect-CT                       February
+Internet-Draft                  Expect-CT                     March 2018
 
 
    anchor, rather than a trust anchor built-in to the UA (or underlying
@@ -613,9 +613,9 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-Stark                    Expires August 30, 2018               [Page 11]
+Stark                   Expires September 2, 2018              [Page 11]
 
-Internet-Draft                  Expect-CT                       February
+Internet-Draft                  Expect-CT                     March 2018
 
 
    o  "hostname": the value is the hostname to which the UA made the
@@ -669,9 +669,9 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-Stark                    Expires August 30, 2018               [Page 12]
+Stark                   Expires September 2, 2018              [Page 12]
 
-Internet-Draft                  Expect-CT                       February
+Internet-Draft                  Expect-CT                     March 2018
 
 
          "invalid" (indicating that the SCT validation failed because
@@ -725,9 +725,9 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-Stark                    Expires August 30, 2018               [Page 13]
+Stark                   Expires September 2, 2018              [Page 13]
 
-Internet-Draft                  Expect-CT                       February
+Internet-Draft                  Expect-CT                     March 2018
 
 
    4.  Send an HTTP POST request to "report-uri" with a "Content-Type"
@@ -781,9 +781,9 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-Stark                    Expires August 30, 2018               [Page 14]
+Stark                   Expires September 2, 2018              [Page 14]
 
-Internet-Draft                  Expect-CT                       February
+Internet-Draft                  Expect-CT                     March 2018
 
 
 4.1.  Maximum max-age
@@ -837,9 +837,9 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-Stark                    Expires August 30, 2018               [Page 15]
+Stark                   Expires September 2, 2018              [Page 15]
 
-Internet-Draft                  Expect-CT                       February
+Internet-Draft                  Expect-CT                     March 2018
 
 
    tools and design used by the organization that the organization would
@@ -893,9 +893,9 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-Stark                    Expires August 30, 2018               [Page 16]
+Stark                   Expires September 2, 2018              [Page 16]
 
-Internet-Draft                  Expect-CT                       February
+Internet-Draft                  Expect-CT                     March 2018
 
 
 9.2.  Since -01
@@ -949,9 +949,9 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-Stark                    Expires August 30, 2018               [Page 17]
+Stark                   Expires September 2, 2018              [Page 17]
 
-Internet-Draft                  Expect-CT                       February
+Internet-Draft                  Expect-CT                     March 2018
 
 
    [RFC4648]  Josefsson, S., "The Base16, Base32, and Base64 Data
@@ -1005,9 +1005,9 @@ Internet-Draft                  Expect-CT                       February
 
 
 
-Stark                    Expires August 30, 2018               [Page 18]
+Stark                   Expires September 2, 2018              [Page 18]
 
-Internet-Draft                  Expect-CT                       February
+Internet-Draft                  Expect-CT                     March 2018
 
 
    [3] https://github.com/httpwg/http-extensions/labels/expect-ct
@@ -1061,4 +1061,4 @@ Author's Address
 
 
 
-Stark                    Expires August 30, 2018               [Page 19]
+Stark                   Expires September 2, 2018              [Page 19]
