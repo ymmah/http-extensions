@@ -3,13 +3,13 @@
 
 
 HTTP Working Group                                                K. Oku
-Internet-Draft                                             DeNA Co, Ltd.
+Internet-Draft                                                    Fastly
 Intended status: Experimental                              M. Nottingham
 Expires: September 2, 2018                                 March 1, 2018
 
 
                         Cache Digests for HTTP/2
-                 draft-ietf-httpbis-cache-digest-latest
+                   draft-ietf-httpbis-cache-digest-03
 
 Abstract
 
@@ -938,7 +938,7 @@ Appendix C.  Changes
 
 C.1.  Since draft-ietf-httpbis-cache-digest-02
 
-   o  None yet.
+   o  Switch to Cuckoo Filter.
 
 C.2.  Since draft-ietf-httpbis-cache-digest-01
 
@@ -963,7 +963,7 @@ C.3.  Since draft-ietf-httpbis-cache-digest-00
 Authors' Addresses
 
    Kazuho Oku
-   DeNA Co, Ltd.
+   Fastly
 
    Email: kazuhooku@gmail.com
 
