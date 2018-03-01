@@ -9,7 +9,7 @@ Expires: September 2, 2018                                 March 1, 2018
 
 
                         Cache Digests for HTTP/2
-                   draft-ietf-httpbis-cache-digest-03
+                 draft-ietf-httpbis-cache-digest-latest
 
 Abstract
 
@@ -94,9 +94,10 @@ Table of Contents
    Appendix A.  Encoding the CACHE_DIGEST frame as an HTTP Header  .  16
    Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . .  17
    Appendix C.  Changes  . . . . . . . . . . . . . . . . . . . . . .  17
-     C.1.  Since draft-ietf-httpbis-cache-digest-02  . . . . . . . .  17
-     C.2.  Since draft-ietf-httpbis-cache-digest-01  . . . . . . . .  17
-     C.3.  Since draft-ietf-httpbis-cache-digest-00  . . . . . . . .  18
+     C.1.  Since draft-ietf-httpbis-cache-digest-03  . . . . . . . .  17
+     C.2.  Since draft-ietf-httpbis-cache-digest-02  . . . . . . . .  17
+     C.3.  Since draft-ietf-httpbis-cache-digest-01  . . . . . . . .  18
+     C.4.  Since draft-ietf-httpbis-cache-digest-00  . . . . . . . .  18
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  18
 
 1.  Introduction
@@ -104,8 +105,7 @@ Table of Contents
    HTTP/2 [RFC7540] allows a server to "push" synthetic request/response
    pairs into a client's cache optimistically.  While there is strong
    interest in using this facility to improve perceived Web browsing
-   performance, it is sometimes counterproductive because the client
-   might already have cached the "pushed" response.
+
 
 
 
@@ -113,6 +113,9 @@ Oku & Nottingham        Expires September 2, 2018               [Page 2]
 
 Internet-Draft          Cache Digests for HTTP/2              March 2018
 
+
+   performance, it is sometimes counterproductive because the client
+   might already have cached the "pushed" response.
 
    When this is the case, the bandwidth used to "push" the response is
    effectively wasted, and represents opportunity cost, because it could
@@ -160,9 +163,6 @@ Internet-Draft          Cache Digests for HTTP/2              March 2018
       for the applicable origin held by the recipient MUST be considered
       invalid.
 
-   o  *COMPLETE* (0x2): When set, indicates that the currently valid set
-      of cache digests held by the server constitutes a complete
-
 
 
 Oku & Nottingham        Expires September 2, 2018               [Page 3]
@@ -170,6 +170,8 @@ Oku & Nottingham        Expires September 2, 2018               [Page 3]
 Internet-Draft          Cache Digests for HTTP/2              March 2018
 
 
+   o  *COMPLETE* (0x2): When set, indicates that the currently valid set
+      of cache digests held by the server constitutes a complete
       representation of the cache's state regarding that origin, for the
       type of cached response indicated by the "STALE" flag.
 
@@ -216,8 +218,6 @@ Internet-Draft          Cache Digests for HTTP/2              March 2018
    responses of a given type, the last such frame SHOULD have a COMPLETE
    flag set, to indicate to the server that it has all relevant state of
    that type.  Note that for the purposes of COMPLETE, responses cached
-   since the beginning of the connection or the last RESET flag on a
-   CACHE_DIGEST frame need not be included.
 
 
 
@@ -225,6 +225,9 @@ Oku & Nottingham        Expires September 2, 2018               [Page 4]
 
 Internet-Draft          Cache Digests for HTTP/2              March 2018
 
+
+   since the beginning of the connection or the last RESET flag on a
+   CACHE_DIGEST frame need not be included.
 
    CACHE_DIGEST can be computed to include cached responses' ETags, as
    indicated by the VALIDATORS flag.  This information can be used by
@@ -271,9 +274,6 @@ Internet-Draft          Cache Digests for HTTP/2              March 2018
 
    Note: "allocated" is necessary due to the nature of the way Cuckoo
    filters are creating the secondary hash, by XORing the initial hash
-   and the fingerprint's hash.  The XOR operation means that secondary
-   hash can pick an entry beyond the initial number of entries, up to
-   the next power of 2.  In order to avoid issues there, we allocate the
 
 
 
@@ -282,6 +282,9 @@ Oku & Nottingham        Expires September 2, 2018               [Page 5]
 Internet-Draft          Cache Digests for HTTP/2              March 2018
 
 
+   and the fingerprint's hash.  The XOR operation means that secondary
+   hash can pick an entry beyond the initial number of entries, up to
+   the next power of 2.  In order to avoid issues there, we allocate the
    table appropriately.  For increased space efficiency, it is
    recommended that implementations pick a number of entries that's
    close to the next power of 2.
@@ -328,15 +331,14 @@ Internet-Draft          Cache Digests for HTTP/2              March 2018
 
         2.   Let "position_end" be "position_start" + "f" * "b".
 
-        3.   While "position_start" < "position_end":
-
-
 
 
 Oku & Nottingham        Expires September 2, 2018               [Page 6]
 
 Internet-Draft          Cache Digests for HTTP/2              March 2018
 
+
+        3.   While "position_start" < "position_end":
 
              1.  Let "bits" be "f" bits from "digest_value" starting at
                  "position_start".
@@ -383,9 +385,7 @@ Internet-Draft          Cache Digests for HTTP/2              March 2018
    o  "URL" a string corresponding to the Effective Request URI
       ([RFC7230], Section 5.5) of a cached response [RFC7234]
 
-   o  "ETag" a string corresponding to the entity-tag [RFC7232] of a
-      cached response [RFC7234] (if the ETag is available; otherwise,
-      null);
+
 
 
 
@@ -393,6 +393,10 @@ Oku & Nottingham        Expires September 2, 2018               [Page 7]
 
 Internet-Draft          Cache Digests for HTTP/2              March 2018
 
+
+   o  "ETag" a string corresponding to the entity-tag [RFC7232] of a
+      cached response [RFC7234] (if the ETag is available; otherwise,
+      null);
 
    o  "digest-value"
 
@@ -439,16 +443,14 @@ Internet-Draft          Cache Digests for HTTP/2              March 2018
 
    o  "key", an array of characters
 
-   o  "f", an integer indicating the number of output bits
-
-
-
 
 
 Oku & Nottingham        Expires September 2, 2018               [Page 8]
 
 Internet-Draft          Cache Digests for HTTP/2              March 2018
 
+
+   o  "f", an integer indicating the number of output bits
 
    1.  Let "hash-value" be the SHA-256 message digest [RFC6234] of
        "key", expressed as an integer.
@@ -497,14 +499,14 @@ Internet-Draft          Cache Digests for HTTP/2              March 2018
            "weak" indicator (if present) and double quotes, as per
            [RFC7232], Section 2.3.
 
-   3.  Return "key"
-
 
 
 Oku & Nottingham        Expires September 2, 2018               [Page 9]
 
 Internet-Draft          Cache Digests for HTTP/2              March 2018
 
+
+   3.  Return "key"
 
    TODO: Add an example of the ETag and the key calcuations.
 
@@ -551,8 +553,6 @@ Internet-Draft          Cache Digests for HTTP/2              March 2018
       CACHE_DIGEST, a complete response need not be pushed; The server
       MAY push a 304 response for that resource, indicating the client
       that it hasn't changed.
-
-
 
 
 
@@ -936,15 +936,15 @@ Appendix B.  Acknowledgements
 
 Appendix C.  Changes
 
-C.1.  Since draft-ietf-httpbis-cache-digest-02
+C.1.  Since draft-ietf-httpbis-cache-digest-03
+
+   o  None yet.
+
+C.2.  Since draft-ietf-httpbis-cache-digest-02
 
    o  Switch to Cuckoo Filter.
 
-C.2.  Since draft-ietf-httpbis-cache-digest-01
 
-   o  Added definition of the Cache-Digest header.
-
-   o  Introduce ACCEPT_CACHE_DIGEST SETTINGS parameter.
 
 
 
@@ -954,9 +954,15 @@ Oku & Nottingham        Expires September 2, 2018              [Page 17]
 Internet-Draft          Cache Digests for HTTP/2              March 2018
 
 
+C.3.  Since draft-ietf-httpbis-cache-digest-01
+
+   o  Added definition of the Cache-Digest header.
+
+   o  Introduce ACCEPT_CACHE_DIGEST SETTINGS parameter.
+
    o  Change intended status from Standard to Experimental.
 
-C.3.  Since draft-ietf-httpbis-cache-digest-00
+C.4.  Since draft-ietf-httpbis-cache-digest-00
 
    o  Make the scope of a digest frame explicit and shift to stream 0.
 
@@ -972,12 +978,6 @@ Authors' Addresses
 
    Email: mnot@mnot.net
    URI:   https://www.mnot.net/
-
-
-
-
-
-
 
 
 
