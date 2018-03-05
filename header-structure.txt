@@ -326,7 +326,7 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
    Dictionaries are unordered maps of key-value pairs, where the keys
    are identifiers (Section 4.8) and the values are items (Section 4.4).
-   There can be between 1 and 1024 members, and keys are required to be
+   There can be from 1 to 1024 members, and keys are required to be
    unique.
 
 
@@ -349,7 +349,7 @@ dictionary_member = identifier "=" item
    For example, a header field whose value is defined as a dictionary
    could look like:
 
-   ExampleDictHeader: foo=1.23, en="Applepie", da=*w4ZibGV0w6ZydGUK
+   ExampleDictHeader: foo=1.23, en="Applepie", da=*w4ZibGV0w6ZydGUK*
 
    Typically, a header field specification will define the semantics of
    individual keys, as well as whether their presence is required or
@@ -704,7 +704,7 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
    Abstractly, strings are up to 1024 printable ASCII [RFC0020]
    characters (i.e., the range 0x20 to 0x7E).  Note that this excludes
-   tabs, newlines and carriage returns.
+   tabs, newlines, carriage returns, etc.
 
    The textual HTTP serialisation of strings uses a backslash ("\") to
    escape double quotes and backslashes in strings.
