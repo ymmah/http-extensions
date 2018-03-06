@@ -5,8 +5,8 @@
 HTTP Working Group                                         M. Nottingham
 Internet-Draft                                                    Fastly
 Intended status: Standards Track                               P-H. Kamp
-Expires: September 6, 2018                     The Varnish Cache Project
-                                                           March 5, 2018
+Expires: September 7, 2018                     The Varnish Cache Project
+                                                           March 6, 2018
 
 
                       Structured Headers for HTTP
@@ -49,11 +49,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 6, 2018.
+   This Internet-Draft will expire on September 7, 2018.
 
 
 
-Nottingham & Kamp       Expires September 6, 2018               [Page 1]
+Nottingham & Kamp       Expires September 7, 2018               [Page 1]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Nottingham & Kamp       Expires September 6, 2018               [Page 2]
+Nottingham & Kamp       Expires September 7, 2018               [Page 2]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
@@ -165,7 +165,7 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
 
 
-Nottingham & Kamp       Expires September 6, 2018               [Page 3]
+Nottingham & Kamp       Expires September 7, 2018               [Page 3]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
@@ -221,7 +221,7 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
 
 
-Nottingham & Kamp       Expires September 6, 2018               [Page 4]
+Nottingham & Kamp       Expires September 7, 2018               [Page 4]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
@@ -269,20 +269,18 @@ it MUST be resolved ([RFC3986], Section 5) before being used.
    This section specifies the algorithm for doing so.
 
    Given an ASCII string input_string that represents the chosen
-   header's field-value, return the parsed header value.  When
-   generating input_string, parsers MUST combine all instances of the
-   target header field into one comma-separated field-value, as per
-   [RFC7230], Section 3.2.2; this assures that the header is processed
-   correctly.
+   header's field-value, return the parsed header value.
+
+   1.  Discard any leading OWS from input_string.
 
 
 
-Nottingham & Kamp       Expires September 6, 2018               [Page 5]
+
+
+Nottingham & Kamp       Expires September 7, 2018               [Page 5]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
-
-   1.  Discard any leading OWS from input_string.
 
    2.  If the field-value is defined to be a dictionary, let output be
        the result of Parsing a Dictionary from Text (Section 4.1.1).
@@ -303,6 +301,11 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
    8.  Otherwise, return output.
 
+   When generating input_string, parsers MUST combine all instances of
+   the target header field into one comma-separated field-value, as per
+   [RFC7230], Section 3.2.2; this assures that the header is processed
+   correctly.
+
    Note that in the case of lists, parameterised lists and dictionaries,
    this has the effect of coalescing all of the values for that field.
    However, for singular items, parsing will fail if more than instance
@@ -310,7 +313,7 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
    If parsing fails, the entire header field's value MUST be discarded.
    This is intentionally strict, to improve interoperability and safety,
-   and specifications referencing this document MUST NOT loosen this
+   and specifications referencing this document cannot loosen this
    requirement.
 
    Note that this has the effect of discarding any header field with
@@ -326,24 +329,24 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
    Dictionaries are unordered maps of key-value pairs, where the keys
    are identifiers (Section 4.8) and the values are items (Section 4.4).
-   There can be from 1 to 1024 members, and keys are required to be
-   unique.
 
 
 
 
-
-Nottingham & Kamp       Expires September 6, 2018               [Page 6]
+Nottingham & Kamp       Expires September 7, 2018               [Page 6]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
+
+   There can be from 1 to 1024 members, and keys are required to be
+   unique.
 
    In the textual HTTP serialisation, keys and values are separated by
    "=" (without whitespace), and key/value pairs are separated by a
    comma with optional whitespace.  Duplicate keys MUST cause parsing to
    fail.
 
-dictionary        = dictionary_member *1023( OWS "," OWS dictionary_member )
+dictionary        = dictionary_member 0*1023( OWS "," OWS dictionary_member )
 dictionary_member = identifier "=" item
 
    For example, a header field whose value is defined as a dictionary
@@ -384,23 +387,21 @@ dictionary_member = identifier "=" item
 
        8.   If input_string is empty, return dictionary.
 
-       9.   Consume a COMMA from input_string; if no comma is present,
-            fail parsing.
 
 
-
-Nottingham & Kamp       Expires September 6, 2018               [Page 7]
+Nottingham & Kamp       Expires September 7, 2018               [Page 7]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
+
+       9.   Consume a COMMA from input_string; if no comma is present,
+            fail parsing.
 
        10.  Discard any leading OWS from input_string.
 
        11.  If input_string is empty, fail parsing.
 
-   3.  If dictionary is empty, fail parsing.
-
-   4.  Return dictionary.
+   3.  No structured data has been found; fail parsing.
 
 4.2.  Lists
 
@@ -444,17 +445,14 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
 
 
-
-Nottingham & Kamp       Expires September 6, 2018               [Page 8]
+Nottingham & Kamp       Expires September 7, 2018               [Page 8]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
 
        8.  If input_string is empty, fail parsing.
 
-   3.  If items is empty, fail parsing.
-
-   4.  Return items.
+   3.  No structured data has been found; fail parsing.
 
 4.3.  Parameterised Lists
 
@@ -498,24 +496,21 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
        5.  If input_string is empty, return items.
 
+       6.  Consume a COMMA from input_string; if no comma is present,
+           fail parsing.
 
 
 
-Nottingham & Kamp       Expires September 6, 2018               [Page 9]
+Nottingham & Kamp       Expires September 7, 2018               [Page 9]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
-
-       6.  Consume a COMMA from input_string; if no comma is present,
-           fail parsing.
 
        7.  Discard any leading OWS from input_string.
 
        8.  If input_string is empty, fail parsing.
 
-   3.  If items is empty, fail parsing.
-
-   4.  Return items.
+   3.  No structured data has been found; fail parsing.
 
 4.3.2.  Parsing a Parameterised Identifier from Text
 
@@ -555,16 +550,17 @@ Internet-Draft         Structured Headers for HTTP            March 2018
             2.  Let param_value be the result of Parsing an Item from
                 Text (Section 4.4.1) from input_string.
 
+       9.   If parameters has more than 255 members, fail parsing.
+
+       10.  Insert (param_name, param_value) into parameters.
 
 
-Nottingham & Kamp       Expires September 6, 2018              [Page 10]
+
+
+Nottingham & Kamp       Expires September 7, 2018              [Page 10]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
-
-       9.   If parameters has more than 255 members, fail parsing.
-
-       10.  Add param_name to parameters with the value param_value.
 
    4.  Return the tuple (primary_identifier, parameters).
 
@@ -609,20 +605,18 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
    Parsers that encounter an integer outside the range defined above
    MUST fail parsing.  Therefore, the value "9223372036854775808" would
-
-
-
-
-Nottingham & Kamp       Expires September 6, 2018              [Page 11]
-
-Internet-Draft         Structured Headers for HTTP            March 2018
-
-
    be invalid.  Likewise, values that do not conform to the ABNF above
    are invalid, and MUST fail parsing.
 
    For example, a header whose value is defined as a integer could look
    like:
+
+
+
+Nottingham & Kamp       Expires September 7, 2018              [Page 11]
+
+Internet-Draft         Structured Headers for HTTP            March 2018
+
 
    ExampleIntegerHeader: 42
 
@@ -669,7 +663,13 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
 
 
-Nottingham & Kamp       Expires September 6, 2018              [Page 12]
+
+
+
+
+
+
+Nottingham & Kamp       Expires September 7, 2018              [Page 12]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
@@ -725,7 +725,7 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
 
 
-Nottingham & Kamp       Expires September 6, 2018              [Page 13]
+Nottingham & Kamp       Expires September 7, 2018              [Page 13]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
@@ -781,7 +781,7 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
 
 
-Nottingham & Kamp       Expires September 6, 2018              [Page 14]
+Nottingham & Kamp       Expires September 7, 2018              [Page 14]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
@@ -792,7 +792,7 @@ Internet-Draft         Structured Headers for HTTP            March 2018
    their abstract model is identical to their expression in the textual
    HTTP serialisation.
 
-   identifier = lcalpha *255( lcalpha / DIGIT / "_" / "-"/ "*" / "/" )
+   identifier = lcalpha 0*255( lcalpha / DIGIT / "_" / "-"/ "*" / "/" )
    lcalpha    = %x61-7A ; a-z
 
    Note that identifiers can only contain lowercase letters.
@@ -837,7 +837,7 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
 
 
-Nottingham & Kamp       Expires September 6, 2018              [Page 15]
+Nottingham & Kamp       Expires September 7, 2018              [Page 15]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
@@ -893,7 +893,7 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
 
 
-Nottingham & Kamp       Expires September 6, 2018              [Page 16]
+Nottingham & Kamp       Expires September 7, 2018              [Page 16]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
@@ -949,7 +949,7 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
 
 
-Nottingham & Kamp       Expires September 6, 2018              [Page 17]
+Nottingham & Kamp       Expires September 7, 2018              [Page 17]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
@@ -1005,7 +1005,7 @@ A.2.  Since draft-ietf-httpbis-header-structure-02
 
 
 
-Nottingham & Kamp       Expires September 6, 2018              [Page 18]
+Nottingham & Kamp       Expires September 7, 2018              [Page 18]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
@@ -1061,4 +1061,4 @@ Authors' Addresses
 
 
 
-Nottingham & Kamp       Expires September 6, 2018              [Page 19]
+Nottingham & Kamp       Expires September 7, 2018              [Page 19]
