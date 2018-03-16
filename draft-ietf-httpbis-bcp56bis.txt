@@ -18,6 +18,8 @@ Abstract
    This document specifies best practices for these protocols' use of
    HTTP.
 
+   This document obsoletes RFC 3205.
+
 Note to Readers
 
    Discussion of this draft takes place on the HTTP working group
@@ -45,10 +47,8 @@ Status of This Memo
 
    This Internet-Draft will expire on September 17, 2018.
 
-Copyright Notice
 
-   Copyright (c) 2018 IETF Trust and the persons identified as the
-   document authors.  All rights reserved.
+
 
 
 
@@ -57,6 +57,11 @@ Nottingham             Expires September 17, 2018               [Page 1]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
+
+Copyright Notice
+
+   Copyright (c) 2018 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
@@ -70,7 +75,7 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
 Table of Contents
 
-   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
      1.1.  Notational Conventions  . . . . . . . . . . . . . . . . .   4
    2.  Is HTTP Being Used? . . . . . . . . . . . . . . . . . . . . .   4
    3.  What's Important About HTTP . . . . . . . . . . . . . . . . .   5
@@ -98,13 +103,8 @@ Table of Contents
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .  17
      7.2.  Informative References  . . . . . . . . . . . . . . . . .  19
      7.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  21
-   Appendix A.  Changes from RFC3205 . . . . . . . . . . . . . . . .  21
+   Appendix A.  Changes from RFC 3205  . . . . . . . . . . . . . . .  21
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  21
-
-1.  Introduction
-
-   HTTP [RFC7230] is often used as a substrate for other application
-   protocols.  This is done for a variety of reasons, including:
 
 
 
@@ -113,6 +113,11 @@ Nottingham             Expires September 17, 2018               [Page 2]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
+
+1.  Introduction
+
+   HTTP [RFC7230] is often used as a substrate for other application
+   protocols.  This is done for a variety of reasons, including:
 
    o  familiarity by implementers, specifiers, administrators,
       developers and users,
@@ -157,11 +162,6 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
    It is written primarily to guide IETF efforts to define application
    protocols using HTTP for deployment on the Internet, but might be
-   applicable in other situations.  Note that the requirements herein do
-   not necessarily apply to the development of generic HTTP extensions.
-
-
-
 
 
 
@@ -169,6 +169,9 @@ Nottingham             Expires September 17, 2018               [Page 3]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
+
+   applicable in other situations.  Note that the requirements herein do
+   not necessarily apply to the development of generic HTTP extensions.
 
 1.1.  Notational Conventions
 
@@ -214,9 +217,6 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
    Protocols that are based upon HTTP MUST NOT reuse HTTP's URL schemes,
    transport ports, ALPN protocol IDs or IANA registries; rather, they
    are encouraged to establish their own.
-
-
-
 
 
 
@@ -1047,15 +1047,15 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
               RFC 2821, DOI 10.17487/RFC2821, April 2001,
               <https://www.rfc-editor.org/info/rfc2821>.
 
+   [RFC3205]  Moore, K., "On the use of HTTP as a Substrate", BCP 56,
+              RFC 3205, DOI 10.17487/RFC3205, February 2002,
+              <https://www.rfc-editor.org/info/rfc3205>.
+
    [RFC4367]  Rosenberg, J., Ed. and IAB, "What's in a Name: False
               Assumptions about DNS Names", RFC 4367,
               DOI 10.17487/RFC4367, February 2006,
               <https://www.rfc-editor.org/info/rfc4367>.
 
-   [RFC4791]  Daboo, C., Desruisseaux, B., and L. Dusseault,
-              "Calendaring Extensions to WebDAV (CalDAV)", RFC 4791,
-              DOI 10.17487/RFC4791, March 2007,
-              <https://www.rfc-editor.org/info/rfc4791>.
 
 
 
@@ -1065,6 +1065,11 @@ Nottingham             Expires September 17, 2018              [Page 19]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
+
+   [RFC4791]  Daboo, C., Desruisseaux, B., and L. Dusseault,
+              "Calendaring Extensions to WebDAV (CalDAV)", RFC 4791,
+              DOI 10.17487/RFC4791, March 2007,
+              <https://www.rfc-editor.org/info/rfc4791>.
 
    [RFC5785]  Nottingham, M. and E. Hammer-Lahav, "Defining Well-Known
               Uniform Resource Identifiers (URIs)", RFC 5785,
@@ -1109,11 +1114,6 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
               RFC 7617, DOI 10.17487/RFC7617, September 2015,
               <https://www.rfc-editor.org/info/rfc7617>.
 
-   [RFC8259]  Bray, T., Ed., "The JavaScript Object Notation (JSON) Data
-              Interchange Format", STD 90, RFC 8259,
-              DOI 10.17487/RFC8259, December 2017,
-              <https://www.rfc-editor.org/info/rfc8259>.
-
 
 
 
@@ -1121,6 +1121,11 @@ Nottingham             Expires September 17, 2018              [Page 20]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
+
+   [RFC8259]  Bray, T., Ed., "The JavaScript Object Notation (JSON) Data
+              Interchange Format", STD 90, RFC 8259,
+              DOI 10.17487/RFC8259, December 2017,
+              <https://www.rfc-editor.org/info/rfc8259>.
 
    [W3C.CR-secure-contexts-20160915]
               West, M., "Secure Contexts", World Wide Web Consortium CR
@@ -1144,13 +1149,13 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
    [4] https://www.owasp.org/index.php/OWASP_Guide_Project
 
-Appendix A.  Changes from RFC3205
+Appendix A.  Changes from RFC 3205
 
-   RFC3205 captured the Best Current Practice in the early 2000's, based
-   on the concerns facing protocol designers at the time.  Use of HTTP
-   has changed considerably since then, and as a result this document is
-   substantially different.  As a result, the changes are too numerous
-   to list individually.
+   [RFC3205] captured the Best Current Practice in the early 2000's,
+   based on the concerns facing protocol designers at the time.  Use of
+   HTTP has changed considerably since then, and as a result this
+   document is substantially different.  As a result, the changes are
+   too numerous to list individually.
 
 Author's Address
 
@@ -1158,11 +1163,6 @@ Author's Address
 
    Email: mnot@mnot.net
    URI:   https://www.mnot.net/
-
-
-
-
-
 
 
 
