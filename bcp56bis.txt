@@ -88,7 +88,7 @@ Table of Contents
      4.3.  Specifying Client Behaviours  . . . . . . . . . . . . . .   9
      4.4.  HTTP URLs . . . . . . . . . . . . . . . . . . . . . . . .  10
        4.4.1.  Initial URL Discovery . . . . . . . . . . . . . . . .  10
-       4.4.2.  URL Schemes . . . . . . . . . . . . . . . . . . . . .  10
+       4.4.2.  URL Schemes . . . . . . . . . . . . . . . . . . . . .  11
        4.4.3.  Transport Ports . . . . . . . . . . . . . . . . . . .  12
      4.5.  HTTP Methods  . . . . . . . . . . . . . . . . . . . . . .  12
      4.6.  HTTP Status Codes . . . . . . . . . . . . . . . . . . . .  12
@@ -98,7 +98,7 @@ Table of Contents
      4.10. Co-Existing with Web Browsing . . . . . . . . . . . . . .  15
      4.11. Co-Existing with Other Applications . . . . . . . . . . .  16
    5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  16
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  16
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  17
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  17
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .  17
      7.2.  Informative References  . . . . . . . . . . . . . . . . .  19
@@ -246,7 +246,8 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
    behaviour.  For example, it's common to see specifications with
    language like this:
 
-A `200 OK` response means that the widget has successfully been updated.
+   A `200 OK` response means that the widget has successfully been
+   updated.
 
    This sort of specification is bad practice, because it is adding new
    semantics to HTTP's status codes and methods, respectively; a
@@ -272,8 +273,7 @@ A `200 OK` response means that the widget has successfully been updated.
    This allows a HTTP message to be examined by generic HTTP software
    (e.g., HTTP servers, intermediaries, client implementations), and its
    handling to be correctly determined.  It also allows people to
-   leverage their knowledge of HTTP semantics without special-casing
-   them for a particular application.
+
 
 
 
@@ -281,6 +281,9 @@ Nottingham             Expires September 17, 2018               [Page 5]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
+
+   leverage their knowledge of HTTP semantics without special-casing
+   them for a particular application.
 
    Therefore, applications that use HTTP MUST NOT re-define, refine or
    overlay the semantics of defined protocol elements.  Instead, they
@@ -326,10 +329,7 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
    o  Caching for server scalability, latency and bandwidth reduction,
       and reliability;
 
-   o  Granularity of access control (through use of a rich space of
-      URLs);
 
-   o  Partial content to selectively request part of a response;
 
 
 
@@ -337,6 +337,11 @@ Nottingham             Expires September 17, 2018               [Page 6]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
+
+   o  Granularity of access control (through use of a rich space of
+      URLs);
+
+   o  Partial content to selectively request part of a response;
 
    o  Definition of an information space using URLs; and
 
@@ -382,17 +387,14 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
    might be achieved by informing the user that their task cannot be
    completed).
 
-   For example, an application can specify that it uses HTTP like this:
-
-
-
-
 
 
 Nottingham             Expires September 17, 2018               [Page 7]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
+
+   For example, an application can specify that it uses HTTP like this:
 
    Foo Application uses HTTP {{RFC7230}}. Implementations MUST support
    HTTP/1.1, and MAY support later versions. Support for common HTTP
@@ -440,8 +442,6 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
    o  Data processing using POST and identified request and response
       body format(s); and
 
-   o  Resource deletion using DELETE.
-
 
 
 
@@ -449,6 +449,8 @@ Nottingham             Expires September 17, 2018               [Page 8]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
+
+   o  Resource deletion using DELETE.
 
    For example, an application might specify:
 
@@ -496,8 +498,6 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
    usually negotiated to be supported.  For example, requiring that
    clients support responses with a certain content-encoding ([RFC7231],
    Section 3.1.2.2) instead of negotiating for it ([RFC7231],
-   Section 5.3.4) means that otherwise conformant clients cannot
-
 
 
 
@@ -506,6 +506,7 @@ Nottingham             Expires September 17, 2018               [Page 9]
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
 
+   Section 5.3.4) means that otherwise conformant clients cannot
    interoperate with the application.  Applications MAY encourage the
    implementation of such features, though.
 
@@ -549,10 +550,9 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
    convey a whole URL, but only a hostname) standard applications that
    use HTTP can request a well-known URL [RFC5785] as an entry point.
 
-4.4.2.  URL Schemes
 
-   Applications that use HTTP will typically use the "http" and/or
-   "https" URL schemes. "https" is preferred to provide authentication,
+
+
 
 
 
@@ -562,6 +562,10 @@ Nottingham             Expires September 17, 2018              [Page 10]
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
 
+4.4.2.  URL Schemes
+
+   Applications that use HTTP will typically use the "http" and/or
+   "https" URL schemes. "https" is preferred to provide authentication,
    integrity and confidentiality, as well as mitigate pervasive
    monitoring attacks [RFC7258].
 
@@ -606,10 +610,6 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
       [W3C.CR-secure-contexts-20160915] will likely treat a new scheme
       as insecure.
 
-   See [RFC7595] for more information about minting new URL schemes.
-
-
-
 
 
 
@@ -617,6 +617,8 @@ Nottingham             Expires September 17, 2018              [Page 11]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
+
+   See [RFC7595] for more information about minting new URL schemes.
 
 4.4.3.  Transport Ports
 
@@ -663,8 +665,6 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
    As with methods, new HTTP status codes are rare, and required (by
    [RFC7231]) to be registered with IETF review.  Similarly, HTTP status
-   codes are generic; they are required (by [RFC7231]) to be potentially
-   applicable to all resources, not just to those of one application.
 
 
 
@@ -673,6 +673,9 @@ Nottingham             Expires September 17, 2018              [Page 12]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
+
+   codes are generic; they are required (by [RFC7231]) to be potentially
+   applicable to all resources, not just to those of one application.
 
    When authors believe that a new status code is required, they are
    encouraged to engage with the HTTP community early, and document
@@ -719,9 +722,6 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
    Applications that use HTTP MAY define new HTTP header fields,
    following the advice in [RFC7231], Section 8.3.1.
 
-   Typically, using HTTP header fields is appropriate in a few different
-   situations:
-
 
 
 
@@ -729,6 +729,9 @@ Nottingham             Expires September 17, 2018              [Page 13]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
+
+   Typically, using HTTP header fields is appropriate in a few different
+   situations:
 
    o  Their content is useful to intermediaries (who often wish to avoid
       parsing the body), and/or
@@ -774,9 +777,6 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
    See Section 4.9 for requirements regarding header fields that carry
    application state (e.g,. Cookie).
 
-   Applications that use already-defined HTTP header fields MUST NOT
-   modify their semantics or syntax, unless the definition of that
-   header field explicitly allows it (e.g., with an extension field).
 
 
 
@@ -785,6 +785,10 @@ Nottingham             Expires September 17, 2018              [Page 14]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
+
+   Applications that use already-defined HTTP header fields MUST NOT
+   modify their semantics or syntax, unless the definition of that
+   header field explicitly allows it (e.g., with an extension field).
 
 4.8.  Defining Message Payloads
 
@@ -830,10 +834,6 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
    This means that all such applications need to consider how browsers
    will interact with them, particularly regarding security.
 
-   For example, if an application's state can be changed using a POST
-   request, a Web browser can easily be coaxed into making that request
-   by a HTML form on an arbitrary Web site.
-
 
 
 
@@ -841,6 +841,10 @@ Nottingham             Expires September 17, 2018              [Page 15]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
+
+   For example, if an application's state can be changed using a POST
+   request, a Web browser can easily be coaxed into making that request
+   by a HTML form on an arbitrary Web site.
 
    Or, if a resource reflects data from the request into a response,
    that can be used to perform a Cross-Site Scripting attack on Web
@@ -885,10 +889,6 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
    This document has no requirements for IANA.
 
-6.  Security Considerations
-
-   Section 4.9 discusses the impact of using stateful mechanisms in the
-   protocol as ambient authority, and suggests a mitigation.
 
 
 
@@ -897,6 +897,11 @@ Nottingham             Expires September 17, 2018              [Page 16]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
+
+6.  Security Considerations
+
+   Section 4.9 discusses the impact of using stateful mechanisms in the
+   protocol as ambient authority, and suggests a mitigation.
 
    Section 4.4.2 requires support for 'https' URLs, and discourages the
    use of 'http' URLs, to provide authentication, integrity and
@@ -937,11 +942,6 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
               DOI 10.17487/RFC6454, December 2011,
               <https://www.rfc-editor.org/info/rfc6454>.
 
-   [RFC6648]  Saint-Andre, P., Crocker, D., and M. Nottingham,
-              "Deprecating the "X-" Prefix and Similar Constructs in
-              Application Protocols", BCP 178, RFC 6648,
-              DOI 10.17487/RFC6648, June 2012,
-              <https://www.rfc-editor.org/info/rfc6648>.
 
 
 
@@ -953,6 +953,12 @@ Nottingham             Expires September 17, 2018              [Page 17]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
+
+   [RFC6648]  Saint-Andre, P., Crocker, D., and M. Nottingham,
+              "Deprecating the "X-" Prefix and Similar Constructs in
+              Application Protocols", BCP 178, RFC 6648,
+              DOI 10.17487/RFC6648, June 2012,
+              <https://www.rfc-editor.org/info/rfc6648>.
 
    [RFC6838]  Freed, N., Klensin, J., and T. Hansen, "Media Type
               Specifications and Registration Procedures", BCP 13,
@@ -994,6 +1000,16 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
               Negotiation Extension", RFC 7301, DOI 10.17487/RFC7301,
               July 2014, <https://www.rfc-editor.org/info/rfc7301>.
 
+
+
+
+
+
+Nottingham             Expires September 17, 2018              [Page 18]
+
+Internet-Draft      On the use of HTTP as a Substrate         March 2018
+
+
    [RFC7320]  Nottingham, M., "URI Design and Ownership", BCP 190,
               RFC 7320, DOI 10.17487/RFC7320, July 2014,
               <https://www.rfc-editor.org/info/rfc7320>.
@@ -1002,13 +1018,6 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
               Transfer Protocol Version 2 (HTTP/2)", RFC 7540,
               DOI 10.17487/RFC7540, May 2015,
               <https://www.rfc-editor.org/info/rfc7540>.
-
-
-
-Nottingham             Expires September 17, 2018              [Page 18]
-
-Internet-Draft      On the use of HTTP as a Substrate         March 2018
-
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
@@ -1047,15 +1056,6 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
               RFC 2821, DOI 10.17487/RFC2821, April 2001,
               <https://www.rfc-editor.org/info/rfc2821>.
 
-   [RFC3205]  Moore, K., "On the use of HTTP as a Substrate", BCP 56,
-              RFC 3205, DOI 10.17487/RFC3205, February 2002,
-              <https://www.rfc-editor.org/info/rfc3205>.
-
-   [RFC4367]  Rosenberg, J., Ed. and IAB, "What's in a Name: False
-              Assumptions about DNS Names", RFC 4367,
-              DOI 10.17487/RFC4367, February 2006,
-              <https://www.rfc-editor.org/info/rfc4367>.
-
 
 
 
@@ -1065,6 +1065,15 @@ Nottingham             Expires September 17, 2018              [Page 19]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
+
+   [RFC3205]  Moore, K., "On the use of HTTP as a Substrate", BCP 56,
+              RFC 3205, DOI 10.17487/RFC3205, February 2002,
+              <https://www.rfc-editor.org/info/rfc3205>.
+
+   [RFC4367]  Rosenberg, J., Ed. and IAB, "What's in a Name: False
+              Assumptions about DNS Names", RFC 4367,
+              DOI 10.17487/RFC4367, February 2006,
+              <https://www.rfc-editor.org/info/rfc4367>.
 
    [RFC4791]  Daboo, C., Desruisseaux, B., and L. Dusseault,
               "Calendaring Extensions to WebDAV (CalDAV)", RFC 4791,
@@ -1106,6 +1115,13 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
               DOI 10.17487/RFC7616, September 2015,
               <https://www.rfc-editor.org/info/rfc7616>.
 
+
+
+Nottingham             Expires September 17, 2018              [Page 20]
+
+Internet-Draft      On the use of HTTP as a Substrate         March 2018
+
+
    [RFC7617]  Reschke, J., "The 'Basic' HTTP Authentication Scheme",
               RFC 7617, DOI 10.17487/RFC7617, September 2015,
               <https://www.rfc-editor.org/info/rfc7617>.
@@ -1114,13 +1130,6 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
               Interchange Format", STD 90, RFC 8259,
               DOI 10.17487/RFC8259, December 2017,
               <https://www.rfc-editor.org/info/rfc8259>.
-
-
-
-Nottingham             Expires September 17, 2018              [Page 20]
-
-Internet-Draft      On the use of HTTP as a Substrate         March 2018
-
 
    [W3C.CR-secure-contexts-20160915]
               West, M., "Secure Contexts", World Wide Web Consortium CR
@@ -1157,15 +1166,6 @@ Author's Address
 
    Email: mnot@mnot.net
    URI:   https://www.mnot.net/
-
-
-
-
-
-
-
-
-
 
 
 
