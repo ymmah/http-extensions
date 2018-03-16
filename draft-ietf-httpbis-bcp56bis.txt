@@ -789,8 +789,8 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
 4.8.  Defining Message Payloads
 
    There are many potential formats for payloads; for example, JSON
-   [RFC8259], XML [W3C.REC-xml-20081126], and CBOR [RFC7049].  Best
-   practices for their use are out of scope for this document.
+   [RFC8259], XML [XML], and CBOR [RFC7049].  Best practices for their
+   use are out of scope for this document.
 
    Applications SHOULD register distinct media types for each format
    they define; this makes it possible to identify them unambiguously
@@ -1127,8 +1127,7 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
               CR-secure-contexts-20160915, September 2016,
               <https://www.w3.org/TR/2016/CR-secure-contexts-20160915>.
 
-   [W3C.REC-xml-20081126]
-              Bray, T., Paoli, J., Sperberg-McQueen, M., Maler, E., and
+   [XML]      Bray, T., Paoli, J., Sperberg-McQueen, M., Maler, E., and
               F. Yergeau, "Extensible Markup Language (XML) 1.0 (Fifth
               Edition)", World Wide Web Consortium Recommendation REC-
               xml-20081126, November 2008,
@@ -1158,6 +1157,7 @@ Author's Address
 
    Email: mnot@mnot.net
    URI:   https://www.mnot.net/
+
 
 
 
