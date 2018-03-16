@@ -420,7 +420,7 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
    specific protocol elements:
 
    o  Media types [RFC6838], often based upon a format convention such
-      as JSON [RFC7159],
+      as JSON [RFC8259],
 
    o  HTTP header fields, as per Section 4.7, and
 
@@ -460,7 +460,7 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
    The "Example-Count" response header field on Widget representations
    indicates how many Widgets are held by the sender.
 
-   The "application/example-widget+json" format is a JSON {{RFC7159}}
+   The "application/example-widget+json" format is a JSON {{RFC8259}}
    format representing the state of a Widget. It contains links to
    related information in the link indicated by the Link header field
    value with the "example-other-info" link relation type.
@@ -1088,10 +1088,6 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
               Representation (CBOR)", RFC 7049, DOI 10.17487/RFC7049,
               October 2013, <https://www.rfc-editor.org/info/rfc7049>.
 
-   [RFC7159]  Bray, T., Ed., "The JavaScript Object Notation (JSON) Data
-              Interchange Format", RFC 7159, DOI 10.17487/RFC7159, March
-              2014, <https://www.rfc-editor.org/info/rfc7159>.
-
    [RFC7258]  Farrell, S. and H. Tschofenig, "Pervasive Monitoring Is an
               Attack", BCP 188, RFC 7258, DOI 10.17487/RFC7258, May
               2014, <https://www.rfc-editor.org/info/rfc7258>.
@@ -1114,6 +1110,10 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
               RFC 7617, DOI 10.17487/RFC7617, September 2015,
               <https://www.rfc-editor.org/info/rfc7617>.
 
+   [RFC8259]  Bray, T., Ed., "The JavaScript Object Notation (JSON) Data
+              Interchange Format", STD 90, RFC 8259,
+              DOI 10.17487/RFC8259, December 2017,
+              <https://www.rfc-editor.org/info/rfc8259>.
 
 
 
@@ -1121,11 +1121,6 @@ Nottingham             Expires September 17, 2018              [Page 20]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
-
-   [RFC8259]  Bray, T., Ed., "The JavaScript Object Notation (JSON) Data
-              Interchange Format", STD 90, RFC 8259,
-              DOI 10.17487/RFC8259, December 2017,
-              <https://www.rfc-editor.org/info/rfc8259>.
 
    [W3C.CR-secure-contexts-20160915]
               West, M., "Secure Contexts", World Wide Web Consortium CR
@@ -1163,6 +1158,11 @@ Author's Address
 
    Email: mnot@mnot.net
    URI:   https://www.mnot.net/
+
+
+
+
+
 
 
 
