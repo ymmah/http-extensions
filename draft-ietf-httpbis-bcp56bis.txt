@@ -3,10 +3,10 @@
 
 
 HTTP Working Group                                         M. Nottingham
-Internet-Draft                                            March 12, 2018
+Internet-Draft                                            March 16, 2018
 Obsoletes: 3205 (if approved)
 Intended status: Best Current Practice
-Expires: September 13, 2018
+Expires: September 17, 2018
 
 
                    On the use of HTTP as a Substrate
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 13, 2018.
+   This Internet-Draft will expire on September 17, 2018.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Nottingham             Expires September 13, 2018               [Page 1]
+Nottingham             Expires September 17, 2018               [Page 1]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Nottingham             Expires September 13, 2018               [Page 2]
+Nottingham             Expires September 17, 2018               [Page 2]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
@@ -165,7 +165,7 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
 
 
-Nottingham             Expires September 13, 2018               [Page 3]
+Nottingham             Expires September 17, 2018               [Page 3]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
@@ -221,7 +221,7 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
 
 
-Nottingham             Expires September 13, 2018               [Page 4]
+Nottingham             Expires September 17, 2018               [Page 4]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
@@ -277,7 +277,7 @@ A `200 OK` response means that the widget has successfully been updated.
 
 
 
-Nottingham             Expires September 13, 2018               [Page 5]
+Nottingham             Expires September 17, 2018               [Page 5]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
@@ -333,7 +333,7 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
 
 
-Nottingham             Expires September 13, 2018               [Page 6]
+Nottingham             Expires September 17, 2018               [Page 6]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
@@ -389,7 +389,7 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
 
 
-Nottingham             Expires September 13, 2018               [Page 7]
+Nottingham             Expires September 17, 2018               [Page 7]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
@@ -425,7 +425,7 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
    o  HTTP header fields, as per Section 4.7, and
 
    o  The behaviour of resources, as identified by link relations
-      [RFC5988].
+      [RFC8288].
 
    By composing these protocol elements, an application can define a set
    of resources, identified by link relations, that implement specified
@@ -445,7 +445,7 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
 
 
-Nottingham             Expires September 13, 2018               [Page 8]
+Nottingham             Expires September 17, 2018               [Page 8]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
@@ -501,7 +501,7 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
 
 
-Nottingham             Expires September 13, 2018               [Page 9]
+Nottingham             Expires September 17, 2018               [Page 9]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
@@ -529,7 +529,7 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
    Instead, applications that use HTTP are encouraged to ensure that
    URLs are discovered at runtime, allowing HTTP-based services to
    describe their own capabilities.  One way to do this is to use typed
-   links [RFC5988] to convey the URIs that are in use, as well as the
+   links [RFC8288] to convey the URIs that are in use, as well as the
    semantics of the resources that they identify.  See Section 4.2 for
    details.
 
@@ -557,7 +557,7 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
 
 
-Nottingham             Expires September 13, 2018              [Page 10]
+Nottingham             Expires September 17, 2018              [Page 10]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
@@ -613,7 +613,7 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
 
 
-Nottingham             Expires September 13, 2018              [Page 11]
+Nottingham             Expires September 17, 2018              [Page 11]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
@@ -669,7 +669,7 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
 
 
-Nottingham             Expires September 13, 2018              [Page 12]
+Nottingham             Expires September 17, 2018              [Page 12]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
@@ -725,7 +725,7 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
 
 
-Nottingham             Expires September 13, 2018              [Page 13]
+Nottingham             Expires September 17, 2018              [Page 13]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
@@ -781,7 +781,7 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
 
 
-Nottingham             Expires September 13, 2018              [Page 14]
+Nottingham             Expires September 17, 2018              [Page 14]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
@@ -837,7 +837,7 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
 
 
-Nottingham             Expires September 13, 2018              [Page 15]
+Nottingham             Expires September 17, 2018              [Page 15]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
@@ -893,7 +893,7 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
 
 
-Nottingham             Expires September 13, 2018              [Page 16]
+Nottingham             Expires September 17, 2018              [Page 16]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
@@ -933,10 +933,6 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
               DOI 10.17487/RFC3864, September 2004,
               <https://www.rfc-editor.org/info/rfc3864>.
 
-   [RFC5988]  Nottingham, M., "Web Linking", RFC 5988,
-              DOI 10.17487/RFC5988, October 2010,
-              <https://www.rfc-editor.org/info/rfc5988>.
-
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
               DOI 10.17487/RFC6454, December 2011,
               <https://www.rfc-editor.org/info/rfc6454>.
@@ -949,7 +945,11 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
 
 
-Nottingham             Expires September 13, 2018              [Page 17]
+
+
+
+
+Nottingham             Expires September 17, 2018              [Page 17]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
@@ -1005,7 +1005,7 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
 
 
-Nottingham             Expires September 13, 2018              [Page 18]
+Nottingham             Expires September 17, 2018              [Page 18]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
@@ -1013,6 +1013,10 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+
+   [RFC8288]  Nottingham, M., "Web Linking", RFC 8288,
+              DOI 10.17487/RFC8288, October 2017,
+              <https://www.rfc-editor.org/info/rfc8288>.
 
    [W3C.REC-cors-20140116]
               Kesteren, A., "Cross-Origin Resource Sharing", World Wide
@@ -1053,18 +1057,19 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
               DOI 10.17487/RFC4791, March 2007,
               <https://www.rfc-editor.org/info/rfc4791>.
 
+
+
+
+
+Nottingham             Expires September 17, 2018              [Page 19]
+
+Internet-Draft      On the use of HTTP as a Substrate         March 2018
+
+
    [RFC5785]  Nottingham, M. and E. Hammer-Lahav, "Defining Well-Known
               Uniform Resource Identifiers (URIs)", RFC 5785,
               DOI 10.17487/RFC5785, April 2010,
               <https://www.rfc-editor.org/info/rfc5785>.
-
-
-
-
-Nottingham             Expires September 13, 2018              [Page 19]
-
-Internet-Draft      On the use of HTTP as a Substrate         March 2018
-
 
    [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
               DOI 10.17487/RFC6265, April 2011,
@@ -1109,18 +1114,18 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
               DOI 10.17487/RFC8259, December 2017,
               <https://www.rfc-editor.org/info/rfc8259>.
 
+
+
+
+Nottingham             Expires September 17, 2018              [Page 20]
+
+Internet-Draft      On the use of HTTP as a Substrate         March 2018
+
+
    [W3C.CR-secure-contexts-20160915]
               West, M., "Secure Contexts", World Wide Web Consortium CR
               CR-secure-contexts-20160915, September 2016,
               <https://www.w3.org/TR/2016/CR-secure-contexts-20160915>.
-
-
-
-
-Nottingham             Expires September 13, 2018              [Page 20]
-
-Internet-Draft      On the use of HTTP as a Substrate         March 2018
-
 
    [W3C.REC-xml-20081126]
               Bray, T., Paoli, J., Sperberg-McQueen, M., Maler, E., and
@@ -1168,9 +1173,4 @@ Author's Address
 
 
 
-
-
-
-
-
-Nottingham             Expires September 13, 2018              [Page 21]
+Nottingham             Expires September 17, 2018              [Page 21]
