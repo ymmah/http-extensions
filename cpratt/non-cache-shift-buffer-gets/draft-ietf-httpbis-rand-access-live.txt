@@ -480,11 +480,13 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
    the Content-Range response header indicates which portion of the
    representation is being returned in the response body.  However GET
    requests without a Range header cannot be cached since the first byte
-   of the response body can vary from request to request.  So Range-less
-   GET requests against shift-buffer representations must indicate the
-   response is non-cacheable. e,g, By including a "Cache-control: no-
-   cache" header in the response.  See HTTP Caching ([RFC7234]) for
-   details on HTTP cache control.
+   of the response body can vary from request to request.  To ensure
+   Range-less GET requests against shift-buffer representations are not
+   buffered, servers hosting a shift-buffer representation should either
+   not return a 200-level response (e.g. sending a 300-level redirect
+   response with a URI that represents the current start of the shift-
+   buffer) or indicate the response is non-cacheable.  See HTTP Caching
+   ([RFC7234]) for details on HTTP cache control.
 
 4.  Security Considerations
 
@@ -496,8 +498,6 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
    this value should be used as the Very Large last-byte-pos in a byte-
    seek request or content-range response.  Also, some implementations
    (e.g.  JavaScript-based clients and servers) are not able to
-   represent all values beyond 2^^53.  So similarly, if there's no
-   expectation that a representation will ever exceed 2^^53 bytes,
 
 
 
@@ -506,6 +506,8 @@ Pratt, et al.              Expires May 5, 2018                  [Page 9]
 Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 
+   represent all values beyond 2^^53.  So similarly, if there's no
+   expectation that a representation will ever exceed 2^^53 bytes,
    values smaller than this limit should be used for the last-byte-pos
    in byte-range requests.
 
@@ -549,8 +551,6 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
    [RFC8216]  Pantos, R., Ed. and W. May, "HTTP Live Streaming",
               RFC 8216, DOI 10.17487/RFC8216, August 2017,
               <https://www.rfc-editor.org/info/rfc8216>.
-
-
 
 
 
