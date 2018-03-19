@@ -87,11 +87,11 @@ Table of Contents
      3.1.  Requests Starting at the Aggregation ("Live") Point . . .   7
      3.2.  Shift Buffer Representations  . . . . . . . . . . . . . .   8
    4.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
-   5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
-     5.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
+   5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
+     5.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
      5.2.  Informative References  . . . . . . . . . . . . . . . . .  10
-   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  10
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  10
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  11
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  11
 
 1.  Introduction
 
@@ -396,7 +396,7 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 3.2.  Shift Buffer Representations
 
-   Some representations lend themselves to front-end content deletion in
+   Some representations lend themselves to front-end content removal in
    addition to aggregation.  While still supporting random access,
    representations of this type have a portion at the beginning (the "0"
    end) of the randomly-accessible region that become inaccessible over
@@ -475,6 +475,19 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
    content.  This is the response expected from a typical HTTP server -
    one that doesn't support byte-range requests on aggregating content.
 
+   Note that responses to GET requests against shift-buffer
+   representations using Range can be cached by intermediaries, since
+   the Content-Range response header indicates which portion of the
+   representation is being returned in the response body.  However GET
+   requests without a Range header cannot be cached since the first byte
+   of the response body can vary from request to request.  To ensure
+   Range-less GET requests against shift-buffer representations are not
+   cached, servers hosting a shift-buffer representation should either
+   not return a 200-level response (e.g. sending a 300-level redirect
+   response with a URI that represents the current start of the shift-
+   buffer) or indicate the response is non-cacheable.  See HTTP Caching
+   ([RFC7234]) for details on HTTP cache control.
+
 4.  Security Considerations
 
    One potential issue with this recommendation is related to the use of
@@ -485,6 +498,14 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
    this value should be used as the Very Large last-byte-pos in a byte-
    seek request or content-range response.  Also, some implementations
    (e.g.  JavaScript-based clients and servers) are not able to
+
+
+
+Pratt, et al.              Expires May 5, 2018                  [Page 9]
+
+Internet-Draft     HTTP Random Access and Live Content     November 2017
+
+
    represent all values beyond 2^^53.  So similarly, if there's no
    expectation that a representation will ever exceed 2^^53 bytes,
    values smaller than this limit should be used for the last-byte-pos
@@ -499,13 +520,6 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
-
-
-Pratt, et al.              Expires May 5, 2018                  [Page 9]
-
-Internet-Draft     HTTP Random Access and Live Content     November 2017
-
-
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
@@ -515,6 +529,11 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
               "Hypertext Transfer Protocol (HTTP/1.1): Range Requests",
               RFC 7233, DOI 10.17487/RFC7233, June 2014,
               <https://www.rfc-editor.org/info/rfc7233>.
+
+   [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
+              Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
+              RFC 7234, DOI 10.17487/RFC7234, June 2014,
+              <https://www.rfc-editor.org/info/rfc7234>.
 
 5.2.  Informative References
 
@@ -532,6 +551,16 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
    [RFC8216]  Pantos, R., Ed. and W. May, "HTTP Live Streaming",
               RFC 8216, DOI 10.17487/RFC8216, August 2017,
               <https://www.rfc-editor.org/info/rfc8216>.
+
+
+
+
+
+
+Pratt, et al.              Expires May 5, 2018                 [Page 10]
+
+Internet-Draft     HTTP Random Access and Live Content     November 2017
+
 
 Acknowledgements
 
@@ -556,41 +585,12 @@ Authors' Addresses
    Email: barbara.stark@att.com
 
 
-
-Pratt, et al.              Expires May 5, 2018                 [Page 10]
-
-Internet-Draft     HTTP Random Access and Live Content     November 2017
-
-
    Darshak Thakore
    CableLabs
    858 Coal Creek Circle
    Louisville, CO  80027
 
    Email: d.thakore@cablelabs.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
