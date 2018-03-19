@@ -482,7 +482,7 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
    requests without a Range header cannot be cached since the first byte
    of the response body can vary from request to request.  To ensure
    Range-less GET requests against shift-buffer representations are not
-   buffered, servers hosting a shift-buffer representation should either
+   cached, servers hosting a shift-buffer representation should either
    not return a 200-level response (e.g. sending a 300-level redirect
    response with a URI that represents the current start of the shift-
    buffer) or indicate the response is non-cacheable.  See HTTP Caching
