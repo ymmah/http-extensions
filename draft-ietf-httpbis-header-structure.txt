@@ -80,7 +80,7 @@ Table of Contents
    2.  Specifying Structured Headers . . . . . . . . . . . . . . . .   4
    3.  Parsing Text into Structured Headers  . . . . . . . . . . . .   5
    4.  Structured Header Data Types  . . . . . . . . . . . . . . . .   6
-     4.1.  Dictionaries  . . . . . . . . . . . . . . . . . . . . . .   6
+     4.1.  Dictionaries  . . . . . . . . . . . . . . . . . . . . . .   7
      4.2.  Lists . . . . . . . . . . . . . . . . . . . . . . . . . .   8
      4.3.  Parameterised Lists . . . . . . . . . . . . . . . . . . .   9
      4.4.  Items . . . . . . . . . . . . . . . . . . . . . . . . . .  11
@@ -226,36 +226,39 @@ Nottingham & Kamp      Expires September 20, 2018               [Page 4]
 Internet-Draft         Structured Headers for HTTP            March 2018
 
 
-# FooExample Header
+   # FooExample Header
 
-The FooExample HTTP header field conveys a list of integers about how
-much Foo the sender has.
+   The FooExample HTTP header field conveys a list of integers about how
+   much Foo the sender has.
 
-FooExample is a Structured header [RFCxxxx]. Its value MUST be a
-dictionary ([RFCxxxx], Section Y.Y).
+   FooExample is a Structured header [RFCxxxx]. Its value MUST be a
+   dictionary ([RFCxxxx], Section Y.Y).
 
-The dictionary MUST contain:
+   The dictionary MUST contain:
 
-* Exactly one member whose key is "foo", and whose value is an integer
-  ([RFCxxxx], Section Y.Y), indicating the number of foos in
-  the message.
-* Exactly one member whose key is "barUrls", and whose value is a string
-  ([RFCxxxx], Section Y.Y), conveying the Bar URLs for the message.
-  See below for processing requirements.
+   * Exactly one member whose key is "foo", and whose value is an
+     integer ([RFCxxxx], Section Y.Y), indicating the number of foos in
+     the message.
+   * Exactly one member whose key is "barUrls", and whose value is a
+     string ([RFCxxxx], Section Y.Y), conveying the Bar URLs for the
+     message. See below for processing requirements.
 
-If the parsed header field does not contain both, it MUST be ignored.
+   If the parsed header field does not contain both, it MUST be ignored.
 
-"foo" MUST be between 0 and 10, inclusive; other values MUST be ignored.
+   "foo" MUST be between 0 and 10, inclusive; other values MUST be
+   ignored.
 
-"barUrls" contains a space-separated list of URI-references ([RFC3986],
-Section 4.1):
+   "barUrls" contains a space-separated list of URI-references
+   ([RFC3986], Section 4.1):
 
-   barURLs = URI-reference *( 1*SP URI-reference )
+      barURLs = URI-reference *( 1*SP URI-reference )
 
-If a member of barURLs is not a valid URI-reference, it MUST be ignored.
+   If a member of barURLs is not a valid URI-reference, it MUST be
+   ignored.
 
-If a member of barURLs is a relative reference ([RFC3986], Section 4.2),
-it MUST be resolved ([RFC3986], Section 5) before being used.
+   If a member of barURLs is a relative reference ([RFC3986],
+   Section 4.2), it MUST be resolved ([RFC3986], Section 5) before being
+   used.
 
    Note that empty header field values are not allowed by the syntax,
    and therefore parsing for them will fail.
@@ -271,9 +274,6 @@ it MUST be resolved ([RFC3986], Section 5) before being used.
    Given an ASCII string input_string that represents the chosen
    header's field-value, return the parsed header value.
 
-   1.  Discard any leading OWS from input_string.
-
-
 
 
 
@@ -281,6 +281,8 @@ Nottingham & Kamp      Expires September 20, 2018               [Page 5]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
+
+   1.  Discard any leading OWS from input_string.
 
    2.  If the field-value is defined to be a dictionary, let output be
        the result of Parsing a Dictionary from Text (Section 4.1.1).
@@ -325,10 +327,8 @@ Internet-Draft         Structured Headers for HTTP            March 2018
    into Structured Headers, along with the textual HTTP serialisations
    of them.
 
-4.1.  Dictionaries
 
-   Dictionaries are unordered maps of key-value pairs, where the keys
-   are identifiers (Section 4.8) and the values are items (Section 4.4).
+
 
 
 
@@ -338,6 +338,10 @@ Nottingham & Kamp      Expires September 20, 2018               [Page 6]
 Internet-Draft         Structured Headers for HTTP            March 2018
 
 
+4.1.  Dictionaries
+
+   Dictionaries are unordered maps of key-value pairs, where the keys
+   are identifiers (Section 4.8) and the values are items (Section 4.4).
    There can be from 1 to 1024 members, and keys are required to be
    unique.
 
@@ -346,8 +350,8 @@ Internet-Draft         Structured Headers for HTTP            March 2018
    comma with optional whitespace.  Duplicate keys MUST cause parsing to
    fail.
 
-dictionary        = dictionary_member 0*1023( OWS "," OWS dictionary_member )
-dictionary_member = identifier "=" item
+   dictionary  = dict_member 0*1023( OWS "," OWS dict_member )
+   dict_member = identifier "=" item
 
    For example, a header field whose value is defined as a dictionary
    could look like:
@@ -383,16 +387,16 @@ dictionary_member = identifier "=" item
 
        6.   If dictionary has more than 1024 members, fail parsing.
 
-       7.   Discard any leading OWS from input_string.
-
-       8.   If input_string is empty, return dictionary.
-
 
 
 Nottingham & Kamp      Expires September 20, 2018               [Page 7]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
+
+       7.   Discard any leading OWS from input_string.
+
+       8.   If input_string is empty, return dictionary.
 
        9.   Consume a COMMA from input_string; if no comma is present,
             fail parsing.
@@ -438,10 +442,6 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
        5.  If input_string is empty, return items.
 
-       6.  Consume a COMMA from input_string; if no comma is present,
-           fail parsing.
-
-       7.  Discard any leading OWS from input_string.
 
 
 
@@ -449,6 +449,11 @@ Nottingham & Kamp      Expires September 20, 2018               [Page 8]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
+
+       6.  Consume a COMMA from input_string; if no comma is present,
+           fail parsing.
+
+       7.  Discard any leading OWS from input_string.
 
        8.  If input_string is empty, fail parsing.
 
@@ -494,17 +499,17 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
        4.  Discard any leading OWS from input_string.
 
-       5.  If input_string is empty, return items.
-
-       6.  Consume a COMMA from input_string; if no comma is present,
-           fail parsing.
-
 
 
 Nottingham & Kamp      Expires September 20, 2018               [Page 9]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
+
+       5.  If input_string is empty, return items.
+
+       6.  Consume a COMMA from input_string; if no comma is present,
+           fail parsing.
 
        7.  Discard any leading OWS from input_string.
 
@@ -550,17 +555,16 @@ Internet-Draft         Structured Headers for HTTP            March 2018
             2.  Let param_value be the result of Parsing an Item from
                 Text (Section 4.4.1) from input_string.
 
-       9.   If parameters has more than 255 members, fail parsing.
-
-       10.  Insert (param_name, param_value) into parameters.
-
-
 
 
 Nottingham & Kamp      Expires September 20, 2018              [Page 10]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
+
+       9.   If parameters has more than 255 members, fail parsing.
+
+       10.  Insert (param_name, param_value) into parameters.
 
    4.  Return the tuple (primary_identifier, parameters).
 
@@ -605,11 +609,7 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
    Parsers that encounter an integer outside the range defined above
    MUST fail parsing.  Therefore, the value "9223372036854775808" would
-   be invalid.  Likewise, values that do not conform to the ABNF above
-   are invalid, and MUST fail parsing.
 
-   For example, a header whose value is defined as a integer could look
-   like:
 
 
 
@@ -617,6 +617,12 @@ Nottingham & Kamp      Expires September 20, 2018              [Page 11]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
+
+   be invalid.  Likewise, values that do not conform to the ABNF above
+   are invalid, and MUST fail parsing.
+
+   For example, a header whose value is defined as a integer could look
+   like:
 
    ExampleIntegerHeader: 42
 
@@ -651,12 +657,6 @@ Internet-Draft         Structured Headers for HTTP            March 2018
    digits between the integer and fractional part, with at least one
    required on each side, along with an optional "-" indicating negative
    numbers.
-
-
-
-
-
-
 
 
 
