@@ -359,7 +359,7 @@ HEAD /resource HTTP/1.1
 Host: example.com
 Range: bytes=0-
 
-</pre></div><div id="rfc.section.3.1.p.2" class="avoidbreakafter"><p>With the Content-Range response header field indicating the (or ranges) available. For example:</p></div><div id="rfc.figure.u.11"><pre class="text">
+</pre></div><div id="rfc.section.3.1.p.2" class="avoidbreakafter"><p>With the Content-Range response header field indicating the range (or ranges) available. For example:</p></div><div id="rfc.figure.u.11"><pre class="text">
 206 Partial Content
 Content-Range: bytes 0-1234567/*
 </pre></div><div id="rfc.section.3.1.p.3"><p>The client can then issue a request for a range starting at the end value (using a very large value for the end of a range) and receive only new content.</p></div><div id="rfc.figure.u.12"><pre class="text2">

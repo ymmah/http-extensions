@@ -364,7 +364,7 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
        Range: bytes=0-
 
 
-   With the Content-Range response header field indicating the (or
+   With the Content-Range response header field indicating the range (or
    ranges) available.  For example:
 
        206 Partial Content
