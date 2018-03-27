@@ -382,18 +382,60 @@
       "site_admin": false
     },
     "labels": [
-
+      {
+        "id": 290789441,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/client-hints",
+        "name": "client-hints",
+        "color": "fbca04",
+        "default": false
+      }
     ],
     "state": "open",
     "locked": false,
-    "assignee": null,
+    "assignee": {
+      "login": "igrigorik",
+      "id": 10652,
+      "avatar_url": "https://avatars0.githubusercontent.com/u/10652?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/igrigorik",
+      "html_url": "https://github.com/igrigorik",
+      "followers_url": "https://api.github.com/users/igrigorik/followers",
+      "following_url": "https://api.github.com/users/igrigorik/following{/other_user}",
+      "gists_url": "https://api.github.com/users/igrigorik/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/igrigorik/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/igrigorik/subscriptions",
+      "organizations_url": "https://api.github.com/users/igrigorik/orgs",
+      "repos_url": "https://api.github.com/users/igrigorik/repos",
+      "events_url": "https://api.github.com/users/igrigorik/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/igrigorik/received_events",
+      "type": "User",
+      "site_admin": false
+    },
     "assignees": [
-
+      {
+        "login": "igrigorik",
+        "id": 10652,
+        "avatar_url": "https://avatars0.githubusercontent.com/u/10652?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/igrigorik",
+        "html_url": "https://github.com/igrigorik",
+        "followers_url": "https://api.github.com/users/igrigorik/followers",
+        "following_url": "https://api.github.com/users/igrigorik/following{/other_user}",
+        "gists_url": "https://api.github.com/users/igrigorik/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/igrigorik/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/igrigorik/subscriptions",
+        "organizations_url": "https://api.github.com/users/igrigorik/orgs",
+        "repos_url": "https://api.github.com/users/igrigorik/repos",
+        "events_url": "https://api.github.com/users/igrigorik/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/igrigorik/received_events",
+        "type": "User",
+        "site_admin": false
+      }
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2018-03-20T16:42:42Z",
-    "updated_at": "2018-03-20T16:42:42Z",
+    "updated_at": "2018-03-27T00:48:46Z",
     "closed_at": null,
     "author_association": "NONE",
     "body": "It looks like the network information hints (Downlink) were removed, but there are still a couple references to network information, particularly in security considerations discussion, since there were security/privacy issues related to exposing network information through this. Should we just remove those references to network information?\r\n\r\n(`Save-Data` is potentially network-related, but I'm less concerned about that as a network information property that users might not realize is being disclosed.)"
@@ -2473,17 +2515,17 @@
         "default": false
       }
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2018-02-12T13:36:55Z",
-    "updated_at": "2018-03-19T19:36:14Z",
-    "closed_at": null,
+    "updated_at": "2018-03-27T00:49:48Z",
+    "closed_at": "2018-03-27T00:49:48Z",
     "author_association": "MEMBER",
     "pull_request": {
       "url": "https://api.github.com/repos/httpwg/http-extensions/pulls/488",
