@@ -4,8 +4,8 @@
 
 HTTP Working Group                                            P. McManus
 Internet-Draft                                                   Mozilla
-Intended status: Standards Track                          March 25, 2018
-Expires: September 26, 2018
+Intended status: Standards Track                          March 27, 2018
+Expires: September 28, 2018
 
 
                   Bootstrapping WebSockets with HTTP/2
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 26, 2018.
+   This Internet-Draft will expire on September 28, 2018.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-McManus                Expires September 26, 2018               [Page 1]
+McManus                Expires September 28, 2018               [Page 1]
 
 Internet-Draft                H2 Websockets                   March 2018
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-McManus                Expires September 26, 2018               [Page 2]
+McManus                Expires September 28, 2018               [Page 2]
 
 Internet-Draft                H2 Websockets                   March 2018
 
@@ -165,7 +165,7 @@ Internet-Draft                H2 Websockets                   March 2018
 
 
 
-McManus                Expires September 26, 2018               [Page 3]
+McManus                Expires September 28, 2018               [Page 3]
 
 Internet-Draft                H2 Websockets                   March 2018
 
@@ -221,7 +221,7 @@ Internet-Draft                H2 Websockets                   March 2018
 
 
 
-McManus                Expires September 26, 2018               [Page 4]
+McManus                Expires September 28, 2018               [Page 4]
 
 Internet-Draft                H2 Websockets                   March 2018
 
@@ -277,7 +277,7 @@ WebSocket Data
 
 
 
-McManus                Expires September 26, 2018               [Page 5]
+McManus                Expires September 28, 2018               [Page 5]
 
 Internet-Draft                H2 Websockets                   March 2018
 
@@ -333,7 +333,7 @@ Internet-Draft                H2 Websockets                   March 2018
 
 
 
-McManus                Expires September 26, 2018               [Page 6]
+McManus                Expires September 28, 2018               [Page 6]
 
 Internet-Draft                H2 Websockets                   March 2018
 
@@ -389,4 +389,4 @@ Author's Address
 
 
 
-McManus                Expires September 26, 2018               [Page 7]
+McManus                Expires September 28, 2018               [Page 7]
