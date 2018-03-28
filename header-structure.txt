@@ -96,12 +96,12 @@ Table of Contents
      7.2.  Informative References  . . . . . . . . . . . . . . . . .  18
      7.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  18
    Appendix A.  Changes  . . . . . . . . . . . . . . . . . . . . . .  18
-     A.1.  Since draft-ietf-httpbis-header-structure-03  . . . . . .  18
-     A.2.  Since draft-ietf-httpbis-header-structure-02  . . . . . .  18
-     A.3.  Since draft-ietf-httpbis-header-structure-01  . . . . . .  19
-     A.4.  Since draft-ietf-httpbis-header-structure-00  . . . . . .  19
+     A.1.  Since draft-ietf-httpbis-header-structure-04  . . . . . .  18
+     A.2.  Since draft-ietf-httpbis-header-structure-03  . . . . . .  18
+     A.3.  Since draft-ietf-httpbis-header-structure-02  . . . . . .  18
+     A.4.  Since draft-ietf-httpbis-header-structure-01  . . . . . .  19
+     A.5.  Since draft-ietf-httpbis-header-structure-00  . . . . . .  19
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  19
-
 
 
 
@@ -418,9 +418,9 @@ Internet-Draft         Structured Headers for HTTP            March 2018
    list-member = item
 
    For example, a header field whose value is defined as a list of
-   identifiers could look like:
+   strings could look like:
 
-   ExampleIdListHeader: foo, bar, baz_45
+   ExampleStrListHeader: "foo", "bar", "It was the best of times."
 
 4.2.1.  Parsing a List from Text
 
@@ -571,10 +571,9 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 4.4.  Items
 
    An item is can be a integer (Section 4.5), float (Section 4.6),
-   string (Section 4.7), identifier (Section 4.8) or binary content
-   (Section 4.9).
+   string (Section 4.7), or binary content (Section 4.9).
 
-   item = integer / float / string / identifier / binary
+   item = integer / float / string / binary
 
 4.4.1.  Parsing an Item from Text
 
@@ -594,11 +593,7 @@ Internet-Draft         Structured Headers for HTTP            March 2018
        input_string as binary content (Section 4.9.1) and return the
        result.
 
-   5.  If the first character of input_string is an lcalpha, process
-       input_string as a identifier (Section 4.8.1) and return the
-       result.
-
-   6.  Otherwise, fail parsing.
+   5.  Otherwise, fail parsing.
 
 4.5.  Integers
 
@@ -609,6 +604,11 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
    Parsers that encounter an integer outside the range defined above
    MUST fail parsing.  Therefore, the value "9223372036854775808" would
+   be invalid.  Likewise, values that do not conform to the ABNF above
+   are invalid, and MUST fail parsing.
+
+   For example, a header whose value is defined as a integer could look
+   like:
 
 
 
@@ -617,12 +617,6 @@ Nottingham & Kamp      Expires September 29, 2018              [Page 11]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
-
-   be invalid.  Likewise, values that do not conform to the ABNF above
-   are invalid, and MUST fail parsing.
-
-   For example, a header whose value is defined as a integer could look
-   like:
 
    ExampleIntegerHeader: 42
 
@@ -657,6 +651,12 @@ Internet-Draft         Structured Headers for HTTP            March 2018
    digits between the integer and fractional part, with at least one
    required on each side, along with an optional "-" indicating negative
    numbers.
+
+
+
+
+
+
 
 
 
@@ -988,19 +988,19 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
 Appendix A.  Changes
 
-A.1.  Since draft-ietf-httpbis-header-structure-03
+A.1.  Since draft-ietf-httpbis-header-structure-04
+
+   o  Remove identifiers from item.
+
+A.2.  Since draft-ietf-httpbis-header-structure-03
 
    o  Strengthen language around failure handling.
 
-A.2.  Since draft-ietf-httpbis-header-structure-02
+A.3.  Since draft-ietf-httpbis-header-structure-02
 
    o  Split Numbers into Integers and Floats.
 
    o  Define number parsing.
-
-   o  Tighten up binary parsing and give it an explicit end delimiter.
-
-   o  Clarify that mappings are unordered.
 
 
 
@@ -1009,6 +1009,10 @@ Nottingham & Kamp      Expires September 29, 2018              [Page 18]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
+
+   o  Tighten up binary parsing and give it an explicit end delimiter.
+
+   o  Clarify that mappings are unordered.
 
    o  Allow zero-length strings.
 
@@ -1020,11 +1024,11 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
    o  Throw an error on trailing garbage.
 
-A.3.  Since draft-ietf-httpbis-header-structure-01
+A.4.  Since draft-ietf-httpbis-header-structure-01
 
    o  Replaced with draft-nottingham-structured-headers.
 
-A.4.  Since draft-ietf-httpbis-header-structure-00
+A.5.  Since draft-ietf-httpbis-header-structure-00
 
    o  Added signed 64bit integer type.
 
@@ -1046,10 +1050,6 @@ Authors' Addresses
    The Varnish Cache Project
 
    Email: phk@varnish-cache.org
-
-
-
-
 
 
 
