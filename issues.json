@@ -1,6 +1,377 @@
 [
 
   {
+    "url": "https://api.github.com/repos/httpwg/http-extensions/issues/538",
+    "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
+    "labels_url": "https://api.github.com/repos/httpwg/http-extensions/issues/538/labels{/name}",
+    "comments_url": "https://api.github.com/repos/httpwg/http-extensions/issues/538/comments",
+    "events_url": "https://api.github.com/repos/httpwg/http-extensions/issues/538/events",
+    "html_url": "https://github.com/httpwg/http-extensions/issues/538",
+    "id": 309223841,
+    "number": 538,
+    "title": "structured-headers: Has JSON been considered?",
+    "user": {
+      "login": "evert",
+      "id": 178960,
+      "avatar_url": "https://avatars3.githubusercontent.com/u/178960?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/evert",
+      "html_url": "https://github.com/evert",
+      "followers_url": "https://api.github.com/users/evert/followers",
+      "following_url": "https://api.github.com/users/evert/following{/other_user}",
+      "gists_url": "https://api.github.com/users/evert/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/evert/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/evert/subscriptions",
+      "organizations_url": "https://api.github.com/users/evert/orgs",
+      "repos_url": "https://api.github.com/users/evert/repos",
+      "events_url": "https://api.github.com/users/evert/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/evert/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 499581321,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/header-structure",
+        "name": "header-structure",
+        "color": "fbca04",
+        "default": false
+      }
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2018-03-28T05:15:20Z",
+    "updated_at": "2018-03-28T05:58:05Z",
+    "closed_at": "2018-03-28T05:56:49Z",
+    "author_association": "NONE",
+    "body": "This is a question I got after publishing a first stab at [an implementation](http://github.com/evert/structured-header/). Was JSON considered as an alternative for this?\r\n\r\nAt least some reasons why I can think of why it wouldn't be good are:\r\n\r\n* It doesn't encode binary data\r\n* It's not as aesthetically pleasing, especially considering how HTTP headers generally 'look'.\r\n\r\nHowever, parsers are everywhere and JSON has some properties that structured-headers doesn't have, such as deeper nesting, encoding `null` and it also solves #534"
+  },
+  {
+    "url": "https://api.github.com/repos/httpwg/http-extensions/issues/537",
+    "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
+    "labels_url": "https://api.github.com/repos/httpwg/http-extensions/issues/537/labels{/name}",
+    "comments_url": "https://api.github.com/repos/httpwg/http-extensions/issues/537/comments",
+    "events_url": "https://api.github.com/repos/httpwg/http-extensions/issues/537/events",
+    "html_url": "https://github.com/httpwg/http-extensions/issues/537",
+    "id": 309223269,
+    "number": 537,
+    "title": "structured-headers: Why ignore UTF-8?",
+    "user": {
+      "login": "evert",
+      "id": 178960,
+      "avatar_url": "https://avatars3.githubusercontent.com/u/178960?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/evert",
+      "html_url": "https://github.com/evert",
+      "followers_url": "https://api.github.com/users/evert/followers",
+      "following_url": "https://api.github.com/users/evert/following{/other_user}",
+      "gists_url": "https://api.github.com/users/evert/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/evert/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/evert/subscriptions",
+      "organizations_url": "https://api.github.com/users/evert/orgs",
+      "repos_url": "https://api.github.com/users/evert/repos",
+      "events_url": "https://api.github.com/users/evert/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/evert/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 499581321,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/header-structure",
+        "name": "header-structure",
+        "color": "fbca04",
+        "default": false
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2018-03-28T05:11:38Z",
+    "updated_at": "2018-03-28T05:59:54Z",
+    "closed_at": null,
+    "author_association": "NONE",
+    "body": "I noticed the structured headers proposal strictly ignores UTF-8, because it's not used much. The recommendation is to use the binary format instead.\r\n\r\nI thought that [RFC8187](https://tools.ietf.org/html/rfc8187) was fairly good for this.\r\n\r\nI can see structured-headers to be a super useful generic way to describe new standard and proprietary headers, but ignoring UTF-8 means we're limited in what categories of data probably unsafe for the purpose of a header.\r\n\r\nIs there a possibility to merge the syntax of RFC8187? It's true that it might not be used as much in practice, but it might expand the potential use-cases. Furthermore, as an implementor I don't have to worry about what someone might encode. The binary format doesn't quite cut it, because it provides to hint as to how a generic client might decode it.  "
+  },
+  {
+    "url": "https://api.github.com/repos/httpwg/http-extensions/issues/536",
+    "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
+    "labels_url": "https://api.github.com/repos/httpwg/http-extensions/issues/536/labels{/name}",
+    "comments_url": "https://api.github.com/repos/httpwg/http-extensions/issues/536/comments",
+    "events_url": "https://api.github.com/repos/httpwg/http-extensions/issues/536/events",
+    "html_url": "https://github.com/httpwg/http-extensions/issues/536",
+    "id": 308969796,
+    "number": 536,
+    "title": "\"confused deputy\"",
+    "user": {
+      "login": "annevk",
+      "id": 1544111,
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1544111?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/annevk",
+      "html_url": "https://github.com/annevk",
+      "followers_url": "https://api.github.com/users/annevk/followers",
+      "following_url": "https://api.github.com/users/annevk/following{/other_user}",
+      "gists_url": "https://api.github.com/users/annevk/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/annevk/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/annevk/subscriptions",
+      "organizations_url": "https://api.github.com/users/annevk/orgs",
+      "repos_url": "https://api.github.com/users/annevk/repos",
+      "events_url": "https://api.github.com/users/annevk/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/annevk/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 777410970,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/bcp56bis",
+        "name": "bcp56bis",
+        "color": "fbca04",
+        "default": false
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2018-03-27T13:30:52Z",
+    "updated_at": "2018-03-27T17:37:31Z",
+    "closed_at": null,
+    "author_association": "NONE",
+    "body": "> to avoid the \"confused deputy\" problem\r\n\r\nNo, it's to avoid leaking private information. Servers can still be susceptible to the confused deputy problem with CORS. They need to address that independently."
+  },
+  {
+    "url": "https://api.github.com/repos/httpwg/http-extensions/issues/535",
+    "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
+    "labels_url": "https://api.github.com/repos/httpwg/http-extensions/issues/535/labels{/name}",
+    "comments_url": "https://api.github.com/repos/httpwg/http-extensions/issues/535/comments",
+    "events_url": "https://api.github.com/repos/httpwg/http-extensions/issues/535/events",
+    "html_url": "https://github.com/httpwg/http-extensions/issues/535",
+    "id": 308927563,
+    "number": 535,
+    "title": "Parsing a Dictionary from Text",
+    "user": {
+      "login": "annevk",
+      "id": 1544111,
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1544111?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/annevk",
+      "html_url": "https://github.com/annevk",
+      "followers_url": "https://api.github.com/users/annevk/followers",
+      "following_url": "https://api.github.com/users/annevk/following{/other_user}",
+      "gists_url": "https://api.github.com/users/annevk/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/annevk/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/annevk/subscriptions",
+      "organizations_url": "https://api.github.com/users/annevk/orgs",
+      "repos_url": "https://api.github.com/users/annevk/repos",
+      "events_url": "https://api.github.com/users/annevk/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/annevk/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 499581321,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/header-structure",
+        "name": "header-structure",
+        "color": "fbca04",
+        "default": false
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2018-03-27T11:23:32Z",
+    "updated_at": "2018-03-27T21:03:56Z",
+    "closed_at": null,
+    "author_association": "NONE",
+    "body": "Step 2.1 (and generally any sub-invocations) doesn't deal with failure."
+  },
+  {
+    "url": "https://api.github.com/repos/httpwg/http-extensions/issues/534",
+    "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
+    "labels_url": "https://api.github.com/repos/httpwg/http-extensions/issues/534/labels{/name}",
+    "comments_url": "https://api.github.com/repos/httpwg/http-extensions/issues/534/comments",
+    "events_url": "https://api.github.com/repos/httpwg/http-extensions/issues/534/events",
+    "html_url": "https://github.com/httpwg/http-extensions/issues/534",
+    "id": 308926606,
+    "number": 534,
+    "title": "Parsing Text into Structured Headers",
+    "user": {
+      "login": "annevk",
+      "id": 1544111,
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1544111?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/annevk",
+      "html_url": "https://github.com/annevk",
+      "followers_url": "https://api.github.com/users/annevk/followers",
+      "following_url": "https://api.github.com/users/annevk/following{/other_user}",
+      "gists_url": "https://api.github.com/users/annevk/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/annevk/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/annevk/subscriptions",
+      "organizations_url": "https://api.github.com/users/annevk/orgs",
+      "repos_url": "https://api.github.com/users/annevk/repos",
+      "events_url": "https://api.github.com/users/annevk/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/annevk/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 499581321,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/header-structure",
+        "name": "header-structure",
+        "color": "fbca04",
+        "default": false
+      }
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2018-03-27T11:20:17Z",
+    "updated_at": "2018-03-28T06:03:59Z",
+    "closed_at": "2018-03-28T06:03:59Z",
+    "author_association": "NONE",
+    "body": "The text makes it appear as if this algorithm takes a header value, but then it branches on arguments not explicitly given. It would be better if the algorithm stated upfront that you need to have (side channel) knowledge about the header to get a structured representation about it.\r\n\r\n(This is also what I dislike about this proposal. That it requires knowledge about the header names to do something useful. That doesn't work well for generic processors or APIs.)"
+  },
+  {
+    "url": "https://api.github.com/repos/httpwg/http-extensions/issues/533",
+    "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
+    "labels_url": "https://api.github.com/repos/httpwg/http-extensions/issues/533/labels{/name}",
+    "comments_url": "https://api.github.com/repos/httpwg/http-extensions/issues/533/comments",
+    "events_url": "https://api.github.com/repos/httpwg/http-extensions/issues/533/events",
+    "html_url": "https://github.com/httpwg/http-extensions/issues/533",
+    "id": 308924366,
+    "number": 533,
+    "title": "Specifying Structured Headers",
+    "user": {
+      "login": "annevk",
+      "id": 1544111,
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1544111?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/annevk",
+      "html_url": "https://github.com/annevk",
+      "followers_url": "https://api.github.com/users/annevk/followers",
+      "following_url": "https://api.github.com/users/annevk/following{/other_user}",
+      "gists_url": "https://api.github.com/users/annevk/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/annevk/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/annevk/subscriptions",
+      "organizations_url": "https://api.github.com/users/annevk/orgs",
+      "repos_url": "https://api.github.com/users/annevk/repos",
+      "events_url": "https://api.github.com/users/annevk/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/annevk/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 499581321,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/header-structure",
+        "name": "header-structure",
+        "color": "fbca04",
+        "default": false
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2018-03-27T11:12:52Z",
+    "updated_at": "2018-03-27T21:03:10Z",
+    "closed_at": null,
+    "author_association": "NONE",
+    "body": "> \"foo\" MUST be between 0 and 10, inclusive; other values MUST be ignored.\r\n\r\nIt seems you want to say that other values MUST cause the header to be ignored?"
+  },
+  {
+    "url": "https://api.github.com/repos/httpwg/http-extensions/issues/532",
+    "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
+    "labels_url": "https://api.github.com/repos/httpwg/http-extensions/issues/532/labels{/name}",
+    "comments_url": "https://api.github.com/repos/httpwg/http-extensions/issues/532/comments",
+    "events_url": "https://api.github.com/repos/httpwg/http-extensions/issues/532/events",
+    "html_url": "https://github.com/httpwg/http-extensions/issues/532",
+    "id": 308803867,
+    "number": 532,
+    "title": "Fetch?",
+    "user": {
+      "login": "mnot",
+      "id": 74384,
+      "avatar_url": "https://avatars1.githubusercontent.com/u/74384?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mnot",
+      "html_url": "https://github.com/mnot",
+      "followers_url": "https://api.github.com/users/mnot/followers",
+      "following_url": "https://api.github.com/users/mnot/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mnot/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mnot/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mnot/subscriptions",
+      "organizations_url": "https://api.github.com/users/mnot/orgs",
+      "repos_url": "https://api.github.com/users/mnot/repos",
+      "events_url": "https://api.github.com/users/mnot/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mnot/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 777410970,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/bcp56bis",
+        "name": "bcp56bis",
+        "color": "fbca04",
+        "default": false
+      },
+      {
+        "id": 109132722,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/design",
+        "name": "design",
+        "color": "0052cc",
+        "default": false
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2018-03-27T02:54:16Z",
+    "updated_at": "2018-03-27T02:54:16Z",
+    "closed_at": null,
+    "author_association": "OWNER",
+    "body": "one thing that came up at the WHATWG Bar BoF was the possibility of referencing Fetch as one way to specify how a client should behave."
+  },
+  {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/531",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
     "labels_url": "https://api.github.com/repos/httpwg/http-extensions/issues/531/labels{/name}",
@@ -186,7 +557,13 @@
       "site_admin": false
     },
     "labels": [
-
+      {
+        "id": 777410970,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/bcp56bis",
+        "name": "bcp56bis",
+        "color": "fbca04",
+        "default": false
+      }
     ],
     "state": "open",
     "locked": false,
@@ -197,7 +574,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2018-03-21T12:14:25Z",
-    "updated_at": "2018-03-21T12:14:25Z",
+    "updated_at": "2018-03-27T02:54:36Z",
     "closed_at": null,
     "author_association": "OWNER",
     "body": "> Applications MUST NOT make assumptions about the relationship between\r\n   separate requests on a single transport connection; doing so breaks\r\n   many of the assumptions of HTTP as a stateless protocol, and will\r\n   cause problems in interoperability, security, operability and\r\n   evolution.\r\n\r\ngood paragraph! But I think it deserves its own headline instead of being mushed in with authentication (which is just one related subset of the problem).\r\n\r\nIt would be good to also point out that HTTP isn't a reliable messaging protocol -> ATLS is currently confused about that."
@@ -284,18 +661,60 @@
       "site_admin": false
     },
     "labels": [
-
+      {
+        "id": 418128526,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/cache-digest",
+        "name": "cache-digest",
+        "color": "fbca04",
+        "default": false
+      }
     ],
     "state": "open",
     "locked": false,
-    "assignee": null,
+    "assignee": {
+      "login": "kazuho",
+      "id": 41567,
+      "avatar_url": "https://avatars2.githubusercontent.com/u/41567?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/kazuho",
+      "html_url": "https://github.com/kazuho",
+      "followers_url": "https://api.github.com/users/kazuho/followers",
+      "following_url": "https://api.github.com/users/kazuho/following{/other_user}",
+      "gists_url": "https://api.github.com/users/kazuho/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/kazuho/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/kazuho/subscriptions",
+      "organizations_url": "https://api.github.com/users/kazuho/orgs",
+      "repos_url": "https://api.github.com/users/kazuho/repos",
+      "events_url": "https://api.github.com/users/kazuho/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/kazuho/received_events",
+      "type": "User",
+      "site_admin": false
+    },
     "assignees": [
-
+      {
+        "login": "kazuho",
+        "id": 41567,
+        "avatar_url": "https://avatars2.githubusercontent.com/u/41567?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/kazuho",
+        "html_url": "https://github.com/kazuho",
+        "followers_url": "https://api.github.com/users/kazuho/followers",
+        "following_url": "https://api.github.com/users/kazuho/following{/other_user}",
+        "gists_url": "https://api.github.com/users/kazuho/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/kazuho/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/kazuho/subscriptions",
+        "organizations_url": "https://api.github.com/users/kazuho/orgs",
+        "repos_url": "https://api.github.com/users/kazuho/repos",
+        "events_url": "https://api.github.com/users/kazuho/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/kazuho/received_events",
+        "type": "User",
+        "site_admin": false
+      }
     ],
     "milestone": null,
     "comments": 1,
     "created_at": "2018-03-20T17:05:49Z",
-    "updated_at": "2018-03-20T17:39:57Z",
+    "updated_at": "2018-03-27T03:00:54Z",
     "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "pull_request": {
@@ -336,7 +755,13 @@
       "site_admin": false
     },
     "labels": [
-
+      {
+        "id": 329793151,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/6265bis",
+        "name": "6265bis",
+        "color": "fbca04",
+        "default": false
+      }
     ],
     "state": "open",
     "locked": false,
@@ -347,7 +772,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2018-03-20T16:55:50Z",
-    "updated_at": "2018-03-20T16:55:50Z",
+    "updated_at": "2018-03-27T02:54:42Z",
     "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "body": "The security issues motivating CSP Cookie Controls (https://www.w3.org/TR/csp-cookies/) still exist.   We at a minimum we should list this as a security consideration.   In particular, an origin is unable to restrict non-HTTP APIs from setting cookies on a host or domain.  While perhaps this is a nice-to-have for hosts (APIs operating in the origin context can do lots of other things), it is a major problem unique to cookies for domains.  \r\n\r\nA multi-tenant domain (with independent origins under it) has no in-band way to prevent cookies from being set on the entire domain (ie, to restrict cookies to same-site).  The only option available there is to put the domain on a public-suffix list which isn't always scale-able or operationally maintainable.\r\n\r\nIt may also be worth considering a response header that servers could send to constrain all cookies to same-site as part of this, either with \"Content-Security-Policy: cookie-scope host\" or as a separate response header specific to this use-case.  For example, a \"Restrict-Cookies\" response header with tokens matching the new features of 6265bis (same-site, secure-only, none) that would constrain behaviors of non-HTTP APIs.\r\n"
@@ -588,19 +1013,61 @@
       "site_admin": false
     },
     "labels": [
-
+      {
+        "id": 499581321,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/header-structure",
+        "name": "header-structure",
+        "color": "fbca04",
+        "default": false
+      }
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
-    "assignee": null,
+    "assignee": {
+      "login": "mnot",
+      "id": 74384,
+      "avatar_url": "https://avatars1.githubusercontent.com/u/74384?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mnot",
+      "html_url": "https://github.com/mnot",
+      "followers_url": "https://api.github.com/users/mnot/followers",
+      "following_url": "https://api.github.com/users/mnot/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mnot/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mnot/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mnot/subscriptions",
+      "organizations_url": "https://api.github.com/users/mnot/orgs",
+      "repos_url": "https://api.github.com/users/mnot/repos",
+      "events_url": "https://api.github.com/users/mnot/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mnot/received_events",
+      "type": "User",
+      "site_admin": false
+    },
     "assignees": [
-
+      {
+        "login": "mnot",
+        "id": 74384,
+        "avatar_url": "https://avatars1.githubusercontent.com/u/74384?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/mnot",
+        "html_url": "https://github.com/mnot",
+        "followers_url": "https://api.github.com/users/mnot/followers",
+        "following_url": "https://api.github.com/users/mnot/following{/other_user}",
+        "gists_url": "https://api.github.com/users/mnot/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/mnot/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/mnot/subscriptions",
+        "organizations_url": "https://api.github.com/users/mnot/orgs",
+        "repos_url": "https://api.github.com/users/mnot/repos",
+        "events_url": "https://api.github.com/users/mnot/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/mnot/received_events",
+        "type": "User",
+        "site_admin": false
+      }
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2018-03-19T14:39:45Z",
-    "updated_at": "2018-03-19T19:36:15Z",
-    "closed_at": null,
+    "updated_at": "2018-03-27T03:06:36Z",
+    "closed_at": "2018-03-27T03:06:32Z",
     "author_association": "MEMBER",
     "pull_request": {
       "url": "https://api.github.com/repos/httpwg/http-extensions/pulls/521",
@@ -655,7 +1122,7 @@
         "default": false
       }
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -664,8 +1131,8 @@
     "milestone": null,
     "comments": 1,
     "created_at": "2018-03-18T13:29:30Z",
-    "updated_at": "2018-03-18T14:48:32Z",
-    "closed_at": null,
+    "updated_at": "2018-03-27T03:06:55Z",
+    "closed_at": "2018-03-27T03:06:55Z",
     "author_association": "MEMBER",
     "body": "...so we can't have both CHAR and char."
   },
@@ -813,14 +1280,50 @@
     ],
     "state": "open",
     "locked": false,
-    "assignee": null,
+    "assignee": {
+      "login": "kazuho",
+      "id": 41567,
+      "avatar_url": "https://avatars2.githubusercontent.com/u/41567?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/kazuho",
+      "html_url": "https://github.com/kazuho",
+      "followers_url": "https://api.github.com/users/kazuho/followers",
+      "following_url": "https://api.github.com/users/kazuho/following{/other_user}",
+      "gists_url": "https://api.github.com/users/kazuho/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/kazuho/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/kazuho/subscriptions",
+      "organizations_url": "https://api.github.com/users/kazuho/orgs",
+      "repos_url": "https://api.github.com/users/kazuho/repos",
+      "events_url": "https://api.github.com/users/kazuho/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/kazuho/received_events",
+      "type": "User",
+      "site_admin": false
+    },
     "assignees": [
-
+      {
+        "login": "kazuho",
+        "id": 41567,
+        "avatar_url": "https://avatars2.githubusercontent.com/u/41567?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/kazuho",
+        "html_url": "https://github.com/kazuho",
+        "followers_url": "https://api.github.com/users/kazuho/followers",
+        "following_url": "https://api.github.com/users/kazuho/following{/other_user}",
+        "gists_url": "https://api.github.com/users/kazuho/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/kazuho/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/kazuho/subscriptions",
+        "organizations_url": "https://api.github.com/users/kazuho/orgs",
+        "repos_url": "https://api.github.com/users/kazuho/repos",
+        "events_url": "https://api.github.com/users/kazuho/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/kazuho/received_events",
+        "type": "User",
+        "site_admin": false
+      }
     ],
     "milestone": null,
     "comments": 0,
     "created_at": "2018-03-18T12:18:24Z",
-    "updated_at": "2018-03-19T19:36:15Z",
+    "updated_at": "2018-03-27T03:00:54Z",
     "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "pull_request": {
@@ -1045,9 +1548,9 @@
 
     ],
     "milestone": null,
-    "comments": 2,
+    "comments": 3,
     "created_at": "2018-03-16T14:59:39Z",
-    "updated_at": "2018-03-22T14:41:51Z",
+    "updated_at": "2018-03-27T12:30:45Z",
     "closed_at": null,
     "author_association": "MEMBER",
     "body": "The spec currently cites both FETCH and the W3C CORS spec for CORS. One should be sufficient."
@@ -1267,14 +1770,50 @@
     ],
     "state": "open",
     "locked": false,
-    "assignee": null,
+    "assignee": {
+      "login": "mnot",
+      "id": 74384,
+      "avatar_url": "https://avatars1.githubusercontent.com/u/74384?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mnot",
+      "html_url": "https://github.com/mnot",
+      "followers_url": "https://api.github.com/users/mnot/followers",
+      "following_url": "https://api.github.com/users/mnot/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mnot/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mnot/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mnot/subscriptions",
+      "organizations_url": "https://api.github.com/users/mnot/orgs",
+      "repos_url": "https://api.github.com/users/mnot/repos",
+      "events_url": "https://api.github.com/users/mnot/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mnot/received_events",
+      "type": "User",
+      "site_admin": false
+    },
     "assignees": [
-
+      {
+        "login": "mnot",
+        "id": 74384,
+        "avatar_url": "https://avatars1.githubusercontent.com/u/74384?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/mnot",
+        "html_url": "https://github.com/mnot",
+        "followers_url": "https://api.github.com/users/mnot/followers",
+        "following_url": "https://api.github.com/users/mnot/following{/other_user}",
+        "gists_url": "https://api.github.com/users/mnot/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/mnot/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/mnot/subscriptions",
+        "organizations_url": "https://api.github.com/users/mnot/orgs",
+        "repos_url": "https://api.github.com/users/mnot/repos",
+        "events_url": "https://api.github.com/users/mnot/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/mnot/received_events",
+        "type": "User",
+        "site_admin": false
+      }
     ],
     "milestone": null,
     "comments": 0,
     "created_at": "2018-03-16T14:40:08Z",
-    "updated_at": "2018-03-19T19:36:15Z",
+    "updated_at": "2018-03-27T03:01:23Z",
     "closed_at": null,
     "author_association": "MEMBER",
     "pull_request": {
@@ -1284,7 +1823,10 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/509.patch"
     },
     "body": "(this change will be in conflict with the JSON reference update though)"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/508",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -1637,18 +2179,60 @@
       "site_admin": false
     },
     "labels": [
-
+      {
+        "id": 418128526,
+        "url": "https://api.github.com/repos/httpwg/http-extensions/labels/cache-digest",
+        "name": "cache-digest",
+        "color": "fbca04",
+        "default": false
+      }
     ],
     "state": "open",
     "locked": false,
-    "assignee": null,
+    "assignee": {
+      "login": "kazuho",
+      "id": 41567,
+      "avatar_url": "https://avatars2.githubusercontent.com/u/41567?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/kazuho",
+      "html_url": "https://github.com/kazuho",
+      "followers_url": "https://api.github.com/users/kazuho/followers",
+      "following_url": "https://api.github.com/users/kazuho/following{/other_user}",
+      "gists_url": "https://api.github.com/users/kazuho/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/kazuho/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/kazuho/subscriptions",
+      "organizations_url": "https://api.github.com/users/kazuho/orgs",
+      "repos_url": "https://api.github.com/users/kazuho/repos",
+      "events_url": "https://api.github.com/users/kazuho/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/kazuho/received_events",
+      "type": "User",
+      "site_admin": false
+    },
     "assignees": [
-
+      {
+        "login": "kazuho",
+        "id": 41567,
+        "avatar_url": "https://avatars2.githubusercontent.com/u/41567?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/kazuho",
+        "html_url": "https://github.com/kazuho",
+        "followers_url": "https://api.github.com/users/kazuho/followers",
+        "following_url": "https://api.github.com/users/kazuho/following{/other_user}",
+        "gists_url": "https://api.github.com/users/kazuho/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/kazuho/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/kazuho/subscriptions",
+        "organizations_url": "https://api.github.com/users/kazuho/orgs",
+        "repos_url": "https://api.github.com/users/kazuho/repos",
+        "events_url": "https://api.github.com/users/kazuho/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/kazuho/received_events",
+        "type": "User",
+        "site_admin": false
+      }
     ],
     "milestone": null,
     "comments": 0,
     "created_at": "2018-03-01T12:44:07Z",
-    "updated_at": "2018-03-19T19:36:15Z",
+    "updated_at": "2018-03-27T03:00:54Z",
     "closed_at": null,
     "author_association": "MEMBER",
     "pull_request": {
@@ -1717,10 +2301,7 @@
     "closed_at": null,
     "author_association": "OWNER",
     "body": "- multiple implementations\r\n- multiple instances\r\n- multiple versions\r\n\r\nall co-existing"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/501",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -2459,14 +3040,50 @@
     ],
     "state": "open",
     "locked": false,
-    "assignee": null,
+    "assignee": {
+      "login": "estark37",
+      "id": 602511,
+      "avatar_url": "https://avatars3.githubusercontent.com/u/602511?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/estark37",
+      "html_url": "https://github.com/estark37",
+      "followers_url": "https://api.github.com/users/estark37/followers",
+      "following_url": "https://api.github.com/users/estark37/following{/other_user}",
+      "gists_url": "https://api.github.com/users/estark37/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/estark37/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/estark37/subscriptions",
+      "organizations_url": "https://api.github.com/users/estark37/orgs",
+      "repos_url": "https://api.github.com/users/estark37/repos",
+      "events_url": "https://api.github.com/users/estark37/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/estark37/received_events",
+      "type": "User",
+      "site_admin": false
+    },
     "assignees": [
-
+      {
+        "login": "estark37",
+        "id": 602511,
+        "avatar_url": "https://avatars3.githubusercontent.com/u/602511?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/estark37",
+        "html_url": "https://github.com/estark37",
+        "followers_url": "https://api.github.com/users/estark37/followers",
+        "following_url": "https://api.github.com/users/estark37/following{/other_user}",
+        "gists_url": "https://api.github.com/users/estark37/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/estark37/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/estark37/subscriptions",
+        "organizations_url": "https://api.github.com/users/estark37/orgs",
+        "repos_url": "https://api.github.com/users/estark37/repos",
+        "events_url": "https://api.github.com/users/estark37/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/estark37/received_events",
+        "type": "User",
+        "site_admin": false
+      }
     ],
     "milestone": null,
     "comments": 0,
     "created_at": "2018-02-12T13:41:51Z",
-    "updated_at": "2018-03-19T19:36:15Z",
+    "updated_at": "2018-03-27T03:01:04Z",
     "closed_at": null,
     "author_association": "MEMBER",
     "pull_request": {
@@ -2973,14 +3590,50 @@
     ],
     "state": "open",
     "locked": false,
-    "assignee": null,
+    "assignee": {
+      "login": "MikeBishop",
+      "id": 4273797,
+      "avatar_url": "https://avatars0.githubusercontent.com/u/4273797?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/MikeBishop",
+      "html_url": "https://github.com/MikeBishop",
+      "followers_url": "https://api.github.com/users/MikeBishop/followers",
+      "following_url": "https://api.github.com/users/MikeBishop/following{/other_user}",
+      "gists_url": "https://api.github.com/users/MikeBishop/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/MikeBishop/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/MikeBishop/subscriptions",
+      "organizations_url": "https://api.github.com/users/MikeBishop/orgs",
+      "repos_url": "https://api.github.com/users/MikeBishop/repos",
+      "events_url": "https://api.github.com/users/MikeBishop/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/MikeBishop/received_events",
+      "type": "User",
+      "site_admin": false
+    },
     "assignees": [
-
+      {
+        "login": "MikeBishop",
+        "id": 4273797,
+        "avatar_url": "https://avatars0.githubusercontent.com/u/4273797?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/MikeBishop",
+        "html_url": "https://github.com/MikeBishop",
+        "followers_url": "https://api.github.com/users/MikeBishop/followers",
+        "following_url": "https://api.github.com/users/MikeBishop/following{/other_user}",
+        "gists_url": "https://api.github.com/users/MikeBishop/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/MikeBishop/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/MikeBishop/subscriptions",
+        "organizations_url": "https://api.github.com/users/MikeBishop/orgs",
+        "repos_url": "https://api.github.com/users/MikeBishop/repos",
+        "events_url": "https://api.github.com/users/MikeBishop/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/MikeBishop/received_events",
+        "type": "User",
+        "site_admin": false
+      }
     ],
     "milestone": null,
     "comments": 0,
     "created_at": "2018-02-05T18:25:17Z",
-    "updated_at": "2018-03-19T19:36:14Z",
+    "updated_at": "2018-03-27T03:01:15Z",
     "closed_at": null,
     "author_association": "MEMBER",
     "pull_request": {
@@ -3049,7 +3702,10 @@
     "closed_at": "2018-02-16T03:15:16Z",
     "author_association": "OWNER",
     "body": "The dict parsing algorithm currently allows a trailing comma (and OWS). \r\n\r\nIs the comma intentional?"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/478",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -3460,10 +4116,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/472.patch"
     },
     "body": "The counts forgot to include the initial required member.\r\n\r\nThe parsing algorithm also doesn't enforce any bounds on the number of items, but I haven't fixed that here."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/471",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -4930,7 +5583,10 @@
     "closed_at": "2017-12-13T07:01:28Z",
     "author_association": "MEMBER",
     "body": "On https://github.com/httpwg/http-extensions, pointers to editor drafts all return 404s:\r\n\r\n- http://httpwg.org/http-extensions/rand-access-live.html\r\n- http://httpwg.org/http-extensions/client-hints.html\r\n- http://httpwg.org/http-extensions/key.html\r\n- ...\r\n\r\nDid something change / break recently?"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/448",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -5362,10 +6018,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/442.patch"
     },
     "body": "In response to review by @vasilvv."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/441",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -6989,7 +7642,10 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/419.patch"
     },
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/418",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -7544,10 +8200,7 @@
     "closed_at": "2018-01-30T00:38:53Z",
     "author_association": "OWNER",
     "body": "Should we allow splitting common structure data over multiple headers ?\r\n\r\nPro:\r\n\r\nAvoids size restrictions, easier on-the-fly editing\r\n\r\nContra:\r\n\r\nCannot act on any such header until all headers have been received.\r\n\r\nWe must define where headers can be split (between identifier and dictionary ?, in the middle of\r\ndictionaries ?)\r\n\r\nMost on-the-fly editing is hackish at best.\r\n\r\n_from the draft_"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/411",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -9040,7 +9693,10 @@
     "closed_at": null,
     "author_association": "NONE",
     "body": "https://bugs.chromium.org/p/chromium/issues/detail?id=635882\r\n\r\nSection 3.1 of the spec states that \"SameSite\" alone (without an attribute value) is a valid token: https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site-00#section-3.1\r\n\r\nSection 4.1 https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site-00#section-4.1 states \r\n\r\n   1.  If \"cookie-av\"'s \"attribute-value\" is not a case-insensitive\r\n       match for \"Strict\" or \"Lax\", ignore the \"cookie-av\"."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/388",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -9516,10 +10172,7 @@
     "closed_at": null,
     "author_association": "OWNER",
     "body": "https://lists.w3.org/Archives/Public/ietf-http-wg/2017JulSep/0263.html\r\n\r\nSome editorial feedback:\r\n\r\n1) ABNF list rule reference has wrong section \r\n(https://github.com/httpwg/http-extensions/pull/376)\r\n\r\n2) Throughout s/header/header field/\r\n\r\n3) \r\n<https://www.greenbytes.de/tech/webdav/draft-ietf-httpbis-cache-digest-02.html#rfc.section.5.p.4>:\r\n\r\n\"TODO: discuss how effective the suggested mitigations actually would be.\"\r\n\r\n4) Please avoid lowercase BCP 14 keywords such as \"may\", or invoke \r\n<https://tools.ietf.org/html/rfc8174>\r\n\r\nBest regards, Julian"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/381",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -10130,9 +10783,9 @@
       }
     ],
     "milestone": null,
-    "comments": 43,
+    "comments": 44,
     "created_at": "2017-07-19T15:46:03Z",
-    "updated_at": "2018-03-20T16:52:07Z",
+    "updated_at": "2018-03-27T00:52:31Z",
     "closed_at": "2018-01-25T07:49:38Z",
     "author_association": "NONE",
     "body": "Based on https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/QHI3sio6--Q/v_zWX1O6AAAJ I have a couple of questions about the impact of `Accept-CH-Lifetime` as currently defined in https://tools.ietf.org/html/draft-ietf-httpbis-client-hints-04#section-2.2.2\r\n\r\nThe main risk, touched upon in the [Security Considerations](https://tools.ietf.org/html/draft-ietf-httpbis-client-hints-04#section-5) section, is the fact that providers of cross-origin subresources (e.g. images) loaded from pages with `Accept-CH` headers will start receiving fingerprinting-prone information about the configuration of a connecting client. Note that it will expose more information than what was available to these parties in the past because subresources such as images cannot use client-side logic to access information sent in Client Hints. A related issue is that based on the sets of headers sent in such subresource requests, the subresource owner might be able to identify the referring site even if it sets a Referrer Policy to prevent disclosing its URL or origin. For example, requests from a large site which sets `Referrer-Policy: no-referrer; Accept-CH: DPR` will be distinguishable from requests from sites with `Accept-CH: DPR, Viewport-Width` and from those without client hints. Depending on the chosen set of hints this can in practice uniquely identify the origin visited by the user.\r\n\r\nThe introduction of `Accept-CH-Lifetime` will extend this problem to all resources on a given origin -- if one page sets the header, then subresource requests from all pages in that origin will start carrying hint information. This can be undesirable for the user because it can disclose information about the visited origin and broadcasts fingerprintable information to all parties from which the given origin loads subresources.\r\n\r\nIt seems like this should be mitigated, possibly by one of the following:\r\n- (Preferably) Not broadcasting client hints on cross-origin subresource loads.\r\n- Obeying Referrer Policy and omitting hints if the referring page attempts to restrict data which is sent in the `Referer` header. Similarly, hints should probably also be stripped on HTTPS -> HTTP transitions."
@@ -10974,7 +11627,10 @@
     "closed_at": "2017-07-21T15:05:20Z",
     "author_association": "OWNER",
     "body": "http://www.w3.org/mid/624e3e87-43bc-0dc2-d38c-2d69cbb9e93b@gmx.de\r\n\r\nMost of this is editorial, so you can dispose of it as you see fit (although some of it is likely to come back up in IETF LC if not addressed. The exceptions are **bold**; I think we need to give some sort of response to those.\r\n\r\n* [x] Througout: avoid lowercase BCP14 keywords (may->can, should->ought to, ...), or actually invoke the new boilerplate defined in draft-leiba-rfc2119-update.\r\n* [x] s/headers/header fields/\r\n* [x] **It's not optimal to mention a draft that for now is work in progress so close to a \"MUST\", even with \"optionally\" sprinkled in. My recommendation continues to move all material that refers to the Key header field to an appendix.**\r\n* [x] s/defines/defines the/\r\n* [x] We should define \"origin\" somewhere (and also explain \"subresource\").\r\n* [x] Througout: uppercase \"header field\" in section titles.\r\n* [x] Isn't that evident because sending the hints is purely OPTIONAL anyway?\r\n* [x] **Why aren't we using HTTP list syntax here? Also, what does it mean when the field appears more than once?**\r\n* [x] I would rename this to \"CSSVAL\" (or something like that) for readability.\r\n* [x] I would rename this to \"HTML5\" (or something like that) for readability. \r\n* [x] I would rename this to \"KEY\" (or something like that) for readability. \r\n* [x] Finally: no Acknowledgements?"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/358",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -11419,10 +12075,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/352.patch"
     },
     "body": "The header needs to be registered if it's going to appear in an RFC.\r\n\r\nLooking at 7540, I think the frame type needs to be registered as well, since \"Experimental Use\" is private / local only."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/351",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -13136,7 +13789,10 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/329.patch"
     },
     "body": "1. Fix one typo.\r\n2. Technically, a set is always a subset of itself.  Therefore current wording implies that if two connections have identical Origin Sets, then neither should be used for new requests, and both should be closed.  Fix this by saying \"proper subset\" instead of \"subset\"."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/328",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -13549,10 +14205,7 @@
     "closed_at": "2017-04-14T21:50:51Z",
     "author_association": "NONE",
     "body": "Should the `Expect CT` header also have a `includeSubDomains` directive?\r\n\r\nIn the same way that [Strict-Transport-Security](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security) and [Public-Key-Pins](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Public-Key-Pins) has this feature."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/321",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -14940,7 +15593,10 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/299.patch"
     },
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/298",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -15396,10 +16052,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/292.patch"
     },
     "body": ""
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/291",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -16785,7 +17438,10 @@
     "closed_at": "2016-12-22T03:36:09Z",
     "author_association": "MEMBER",
     "body": "Can we coalesce http and https?  The implication from everything we've said is \"yes\", but Erik remains reluctant."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/268",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -17197,10 +17853,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/262.patch"
     },
     "body": "I tried to make this work, but @mcmanus is right: this is entirely a transport decision and given that our best option was to violate a MUST in RFC 7230, that's too hard.  This just says that HTTP/1.1 is no good because we can't include the scheme (because RFC 7230 says we can't).  I almost made this h2-specific, but then remembered that there might be another protocol that has favourable properties."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/261",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -18583,7 +19236,10 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/239.patch"
     },
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/238",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -18968,10 +19624,7 @@
     "closed_at": null,
     "author_association": "OWNER",
     "body": "Some sort of syntax to denote that if a match is made, stop processing, to allow control over permutations.\n"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/231",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -19883,9 +20536,9 @@
 
     ],
     "milestone": null,
-    "comments": 2,
+    "comments": 3,
     "created_at": "2016-08-08T08:49:14Z",
-    "updated_at": "2016-12-25T17:21:03Z",
+    "updated_at": "2018-03-27T12:33:53Z",
     "closed_at": null,
     "author_association": "NONE",
     "body": "That would make it easier to watch and participate in just what is of interest to you.\n"
@@ -20506,7 +21159,10 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/209.patch"
     },
     "body": "The key phrase is \"Serving ... requires\", not \"URIs require\".\n"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/208",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -20988,10 +21644,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/202.patch"
     },
     "body": "Updates based on Magnus Westerlund's review.\n"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/201",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -22271,7 +22924,10 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/179.patch"
     },
     "body": "- only one \"on\" value is recognized today\n- allow parameters on token\n\nDiscussion: https://github.com/httpwg/http-extensions/issues/168\n\n@mnot @reschke can you please do a quick sanity check?\n"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/178",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -22650,10 +23306,7 @@
     "closed_at": "2016-05-10T06:02:15Z",
     "author_association": "CONTRIBUTOR",
     "body": "Unless there are security problems with hash collisions, it would be better to use a non-cryptographic hash.  Not only is this much faster, but it removes a need to migrate when SHA256 becomes weak and needs to be retired.  If we stick with SHA256 due to security properties, a crypto hash negotiation scheme may be required in the frame.\n"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/171",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -23927,7 +24580,10 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/149.patch"
     },
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/148",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -24312,10 +24968,7 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/142.patch"
     },
     "body": ""
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/141",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -25600,7 +26253,10 @@
     "closed_at": "2015-11-22T20:35:27Z",
     "author_association": "CONTRIBUTOR",
     "body": "https://httpwg.github.io/http-extensions/alt-svc.html#alternative\n\n>  Each origin maps to a set of these routes — the default route is derived from the origin itself and the other routes are introduced based on alternative-protocol information. \n\nThis looks like it may be a remnant from Alternate-Protocol. [Section 2.4](https://httpwg.github.io/http-extensions/alt-svc.html#switching) uses the phrase `alternative service protocol`, which seems a little clearer.\n"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/118",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -25993,10 +26649,7 @@
     "closed_at": "2015-11-11T04:48:40Z",
     "author_association": "OWNER",
     "body": "See:\n  https://github.com/mnot/I-D/issues/138\n"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/111",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -27370,7 +28023,10 @@
     "closed_at": "2015-11-09T07:29:05Z",
     "author_association": "MEMBER",
     "body": "You can identify an alternative on a different port on localhost trivially and it might be considered authoritative.  You probably don't want to accept localhost as a valid alternative for an `http://example.com` origin.\n"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/88",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -27802,10 +28458,7 @@
     "closed_at": "2015-06-29T02:24:09Z",
     "author_association": "OWNER",
     "body": "Is 451 cacheable by default? I suspect so.\n\nSee:\n  http://httpwg.github.io/specs/rfc7231.html#overview.of.status.codes\n"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/81",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -29239,7 +29892,10 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/59.patch"
     },
     "body": "Solves #58 \n"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/58",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -29678,10 +30334,7 @@
     "closed_at": "2015-04-30T15:09:59Z",
     "author_association": "MEMBER",
     "body": "The spec currently doesn't use BCP14 which MAY or MAY NOT confuse people.\n"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/51",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -31033,7 +31686,10 @@
       "patch_url": "https://github.com/httpwg/http-extensions/pull/29.patch"
     },
     "body": "Mark moved this note in his edits, but I think that we don't need it any more at all.  The security considerations will suffice.\n"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/28",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
@@ -31438,10 +32094,7 @@
     "closed_at": "2014-12-16T00:17:38Z",
     "author_association": "MEMBER",
     "body": "HTTP-TLS creates a commitment to use an authenticated connection.  We need to make it clear that changes to Alt-Svc, even on that connection cannot change the fact that the origin needs to be authenticated for the duration of the commitment.\n\nOne potential attack here is for a MitM to advertise a different Alt-Svc, perhaps overriding the advertisement for the secured endpoint.  A naive implementation might update the set of available Alt-Svc advertisements and then continue.  What should happen here is that the service becomes unreachable. \n"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/httpwg/http-extensions/issues/21",
     "repository_url": "https://api.github.com/repos/httpwg/http-extensions",
