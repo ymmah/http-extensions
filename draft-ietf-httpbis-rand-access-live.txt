@@ -4,11 +4,11 @@
 
 HTTP Working Group                                              C. Pratt
 Internet-Draft
-Intended status: Experimental                                   B. Stark
-Expires: May 5, 2018                                                AT&T
-                                                              D. Thakore
-                                                               CableLabs
-                                                        November 1, 2017
+Intended status: Experimental                                 D. Thakore
+Expires: September 30, 2018                                    CableLabs
+                                                                B. Stark
+                                                                    AT&T
+                                                          March 29, 2018
 
 
                   HTTP Random Access and Live Content
@@ -47,20 +47,20 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 5, 2018.
+   This Internet-Draft will expire on September 30, 2018.
 
 
 
 
 
-Pratt, et al.              Expires May 5, 2018                  [Page 1]
+Pratt, et al.          Expires September 30, 2018               [Page 1]
 
-Internet-Draft     HTTP Random Access and Live Content     November 2017
+Internet-Draft     HTTP Random Access and Live Content        March 2018
 
 
 Copyright Notice
 
-   Copyright (c) 2017 IETF Trust and the persons identified as the
+   Copyright (c) 2018 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -86,10 +86,11 @@ Table of Contents
    3.  Other Applications of Random-Access Aggregating Content . . .   7
      3.1.  Requests Starting at the Aggregation ("Live") Point . . .   7
      3.2.  Shift Buffer Representations  . . . . . . . . . . . . . .   8
-   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
-   5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
-     5.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
-     5.2.  Informative References  . . . . . . . . . . . . . . . . .  10
+   4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
+   5.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
+   6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
+     6.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
+     6.2.  Informative References  . . . . . . . . . . . . . . . . .  10
    Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  11
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  11
 
@@ -108,10 +109,9 @@ Table of Contents
 
 
 
-
-Pratt, et al.              Expires May 5, 2018                  [Page 2]
+Pratt, et al.          Expires September 30, 2018               [Page 2]
 
-Internet-Draft     HTTP Random Access and Live Content     November 2017
+Internet-Draft     HTTP Random Access and Live Content        March 2018
 
 
    For instance, HTTP clients have the ability to access appended
@@ -165,9 +165,9 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 
 
-Pratt, et al.              Expires May 5, 2018                  [Page 3]
+Pratt, et al.          Expires September 30, 2018               [Page 3]
 
-Internet-Draft     HTTP Random Access and Live Content     November 2017
+Internet-Draft     HTTP Random Access and Live Content        March 2018
 
 
    cannot know from a range request that a client wishes to receive a
@@ -221,9 +221,9 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 
 
-Pratt, et al.              Expires May 5, 2018                  [Page 4]
+Pratt, et al.          Expires September 30, 2018               [Page 4]
 
-Internet-Draft     HTTP Random Access and Live Content     November 2017
+Internet-Draft     HTTP Random Access and Live Content        March 2018
 
 
    from the server indicating that (1) the complete representation
@@ -277,9 +277,9 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 
 
-Pratt, et al.              Expires May 5, 2018                  [Page 5]
+Pratt, et al.          Expires September 30, 2018               [Page 5]
 
-Internet-Draft     HTTP Random Access and Live Content     November 2017
+Internet-Draft     HTTP Random Access and Live Content        March 2018
 
 
        GET /resource HTTP/1.1
@@ -333,9 +333,9 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 
 
-Pratt, et al.              Expires May 5, 2018                  [Page 6]
+Pratt, et al.          Expires September 30, 2018               [Page 6]
 
-Internet-Draft     HTTP Random Access and Live Content     November 2017
+Internet-Draft     HTTP Random Access and Live Content        March 2018
 
 
    content.  This is the response expected from a typical HTTP server -
@@ -389,9 +389,9 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 
 
-Pratt, et al.              Expires May 5, 2018                  [Page 7]
+Pratt, et al.          Expires September 30, 2018               [Page 7]
 
-Internet-Draft     HTTP Random Access and Live Content     November 2017
+Internet-Draft     HTTP Random Access and Live Content        March 2018
 
 
 3.2.  Shift Buffer Representations
@@ -445,9 +445,9 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
 
 
 
-Pratt, et al.              Expires May 5, 2018                  [Page 8]
+Pratt, et al.          Expires September 30, 2018               [Page 8]
 
-Internet-Draft     HTTP Random Access and Live Content     November 2017
+Internet-Draft     HTTP Random Access and Live Content        March 2018
 
 
    with the response body returning bytes 1020000-1254567 immediately
@@ -488,32 +488,36 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
    buffer) or indicate the response is non-cacheable.  See HTTP Caching
    ([RFC7234]) for details on HTTP cache control.
 
-4.  Security Considerations
+4.  IANA Considerations
+
+   This document has no actions for IANA.
+
+5.  Security Considerations
 
    One potential issue with this recommendation is related to the use of
    very-large last-byte-pos values.  Some client and server
    implementations may not be prepared to deal with byte position values
    of 2^^63 and beyond.  So in applications where there's no expectation
+
+
+
+Pratt, et al.          Expires September 30, 2018               [Page 9]
+
+Internet-Draft     HTTP Random Access and Live Content        March 2018
+
+
    that the representation will ever exceed 2^^63, a value smaller than
    this value should be used as the Very Large last-byte-pos in a byte-
    seek request or content-range response.  Also, some implementations
    (e.g.  JavaScript-based clients and servers) are not able to
-
-
-
-Pratt, et al.              Expires May 5, 2018                  [Page 9]
-
-Internet-Draft     HTTP Random Access and Live Content     November 2017
-
-
    represent all values beyond 2^^53.  So similarly, if there's no
    expectation that a representation will ever exceed 2^^53 bytes,
    values smaller than this limit should be used for the last-byte-pos
    in byte-range requests.
 
-5.  References
+6.  References
 
-5.1.  Normative References
+6.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -535,7 +539,7 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
               RFC 7234, DOI 10.17487/RFC7234, June 2014,
               <https://www.rfc-editor.org/info/rfc7234>.
 
-5.2.  Informative References
+6.2.  Informative References
 
    [DASH]     ISO, "Information technology -- Dynamic adaptive streaming
               over HTTP (DASH) -- Part 1: Media presentation description
@@ -548,19 +552,19 @@ Internet-Draft     HTTP Random Access and Live Content     November 2017
               DOI 10.17487/RFC5234, January 2008,
               <https://www.rfc-editor.org/info/rfc5234>.
 
+
+
+
+
+
+Pratt, et al.          Expires September 30, 2018              [Page 10]
+
+Internet-Draft     HTTP Random Access and Live Content        March 2018
+
+
    [RFC8216]  Pantos, R., Ed. and W. May, "HTTP Live Streaming",
               RFC 8216, DOI 10.17487/RFC8216, August 2017,
               <https://www.rfc-editor.org/info/rfc8216>.
-
-
-
-
-
-
-Pratt, et al.              Expires May 5, 2018                 [Page 10]
-
-Internet-Draft     HTTP Random Access and Live Content     November 2017
-
 
 Acknowledgements
 
@@ -577,6 +581,15 @@ Authors' Addresses
    Email: pratt@acm.org
 
 
+   Darshak Thakore
+   CableLabs
+   858 Coal Creek Circle
+   Louisville, CO  80027
+   US
+
+   Email: d.thakore@cablelabs.com
+
+
    Barbara Stark
    AT&T
    Atlanta, GA
@@ -585,12 +598,6 @@ Authors' Addresses
    Email: barbara.stark@att.com
 
 
-   Darshak Thakore
-   CableLabs
-   858 Coal Creek Circle
-   Louisville, CO  80027
-
-   Email: d.thakore@cablelabs.com
 
 
 
@@ -606,11 +613,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-
-Pratt, et al.              Expires May 5, 2018                 [Page 11]
+Pratt, et al.          Expires September 30, 2018              [Page 11]
