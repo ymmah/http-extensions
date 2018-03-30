@@ -94,18 +94,18 @@ Table of Contents
      4.6.  HTTP Status Codes . . . . . . . . . . . . . . . . . . . .  13
      4.7.  HTTP Header Fields  . . . . . . . . . . . . . . . . . . .  14
      4.8.  Defining Message Payloads . . . . . . . . . . . . . . . .  15
-     4.9.  Authentication and Application State  . . . . . . . . . .  15
-     4.10. Co-Existing with Web Browsing . . . . . . . . . . . . . .  16
-     4.11. Co-Existing with Other Applications . . . . . . . . . . .  16
+     4.9.  Application State . . . . . . . . . . . . . . . . . . . .  15
+     4.10. Client Authentication . . . . . . . . . . . . . . . . . .  16
+     4.11. Co-Existing with Web Browsing . . . . . . . . . . . . . .  16
+     4.12. Co-Existing with Other Applications . . . . . . . . . . .  16
    5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  17
    6.  Security Considerations . . . . . . . . . . . . . . . . . . .  17
-   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  17
-     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  17
+   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  18
+     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  18
      7.2.  Informative References  . . . . . . . . . . . . . . . . .  19
      7.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  21
-   Appendix A.  Changes from RFC 3205  . . . . . . . . . . . . . . .  21
+   Appendix A.  Changes from RFC 3205  . . . . . . . . . . . . . . .  22
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  22
-
 
 
 
@@ -519,7 +519,7 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
    In general, applications using HTTP SHOULD align their usage as
    closely as possible with Web browsers, to avoid interoperability
-   issues when they are used.  See Section 4.10.
+   issues when they are used.  See Section 4.11.
 
    Applications using HTTP MUST NOT require HTTP features that are
    usually negotiated to be supported.  For example, requiring that
@@ -814,25 +814,25 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
    they define; this makes it possible to identify them unambiguously
    and negotiate for their use.  See [RFC6838] for more information.
 
-4.9.  Authentication and Application State
+4.9.  Application State
 
    Applications that use HTTP MAY use stateful cookies [RFC6265] to
    identify a client and/or store client-specific data to contextualise
    requests.
 
-   Applications that use HTTP MAY use HTTP authentication [RFC7235] to
-   identify clients.  The Basic authentication scheme [RFC7617] MUST NOT
-   be used unless the underlying transport is authenticated, integrity-
-   protected and confidential (e.g., as provided the "HTTPS" URL scheme,
-   or another using TLS).  The Digest scheme [RFC7616] MUST NOT be used
-   unless the underlying transport is similarly secure, or the chosen
-   hash algorithm is not "MD5".
+   When used, it is important to carefully specify the scoping and use
+   of cookies; if the application exposes sensitive data or capabilities
+   (e.g., by acting as an ambient authority), exploits are possible.
+   Mitigations include using a request-specific token to assure the
+   intent of the client.
 
-   In either case, it is important to carefully specify the scoping and
-   use of these mechanisms; if they expose sensitive data or
-   capabilities (e.g., by acting as an ambient authority), exploits are
-   possible.  Mitigations include using a request-specific token to
-   assure the intent of the client.
+   Applications MUST NOT make assumptions about the relationship between
+   separate requests on a single transport connection; doing so breaks
+   many of the assumptions of HTTP as a stateless protocol, and will
+   cause problems in interoperability, security, operability and
+   evolution.
+
+
 
 
 
@@ -842,13 +842,23 @@ Nottingham               Expires October 1, 2018               [Page 15]
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
 
-   Applications MUST NOT make assumptions about the relationship between
-   separate requests on a single transport connection; doing so breaks
-   many of the assumptions of HTTP as a stateless protocol, and will
-   cause problems in interoperability, security, operability and
-   evolution.
+4.10.  Client Authentication
 
-4.10.  Co-Existing with Web Browsing
+   Applications that use HTTP MAY use HTTP authentication [RFC7235] to
+   identify clients.  The Basic authentication scheme [RFC7617] MUST NOT
+   be used unless the underlying transport is authenticated, integrity-
+   protected and confidential (e.g., as provided the "HTTPS" URL scheme,
+   or another using TLS).  The Digest scheme [RFC7616] MUST NOT be used
+   unless the underlying transport is similarly secure, or the chosen
+   hash algorithm is not "MD5".
+
+   When used, it is important to carefully specify the scoping and use
+   of authentication; if the application exposes sensitive data or
+   capabilities (e.g., by acting as an ambient authority), exploits are
+   possible.  Mitigations include using a request-specific token to
+   assure the intent of the client.
+
+4.11.  Co-Existing with Web Browsing
 
    Even if there is not an intent for an application that uses HTTP to
    be used with a Web browser, its resources will remain available to
@@ -874,12 +884,19 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
    document.  External resources are numerous; e.g.,
    https://www.owasp.org/index.php/OWASP_Guide_Project [4].
 
-4.11.  Co-Existing with Other Applications
+4.12.  Co-Existing with Other Applications
 
    Because the origin [RFC6454] is how many HTTP capabilities are
    scoped, applications also need to consider how deployments might
    interact with other applications (including Web browsing) on the same
    origin.
+
+
+
+Nottingham               Expires October 1, 2018               [Page 16]
+
+Internet-Draft      On the use of HTTP as a Substrate         March 2018
+
 
    For example, if Cookies [RFC6265] are used to carry application
    state, they will be sent with all requests to the origin by default,
@@ -889,15 +906,6 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
    As a result, when specifying the use of Cookies, HTTP authentication
    [RFC7235], or other origin-wide HTTP mechanisms, applications using
-
-
-
-
-Nottingham               Expires October 1, 2018               [Page 16]
-
-Internet-Draft      On the use of HTTP as a Substrate         March 2018
-
-
    HTTP SHOULD NOT mandate the use of a particular identifier, but
    instead let deployments configure them.
 
@@ -922,10 +930,10 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
    use of 'http' URLs, to provide authentication, integrity and
    confidentiality, as well as mitigate pervasive monitoring attacks.
 
-   Section 4.10 highlights the implications of Web browsers'
+   Section 4.11 highlights the implications of Web browsers'
    capabilities on applications that use HTTP.
 
-   Section 4.11 discusses the issues that arise when applications are
+   Section 4.12 discusses the issues that arise when applications are
    deployed on the same origin as Web sites (and other applications).
 
    Applications that use HTTP in a manner that involves modification of
@@ -935,14 +943,6 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
    result that they do not benefit from patches and other security
    improvements incorporated upstream.
 
-7.  References
-
-7.1.  Normative References
-
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <https://www.rfc-editor.org/info/rfc2119>.
 
 
 
@@ -953,6 +953,15 @@ Nottingham               Expires October 1, 2018               [Page 17]
 
 Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
+
+7.  References
+
+7.1.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/info/rfc2119>.
 
    [RFC2818]  Rescorla, E., "HTTP Over TLS", RFC 2818,
               DOI 10.17487/RFC2818, May 2000,
@@ -993,6 +1002,14 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
               DOI 10.17487/RFC7232, June 2014,
               <https://www.rfc-editor.org/info/rfc7232>.
 
+
+
+
+Nottingham               Expires October 1, 2018               [Page 18]
+
+Internet-Draft      On the use of HTTP as a Substrate         March 2018
+
+
    [RFC7233]  Fielding, R., Ed., Lafon, Y., Ed., and J. Reschke, Ed.,
               "Hypertext Transfer Protocol (HTTP/1.1): Range Requests",
               RFC 7233, DOI 10.17487/RFC7233, June 2014,
@@ -1002,13 +1019,6 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
               RFC 7234, DOI 10.17487/RFC7234, June 2014,
               <https://www.rfc-editor.org/info/rfc7234>.
-
-
-
-Nottingham               Expires October 1, 2018               [Page 18]
-
-Internet-Draft      On the use of HTTP as a Substrate         March 2018
-
 
    [RFC7235]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Authentication", RFC 7235,
@@ -1047,6 +1057,15 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
    [FETCH]    WHATWG, "Fetch - Living Standard", n.d.,
               <https://fetch.spec.whatwg.org>.
 
+
+
+
+
+Nottingham               Expires October 1, 2018               [Page 19]
+
+Internet-Draft      On the use of HTTP as a Substrate         March 2018
+
+
    [HTML5]    WHATWG, "HTML - Living Standard", n.d.,
               <https://html.spec.whatwg.org>.
 
@@ -1057,14 +1076,6 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
    [RFC0854]  Postel, J. and J. Reynolds, "Telnet Protocol
               Specification", STD 8, RFC 854, DOI 10.17487/RFC0854, May
               1983, <https://www.rfc-editor.org/info/rfc854>.
-
-
-
-
-Nottingham               Expires October 1, 2018               [Page 19]
-
-Internet-Draft      On the use of HTTP as a Substrate         March 2018
-
 
    [RFC0959]  Postel, J. and J. Reynolds, "File Transfer Protocol",
               STD 9, RFC 959, DOI 10.17487/RFC0959, October 1985,
@@ -1101,6 +1112,16 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
               RFC 6455, DOI 10.17487/RFC6455, December 2011,
               <https://www.rfc-editor.org/info/rfc6455>.
 
+
+
+
+
+
+Nottingham               Expires October 1, 2018               [Page 20]
+
+Internet-Draft      On the use of HTTP as a Substrate         March 2018
+
+
    [RFC7049]  Bormann, C. and P. Hoffman, "Concise Binary Object
               Representation (CBOR)", RFC 7049, DOI 10.17487/RFC7049,
               October 2013, <https://www.rfc-editor.org/info/rfc7049>.
@@ -1113,14 +1134,6 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
               and Registration Procedures for URI Schemes", BCP 35,
               RFC 7595, DOI 10.17487/RFC7595, June 2015,
               <https://www.rfc-editor.org/info/rfc7595>.
-
-
-
-
-Nottingham               Expires October 1, 2018               [Page 20]
-
-Internet-Draft      On the use of HTTP as a Substrate         March 2018
-
 
    [RFC7605]  Touch, J., "Recommendations on Using Assigned Transport
               Port Numbers", BCP 165, RFC 7605, DOI 10.17487/RFC7605,
@@ -1158,6 +1171,13 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
 
    [3] https://github.com/httpwg/http-extensions/labels/bcp56bis
 
+
+
+Nottingham               Expires October 1, 2018               [Page 21]
+
+Internet-Draft      On the use of HTTP as a Substrate         March 2018
+
+
    [4] https://www.owasp.org/index.php/OWASP_Guide_Project
 
 Appendix A.  Changes from RFC 3205
@@ -1168,32 +1188,12 @@ Appendix A.  Changes from RFC 3205
    document is substantially different.  As a result, the changes are
    too numerous to list individually.
 
-
-
-
-
-
-Nottingham               Expires October 1, 2018               [Page 21]
-
-Internet-Draft      On the use of HTTP as a Substrate         March 2018
-
-
 Author's Address
 
    Mark Nottingham
 
    Email: mnot@mnot.net
    URI:   https://www.mnot.net/
-
-
-
-
-
-
-
-
-
-
 
 
 
