@@ -913,9 +913,10 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
    solution to the issues above; see [RFC7320].
 
    Modern Web browsers constrain the ability of content from one origin
-   to access resources from another, to avoid the "confused deputy"
-   problem.  As a result, applications that wish to expose cross-origin
-   data to browsers will need to implement [W3C.REC-cors-20140116].
+   to access resources from another, to avoid leaking private
+   information.  As a result, applications that wish to expose cross-
+   origin data to browsers will need to implement
+   [W3C.REC-cors-20140116].
 
 5.  IANA Considerations
 
@@ -942,7 +943,6 @@ Internet-Draft      On the use of HTTP as a Substrate         March 2018
    "fork" from their parent HTTP implementations, with the possible
    result that they do not benefit from patches and other security
    improvements incorporated upstream.
-
 
 
 
