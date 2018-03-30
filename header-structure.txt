@@ -88,12 +88,12 @@ Table of Contents
      4.6.  Floats  . . . . . . . . . . . . . . . . . . . . . . . . .  12
      4.7.  Strings . . . . . . . . . . . . . . . . . . . . . . . . .  13
      4.8.  Identifiers . . . . . . . . . . . . . . . . . . . . . . .  15
-     4.9.  Binary Content  . . . . . . . . . . . . . . . . . . . . .  16
+     4.9.  Binary Content  . . . . . . . . . . . . . . . . . . . . .  15
    5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  17
    6.  Security Considerations . . . . . . . . . . . . . . . . . . .  17
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  17
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .  17
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .  18
+     7.2.  Informative References  . . . . . . . . . . . . . . . . .  17
      7.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  18
    Appendix A.  Changes  . . . . . . . . . . . . . . . . . . . . . .  18
      A.1.  Since draft-ietf-httpbis-header-structure-04  . . . . . .  18
@@ -226,12 +226,12 @@ Nottingham & Kamp        Expires October 1, 2018                [Page 4]
 Internet-Draft         Structured Headers for HTTP            March 2018
 
 
-   # FooExample Header
+   # Foo-Example Header
 
-   The FooExample HTTP header field conveys information about how
+   The Foo-Example HTTP header field conveys information about how
    much Foo the message has.
 
-   FooExample is a Structured header [RFCxxxx]. Its value MUST be a
+   Foo-Example is a Structured header [RFCxxxx]. Its value MUST be a
    dictionary ([RFCxxxx], Section Y.Y).
 
    The dictionary MUST contain:
@@ -356,7 +356,7 @@ Internet-Draft         Structured Headers for HTTP            March 2018
    For example, a header field whose value is defined as a dictionary
    could look like:
 
-   ExampleDictHeader: foo=1.23, en="Applepie", da=*w4ZibGV0w6ZydGUK*
+   Example-DictHeader: foo=1.23, en="Applepie", da=*w4ZibGV0w6ZydGUK*
 
    Typically, a header field specification will define the semantics of
    individual keys, as well as whether their presence is required or
@@ -420,7 +420,7 @@ Internet-Draft         Structured Headers for HTTP            March 2018
    For example, a header field whose value is defined as a list of
    strings could look like:
 
-   ExampleStrListHeader: "foo", "bar", "It was the best of times."
+   Example-StrListHeader: "foo", "bar", "It was the best of times."
 
 4.2.1.  Parsing a List from Text
 
@@ -479,7 +479,7 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
    For example,
 
-   ExampleParamListHeader: abc_123;a=1;b=2; c, def_456, ghi;q="19";r=foo
+  Example-ParamListHeader: abc_123;a=1;b=2; c, def_456, ghi;q="19";r=foo
 
 4.3.1.  Parsing a Parameterised List from Text
 
@@ -618,7 +618,7 @@ Nottingham & Kamp        Expires October 1, 2018               [Page 11]
 Internet-Draft         Structured Headers for HTTP            March 2018
 
 
-   ExampleIntegerHeader: 42
+   Example-IntegerHeader: 42
 
 4.5.1.  Parsing a Number from Text
 
@@ -696,7 +696,7 @@ Internet-Draft         Structured Headers for HTTP            March 2018
    For example, a header whose value is defined as a float could look
    like:
 
-   ExampleFloatHeader: 4.5
+   Example-FloatHeader: 4.5
 
    See Section 4.5.1 for the parsing algorithm for floats.
 
@@ -717,7 +717,7 @@ Internet-Draft         Structured Headers for HTTP            March 2018
    For example, a header whose value is defined as a string could look
    like:
 
-   ExampleStringHeader: "hello world"
+   Example-StringHeader: "hello world"
 
    Note that strings only use DQUOTE as a delimiter; single quotes do
    not delimit strings.  Furthermore, only DQUOTE and "\" can be
@@ -797,11 +797,6 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
    Note that identifiers can only contain lowercase letters.
 
-   For example, a header whose value is defined as a identifier could
-   look like:
-
-   ExampleIdHeader: foo/bar
-
 4.8.1.  Parsing a Identifier from Text
 
    Given an ASCII string input_string, return a identifier. input_string
@@ -830,18 +825,6 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
    4.  Return output_string.
 
-
-
-
-
-
-
-
-Nottingham & Kamp        Expires October 1, 2018               [Page 15]
-
-Internet-Draft         Structured Headers for HTTP            March 2018
-
-
 4.9.  Binary Content
 
    Arbitrary binary content up to 16384 bytes in size can be conveyed in
@@ -850,6 +833,14 @@ Internet-Draft         Structured Headers for HTTP            March 2018
    The textual HTTP serialisation encodes the data using Base 64
    Encoding [RFC4648], Section 4, and surrounds it with a pair of
    asterisks ("*") to delimit from other content.
+
+
+
+
+Nottingham & Kamp        Expires October 1, 2018               [Page 15]
+
+Internet-Draft         Structured Headers for HTTP            March 2018
+
 
    The encoded data is required to be padded with "=", as per [RFC4648],
    Section 3.2.  It is RECOMMENDED that parsers reject encoded data that
@@ -871,7 +862,7 @@ Internet-Draft         Structured Headers for HTTP            March 2018
    For example, a header whose value is defined as binary content could
    look like:
 
-   ExampleBinaryHeader: *cHJldGVuZCB0aGlzIGlzIGJpbmFyeSBjb250ZW50Lg==*
+   Example-BinaryHeader: *cHJldGVuZCB0aGlzIGlzIGJpbmFyeSBjb250ZW50Lg==*
 
 4.9.1.  Parsing Binary Content from Text
 
@@ -891,18 +882,21 @@ Internet-Draft         Structured Headers for HTTP            March 2018
 
    5.  If b64_content is has more than 21846 characters, fail parsing.
 
+   6.  Let binary_content be the result of Base 64 Decoding [RFC4648]
+       b64_content, synthesising padding if necessary (note the
+       requirements about recipient behaviour in Section 4.9).
+
+   7.  Return binary_content.
+
+
+
+
 
 
 Nottingham & Kamp        Expires October 1, 2018               [Page 16]
 
 Internet-Draft         Structured Headers for HTTP            March 2018
 
-
-   6.  Let binary_content be the result of Base 64 Decoding [RFC4648]
-       b64_content, synthesising padding if necessary (note the
-       requirements about recipient behaviour in Section 4.9).
-
-   7.  Return binary_content.
 
 5.  IANA Considerations
 
@@ -943,17 +937,6 @@ Internet-Draft         Structured Headers for HTTP            March 2018
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
-
-
-
-
-
-
-Nottingham & Kamp        Expires October 1, 2018               [Page 17]
-
-Internet-Draft         Structured Headers for HTTP            March 2018
-
-
 7.2.  Informative References
 
    [IEEE754]  IEEE, "IEEE Standard for Floating-Point Arithmetic",
@@ -962,6 +945,14 @@ Internet-Draft         Structured Headers for HTTP            March 2018
               <http://ieeexplore.ieee.org/document/4610935/>.
 
               See also http://grouper.ieee.org/groups/754/ [4].
+
+
+
+
+Nottingham & Kamp        Expires October 1, 2018               [Page 17]
+
+Internet-Draft         Structured Headers for HTTP            March 2018
+
 
    [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
               Resource Identifier (URI): Generic Syntax", STD 66,
@@ -1002,14 +993,6 @@ A.3.  Since draft-ietf-httpbis-header-structure-02
 
    o  Define number parsing.
 
-
-
-
-Nottingham & Kamp        Expires October 1, 2018               [Page 18]
-
-Internet-Draft         Structured Headers for HTTP            March 2018
-
-
    o  Tighten up binary parsing and give it an explicit end delimiter.
 
    o  Clarify that mappings are unordered.
@@ -1019,6 +1002,13 @@ Internet-Draft         Structured Headers for HTTP            March 2018
    o  Improve string parsing algorithm.
 
    o  Improve limits in algorithms.
+
+
+
+Nottingham & Kamp        Expires October 1, 2018               [Page 18]
+
+Internet-Draft         Structured Headers for HTTP            March 2018
+
 
    o  Require parsers to combine header fields before processing.
 
@@ -1050,6 +1040,16 @@ Authors' Addresses
    The Varnish Cache Project
 
    Email: phk@varnish-cache.org
+
+
+
+
+
+
+
+
+
+
 
 
 
